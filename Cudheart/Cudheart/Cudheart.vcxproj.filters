@@ -21,13 +21,22 @@
     <ClCompile Include="test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="clib.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="clib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="util.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="test.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="lib.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="make.bat">
-      <Filter>Resource Files</Filter>
+    <ClInclude Include="util.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

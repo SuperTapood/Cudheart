@@ -1,12 +1,8 @@
 #include <iostream>
-#include <cstdio>
-
-
-#include "test.h"
+#include "clib.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
-    printf("Hello\n");
-    test();
+    printf("Hello World!\n");
+    printf("%s \n", Clib::adda(3, 4));
 }
