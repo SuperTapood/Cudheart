@@ -33,6 +33,18 @@
     <ClCompile Include="src\Cudheart\Test\test.cpp">
       <Filter>Source Files\Cudheart\test</Filter>
     </ClCompile>
+    <ClCompile Include="src\Cudheart\Utils\utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Cudheart\Core\math.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Cudheart\Core\rand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Cudheart\Core\creation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Cudheart\Cudheart.h">
@@ -46,6 +58,27 @@
     </ClInclude>
     <ClInclude Include="src\Cudheart\Test\test.h">
       <Filter>Source Files\Cudheart\test</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cudheart\Core\core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cudheart\Core\lib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cudheart\Core\math.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cudheart\Core\rand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cudheart\Core\creation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cudheart\CLib\CLib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cudheart\CLib\cmath.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -19,11 +19,22 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Cudheart\Core\creation.cpp" />
+    <ClCompile Include="src\Cudheart\Core\math.cpp" />
+    <ClCompile Include="src\Cudheart\Core\rand.cpp" />
     <ClCompile Include="src\Cudheart\Utils\exception.cpp" />
+    <ClCompile Include="src\Cudheart\Utils\utils.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Cudheart\Test\test.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Cudheart\CLib\CLib.h" />
+    <ClInclude Include="src\Cudheart\CLib\cmath.h" />
+    <ClInclude Include="src\Cudheart\Core\core.h" />
+    <ClInclude Include="src\Cudheart\Core\creation.h" />
+    <ClInclude Include="src\Cudheart\Core\lib.h" />
+    <ClInclude Include="src\Cudheart\Core\math.h" />
+    <ClInclude Include="src\Cudheart\Core\rand.h" />
     <ClInclude Include="src\Cudheart\Cudheart.h" />
     <ClInclude Include="src\Cudheart\Utils\exception.h" />
     <ClInclude Include="src\Cudheart\Test\test.h" />
