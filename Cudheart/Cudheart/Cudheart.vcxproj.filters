@@ -13,30 +13,39 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Cudheart">
+      <UniqueIdentifier>{a5b98f8f-9327-4027-9960-b4caa2ac3145}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Cudheart\test">
+      <UniqueIdentifier>{08c1beae-5b73-480b-9cbe-c76f970fdd74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Cudheart\utils">
+      <UniqueIdentifier>{abf6a6f1-8112-4f24-9e68-48dead9c651f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Cudheart.cpp">
+    <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="test.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\Cudheart\Utils\exception.cpp">
+      <Filter>Source Files\Cudheart\utils</Filter>
     </ClCompile>
-    <ClCompile Include="clib.h">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="clib.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="util.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\Cudheart\Test\test.cpp">
+      <Filter>Source Files\Cudheart\test</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="lib.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="src\Cudheart\Cudheart.h">
+      <Filter>Source Files\Cudheart</Filter>
     </ClInclude>
-    <ClInclude Include="util.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="src\Cudheart\Utils\utils.h">
+      <Filter>Source Files\Cudheart\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cudheart\Utils\exception.h">
+      <Filter>Source Files\Cudheart\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cudheart\Test\test.h">
+      <Filter>Source Files\Cudheart\test</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

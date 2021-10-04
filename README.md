@@ -7,4 +7,6 @@ todo:
 - reformat code and files into a structure that makes sense + more headers for easier import
 - integrate cuda into c++
 - make tests for everthing (the four basic operations: + - / X)
-- integrate namespaces
+- integrate namespaces to simplify import flow
+- add destructors to all classes
+- add operator overload to base array object
