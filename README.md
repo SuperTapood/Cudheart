@@ -2,8 +2,9 @@
 
 todo:
 - have an actual exception thing
-- figure out the clib and lib thing
+- figure out the clib and lib thing (break into lib.math and lib.random)
 - add CudaVector class
-- reformat code and files into a structure that makes sense
+- reformat code and files into a structure that makes sense + more headers for easier import
 - integrate cuda into c++
 - make tests for everthing (the four basic operations: + - / X)
+- integrate namespaces
