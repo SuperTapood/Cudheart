@@ -11,20 +11,10 @@ using namespace std;
 namespace Cudheart {
 	int MAJOR_VERSION = 0;
 	int MINOR_VERSION = 0;
-	int PATCH_VERSION = 1;
+	int PATCH_VERSION = 2;
 	string version = to_string(MAJOR_VERSION) + "."
 		+ to_string(MINOR_VERSION) + "."
 		+ to_string(PATCH_VERSION);
 
-	Math math;
-	Random rand;
-	Creation create;
-	
-	void init() {
-		// currently not using cuda!
-		Lib lib = CLib();
-		math = lib.math;
-		rand = lib.rand;
-		create = lib.create;
-	}
+	Lib clib = CLib();
 }

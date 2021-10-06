@@ -19,9 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Cudheart\CLib\CVector.cpp" />
     <ClCompile Include="src\Cudheart\Core\creation.cpp" />
     <ClCompile Include="src\Cudheart\Core\math.cpp" />
     <ClCompile Include="src\Cudheart\Core\rand.cpp" />
+    <ClCompile Include="src\Cudheart\Core\Shape.cpp" />
+    <ClCompile Include="src\Cudheart\Dtypes\Dtype.cpp" />
     <ClCompile Include="src\Cudheart\Utils\exception.cpp" />
     <ClCompile Include="src\Cudheart\Utils\utils.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -30,12 +33,15 @@
   <ItemGroup>
     <ClInclude Include="src\Cudheart\CLib\CLib.h" />
     <ClInclude Include="src\Cudheart\CLib\cmath.h" />
+    <ClInclude Include="src\Cudheart\CLib\CVector.h" />
     <ClInclude Include="src\Cudheart\Core\core.h" />
     <ClInclude Include="src\Cudheart\Core\creation.h" />
     <ClInclude Include="src\Cudheart\Core\lib.h" />
     <ClInclude Include="src\Cudheart\Core\math.h" />
     <ClInclude Include="src\Cudheart\Core\rand.h" />
+    <ClInclude Include="src\Cudheart\Core\Shape.h" />
     <ClInclude Include="src\Cudheart\Cudheart.h" />
+    <ClInclude Include="src\Cudheart\Dtypes\Dtype.h" />
     <ClInclude Include="src\Cudheart\Utils\exception.h" />
     <ClInclude Include="src\Cudheart\Test\test.h" />
     <ClInclude Include="src\Cudheart\Utils\utils.h" />
@@ -120,6 +126,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(CudaToolkitIncludeDir);C:\Users\yoavo\Anaconda3\envs\tensor\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -135,6 +142,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(CudaToolkitIncludeDir);C:\Users\yoavo\Anaconda3\envs\tensor\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -149,6 +157,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(CudaToolkitIncludeDir);C:\Users\yoavo\Anaconda3\envs\tensor\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -163,6 +173,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(CudaToolkitIncludeDir);C:\Users\yoavo\Anaconda3\envs\tensor\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
