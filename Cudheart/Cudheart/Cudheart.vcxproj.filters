@@ -42,9 +42,6 @@
     <ClCompile Include="src\Cudheart\Core\rand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Cudheart\Core\creation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Cudheart\CLib\CVector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -78,9 +75,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Cudheart\Core\rand.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Cudheart\Core\creation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Cudheart\CLib\CLib.h">

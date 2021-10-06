@@ -20,7 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Cudheart\CLib\CVector.cpp" />
-    <ClCompile Include="src\Cudheart\Core\creation.cpp" />
     <ClCompile Include="src\Cudheart\Core\math.cpp" />
     <ClCompile Include="src\Cudheart\Core\rand.cpp" />
     <ClCompile Include="src\Cudheart\Core\Shape.cpp" />
@@ -35,7 +34,6 @@
     <ClInclude Include="src\Cudheart\CLib\cmath.h" />
     <ClInclude Include="src\Cudheart\CLib\CVector.h" />
     <ClInclude Include="src\Cudheart\Core\core.h" />
-    <ClInclude Include="src\Cudheart\Core\creation.h" />
     <ClInclude Include="src\Cudheart\Core\lib.h" />
     <ClInclude Include="src\Cudheart\Core\math.h" />
     <ClInclude Include="src\Cudheart\Core\rand.h" />
