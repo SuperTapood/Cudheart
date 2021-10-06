@@ -31,7 +31,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Cudheart\CLib\CLib.h" />
-    <ClInclude Include="src\Cudheart\CLib\cmath.h" />
+    <ClInclude Include="src\Cudheart\CLib\CMath.h" />
+    <ClInclude Include="src\Cudheart\CLib\CRandom.h" />
     <ClInclude Include="src\Cudheart\CLib\CVector.h" />
     <ClInclude Include="src\Cudheart\Core\core.h" />
     <ClInclude Include="src\Cudheart\Core\lib.h" />

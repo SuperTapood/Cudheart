@@ -80,7 +80,7 @@
     <ClInclude Include="src\Cudheart\CLib\CLib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Cudheart\CLib\cmath.h">
+    <ClInclude Include="src\Cudheart\CLib\CMath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Cudheart\CLib\CVector.h">
@@ -90,6 +90,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Cudheart\Dtypes\Dtype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cudheart\CLib\CRandom.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

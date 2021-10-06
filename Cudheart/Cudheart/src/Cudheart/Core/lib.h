@@ -1,7 +1,7 @@
 #pragma once
 
-#include "math.h"
-#include "rand.h"
+#include "../Core/math.h"
+#include "../Core/rand.h"
 
 struct Lib {
 	Math math;

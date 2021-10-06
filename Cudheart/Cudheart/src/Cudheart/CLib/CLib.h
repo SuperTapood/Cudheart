@@ -2,13 +2,14 @@
 
 
 #include "../Core/core.h"
-#include "cmath.h"
+#include "../Clib/CMath.h"
+#include "../CLib/CRandom.h"
 
 
 class CLib : public Lib {
 public:
 	CLib() {
 		math = CMath();
-		// crand + calloc
+		rand = CRandom();
 	}
 };
