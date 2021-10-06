@@ -9,13 +9,14 @@ using namespace std;
 
 
 void Cudheart::Test::test() {
-	//exceptionTest();
+	exceptionTest();
 	VectorTest vt = VectorTest();
 	vt.creationTest();
 }
 
 void Cudheart::Test::exceptionTest() {
-	// need to actually have exceptions :/
+	Cudheart::Utils::Exceptions::BadShape::raise(5, 2);
+	printf("AAA");
 }
 
 

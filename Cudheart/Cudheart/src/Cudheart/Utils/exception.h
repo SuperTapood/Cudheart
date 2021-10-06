@@ -10,12 +10,13 @@ using namespace std;
 namespace Cudheart::Utils::Exceptions {
 	class Exception {
 	public:
-		Exception(char const* const message) throw();
-		Exception(string message) throw();
-		string toString();
-		const char* toCString();
+		static void throwException(string message);
+	};
+
+	
+	class BadShape : public Exception {
 	public:
-		const char* message;
+		static void raise(int req, int got);
 	};
 }
 
