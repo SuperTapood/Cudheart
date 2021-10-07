@@ -1,6 +1,9 @@
 # Cudheart
 
 todo:
+- FIX UNRESOLVED SYMBOL ISSUE
+
+
 - integrate namespaces to simplify import flow
 - add destructors to all classes
 - add operator overload to base array object
