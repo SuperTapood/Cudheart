@@ -8,4 +8,4 @@ todo:
 - rename creation to allocation for it to make some more sense
 - change all inner includes to be specific
 - integrate cuda into c++
-- make tests for everthing (the four basic operations: + - / X)
+- make tests for the four basic operations: + - / X

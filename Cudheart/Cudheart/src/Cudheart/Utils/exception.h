@@ -18,6 +18,11 @@ namespace Cudheart::Utils::Exceptions {
 	public:
 		static void raise(int req, int got);
 	};
+
+	class ShapeHas0Dim : public Exception {
+	public:
+		static void raise();
+	};
 }
 
 

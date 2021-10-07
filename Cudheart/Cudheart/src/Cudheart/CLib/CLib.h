@@ -2,8 +2,9 @@
 
 
 #include "../Core/core.h"
-#include "../Clib/CMath.h"
-#include "../CLib/CRandom.h"
+#include "CMath.h"
+#include "CRandom.h"
+#include "CVector.h"
 
 
 class CLib : public Lib {

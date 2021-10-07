@@ -6,11 +6,12 @@
 
 class Shape {
 public:
-	Shape(int* shape);
+	Shape(int shape[]);
 	~Shape();
 	const int at(int idx);
 public:
 	__int64 length;
+	int size = 0;
 private:
-	int* shape;
+	int shape[4];
 };

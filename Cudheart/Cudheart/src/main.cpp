@@ -8,5 +8,5 @@ using namespace Cudheart::Test;
 
 int main() {
 	printf("using version %s\n", Cudheart::version.c_str());
-	test();
+	Cudheart::Test::test();
 }

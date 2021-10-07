@@ -1,2 +1,14 @@
-﻿  main.cpp
-  Cudheart.vcxproj -> C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\bin\Win32\Debug\Cudheart.exe
+﻿  CVector.cpp
+  math.cpp
+  rand.cpp
+  Shape.cpp
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\src\Cudheart\Core\Shape.cpp(34,16): warning C4154: deletion of an array expression; conversion to pointer supplied
+  Dtype.cpp
+  exception.cpp
+  utils.cpp
+  main.cpp
+  test.cpp
+  Generating Code...
+test.obj : error LNK2019: unresolved external symbol "public: __thiscall Cudheart::CObjects::CVector<int>::CVector<int>(int * const,class Shape,class Dtype)" (??0?$CVector@H@CObjects@Cudheart@@QAE@QAHVShape@@VDtype@@@Z) referenced in function "public: virtual void __thiscall Cudheart::Test::VectorTest::creationTest(void)" (?creationTest@VectorTest@Test@Cudheart@@UAEXXZ)
+test.obj : error LNK2019: unresolved external symbol "public: __thiscall Cudheart::CObjects::CVector<int>::~CVector<int>(void)" (??1?$CVector@H@CObjects@Cudheart@@QAE@XZ) referenced in function "public: virtual void __thiscall Cudheart::Test::VectorTest::creationTest(void)" (?creationTest@VectorTest@Test@Cudheart@@UAEXXZ)
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\\bin\Win32\Debug\Cudheart.exe : fatal error LNK1120: 2 unresolved externals

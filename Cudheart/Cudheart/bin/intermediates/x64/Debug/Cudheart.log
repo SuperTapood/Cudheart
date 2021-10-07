@@ -1,2 +1,4 @@
-﻿  main.cpp
-  Cudheart.vcxproj -> C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\bin\x64\Debug\Cudheart.exe
+﻿  CVector.cpp
+test.obj : error LNK2019: unresolved external symbol "public: __cdecl Cudheart::CObjects::CVector<int>::CVector<int>(int * const,class Shape,class Dtype)" (??0?$CVector@H@CObjects@Cudheart@@QEAA@QEAHVShape@@VDtype@@@Z) referenced in function "public: virtual void __cdecl Cudheart::Test::VectorTest::creationTest(void)" (?creationTest@VectorTest@Test@Cudheart@@UEAAXXZ)
+test.obj : error LNK2019: unresolved external symbol "public: __cdecl Cudheart::CObjects::CVector<int>::~CVector<int>(void)" (??1?$CVector@H@CObjects@Cudheart@@QEAA@XZ) referenced in function "public: virtual void __cdecl Cudheart::Test::VectorTest::creationTest(void)" (?creationTest@VectorTest@Test@Cudheart@@UEAAXXZ)
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\\bin\x64\Debug\Cudheart.exe : fatal error LNK1120: 2 unresolved externals

@@ -4,8 +4,9 @@
 #include "test.h"
 
 #include "../Utils/utils.h"
+#include "../CLib/CLib.h"
 
-using namespace std;
+using namespace Cudheart::CObjects;
 
 
 void Cudheart::Test::test() {
@@ -20,5 +21,7 @@ void Cudheart::Test::exceptionTest() {
 
 
 void Cudheart::Test::VectorTest::creationTest() {
-
+	int arr[] = { 5, 5, 5 };
+	int shape[] = { 3 };
+	CVector<int> v = CVector<int>(arr, Shape(shape), Dtype());
 }
