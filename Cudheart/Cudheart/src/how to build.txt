@@ -1,1 +1,0 @@
-nvcc -o exec main.cpp -include C:\Users\yoavo\Anaconda3\envs\tensor\include\Python.h --std c++17 --library C:\Users\yoavo\Anaconda3\envs\tensor\libs\python38
