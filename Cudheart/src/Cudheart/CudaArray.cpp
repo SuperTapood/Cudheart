@@ -3,7 +3,7 @@
 
 namespace Cudheart {
 	template <class T>
-	CudaArray<T>::CudaArray(T* arr) {
+	CudaArray<T>::CudaArray(T arr[]) {
 
 	}
 }

@@ -2,12 +2,15 @@
 
 #include "Cudheart/Cudheart.h"
 
-void test() {
-	creationTest();
-}
+using namespace Cudheart;
 
 void creationTest() {
+	int arr[2] = { 3, 4 };
+	CudaArray<int> c(arr);
+}
 
+void test() {
+	creationTest();
 }
 
 

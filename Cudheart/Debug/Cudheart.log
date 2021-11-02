@@ -1,2 +1,5 @@
-﻿  main.cpp
-  Cudheart.vcxproj -> C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Debug\Cudheart.exe
+﻿  CudaArray.cpp
+  main.cpp
+  Generating Code...
+main.obj : error LNK2019: unresolved external symbol "public: __thiscall Cudheart::CudaArray<int>::CudaArray<int>(int * const)" (??0?$CudaArray@H@Cudheart@@QAE@QAH@Z) referenced in function "void __cdecl creationTest(void)" (?creationTest@@YAXXZ)
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Debug\Cudheart.exe : fatal error LNK1120: 1 unresolved externals
