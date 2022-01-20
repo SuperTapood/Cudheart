@@ -18,10 +18,16 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Cudheart\test\Test.cpp">
+    <ClCompile Include="Cudheart\Test\Test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Cudheart\Cudheart.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cudheart\Arrays\Arrays.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cudheart\Arrays\Vector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,16 +35,13 @@
     <ClInclude Include="Cudheart\Cudheart.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Cudheart\test\Test.h">
+    <ClInclude Include="Cudheart\Test\Test.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Cudheart\NDArrays\NDArrays.h">
+    <ClInclude Include="Cudheart\Arrays\Arrays.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Cudheart\NDArrays\Vector.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Cudheart\NDArrays\NDim.h">
+    <ClInclude Include="Cudheart\Arrays\Vector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

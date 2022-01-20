@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -116,6 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -139,16 +140,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cudheart\Arrays\Arrays.cpp" />
+    <ClCompile Include="Cudheart\Arrays\Vector.cpp" />
     <ClCompile Include="Cudheart\Cudheart.cpp" />
-    <ClCompile Include="Cudheart\test\Test.cpp" />
+    <ClCompile Include="Cudheart\Test\Test.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cudheart\Arrays\Arrays.h" />
+    <ClInclude Include="Cudheart\Arrays\Vector.h" />
     <ClInclude Include="Cudheart\Cudheart.h" />
-    <ClInclude Include="Cudheart\NDArrays\NDArrays.h" />
-    <ClInclude Include="Cudheart\NDArrays\NDim.h" />
-    <ClInclude Include="Cudheart\NDArrays\Vector.h" />
-    <ClInclude Include="Cudheart\test\Test.h" />
+    <ClInclude Include="Cudheart\Test\Test.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

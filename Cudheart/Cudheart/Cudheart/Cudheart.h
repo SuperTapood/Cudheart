@@ -1,3 +1,4 @@
 #pragma once
 
-#include "Test/Test.h"
+#include "Test.h"
+#include "Arrays.h"
