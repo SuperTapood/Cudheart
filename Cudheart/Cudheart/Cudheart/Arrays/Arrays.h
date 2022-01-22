@@ -1,8 +1,5 @@
 #pragma once
 
+#include "ArrayOps.h"
 #include "Vector.h"
-
-namespace Arrays{
-	template <typename T>
-	Vector<T> arange(double low, double high, double jump);
-}
+#include "VectorInt.h"

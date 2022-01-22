@@ -1,0 +1,9 @@
+﻿  VectorInt.cpp
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\Arrays\VectorInt.cpp(22,29): warning C4018: '<': signed/unsigned mismatch
+  Test.cpp
+  Generating code
+  6 of 148 functions ( 4.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Cudheart.vcxproj -> C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\x64\Release\Cudheart.exe

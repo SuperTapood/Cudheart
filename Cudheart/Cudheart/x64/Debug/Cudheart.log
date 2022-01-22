@@ -1,5 +1,2 @@
 ﻿  Vector.cpp
-Test.obj : error LNK2019: unresolved external symbol "public: __cdecl Vector<int>::~Vector<int>(void)" (??1?$Vector@H@@QEAA@XZ) referenced in function "void __cdecl Test::test(void)" (?test@Test@@YAXXZ)
-Test.obj : error LNK2019: unresolved external symbol "public: class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl Vector<int>::toString(void)" (?toString@?$Vector@H@@QEAA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ) referenced in function "void __cdecl Test::test(void)" (?test@Test@@YAXXZ)
-Test.obj : error LNK2019: unresolved external symbol "class Vector<int> __cdecl Arrays::arange<int>(double,double,double)" (??$arange@H@Arrays@@YA?AV?$Vector@H@@NNN@Z) referenced in function "void __cdecl Test::test(void)" (?test@Test@@YAXXZ)
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\x64\Debug\Cudheart.exe : fatal error LNK1120: 3 unresolved externals
+  Cudheart.vcxproj -> C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\x64\Debug\Cudheart.exe

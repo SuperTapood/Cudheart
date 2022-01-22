@@ -1,6 +1,8 @@
 #include "Test.h"
 
 void Test::test() {
-	Vector<int> v = Arrays::arange<int>(0., 5., 1.);
-	cout << v.toString();
+	int arr[] = { 5, 4, 7, 252, 5270 };
+	int* a = (int*)arr;
+	VectorInt vec = ArrayOps::asarray(a, 5);
+	cout << vec.toString() << endl;
 }

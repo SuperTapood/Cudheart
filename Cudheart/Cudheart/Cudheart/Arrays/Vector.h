@@ -1,26 +1,23 @@
 #pragma once
 
-#include <string>
-#include <ostream>
-#include <iostream>
-
-using std::string;
-using std::ostringstream;
-using std::endl;
+#include "../Inc.h"
 
 
-template <typename T>
 class Vector {
-private:
-	T* arr;
 public:
 	int size;
 public:
-	Vector(T* arr, int size);
+	Vector(int size);
+public:
+	virtual string toString() {
+		return "";
+	}
 
-	Vector(T* arr);
+	// virtual std::ostream& operator<<(std::ostream& out) = 0;
 
-	~Vector();
-
-	string toString();
+	// inherting classes need to implement:
+	// (in order to be treated as actual usable vectors)
+	// void* arr;
+	// void operator[](std::size_t i);
+	// void set(void value);
 };

@@ -1,27 +1,39 @@
 #include "Vector.h"
 
-template <typename T>
-Vector<T>::Vector(T* arr, int size) {
-	this->arr = arr;
+Vector::Vector(int size) {
 	this->size = size;
 }
 
-template <typename T>
-Vector<T>::Vector(T* arr) {
-	this->arr = arr;
-	size = sizeof(arr) / sizeof(arr[0]);
-}
+//std::ostream& Vector::operator<<(std::ostream& out)
+//{
+//	Vector vec = *this;
+//	out << "[";
+//	for (unsigned int j = 0; j < vec.size; j++)
+//	{
+//		if (j % vec.size == vec.size - 1)
+//			out << vec[j] << "]" << std::endl;
+//		else
+//			out << vec[j] << ", ";
+//	}
+//	return out;
+//}
 
-template <typename T>
-Vector<T>::~Vector() {
-	for (int i = size - 1; i > 0; i++) {
-		arr[i].~T();
-	}
-}
+//int Vector::operator[](std::size_t index)
+//{
+//	return arr[index];
+//}
 
-template<typename T>
-string Vector<T>::toString() {
-	ostringstream os;
-	os << arr << endl;
-	return os.str();
-}
+
+//string Vector::toString() {
+//	Vector vec = *this;
+//	ostringstream out;
+//	out << "[";
+//	for (unsigned int j = 0; j < vec.size; j++)
+//	{
+//		if (j % vec.size == vec.size - 1)
+//			out << vec[j] << "]" << std::endl;
+//		else
+//			out << vec[j] << ", ";
+//	}
+//	return out.str();
+//}
