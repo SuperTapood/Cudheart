@@ -1,10 +1,46 @@
 # Cudheart
 
-todo:
+- [About](#about-the-project)
+- [Change Log](#change-log)
+    - [0.0.1](#001)
 
-- actually write an informative readme
-- change vector to hold void*
-- change the actual data manipluation to be done by the Dtype objects
-- remove the seperate object per type bullshit
-- have some fucking fun goddammit this isn't C#
-- imagine doing this shit in C# lmao 🤣😂
+## About the project
+Cudheart is a numpy-esque library that aims to provide a simple and intuitive solution for CUDA based computing.
+Currently only featuring C++ based functions, but CUDA stuff is coming I swear.
+a
+
+
+
+
+
+
+
+aaa
+aa
+a
+a
+a
+aa
+a
+a
+a
+a
+a
+a
+a
+a
+
+a
+aa
+a
+a
+a
+a
+
+a
+a
+a
+
+## Change Log
+
+### 0.0.1
