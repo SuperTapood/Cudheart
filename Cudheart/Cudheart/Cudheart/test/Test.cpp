@@ -1,5 +1,6 @@
 #include "Test.h"
 #include "../Exceptions/Exceptions.h"
+#include "../Arrays/Shape.h"
 
 void Test::directCreationTest()
 {
@@ -16,7 +17,9 @@ void Test::directCreationTest()
 
 void Test::test() {
 	try {
-		directCreationTest();
+		//directCreationTest();
+		Shape s = Shape({5, 5245, 520, 41});
+		cout << s.toString();
 	}
 	catch (BaseException& e) {
 		e.print();

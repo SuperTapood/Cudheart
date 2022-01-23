@@ -13,7 +13,7 @@ Currently only featuring C++ based functions, but CUDA stuff is coming I swear.
 
 ### 0.0.1
 - [X] better fetching in ~~vector object~~ EVERYTHING
-- [X] DOCUMENTATION (also choose ~~which~~ type np ~~or google~~)
+- [ ] DOCUMENTATION (also choose ~~which~~ type np ~~or google~~)
 - [ ] add and integrate smarter ways to not delete pointers more than once (maybe set to NULL?)
 - [ ] test for everything built so far
 - [ ] actual info for the module (version and stuff)

@@ -143,6 +143,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Cudheart\Arrays\ArrayOps.cpp" />
+    <ClCompile Include="Cudheart\Arrays\Shape.cpp" />
     <ClCompile Include="Cudheart\Arrays\Vector.cpp" />
     <ClCompile Include="Cudheart\Cudheart.cpp" />
     <ClCompile Include="Cudheart\Dtypes\DDouble.cpp" />
@@ -157,6 +158,7 @@
   <ItemGroup>
     <ClInclude Include="Cudheart\Arrays\ArrayOps.h" />
     <ClInclude Include="Cudheart\Arrays\Arrays.h" />
+    <ClInclude Include="Cudheart\Arrays\Shape.h" />
     <ClInclude Include="Cudheart\Arrays\Vector.h" />
     <ClInclude Include="Cudheart\Cudheart.h" />
     <ClInclude Include="Cudheart\Dtypes\DDouble.h" />

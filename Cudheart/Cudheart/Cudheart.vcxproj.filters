@@ -48,6 +48,9 @@
     <ClCompile Include="Cudheart\Exceptions\AssertionError.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Cudheart\Arrays\Shape.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cudheart\Cudheart.h">
@@ -90,6 +93,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Cudheart\Exceptions\AssertionError.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Arrays\Shape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
