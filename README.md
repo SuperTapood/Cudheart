@@ -1,5 +1,7 @@
 # Cudheart
 
+[![wakatime](https://wakatime.com/badge/user/8b4f0bdc-5133-4fba-98d4-d75498fa71f2/project/eccaf13a-dd3b-426e-b047-82a0bd7cc1eb.svg)](https://wakatime.com/badge/user/8b4f0bdc-5133-4fba-98d4-d75498fa71f2/project/eccaf13a-dd3b-426e-b047-82a0bd7cc1eb)
+
 - [Cudheart](#cudheart)
   - [About the project](#about-the-project)
   - [Change Log](#change-log)
