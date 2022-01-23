@@ -33,7 +33,13 @@
     <ClCompile Include="Cudheart\Dtypes\Dtype.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Cudheart\Dtypes\Dint.cpp">
+    <ClCompile Include="Cudheart\Dtypes\DInt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cudheart\Exceptions\BaseException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cudheart\Dtypes\DDouble.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -53,7 +59,7 @@
     <ClInclude Include="Cudheart\Dtypes\Dtype.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Cudheart\Dtypes\Dint.h">
+    <ClInclude Include="Cudheart\Dtypes\DInt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Cudheart\Arrays\ArrayOps.h">
@@ -63,6 +69,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Cudheart\Dtypes\Dtypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Exceptions\Exceptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Exceptions\BaseException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Exceptions\IndexError.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Dtypes\DDouble.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

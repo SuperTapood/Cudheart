@@ -24,5 +24,5 @@ public:
 
 	void* operator[](size_t i);
 
-	void set(void* value);
+	void set(size_t i, void* value);
 };

@@ -5,7 +5,9 @@
 #include <sstream>
 #include <string>
 #include <typeinfo>
+#include <exception>
 
+using std::exception;
 using std::cout;
 using std::endl;
 using std::string;

@@ -3,9 +3,13 @@
 
 #include "Dtype.h"
 
-class DInt32 : public Dtype {
+class DInt : public Dtype {
 public:
 	void* get(void* arr, size_t i) override;
 	string toString(void* arr, size_t i) override;
 	string getName() override;
+	void* copy(void* arr, int size) override;
+	int getSize() override;
+	void set(void* arr, size_t i, void* value) override;
+	void* empty(int size) override;
 };

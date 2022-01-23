@@ -145,8 +145,10 @@
     <ClCompile Include="Cudheart\Arrays\ArrayOps.cpp" />
     <ClCompile Include="Cudheart\Arrays\Vector.cpp" />
     <ClCompile Include="Cudheart\Cudheart.cpp" />
-    <ClCompile Include="Cudheart\Dtypes\Dint.cpp" />
+    <ClCompile Include="Cudheart\Dtypes\DDouble.cpp" />
+    <ClCompile Include="Cudheart\Dtypes\DInt.cpp" />
     <ClCompile Include="Cudheart\Dtypes\Dtype.cpp" />
+    <ClCompile Include="Cudheart\Exceptions\BaseException.cpp" />
     <ClCompile Include="Cudheart\Test\Test.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
@@ -155,9 +157,13 @@
     <ClInclude Include="Cudheart\Arrays\Arrays.h" />
     <ClInclude Include="Cudheart\Arrays\Vector.h" />
     <ClInclude Include="Cudheart\Cudheart.h" />
-    <ClInclude Include="Cudheart\Dtypes\Dint.h" />
+    <ClInclude Include="Cudheart\Dtypes\DDouble.h" />
+    <ClInclude Include="Cudheart\Dtypes\DInt.h" />
     <ClInclude Include="Cudheart\Dtypes\Dtype.h" />
     <ClInclude Include="Cudheart\Dtypes\Dtypes.h" />
+    <ClInclude Include="Cudheart\Exceptions\BaseException.h" />
+    <ClInclude Include="Cudheart\Exceptions\Exceptions.h" />
+    <ClInclude Include="Cudheart\Exceptions\IndexError.h" />
     <ClInclude Include="Cudheart\Inc.h" />
     <ClInclude Include="Cudheart\Test\Test.h" />
   </ItemGroup>
