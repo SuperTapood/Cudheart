@@ -42,6 +42,9 @@
     <ClCompile Include="Cudheart\Dtypes\DDouble.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Cudheart\Exceptions\IndexError.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cudheart\Cudheart.h">

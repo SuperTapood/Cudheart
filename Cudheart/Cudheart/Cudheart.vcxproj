@@ -149,6 +149,7 @@
     <ClCompile Include="Cudheart\Dtypes\DInt.cpp" />
     <ClCompile Include="Cudheart\Dtypes\Dtype.cpp" />
     <ClCompile Include="Cudheart\Exceptions\BaseException.cpp" />
+    <ClCompile Include="Cudheart\Exceptions\IndexError.cpp" />
     <ClCompile Include="Cudheart\Test\Test.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
