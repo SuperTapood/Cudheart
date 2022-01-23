@@ -6,6 +6,8 @@
 #include <string>
 #include <typeinfo>
 #include <exception>
+#include <climits>
+#include <limits>
 
 using std::exception;
 using std::cout;

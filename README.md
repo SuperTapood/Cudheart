@@ -20,3 +20,4 @@ Currently only featuring C++ based functions, but CUDA stuff is coming I swear.
 - [ ] add shape object to store multi dim size
 - [ ] change from vector to array so i don't have a lot to change later
 - [ ] add test and stuff for DChar and stuff
+- [ ] add the rest of creation functions

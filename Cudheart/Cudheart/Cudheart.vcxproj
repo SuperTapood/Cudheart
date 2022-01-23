@@ -148,6 +148,7 @@
     <ClCompile Include="Cudheart\Dtypes\DDouble.cpp" />
     <ClCompile Include="Cudheart\Dtypes\DInt.cpp" />
     <ClCompile Include="Cudheart\Dtypes\Dtype.cpp" />
+    <ClCompile Include="Cudheart\Exceptions\AssertionError.cpp" />
     <ClCompile Include="Cudheart\Exceptions\BaseException.cpp" />
     <ClCompile Include="Cudheart\Exceptions\IndexError.cpp" />
     <ClCompile Include="Cudheart\Test\Test.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="Cudheart\Dtypes\DInt.h" />
     <ClInclude Include="Cudheart\Dtypes\Dtype.h" />
     <ClInclude Include="Cudheart\Dtypes\Dtypes.h" />
+    <ClInclude Include="Cudheart\Exceptions\AssertionError.h" />
     <ClInclude Include="Cudheart\Exceptions\BaseException.h" />
     <ClInclude Include="Cudheart\Exceptions\Exceptions.h" />
     <ClInclude Include="Cudheart\Exceptions\IndexError.h" />

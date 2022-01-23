@@ -38,6 +38,13 @@ void DDouble::set(void* arr, size_t i, void* value)
 	actual[i] = *(double*)value;
 }
 
+bool DDouble::equals(void* a, void* b)
+{
+	double trueA = *(double*)a;
+	double trueB = *(double*)b;
+	return trueA == trueB;
+}
+
 void* DDouble::empty(int size)
 {
 	return (void*)(new double[size]);

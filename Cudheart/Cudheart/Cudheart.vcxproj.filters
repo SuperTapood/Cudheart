@@ -45,6 +45,9 @@
     <ClCompile Include="Cudheart\Exceptions\IndexError.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Cudheart\Exceptions\AssertionError.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cudheart\Cudheart.h">
@@ -84,6 +87,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Cudheart\Dtypes\DDouble.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Exceptions\AssertionError.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -30,9 +30,8 @@ public:
 	/// </summary>
 	/// <param name="size"> : int - the size of the array to be created</param>
 	Vector(int size);
-
 	Vector(void* arr, int size);
-
+	Vector(int size, Dtype *dtype);
 	Vector(void* arr, int size, Dtype *dtype);
 
 	~Vector();
@@ -42,6 +41,10 @@ public:
 	friend ostream& operator<<(ostream& out, Vector &v);
 
 	void* operator[](size_t i);
+
+	void* get(size_t i);
+
+	bool operator==(Vector &v);
 
 	void set(size_t i, void* value);
 

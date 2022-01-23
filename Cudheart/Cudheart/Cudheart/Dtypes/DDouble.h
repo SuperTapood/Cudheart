@@ -48,4 +48,5 @@ public:
 	/// <param name="i"> : int - the index of the value to replace</param>
 	/// <param name="value"> : void* - the void pointer of the value to replace</param>
 	void set(void* arr, size_t i, void* value) override;
+	bool equals(void* a, void* b) override;
 };

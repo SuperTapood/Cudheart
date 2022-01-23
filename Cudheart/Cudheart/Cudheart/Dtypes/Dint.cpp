@@ -37,6 +37,13 @@ void DInt::set(void* arr, size_t i, void* value)
 	actual[i] = *(int*)value;
 }
 
+bool DInt::equals(void* a, void* b)
+{
+	int trueA = *(int*)a;
+	int trueB = *(int*)b;
+	return trueA == trueB;
+}
+
 void* DInt::empty(int size)
 {
 	return (void*)(new int[size]);

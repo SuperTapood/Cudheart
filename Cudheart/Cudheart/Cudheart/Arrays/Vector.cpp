@@ -8,6 +8,12 @@ Vector::Vector(int size) {
 	this->dtype = new DInt();
 }
 
+Vector::Vector(int size, Dtype *dtype) {
+	this->arr = malloc(size * (*dtype).getSize());
+	this->size = size;
+	this->dtype = dtype;
+}
+
 Vector::Vector(void* arr, int size) {
 	this->arr = arr;
 	this->size = size;
@@ -47,6 +53,24 @@ void Vector::set(size_t i, void* value)
 string Vector::asString(size_t i)
 {
 	return dtype->toString(arr, i);
+}
+
+void* Vector::get(size_t i)
+{
+	return operator[](i);
+}
+
+bool Vector::operator==(Vector &v)
+{
+	if (v.size != size || v.dtype->getName() != dtype->getName()) {
+		return false;
+	}
+	for (int i = 0; i < size; i++) {
+		if (!(*dtype).equals(get(i), v.get(i))) {
+			return false;
+		}
+	}
+	return true;
 }
 
 
