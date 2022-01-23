@@ -1,4 +1,8 @@
-﻿  Vector.cpp
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\Arrays\Vector.cpp(38,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\Arrays\Vector.cpp(58,29): warning C4018: '<': signed/unsigned mismatch
+﻿  ArrayOps.cpp
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\Arrays\ArrayOps.cpp(15,11): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  Vector.cpp
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\Arrays\Vector.cpp(37,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\Arrays\Vector.cpp(57,29): warning C4018: '<': signed/unsigned mismatch
+  Test.cpp
+  Generating Code...
   Cudheart.vcxproj -> C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\x64\Debug\Cudheart.exe

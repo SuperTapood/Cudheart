@@ -22,11 +22,10 @@ Vector::Vector(void* arr, int size, Dtype *dtype) {
 
 Vector::~Vector()
 {
-	cout << endl << this << endl;
-	cout << arr << endl;
-	//delete dtype;
-	//// forcing the use of new keyword
-	//delete arr;
+	if (!copied) {
+		delete dtype;
+		delete arr;
+	}
 }
 
 void* Vector::operator[](size_t i)

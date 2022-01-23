@@ -9,6 +9,8 @@ public:
 	Dtype *dtype;
 //private:
 	void* arr;
+private:
+	bool copied;
 public:
 	Vector(int size);
 
@@ -25,4 +27,8 @@ public:
 	void* operator[](size_t i);
 
 	void set(size_t i, void* value);
+
+	void setCopied(bool b) {
+		copied = b;
+	}
 };

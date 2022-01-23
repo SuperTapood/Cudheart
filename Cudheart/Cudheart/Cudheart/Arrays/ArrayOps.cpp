@@ -14,6 +14,7 @@ Vector ArrayOps::arange(double low, double high, double jump, Dtype *dtype)
 {
 	int size = (high - low) / jump;
 	static Vector v = empty(size, dtype);
+	v.setCopied(true);
 
 	for (int i = 0; i < v.size; i++) {
 		v.set(i, &low);
