@@ -30,9 +30,6 @@
     <ClCompile Include="Cudheart\Arrays\Vector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Cudheart\Arrays\VectorInt.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Cudheart\Dtypes\Dtype.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -51,9 +48,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Cudheart\Arrays\Vector.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Cudheart\Arrays\VectorInt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Cudheart\Dtypes\Dtype.h">

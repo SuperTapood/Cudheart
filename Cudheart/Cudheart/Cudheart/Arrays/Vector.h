@@ -1,23 +1,28 @@
 #pragma once
 
 #include "../Inc.h"
-
+#include "../Dtypes/Dtype.h"
 
 class Vector {
 public:
 	int size;
+	Dtype *dtype;
+//private:
+	void* arr;
 public:
 	Vector(int size);
-public:
-	virtual string toString() {
-		return "";
-	}
 
-	// virtual std::ostream& operator<<(std::ostream& out) = 0;
+	Vector(void* arr, int size);
 
-	// inherting classes need to implement:
-	// (in order to be treated as actual usable vectors)
-	// void* arr;
-	// void operator[](std::size_t i);
-	// void set(void value);
+	Vector(void* arr, int size, Dtype *dtype);
+
+	~Vector();
+
+	string toString();
+
+	friend ostream& operator<<(ostream& out, const Vector &v);
+
+	void* operator[](size_t i);
+
+	void set(void* value);
 };

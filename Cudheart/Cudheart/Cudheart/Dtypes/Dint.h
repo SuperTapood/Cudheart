@@ -3,7 +3,9 @@
 
 #include "Dtype.h"
 
-class Dint : public Dtype {
+class DInt32 : public Dtype {
 public:
-	Dint() {}
+	void* get(void* arr, size_t i) override;
+	string toString(void* arr, size_t i) override;
+	string getName() override;
 };

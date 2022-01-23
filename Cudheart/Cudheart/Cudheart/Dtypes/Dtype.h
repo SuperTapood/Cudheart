@@ -1,11 +1,10 @@
 #pragma once
 
-#include "../Arrays/Vector.h"
+#include "../Inc.h"
 
 class Dtype {
-	friend class VectorInt;
 public:
-public:
-	static Dtype determine(int* arr);
-	static VectorInt asVector(int* arr, int size);
+	virtual void* get(void* arr, size_t i) = 0;
+	virtual string toString(void* arr, size_t i) = 0;
+	virtual string getName() = 0;
 };

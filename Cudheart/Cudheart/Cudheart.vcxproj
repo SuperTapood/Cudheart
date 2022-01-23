@@ -144,7 +144,6 @@
   <ItemGroup>
     <ClCompile Include="Cudheart\Arrays\ArrayOps.cpp" />
     <ClCompile Include="Cudheart\Arrays\Vector.cpp" />
-    <ClCompile Include="Cudheart\Arrays\VectorInt.cpp" />
     <ClCompile Include="Cudheart\Cudheart.cpp" />
     <ClCompile Include="Cudheart\Dtypes\Dint.cpp" />
     <ClCompile Include="Cudheart\Dtypes\Dtype.cpp" />
@@ -155,7 +154,6 @@
     <ClInclude Include="Cudheart\Arrays\ArrayOps.h" />
     <ClInclude Include="Cudheart\Arrays\Arrays.h" />
     <ClInclude Include="Cudheart\Arrays\Vector.h" />
-    <ClInclude Include="Cudheart\Arrays\VectorInt.h" />
     <ClInclude Include="Cudheart\Cudheart.h" />
     <ClInclude Include="Cudheart\Dtypes\Dint.h" />
     <ClInclude Include="Cudheart\Dtypes\Dtype.h" />
