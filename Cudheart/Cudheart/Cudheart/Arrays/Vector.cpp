@@ -44,6 +44,11 @@ void Vector::set(size_t i, void* value)
 	dtype->set(arr, i, value);
 }
 
+string Vector::asString(size_t i)
+{
+	return dtype->toString(arr, i);
+}
+
 
 string Vector::toString() {
 	ostringstream os;

@@ -7,7 +7,7 @@ Vector ArrayOps::asarray(void* arr, int size, Dtype *dtype, bool copy)
 	if (copy) {
 		arr = dtype->copy(arr, size);
 	}
-	return Vector((void*)arr, size);
+	return Vector((void*)arr, size, dtype);
 }
 
 Vector ArrayOps::arange(double low, double high, double jump, Dtype *dtype)
@@ -26,5 +26,5 @@ Vector ArrayOps::arange(double low, double high, double jump, Dtype *dtype)
 
 Vector ArrayOps::empty(int size, Dtype* dtype)
 {
-	return asarray((void*)dtype->empty(size), size);
+	return asarray((void*)dtype->empty(size), size, dtype);
 }

@@ -31,4 +31,6 @@ public:
 	void setCopied(bool b) {
 		copied = b;
 	}
+
+	string asString(size_t i);
 };
