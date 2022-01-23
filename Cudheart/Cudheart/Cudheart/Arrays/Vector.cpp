@@ -3,7 +3,7 @@
 #include "../Exceptions/Exceptions.h"
 
 Vector::Vector(int size) {
-	this->arr = nullptr;
+	this->arr = malloc(size * sizeof(int));
 	this->size = size;
 	this->dtype = new DInt();
 }
@@ -56,15 +56,15 @@ string Vector::toString() {
 	return os.str();
 }
 
-ostream& operator<<(ostream& out, const Vector& vec)
+ostream& operator<<(ostream& out, Vector& vec)
 {
 	out << vec.dtype->getName() << " Vector[";
 	for (unsigned int j = 0; j < vec.size; j++)
 	{
 		if (j % vec.size == vec.size - 1)
-			out << (*vec.dtype).toString(vec.arr, j) << "]" << endl;
+			out << vec.asString(j) << "]" << endl;
 		else
-			out << (*vec.dtype).toString(vec.arr, j) << ", ";
+			out << vec.asString(j) << ", ";
 	}
 	return out;
 }

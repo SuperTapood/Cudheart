@@ -22,7 +22,7 @@ public:
 
 	string toString();
 
-	friend ostream& operator<<(ostream& out, const Vector &v);
+	friend ostream& operator<<(ostream& out, Vector &v);
 
 	void* operator[](size_t i);
 
