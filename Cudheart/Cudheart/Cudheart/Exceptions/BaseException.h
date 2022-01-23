@@ -9,4 +9,5 @@ public:
 	BaseException();
 	BaseException(string msg);
 	const char* what() const throw();
+	void print();
 };

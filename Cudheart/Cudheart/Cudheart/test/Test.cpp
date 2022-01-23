@@ -8,7 +8,6 @@ void Test::test() {
         cout << v[6];
     }
     catch (BaseException& e) {
-        std::cout << "MyException caught" << std::endl;
-        std::cout << e.what() << std::endl;
+        e.print();
     }
 }
