@@ -8,6 +8,7 @@ private:
 	int* arr;
 public:
 	int size;
+	int length;
 public:
 	Shape(initializer_list<int> shape);
 	string toString();

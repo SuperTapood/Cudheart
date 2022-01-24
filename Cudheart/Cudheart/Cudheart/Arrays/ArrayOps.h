@@ -1,43 +1,43 @@
 #pragma once
 
-#include "Vector.h"
+#include "Array.h"
 #include "../Dtypes/Dtypes.h"
 
 class ArrayOps {
 	friend class Dtype;
-	friend class Vector;
+	friend class Array;
 public:
-	static Vector asarray(void* arr, int size, Dtype *dtype, bool copy);
+	static Array asarray(void* arr, Shape* shape, Dtype *dtype, bool copy);
 
-	static Vector asarray(void* arr, int size, bool copy) {
-		return asarray(arr, size, new DInt(), copy);
+	static Array asarray(void* arr, Shape* shape, bool copy) {
+		return asarray(arr, shape, new DInt(), copy);
 	}
 
-	static Vector asarray(void* arr, int size, Dtype *dtype) {
-		return asarray(arr, size, dtype, false);
+	static Array asarray(void* arr, Shape* shape, Dtype *dtype) {
+		return asarray(arr, shape, dtype, false);
 	}
 
-	static Vector asarray(void* arr, int size) {
-		return asarray(arr, size, new DInt(), false);
+	static Array asarray(void* arr, Shape* shape) {
+		return asarray(arr, shape, new DInt(), false);
 	}
 
-	static Vector arange(double low, double high, double jump, Dtype *dtype);
+	static Array arange(double low, double high, double jump, Dtype *dtype);
 
-	static Vector arange(double low, double high, double jump) {
+	static Array arange(double low, double high, double jump) {
 		return arange(low, high, jump, new DDouble());
 	}
 
-	static Vector arange(double low, double high) {
+	static Array arange(double low, double high) {
 		return arange(low, high, 1);
 	}
 
-	static Vector arange(double high) {
+	static Array arange(double high) {
 		return arange(0, high, 1);
 	}
 
-	static Vector empty(int size, Dtype *dtype);
+	static Array empty(Shape* shape, Dtype *dtype);
 
-	static Vector empty(int size) {
-		return empty(size, new DInt());
+	static Array empty(Shape* shape) {
+		return empty(shape, new DInt());
 	}
 };

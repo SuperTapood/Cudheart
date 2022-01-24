@@ -27,7 +27,7 @@
     <ClCompile Include="Cudheart\Arrays\ArrayOps.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Cudheart\Arrays\Vector.cpp">
+    <ClCompile Include="Cudheart\Arrays\Array.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Cudheart\Dtypes\Dtype.cpp">
@@ -62,7 +62,7 @@
     <ClInclude Include="Cudheart\Arrays\Arrays.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Cudheart\Arrays\Vector.h">
+    <ClInclude Include="Cudheart\Arrays\Array.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Cudheart\Dtypes\Dtype.h">

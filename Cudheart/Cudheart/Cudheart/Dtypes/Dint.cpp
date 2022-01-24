@@ -15,8 +15,9 @@ string DInt::getName() {
 	return "Int32";
 }
 
-void* DInt::copy(void* arr, int size) {
+void* DInt::copy(void* arr, Shape* shape) {
 	int* actual = (int*)arr;
+	int size = (*shape).size;
 	int* out = (int*)malloc(size * sizeof(int));
 
 	for (int i = 0; i < size; i++) {
@@ -44,7 +45,7 @@ bool DInt::equals(void* a, void* b)
 	return trueA == trueB;
 }
 
-void* DInt::empty(int size)
+void* DInt::empty(Shape* shape)
 {
-	return (void*)(new int[size]);
+	return (void*)(new int[(*shape).size]);
 }

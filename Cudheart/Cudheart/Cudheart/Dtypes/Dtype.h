@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Inc.h"
+#include "../Arrays/Shape.h"
 
 class Dtype {
 public:
@@ -29,7 +30,7 @@ public:
 	/// <param name="arr"> : void* - the array to copy</param>
 	/// <param name="size"> : int - the size of the array</param>
 	/// <returns> : void* - the copied array</returns>
-	virtual void* copy(void* arr, int size) = 0;
+	virtual void* copy(void* arr, Shape* shape) = 0;
 	/// <summary>
 	/// get the size of this data type
 	/// </summary>
@@ -40,7 +41,7 @@ public:
 	/// </summary>
 	/// <param name="size"> : int - the size of the empty thing</param>
 	/// <returns> void* - the empty array</returns>
-	virtual void* empty(int size) = 0;
+	virtual void* empty(Shape* shape) = 0;
 	/// <summary>
 	/// set the value at an index of an array to a particular. gets a void pointer bc cpp is fun
 	/// </summary>

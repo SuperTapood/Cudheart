@@ -15,9 +15,10 @@ string DDouble::getName() {
 	return "Float64";
 }
 
-void* DDouble::copy(void* arr, int size)
+void* DDouble::copy(void* arr, Shape* shape)
 {
 	double* actual = (double*)arr;
+	int size = (*shape).size;
 	double* out = (double*)malloc(size * sizeof(int));
 
 	for (int i = 0; i < size; i++) {
@@ -45,7 +46,7 @@ bool DDouble::equals(void* a, void* b)
 	return trueA == trueB;
 }
 
-void* DDouble::empty(int size)
+void* DDouble::empty(Shape* shape)
 {
-	return (void*)(new double[size]);
+	return (void*)(new double[(*shape).size]);
 }

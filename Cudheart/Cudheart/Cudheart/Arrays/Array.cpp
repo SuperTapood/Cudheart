@@ -1,0 +1,100 @@
+#include "Array.h"
+#include "../Dtypes/Dtypes.h"
+#include "../Exceptions/Exceptions.h"
+
+Array::Array(Shape* shape) {
+	this->arr = malloc(size * sizeof(int));
+	this->size = (*shape).size;
+	this->shape = shape;
+	this->dtype = new DInt();
+}
+
+Array::Array(Shape* shape, Dtype *dtype) {
+	this->arr = malloc(size * (*dtype).getSize());
+	this->size = (*shape).size;
+	this->shape = shape;
+	this->dtype = dtype;
+}
+
+Array::Array(void* arr, Shape* shape) {
+	this->arr = arr;
+	this->size = (*shape).size;
+	this->shape = shape;
+	this->dtype = new DInt();
+}
+
+Array::Array(void* arr, Shape* shape, Dtype *dtype) {
+	this->arr = arr;
+	this->size = (*shape).size;
+	this->shape = shape;
+	this->dtype = dtype;
+}
+
+Array::~Array()
+{
+	delete dtype;
+	dtype = NULL;
+	delete shape;
+	shape = NULL;
+	delete arr;
+	arr = NULL;
+}
+
+void* Array::operator[](size_t i)
+{
+	if (i < 0) {
+		return this->operator[](size + i);
+	}
+	if (i > size) {
+		throw IndexError(i, 0, size);
+	}
+	return (*dtype).get(arr, i);
+}
+
+void Array::set(size_t i, void* value)
+{
+	dtype->set(arr, i, value);
+}
+
+string Array::asString(size_t i)
+{
+	return dtype->toString(arr, i);
+}
+
+void* Array::get(size_t i)
+{
+	return operator[](i);
+}
+
+bool Array::operator==(Array &v)
+{
+	if (v.size != size || v.dtype->getName() != dtype->getName()) {
+		return false;
+	}
+	for (int i = 0; i < size; i++) {
+		if (!(*dtype).equals(get(i), v.get(i))) {
+			return false;
+		}
+	}
+	return true;
+}
+
+
+string Array::toString() {
+	ostringstream os;
+	os << this;
+	return os.str();
+}
+
+ostream& operator<<(ostream& out, Array& vec)
+{
+	out << vec.dtype->getName() << " Array[";
+	for (unsigned int j = 0; j < vec.size; j++)
+	{
+		if (j % vec.size == vec.size - 1)
+			out << vec.asString(j) << "]" << endl;
+		else
+			out << vec.asString(j) << ", ";
+	}
+	return out;
+}

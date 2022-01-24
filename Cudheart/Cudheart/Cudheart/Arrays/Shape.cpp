@@ -2,11 +2,13 @@
 
 
 Shape::Shape(initializer_list<int> shape) {
-	size = shape.size();
+	length = shape.size();
 	arr = (int*)malloc(size * sizeof(int));
 	int i = 0;
-	for (auto elem : shape)
+	size = 1;
+	for (int elem : shape)
 	{
+		size *= elem;
 		arr[i++] = elem;
 	}
 }

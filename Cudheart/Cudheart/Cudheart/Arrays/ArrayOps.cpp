@@ -2,18 +2,18 @@
 #include "../Inc.h"
 
 
-Vector ArrayOps::asarray(void* arr, int size, Dtype *dtype, bool copy)
+Array ArrayOps::asarray(void* arr, Shape *shape, Dtype *dtype, bool copy)
 {
 	if (copy) {
-		arr = dtype->copy(arr, size);
+		arr = dtype->copy(arr, shape);
 	}
-	return Vector((void*)arr, size, dtype);
+	return Array((void*)arr, shape, dtype);
 }
 
-Vector ArrayOps::arange(double low, double high, double jump, Dtype *dtype)
+Array ArrayOps::arange(double low, double high, double jump, Dtype *dtype)
 {
 	int size = (high - low) / jump;
-	static Vector v = empty(size, dtype);
+	static Array v = empty(new Shape({size}), dtype);
 	v.setCopied(true);
 
 	for (int i = 0; i < v.size; i++) {
@@ -24,7 +24,7 @@ Vector ArrayOps::arange(double low, double high, double jump, Dtype *dtype)
 	return v;
 }
 
-Vector ArrayOps::empty(int size, Dtype* dtype)
+Array ArrayOps::empty(Shape* shape, Dtype* dtype)
 {
-	return asarray((void*)dtype->empty(size), size, dtype);
+	return asarray((void*)dtype->empty(shape), shape, dtype);
 }

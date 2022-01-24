@@ -4,22 +4,16 @@
 
 void Test::directCreationTest()
 {
-	Vector vi = Vector(12);
-	int empty = -842150451;
-	for (int i = 0; i < vi.size; i++) {
-		assert(*((int*)vi[i]) == empty, "vi[i]", "-842150451");
-	}
-	Vector bi = Vector(12, new DInt());
+	Array vi = Array(new Shape({ 12 }));
+	cout << vi << endl;
+	Array bi = Array(new Shape({ 12 }), new DInt());
 	cout << bi << endl;
-	assert(vi == bi, "vi", "Vector(12, new DInt())");
-	cout << "passed IntVector creation test" << endl;
+	cout << "passed int array creation test" << endl;
 }
 
 void Test::test() {
 	try {
-		//directCreationTest();
-		Shape s = Shape({5, 5245, 520, 41});
-		cout << s.toString();
+		directCreationTest();
 	}
 	catch (BaseException& e) {
 		e.print();
