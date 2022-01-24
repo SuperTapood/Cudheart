@@ -50,4 +50,7 @@ public:
 	void set(void* arr, size_t i, void* value) override;
 	bool equals(void* a, void* b) override;
 	double cast(void* ptr);
+	Dtype* dupe() override {
+		return new DDouble();
+	}
 };

@@ -2,11 +2,9 @@
 #include "../Inc.h"
 
 
-Array ArrayOps::asarray(void* arr, Shape *shape, Dtype *dtype, bool copy)
+Array ArrayOps::asarray(void* arr, Shape *shape, Dtype *dtype)
 {
-	if (copy) {
-		arr = dtype->copy(arr, shape);
-	}
+	arr = dtype->copy(arr, shape);
 	return Array((void*)arr, shape, dtype);
 }
 

@@ -152,7 +152,6 @@
     <ClCompile Include="Cudheart\Exceptions\AssertionError.cpp" />
     <ClCompile Include="Cudheart\Exceptions\BaseException.cpp" />
     <ClCompile Include="Cudheart\Exceptions\IndexError.cpp" />
-    <ClCompile Include="Cudheart\Misc\GarbageCollector.cpp" />
     <ClCompile Include="Cudheart\Test\Test.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
@@ -171,7 +170,6 @@
     <ClInclude Include="Cudheart\Exceptions\Exceptions.h" />
     <ClInclude Include="Cudheart\Exceptions\IndexError.h" />
     <ClInclude Include="Cudheart\Inc.h" />
-    <ClInclude Include="Cudheart\Misc\GarbageCollector.h" />
     <ClInclude Include="Cudheart\Test\Test.h" />
   </ItemGroup>
   <ItemGroup>

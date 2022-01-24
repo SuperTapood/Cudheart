@@ -1,7 +1,6 @@
 #include "Array.h"
 #include "../Dtypes/Dtypes.h"
 #include "../Exceptions/Exceptions.h"
-#include "../Misc/GarbageCollector.h"
 
 Array::Array(Shape* shape) {
 	this->arr = malloc(size * sizeof(int));
@@ -18,23 +17,24 @@ Array::Array(Shape* shape, Dtype *dtype) {
 }
 
 Array::Array(void* arr, Shape* shape) {
-	this->arr = arr;
+	this->arr = dtype->copy(arr, shape);
 	this->size = (*shape).size;
 	this->shape = shape;
 	this->dtype = new DInt();
 }
 
 Array::Array(void* arr, Shape* shape, Dtype *dtype) {
-	this->arr = arr;
+	this->arr = dtype->copy(arr, shape);
 	this->size = (*shape).size;
-	this->shape = shape;
-	this->dtype = dtype;
+	this->shape = shape->dupe();
+	this->dtype = dtype->dupe();
 }
 
 Array::~Array()
 {
-	GarbageCollector* c = GarbageCollector::get();
-	(*c).deletePtrs(*this);
+	delete arr;
+	delete dtype;
+	delete shape;
 }
 
 void* Array::operator[](size_t i)

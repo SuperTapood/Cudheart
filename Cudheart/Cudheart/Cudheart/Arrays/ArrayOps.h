@@ -7,18 +7,10 @@ class ArrayOps {
 	friend class Dtype;
 	friend class Array;
 public:
-	static Array asarray(void* arr, Shape* shape, Dtype *dtype, bool copy);
-
-	static Array asarray(void* arr, Shape* shape, bool copy) {
-		return asarray(arr, shape, new DInt(), copy);
-	}
-
-	static Array asarray(void* arr, Shape* shape, Dtype *dtype) {
-		return asarray(arr, shape, dtype, false);
-	}
+	static Array asarray(void* arr, Shape* shape, Dtype *dtype);
 
 	static Array asarray(void* arr, Shape* shape) {
-		return asarray(arr, shape, new DInt(), false);
+		return asarray(arr, shape, new DInt());
 	}
 
 	static Array arange(double low, double high, double jump, Dtype *dtype);

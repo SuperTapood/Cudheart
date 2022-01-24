@@ -1,6 +1,11 @@
 #include "Shape.h"
 
 
+Shape::Shape(int* arr)
+{
+	this->arr = arr;
+}
+
 Shape::Shape(initializer_list<int> shape) {
 	length = shape.size();
 	arr = (int*)malloc(size * sizeof(int));
@@ -21,4 +26,9 @@ string Shape::toString() {
 	}
 	os << ")";
 	return os.str();
+}
+
+Shape* Shape::dupe()
+{
+	return new Shape(arr);
 }

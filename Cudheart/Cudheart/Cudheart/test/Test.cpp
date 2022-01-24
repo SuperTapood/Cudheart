@@ -1,7 +1,6 @@
 #include "Test.h"
 #include "../Exceptions/Exceptions.h"
 #include "../Arrays/Shape.h"
-#include "../Misc/GarbageCollector.h"
 
 void Test::vectorCreationTest()
 {
@@ -22,7 +21,6 @@ void Test::test() {
 	}
 	catch (BaseException& e) {
 		e.print();
-		GarbageCollector::destroy();
 	}
 }
 

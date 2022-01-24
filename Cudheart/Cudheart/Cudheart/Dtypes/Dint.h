@@ -51,4 +51,7 @@ public:
 	void set(void* arr, size_t i, void* value) override;
 	bool equals(void* a, void* b) override;
 	int cast(void* ptr);
+	Dtype* dupe() override {
+		return new DInt();
+	}
 };
