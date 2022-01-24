@@ -56,4 +56,6 @@ public:
 	}
 
 	string asString(size_t i);
+
+	string getShapeString();
 };

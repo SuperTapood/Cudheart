@@ -15,8 +15,8 @@ Shape::Shape(initializer_list<int> shape) {
 
 string Shape::toString() {
 	ostringstream os;
-	os << "Shape(";
-	for (int i = 0; i < size; i++) {
+	os << "(";
+	for (int i = 0; i < length; i++) {
 		os << arr[i] << ",";
 	}
 	os << ")";

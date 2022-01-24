@@ -50,4 +50,5 @@ public:
 	/// <param name="value"> : void* - the void pointer of the value to replace</param>
 	void set(void* arr, size_t i, void* value) override;
 	bool equals(void* a, void* b) override;
+	int cast(void* ptr);
 };

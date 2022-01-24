@@ -46,6 +46,11 @@ bool DDouble::equals(void* a, void* b)
 	return trueA == trueB;
 }
 
+double DDouble::cast(void* ptr)
+{
+	return *((double*)ptr);
+}
+
 void* DDouble::empty(Shape* shape)
 {
 	return (void*)(new double[(*shape).size]);

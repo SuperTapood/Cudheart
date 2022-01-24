@@ -1,6 +1,7 @@
 #include "Array.h"
 #include "../Dtypes/Dtypes.h"
 #include "../Exceptions/Exceptions.h"
+#include "../Misc/GarbageCollector.h"
 
 Array::Array(Shape* shape) {
 	this->arr = malloc(size * sizeof(int));
@@ -32,12 +33,8 @@ Array::Array(void* arr, Shape* shape, Dtype *dtype) {
 
 Array::~Array()
 {
-	delete dtype;
-	dtype = NULL;
-	delete shape;
-	shape = NULL;
-	delete arr;
-	arr = NULL;
+	GarbageCollector* c = GarbageCollector::get();
+	(*c).deletePtrs(*this);
 }
 
 void* Array::operator[](size_t i)
@@ -59,6 +56,11 @@ void Array::set(size_t i, void* value)
 string Array::asString(size_t i)
 {
 	return dtype->toString(arr, i);
+}
+
+string Array::getShapeString()
+{
+	return shape->toString();
 }
 
 void* Array::get(size_t i)
@@ -88,7 +90,7 @@ string Array::toString() {
 
 ostream& operator<<(ostream& out, Array& vec)
 {
-	out << vec.dtype->getName() << " Array[";
+	out << vec.dtype->getName() << " Array [";
 	for (unsigned int j = 0; j < vec.size; j++)
 	{
 		if (j % vec.size == vec.size - 1)

@@ -1,2 +1,23 @@
-﻿  Test.cpp
-  Cudheart.vcxproj -> C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\x64\Debug\Cudheart.exe
+﻿  ArrayOps.cpp
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\Arrays\ArrayOps.cpp(15,11): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  Shape.cpp
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\Arrays\Shape.cpp(5,23): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  Array.cpp
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\Arrays\Array.cpp(46,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\Arrays\Array.cpp(94,29): warning C4018: '<': signed/unsigned mismatch
+  Cudheart.cpp
+  DDouble.cpp
+  DInt.cpp
+  Dtype.cpp
+  AssertionError.cpp
+  BaseException.cpp
+  IndexError.cpp
+  GarbageCollector.cpp
+  Test.cpp
+  Main.cpp
+  Generating Code...
+GarbageCollector.obj : error LNK2001: unresolved external symbol "private: static class std::vector<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::allocator<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > > GarbageCollector::deletedVoids" (?deletedVoids@GarbageCollector@@0V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@A)
+GarbageCollector.obj : error LNK2001: unresolved external symbol "private: static class std::vector<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::allocator<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > > GarbageCollector::deletedDtypes" (?deletedDtypes@GarbageCollector@@0V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@A)
+GarbageCollector.obj : error LNK2001: unresolved external symbol "private: static class std::vector<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::allocator<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > > GarbageCollector::deletedShapes" (?deletedShapes@GarbageCollector@@0V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@A)
+GarbageCollector.obj : error LNK2001: unresolved external symbol "private: static class GarbageCollector * GarbageCollector::collector" (?collector@GarbageCollector@@0PEAV1@EA)
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\x64\Debug\Cudheart.exe : fatal error LNK1120: 4 unresolved externals

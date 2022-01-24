@@ -50,4 +50,6 @@ public:
 	/// <param name="value"> : void* - the void pointer of the value to replace</param>
 	virtual void set(void* arr, size_t i, void* value) = 0;
 	virtual bool equals(void* a, void* b) = 0;
+
+	// virtual TYPE* cast(void* ptr);
 };

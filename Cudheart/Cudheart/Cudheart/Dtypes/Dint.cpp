@@ -45,6 +45,11 @@ bool DInt::equals(void* a, void* b)
 	return trueA == trueB;
 }
 
+int DInt::cast(void* ptr)
+{
+	return *((int*)ptr);
+}
+
 void* DInt::empty(Shape* shape)
 {
 	return (void*)(new int[(*shape).size]);

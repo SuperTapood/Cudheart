@@ -19,7 +19,7 @@ Currently only featuring C++ based functions, but CUDA stuff is coming I swear.
 - [ ] add and integrate smarter ways to not delete pointers more than once (maybe set to NULL?)
 - [ ] test for everything built so far
 - [ ] actual info for the module (version and stuff)
-- [ ] add shape object to store multi dim size
+- [X] add shape object to store multi dim size
 - [ ] change from vector to array so i don't have a lot to change later
 - [ ] add test and stuff for DChar and stuff
 - [ ] add the rest of creation functions
