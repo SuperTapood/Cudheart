@@ -26,3 +26,14 @@ Array ArrayOps::empty(Shape* shape, Dtype* dtype)
 {
 	return asarray((void*)dtype->empty(shape), shape, dtype);
 }
+
+Array ArrayOps::full(Shape* shape, void* value, Dtype* dtype)
+{
+	Array out = empty(shape, dtype);
+	for (int i = 0; i < out.size; i++) {
+		out.set(i, value);
+	}
+	return out;
+}
+
+

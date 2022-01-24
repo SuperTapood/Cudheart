@@ -23,3 +23,4 @@ Currently only featuring C++ based functions, but CUDA stuff is coming I swear.
 - [ ] change from vector to array so i don't have a lot to change later
 - [ ] add test and stuff for DChar and stuff
 - [ ] add the rest of creation functions
+- [ ] dtypes will now store a casted copy of the array to save time

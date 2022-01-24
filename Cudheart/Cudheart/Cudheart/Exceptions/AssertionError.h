@@ -10,4 +10,5 @@ public:
 	/// <param name="left"> : string - the left side of the expression</param>
 	/// <param name="right"> : string - the right side of the expression</param>
 	AssertionError(string left, string right);
+	AssertionError();
 };
