@@ -17,10 +17,10 @@ Array::Array(Shape* shape, Dtype *dtype) {
 }
 
 Array::Array(void* arr, Shape* shape) {
+	this->dtype = new DInt();
 	this->arr = dtype->copy(arr, shape);
 	this->size = (*shape).size;
 	this->shape = shape;
-	this->dtype = new DInt();
 }
 
 Array::Array(void* arr, Shape* shape, Dtype *dtype) {

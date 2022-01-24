@@ -7,7 +7,8 @@ namespace Test {
 	/// <summary>
 	/// test the creation process of vectors
 	/// </summary>
-	void vectorCreationTest();
+	void directArrayCreationTest();
+	void creationFunctionsTest();
 	/// <summary>
 	/// Test the entire Cudheart module and print out progress and test results
 	/// </summary>

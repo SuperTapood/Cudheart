@@ -16,7 +16,7 @@ Currently only featuring C++ based functions, but CUDA stuff is coming I swear.
 ### 0.0.1
 - [X] better fetching in ~~vector object~~ EVERYTHING
 - [ ] DOCUMENTATION (also choose ~~which~~ type np ~~or google~~)
-- [ ] add and integrate smarter ways to not delete pointers more than once (maybe set to NULL?)
+- [X] arrays will now always copy given arrays
 - [ ] test for everything built so far
 - [ ] actual info for the module (version and stuff)
 - [X] add shape object to store multi dim size

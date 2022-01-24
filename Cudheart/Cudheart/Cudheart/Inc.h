@@ -20,3 +20,4 @@ using std::string;
 using std::ostringstream;
 using std::ostream;
 using std::initializer_list;
+using std::to_string;

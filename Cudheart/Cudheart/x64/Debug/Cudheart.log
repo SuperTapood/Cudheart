@@ -1,6 +1,4 @@
-﻿  ArrayOps.cpp
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\Arrays\ArrayOps.cpp(13,11): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  Test.cpp
+﻿  Test.cpp
   Main.cpp
   Generating Code...
   Cudheart.vcxproj -> C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\x64\Debug\Cudheart.exe
