@@ -1,19 +1,12 @@
 # Cudheart
 
-[![wakatime](https://wakatime.com/badge/user/8b4f0bdc-5133-4fba-98d4-d75498fa71f2/project/eccaf13a-dd3b-426e-b047-82a0bd7cc1eb.svg)](https://wakatime.com/badge/user/8b4f0bdc-5133-4fba-98d4-d75498fa71f2/project/eccaf13a-dd3b-426e-b047-82a0bd7cc1eb)
-
-- [Cudheart](#cudheart)
-  - [About the project](#about-the-project)
-  - [Change Log](#change-log)
-    - [0.0.1](#001)
+[![time invested:](https://wakatime.com/badge/user/8b4f0bdc-5133-4fba-98d4-d75498fa71f2/project/eccaf13a-dd3b-426e-b047-82a0bd7cc1eb.svg)](https://wakatime.com/badge/user/8b4f0bdc-5133-4fba-98d4-d75498fa71f2/project/eccaf13a-dd3b-426e-b047-82a0bd7cc1eb)
 
 ## About the project
 Cudheart is a numpy-esque library that aims to provide a simple and intuitive solution for CUDA based computing.
 Currently only featuring C++ based functions, but CUDA stuff is coming I swear.
 
-## Change Log
 
-### 0.0.1
 - [X] better fetching in ~~vector object~~ EVERYTHING
 - [ ] DOCUMENTATION (also choose ~~which~~ type np ~~or google~~)
 - [X] arrays will now always copy given arrays
