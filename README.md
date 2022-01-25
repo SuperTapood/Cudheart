@@ -11,6 +11,9 @@ Currently only featuring C++ based functions, but CUDA stuff is coming I swear.
 - [ ] DOCUMENTATION (also choose ~~which~~ type np ~~or google~~)
 - [X] arrays will now always copy given arrays
 - [ ] test for everything built so far
+- [X] arrays now have multi dim indexing
+- [ ] hide array fields
+- [ ] add the rest of the datatypes
 - [ ] actual info for the module (version and stuff)
 - [X] add shape object to store multi dim size
 - [ ] change from vector to array so i don't have a lot to change later

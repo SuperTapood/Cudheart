@@ -46,6 +46,7 @@ public:
 	void* operator[](size_t i);
 
 	void* get(size_t i);
+	void* get(int len, ...);
 
 	bool operator==(Array &v);
 
@@ -58,4 +59,6 @@ public:
 	string asString(size_t i);
 
 	string getShapeString();
+
+	void reshape(Shape* shape);
 };

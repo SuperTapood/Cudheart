@@ -12,6 +12,7 @@
 #include <stdarg.h>
 #include <math.h>
 #include <initializer_list>
+#include <cstdarg>
 
 using std::exception;
 using std::cout;

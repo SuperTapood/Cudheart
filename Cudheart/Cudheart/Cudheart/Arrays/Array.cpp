@@ -32,9 +32,11 @@ Array::Array(void* arr, Shape* shape, Dtype *dtype) {
 
 Array::~Array()
 {
-	delete arr;
-	delete dtype;
-	delete shape;
+	if (!copied) {
+		delete arr;
+		delete dtype;
+		delete shape;
+	}
 }
 
 void* Array::operator[](size_t i)
@@ -63,9 +65,34 @@ string Array::getShapeString()
 	return shape->toString();
 }
 
+void Array::reshape(Shape* shape)
+{
+	if ((*shape).size != this->shape->size) {
+		throw ShapeError(this->shape, shape);
+	}
+
+	this->shape = shape;
+}
+
 void* Array::get(size_t i)
 {
 	return operator[](i);
+}
+
+void* Array::get(int len, ...)
+{
+	// for now
+	if (len != shape->length) {
+		throw IndexError(len, shape);
+	}
+	int index = 0;
+	va_list args;
+	va_start(args, len);
+	for (int i = 0; len > i; i++) {
+		index += va_arg(args, int) * ((*shape).sizeFrom(i));
+	}
+
+	return operator[](index);
 }
 
 bool Array::operator==(Array &v)

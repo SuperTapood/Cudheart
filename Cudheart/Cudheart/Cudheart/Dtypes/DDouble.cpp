@@ -19,7 +19,7 @@ void* DDouble::copy(void* arr, Shape* shape)
 {
 	double* actual = (double*)arr;
 	int size = (*shape).size;
-	double* out = (double*)malloc(size * sizeof(int));
+	double* out = (double*)malloc(size * sizeof(double));
 
 	for (int i = 0; i < size; i++) {
 		out[i] = actual[i];

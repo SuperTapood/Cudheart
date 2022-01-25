@@ -29,8 +29,13 @@ void Test::creationFunctionsTest() {
 void Test::test() {
 	try {
 		// expand this and add more tests
-		directArrayCreationTest();
-		creationFunctionsTest();
+		// directArrayCreationTest();
+		// creationFunctionsTest();
+		Array ai = ArrayOps::arange(300);
+		ai.reshape(new Shape(3, 5, 20));
+		cout << DDouble().cast(ai.get(3, 1, 1, 1)) << endl;
+		ai.reshape(new Shape(5, 20, 3));
+		cout << DDouble().cast(ai.get(3, 1, 1, 1)) << endl;
 	}
 	catch (BaseException& e) {
 		e.print();

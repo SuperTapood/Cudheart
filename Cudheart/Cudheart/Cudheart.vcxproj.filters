@@ -54,6 +54,9 @@
     <ClCompile Include="Cudheart\Exceptions\NotImplementedError.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Cudheart\Exceptions\ShapeError.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cudheart\Cudheart.h">
@@ -102,6 +105,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Cudheart\Exceptions\NotImplementedError.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Exceptions\ShapeError.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

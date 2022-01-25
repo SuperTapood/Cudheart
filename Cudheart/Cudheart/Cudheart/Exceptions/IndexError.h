@@ -2,6 +2,7 @@
 
 
 #include "BaseException.h"
+#include "../Arrays/Shape.h"
 
 /// <summary>
 /// An exception indicating that an index provided is exceeding array bounds
@@ -15,4 +16,6 @@ public:
 	/// <param name="boundA"> : int - the lower bound</param>
 	/// <param name="boundB"> : int - the higher bound</param>
 	IndexError(int got, int boundA, int boundB);
+	IndexError(Shape* a, Shape* b);
+	IndexError(int len, Shape* s);
 };
