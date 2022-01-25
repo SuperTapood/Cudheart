@@ -1,13 +1,15 @@
 #pragma once
 
 #include "../Inc.h"
-#include "../Arrays/Arrays.h"
+#include "../Cudheart.h"
 
 namespace Test {
 	/// <summary>
 	/// test the creation process of vectors
 	/// </summary>
 	void directArrayCreationTest();
+	void directIntVectorCreation();
+	void directDoubleVectorCreation();
 	void creationFunctionsTest();
 	/// <summary>
 	/// Test the entire Cudheart module and print out progress and test results

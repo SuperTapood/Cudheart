@@ -42,11 +42,26 @@ public:
 		return emptyLike(arr, arr->dtype->dupe());
 	}
 
-	// todo: add overloads
-	static Array eye(int rows, int cols, int k, Dtype* dtype) {
-		// need ndim perception
-		// todo!
-		throw NotImplementedError("eye");
+	static Array eye(int rows, int cols, int k, Dtype* dtype);
+
+	static Array eye(int rows, int k, Dtype* dtype) {
+		return eye(rows, rows, k, dtype);
+	}
+
+	static Array eye(int rows, Dtype* dtype) {
+		return eye(rows, rows, 0, dtype);
+	}
+
+	static Array eye(int rows, int cols, int k) {
+		return eye(rows, cols, k, new DInt());
+	}
+
+	static Array eye(int rows, int k) {
+		return eye(rows, rows, k, new DInt());
+	}
+
+	static Array eye(int rows) {
+		return eye(rows, rows, 0, new DInt());
 	}
 
 	static Array full(Shape* shape, void* value, Dtype* dtype);
@@ -106,7 +121,10 @@ public:
 	}
 
 	static Array zeros(Shape* shape, Dtype* dtype) {
-		return full(shape, (void*)0, dtype);
+		int a = 5;
+		void* p;
+		memcpy(&p, &a, sizeof a);
+		return full(shape, p, dtype);
 	}
 
 	static Array zeros(Shape* shape) {

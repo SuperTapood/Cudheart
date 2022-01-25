@@ -32,7 +32,7 @@ Array::Array(void* arr, Shape* shape, Dtype *dtype) {
 
 Array::~Array()
 {
-	if (!copied) {
+	if (!true) {
 		delete arr;
 		delete dtype;
 		delete shape;
@@ -50,8 +50,10 @@ void* Array::operator[](size_t i)
 	return (*dtype).get(arr, i);
 }
 
-void Array::set(size_t i, void* value)
+void Array::setAbsolute(size_t i, void* value)
 {
+	cout << i << endl;
+	cout << shape->toString() << endl;
 	dtype->set(arr, i, value);
 }
 
@@ -74,10 +76,10 @@ void Array::reshape(Shape* shape)
 	this->shape = shape;
 }
 
-void* Array::get(size_t i)
-{
-	return operator[](i);
-}
+//void* Array::get(size_t i)
+//{
+//	return operator[](i);
+//}
 
 void* Array::get(int len, ...)
 {
@@ -93,6 +95,22 @@ void* Array::get(int len, ...)
 	}
 
 	return operator[](index);
+}
+
+void Array::setAbsolute(void* value, int len, ...)
+{
+	// for now
+	if (len != shape->length) {
+		throw IndexError(len, shape);
+	}
+	int index = 0;
+	va_list args;
+	va_start(args, len);
+	for (int i = 0; len > i; i++) {
+		index += va_arg(args, int) * ((*shape).sizeFrom(i));
+	}
+
+	dtype->set(arr, index, value);
 }
 
 bool Array::operator==(Array &v)

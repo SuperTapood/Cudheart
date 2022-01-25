@@ -35,7 +35,9 @@ int DInt::getSize()
 void DInt::set(void* arr, size_t i, void* value)
 {
 	int* actual = (int*)arr;
-	actual[i] = *(int*)value;
+	int* v = (int*)value;
+	int a = *v;
+	actual[i] = a;
 }
 
 bool DInt::equals(void* a, void* b)

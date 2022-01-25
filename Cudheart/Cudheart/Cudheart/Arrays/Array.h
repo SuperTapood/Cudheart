@@ -45,12 +45,14 @@ public:
 
 	void* operator[](size_t i);
 
-	void* get(size_t i);
+	// void* get(size_t i);
 	void* get(int len, ...);
 
 	bool operator==(Array &v);
 
-	void set(size_t i, void* value);
+	void setAbsolute(size_t i, void* value);
+	void setAbsolute(void* value, int len, ...);
+
 
 	void setCopied(bool b) {
 		copied = b;

@@ -15,7 +15,7 @@ Array ArrayOps::arange(double low, double high, double jump, Dtype *dtype)
 	v.setCopied(true);
 
 	for (int i = 0; i < v.size; i++) {
-		v.set(i, &low);
+		v.setAbsolute(i, &low);
 		low += jump;
 	}
 
@@ -27,11 +27,23 @@ Array ArrayOps::empty(Shape* shape, Dtype* dtype)
 	return asarray((void*)dtype->empty(shape), shape, dtype);
 }
 
+Array ArrayOps::eye(int rows, int cols, int k, Dtype* dtype)
+{
+	Array out = zeros(new Shape(rows, cols));
+	
+	for (int i = 0; k < rows && i < cols; k++, i++) {
+		cout << "k " << k << " i " << i << endl;
+		out.setAbsolute((void*)1, 2, k, i);
+	}
+
+	return out;
+}
+
 Array ArrayOps::full(Shape* shape, void* value, Dtype* dtype)
 {
 	Array out = empty(shape, dtype);
 	for (int i = 0; i < out.size; i++) {
-		out.set(i, value);
+		out.setAbsolute(i, value);
 	}
 	return out;
 }

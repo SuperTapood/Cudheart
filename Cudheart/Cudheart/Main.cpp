@@ -1,4 +1,4 @@
-#include "Cudheart/Cudheart.h"
+#include "Cudheart/Test/Test.h"
 
 int main()
 {

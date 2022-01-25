@@ -8,9 +8,9 @@ Currently only featuring C++ based functions, but CUDA stuff is coming I swear.
 
 
 - [X] better fetching in ~~vector object~~ EVERYTHING
-- [ ] DOCUMENTATION (also choose ~~which~~ type np ~~or google~~)
+- [ ] DOCUMENTATION
 - [X] arrays will now always copy given arrays
-- [ ] test for everything built so far
+- [X] test direct vector creation with int and double
 - [X] arrays now have multi dim indexing
 - [ ] hide array fields
 - [ ] add the rest of the datatypes
