@@ -52,8 +52,9 @@ void* Array::operator[](size_t i)
 
 void Array::setAbsolute(size_t i, void* value)
 {
-	cout << i << endl;
-	cout << shape->toString() << endl;
+	//cout << i << endl;
+	//cout << shape->toString() << endl;
+	cout << (int*)value << endl;
 	dtype->set(arr, i, value);
 }
 
@@ -128,20 +129,22 @@ bool Array::operator==(Array &v)
 
 
 string Array::toString() {
+	cout << "ala" << endl;
 	ostringstream os;
-	os << this;
+	cout << "bla" << endl;
+	os << dtype->getName() << " Array [";
+	for (unsigned int j = 0; j < size; j++)
+	{
+		if (j % size == size - 1)
+			os << asString(j) << "]" << endl;
+		else
+			os << asString(j) << ", ";
+	}
 	return os.str();
 }
 
 ostream& operator<<(ostream& out, Array& vec)
 {
-	out << vec.dtype->getName() << " Array [";
-	for (unsigned int j = 0; j < vec.size; j++)
-	{
-		if (j % vec.size == vec.size - 1)
-			out << vec.asString(j) << "]" << endl;
-		else
-			out << vec.asString(j) << ", ";
-	}
+	out << vec.toString();
 	return out;
 }

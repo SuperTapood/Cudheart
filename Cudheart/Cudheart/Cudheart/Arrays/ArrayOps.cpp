@@ -31,9 +31,10 @@ Array ArrayOps::eye(int rows, int cols, int k, Dtype* dtype)
 {
 	Array out = zeros(new Shape(rows, cols));
 	
+	int one = 1;
 	for (int i = 0; k < rows && i < cols; k++, i++) {
 		cout << "k " << k << " i " << i << endl;
-		out.setAbsolute((void*)1, 2, k, i);
+		out.setAbsolute(&one, 2, k, i);
 	}
 
 	return out;

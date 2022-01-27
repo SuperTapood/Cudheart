@@ -121,10 +121,8 @@ public:
 	}
 
 	static Array zeros(Shape* shape, Dtype* dtype) {
-		int a = 5;
-		void* p;
-		memcpy(&p, &a, sizeof a);
-		return full(shape, p, dtype);
+		int v = 0;
+		return full(shape, &v, dtype);
 	}
 
 	static Array zeros(Shape* shape) {
