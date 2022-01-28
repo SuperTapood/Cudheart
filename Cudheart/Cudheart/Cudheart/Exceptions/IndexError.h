@@ -15,7 +15,7 @@ public:
 	/// <param name="got"> : int - the index exceeding the bounds</param>
 	/// <param name="boundA"> : int - the lower bound</param>
 	/// <param name="boundB"> : int - the higher bound</param>
-	IndexError(int got, int boundA, int boundB);
+	IndexError(size_t got, size_t boundA, size_t boundB);
 	IndexError(Shape* a, Shape* b);
-	IndexError(int len, Shape* s);
+	IndexError(size_t len, Shape* s);
 };

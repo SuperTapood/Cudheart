@@ -10,23 +10,23 @@ public:
 	/// the size of this vector
 	/// </summary>
 	int size;
-	/// <summary>
-	/// a pointer to this vector's data type
-	/// </summary>
-	Dtype *dtype;
-
-	/// <summary>
-	/// the array this vector contains
-	/// </summary>
-	void* arr;
-	
-	Shape* shape;
 private:
 	/// <summary>
 	/// whether or not this vector was copied from somewhere.
 	/// i need a better way to prevent double deletion
 	/// </summary>
 	bool copied = false;
+	/// <summary>
+	/// a pointer to this vector's data type
+	/// </summary>
+	Dtype* dtype;
+
+	/// <summary>
+	/// the array this vector contains
+	/// </summary>
+	void* arr;
+
+	Shape* shape;
 public:
 	/// <summary>
 	/// create a new vector from a size. assumes dtype to be int.
@@ -51,7 +51,7 @@ public:
 	bool operator==(Array &v);
 
 	void setAbsolute(size_t i, void* value);
-	void setAbsolute(void* value, int len, ...);
+	void set(void* value, int len, ...);
 
 
 	void setCopied(bool b) {
@@ -63,4 +63,11 @@ public:
 	string getShapeString();
 
 	void reshape(Shape* shape);
+	void* getFlat(int index);
+	Shape* dupeShape();
+	Dtype* dupeDtype();
+	int getDims();
+	int getShapeAt(int index);
+private:
+	string printRecursive(int* s, int len, int start, int offset);
 };

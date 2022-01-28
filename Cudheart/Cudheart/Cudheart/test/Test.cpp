@@ -48,20 +48,61 @@ void Test::creationFunctionsTest() {
 		assert(dtype.cast(arr[i]) == dtype.cast(brr[i]), to_string(dtype.cast(arr[i])), to_string(dtype.cast(brr[i])));
 	}
 
+	Array crr = ArrayOps::arange(16);
+	for (int i = 0; i < crr.size; i++) {
+		assert(i == (*(double*)crr[i]), to_string(i), to_string(*(double*)crr[i]));
+	}
+
+	Array drr = ArrayOps::arange(50);
+	drr.reshape(new Shape(5, 10));
+	DDouble d = DDouble();
+	for (int i = 0; i < 5; i++) {
+		for (int j = 0; j < 10; j++) {
+			assert(i * 10 + j == d.cast(drr.get(2, i, j)), to_string(10 * i + j), to_string(d.cast(drr.get(2, i, j))));
+		}
+	}
+
+	Array err = ArrayOps::empty(new Shape(5, 14, 520));
+	Array frr = ArrayOps::emptyLike(&err);
+	assert(err == frr, "err", "frr");
+
+	Array grr = ArrayOps::ones(new Shape(2547, 44));
+	Array hrr = ArrayOps::onesLike(&grr);
+	assert(grr == hrr, "grr", "hrr");
+
+	Array irr = ArrayOps::zeros(new Shape(5250));
+	Array jrr = ArrayOps::zerosLike(&irr);
+	assert(irr == jrr, "irr", "jrr");
+
+	int value = 69420;
+	Array krr = ArrayOps::full(new Shape(5, 14, 520), &value);
+	Array lrr = ArrayOps::fullLike(&krr, &value);
+	assert(krr == lrr, "krr", "lrr");
+
+	// fix this not working
+	// but like later
+
+	int fr[]{ 0, 1, 2, 3, 4 };
+	int* fg = (int*)fr;
+	void* fa = (void*)fg;
+	int er[]{ 0, 1, 2, 3, 4, 5};
+	int* eg = (int*)er;
+	void* ea = (void*)eg;
+	Array f = ArrayOps::asarray(fa, new Shape(5), new DInt());
+	Array e = ArrayOps::asarray(ea, new Shape(6), new DInt());
+	Array* meshes = ArrayOps::meshgrid(&f, &e);
+	cout << meshes[0].toString() << endl;
+	cout << meshes[1].toString() << endl;
+
+	// add tests for eye, linspace, meshgrid and tril
 	cout << "passed creation functions test" << endl;
 }
 
 void Test::test() {
 	try {
 		// expand this and add more tests
-		// directArrayCreationTest();
-		// creationFunctionsTest();
-		//Array ai = ArrayOps::arange(300);
-		//ai.reshape(new Shape(3, 5, 20));
-		//cout << DDouble().cast(ai.get(3, 1, 1, 1)) << endl;
-		//ai.reshape(new Shape(5, 20, 3));
-		//cout << DDouble().cast(ai.get(3, 1, 1, 1)) << endl;
-		cout << ArrayOps::eye(2).toString() << endl;
+		directArrayCreationTest();
+		creationFunctionsTest();
 	}
 	catch (BaseException& e) {
 		e.print();

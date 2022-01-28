@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Dtype.h"
+#include "../Arrays/Array.h"
 
 class DDouble : public Dtype {
 public:

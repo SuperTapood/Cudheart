@@ -32,11 +32,9 @@ Array::Array(void* arr, Shape* shape, Dtype *dtype) {
 
 Array::~Array()
 {
-	if (!true) {
-		delete arr;
-		delete dtype;
-		delete shape;
-	}
+	/*delete arr;
+	delete dtype;
+	delete shape;*/
 }
 
 void* Array::operator[](size_t i)
@@ -52,9 +50,6 @@ void* Array::operator[](size_t i)
 
 void Array::setAbsolute(size_t i, void* value)
 {
-	//cout << i << endl;
-	//cout << shape->toString() << endl;
-	cout << (int*)value << endl;
 	dtype->set(arr, i, value);
 }
 
@@ -73,14 +68,69 @@ void Array::reshape(Shape* shape)
 	if ((*shape).size != this->shape->size) {
 		throw ShapeError(this->shape, shape);
 	}
-
+	delete this->shape;
 	this->shape = shape;
+}
+
+string Array::printRecursive(int* s, int len, int start, int offset)
+{
+	ostringstream os;
+	os << "[";
+	if (len == start + 1) {
+		for (int i = 0; i < s[start]; i++) {
+			if (i == 0) {
+				os << dtype->toString(arr, offset + i) << ",";
+			}
+			else {
+				os << " " << dtype->toString(arr, offset + i) << ",";
+			}
+		}
+	}
+	else {
+		os << "\n";
+		for (int i = 0; i < s[start]; i++) {
+			for (int i = 0; i <= start; i++) {
+				os << "  ";
+			}
+			os << printRecursive(s, len, start + 1, offset) << ",\n";
+			offset += shape->sizeFrom(start);
+		}
+		for (int i = 0; i <= start; i++) {
+			os << " ";
+		}
+	}
+	os << "]";
+	return os.str();
 }
 
 //void* Array::get(size_t i)
 //{
 //	return operator[](i);
 //}
+
+void* Array::getFlat(int index) {
+	return operator[](index);
+}
+
+Shape* Array::dupeShape()
+{
+	return shape->dupe();
+}
+
+Dtype* Array::dupeDtype()
+{
+	return dtype->dupe();
+}
+
+int Array::getDims()
+{
+	return shape->length;
+}
+
+int Array::getShapeAt(int index)
+{
+	return shape->at(index);
+}
 
 void* Array::get(int len, ...)
 {
@@ -98,7 +148,7 @@ void* Array::get(int len, ...)
 	return operator[](index);
 }
 
-void Array::setAbsolute(void* value, int len, ...)
+void Array::set(void* value, int len, ...)
 {
 	// for now
 	if (len != shape->length) {
@@ -120,7 +170,7 @@ bool Array::operator==(Array &v)
 		return false;
 	}
 	for (int i = 0; i < size; i++) {
-		if (!(*dtype).equals(get(i), v.get(i))) {
+		if (!(*dtype).equals(getFlat(i), v.getFlat(i))) {
 			return false;
 		}
 	}
@@ -129,18 +179,15 @@ bool Array::operator==(Array &v)
 
 
 string Array::toString() {
-	cout << "ala" << endl;
-	ostringstream os;
-	cout << "bla" << endl;
-	os << dtype->getName() << " Array [";
-	for (unsigned int j = 0; j < size; j++)
-	{
-		if (j % size == size - 1)
-			os << asString(j) << "]" << endl;
-		else
-			os << asString(j) << ", ";
+	int v = 0;
+	int si = sizeof(int);
+	void* a = malloc((sizeof(int) * shape->length));
+	int* arr = (int*)a;
+	for (int i = 0; i < shape->length; i++) {
+		arr[i] = shape->at(i);
 	}
-	return os.str();
+	string out = printRecursive(arr, shape->length, 0, 0);
+	return out;
 }
 
 ostream& operator<<(ostream& out, Array& vec)

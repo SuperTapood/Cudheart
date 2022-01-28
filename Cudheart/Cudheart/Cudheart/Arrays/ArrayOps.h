@@ -35,11 +35,11 @@ public:
 	}
 
 	static Array emptyLike(Array* arr, Dtype* dtype) {
-		return empty(arr->shape, dtype);
+		return empty(arr->dupeShape(), dtype);
 	}
 
 	static Array emptyLike(Array* arr) {
-		return emptyLike(arr, arr->dtype->dupe());
+		return emptyLike(arr, arr->dupeDtype());
 	}
 
 	static Array eye(int rows, int cols, int k, Dtype* dtype);
@@ -71,11 +71,11 @@ public:
 	}
 
 	static Array fullLike(Array* arr, void* value, Dtype* dtype) {
-		return full(arr->shape, value, dtype);
+		return full(arr->dupeShape(), value, dtype);
 	}
 
 	static Array fullLike(Array* arr, void* value) {
-		return fullLike(arr, value, arr->dtype->dupe());
+		return fullLike(arr, value, arr->dupeDtype());
 	}
 
 	static Array linspace(double min, double max, int steps, Dtype* dtype) {
@@ -86,16 +86,11 @@ public:
 		return linspace(min, max, steps, new DInt());
 	}
 
-	static Array meshgrid(Array a, Array b) {
-		// needs array to actually support matrix stuff
-		// assert a and b are vectors we are gonna do this very simply
-		// https://stackoverflow.com/questions/36013063/what-is-the-purpose-of-meshgrid-in-python-numpy
-		// ^ for guidance
-		throw NotImplementedError("meshgrid");
-	}
+	static Array* meshgrid(Array* a, Array* b);
 
 	static Array ones(Shape* shape, Dtype* dtype) {
-		return full(shape, (void*)1, dtype);
+		int ones = 1;
+		return full(shape, &ones, dtype);
 	}
 
 	static Array ones(Shape* shape) {
@@ -103,11 +98,11 @@ public:
 	}
 
 	static Array onesLike(Array* arr, Dtype* dtype) {
-		return ones(arr->shape, dtype);
+		return ones(arr->dupeShape(), dtype);
 	}
 
 	static Array onesLike(Array* arr) {
-		return onesLike(arr, arr->dtype->dupe());
+		return onesLike(arr, arr->dupeDtype());
 	}
 
 	static Array tril(Array* arr, int k) {
@@ -130,10 +125,10 @@ public:
 	}
 
 	static Array zerosLike(Array* arr, Dtype* dtype) {
-		return zeros(arr->shape, dtype);
+		return zeros(arr->dupeShape(), dtype);
 	}
 
 	static Array zerosLike(Array* arr) {
-		return zerosLike(arr, arr->dtype->dupe());
+		return zerosLike(arr, arr->dupeDtype());
 	}
 };

@@ -1,6 +1,6 @@
 #include "IndexError.h"
 
-IndexError::IndexError(int got, int boundA, int boundB) {
+IndexError::IndexError(size_t got, size_t boundA, size_t boundB) {
 	ostringstream os;
 	os << "IndexError: Got index " << got << ", expected index between " << boundA << " and " << boundB;
 	msg = os.str();
@@ -13,9 +13,9 @@ IndexError::IndexError(Shape* a, Shape* b)
 	msg = os.str();
 }
 
-IndexError::IndexError(int len, Shape* s)
+IndexError::IndexError(size_t len, Shape* s)
 {
 	ostringstream os;
-	os << "IndexError: ndim index of length " << len << " cannot be used to index array of shape " << (*s).toString();
+	os << "IndexError: ndim index of length " << len << " cannot be used to index array of shape " << (*s).toString() << " and length " << (*s).length;
 	msg = os.str();
 }

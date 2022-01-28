@@ -8,7 +8,7 @@ Currently only featuring C++ based functions, but CUDA stuff is coming I swear.
 
 
 - [X] better fetching in ~~vector object~~ EVERYTHING
-- [ ] DOCUMENTATION
+- [ ] **DOCUMENTATION**
 - [X] arrays will now always copy given arrays
 - [X] test direct vector creation with int and double
 - [X] arrays now have multi dim indexing
@@ -20,3 +20,12 @@ Currently only featuring C++ based functions, but CUDA stuff is coming I swear.
 - [ ] add test and stuff for DChar and stuff
 - [ ] add the rest of creation functions
 - [ ] dtypes will now store a casted copy of the array to save time
+
+
+## Help with issues
+### come on man we both know you'll forget these things
+
+#### value is 0 for some reason when casting from void*!
+bruh check the casting. when you are casting from a raw (void) type
+to an actual usable data type, it reads the data itself very weirdly 
+(because it doesn't know what type it was casted before being void pointer)
