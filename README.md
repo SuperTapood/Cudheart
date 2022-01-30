@@ -7,6 +7,9 @@ Cudheart is a numpy-esque library that aims to provide a simple and intuitive so
 Currently only featuring C++ based functions, but CUDA stuff is coming I swear.
 
 
+- [ ] finish meshgrid
+- [ ] finish tril
+- [ ] test all creation functions
 - [ ] actual info for the module (version and stuff)
 - [ ] **DOCUMENTATION**
 - [ ] add the rest of the datatypes
@@ -17,14 +20,14 @@ Currently only featuring C++ based functions, but CUDA stuff is coming I swear.
 ## Help with issues
 ### come on man we both know you'll forget these things
 
-#### value is 0 for some reason when casting from void*!
+#### value is 0 when casting from void*!
 bruh check the casting. when you are casting from a raw (void) type
 to an actual usable data type, it reads the data itself very weirdly 
 (because it doesn't know what type it was casted before being void pointer)
 
-#### i can't cast from void* into TYPE*! it just said v was 0xsomething!
+#### i can't cast from void* into TYPE*! it just says ```v was 0x[something]```!
 when casting to void pointer you need to use a variable. if you directly cast
-a value, it will threat its value as a pointer. please use:
+a value, it will threat its value as an address. please use:
 ```cpp
 void func(void* value) {
     //something...
