@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "DDouble.h"
 
 void* DDouble::get(void* arr, size_t i) {

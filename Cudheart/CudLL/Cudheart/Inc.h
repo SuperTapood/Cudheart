@@ -1,5 +1,7 @@
 #pragma once
 
+#include "pch.h"
+
 #if defined _DEBUG
 	#include <iostream>
 	#include <sstream>

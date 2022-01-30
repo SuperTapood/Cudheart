@@ -3,6 +3,7 @@
 #include "../Inc.h"
 #include "../Dtypes/Dtype.h"
 #include "Shape.h"
+#include "pch.h"
 
 class Array {
 public:

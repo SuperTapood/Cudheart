@@ -1,2 +1,2 @@
 ﻿  Main.cpp
-  Cudheart.vcxproj -> C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\x64\Debug\Cudheart.exe
+LINK : fatal error LNK1104: cannot open file 'C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\x64\Debug\CudLL.lib'

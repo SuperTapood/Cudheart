@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "ShapeError.h"
 
 ShapeError::ShapeError(Shape* a, Shape* b)

@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "IndexError.h"
 
 IndexError::IndexError(size_t got, size_t boundA, size_t boundB) {

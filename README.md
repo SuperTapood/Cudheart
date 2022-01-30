@@ -7,6 +7,7 @@ Cudheart is a numpy-esque library that aims to provide a simple and intuitive so
 Currently only featuring C++ based functions, but CUDA stuff is coming I swear.
 
 
+- [ ] either fix the lib issue or remove the stupid dll thing
 - [ ] finish triu
 - [ ] test the dll file in another seperate project and get that working
 - [ ] test all creation functions

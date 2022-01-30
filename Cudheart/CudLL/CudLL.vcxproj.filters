@@ -21,7 +21,55 @@
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MathLibrary.h">
+    <ClInclude Include="Cudheart\Arrays\Array.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Arrays\ArrayOps.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Arrays\Arrays.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Arrays\Shape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Dtypes\DDouble.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Dtypes\DInt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Dtypes\Dtype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Dtypes\Dtypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Exceptions\AssertionError.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Exceptions\BaseException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Exceptions\Exceptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Exceptions\IndexError.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Exceptions\NotImplementedError.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Exceptions\ShapeError.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Test\Test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Cudheart.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Inc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -32,7 +80,43 @@
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MathLibrary.cpp">
+    <ClCompile Include="Cudheart\Arrays\Array.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cudheart\Arrays\ArrayOps.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cudheart\Arrays\Shape.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cudheart\Dtypes\DDouble.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cudheart\Dtypes\DInt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cudheart\Dtypes\Dtype.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cudheart\Exceptions\AssertionError.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cudheart\Exceptions\BaseException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cudheart\Exceptions\IndexError.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cudheart\Exceptions\NotImplementedError.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cudheart\Exceptions\ShapeError.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cudheart\Test\Test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cudheart\Cudheart.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

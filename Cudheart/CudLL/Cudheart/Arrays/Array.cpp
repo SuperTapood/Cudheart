@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "Array.h"
 #include "../Dtypes/Dtypes.h"
 #include "../Exceptions/Exceptions.h"

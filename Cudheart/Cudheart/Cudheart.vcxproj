@@ -144,39 +144,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Cudheart\Arrays\ArrayOps.cpp" />
-    <ClCompile Include="Cudheart\Arrays\Shape.cpp" />
-    <ClCompile Include="Cudheart\Arrays\Array.cpp" />
-    <ClCompile Include="Cudheart\Cudheart.cpp" />
-    <ClCompile Include="Cudheart\Dtypes\DDouble.cpp" />
-    <ClCompile Include="Cudheart\Dtypes\DInt.cpp" />
-    <ClCompile Include="Cudheart\Dtypes\Dtype.cpp" />
-    <ClCompile Include="Cudheart\Exceptions\AssertionError.cpp" />
-    <ClCompile Include="Cudheart\Exceptions\BaseException.cpp" />
-    <ClCompile Include="Cudheart\Exceptions\IndexError.cpp" />
-    <ClCompile Include="Cudheart\Exceptions\NotImplementedError.cpp" />
-    <ClCompile Include="Cudheart\Exceptions\ShapeError.cpp" />
-    <ClCompile Include="Cudheart\Test\Test.cpp" />
     <ClCompile Include="Main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Cudheart\Arrays\ArrayOps.h" />
-    <ClInclude Include="Cudheart\Arrays\Arrays.h" />
-    <ClInclude Include="Cudheart\Arrays\Shape.h" />
-    <ClInclude Include="Cudheart\Arrays\Array.h" />
-    <ClInclude Include="Cudheart\Cudheart.h" />
-    <ClInclude Include="Cudheart\Dtypes\DDouble.h" />
-    <ClInclude Include="Cudheart\Dtypes\DInt.h" />
-    <ClInclude Include="Cudheart\Dtypes\Dtype.h" />
-    <ClInclude Include="Cudheart\Dtypes\Dtypes.h" />
-    <ClInclude Include="Cudheart\Exceptions\AssertionError.h" />
-    <ClInclude Include="Cudheart\Exceptions\BaseException.h" />
-    <ClInclude Include="Cudheart\Exceptions\Exceptions.h" />
-    <ClInclude Include="Cudheart\Exceptions\IndexError.h" />
-    <ClInclude Include="Cudheart\Exceptions\NotImplementedError.h" />
-    <ClInclude Include="Cudheart\Exceptions\ShapeError.h" />
-    <ClInclude Include="Cudheart\Inc.h" />
-    <ClInclude Include="Cudheart\Test\Test.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\README.md" />
