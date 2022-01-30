@@ -5,3 +5,4 @@
 #include "IndexError.h"
 #include "AssertionError.h"
 #include "ShapeError.h"
+#include "NotImplementedError.h"

@@ -156,6 +156,7 @@
     <ClCompile Include="Cudheart\Exceptions\IndexError.cpp" />
     <ClCompile Include="Cudheart\Exceptions\NotImplementedError.cpp" />
     <ClCompile Include="Cudheart\Exceptions\ShapeError.cpp" />
+    <ClCompile Include="Cudheart\test.cpp" />
     <ClCompile Include="Cudheart\Test\Test.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
@@ -180,6 +181,7 @@
     <ClInclude Include="Cudheart\Exceptions\NotImplementedError.h" />
     <ClInclude Include="Cudheart\Exceptions\ShapeError.h" />
     <ClInclude Include="Cudheart\Inc.h" />
+    <ClInclude Include="Cudheart\test.h" />
     <ClInclude Include="Cudheart\Test\Test.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

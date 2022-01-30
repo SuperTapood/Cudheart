@@ -57,6 +57,9 @@
     <ClCompile Include="Cudheart\Cudheart.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Cudheart\test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\README.md" />
@@ -112,6 +115,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Cudheart\Inc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\test.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "ArrayOps.h"
 #include "../Inc.h"
 
@@ -88,6 +87,18 @@ Array ArrayOps::tril(Array* arr, int k)
 	}
 	int zero = 0;
 	Array out = *(*arr).dupe();
+	for (int i = 0; i < out.getShapeAt(0); i++) {
+		for (int j = i + 1 + k; j < out.getShapeAt(1); j++) {
+			out.set(&zero, 2, i, j);
+		}
+	}
+	return out;
+}
+
+Array ArrayOps::triu(Array* arr, int k)
+{
+	Array out = *(*arr).dupe();
+	int zero = 0;
 	for (int i = 0; i < out.getShapeAt(0); i++) {
 		for (int j = i + 1 + k; j < out.getShapeAt(1); j++) {
 			out.set(&zero, 2, i, j);

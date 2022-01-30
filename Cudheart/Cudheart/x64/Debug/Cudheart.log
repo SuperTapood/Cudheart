@@ -1,18 +1,4 @@
-﻿  Array.cpp
-  ArrayOps.cpp
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\Arrays\ArrayOps.cpp(14,11): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  Shape.cpp
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\Arrays\Shape.cpp(14,23): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-  Cudheart.cpp
-  DDouble.cpp
-  DInt.cpp
-  Dtype.cpp
-  AssertionError.cpp
-  BaseException.cpp
-  IndexError.cpp
-  NotImplementedError.cpp
-  ShapeError.cpp
-  Test.cpp
-  Main.cpp
-  Generating Code...
-  Cudheart.vcxproj -> C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\x64\Debug\Cudheart.exe
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1088,5): warning MSB8027: Two or more files with the name of test.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Cudheart\test.cpp, Cudheart\Test\Test.cpp.
+  test.cpp
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\test.cpp(4,3): error C2995: 'T myMax(T,T)': function template has already been defined
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\test.h(5): message : see declaration of 'myMax'

@@ -3,7 +3,7 @@
 #include "../Inc.h"
 #include "../Dtypes/Dtype.h"
 #include "Shape.h"
-#include "pch.h"
+#include "../Exceptions/Exceptions.h"
 
 class Array {
 public:
@@ -71,6 +71,9 @@ public:
 	int getShapeAt(int index);
 
 	Array* dupe();
+	void setDtype(Dtype* d) {
+		throw NotImplementedError("setDtype");
+	}
 private:
 	string printRecursive(int* s, int len, int start, int offset);
 };

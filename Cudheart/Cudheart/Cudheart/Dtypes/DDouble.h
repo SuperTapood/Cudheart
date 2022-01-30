@@ -5,6 +5,8 @@
 
 class DDouble : public Dtype {
 public:
+	double* actual;
+public:
 	/// <summary>
 	/// return a void pointer of the value in a specific index of a vector
 	/// </summary>

@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "Test.h"
 #include "../Exceptions/Exceptions.h"
 #include "../Arrays/Shape.h"
@@ -95,9 +94,19 @@ void Test::creationFunctionsTest() {
 	// cout << meshes[0].toString() << endl;
 	// cout << meshes[1].toString() << endl;
 
-	Array tril = ArrayOps::tril(&meshes[0], -4);
-	cout << tril.toString() << endl;
+	Array aril = ArrayOps::tril(&meshes[0]);
+	// cout << aril.toString() << endl;
+	Array bril = ArrayOps::tril(&meshes[1], 2);
+	// cout << bril.toString() << endl;
+	Array cril = ArrayOps::tril(&meshes[1], -2);
+	// cout << cril.toString() << endl;
 
+	Array ariu = ArrayOps::triu(&meshes[0]);
+	// cout << ariu.toString() << endl;
+	Array briu = ArrayOps::triu(&meshes[1], 2);
+	// cout << briu.toString() << endl;
+	Array criu = ArrayOps::triu(&meshes[1], -2);
+	// cout << criu.toString() << endl;
 	// add tests for eye, linspace, meshgrid and tril
 	cout << "passed creation functions test" << endl;
 }
