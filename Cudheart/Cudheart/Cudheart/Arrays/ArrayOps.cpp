@@ -58,12 +58,14 @@ Array* ArrayOps::meshgrid(Array* a, Array* b)
 		return nullptr;
 	}
 	static Array* out = (Array*)malloc(sizeof(Array) * 2);
-	out[0] = zeros(new Shape((*a).getShapeAt(0), (*b).getShapeAt(0)));
+	out[0] = zeros(new Shape((*a).getShapeAt(0), (*b).getShapeAt(0) - 1));
 	out[1] = zeros(new Shape((*b).getShapeAt(0), (*a).getShapeAt(0)));
+	cout << out[0].getShapeString() << endl;
+	cout << out[1].getShapeString() << endl;
 	for (int i = 0; i < (*b).getShapeAt(0); i++) {
 		for (int j = 0; j < (*a).getShapeAt(0); j++) {
-			cout << "i " << i << " j " << j << " value " << *(int*)(*a).getFlat(i) << endl;
-			out[0].set((*a).getFlat(i), 2, j, i);
+			cout << "i " << i << " j " << j << " value " << i << endl;
+			out[0].set((*a).getFlat(j), 2, i, j);
 		}
 	}
 	for (int i = 0; i < (*b).getShapeAt(0); i++) {

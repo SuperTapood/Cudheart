@@ -82,14 +82,14 @@ void Test::creationFunctionsTest() {
 	// fix this not working
 	// but like later
 
-	int fr[]{ 0, 1, 2, 3, 4 };
+	int fr[]{ 1, 2, 3, 4 };
 	int* fg = (int*)fr;
 	void* fa = (void*)fg;
-	int er[]{ 0, 1, 2, 3, 4, 5};
+	int er[]{ 1, 2, 3, 4, 5};
 	int* eg = (int*)er;
 	void* ea = (void*)eg;
-	Array f = ArrayOps::asarray(fa, new Shape(5), new DInt());
-	Array e = ArrayOps::asarray(ea, new Shape(6), new DInt());
+	Array f = ArrayOps::asarray(fa, new Shape(4), new DInt());
+	Array e = ArrayOps::asarray(ea, new Shape(5), new DInt());
 	Array* meshes = ArrayOps::meshgrid(&f, &e);
 	cout << meshes[0].toString() << endl;
 	cout << meshes[1].toString() << endl;
