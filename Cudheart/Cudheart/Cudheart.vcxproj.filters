@@ -113,5 +113,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\README.md" />
+    <None Include="x64\Debug\CudLL.dll" />
   </ItemGroup>
 </Project>
