@@ -7,19 +7,11 @@ Cudheart is a numpy-esque library that aims to provide a simple and intuitive so
 Currently only featuring C++ based functions, but CUDA stuff is coming I swear.
 
 
-- [X] better fetching in ~~vector object~~ EVERYTHING
-- [ ] **DOCUMENTATION**
-- [X] arrays will now always copy given arrays
-- [X] test direct vector creation with int and double
-- [X] arrays now have multi dim indexing
-- [X] hide array fields
-- [ ] add the rest of the datatypes
 - [ ] actual info for the module (version and stuff)
-- [X] add shape object to store multi dim size
-- [X] change from vector to array so i don't have a lot to change later
+- [ ] **DOCUMENTATION**
+- [ ] add the rest of the datatypes
 - [ ] add test and stuff for DChar and stuff
-- [ ] add the rest of creation functions
-- [ ] dtypes will now store a casted copy of the array to save time
+- [ ] dtypes will now store a casted copy of the array to save time when casting
 
 
 ## Help with issues
@@ -29,3 +21,24 @@ Currently only featuring C++ based functions, but CUDA stuff is coming I swear.
 bruh check the casting. when you are casting from a raw (void) type
 to an actual usable data type, it reads the data itself very weirdly 
 (because it doesn't know what type it was casted before being void pointer)
+
+#### i can't cast from void* into TYPE*! it just said v was 0xsomething!
+when casting to void pointer you need to use a variable. if you directly cast
+a value, it will threat its value as a pointer. please use:
+```cpp
+void func(void* value) {
+    //something...
+}
+
+...
+
+int main(){
+    int value = 0;
+    func(&value);
+    // do not do this:
+    // func((void*)0);
+}
+```
+where: \
+```0``` - the value you want to pass \
+```func``` - the function that needs void pointer as argument
