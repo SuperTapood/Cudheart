@@ -1,2 +1,18 @@
-﻿  Main.cpp
-LINK : fatal error LNK1104: cannot open file 'C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\x64\Debug\CudLL.lib'
+﻿  Array.cpp
+  ArrayOps.cpp
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\Arrays\ArrayOps.cpp(14,11): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  Shape.cpp
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\Arrays\Shape.cpp(14,23): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  Cudheart.cpp
+  DDouble.cpp
+  DInt.cpp
+  Dtype.cpp
+  AssertionError.cpp
+  BaseException.cpp
+  IndexError.cpp
+  NotImplementedError.cpp
+  ShapeError.cpp
+  Test.cpp
+  Main.cpp
+  Generating Code...
+  Cudheart.vcxproj -> C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\x64\Debug\Cudheart.exe
