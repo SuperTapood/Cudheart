@@ -1,4 +1,22 @@
-﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1088,5): warning MSB8027: Two or more files with the name of test.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Cudheart\test.cpp, Cudheart\Test\Test.cpp.
-  test.cpp
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\test.cpp(4,3): error C2995: 'T myMax(T,T)': function template has already been defined
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\test.h(5): message : see declaration of 'myMax'
+﻿  Test.cpp
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\Arrays\ArrayOps.h(18,12): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=double
+          ]
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\Arrays\ArrayOps.h(17): message : while compiling class template member function 'Array<double> *ArrayOps<double>::arange(T,T,T)'
+          with
+          [
+              T=double
+          ]
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\Arrays\ArrayOps.h(41): message : see reference to function template instantiation 'Array<double> *ArrayOps<double>::arange(T,T,T)' being compiled
+          with
+          [
+              T=double
+          ]
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\Test\Test.cpp(55): message : see reference to class template instantiation 'ArrayOps<double>' being compiled
+  Main.cpp
+  Generating Code...
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\Arrays\ArrayOps.h(154): warning C4172: returning address of local variable or temporary: out
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\Arrays\ArrayOps.h(172): warning C4172: returning address of local variable or temporary: out
+  Cudheart.vcxproj -> C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\x64\Debug\Cudheart.exe

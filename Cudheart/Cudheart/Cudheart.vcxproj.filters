@@ -27,15 +27,6 @@
     <ClCompile Include="Cudheart\Arrays\Shape.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Cudheart\Dtypes\DDouble.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Cudheart\Dtypes\DInt.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Cudheart\Dtypes\Dtype.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Cudheart\Exceptions\AssertionError.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -57,9 +48,6 @@
     <ClCompile Include="Cudheart\Cudheart.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Cudheart\test.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\README.md" />
@@ -76,18 +64,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Cudheart\Arrays\Shape.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Cudheart\Dtypes\DDouble.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Cudheart\Dtypes\DInt.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Cudheart\Dtypes\Dtype.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Cudheart\Dtypes\Dtypes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Cudheart\Exceptions\AssertionError.h">
@@ -117,7 +93,7 @@
     <ClInclude Include="Cudheart\Inc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Cudheart\test.h">
+    <ClInclude Include="Cudheart\Dtypes\Dtypes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

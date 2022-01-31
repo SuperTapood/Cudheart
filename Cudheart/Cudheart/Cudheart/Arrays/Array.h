@@ -1,10 +1,10 @@
 #pragma once
 
 #include "../Inc.h"
-#include "../Dtypes/Dtype.h"
 #include "Shape.h"
 #include "../Exceptions/Exceptions.h"
 
+template <typename T>
 class Array {
 public:
 	/// <summary>
@@ -17,15 +17,11 @@ private:
 	/// i need a better way to prevent double deletion
 	/// </summary>
 	bool copied = false;
-	/// <summary>
-	/// a pointer to this vector's data type
-	/// </summary>
-	Dtype* dtype;
 
 	/// <summary>
 	/// the array this vector contains
 	/// </summary>
-	void* arr;
+	T* arr;
 
 	Shape* shape;
 public:
@@ -33,47 +29,184 @@ public:
 	/// create a new vector from a size. assumes dtype to be int.
 	/// </summary>
 	/// <param name="size"> : int - the size of the array to be created</param>
-	Array(Shape *shape);
-	Array(void* arr, Shape *shape);
-	Array(Shape *shape, Dtype *dtype);
-	Array(void* arr, Shape *shape, Dtype *dtype);
+	Array(Shape* shape) {
+		this->arr = (T*)malloc(size * sizeof(T));
+		this->size = (*shape).size;
+		this->shape = shape;
+	}
+	Array(T* arr, Shape *shape) {
+		this->arr = arr;
+		this->size = (*shape).size;
+		this->shape = shape;
+	}
 
-	~Array();
+	~Array()
+	{
+		/*delete arr;
+		delete dtype;
+		delete shape;*/
+	}
 
-	string toString();
+	string asString(int i)
+	{
+		return to_string(arr[i]);
+	}
 
-	friend ostream& operator<<(ostream& out, Array &v);
+	friend ostream& operator<<(ostream& out, Array<T>& vec)
+	{
+		out << vec.toString();
+		return out;
+	}
 
-	void* operator[](size_t i);
+	T operator[](size_t i)
+	{
+		if (i < 0) {
+			return this->operator[](size + i);
+		}
+		if (i > size) {
+			throw IndexError(i, 0, size);
+		}
+		return arr[i];
+	}
 
-	// void* get(size_t i);
-	void* get(int len, ...);
+	T get(int len, ...)
+	{
+		// for now
+		if (len != shape->length) {
+			throw IndexError(len, shape);
+		}
+		int index = 0;
+		va_list args;
+		va_start(args, len);
+		for (int i = 0; len > i; i++) {
+			index += va_arg(args, int) * ((*shape).sizeFrom(i));
+		}
 
-	bool operator==(Array &v);
+		return operator[](index);
+	}
 
-	void setAbsolute(size_t i, void* value);
-	void set(void* value, int len, ...);
+	bool operator==(Array& v)
+	{
+		if (v.size != size) {
+			return false;
+		}
+		for (int i = 0; i < size; i++) {
+			if (arr[i] != (T)v.getFlat(i)) {
+				return false;
+			}
+		}
+		return true;
+	}
 
+	void setAbsolute(size_t i, T value)
+	{
+		arr[i] = value;
+	}
+
+	void set(T value, int len, ...)
+	{
+		// for now
+		if (len != shape->length) {
+			throw IndexError(len, shape);
+		}
+		int index = 0;
+		va_list args;
+		va_start(args, len);
+		for (int i = 0; len > i; i++) {
+			index += va_arg(args, int) * ((*shape).sizeFrom(i));
+		}
+	}
 
 	void setCopied(bool b) {
 		copied = b;
 	}
 
-	string asString(size_t i);
-
-	string getShapeString();
-
-	void reshape(Shape* shape);
-	void* getFlat(int index);
-	Shape* dupeShape();
-	Dtype* dupeDtype();
-	int getDims();
-	int getShapeAt(int index);
-
-	Array* dupe();
-	void setDtype(Dtype* d) {
-		throw NotImplementedError("setDtype");
+	string toString() {
+		int v = 0;
+		int si = sizeof(int);
+		T* arr = (T*)malloc((sizeof(T) * shape->length));
+		for (int i = 0; i < shape->length; i++) {
+			arr[i] = shape->at(i);
+		}
+		string out = printRecursive(arr, shape->length, 0, 0);
+		return out;
 	}
+
+	string getShapeString()
+	{
+		return shape->toString();
+	}
+
+	void reshape(Shape* shape)
+	{
+		if ((*shape).size != this->shape->size) {
+			throw ShapeError(this->shape, shape);
+		}
+		delete this->shape;
+		this->shape = shape;
+	}
+
+	T getFlat(int index) {
+		return operator[](index);
+	}
+
+	Shape* dupeShape()
+	{
+		return shape->dupe();
+	}
+
+	int getDims()
+	{
+		return shape->length;
+	}
+
+	int getShapeAt(int index)
+	{
+		return shape->at(index);
+	}
+
+	Array<T>* dupe()
+	{
+		Shape s = shape->dupe();
+		Array<T>* a = ArrayOps<T>::empty(&s);
+		cout << (*a) << endl;
+		for (int i = 0; i < size; i++) {
+			(*a).setAbsolute(i, getFlat(i));
+		}
+		return a;
+	}
+
 private:
-	string printRecursive(int* s, int len, int start, int offset);
+	string printRecursive(int* s, int len, int start, int offset)
+	{
+		ostringstream os;
+		os << "[";
+		if (len == start + 1) {
+			for (int i = 0; i < s[start]; i++) {
+				if (i == 0) {
+					os << arr[offset + i] << ",";
+				}
+				else {
+					os << " " << arr[offset + i] << ",";
+				}
+			}
+		}
+		else {
+			os << "\n";
+			for (int i = 0; i < s[start]; i++) {
+				for (int i = 0; i <= start; i++) {
+					os << "  ";
+				}
+				os << printRecursive(s, len, start + 1, offset) << ",\n";
+				offset += shape->sizeFrom(start);
+			}
+			for (int i = 0; i <= start; i++) {
+				os << " ";
+			}
+		}
+		os << "]";
+		return os.str();
+	}
 };
+
+#include "Array.cpp"

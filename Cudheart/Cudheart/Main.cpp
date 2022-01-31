@@ -1,4 +1,3 @@
-#include "Cudheart/test.h"
 #include "Cudheart/Cudheart.h"
 #include "Cudheart/Test/Test.h"
 
@@ -10,7 +9,7 @@
 
 int main()
 {
-    // Test::test();
+    Test::test();
     if (!debug) {
         string s;
         cin >> s;

@@ -3,29 +3,29 @@
 #include "../Arrays/Shape.h"
 
 void Test::directIntVectorCreation() {
-	Array ai = Array(new Shape(12));
-	Array bi = Array(new Shape(12), new DInt());
+	Array<int> ai = Array<int>(new Shape(12));
+	Array<int> bi = Array<int>(new Shape(12));
 	int arr[] = { 5, 140, 1410, 250, 5 };
-	Array ci = Array((void*)arr, new Shape(5), new DInt());
+	Array<int> ci = Array<int>(arr, new Shape(5));
 	for (int i = 0; i < 5; i++) {
-		int v = DInt().cast(ci.get(1, i));
+		int v = ci.get(1, i);
 		assert(v == arr[i], to_string(v), "" + to_string(arr[i]));
 	}
 	int brr[] = { 785, 578, 27, 22350, 5728 };
-	Array di = Array((void*)brr, new Shape(5));
+	Array<int> di = Array<int>(brr, new Shape(5));
 	for (int i = 0; i < 5; i++) {
-		int v = DInt().cast(di.get(1, i));
+		int v = di.get(1, i);
 		assert(v == brr[i], to_string(v), to_string(brr[i]));
 	}
 	cout << "passed int vector creation test" << endl;
 }
 
 void Test::directDoubleVectorCreation() {
-	Array bi = Array(new Shape(12), new DDouble());
+	Array<double> bi = Array<double>(new Shape(12));
 	double arr[] = { 5.454, 140.54475, 14107837.5, 250.25, 5.444 };
-	Array ci = Array((void*)arr, new Shape(5), new DDouble());
+	Array<double> ci = Array<double>(arr, new Shape(5));
 	for (int i = 0; i < 5; i++) {
-		double v = DDouble().cast(ci.get(1, i));
+		double v = ci[i];
 		assert(v == arr[i], to_string(v), "" + to_string(arr[i]));
 	}
 	cout << "passed double vector creation test" << endl;
@@ -39,73 +39,65 @@ void Test::directArrayCreationTest()
 
 void Test::creationFunctionsTest() {
 	int a[]{5, 5, 5401, 14, 25402};
-	Array arr = ArrayOps::asarray(a, new Shape(5));
-	Array brr = ArrayOps::asarray(a, new Shape(5), new DInt());
-	DInt dtype = DInt();
+	Array<int> arr = *ArrayOps<int>::asarray(a, new Shape(5));
+	Array<int> brr = *ArrayOps<int>::asarray(a, new Shape(5));
 	for (int i = 0; i < 5; i++) {
-		assert(dtype.cast(arr[i]) == a[i], to_string(dtype.cast(arr[i])), to_string(a[i]));
-		assert(dtype.cast(brr[i]) == a[i], to_string(dtype.cast(brr[i])), to_string(a[i]));
-		assert(dtype.cast(arr[i]) == dtype.cast(brr[i]), to_string(dtype.cast(arr[i])), to_string(dtype.cast(brr[i])));
+		assert(arr[i] == a[i], to_string(arr[i]), to_string(a[i]));
+		assert(brr[i] == a[i], to_string(brr[i]), to_string(a[i]));
+		assert(arr[i] == brr[i], to_string(arr[i]), to_string(brr[i]));
 	}
 
-	Array crr = ArrayOps::arange(16);
+	/*Array<double> crr = ArrayOps<double>::arange(16);
 	for (int i = 0; i < crr.size; i++) {
-		assert(i == (*(double*)crr[i]), to_string(i), to_string(*(double*)crr[i]));
-	}
+		assert(i == (crr[i]), to_string(i), to_string(crr[i]));
+	}*/
 
-	Array drr = ArrayOps::arange(50);
+	Array<double> drr = *ArrayOps<double>::arange(50);
+	cout << drr.getShapeString() << endl;
 	drr.reshape(new Shape(5, 10));
-	DDouble d = DDouble();
 	for (int i = 0; i < 5; i++) {
 		for (int j = 0; j < 10; j++) {
-			assert(i * 10 + j == d.cast(drr.get(2, i, j)), to_string(10 * i + j), to_string(d.cast(drr.get(2, i, j))));
+			assert(i * 10 + j == drr.get(2, i, j), to_string(10 * i + j), to_string(drr.get(2, i, j)));
 		}
 	}
 
-	Array err = ArrayOps::empty(new Shape(5, 14, 520));
-	Array frr = ArrayOps::emptyLike(&err);
-	assert(err == frr, "err", "frr");
+	Array<int> err = *ArrayOps<int>::empty(new Shape(5, 14, 520));
+	Array<int> frr = *ArrayOps<int>::emptyLike(&err);
+	// lmao you can't compare two emptys its not how this works you don't know what values they have
+	// assert(err == frr, "err", "frr");
 
-	Array grr = ArrayOps::ones(new Shape(2547, 44));
-	Array hrr = ArrayOps::onesLike(&grr);
+	Array<int> grr = *ArrayOps<int>::ones(new Shape(4, 4));
+	Array<int> hrr = *ArrayOps<int>::onesLike(&grr);
 	assert(grr == hrr, "grr", "hrr");
 
-	Array irr = ArrayOps::zeros(new Shape(5250));
-	Array jrr = ArrayOps::zerosLike(&irr);
+	Array<int> irr = *ArrayOps<int>::zeros(new Shape(5250));
+	Array<int> jrr = *ArrayOps<int>::zerosLike(&irr);
 	assert(irr == jrr, "irr", "jrr");
 
 	int value = 69420;
-	Array krr = ArrayOps::full(new Shape(5, 14, 520), &value);
-	Array lrr = ArrayOps::fullLike(&krr, &value);
+	Array<int> krr = *ArrayOps<int>::full(new Shape(5, 14, 520), value);
+	Array<int> lrr = *ArrayOps<int>::fullLike(&krr, value);
 	assert(krr == lrr, "krr", "lrr");
 
-	// fix this not working
-	// but like later
-
 	int fr[]{ 1, 2, 3, 4 };
-	int* fg = (int*)fr;
-	void* fa = (void*)fg;
 	int er[]{ 1, 2, 3, 4, 5};
-	int* eg = (int*)er;
-	void* ea = (void*)eg;
-	Array f = ArrayOps::asarray(fa, new Shape(4), new DInt());
-	Array e = ArrayOps::asarray(ea, new Shape(5), new DInt());
-	Array* meshes = ArrayOps::meshgrid(&f, &e);
+	Array<int> f = *ArrayOps<int>::asarray(fr, new Shape(4));
+	Array<int> e = *ArrayOps<int>::asarray(er, new Shape(5));
+	Array<int>* meshes = ArrayOps<int>::meshgrid(&f, &e);
 	// cout << meshes[0].toString() << endl;
 	// cout << meshes[1].toString() << endl;
-
-	Array aril = ArrayOps::tril(&meshes[0]);
+	Array<int> aril = *ArrayOps<int>::tril(&meshes[0]);
 	// cout << aril.toString() << endl;
-	Array bril = ArrayOps::tril(&meshes[1], 2);
+	Array<int> bril = *ArrayOps<int>::tril(&meshes[1], 2);
 	// cout << bril.toString() << endl;
-	Array cril = ArrayOps::tril(&meshes[1], -2);
+	Array<int> cril = *ArrayOps<int>::tril(&meshes[1], -2);
 	// cout << cril.toString() << endl;
 
-	Array ariu = ArrayOps::triu(&meshes[0]);
+	Array<int> ariu = *ArrayOps<int>::triu(&meshes[0]);
 	// cout << ariu.toString() << endl;
-	Array briu = ArrayOps::triu(&meshes[1], 2);
+	Array<int> briu = *ArrayOps<int>::triu(&meshes[1], 2);
 	// cout << briu.toString() << endl;
-	Array criu = ArrayOps::triu(&meshes[1], -2);
+	Array<int> criu = *ArrayOps<int>::triu(&meshes[1], -2);
 	// cout << criu.toString() << endl;
 	// add tests for eye, linspace, meshgrid and tril
 	cout << "passed creation functions test" << endl;
