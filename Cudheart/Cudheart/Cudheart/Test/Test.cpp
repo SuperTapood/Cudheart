@@ -99,7 +99,6 @@ void Test::creationFunctionsTest() {
 	// cout << briu.toString() << endl;
 	Array<int> criu = *ArrayOps<int>::triu(&meshes[1], -2);
 	// cout << criu.toString() << endl;
-	// add tests for eye, linspace, meshgrid and tril
 	cout << "passed creation functions test" << endl;
 }
 
