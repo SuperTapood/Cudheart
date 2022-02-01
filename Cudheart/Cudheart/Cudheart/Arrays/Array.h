@@ -124,10 +124,13 @@ public:
 	string toString() {
 		int v = 0;
 		int si = sizeof(int);
-		T* arr = (T*)malloc((sizeof(T) * shape->length));
-		for (int i = 0; i < shape->length; i++) {
-			arr[i] = shape->at(i);
+		T* arr = (T*)malloc((sizeof(T) * this->shape->length));
+		for (int i = 0; i < this->shape->length; i++) {
+			arr[i] = this->shape->at(i);
 		}
+		cout << "to string shape length: " << shape->length << endl;
+		cout << "shape when to string: " << shape->toString() << endl;
+		cout << "id to string: " << &shape << endl;
 		string out = printRecursive(arr, shape->length, 0, 0);
 		return out;
 	}
@@ -169,16 +172,17 @@ public:
 	{
 		Shape s = shape->dupe();
 		Array<T>* a = ArrayOps<T>::empty(&s);
-		cout << (*a) << endl;
 		for (int i = 0; i < size; i++) {
 			(*a).setAbsolute(i, getFlat(i));
 		}
+		cout << "dupe: " << (*a).toString() << endl;
 		return a;
 	}
 
 private:
-	string printRecursive(int* s, int len, int start, int offset)
+	string printRecursive(T* s, int len, int start, int offset)
 	{
+		cout << "id print recur: " << &len << endl;
 		ostringstream os;
 		os << "[";
 		if (len == start + 1) {

@@ -43,8 +43,7 @@ public:
 
 	
 	static Array<T>* empty(Shape* shape) {
-		T* arr = (T*)malloc(shape->size * sizeof(T));
-		cout << "shape: " << shape->toString() << endl;
+		T* arr = (T*)malloc(shape->size * sizeof(T));\
 		Array<T>* out = new Array<T>(arr, shape);
 		return out;
 	}

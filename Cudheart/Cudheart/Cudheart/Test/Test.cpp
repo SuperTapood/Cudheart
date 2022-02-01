@@ -105,8 +105,15 @@ void Test::creationFunctionsTest() {
 void Test::test() {
 	try {
 		// expand this and add more tests
-		directArrayCreationTest();
-		creationFunctionsTest();
+		// directArrayCreationTest();
+		// creationFunctionsTest();
+		Array<float>* prr = ArrayOps<float>::arange(6);
+		Array<float> arr = *prr;
+		cout << (*prr).toString() << endl;
+		cout << arr << endl;
+		Array<float>* bprr = prr->dupe();
+		cout << bprr->getShapeString() << endl;
+		cout << bprr->toString() << endl;
 	}
 	catch (BaseException& e) {
 		e.print();

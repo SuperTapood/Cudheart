@@ -9,18 +9,6 @@ Shape::Shape(Shape* s) {
 	}
 }
 
-Shape::Shape(initializer_list<int> shape) {
-	length = shape.size();
-	arr = (int*)malloc(length * sizeof(int));
-	int i = 0;
-	size = 1;
-	for (int elem : shape)
-	{
-		size *= elem;
-		arr[i++] = elem;
-	}
-}
-
 int Shape::at(int index)
 {
 	return arr[index];
@@ -29,7 +17,9 @@ int Shape::at(int index)
 string Shape::toString() {
 	ostringstream os;
 	os << "(";
-	for (int i = 0; i < length; i++) {
+	cout << "to string id: " << this << endl;
+	cout << "this len shape string: " << this->length << endl;
+	for (int i = 0; i < this->length; i++) {
 		os << arr[i] << ",";
 	}
 	os << ")";
@@ -43,8 +33,11 @@ Shape* Shape::dupe()
 
 int Shape::sizeFrom(int from)
 {
+	cout << "size from from: " << from << endl;
+	cout << "size from length: " << &this->length << endl;
+	cout << "id size from: " << this << endl;
 	int out = 1;
-	for (int i = from + 1; i < length; i++) {
+	for (int i = from + 1; i < this->length; i++) {
 		out *= arr[i];
 	}
 	return out;
