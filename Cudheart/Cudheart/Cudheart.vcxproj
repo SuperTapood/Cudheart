@@ -144,6 +144,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cudheart\Arrays\Shape.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +152,11 @@
     <None Include="x64\Debug\CudLL.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cudheart\Arrays\Array.h" />
+    <ClInclude Include="Cudheart\Arrays\ArrayBuilder.h" />
+    <ClInclude Include="Cudheart\Arrays\Arrays.h" />
+    <ClInclude Include="Cudheart\Arrays\Shape.h" />
+    <ClInclude Include="Cudheart\Cudheart.h" />
     <ClInclude Include="Util.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

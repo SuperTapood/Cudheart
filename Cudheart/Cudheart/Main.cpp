@@ -3,5 +3,6 @@
 
 int main()
 {
-    cout << "Hello" << endl;
+    Array<int> arr = *ArrayBuilder<int>::empty({ 5, 5, 5 });
+    cout << arr << endl;
 }
