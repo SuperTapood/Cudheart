@@ -18,7 +18,25 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Cudheart\Test\Test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cudheart\Exceptions\BaseException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cudheart\Exceptions\AssertionError.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cudheart\Exceptions\IndexError.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cudheart\Exceptions\NotImplementedError.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Cudheart\Arrays\Shape.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cudheart\Exceptions\ShapeError.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -27,10 +45,28 @@
     <None Include="x64\Debug\CudLL.dll" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Util.h">
+    <ClInclude Include="Cudheart\Util.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Cudheart\Cudheart.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Test\Test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Exceptions\Exceptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Exceptions\BaseException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Exceptions\AssertionError.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Exceptions\IndexError.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Exceptions\NotImplementedError.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Cudheart\Arrays\Arrays.h">
@@ -39,10 +75,13 @@
     <ClInclude Include="Cudheart\Arrays\Array.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Cudheart\Arrays\ArrayBuilder.h">
+    <ClInclude Include="Cudheart\Arrays\ArrayOps.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Cudheart\Arrays\Shape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Exceptions\ShapeError.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,8 +1,8 @@
-#include "Util.h"
-#include "Cudheart/Cudheart.h"
+#include "Cudheart/Test/Test.h"
+
+using namespace Cudheart::Test;
 
 int main()
 {
-    Array<int> arr = *ArrayBuilder<int>::empty({ 5, 5, 5 });
-    cout << arr << endl;
+	Test();
 }

@@ -145,6 +145,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Cudheart\Arrays\Shape.cpp" />
+    <ClCompile Include="Cudheart\Exceptions\AssertionError.cpp" />
+    <ClCompile Include="Cudheart\Exceptions\BaseException.cpp" />
+    <ClCompile Include="Cudheart\Exceptions\IndexError.cpp" />
+    <ClCompile Include="Cudheart\Exceptions\NotImplementedError.cpp" />
+    <ClCompile Include="Cudheart\Exceptions\ShapeError.cpp" />
+    <ClCompile Include="Cudheart\Test\Test.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -153,11 +159,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cudheart\Arrays\Array.h" />
-    <ClInclude Include="Cudheart\Arrays\ArrayBuilder.h" />
+    <ClInclude Include="Cudheart\Arrays\ArrayOps.h" />
     <ClInclude Include="Cudheart\Arrays\Arrays.h" />
     <ClInclude Include="Cudheart\Arrays\Shape.h" />
     <ClInclude Include="Cudheart\Cudheart.h" />
-    <ClInclude Include="Util.h" />
+    <ClInclude Include="Cudheart\Exceptions\AssertionError.h" />
+    <ClInclude Include="Cudheart\Exceptions\BaseException.h" />
+    <ClInclude Include="Cudheart\Exceptions\Exceptions.h" />
+    <ClInclude Include="Cudheart\Exceptions\IndexError.h" />
+    <ClInclude Include="Cudheart\Exceptions\NotImplementedError.h" />
+    <ClInclude Include="Cudheart\Exceptions\ShapeError.h" />
+    <ClInclude Include="Cudheart\Test\Test.h" />
+    <ClInclude Include="Cudheart\Util.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
