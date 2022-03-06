@@ -24,3 +24,15 @@ using std::ostringstream;
 using std::ostream;
 using std::initializer_list;
 using std::to_string;
+
+
+#ifndef print
+	void print(auto msg) {
+		cout << msg << endl;
+	}
+#else
+	#undef print
+	void print(string msg) {
+		cout << msg << endl;
+	}
+#endif

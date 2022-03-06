@@ -6,7 +6,8 @@ namespace Cudheart::Test {
 	using namespace Cudheart::Arrays;
 
 	void TestCreation() {
-
+		Array<int> a = *Arrays::ArrayOps<int>::zeros(new Shape(new int[]{1, 1, 1, 5, 5}, 2));
+		print(a);
 	}
 
 	void Test() {
@@ -17,5 +18,9 @@ namespace Cudheart::Test {
 		if (!exp) {
 			throw AssertionError(a, b);
 		}
+	}
+
+	void print(auto msg) {
+		cout << msg << endl;
 	}
 }

@@ -1,8 +1,10 @@
 #include "ShapeError.h"
 
-ShapeError::ShapeError(Shape* a, Shape* b)
+using Cudheart::Arrays::Shape;
+
+ShapeError::ShapeError(string a, string b)
 {
 	ostringstream os;
-	os << "ShapeError: cannot reshape array of shape " << (*a).toString() << " into shape " << (*b).toString();
+	os << "ShapeError: cannot reshape array of shape " << a << " into shape " << b;
 	msg = os.str();
 }

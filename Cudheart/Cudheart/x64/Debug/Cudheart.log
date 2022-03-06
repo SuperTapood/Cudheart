@@ -1,9 +1,4 @@
-﻿  Shape.cpp
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\Exceptions\ShapeError.h(6,17): error C2653: 'Cudheart': is not a class or namespace name
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\Exceptions\ShapeError.h(6,33): error C2871: 'Arrays': a namespace with this name does not exist
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\Exceptions\ShapeError.h(10,13): error C2061: syntax error: identifier 'Shape'
-  Test.cpp
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\Arrays\ArrayOps.h(11): fatal error C1075: '{': no matching token found
+﻿  Test.cpp
   Main.cpp
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart\Arrays\ArrayOps.h(11): fatal error C1075: '{': no matching token found
   Generating Code...
+  Cudheart.vcxproj -> C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\x64\Debug\Cudheart.exe

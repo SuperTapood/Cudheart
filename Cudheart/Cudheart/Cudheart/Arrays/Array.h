@@ -13,6 +13,7 @@ namespace Cudheart::Arrays {
 	public:
 		Array(Shape* shape) {
 			this->shape = shape;
+			print(shape->toString());
 			data = (T*)malloc(shape->size * sizeof(T));
 		}
 
@@ -24,7 +25,7 @@ namespace Cudheart::Arrays {
 		Array(T* arr, Shape* shape) {
 			this->shape = shape;
 			data = (T*)malloc(shape->size * sizeof(T));
-			for (int i = 0; i < shape.size; i++) {
+			for (int i = 0; i < shape->size; i++) {
 				data[i] = arr[i];
 			}
 		}
@@ -45,7 +46,7 @@ namespace Cudheart::Arrays {
 
 		Array<T>* reshape(Shape* newShape) {
 			if (shape->size != newShape->size) {
-				throw ShapeError(shape, newShape);
+				throw ShapeError(shape->toString(), newShape->toString());
 			}
 			return new Array<T>(data, newShape);
 		}
