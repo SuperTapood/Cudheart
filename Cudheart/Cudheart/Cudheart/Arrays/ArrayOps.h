@@ -98,7 +98,10 @@ namespace Cudheart::Arrays {
 			int blen = (*b).shape->dims[0];
 			Array<T>* out = (Array<T>*)malloc(sizeof(Array<T>) * 2);
 			out[0] = *zeros(new Shape(new int[] {blen, alen}, 2));
-			out[1] = *zeros(new Shape(new int[] {blen, alen}, 2));
+			out[1] = *zeros(new Shape(new int[] {alen, blen}, 2));
+
+			print(out[0]);
+			print(out[1]);
 
 			for (int i = 0; i < blen; i++) {
 				for (int j = 0; j < alen; j++) {

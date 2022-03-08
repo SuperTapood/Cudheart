@@ -24,6 +24,10 @@ namespace Cudheart::Test {
 		Array<int> f = *ArrayOps<int>::asarray(fr, new Shape(new int[]{4}, 1));
 		Array<int> e = *ArrayOps<int>::asarray(er, new Shape(new int[]{5}, 1));
 		Array<int>* meshes = ArrayOps<int>::meshgrid(&f, &e);
+		print(f);
+		print(e);
+		print(meshes[0]);
+		print(meshes[1]);
 	}
 
 	void Test() {
