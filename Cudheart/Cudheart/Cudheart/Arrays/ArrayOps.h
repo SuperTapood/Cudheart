@@ -59,16 +59,12 @@ namespace Cudheart::Arrays {
 
 		static Array<T>* full(Shape* shape, T value) {
 			Array<T>* out = empty(new Shape(new int[] {shape->size}, 1));
-			print(out->toString());
-			print(out->shape->toString());
 
 			for (int i = 0; i < shape->size; i++) {
-				print(i);
 				out->data[i] = value;
 			}
 
-			// return (*out).reshape(shape);
-			return out;
+			return (*out).reshape(shape);
 		}
 
 		static Array<T>* ones(Shape* shape) {

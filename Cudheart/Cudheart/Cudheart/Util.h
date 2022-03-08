@@ -14,6 +14,10 @@
 #include <math.h>
 #include <initializer_list>
 #include <cstdarg>
+#include <algorithm>
+#include <array>
+#include <iterator>
+#include <string>
 
 using std::exception;
 using std::cout;
@@ -24,6 +28,7 @@ using std::ostringstream;
 using std::ostream;
 using std::initializer_list;
 using std::to_string;
+using std::array;
 
 
 #ifndef print

@@ -13,7 +13,6 @@ namespace Cudheart::Arrays {
 	public:
 		Array(Shape* shape) {
 			this->shape = shape;
-			print(shape->toString());
 			data = (T*)malloc(shape->size * sizeof(T));
 		}
 
@@ -57,7 +56,7 @@ namespace Cudheart::Arrays {
 			os << "[";
 			if (start == shape->len - 1) {
 				os << data[offset++];
-				for (int i = 0; i < this->shape->dims[start]; offset++, i++) {
+				for (int i = 1; i < this->shape->dims[start]; offset++, i++) {
 					os << ", " << data[offset];
 				}
 			} else {

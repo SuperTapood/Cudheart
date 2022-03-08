@@ -6,7 +6,7 @@ namespace Cudheart::Test {
 	using namespace Cudheart::Arrays;
 
 	void TestCreation() {
-		Array<int> a = *Arrays::ArrayOps<int>::zeros(new Shape(new int[]{1, 1, 1, 5, 5}, 2));
+		Array<int> a = *Arrays::ArrayOps<int>::zeros(new Shape(new int[]{1, 1, 2, 2, 3}, 2));
 		print(a);
 	}
 
