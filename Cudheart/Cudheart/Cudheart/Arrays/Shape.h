@@ -13,5 +13,6 @@ namespace Cudheart::Arrays {
 	public:
 		Shape(int dims[], int len);
 		string toString();
+		Shape* clone();
 	};
 }

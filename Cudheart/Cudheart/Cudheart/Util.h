@@ -29,6 +29,9 @@ using std::ostream;
 using std::initializer_list;
 using std::to_string;
 using std::array;
+using std::copy;
+using std::begin;
+using std::end;
 
 
 #ifndef print

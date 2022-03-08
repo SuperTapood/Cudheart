@@ -21,3 +21,14 @@ string Cudheart::Arrays::Shape::toString()
 	os << ")";
 	return os.str();
 }
+
+
+Cudheart::Arrays::Shape* Cudheart::Arrays::Shape::clone() {
+	int* dest = (int*)malloc(sizeof(int) * len);
+
+	for (int i = 0; i < len; i++) {
+		dest[i] = dims[i];
+	}
+
+	return new Shape(dest, len);
+}
