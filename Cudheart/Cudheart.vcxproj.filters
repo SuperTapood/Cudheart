@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Cudheart">
+      <UniqueIdentifier>{ad80ea5d-e19b-40a8-a4b8-5845ca4bd99c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sample">
+      <UniqueIdentifier>{d311997a-5c3d-48b8-b431-4f7d9ee732b3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Sample\kernel.cuh">
+      <Filter>Sample</Filter>
+    </ClInclude>
+    <ClInclude Include="Cudheart\Util.cuh" />
+    <ClInclude Include="Cudheart\Test\Test.cuh" />
+    <ClInclude Include="Cudheart\Cudheart.cuh" />
+    <ClInclude Include="Cudheart\Exceptions\Exceptions.cuh" />
+    <ClInclude Include="Cudheart\Exceptions\BaseException.cuh" />
+    <ClInclude Include="Cudheart\Arrays\Arrays.cuh" />
+    <ClInclude Include="Cudheart\Arrays\Array.cuh" />
+    <ClInclude Include="Cudheart\Arrays\Shape.cuh" />
+  </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="Sample\kernel.cu">
+      <Filter>Sample</Filter>
+    </CudaCompile>
+    <CudaCompile Include="Cudheart\Test\Test.cu" />
+    <CudaCompile Include="Cudheart\Exceptions\BaseException.cu" />
+    <CudaCompile Include="Cudheart\Arrays\Shape.cu" />
+  </ItemGroup>
+</Project>
