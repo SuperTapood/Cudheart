@@ -20,6 +20,7 @@
     <ClInclude Include="Cudheart\Arrays\Arrays.cuh" />
     <ClInclude Include="Cudheart\Arrays\Array.cuh" />
     <ClInclude Include="Cudheart\Arrays\Shape.cuh" />
+    <ClInclude Include="Cudheart\Arrays\ArrayOps.cuh" />
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="Sample\kernel.cu">
@@ -28,5 +29,6 @@
     <CudaCompile Include="Cudheart\Test\Test.cu" />
     <CudaCompile Include="Cudheart\Exceptions\BaseException.cu" />
     <CudaCompile Include="Cudheart\Arrays\Shape.cu" />
+    <CudaCompile Include="Main.cu" />
   </ItemGroup>
 </Project>

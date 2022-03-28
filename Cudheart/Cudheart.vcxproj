@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cudheart\Arrays\Array.cuh" />
+    <ClInclude Include="Cudheart\Arrays\ArrayOps.cuh" />
     <ClInclude Include="Cudheart\Arrays\Arrays.cuh" />
     <ClInclude Include="Cudheart\Arrays\Shape.cuh" />
     <ClInclude Include="Cudheart\Cudheart.cuh" />

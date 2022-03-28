@@ -148,6 +148,12 @@ C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include\texture_types.h
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include\vector_functions.h
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include\vector_functions.hpp
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include\vector_types.h
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Array.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\ArrayOps.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Arrays.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Shape.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Exceptions\BaseException.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Exceptions\Exceptions.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Test\Test.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Util.cuh
