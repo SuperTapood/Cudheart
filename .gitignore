@@ -1,2 +1,6 @@
 
 *.opendb
+Cudheart/.vs/Cudheart/v17/.suo
+*.db
+*.db-shm
+*.db-wal

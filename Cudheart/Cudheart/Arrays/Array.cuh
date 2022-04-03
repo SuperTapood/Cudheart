@@ -9,6 +9,7 @@ class Array {
 private:
 	T* data;
 	Shape* shape;
+	int offset;
 	
 public:
 	Array(Shape* shape) {
@@ -22,7 +23,8 @@ public:
 	}
 
 	string toString() {
-		return stringify(0, 0);
+		offset = 0;
+		return stringify(0);
 	}
 
 	void setAbs(int index, T value) {
@@ -56,14 +58,19 @@ public:
 		return data[index];
 	}
 
+	template <typename H>
+	Array<T> operator&(const Array<T>& a, const Array<H> b) {
+		// generate a higher dimensional array of both the arrays
+	}
+
 private:
-	string stringify(int start, int offset) {
+	string stringify(int start) {
 		ostringstream os;
 		os << "[";
 		if (start == shape->getDims() - 1) {
 			os << data[offset++];
-			for (int i = 1; i < this->shape->get(start); offset++, i++) {
-				os << ", " << data[offset];
+			for (int i = 1; i < this->shape->get(start);i++) {
+				os << ", " << data[offset + i - 1];
 			}
 		}
 		else {
@@ -72,7 +79,7 @@ private:
 				for (int i = 0; i < start + 1; i++) {
 					os << " ";
 				}
-				os << stringify(start + 1, offset + 1);
+				os << stringify(start + 1);
 			}
 			os << "\n";
 			for (int i = 0; i < start; i++) {

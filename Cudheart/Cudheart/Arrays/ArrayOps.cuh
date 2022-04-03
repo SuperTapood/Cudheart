@@ -103,8 +103,13 @@ public:
 		out[0] = *zeros(new Shape(new int[] {blen, alen}, 2));
 		out[1] = *zeros(new Shape(new int[] {blen, alen}, 2));
 
-		for (int i = 0; i < blen; i++) {
-			
+		Array<T> arr = out[0];
+		Array<T> brr = out[1];
+
+		for (int rows = 0; rows < blen; rows++) {
+			for (int cols = 0; cols < alen; cols++) {
+				arr.setAbs((rows * alen) + cols, a->getAbs(cols));
+			}
 		}
 		return out;
 	}
