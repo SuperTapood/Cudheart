@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
@@ -77,17 +77,17 @@
     </CudaCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CudaCompile Include="Cudheart\Arrays\Shape.cu" />
     <CudaCompile Include="Cudheart\Exceptions\BaseException.cu" />
     <CudaCompile Include="Cudheart\Test\Test.cu" />
     <CudaCompile Include="Sample\kernel.cu" />
     <CudaCompile Include="Main.cu" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Cudheart\Arrays\Array.cuh" />
     <ClInclude Include="Cudheart\Arrays\ArrayOps.cuh" />
     <ClInclude Include="Cudheart\Arrays\Arrays.cuh" />
-    <ClInclude Include="Cudheart\Arrays\Shape.cuh" />
+    <ClInclude Include="Cudheart\Arrays\Matrix.cuh" />
+    <ClInclude Include="Cudheart\Arrays\Vector.cuh" />
+    <ClInclude Include="Cudheart\Arrays\VectorOps.cuh" />
     <ClInclude Include="Cudheart\Cudheart.cuh" />
     <ClInclude Include="Cudheart\Exceptions\BaseException.cuh" />
     <ClInclude Include="Cudheart\Exceptions\Exceptions.cuh" />

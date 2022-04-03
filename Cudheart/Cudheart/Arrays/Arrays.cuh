@@ -1,5 +1,5 @@
 #pragma once
 
-#include "Array.cuh"
-#include "Shape.cuh"
-#include "ArrayOps.cuh"
+#include "Vector.cuh"
+#include "Matrix.cuh"
+#include "VectorOps.cuh"
