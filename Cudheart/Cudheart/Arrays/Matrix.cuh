@@ -1,22 +1,100 @@
 #pragma once
 
+// check about using longs and stuff as lengths and indices for bigger tensors
 
 template <typename T>
 class Matrix {
 private:
+	int m_width, m_height, m_size;
 	T* m_data;
-	int m_width, m_height;
 
 public:
 	Matrix(T* data, int width, int height) {
 		m_data = data;
 		m_width = width;
 		m_height = height;
+		m_size = width * height;
 	}
 
 	Matrix(int width, int height) {
-		m_data = (T*)malloc(width * height);
+		m_data = (T*)malloc(width * height * sizeof(T));
 		m_width = width;
 		m_height = height;
+		m_size = width * height;
 	}
+
+	T get(int index) {
+		if (index < 0) {
+			index += m_size;
+		}
+		return m_data[index];
+	}
+
+	T get(int i, int j) {
+		if (i < 0) {
+			i += m_width;
+		}
+		if (j < 0) {
+			j += m_height;
+		}
+		return get(i + j * m_width);
+	}
+
+	void set(int index, T value) {
+		if (index < 0) {
+			index += m_size;
+		}
+		m_data[index] = value;
+	}
+
+	void set(int i, int j, T value) {
+		if (i < 0) {
+			i += m_width;
+		}
+		if (j < 0) {
+			j += m_height;
+		}
+		m_data[i * m_width + j] = value;
+	}
+
+	int getSize() {
+		return m_size;
+	}
+
+	int getWidth() {
+		return m_width;
+	}
+
+	int getHeight() {
+		return m_height;
+	}
+
+	string toString() {
+		ostringstream os;
+		os << "[\n";
+		for (int i = 0; i < m_width; i++) {
+			os << " [";
+			for (int j = 0; j < m_height; j++) {
+				if (j + 1 == m_height) {
+					os << get(i, j);
+				}
+				else {
+					os << get(i, j) << ", ";
+				}
+			}
+			if (i + 1 == m_width) {
+				os << "]\n";
+			} 
+			else {
+				os << "],\n";
+			}
+		}
+		os << "]";
+		return os.str();
+	}
+
+	void print() {
+		cout << this->toString() << endl;
+	}
+	// todo: add operator overloades to make this look better
 };

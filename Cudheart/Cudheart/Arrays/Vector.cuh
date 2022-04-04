@@ -53,13 +53,7 @@ public:
 	}
 
 	void print() {
-		cout << this << endl;
+		cout << this->toString() << endl;
 	}
-
-	// operator overloading
-	ostream& operator<<(ostream& os)
-	{
-		os << toString();
-		return os;
-	}
+	// todo: add operator overloades to make this look better
 };

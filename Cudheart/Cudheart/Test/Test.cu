@@ -1,6 +1,6 @@
 #include "Test.cuh"
 
-void testCreation() {
+void testVectorCreation() {
 	Vector<int>* arr = VectorOps<int>::ones(2);
 	// cout << arr->toString() << endl;
 
@@ -17,8 +17,18 @@ void testCreation() {
 
 	auto d = VectorOps<int>::arange(20);
 	d->print();
+	auto e = VectorOps<long>::cast(c);
+	e->print();
+
+	auto f = MatrixOps<long>::fromVector(e, 3, 2);
+	f->print();
+}
+
+void testMatrixCreation() {
+
 }
 
 void test() {
-	testCreation();
+	testVectorCreation();
+	testMatrixCreation();
 }

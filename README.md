@@ -3,10 +3,14 @@
 [![time invested:](https://wakatime.com/badge/user/8b4f0bdc-5133-4fba-98d4-d75498fa71f2/project/eccaf13a-dd3b-426e-b047-82a0bd7cc1eb.svg)](https://wakatime.com/badge/user/8b4f0bdc-5133-4fba-98d4-d75498fa71f2/project/eccaf13a-dd3b-426e-b047-82a0bd7cc1eb)
 
 ## About the project
-Cudheart is a numpy-esque library that aims to provide a simple and intuitive solution for CUDA based computing.
-Currently only featuring C++ based functions, but CUDA stuff is coming I swear.
+///Cudheart is a numpy-esque library that aims to provide a simple and intuitive solution for CUDA based computing.
+<br>
+/////Currently only featuring C++ based functions, but CUDA stuff is coming I swear.
 
 
+- [ ] fix matrix print thing, cast vectors and matrices, add ndarray master interface for no reason other for maybe tensors down the line, maybe create wrappers so user doesn't have to play with datatypes, fix readme
+
+/// incorrect please fix
 - [ ] finish triu
 - [ ] test the dll file in another seperate project and get that working
 - [ ] test all creation functions
@@ -42,6 +46,6 @@ int main(){
     // func((void*)0);
 }
 ```
-where: \
-```0``` - the value you want to pass \
+where: <br>
+```0``` - the value you want to pass <br>
 ```func``` - the function that needs void pointer as argument

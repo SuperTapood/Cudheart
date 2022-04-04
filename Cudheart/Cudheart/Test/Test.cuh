@@ -3,5 +3,6 @@
 #include "../Util.cuh"
 #include "../Cudheart.cuh"
 
-void testCreation();
+void testVectorCreation();
+void testMatrixCreation();
 void test();

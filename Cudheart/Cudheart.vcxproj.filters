@@ -19,9 +19,12 @@
     <ClInclude Include="Cudheart\Exceptions\BaseException.cuh" />
     <ClInclude Include="Cudheart\Arrays\Arrays.cuh" />
     <ClInclude Include="Cudheart\Arrays\ArrayOps.cuh" />
-    <ClInclude Include="Cudheart\Arrays\Matrix.cuh" />
     <ClInclude Include="Cudheart\Arrays\Vector.cuh" />
     <ClInclude Include="Cudheart\Arrays\VectorOps.cuh" />
+    <ClInclude Include="Cudheart\Math\Math.cuh" />
+    <ClInclude Include="Cudheart\Math\Calc.cuh" />
+    <ClInclude Include="Cudheart\Arrays\MatrixOps.cuh" />
+    <ClInclude Include="Cudheart\Arrays\Matrix.cuh" />
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="Sample\kernel.cu">
@@ -30,5 +33,8 @@
     <CudaCompile Include="Cudheart\Test\Test.cu" />
     <CudaCompile Include="Cudheart\Exceptions\BaseException.cu" />
     <CudaCompile Include="Main.cu" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\README.md" />
   </ItemGroup>
 </Project>

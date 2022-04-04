@@ -37,6 +37,17 @@ public:
 		return new Vector<T>(len);
 	}
 
+	template <typename U>
+	static Vector<T>* cast(Vector<U>* input) {
+		Vector<T>* output = new Vector<T>(input->getSize());
+		
+		for (int i = 0; i < input->getSize(); i++) {
+			output->set(i, (T)input->get(i));
+		}
+
+		return output;
+	}
+
 	static Vector<T>* emptyLike(Vector<T>* arr) {
 		return empty(arr->getSize());
 	}
@@ -53,6 +64,16 @@ public:
 
 	static Vector<T>* fullLike(Vector<T>* arr, T value) {
 		return full(arr->getSize(), value);
+	}
+
+	static Vector<T>* fromMatrix(Matrix<T>* mat) {
+		Vector<T>* out = zeros(mat->getSize());
+
+		for (int i = 0; i < mat->getSize(); i++) {
+			out->set(i, mat->get(i));
+		}
+
+		return out;
 	}
 
 	static Vector<T>* linspace(T start, T stop, T num, bool endpoint) {
