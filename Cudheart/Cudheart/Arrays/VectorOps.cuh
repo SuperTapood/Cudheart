@@ -5,6 +5,8 @@
 #include "Matrix.cuh"
 
 namespace Cudheart::VectorOps {
+	using NDArrays::Vector;
+	using NDArrays::Matrix;
 
 	template <typename T>
 	Vector<T>* asVector(T* arr, int len) {

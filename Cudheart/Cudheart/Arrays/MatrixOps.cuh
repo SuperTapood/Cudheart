@@ -10,6 +10,9 @@
 
 
 namespace Cudheart::MatrixOps {
+	using NDArrays::Matrix;
+	using NDArrays::Vector;
+
 	template <typename T>
 	Matrix<T>* asMatrix(T* arr, int width, int height) {
 		return new Matrix<T>(arr, width, height);

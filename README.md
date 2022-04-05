@@ -22,3 +22,5 @@ Currently, no actual CUDA kernels are implemented, but they will be in the futur
 - [ ] add trigo funcs
 - [ ] add bitwise funcs
 - [ ] add comparison funcs
+
+p.s.: future me, please do remember to do all of the computations on flat vectors, and convert them "outside" of the math ty xoxo
