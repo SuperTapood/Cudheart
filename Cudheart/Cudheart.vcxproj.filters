@@ -25,6 +25,7 @@
     <ClInclude Include="Cudheart\Math\Calc.cuh" />
     <ClInclude Include="Cudheart\Arrays\MatrixOps.cuh" />
     <ClInclude Include="Cudheart\Arrays\Matrix.cuh" />
+    <ClInclude Include="Cudheart\Arrays\NDArray.cuh" />
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="Sample\kernel.cu">

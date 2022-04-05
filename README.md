@@ -3,22 +3,23 @@
 [![time invested:](https://wakatime.com/badge/user/8b4f0bdc-5133-4fba-98d4-d75498fa71f2/project/eccaf13a-dd3b-426e-b047-82a0bd7cc1eb.svg)](https://wakatime.com/badge/user/8b4f0bdc-5133-4fba-98d4-d75498fa71f2/project/eccaf13a-dd3b-426e-b047-82a0bd7cc1eb)
 
 ## About the project
-///Cudheart is a numpy-esque library that aims to provide a simple and intuitive solution for CUDA based computing.
+This project is a numpy-esque CUDA library to play around with vectors and matrices. 
 <br>
-/////Currently only featuring C++ based functions, but CUDA stuff is coming I swear.
+The goal of this project is to provide a back end framework for a Tensorflow-esque library to be developed later.
+<br>
+Currently, no actual CUDA kernels are implemented, but they will be in the future.
 
 
-- [ ] cast vectors and matrices, add ndarray master interface for no reason other for maybe tensors down the line, maybe create wrappers so user doesn't have to play with datatypes, fix readme
-
-/// incorrect please fix
-- [ ] finish triu
-- [ ] test the dll file in another seperate project and get that working
-- [ ] test all creation functions
-- [ ] actual info for the module (version and stuff)
-- [ ] **DOCUMENTATION**
-- [ ] add the rest of the datatypes
-- [ ] add test and stuff for DChar and stuff
-- [ ] dtypes will now store a casted copy of the array to save time when casting
+- [ ] add the rest of matrix creation functions
+- [ ] test matrix creation and conversion
+- [ ] add custom complex numbers (Ai + B)
+- [ ] add inf
+- [ ] add negInf
+- [ ] add NaN
+- [ ] add calc funcs
+- [ ] add trigo funcs
+- [ ] add bitwise funcs
+- [ ] add comparison funcs
 
 
 ## Help with issues

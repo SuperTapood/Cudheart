@@ -39,7 +39,7 @@ public:
 	}
 
 	static Matrix<T>* full(int width, int height, T value) {
-		return asMatrix(VectorOps<T>::full(width * height), width, height);
+		return asMatrix(VectorOps<T>::full(width * height, value), width, height);
 	}
 
 	static Matrix<T>* fullLike(Matrix<T>* mat, T value) {
