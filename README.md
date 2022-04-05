@@ -10,9 +10,11 @@ The goal of this project is to provide a back end framework for a Tensorflow-esq
 Currently, no actual CUDA kernels are implemented, but they will be in the future.
 
 
+- [ ] add namespaces!
 - [ ] add the rest of matrix creation functions
 - [ ] test matrix creation and conversion
 - [ ] add custom complex numbers (Ai + B)
+- [ ] add documentation
 - [ ] add inf
 - [ ] add negInf
 - [ ] add NaN

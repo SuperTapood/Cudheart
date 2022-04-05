@@ -4,8 +4,8 @@ AdditionalCompilerOptions=
 AdditionalDependencies=
 AdditionalDeps=
 AdditionalLibraryDirectories=
-AdditionalOptions=
-AdditionalOptions=
+AdditionalOptions=-std=c++17 -Xcompiler "/std:c++17"
+AdditionalOptions=-std=c++17 -Xcompiler "/std:c++17"
 CodeGeneration=compute_52,sm_52
 CodeGeneration=compute_52,sm_52
 CompileOut=C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\BaseException.cu.obj

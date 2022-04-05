@@ -17,7 +17,7 @@ public:
 	}
 
 	Matrix(int width, int height) {
-		m_data = (T*)malloc(width * height * sizeof(T));
+		m_data = (T*)malloc(static_cast<unsigned long long>(width) * height * sizeof(T));
 		m_width = width;
 		m_height = height;
 		m_size = width * height;

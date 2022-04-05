@@ -1,28 +1,30 @@
 #include "Test.cuh"
 
+using namespace Cudheart;
+
 void testVectorCreation() {
-	Vector<int>* arr = VectorOps<int>::ones(2);
+	auto arr = VectorOps::ones<int>(2);
 	// cout << arr->toString() << endl;
 
-	auto a = VectorOps<double>::arange(1, 5, 0.2);
+	auto a = VectorOps::arange<double>(1, 5, 0.2);
 	a->print();
-	auto* b = VectorOps<double>::arange(5.4, 0.3);
+	auto b = VectorOps::arange<double>(5.4, 0.3);
 	b->print();
-	auto c = VectorOps<double>::arange(6.9f);
+	auto c = VectorOps::arange<double>(6.9f);
 	c->print();
 
-	VectorOps<int>::empty((30))->print();
-	VectorOps<double>::emptyLike(a)->print();
-	VectorOps<float>::linspace(2.f, 3.f, 5.f)->print();
+	VectorOps::empty<int>((30))->print();
+	VectorOps::emptyLike<double>(a)->print();
+	VectorOps::linspace<float>(2.f, 3.f, 5.f)->print();
 
-	auto d = VectorOps<int>::arange(20);
+	auto d = VectorOps::arange<int>(20);
 	d->print();
 	auto e = c->castTo<long>();
 	e->print();
 
-	auto f = MatrixOps<long>::fromVector(e, 3, 2);
+	auto f = MatrixOps::fromVector<long>(e, 3, 2);
 	f->print();
-	auto g = MatrixOps<long>::fromVector(e, 2, 3);
+	auto g = MatrixOps::fromVector<long>(e, 2, 3);
 	g->print();
 }
 
