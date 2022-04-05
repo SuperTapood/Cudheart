@@ -10,11 +10,12 @@ The aim of this project is to provide a back end framework for a Tensorflow-esqu
 Currently, no actual CUDA kernels are implemented, but they will be in the future.
 
 
-- [ ] add namespaces!
+- [ ] add exception namespace, math namespaces, test namespace?
+- [ ] add destroy boolean parameter when converting objects 
 - [ ] add the rest of matrix creation functions
 - [ ] test matrix creation and conversion
-- [ ] add custom complex numbers (Ai + B)
 - [ ] add documentation
+- [ ] add custom complex numbers (Ai + B)
 - [ ] add inf
 - [ ] add negInf
 - [ ] add NaN
@@ -22,5 +23,6 @@ Currently, no actual CUDA kernels are implemented, but they will be in the futur
 - [ ] add trigo funcs
 - [ ] add bitwise funcs
 - [ ] add comparison funcs
+- [ ] even more documentation
 
 p.s.: future me, please do remember to do all of the computations on flat vectors, and convert them "outside" of the math ty xoxo

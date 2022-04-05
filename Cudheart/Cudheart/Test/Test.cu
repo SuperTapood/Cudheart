@@ -3,6 +3,8 @@
 using namespace Cudheart;
 
 void testVectorCreation() {
+	// lol no need for using namespace when using auto
+
 	auto arr = VectorOps::ones<int>(2);
 	// cout << arr->toString() << endl;
 
