@@ -8,7 +8,7 @@
 /////Currently only featuring C++ based functions, but CUDA stuff is coming I swear.
 
 
-- [ ] fix matrix print thing, cast vectors and matrices, add ndarray master interface for no reason other for maybe tensors down the line, maybe create wrappers so user doesn't have to play with datatypes, fix readme
+- [ ] cast vectors and matrices, add ndarray master interface for no reason other for maybe tensors down the line, maybe create wrappers so user doesn't have to play with datatypes, fix readme
 
 /// incorrect please fix
 - [ ] finish triu

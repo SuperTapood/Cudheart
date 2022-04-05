@@ -22,6 +22,8 @@ void testVectorCreation() {
 
 	auto f = MatrixOps<long>::fromVector(e, 3, 2);
 	f->print();
+	auto g = MatrixOps<long>::fromVector(e, 2, 3);
+	g->print();
 }
 
 void testMatrixCreation() {

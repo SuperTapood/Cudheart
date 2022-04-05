@@ -31,13 +31,14 @@ public:
 	}
 
 	T get(int i, int j) {
+		
 		if (i < 0) {
 			i += m_width;
 		}
 		if (j < 0) {
 			j += m_height;
 		}
-		return get(i + j * m_width);
+		return get(flatten(i, j));
 	}
 
 	void set(int index, T value) {
@@ -54,7 +55,7 @@ public:
 		if (j < 0) {
 			j += m_height;
 		}
-		m_data[i * m_width + j] = value;
+		m_data[flatten(i, j)] = value;
 	}
 
 	int getSize() {
@@ -97,4 +98,9 @@ public:
 		cout << this->toString() << endl;
 	}
 	// todo: add operator overloades to make this look better
+
+private:
+	int flatten(int i, int j) {
+		return j + (i * m_height);
+	}
 };
