@@ -37,17 +37,6 @@ public:
 		return new Vector<T>(len);
 	}
 
-	template <typename U>
-	static Vector<T>* cast(Vector<U>* input) {
-		Vector<T>* output = new Vector<T>(input->getSize());
-		
-		for (int i = 0; i < input->getSize(); i++) {
-			output->set(i, (T)input->get(i));
-		}
-
-		return output;
-	}
-
 	static Vector<T>* emptyLike(Vector<T>* arr) {
 		return empty(arr->getSize());
 	}

@@ -24,6 +24,17 @@ public:
 		m_size = (&data)[1] - data;
 	}
 
+	template<typename U>
+	Vector<U>* castTo() {
+		Vector<U>* output = new Vector<U>(getSize());
+
+		for (int i = 0; i < getSize(); i++) {
+			output->set(i, (U)get(i));
+		}
+
+		return output;
+	}
+
 	T get(int index) {
 		if (index < 0) {
 			index += m_size;

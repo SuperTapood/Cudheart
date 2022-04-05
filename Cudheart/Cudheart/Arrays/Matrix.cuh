@@ -23,6 +23,17 @@ public:
 		m_size = width * height;
 	}
 
+	template<typename U>
+	Matrix<U>* castTo() {
+		Matrix<U>* output = new Matrix<U>(getSize());
+
+		for (int i = 0; i < getSize(); i++) {
+			output->set(i, (U)get(i));
+		}
+
+		return output;
+	}
+
 	T get(int index) {
 		if (index < 0) {
 			index += m_size;

@@ -48,6 +48,7 @@ public:
 
 	static Matrix<T>* fromVector(Vector<T>* vec, int width, int height) {
 		if (width * height != vec->getSize()) {
+			cout << "fromVector failed with w: " << width << " and h: " << height << "with size: " << vec->getSize() << endl;
 			return nullptr;
 		}
 		Matrix<T>* out = empty(width, height);

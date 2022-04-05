@@ -17,7 +17,7 @@ void testVectorCreation() {
 
 	auto d = VectorOps<int>::arange(20);
 	d->print();
-	auto e = VectorOps<long>::cast(c);
+	auto e = c->castTo<long>();
 	e->print();
 
 	auto f = MatrixOps<long>::fromVector(e, 3, 2);
