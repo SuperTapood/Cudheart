@@ -9,7 +9,6 @@
 
 // all this class does is call VectorOps functions and cast the resulting vector to a matrix lol
 
-
 namespace Cudheart::MatrixOps {
 	using NDArrays::Matrix;
 	using NDArrays::Vector;

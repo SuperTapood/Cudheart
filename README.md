@@ -10,7 +10,6 @@ The aim of this project is to provide a back end framework for a Tensorflow-esqu
 Currently, no actual CUDA kernels are implemented, but they will be in the future.
 
 
-- [ ] add print statements to the test module
 - [ ] add the rest of matrix creation functions
 - [ ] test matrix creation and conversion
 - [ ] add documentation
