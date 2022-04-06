@@ -17,9 +17,9 @@ void testVectorCreation() {
 	auto c = VectorOps::arange<double>(6.9f);
 	// c->print();
 
-	VectorOps::empty<int>((30))->print();
-	VectorOps::emptyLike<double>(a)->print();
-	VectorOps::linspace<float>(2.f, 3.f, 5.f)->print();
+	VectorOps::empty<int>((30));
+	VectorOps::emptyLike<double>(a);
+	VectorOps::linspace<float>(2.f, 3.f, 5.f);
 
 	auto d = VectorOps::arange<int>(20);
 	// d->print();

@@ -97,6 +97,7 @@
     <ClInclude Include="Cudheart\Exceptions\BaseException.cuh" />
     <ClInclude Include="Cudheart\Exceptions\Exceptions.cuh" />
     <ClInclude Include="Cudheart\Exceptions\MatrixConversionException.cuh" />
+    <ClInclude Include="Cudheart\Exceptions\NotImplementedException.cuh" />
     <ClInclude Include="Cudheart\Math\Calc.cuh" />
     <ClInclude Include="Cudheart\Math\Math.cuh" />
     <ClInclude Include="Cudheart\Test\Test.cuh" />
@@ -104,6 +105,7 @@
     <ClInclude Include="Sample\kernel.cuh" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\funclist.md" />
     <None Include="..\README.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
