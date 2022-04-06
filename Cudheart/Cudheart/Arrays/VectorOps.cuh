@@ -161,4 +161,30 @@ namespace Cudheart::VectorOps {
 	Vector<T>* logspace(T start, T stop) {
 		return logspace<T>(start, stop, (T)50, true, 10.0);
 	}
+
+	template <typename T>
+	Vector<T>* geomspace(T start, T stop, T num, bool endpoint) {
+		throw new Exceptions::NotImplementedException("geomspace", "log10");
+		/*
+		* start = Math::log10(start);
+		* stop = Math::log10(stop);
+		* auto res = logspace(start, stop, num, endpoint);
+		* res.set(0, start);
+		* if (endpoint) {
+		*	res.set(-1, stop);
+		* }
+		* return res;
+		*/
+		return nullptr;
+	}
+
+	template <typename T>
+	Vector<T>* geomspace(T start, T stop, T num) {
+		return geomspace<T>(start, stop, num, true);
+	}
+
+	template <typename T>
+	Vector<T>* geomspace(T start, T stop) {
+		return geomspace<T>(start, stop, (T)50, true);
+	}
 };

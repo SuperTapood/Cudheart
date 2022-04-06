@@ -142,4 +142,19 @@ namespace Cudheart::MatrixOps {
 	Matrix<T>* logspace(T start, T stop, int width, int height) {
 		return logspace<T>(start, stop, (T)50, true, 10.0, width, height);
 	}
+
+	template <typename T>
+	Vector<T>* geomspace(T start, T stop, T num, bool endpoint, int width, int height) {
+		return fromVector(VectorOps::geomspace(start, stop, num, endpoint), width, height);
+	}
+
+	template <typename T>
+	Vector<T>* geomspace(T start, T stop, T num, int width, int height) {
+		return geomspace<T>(start, stop, num, true, width, height);
+	}
+
+	template <typename T>
+	Vector<T>* geomspace(T start, T stop, int width, int height) {
+		return geomspace<T>(start, stop, (T)50, true, width, height);
+	}
 };

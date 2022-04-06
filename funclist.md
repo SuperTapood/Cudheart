@@ -5,13 +5,7 @@ any ticked funcs are added, but incomplete
 ## Creation funcs
 ### general creation functions
 - [X] logspace
-- [ ] geomspace
-### from files?
-- [ ] fromFile
-- [ ] fromFunction
-- [ ] fromIter
-- [ ] fromString
-- [ ] fromTxt
+- [X] geomspace
 ### matrix creation
 - [ ] eye
 - [ ] identity
@@ -346,3 +340,11 @@ any ticked funcs are added, but incomplete
 - [ ] bincount
 - [ ] histogramBinEdges
 - [ ] digitize
+
+
+### from files? - not yet
+- [ ] fromFile
+- [ ] fromFunction
+- [ ] fromIter
+- [ ] fromString
+- [ ] fromTxt
