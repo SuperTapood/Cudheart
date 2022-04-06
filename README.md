@@ -10,7 +10,7 @@ The aim of this project is to provide a back end framework for a Tensorflow-esqu
 Currently, no actual CUDA kernels are implemented, but they will be in the future.
 
 
-- [ ] add destroy boolean parameter when converting objects 
+- [ ] add print statements to the test module
 - [ ] add the rest of matrix creation functions
 - [ ] test matrix creation and conversion
 - [ ] add documentation
@@ -18,6 +18,7 @@ Currently, no actual CUDA kernels are implemented, but they will be in the futur
 - [ ] add inf
 - [ ] add negInf
 - [ ] add NaN
+- [ ] add math virtual class
 - [ ] add calc funcs
 - [ ] add trigo funcs
 - [ ] add bitwise funcs
