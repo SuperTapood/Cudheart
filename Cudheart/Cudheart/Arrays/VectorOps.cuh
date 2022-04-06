@@ -3,6 +3,7 @@
 #include "../Util.cuh"
 #include "Vector.cuh"
 #include "Matrix.cuh"
+#include "../Exceptions/Exceptions.cuh"
 
 namespace Cudheart::VectorOps {
 	using NDArrays::Vector;
@@ -123,5 +124,41 @@ namespace Cudheart::VectorOps {
 	template <typename T>
 	Vector<T>* zerosLike(Vector<T>* arr) {
 		return zeros<T>(arr->getSize());
+	}
+
+	template <typename T>
+	Vector<T>* logspace(T start, T stop, T num, bool endpoint, double base) {
+		Vector<T>* vec = linspace<T>(start, stop, num, endpoint);
+		throw new Exceptions::NotImplementedException("logspace", "power");
+		// return this instead
+		// out = Math::power(base, vec);
+		// delete vec;
+		// return out;
+		return vec;
+	}
+
+	template <typename T>
+	Vector<T>* logspace(T start, T stop, T num, bool endpoint) {
+		return logspace<T>(start, stop, num, endpoint, 10.0);
+	}
+
+	template <typename T>
+	Vector<T>* logspace(T start, T stop, T num) {
+		return logspace<T>(start, stop, num, true, 10.0);
+	}
+
+	template <typename T>
+	Vector<T>* logspace(T start, T stop, T num, double base) {
+		return logspace<T>(start, stop, num, true, base);
+	}
+
+	template <typename T>
+	Vector<T>* logspace(T start, T stop, double base) {
+		return logspace<T>(start, stop, (T)50, true, base);
+	}
+
+	template <typename T>
+	Vector<T>* logspace(T start, T stop) {
+		return logspace<T>(start, stop, (T)50, true, 10.0);
 	}
 };

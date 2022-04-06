@@ -112,4 +112,34 @@ namespace Cudheart::MatrixOps {
 	Matrix<T>* zerosLike(Matrix<T>* mat) {
 		return zeros(mat->getWidth(), mat->getHeight());
 	}
+
+	template <typename T>
+	Matrix<T>* logspace(T start, T stop, T num, bool endpoint, double base, int width, int height) {
+		return fromVector(VectorOps::logspace<T>(start, stop, num, endpoint, base), width, height);
+	}
+
+	template <typename T>
+	Matrix<T>* logspace(T start, T stop, T num, bool endpoint, int width, int height) {
+		return logspace<T>(start, stop, num, endpoint, 10.0, width, height);
+	}
+
+	template <typename T>
+	Matrix<T>* logspace(T start, T stop, T num, int width, int height) {
+		return logspace<T>(start, stop, num, true, 10.0, width, height);
+	}
+
+	template <typename T>
+	Matrix<T>* logspace(T start, T stop, T num, double base, int width, int height) {
+		return logspace<T>(start, stop, num, true, base, width, height);
+	}
+
+	template <typename T>
+	Matrix<T>* logspace(T start, T stop, double base, int width, int height) {
+		return logspace<T>(start, stop, (T)50, true, base, width, height);
+	}
+
+	template <typename T>
+	Matrix<T>* logspace(T start, T stop, int width, int height) {
+		return logspace<T>(start, stop, (T)50, true, 10.0, width, height);
+	}
 };

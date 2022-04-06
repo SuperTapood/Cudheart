@@ -1,9 +1,10 @@
 # list of functions left to implement
 
+any ticked funcs are added, but incomplete
 
 ## Creation funcs
 ### general creation functions
-- [ ] logspace
+- [X] logspace
 - [ ] geomspace
 ### from files?
 - [ ] fromFile
