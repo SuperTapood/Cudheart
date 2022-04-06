@@ -10,7 +10,6 @@ The aim of this project is to provide a back end framework for a Tensorflow-esqu
 Currently, no actual CUDA kernels are implemented, but they will be in the future.
 
 
-- [ ] add exception namespace, math namespaces, test namespace?
 - [ ] add destroy boolean parameter when converting objects 
 - [ ] add the rest of matrix creation functions
 - [ ] test matrix creation and conversion

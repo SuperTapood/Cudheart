@@ -1,21 +1,23 @@
 #include "BaseException.cuh"
 
 
-BaseException::BaseException()
-{
-	this->msg = "";
-}
+namespace Cudheart::Exceptions {
+	BaseException::BaseException()
+	{
+		this->msg = "";
+	}
 
-BaseException::BaseException(string msg)
-{
-	this->msg = msg;
-}
+	BaseException::BaseException(string msg)
+	{
+		this->msg = msg;
+	}
 
-const char* BaseException::what() const throw()
-{
-	return msg.c_str();
-}
+	const char* BaseException::what() const throw()
+	{
+		return msg.c_str();
+	}
 
-void BaseException::print() {
-	cout << msg << endl;
+	void BaseException::print() {
+		cout << msg << endl;
+	}
 }
