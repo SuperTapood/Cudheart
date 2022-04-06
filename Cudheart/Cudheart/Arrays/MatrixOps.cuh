@@ -4,6 +4,7 @@
 #include "Matrix.cuh"
 #include "Vector.cuh"
 #include "VectorOps.cuh"
+#include "../Exceptions/Exceptions.cuh"
 
 
 // all this class does is call VectorOps functions and cast the resulting vector to a matrix lol
@@ -58,8 +59,7 @@ namespace Cudheart::MatrixOps {
 	template <typename T>
 	Matrix<T>* fromVector(Vector<T>* vec, int width, int height) {
 		if (width * height != vec->getSize()) {
-			cout << "fromVector failed with w: " << width << " and h: " << height << "with size: " << vec->getSize() << endl;
-			return nullptr;
+			throw Exceptions::MatrixConversionException(width, height, vec->getSize());
 		}
 		Matrix<T>* out = empty<T>(width, height);
 

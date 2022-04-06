@@ -15,7 +15,7 @@ namespace Cudheart::Exceptions {
 		/// <summary>
 		/// the message to be presented in its fullest
 		/// </summary>
-		string msg;
+		string m_msg;
 	public:
 		/// <summary>
 		/// default constructor for easier inheritance

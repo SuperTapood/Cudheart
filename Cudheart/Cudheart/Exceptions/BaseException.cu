@@ -4,20 +4,20 @@
 namespace Cudheart::Exceptions {
 	BaseException::BaseException()
 	{
-		this->msg = "";
+		m_msg = "";
 	}
 
 	BaseException::BaseException(string msg)
 	{
-		this->msg = msg;
+		m_msg = msg;
 	}
 
 	const char* BaseException::what() const throw()
 	{
-		return msg.c_str();
+		return m_msg.c_str();
 	}
 
 	void BaseException::print() {
-		cout << msg << endl;
+		cout << m_msg << endl;
 	}
 }

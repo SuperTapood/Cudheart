@@ -1,3 +1,3 @@
 #pragma once
 
-#include "BaseException.cuh"
+#include "MatrixConversionException.cuh"
