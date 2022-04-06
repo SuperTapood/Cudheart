@@ -211,4 +211,25 @@ namespace Cudheart::MatrixOps {
 
 		return out;
 	}
+
+	template <typename T>
+	Vector<T>* diag(Matrix<T>* mat, int k) {
+		int len;
+		if (mat->getWidth() > mat->getHeight()) {
+			len = mat->getHeight();
+		}
+		else {
+			len = mat->getWidth();
+		}
+
+		len = len - k;
+
+		Vector<T>* out = VectorOps::empty<T>(len);
+
+		for (int i = 0, j = k; i < mat->getWidth() && j < mat->getHeight(); i++, j++) {
+			out->set(i, mat->get(i, j));
+		}
+
+		return out;
+	}
 };

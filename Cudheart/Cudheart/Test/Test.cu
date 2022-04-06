@@ -46,6 +46,11 @@ void testMatrixCreation() {
 	Cudheart::NDArrays::Matrix<int>* f = MatrixOps::meshgrid<int, int, int>(d, e);
 	f[0].print();
 	f[1].print();
+
+	Cudheart::NDArrays::Matrix<int>* g = &f[0];
+
+	auto h = MatrixOps::diag<int>(g, 2);
+	h->print();
 }
 
 void test() {
