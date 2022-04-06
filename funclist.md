@@ -7,7 +7,6 @@ any ticked funcs are added, but incomplete
 - [X] logspace
 - [X] geomspace
 ### matrix creation
-- [ ] eye
 - [ ] identity
 - [ ] meshgrid
 - [ ] mgrid

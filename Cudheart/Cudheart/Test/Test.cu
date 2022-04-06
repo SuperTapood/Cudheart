@@ -33,11 +33,13 @@ void testVectorCreation() {
 }
 
 void testMatrixCreation() {
-
+	auto a = MatrixOps::eye<int>(4);
+	a->print();
+	auto b = MatrixOps::eye<int>(7, 5, 4);
+	b->print();
 }
 
 void test() {
 	testVectorCreation();
-	cout << "passed vector creation tests" << endl;
 	testMatrixCreation();
 }

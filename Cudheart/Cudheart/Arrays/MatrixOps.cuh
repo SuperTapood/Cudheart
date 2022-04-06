@@ -18,11 +18,20 @@ namespace Cudheart::MatrixOps {
 		return new Matrix<T>(arr, width, height);
 	}
 
+	template <typename T>
+	Matrix<T>* fromVector(Vector<T>* vec, int width, int height, bool destroy) {
+		Matrix<T>* res = asMatrix(vec, width, height);
+		if (destroy) {
+			delete vec;
+		}
+		return res;
+	}
+
 	// do not fucking use this with T = char, string or custom class
 	// if you do, prepare for trouble and make it double
 	template <typename T>
 	Matrix<T>* arange(T start, T end, T jump, int width, int height) {
-		return asMatrix(VectorOps::arange<T>(start, end, jump), width, height);
+		return fromVector(VectorOps::arange<T>(start, end, jump), width, height);
 	}
 
 	template <typename T>
@@ -47,7 +56,7 @@ namespace Cudheart::MatrixOps {
 
 	template <typename T>
 	Matrix<T>* full(int width, int height, T value) {
-		return asMatrix(VectorOps::full<T>(width * height, value), width, height);
+		return fromVector<T>(VectorOps::full(width * height, value), width, height);
 	}
 
 	template <typename T>
@@ -69,18 +78,11 @@ namespace Cudheart::MatrixOps {
 		return out;
 	}
 
-	template <typename T>
-	Matrix<T>* fromVector(Vector<T>* vec, int width, int height, bool destroy) {
-		Matrix<T>* res = fromVector(vec, width, height);
-		if (destroy) {
-			delete vec;
-		}
-		return res;
-	}
+	
 
 	template <typename T>
 	Matrix<T>* linspace(T start, T stop, T num, bool endpoint, int width, int height) {
-		return asMatrix(VectorOps::linspace<T>(start, stop, num, endpoint), width, height);
+		return fromVector(VectorOps::linspace<T>(start, stop, num, endpoint), width, height, true);
 	}
 
 	template <typename T>
@@ -105,7 +107,7 @@ namespace Cudheart::MatrixOps {
 
 	template <typename T>
 	Matrix<T>* zeros(int width, int height) {
-		return full(width, height, 0);
+		return full<T>(width, height, 0);
 	}
 
 	template <typename T>
@@ -115,7 +117,7 @@ namespace Cudheart::MatrixOps {
 
 	template <typename T>
 	Matrix<T>* logspace(T start, T stop, T num, bool endpoint, double base, int width, int height) {
-		return fromVector(VectorOps::logspace<T>(start, stop, num, endpoint, base), width, height);
+		return fromVector(VectorOps::logspace<T>(start, stop, num, endpoint, base), width, height, true);
 	}
 
 	template <typename T>
@@ -144,17 +146,39 @@ namespace Cudheart::MatrixOps {
 	}
 
 	template <typename T>
-	Vector<T>* geomspace(T start, T stop, T num, bool endpoint, int width, int height) {
-		return fromVector(VectorOps::geomspace(start, stop, num, endpoint), width, height);
+	Matrix<T>* geomspace(T start, T stop, T num, bool endpoint, int width, int height) {
+		return fromVector(VectorOps::geomspace(start, stop, num, endpoint), width, height, true);
 	}
 
 	template <typename T>
-	Vector<T>* geomspace(T start, T stop, T num, int width, int height) {
+	Matrix<T>* geomspace(T start, T stop, T num, int width, int height) {
 		return geomspace<T>(start, stop, num, true, width, height);
 	}
 
 	template <typename T>
-	Vector<T>* geomspace(T start, T stop, int width, int height) {
+	Matrix<T>* geomspace(T start, T stop, int width, int height) {
 		return geomspace<T>(start, stop, (T)50, true, width, height);
+	}
+
+	template <typename T>
+	Matrix<T>* eye(int N, int M, int k) {
+		Matrix<T>* mat = zeros<T>(N, M);
+
+		for (int i = 0, j = k; i < N; i++, j++) {
+			j %= M;
+			mat->set(i, j, (T)1);
+		}
+
+		return mat;
+	}
+
+	template <typename T>
+	Matrix<T>* eye(int N, int k) {
+		return eye<T>(N, N, k);
+	}
+
+	template <typename T>
+	Matrix<T>* eye(int N) {
+		return eye<T>(N, N, 0);
 	}
 };
