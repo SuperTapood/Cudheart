@@ -24,5 +24,8 @@ Currently, no actual CUDA kernels are implemented, but they will be in the futur
 - [ ] add bitwise funcs
 - [ ] add comparison funcs
 - [ ] even more documentation
+- [ ] reverse the fucking matrix creation thing maybe
 
 p.s.: future me, please do remember to do all of the computations on flat vectors, and convert them "outside" of the math ty xoxo
+
+maybe make the cuda also a part of the creation process?

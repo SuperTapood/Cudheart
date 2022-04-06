@@ -37,6 +37,15 @@ void testMatrixCreation() {
 	a->print();
 	auto b = MatrixOps::eye<int>(7, 5, 4);
 	b->print();
+	auto c = MatrixOps::identity<char>(5);
+	c->print();
+
+	auto d = VectorOps::arange(4);
+	auto e = VectorOps::arange(5);
+
+	Cudheart::NDArrays::Matrix<int>* f = MatrixOps::meshgrid<int, int, int>(d, e);
+	f[0].print();
+	f[1].print();
 }
 
 void test() {

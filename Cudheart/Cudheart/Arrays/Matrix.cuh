@@ -114,6 +114,10 @@ namespace Cudheart::NDArrays {
 		void print() {
 			cout << this->toString() << endl;
 		}
+
+		void printInfo() {
+			cout << "Matrix of size: " << m_size << " width " << m_width << " and height " << m_height << endl;
+		}
 		// todo: add operator overloades to make this look better
 
 	private:

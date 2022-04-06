@@ -72,6 +72,10 @@ namespace Cudheart::NDArrays {
 		void print() {
 			cout << this->toString() << endl;
 		}
+
+		void printInfo() {
+			cout << "Vector of size: " << m_size << endl;
+		}
 		// todo: add operator overloades to make this look better
 	};
 }
