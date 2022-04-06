@@ -71,6 +71,15 @@ namespace Cudheart::MatrixOps {
 	}
 
 	template <typename T>
+	Matrix<T>* fromVector(Vector<T>* vec, int width, int height, bool destroy) {
+		Matrix<T>* res = fromVector(vec, width, height);
+		if (destroy) {
+			delete vec;
+		}
+		return res;
+	}
+
+	template <typename T>
 	Matrix<T>* linspace(T start, T stop, T num, bool endpoint, int width, int height) {
 		return asMatrix(VectorOps::linspace<T>(start, stop, num, endpoint), width, height);
 	}

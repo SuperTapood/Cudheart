@@ -16,13 +16,18 @@ namespace Cudheart::NDArrays {
 		}
 
 		Vector(int size) {
-			m_data = (T*)malloc(size * sizeof(T));
+			// m_data = (T*)malloc(size * sizeof(T));
+			m_data = new T[size];
 			m_size = size;
 		}
 
 		Vector(T* data) {
 			m_data = data;
 			m_size = (&data)[1] - data;
+		}
+
+		~Vector() {
+			delete[] m_data;
 		}
 
 		template<typename U>

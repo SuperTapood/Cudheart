@@ -75,6 +75,17 @@ namespace Cudheart::VectorOps {
 	}
 
 	template <typename T>
+	Vector<T>* fromMatrix(Matrix<T>* mat, bool destroy) {
+		Vector<T>* res = fromMatrix(mat);
+
+		if (destroy) {
+			delete mat;
+		}
+
+		return res;
+	}
+
+	template <typename T>
 	Vector<T>* linspace(T start, T stop, T num, bool endpoint) {
 		T jump = (stop - start) / num;
 		if (endpoint) {

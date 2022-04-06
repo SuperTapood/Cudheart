@@ -18,10 +18,15 @@ namespace Cudheart::NDArrays {
 		}
 
 		Matrix(int width, int height) {
-			m_data = (T*)malloc(static_cast<unsigned long long>(width) * height * sizeof(T));
+			// m_data = (T*)malloc(static_cast<unsigned long long>(width) * height * sizeof(T));
+			m_data = new T[width * height];
 			m_width = width;
 			m_height = height;
 			m_size = width * height;
+		}
+
+		~Matrix() {
+			delete[] m_data;
 		}
 
 		template<typename U>
