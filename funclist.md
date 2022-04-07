@@ -7,9 +7,8 @@ any ticked funcs are added, but incomplete
 - [X] logspace
 - [X] geomspace
 ### matrix creation
-- [ ] tri
-- [ ] tril
-- [ ] triu
+- [X] tril
+- [X] triu
 - [ ] vander
 
 ## array manipulation

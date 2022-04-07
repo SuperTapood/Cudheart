@@ -269,4 +269,39 @@ namespace Cudheart::MatrixOps {
 	Matrix<T>* tri(int N) {
 		return tri<T>(N, N, 0);
 	}
+
+	template <typename T>
+	Matrix<T>* tril(Matrix<T>* mat, int k) {
+		Matrix<T>* out = tri<T>(mat->getWidth(), mat->getHeight(), k);
+
+		throw new Exceptions::NotImplementedException("triu", "multiply");
+
+		// return Math::multiply(out, mat);
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* tril(Matrix<T>* mat) {
+		return triu(mat, 0);
+	}
+
+	template <typename T>
+	Matrix<T>* triu(Matrix<T>* mat, int k) {
+		throw new Exceptions::NotImplementedException("tril", "transpose and multiply");
+
+		// Matrix<T>* a = transpose(mat);
+		// Matrix<T>* b = tril(a);
+		// Matrix<T>* c = transpose(b);
+		// delete a;
+		// delete b;
+		// return c;
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* triu(Matrix<T>* mat) {
+		return triu(mat, 0);
+	}
 };

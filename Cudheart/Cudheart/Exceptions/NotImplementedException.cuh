@@ -7,9 +7,16 @@ namespace Cudheart::Exceptions {
 	public:
 		NotImplementedException(string name, string dep) {
 			ostringstream os;
+			string exp = "is";
+			for (int i = 0; i < dep.size(); i++) {
+				if (dep.at(i) == ' ') {
+					exp = "are";
+					break;
+				}
+			}
 			os << "function " << name << "is not implemented";
 			if (dep != "") {
-				os << " because " << dep << "is also not implemeted";
+				os << " because " << dep << exp << " also not implemeted";
 			}
 			m_msg = os.str();
 		}

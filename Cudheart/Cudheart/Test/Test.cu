@@ -56,6 +56,11 @@ void testMatrixCreation() {
 	
 	auto j = MatrixOps::tri<int>(3, 5, 2);
 	j->print();
+
+	//auto k = MatrixOps::arange(12, 4, 3);
+	//k->print();
+	//auto l = MatrixOps::tril(k, -1);
+	//l->print();
 }
 
 void test() {

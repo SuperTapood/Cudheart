@@ -118,6 +118,16 @@ namespace Cudheart::NDArrays {
 		void printInfo() {
 			cout << "Matrix of size: " << m_size << " width " << m_width << " and height " << m_height << endl;
 		}
+
+		Matrix<T>* dupe() {
+			Matrix<T>* out = new Matrix<T>(m_width, m_height);
+			
+			for (int i = 0; i < m_size; i++) {
+				out->set(i, get(i));
+			}
+
+			return out;
+		}
 		// todo: add operator overloades to make this look better
 
 	private:
