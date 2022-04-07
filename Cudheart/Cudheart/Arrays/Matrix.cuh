@@ -141,6 +141,27 @@ namespace Cudheart::NDArrays {
 			return mat;
 
 		}
+
+		Matrix<T>* rotate(int dir) {
+			if (dir < 0) {
+				dir += 4;
+			}
+
+			Matrix<T>* mat = dupe();
+
+			switch (dir) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			default:
+				return nullptr;
+			}
+
+			return mat;
+		}
 		// todo: add operator overloades to make this look better
 
 	private:
