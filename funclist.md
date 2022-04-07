@@ -9,7 +9,7 @@ any ticked funcs are added, but incomplete
 ### matrix creation
 - [X] tril
 - [X] triu
-- [ ] vander
+- [X] vander
 
 ## array manipulation
 ### transpose like
@@ -18,6 +18,8 @@ any ticked funcs are added, but incomplete
 - [ ] swapaxes
 - [ ] T
 - [ ] transpose
+- [ ] flip
+- [ ] rotate
 ### joining and splitting arrays
 - [ ] concatenate
 - [ ] stack

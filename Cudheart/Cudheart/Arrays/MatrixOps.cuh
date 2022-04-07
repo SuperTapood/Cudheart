@@ -12,6 +12,7 @@
 namespace Cudheart::MatrixOps {
 	using NDArrays::Matrix;
 	using NDArrays::Vector;
+	using namespace Exceptions;
 
 	template <typename T>
 	Matrix<T>* asMatrix(T* arr, int width, int height) {
@@ -288,7 +289,7 @@ namespace Cudheart::MatrixOps {
 
 	template <typename T>
 	Matrix<T>* triu(Matrix<T>* mat, int k) {
-		throw new Exceptions::NotImplementedException("tril", "transpose and multiply");
+		throw new NotImplementedException("tril", "transpose and multiply");
 
 		// Matrix<T>* a = transpose(mat);
 		// Matrix<T>* b = tril(a);
@@ -303,5 +304,46 @@ namespace Cudheart::MatrixOps {
 	template <typename T>
 	Matrix<T>* triu(Matrix<T>* mat) {
 		return triu(mat, 0);
+	}
+
+	template <typename T>
+	Matrix<T>* vander(Vector<T>* vec, int N, bool increasing) {
+		throw new NotImplementedException("vander", "flip, transpose and rotate");
+
+		/*
+		Matrix<T>* out = empty(vec->getSize(), N);
+
+		for (int i = 0; i < out->getHeight(); i++) {
+			for (int j = 0; j < out->getWidth(); j++) {
+				out->set(i, j, Math::power(vec->get(j), i));
+			}
+		}
+
+		Matrix<T>* a = rotate(out, -1);
+		delete out;
+		if (!increasing) {
+			return a;
+		}
+		Matrix<T>* b = flip(a);
+		delete a;
+		return b;
+		*/
+
+		return nullptr;
+	}
+
+	template <typename T>
+	Matrix<T>* vander(Vector<T>* vec, int N) {
+		return vander(vec, N, false);
+	}
+
+	template <typename T>
+	Matrix<T>* vander(Vector<T>* vec, bool increasing) {
+		return vander(vec, vec->getSize(), increasing);
+	}
+
+	template <typename T>
+	Matrix<T>* vander(Vector<T>* vec) {
+		return vander(vec, vec->getSize(), false);
 	}
 };

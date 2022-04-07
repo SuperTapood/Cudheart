@@ -55,7 +55,7 @@ void testMatrixCreation() {
 	//i->print();
 	
 	auto j = MatrixOps::tri<int>(3, 5, 2);
-	j->print();
+	// j->print();
 
 	//auto k = MatrixOps::arange(12, 4, 3);
 	//k->print();
