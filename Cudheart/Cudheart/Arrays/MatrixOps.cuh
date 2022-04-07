@@ -345,4 +345,9 @@ namespace Cudheart::MatrixOps {
 	Matrix<T>* vander(Vector<T>* vec) {
 		return vander(vec, vec->getSize(), false);
 	}
+
+	template <typename T>
+	Matrix<T>* transpose(Matrix<T>* mat) {
+		return mat->transpose();
+	}
 };

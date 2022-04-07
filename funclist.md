@@ -13,11 +13,6 @@ any ticked funcs are added, but incomplete
 
 ## array manipulation
 ### transpose like
-- [ ] moveaxis
-- [ ] rollaxis
-- [ ] swapaxes
-- [ ] T
-- [ ] transpose
 - [ ] flip
 - [ ] rotate
 ### joining and splitting arrays
