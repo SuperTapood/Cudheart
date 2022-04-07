@@ -1,10 +1,12 @@
 #pragma once
 
+#include "NDArray.cuh"
+
 // check about using longs and stuff as lengths and indices for bigger tensors
 
 namespace Cudheart::NDArrays {
 	template <typename T>
-	class Vector {
+	class Vector : public NDArray<T> {
 	private:
 		int m_size;
 		T* m_data;

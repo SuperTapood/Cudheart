@@ -91,6 +91,7 @@
     <ClInclude Include="Cudheart\Arrays\Arrays.cuh" />
     <ClInclude Include="Cudheart\Arrays\Matrix.cuh" />
     <ClInclude Include="Cudheart\Arrays\MatrixOps.cuh" />
+    <ClInclude Include="Cudheart\Arrays\NDArray.cuh" />
     <ClInclude Include="Cudheart\Arrays\Vector.cuh" />
     <ClInclude Include="Cudheart\Arrays\VectorOps.cuh" />
     <ClInclude Include="Cudheart\Cudheart.cuh" />

@@ -27,6 +27,7 @@
     <ClInclude Include="Cudheart\Arrays\Matrix.cuh" />
     <ClInclude Include="Cudheart\Exceptions\MatrixConversionException.cuh" />
     <ClInclude Include="Cudheart\Exceptions\NotImplementedException.cuh" />
+    <ClInclude Include="Cudheart\Arrays\NDArray.cuh" />
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="Sample\kernel.cu">

@@ -1,10 +1,12 @@
 #pragma once
 
+#include "NDArray.cuh"
+
 // check about using longs and stuff as lengths and indices for bigger tensors
 
 namespace Cudheart::NDArrays {
 	template <typename T>
-	class Matrix {
+	class Matrix : public NDArray<T> {
 	private:
 		int m_width, m_height, m_size;
 		T* m_data;
@@ -40,7 +42,7 @@ namespace Cudheart::NDArrays {
 			return output;
 		}
 
-		T get(int index) {
+		virtual T get(int index) {
 			if (index < 0) {
 				index += m_size;
 			}
@@ -55,10 +57,11 @@ namespace Cudheart::NDArrays {
 			if (j < 0) {
 				j += m_height;
 			}
-			return get(flatten(i, j));
+			int index = flatten(i, j);
+			return m_data[index];
 		}
 
-		void set(int index, T value) {
+		virtual void set(int index, T value) {
 			if (index < 0) {
 				index += m_size;
 			}
@@ -130,7 +133,6 @@ namespace Cudheart::NDArrays {
 		}
 		// todo: add operator overloades to make this look better
 
-	private:
 		int flatten(int i, int j) {
 			return j + (i * m_height);
 		}

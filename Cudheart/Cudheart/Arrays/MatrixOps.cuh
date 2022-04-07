@@ -224,7 +224,6 @@ namespace Cudheart::MatrixOps {
 		len = len - k;
 
 		Vector<T>* out = VectorOps::empty<T>(len);
-
 		for (int i = 0, j = k; i < mat->getWidth() && j < mat->getHeight(); i++, j++) {
 			out->set(i, mat->get(i, j));
 		}

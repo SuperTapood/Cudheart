@@ -13,8 +13,6 @@ Currently, no actual CUDA kernels are implemented, but they will be in the futur
 - [ ] fix the ops functions T nonsense
 - [ ] add more destroy argument to functions
 - [ ] make sure there is no undefined behavior when passing negative k (offset) to a function
-- [ ] add the rest of matrix creation functions
-- [ ] test matrix creation and conversion
 - [ ] add documentation
 - [ ] add custom complex numbers (Ai + B)
 - [ ] add inf
@@ -27,6 +25,7 @@ Currently, no actual CUDA kernels are implemented, but they will be in the futur
 - [ ] add comparison funcs
 - [ ] even more documentation
 - [ ] reverse the fucking matrix creation thing maybe
+- [ ] make util actually good for integrating cudheart in projects
 
 p.s.: future me, please do remember to do all of the computations on flat vectors, and convert them "outside" of the math ty xoxo
 
