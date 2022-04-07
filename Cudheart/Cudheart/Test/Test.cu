@@ -51,6 +51,8 @@ void testMatrixCreation() {
 
 	auto h = MatrixOps::diag<int>(g, 2);
 	h->print();
+	auto j = MatrixOps::diagflat(h, 2);
+	j->print();
 }
 
 void test() {

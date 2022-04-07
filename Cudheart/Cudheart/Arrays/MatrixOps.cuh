@@ -232,4 +232,20 @@ namespace Cudheart::MatrixOps {
 
 		return out;
 	}
+
+	template <typename T>
+	Matrix<T>* diagflat(Vector<T>* vec, int k) {
+		Matrix<T>* mat = zeros<T>(vec->getSize() + k, vec->getSize() + k);
+
+		for (int i = 0, j = k; i < mat->getWidth() && j < mat->getHeight(); i++, j++) {
+			mat->set(i, j, vec->get(i));
+		}
+
+		return mat;
+	}
+
+	template <typename T>
+	Matrix<T>* diagflat(Vector<T>* vec) {
+		return diagflat(vec, 0);
+	}
 };
