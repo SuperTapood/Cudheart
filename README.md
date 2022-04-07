@@ -11,6 +11,7 @@ Currently, no actual CUDA kernels are implemented, but they will be in the futur
 
 
 - [ ] fix the ops functions T nonsense
+- [ ] add support for a negative k offset (ie fix undefined behavior when passing negative k to a function)
 - [ ] add the rest of matrix creation functions
 - [ ] test matrix creation and conversion
 - [ ] add documentation

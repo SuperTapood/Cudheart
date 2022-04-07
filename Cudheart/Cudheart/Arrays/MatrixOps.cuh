@@ -189,8 +189,6 @@ namespace Cudheart::MatrixOps {
 
 	template <typename T, typename U, typename K>
 	Matrix<T>* meshgrid(Vector<U>* a, Vector<K>* b) {
-		a->printInfo();
-		b->printInfo();
 		Matrix<T>* out = (Matrix<T>*)malloc(sizeof(Matrix<T>) * 2);
 		Matrix<T>* first = empty<T>(b->getSize(), a->getSize());
 		Matrix<T>* second = empty<T>(b->getSize(), a->getSize());
@@ -247,5 +245,28 @@ namespace Cudheart::MatrixOps {
 	template <typename T>
 	Matrix<T>* diagflat(Vector<T>* vec) {
 		return diagflat(vec, 0);
+	}
+
+	template <typename T>
+	Matrix<T>* tri(int N, int M, int k) {
+		Matrix<T>* out = zeros<T>(N, M);
+
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j <= k + i && j < M; j++) {
+				out->set(i, j, 1);
+			}
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* tri(int N, int k) {
+		return tri<T>(N, N, k);
+	}
+
+	template <typename T>
+	Matrix<T>* tri(int N) {
+		return tri<T>(N, N, 0);
 	}
 };
