@@ -44,6 +44,8 @@ void testMatrixCreation() {
 	auto e = VectorOps::arange(5);
 
 	Cudheart::NDArrays::Matrix<int>* f = MatrixOps::meshgrid<int, int, int>(d, e);
+	auto zzz = VectorOps::arange(20);
+	f[0] = *MatrixOps::fromVector(zzz, 4, 5);
 	f[0].print();
 	//f[1].print();
 
@@ -62,6 +64,8 @@ void testMatrixCreation() {
 	//auto l = MatrixOps::tril(k, -1);
 	//l->print();
 	f[0].transpose()->print();
+	f[0].transpose()->transpose()->print();
+	f[0].reverseRows()->print();
 }
 
 void test() {

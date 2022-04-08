@@ -2,6 +2,8 @@
 
 // check about using longs and stuff as lengths and indices for bigger tensors
 
+#include "../Util.cuh"
+
 namespace Cudheart::NDArrays {
 	template <typename T>
 	class Matrix {
@@ -88,8 +90,8 @@ namespace Cudheart::NDArrays {
 		}
 
 		string toString() {
-			ostringstream os;
-			os << "[\n";
+ 			ostringstream os;
+			os << "[" << endl;
 			for (int i = 0; i < m_width; i++) {
 				os << " [";
 				for (int j = 0; j < m_height; j++) {
@@ -97,7 +99,10 @@ namespace Cudheart::NDArrays {
 						os << get(i, j);
 					}
 					else {
-						os << get(i, j) << ", ";
+						T res = get(i, j);
+						os << to_string(res);
+						os << ',';
+						os << ' ';
 					}
 				}
 				if (i + 1 == m_width) {
@@ -116,7 +121,7 @@ namespace Cudheart::NDArrays {
 		}
 
 		void printInfo() {
-			cout << "Matrix of size: " << m_size << " width " << m_width << " and height " << m_height << endl;
+			cout << "Matrix of size: " << to_string(m_size) << " width " << to_string(m_width) << " and height " << to_string(m_height) << endl;
 		}
 
 		Matrix<T>* dupe() {
@@ -142,25 +147,42 @@ namespace Cudheart::NDArrays {
 
 		}
 
+		Matrix<T>* reverseRows() {
+			Matrix<T>* mat = dupe();
+
+			for (int i = 0; i < m_height; i++) {
+				for (int j = 0; j < (int)(m_width / 2); j++) {
+					int left = mat->get(i, j);
+					int right = mat->get(i, m_width - j);
+					mat->set(i, m_width - j, left);
+					mat->set(i, j, right);
+				}
+			}
+
+			return mat;
+		}
+
+		// angles = dir * 90
 		Matrix<T>* rotate(int dir) {
 			if (dir < 0) {
 				dir += 4;
 			}
 
+			int angles = dir * 90;
+
 			Matrix<T>* mat = dupe();
 
-			switch (dir) {
-			case 1:
-				break;
-			case 2:
-				break;
-			case 3:
-				break;
-			default:
-				return nullptr;
-			}
+			if (angles == 90) {
+				Matrix<T>* trans = mat->transpose();
+				delete mat;
 
-			return mat;
+				Matrix<T>* rev = trans->reverseRows();
+				//delete trans;
+
+				return rev;
+			}
+			
+			return nullptr;
 		}
 		// todo: add operator overloades to make this look better
 
