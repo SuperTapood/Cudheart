@@ -165,7 +165,7 @@ namespace Cudheart::MatrixOps {
 	Matrix<T>* eye(int N, int M, int k) {
 		Matrix<T>* mat = zeros<T>(N, M);
 
-		for (int i = 0, j = k; i < N; i++, j++) {
+		for (int i = 0, j = k; i < N && j < M; i++, j++) {
 			j %= M;
 			mat->set(i, j, (T)1);
 		}
@@ -224,7 +224,7 @@ namespace Cudheart::MatrixOps {
 		len = len - k;
 
 		Vector<T>* out = VectorOps::empty<T>(len);
-		for (int i = 0, j = k; i < mat->getWidth() && j < mat->getHeight(); i++, j++) {
+		for (int i = 0, j = k; i < mat->getHeight() && j < mat->getWidth(); i++, j++) {
 			out->set(i, mat->get(i, j));
 		}
 
@@ -235,7 +235,7 @@ namespace Cudheart::MatrixOps {
 	Matrix<T>* diagflat(Vector<T>* vec, int k) {
 		Matrix<T>* mat = zeros<T>(vec->getSize() + k, vec->getSize() + k);
 
-		for (int i = 0, j = k; i < mat->getWidth() && j < mat->getHeight(); i++, j++) {
+		for (int i = 0, j = k; i < mat->getHeight() && j < mat->getWidth(); i++, j++) {
 			mat->set(i, j, vec->get(i));
 		}
 

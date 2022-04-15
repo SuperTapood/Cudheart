@@ -12,14 +12,14 @@ namespace Cudheart::NDArrays {
 		T* m_data;
 
 	public:
-		Matrix(T* data, int width, int height) {
+		Matrix(T* data, int height, int width) {
 			m_data = data;
 			m_width = width;
 			m_height = height;
 			m_size = width * height;
 		}
 
-		Matrix(int width, int height) {
+		Matrix(int height, int width) {
 			// m_data = (T*)malloc(static_cast<unsigned long long>(width) * height * sizeof(T));
 			m_data = new T[width * height];
 			m_width = width;
@@ -52,10 +52,10 @@ namespace Cudheart::NDArrays {
 		T get(int i, int j) {
 
 			if (i < 0) {
-				i += m_width;
+				i += m_height;
 			}
 			if (j < 0) {
-				j += m_height;
+				j += m_width;
 			}
 			return get(flatten(i, j));
 		}
@@ -69,10 +69,10 @@ namespace Cudheart::NDArrays {
 
 		void set(int i, int j, T value) {
 			if (i < 0) {
-				i += m_width;
+				i += m_height;
 			}
 			if (j < 0) {
-				j += m_height;
+				j += m_width;
 			}
 			m_data[flatten(i, j)] = value;
 		}
@@ -91,11 +91,11 @@ namespace Cudheart::NDArrays {
 
 		string toString() {
  			ostringstream os;
-			os << "[" << endl;
-			for (int i = 0; i < m_width; i++) {
+			os << "[\n";
+			for (int i = 0; i < m_height; i++) {
 				os << " [";
-				for (int j = 0; j < m_height; j++) {
-					if (j + 1 == m_height) {
+				for (int j = 0; j < m_width; j++) {
+					if (j + 1 == m_width) {
 						os << get(i, j);
 					}
 					else {
@@ -105,7 +105,7 @@ namespace Cudheart::NDArrays {
 						os << ' ';
 					}
 				}
-				if (i + 1 == m_width) {
+				if (i + 1 == m_height) {
 					os << "]\n";
 				}
 				else {
@@ -148,14 +148,13 @@ namespace Cudheart::NDArrays {
 		}
 
 		Matrix<T>* reverseRows() {
-			Matrix<T>* mat = dupe();
+			Matrix<T>* mat = new Matrix<T>(m_width, m_height);
+
 
 			for (int i = 0; i < m_height; i++) {
-				for (int j = 0; j < (int)(m_width / 2); j++) {
-					int left = mat->get(i, j);
-					int right = mat->get(i, m_width - j);
-					mat->set(i, m_width - j, left);
-					mat->set(i, j, right);
+				for (int j = m_width - 1, k = 0; j > -1; j--, k++) {
+					mat->set(i, k, get(i, j));
+					cout << mat->get(i, k) << "\n";
 				}
 			}
 
@@ -188,7 +187,7 @@ namespace Cudheart::NDArrays {
 
 	private:
 		int flatten(int i, int j) {
-			return j + (i * m_height);
+			return j + (i * m_width);
 		}
 	};
 }

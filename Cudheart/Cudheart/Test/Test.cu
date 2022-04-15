@@ -34,35 +34,35 @@ void testVectorCreation() {
 
 void testMatrixCreation() {
 	auto a = MatrixOps::eye<int>(4);
-	//a->print();
+	// a->print();
 	auto b = MatrixOps::eye<int>(7, 5, 4);
-	//b->print();
-	auto c = MatrixOps::identity<char>(5);
-	//c->print();
+	// b->print();
+	auto c = MatrixOps::identity<long>(5);
+	// c->print();
 
 	auto d = VectorOps::arange(4);
 	auto e = VectorOps::arange(5);
 
 	Cudheart::NDArrays::Matrix<int>* f = MatrixOps::meshgrid<int, int, int>(d, e);
 	auto zzz = VectorOps::arange(20);
-	f[0] = *MatrixOps::fromVector(zzz, 4, 5);
-	f[0].print();
-	//f[1].print();
+	// f[0] = *MatrixOps::fromVector(zzz, 4, 5);
+	// f[0].print();
+	// f[1].print();
 
 	Cudheart::NDArrays::Matrix<int>* g = &f[0];
 
 	auto h = MatrixOps::diag<int>(g, 2);
-	//h->print();
+	h->print();
 	auto i = MatrixOps::diagflat<int>(h, 2);
-	//i->print();
+	i->print();
 	
 	auto j = MatrixOps::tri<int>(3, 5, 2);
-	// j->print();
+	j->print();
 
-	//auto k = MatrixOps::arange(12, 4, 3);
-	//k->print();
-	//auto l = MatrixOps::tril(k, -1);
-	//l->print();
+	auto k = MatrixOps::arange(12, 4, 3);
+	k->print();
+	auto l = MatrixOps::tril(k, -1);
+	l->print();
 	f[0].transpose()->print();
 	f[0].transpose()->transpose()->print();
 	f[0].reverseRows()->print();

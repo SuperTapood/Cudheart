@@ -107,8 +107,8 @@ namespace Cudheart::VectorOps {
 	}
 
 	template <typename T>
-	Vector<T>* ones(int shape) {
-		return full<T>(shape, 1);
+	Vector<T>* ones(int len) {
+		return full<T>(len, 1);
 	}
 
 	template <typename T>
@@ -164,7 +164,7 @@ namespace Cudheart::VectorOps {
 
 	template <typename T>
 	Vector<T>* geomspace(T start, T stop, T num, bool endpoint) {
-		throw new Exceptions::NotImplementedException("geomspace", "log10");
+		throw new Exceptions::NotImplementedException("geomspace", "log10 and logspace");
 		/*
 		* start = Math::log10(start);
 		* stop = Math::log10(stop);
