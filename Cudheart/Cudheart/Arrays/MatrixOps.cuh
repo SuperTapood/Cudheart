@@ -274,7 +274,7 @@ namespace Cudheart::MatrixOps {
 	Matrix<T>* tril(Matrix<T>* mat, int k) {
 		Matrix<T>* out = tri<T>(mat->getWidth(), mat->getHeight(), k);
 
-		throw new Exceptions::NotImplementedException("triu", "multiply");
+		throw new Exceptions::NotImplementedException("tril", "multiply");
 
 		// return Math::multiply(out, mat);
 
@@ -283,7 +283,7 @@ namespace Cudheart::MatrixOps {
 
 	template <typename T>
 	Matrix<T>* tril(Matrix<T>* mat) {
-		return triu(mat, 0);
+		return tril(mat, 0);
 	}
 
 	template <typename T>

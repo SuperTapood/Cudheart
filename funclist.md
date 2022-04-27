@@ -12,9 +12,6 @@ any ticked funcs are added, but incomplete
 - [X] vander
 
 ## array manipulation
-### transpose like
-- [ ] flip
-- [ ] rotate
 ### joining and splitting arrays
 - [ ] concatenate
 - [ ] stack
