@@ -12,23 +12,7 @@ any ticked funcs are added, but incomplete
 - [X] vander
 
 ## array manipulation
-### joining and splitting arrays
-- [ ] concatenate
-- [ ] stack
-- [ ] columnStack
-- [ ] rowStack
-- [ ] split
-- [ ] tile
-- [ ] repeat
-### modify
-- [ ] delete
-- [ ] insert
-- [ ] append
-- [ ] resize
-- [ ] trimZero
-- [ ] unique
 ## Binary Ops
-- [ ] bitwiseAnd
 - [ ] bitwiseOr
 - [ ] bitwiseXor
 - [ ] invert
@@ -334,3 +318,18 @@ any ticked funcs are added, but incomplete
 - [ ] fromIter
 - [ ] fromString
 - [ ] fromTxt
+### joining and splitting arrays
+- [ ] concatenate
+- [ ] stack
+- [ ] columnStack
+- [ ] rowStack
+- [ ] split
+- [ ] tile
+- [ ] repeat
+### modify
+- [ ] delete
+- [ ] insert
+- [ ] append
+- [ ] resize
+- [ ] trimZero
+- [ ] unique

@@ -142,7 +142,6 @@ namespace Cudheart::NDArrays {
 			}
 
 			return mat;
-
 		}
 
 		Matrix<T>* reverseRows() {

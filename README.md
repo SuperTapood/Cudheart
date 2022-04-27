@@ -10,7 +10,6 @@ The aim of this project is to provide a back end framework for a Tensorflow-esqu
 Currently, no actual CUDA kernels are implemented, but they will be in the future.
 
 
-- [ ] fix the ops functions T nonsense
 - [ ] add more destroy argument to functions / add override boolean argument (maybe use flags?)
 - [ ] implement and use ^ instead of manually deleting
 - [ ] make sure there is no undefined behavior when passing negative k (offset) to a function
