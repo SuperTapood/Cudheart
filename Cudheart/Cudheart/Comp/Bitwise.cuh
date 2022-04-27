@@ -16,7 +16,7 @@ namespace Cudheart::Comp::Bitwise {
 		}
 
 		int len = a->getSize();
-		Vector<T>* out = empty(len);
+		Vector<T>* out = empty<T>(len);
 
 		for (int i = 0; i < len; i++) {
 			out->set(i, a->get(i) & b->get(i));

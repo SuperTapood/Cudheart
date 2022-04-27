@@ -3,8 +3,10 @@
 // check about using longs and stuff as lengths and indices for bigger tensors
 
 #include "../Util.cuh"
+#include "../Exceptions/Exceptions.cuh"
 
 namespace Cudheart::NDArrays {
+	using namespace Cudheart::Exceptions;
 	template <typename T>
 	class Matrix {
 	private:
@@ -132,6 +134,18 @@ namespace Cudheart::NDArrays {
 			return out;
 		}
 
+		Matrix<T>* transpose(bool inplace) {
+			Matrix<T>* mat = transpose();
+
+			if (inplace) {
+				setData(mat);
+				delete mat;
+				return this;
+			}
+			
+			return mat;
+		}
+
 		Matrix<T>* transpose() {
 			Matrix<T>* mat = new Matrix<T>(m_width, m_height);
 
@@ -139,6 +153,18 @@ namespace Cudheart::NDArrays {
 				for (int j = 0; j < m_height; j++) {
 					mat->set(i, j, get(j, i));
 				}
+			}
+
+			return mat;
+		}
+
+		Matrix<T>* reverseRows(bool inplace) {
+			Matrix<T>* mat = reverseRows();
+
+			if (inplace) {
+				setData(mat);
+				delete mat;
+				return this;
 			}
 
 			return mat;
@@ -157,19 +183,26 @@ namespace Cudheart::NDArrays {
 			return mat;
 		}
 
-		// angles = dir * 90
+		Matrix<T>* rotate(int angles, bool inplace) {
+			Matrix<T>* mat = rotate(angles);
+
+			if (inplace) {
+				setData(mat);
+				delete mat;
+				return this;
+			}
+
+			return mat;
+		}
+
 		Matrix<T>* rotate(int angles) {
 			Matrix<T>* mat = dupe();
 			Matrix<T>* out = nullptr;
 
 			if (angles == 90) {
-				Matrix<T>* trans = mat->transpose();
-				delete mat;
-
-				Matrix<T>* rev = trans->reverseRows();
-				delete trans;
-
-				out = rev;
+				mat->transpose(true);
+				mat->reverseRows(true);
+				out = mat;
 			}
 			else if (angles == 180) {
 				out = mat->rotate(90)->rotate(90);
@@ -181,20 +214,30 @@ namespace Cudheart::NDArrays {
 				out = rotate(180);
 			}
 			else if (angles == -90) {
-				Matrix<T>* rev = mat->reverseRows();
-				delete mat;
-
-				Matrix<T>* trans = rev->transpose();
-				delete rev;
-
-				out = trans;
+				mat->reverseRows(true);
+				mat->transpose(true);
+				out = mat;
 			}
 			
 			return out;
 		}
 
+		Matrix<T>* flip(bool inplace) {
+			return rotate(180, inplace);
+		}
+
 		Matrix<T>* flip() {
 			return rotate(180);
+		}
+
+		void setData(Matrix<T>* mat) {
+			if (getWidth() != mat->getWidth() || getHeight() != mat->getHeight()) {
+				m_data = new T[mat->getWidth() * mat->getHeight()];
+			}
+
+			for (int i = 0; i < m_size; i++) {
+				set(i, mat->get(i));
+			}
 		}
 
 		// todo: add operator overloades to make this look better

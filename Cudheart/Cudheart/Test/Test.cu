@@ -59,14 +59,14 @@ void testMatrixCreation() {
 
 	auto k = MatrixOps::arange(12, 4, 3);
 	// k->print();
-	//f->print();
+	f->print();
 	//f[0].transpose()->print();
 	//f[0].transpose()->transpose()->print();
 	//f[0].reverseRows()->print();
-	//f->rotate(90)->print();
-	//f->rotate(180)->print();
-	//f->rotate(-180)->print();
-	//f->rotate(-90)->print();
+	f->rotate(90)->print();
+	f->rotate(180)->print();
+	f->rotate(-180)->print();
+	f->rotate(-90)->print();
 } 
 
 void test() {
