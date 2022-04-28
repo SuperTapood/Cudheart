@@ -2,5 +2,5 @@
 
 #include "Arrays/Arrays.cuh"
 #include "Exceptions/Exceptions.cuh"
-#include "Comp/Comp.cuh"
+#include "Math/Math.cuh"
 

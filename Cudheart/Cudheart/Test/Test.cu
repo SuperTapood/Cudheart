@@ -59,33 +59,34 @@ void testMatrixCreation() {
 
 	auto k = MatrixOps::arange(12, 4, 3);
 	// k->print();
-	f->print();
+	//f->print();
 	//f[0].transpose()->print();
 	//f[0].transpose()->transpose()->print();
 	//f[0].reverseRows()->print();
-	f->rotate(90)->print();
-	f->rotate(180)->print();
-	f->rotate(-180)->print();
-	f->rotate(-90)->print();
+	//f->rotate(90)->print();
+	//f->rotate(180)->print();
+	//f->rotate(-180)->print();
+	//f->rotate(-90)->print();
 } 
 
 void testBinaryOps() {
-	using namespace Cudheart::Comp::Bitwise;
+	using namespace Cudheart::Math::BitwiseCPP;
+
 	auto a = VectorOps::full(4, 5);
 	auto b = VectorOps::full(4, 9);
 	auto c = VectorOps::full(4, 1);
 
-	bitwiseAnd(a, b)->print();
-	bitwiseOr(a, b)->print();
-	bitwiseXor(a, b)->print();
-	bitwiseNot(a)->print();
-	bitwiseLeftShift(b, c)->print();
-	bitwiseRightShift(b, c)->print();
+	//bitwiseAnd(a, b)->print();;
+	//bitwiseOr(a, b)->print();
+	//bitwiseXor(a, b)->print();
+	//bitwiseNot(a)->print();
+	//bitwiseLeftShift(b, c)->print();
+	//bitwiseRightShift(b, c)->print();
 
 }
 
 void test() {
-	testVectorCreation();
-	testMatrixCreation();
+	//testVectorCreation();
+	//testMatrixCreation();
 	testBinaryOps();
 }
