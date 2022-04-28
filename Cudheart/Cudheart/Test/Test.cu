@@ -69,7 +69,23 @@ void testMatrixCreation() {
 	f->rotate(-90)->print();
 } 
 
+void testBinaryOps() {
+	using namespace Cudheart::Comp::Bitwise;
+	auto a = VectorOps::full(4, 5);
+	auto b = VectorOps::full(4, 9);
+	auto c = VectorOps::full(4, 1);
+
+	bitwiseAnd(a, b)->print();
+	bitwiseOr(a, b)->print();
+	bitwiseXor(a, b)->print();
+	bitwiseNot(a)->print();
+	bitwiseLeftShift(b, c)->print();
+	bitwiseRightShift(b, c)->print();
+
+}
+
 void test() {
 	testVectorCreation();
 	testMatrixCreation();
+	testBinaryOps();
 }

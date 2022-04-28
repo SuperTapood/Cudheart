@@ -12,15 +12,6 @@ any ticked funcs are added, but incomplete
 - [X] vander
 
 ## array manipulation
-## Binary Ops
-- [ ] bitwiseOr
-- [ ] bitwiseXor
-- [ ] invert
-- [ ] leftShift
-- [ ] rightShift
-- [ ] packBits
-- [ ] unpackBits
-- [ ] binaryRepr
 ## String ops
 - [ ] add
 - [ ] multiply

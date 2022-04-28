@@ -5,4 +5,5 @@
 
 void testVectorCreation();
 void testMatrixCreation();
+void testBinaryOps();
 void test();
