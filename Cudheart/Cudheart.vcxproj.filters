@@ -30,6 +30,10 @@
     <ClInclude Include="Cudheart\Exceptions\ShapeMismatchException.cuh" />
     <ClInclude Include="Cudheart\Math\BitwiseCuda.cuh" />
     <ClInclude Include="Cudheart\Math\BitwiseCPP.cuh" />
+    <ClInclude Include="Cudheart\CUtil\ContainerA.cuh" />
+    <ClInclude Include="Cudheart\CUtil\CUtil.cuh" />
+    <ClInclude Include="Cudheart\CUtil\ContainerAB.cuh" />
+    <ClInclude Include="Cudheart\CUtil\ContainerABC.cuh" />
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="Sample\kernel.cu">
@@ -42,5 +46,6 @@
   <ItemGroup>
     <None Include="..\README.md" />
     <None Include="..\funclist.md" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

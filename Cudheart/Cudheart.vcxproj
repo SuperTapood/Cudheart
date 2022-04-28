@@ -94,6 +94,10 @@
     <ClInclude Include="Cudheart\Arrays\NDArray.cuh" />
     <ClInclude Include="Cudheart\Arrays\Vector.cuh" />
     <ClInclude Include="Cudheart\Arrays\VectorOps.cuh" />
+    <ClInclude Include="Cudheart\CUtil\ContainerA.cuh" />
+    <ClInclude Include="Cudheart\CUtil\ContainerAB.cuh" />
+    <ClInclude Include="Cudheart\CUtil\ContainerABC.cuh" />
+    <ClInclude Include="Cudheart\CUtil\CUtil.cuh" />
     <ClInclude Include="Cudheart\Math\BitwiseCPP.cuh" />
     <ClInclude Include="Cudheart\Math\BitwiseCuda.cuh" />
     <ClInclude Include="Cudheart\Cudheart.cuh" />
@@ -110,6 +114,7 @@
   <ItemGroup>
     <None Include="..\funclist.md" />
     <None Include="..\README.md" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

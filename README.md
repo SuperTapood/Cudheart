@@ -11,6 +11,7 @@ Currently, no actual CUDA kernels are implemented, but they will be in the futur
 
 
 - [ ] make sure there is no undefined behavior when passing negative k (offset) to a function
+- [ ] maybe don't copy all arrays from gpu memory to cpu memory to save time (don't copy the input arrays)
 - [ ] add built in casting for math functions
 - [ ] add documentation
 - [ ] add custom complex numbers (Ai + B)
