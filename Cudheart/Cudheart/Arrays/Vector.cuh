@@ -85,7 +85,7 @@ namespace Cudheart::NDArrays {
 		ContainerA<T>* getContainerA() {
 			ContainerA<T>* out = new ContainerA<T>();
 
-			out->warmUp((void**)m_data, m_size);
+			out->warmUp(m_data, m_size);
 
 			return out;
 		}
@@ -93,7 +93,7 @@ namespace Cudheart::NDArrays {
 		ContainerAB<T>* getContainerAB(Vector<T>* other) {
 			ContainerAB<T>* out = new ContainerAB<T>();
 
-			out->warmUp((void**)m_data, (void**)other->m_data, m_size);
+			out->warmUp(m_data, other->m_data, m_size);
 
 			return out;
 		}

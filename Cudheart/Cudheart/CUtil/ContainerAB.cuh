@@ -19,6 +19,8 @@ private:
 	bool inputA = true;
 	bool inputB = false;
 
+	bool cool;
+
 public:
 	T* devA;
 	T* devB;
@@ -37,12 +39,19 @@ private:
 	}
 
 public:
-	void setInputs(bool a, bool b, bool c) {
+	~ContainerAB() {
+		if (!cool) {
+			coolDown();
+		}
+	}
+
+	void setInputs(bool a, bool b) {
 		inputA = a;
 		inputB = b;
 	}
 
 	void warmUp(T* a, T* b, int size) {
+		cool = false;
 		cudaSetDevice(0);
 		m_size = size;
 		m_ptrA = a;
@@ -51,7 +60,6 @@ public:
 		{
 			checkStatus(cudaMalloc((void**)&devA, sizeof(T) * size), "cudaMalloc");
 			checkStatus(cudaMalloc((void**)&devB, sizeof(T) * size), "cudaMalloc");
-			checkStatus(cudaMalloc((void**)&devC, sizeof(T) * size), "cudaMalloc");
 		}
 		// copy data from cpu (host) memory to gpu (device) memory
 
@@ -66,6 +74,7 @@ public:
 	}
 
 	virtual void coolDown() {
+		cool = true;
 		// copy memory from the gpu back to the cpu
 		{
 			if (!inputA) {

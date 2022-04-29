@@ -20,6 +20,7 @@ private:
 	bool inputA = true;
 	bool inputB = true;
 	bool inputC = false;
+	bool cool;
 
 public:
 	T* devA;
@@ -41,6 +42,12 @@ private:
 	}
 
 public:
+	~ContainerABC() {
+		if (!cool) {
+			coolDown();
+		}
+	}
+
 	void setInputs(bool a, bool b, bool c) {
 		inputA = a;
 		inputB = b;
@@ -48,6 +55,7 @@ public:
 	}
 
 	void warmUp(T* a, T* b, T* c, int size) {
+		cool = false;
 		cudaSetDevice(0);
 		m_size = size;
 		m_ptrA = a;
@@ -75,6 +83,7 @@ public:
 	}
 
 	virtual void coolDown() {
+		cool = true;
 		// copy memory from the gpu back to the cpu
 		{
 			if (!inputA) {

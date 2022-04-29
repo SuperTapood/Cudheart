@@ -35,7 +35,7 @@
     <ClInclude Include="Cudheart\CUtil\ContainerAB.cuh" />
     <ClInclude Include="Cudheart\CUtil\ContainerABC.cuh" />
     <ClInclude Include="Cudheart\Math\Bitwise\Bitwise.cuh" />
-    <ClInclude Include="Cudheart\Math\Kernels.cuh" />
+    <ClInclude Include="Cudheart\Math\Bitwise\BitwiseKernels.cuh" />
     <ClInclude Include="Cudheart\Exceptions\CudaException.cuh" />
   </ItemGroup>
   <ItemGroup>

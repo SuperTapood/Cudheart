@@ -14,6 +14,8 @@ private:
 	cudaError_t cudaStatus;
 	int m_size;
 
+	bool cool;
+
 public:
 	T* devA;
 
@@ -30,8 +32,14 @@ private:
 	}
 
 public:
+	~ContainerA() {
+		if (!cool) {
+			coolDown();
+		}
+	}
 
 	void warmUp(T* a, int size) {
+		cool = false;
 		cudaSetDevice(0);
 		m_size = size;
 		m_ptrA = a;
@@ -47,6 +55,7 @@ public:
 	}
 
 	virtual void coolDown() {
+		cool = true;
 		// copy memory from the gpu back to the cpu
 		{
 			checkStatus(cudaMemcpy(m_ptrA, devA, m_size * sizeof(T), cudaMemcpyDeviceToHost), "cudaMemcpy of type device to host");
