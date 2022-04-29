@@ -4,3 +4,4 @@
 #include "BaseException.cuh"
 #include "NotImplementedException.cuh"
 #include "ShapeMismatchException.cuh"
+#include "CudaException.cuh"

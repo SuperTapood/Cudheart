@@ -98,13 +98,16 @@
     <ClInclude Include="Cudheart\CUtil\ContainerAB.cuh" />
     <ClInclude Include="Cudheart\CUtil\ContainerABC.cuh" />
     <ClInclude Include="Cudheart\CUtil\CUtil.cuh" />
-    <ClInclude Include="Cudheart\Math\BitwiseCPP.cuh" />
-    <ClInclude Include="Cudheart\Math\BitwiseCuda.cuh" />
+    <ClInclude Include="Cudheart\Exceptions\CudaException.cuh" />
+    <ClInclude Include="Cudheart\Math\Bitwise\BitwiseCPP.cuh" />
+    <ClInclude Include="Cudheart\Math\Bitwise\BitwiseCuda.cuh" />
     <ClInclude Include="Cudheart\Cudheart.cuh" />
     <ClInclude Include="Cudheart\Exceptions\BaseException.cuh" />
     <ClInclude Include="Cudheart\Exceptions\Exceptions.cuh" />
     <ClInclude Include="Cudheart\Exceptions\MatrixConversionException.cuh" />
     <ClInclude Include="Cudheart\Exceptions\NotImplementedException.cuh" />
+    <ClInclude Include="Cudheart\Math\Bitwise\Bitwise.cuh" />
+    <ClInclude Include="Cudheart\Math\Kernels.cuh" />
     <ClInclude Include="Cudheart\Math\Math.cuh" />
     <ClInclude Include="Cudheart\Exceptions\ShapeMismatchException.cuh" />
     <ClInclude Include="Cudheart\Test\Test.cuh" />
@@ -114,7 +117,6 @@
   <ItemGroup>
     <None Include="..\funclist.md" />
     <None Include="..\README.md" />
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

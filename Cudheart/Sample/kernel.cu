@@ -4,6 +4,9 @@
 #include "device_launch_parameters.h"
 
 #include <stdio.h>
+#include <iostream>
+
+using namespace std;
 
 cudaError_t addWithCuda(int *c, const int *a, const int *b, unsigned int size);
 
@@ -56,12 +59,16 @@ cudaError_t addWithCuda(int *c, const int *a, const int *b, unsigned int size)
         goto Error;
     }
 
+    cout << "c: " << dev_c << endl;
+
     // Allocate GPU buffers for three vectors (two input, one output)    .
     cudaStatus = cudaMalloc((void**)&dev_c, size * sizeof(int));
     if (cudaStatus != cudaSuccess) {
         fprintf(stderr, "cudaMalloc failed!");
         goto Error;
     }
+
+    cout << "c: " << dev_c << endl;
 
     cudaStatus = cudaMalloc((void**)&dev_a, size * sizeof(int));
     if (cudaStatus != cudaSuccess) {

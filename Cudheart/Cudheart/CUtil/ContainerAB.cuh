@@ -29,7 +29,7 @@ private:
 	}
 
 	void allocate(T* ptr, int size) {
-		cudaStatus = cudaMalloc(ptr, sizeof(T) * size);
+		cudaStatus = cudaMalloc((void**)&ptr, sizeof(T) * size);
 		if (cudaStatus != cudaSuccess) {
 			error();
 		}

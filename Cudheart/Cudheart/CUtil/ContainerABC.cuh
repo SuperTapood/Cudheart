@@ -2,15 +2,16 @@
 
 #include "cuda_runtime.h"
 #include "device_launch_parameters.h"
+#include "../Exceptions/CudaException.cuh"
 
 #include <stdio.h>
 
 template <typename T>
 class ContainerABC {
 private:
-	void** m_ptrA;
-	void** m_ptrB;
-	void** m_ptrC;
+	T* m_ptrA;
+	T* m_ptrB;
+	T* m_ptrC;
 	cudaError_t cudaStatus;
 	int m_size;
 
@@ -20,55 +21,53 @@ public:
 	T* devC;
 
 private:
-	void error() {
-		fprintf(stderr, "cudaMalloc failed!");
-		release();
-	}
-
 	void release() {
-		cudaFree(m_ptrA);
-		cudaFree(m_ptrB);
-		cudaFree(m_ptrC);
+		cudaFree((void*)devA);
+		cudaFree((void*)devB);
+		cudaFree((void*)devC);
 	}
 
-	void allocate(T* ptr, int size) {
-		cudaStatus = cudaMalloc(ptr, sizeof(T) * size);
-		if (cudaStatus != cudaSuccess) {
-			error();
-		}
-	}
-
-	void copyMemHTD(T* dst, T* src, int size) {
-		cudaStatus = cudaMemcpy(dst, src, size * sizeof(T), cudaMemcpyHostToDevice);
-		if (cudaStatus != cudaSuccess) {
-			error();
-		}
-	}
-
-	void copyMemDTH(T* dst, T* src, int size) {
-		cudaStatus = cudaMemcpy(dst, src, size * sizeof(T), cudaMemcpyDeviceToHost);
-		if (cudaStatus != cudaSuccess) {
-			error();
+	void checkStatus(cudaError_t status) {
+		if (status != cudaSuccess) {
+			fprintf(stdout, cudaGetErrorName(status));
+			fprintf(stdout, cudaGetErrorString(status));
+			release();
+			throw new Cudheart::Exceptions::CudaException(cudaGetErrorName(status), cudaGetErrorString(status));
 		}
 	}
 
 public:
-	virtual void warmUp(void** a, void** b, int size) {
+	virtual void warmUp(T* a, T* b, T* c, int size) {
+		cudaSetDevice(0);
 		m_size = size;
 		m_ptrA = a;
 		m_ptrB = b;
-		allocate(devA, size);
-		allocate(devB, size);
-		allocate(devC, size);
-		copyMemHTD(devA, m_ptrA, size);
-		copyMemHTD(devB, m_ptrB, size);
-		copyMemHTD(devC, m_ptrB, size);
+		m_ptrC = c;
+		// checkStatus(cudaErrorInvalidValue);
+		// allocate the needed memory on the gpu
+		{
+			checkStatus(cudaMalloc((void**)&devA, sizeof(T) * size));
+			checkStatus(cudaMalloc((void**)&devB, sizeof(T) * size));
+			checkStatus(cudaMalloc((void**)&devC, sizeof(T) * size));
+		}
+		// copy data from cpu (host) memory to gpu (device) memory
+
+		{
+			checkStatus(cudaMemcpy(devA, m_ptrA, size * sizeof(T), cudaMemcpyHostToDevice));
+			checkStatus(cudaMemcpy(devB, m_ptrB, size * sizeof(T), cudaMemcpyHostToDevice));
+			checkStatus(cudaMemcpy(devC, m_ptrB, size * sizeof(T), cudaMemcpyHostToDevice));
+		}
 	}
 
 	virtual void coolDown() {
-		copyMemDTH(m_ptrA, devA, m_size);
-		copyMemDTH(m_ptrB, devB, m_size);
-		copyMemDTH(m_ptrC, devC, m_size);
+		// copy memory from the gpu back to the cpu
+		{
+			checkStatus(cudaMemcpy(m_ptrA, devA, m_size * sizeof(T), cudaMemcpyDeviceToHost));
+			checkStatus(cudaMemcpy(m_ptrB, devB, m_size * sizeof(T), cudaMemcpyDeviceToHost));
+			checkStatus(cudaMemcpy(m_ptrC, devC, m_size * sizeof(T), cudaMemcpyDeviceToHost));
+		}
+		// synchronize the device
+		checkStatus(cudaDeviceSynchronize());		
 		release();
 	}
 };

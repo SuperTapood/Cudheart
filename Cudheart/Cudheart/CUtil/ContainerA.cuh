@@ -49,14 +49,14 @@ private:
 	}
 
 public:
-	virtual void warmUp(void** a, int size) {
+	void warmUp(void** a, int size) {
 		m_size = size;
-		m_ptrA = a;
+		m_ptrA = (void**)a;
 		allocate(devA, size);
 		copyMemHTD(devA, m_ptrA, size);
 	}
 
-	virtual void coolDown() {
+	void coolDown() {
 		copyMemDTH(m_ptrA, devA, m_size);
 		release();
 	}

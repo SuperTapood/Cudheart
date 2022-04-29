@@ -1,8 +1,7 @@
 #include "Test.cuh"
+#include "../../Sample/kernel.cuh"
 
 using namespace Cudheart;
-
-
 
 void testVectorCreation() {
 	// lol no need for using namespace when using auto
@@ -70,7 +69,7 @@ void testMatrixCreation() {
 } 
 
 void testBinaryOps() {
-	using namespace Cudheart::Math::BitwiseCPP;
+	using namespace Cudheart::Math::CUDA::Bitwise;
 
 	auto a = VectorOps::full(4, 5);
 	auto b = VectorOps::full(4, 9);
@@ -83,6 +82,9 @@ void testBinaryOps() {
 	//bitwiseLeftShift(b, c)->print();
 	//bitwiseRightShift(b, c)->print();
 
+	bitwiseAnd(a, b)->print();
+	//func();
+	//a->getContainerABC(b, c);
 }
 
 void test() {

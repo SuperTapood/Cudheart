@@ -1,6 +1,7 @@
 #pragma once
 
 #include "NDArray.cuh"
+#include "../CUtil/CUtil.cuh"
 
 // check about using longs and stuff as lengths and indices for bigger tensors
 
@@ -79,5 +80,29 @@ namespace Cudheart::NDArrays {
 			cout << "Vector of size: " << m_size << endl;
 		}
 		// todo: add operator overloades to make this look better
+
+		ContainerA<T>* getContainerA() {
+			ContainerA<T>* out = new ContainerA<T>();
+
+			out->warmUp((void**)m_data, m_size);
+
+			return out;
+		}
+
+		ContainerAB<T>* getContainerAB(Vector<T>* other) {
+			ContainerAB<T>* out = new ContainerAB<T>();
+
+			out->warmUp((void**)m_data, (void**)other->m_data, m_size);
+
+			return out;
+		}
+
+		ContainerABC<T>* getContainerABC(Vector<T>* b, Vector<T>* c) {
+			ContainerABC<T>* out = new ContainerABC<T>();
+
+			out->warmUp(m_data, b->m_data, c->m_data, m_size);
+
+			return out;
+		}
 	};
 }
