@@ -20,8 +20,6 @@ public:
 private:
 	void release() {
 		cudaFree((void*)devA);
-		cudaFree((void*)devB);
-		cudaFree((void*)devC);
 	}
 
 	void checkStatus(cudaError_t status, string func) {
@@ -32,7 +30,8 @@ private:
 	}
 
 public:
-	virtual void warmUp(T* a, int size) {
+
+	void warmUp(T* a, int size) {
 		cudaSetDevice(0);
 		m_size = size;
 		m_ptrA = a;
@@ -43,7 +42,7 @@ public:
 		// copy data from cpu (host) memory to gpu (device) memory
 
 		{
-			checkStatus(cudaMemcpy(devA, m_ptrA, size * sizeof(T), cudaMemcpyHostToDevice), "cudaMemcpy of type host to device");
+			checkStatus(cudaMemcpy(devA, m_ptrA, size * sizeof(T), cudaMemcpyHostToDevice),"cudaMemcpy of type host to device");
 		}
 	}
 

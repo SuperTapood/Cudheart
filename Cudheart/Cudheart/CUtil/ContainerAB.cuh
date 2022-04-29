@@ -7,12 +7,17 @@
 #include <stdio.h>
 
 template <typename T>
-class ContainerABC {
+class ContainerAB {
 private:
 	T* m_ptrA;
 	T* m_ptrB;
 	cudaError_t cudaStatus;
 	int m_size;
+
+	// inputs will be copied from the host but not to it
+	// non inputs will not be copied from the host but they will be copied to it
+	bool inputA = true;
+	bool inputB = false;
 
 public:
 	T* devA;
@@ -32,7 +37,12 @@ private:
 	}
 
 public:
-	virtual void warmUp(T* a, T* b, T* c, int size) {
+	void setInputs(bool a, bool b, bool c) {
+		inputA = a;
+		inputB = b;
+	}
+
+	void warmUp(T* a, T* b, int size) {
 		cudaSetDevice(0);
 		m_size = size;
 		m_ptrA = a;
@@ -41,20 +51,29 @@ public:
 		{
 			checkStatus(cudaMalloc((void**)&devA, sizeof(T) * size), "cudaMalloc");
 			checkStatus(cudaMalloc((void**)&devB, sizeof(T) * size), "cudaMalloc");
+			checkStatus(cudaMalloc((void**)&devC, sizeof(T) * size), "cudaMalloc");
 		}
 		// copy data from cpu (host) memory to gpu (device) memory
 
 		{
-			checkStatus(cudaMemcpy(devA, m_ptrA, size * sizeof(T), cudaMemcpyHostToDevice), "cudaMemcpy of type host to device");
-			checkStatus(cudaMemcpy(devB, m_ptrB, size * sizeof(T), cudaMemcpyHostToDevice), "cudaMemcpy of type host to device");
+			if (inputA) {
+				checkStatus(cudaMemcpy(devA, m_ptrA, size * sizeof(T), cudaMemcpyHostToDevice), "cudaMemcpy of type host to device");
+			}
+			if (inputB) {
+				checkStatus(cudaMemcpy(devB, m_ptrB, size * sizeof(T), cudaMemcpyHostToDevice), "cudaMemcpy of type host to device");
+			}
 		}
 	}
 
 	virtual void coolDown() {
 		// copy memory from the gpu back to the cpu
 		{
-			checkStatus(cudaMemcpy(m_ptrA, devA, m_size * sizeof(T), cudaMemcpyDeviceToHost), "cudaMemcpy of type device to host");
-			checkStatus(cudaMemcpy(m_ptrB, devB, m_size * sizeof(T), cudaMemcpyDeviceToHost), "cudaMemcpy of type device to host");
+			if (!inputA) {
+				checkStatus(cudaMemcpy(m_ptrA, devA, m_size * sizeof(T), cudaMemcpyDeviceToHost), "cudaMemcpy of type device to host");
+			}
+			if (!inputB) {
+				checkStatus(cudaMemcpy(m_ptrB, devB, m_size * sizeof(T), cudaMemcpyDeviceToHost), "cudaMemcpy of type device to host");
+			}
 		}
 		// synchronize the device
 		checkStatus(cudaDeviceSynchronize(), "cudaDeviceSynchronize");

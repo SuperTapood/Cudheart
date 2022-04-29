@@ -15,6 +15,12 @@ private:
 	cudaError_t cudaStatus;
 	int m_size;
 
+	// inputs will be copied from the host but not to it
+	// non inputs will not be copied from the host but they will be copied to it
+	bool inputA = true;
+	bool inputB = true;
+	bool inputC = false;
+
 public:
 	T* devA;
 	T* devB;
@@ -35,7 +41,13 @@ private:
 	}
 
 public:
-	virtual void warmUp(T* a, T* b, T* c, int size) {
+	void setInputs(bool a, bool b, bool c) {
+		inputA = a;
+		inputB = b;
+		inputC = c;
+	}
+
+	void warmUp(T* a, T* b, T* c, int size) {
 		cudaSetDevice(0);
 		m_size = size;
 		m_ptrA = a;
@@ -50,18 +62,30 @@ public:
 		// copy data from cpu (host) memory to gpu (device) memory
 
 		{
-			checkStatus(cudaMemcpy(devA, m_ptrA, size * sizeof(T), cudaMemcpyHostToDevice), "cudaMemcpy of type host to device");
-			checkStatus(cudaMemcpy(devB, m_ptrB, size * sizeof(T), cudaMemcpyHostToDevice), "cudaMemcpy of type host to device");
-			checkStatus(cudaMemcpy(devC, m_ptrB, size * sizeof(T), cudaMemcpyHostToDevice), "cudaMemcpy of type host to device");
+			if (inputA) {
+				checkStatus(cudaMemcpy(devA, m_ptrA, size * sizeof(T), cudaMemcpyHostToDevice), "cudaMemcpy of type host to device");
+			}
+			if (inputB) {
+				checkStatus(cudaMemcpy(devB, m_ptrB, size * sizeof(T), cudaMemcpyHostToDevice), "cudaMemcpy of type host to device");
+			}
+			if (inputC) {
+				checkStatus(cudaMemcpy(devC, m_ptrB, size * sizeof(T), cudaMemcpyHostToDevice), "cudaMemcpy of type host to device");
+			}
 		}
 	}
 
 	virtual void coolDown() {
 		// copy memory from the gpu back to the cpu
 		{
-			checkStatus(cudaMemcpy(m_ptrA, devA, m_size * sizeof(T), cudaMemcpyDeviceToHost), "cudaMemcpy of type device to host");
-			checkStatus(cudaMemcpy(m_ptrB, devB, m_size * sizeof(T), cudaMemcpyDeviceToHost), "cudaMemcpy of type device to host");
-			checkStatus(cudaMemcpy(m_ptrC, devC, m_size * sizeof(T), cudaMemcpyDeviceToHost), "cudaMemcpy of type device to host");
+			if (!inputA) {
+				checkStatus(cudaMemcpy(m_ptrA, devA, m_size * sizeof(T), cudaMemcpyDeviceToHost), "cudaMemcpy of type device to host");
+			}
+			if (!inputB) {
+				checkStatus(cudaMemcpy(m_ptrB, devB, m_size * sizeof(T), cudaMemcpyDeviceToHost), "cudaMemcpy of type device to host");
+			}
+			if (!inputC) {
+				checkStatus(cudaMemcpy(m_ptrC, devC, m_size * sizeof(T), cudaMemcpyDeviceToHost), "cudaMemcpy of type device to host");
+			}
 		}
 		// synchronize the device
 		checkStatus(cudaDeviceSynchronize(), "cudaDeviceSynchronize");
