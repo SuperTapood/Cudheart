@@ -379,7 +379,13 @@ namespace Cudheart::NDArrays {
 		/// </summary>
 		/// <returns>the output vector</returns>
 		Vector<T>* flatten() {
-			return VectorOps::fromMatrix(this);
+			Vector<T>* out = new Vector(getSize());
+
+			for (int i = 0; i < getSize(); i++) {
+				out->set(i, get(i));
+			}
+
+			return out;
 		}
 
 		// todo: add operator overloades to make this look better

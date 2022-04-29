@@ -104,7 +104,10 @@ void testEMathOpsCPP() {
 	auto a = VectorOps::full<float>(25, 25);
 
 	squareRoot(a)->print();
-	logarithm(a)->print();
+	loga(a)->print();
+	loga2(a)->print();
+	logan(a, 5.f)->print();
+	loga10(a)->print();
 }
 
 void test() {

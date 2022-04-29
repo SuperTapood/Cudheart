@@ -12,8 +12,8 @@ Currently, no actual CUDA kernels are implemented, but they will be in the futur
 
 - [ ] even more types for functions
 - [ ] make sure there is no undefined behavior when passing negative k (offset) to a function
-- [ ] add built in casting for math functions
-- [ ] add custom complex numbers (Ai + B)
+- [ ] add built in casting for math functions with flags
+- [ ] add complex numbers (Ai + B)
 - [ ] add inf
 - [ ] add negInf
 - [ ] add NaN
@@ -21,8 +21,7 @@ Currently, no actual CUDA kernels are implemented, but they will be in the futur
 - [ ] add calc funcs
 - [ ] add trigo funcs
 - [ ] add bitwise funcs
-- [ ] add comparison funcs\
-- [ ] reverse the fucking matrix creation thing maybe
+- [ ] add comparison funcs
 - [ ] make util actually good for integrating cudheart in projects
 
 p.s.: future me, please do remember to do all of the computations on flat vectors, and convert them "outside" of the math ty xoxo

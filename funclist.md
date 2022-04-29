@@ -13,9 +13,6 @@ any ticked funcs are added, but incomplete
 
 ## array manipulation
 ## emath
-- [ ] log2
-- [ ] logn
-- [ ] log10
 - [ ] power
 - [ ] arccos
 - [ ] arcsin
@@ -174,6 +171,7 @@ any ticked funcs are added, but incomplete
 - [ ] sign
 - [ ] heaviside
 - [ ] nanToNum
+- [ ] toBinary
 
 ## rng
 ### generator
