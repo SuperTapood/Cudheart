@@ -2,14 +2,15 @@
 
 #include "cuda_runtime.h"
 #include "device_launch_parameters.h"
+#include "../Exceptions/CudaException.cuh"
 
 #include <stdio.h>
 
 template <typename T>
-class ContainerAB {
+class ContainerABC {
 private:
-	void** m_ptrA;
-	void** m_ptrB;
+	T* m_ptrA;
+	T* m_ptrB;
 	cudaError_t cudaStatus;
 	int m_size;
 
@@ -18,51 +19,45 @@ public:
 	T* devB;
 
 private:
-	void error() {
-		fprintf(stderr, "cudaMalloc failed!");
-		release();
-	}
-
 	void release() {
-		cudaFree(m_ptrA);
-		cudaFree(m_ptrB);
+		cudaFree((void*)devA);
+		cudaFree((void*)devB);
 	}
 
-	void allocate(T* ptr, int size) {
-		cudaStatus = cudaMalloc((void**)&ptr, sizeof(T) * size);
-		if (cudaStatus != cudaSuccess) {
-			error();
-		}
-	}
-
-	void copyMemHTD(T* dst, T* src, int size) {
-		cudaStatus = cudaMemcpy(dst, src, size * sizeof(T), cudaMemcpyHostToDevice);
-		if (cudaStatus != cudaSuccess) {
-			error();
-		}
-	}
-
-	void copyMemDTH(T* dst, T* src, int size) {
-		cudaStatus = cudaMemcpy(dst, src, size * sizeof(T), cudaMemcpyDeviceToHost);
-		if (cudaStatus != cudaSuccess) {
-			error();
+	void checkStatus(cudaError_t status, string func) {
+		if (status != cudaSuccess) {
+			release();
+			Cudheart::Exceptions::CudaException(status, func).raise();
 		}
 	}
 
 public:
-	virtual void warmUp(void** a, void** b, int size) {
+	virtual void warmUp(T* a, T* b, T* c, int size) {
+		cudaSetDevice(0);
 		m_size = size;
 		m_ptrA = a;
 		m_ptrB = b;
-		allocate(devA, size);
-		allocate(devB, size);
-		copyMemHTD(devA, m_ptrA, size);
-		copyMemHTD(devB, m_ptrB, size);
+		// allocate the needed memory on the gpu
+		{
+			checkStatus(cudaMalloc((void**)&devA, sizeof(T) * size), "cudaMalloc");
+			checkStatus(cudaMalloc((void**)&devB, sizeof(T) * size), "cudaMalloc");
+		}
+		// copy data from cpu (host) memory to gpu (device) memory
+
+		{
+			checkStatus(cudaMemcpy(devA, m_ptrA, size * sizeof(T), cudaMemcpyHostToDevice), "cudaMemcpy of type host to device");
+			checkStatus(cudaMemcpy(devB, m_ptrB, size * sizeof(T), cudaMemcpyHostToDevice), "cudaMemcpy of type host to device");
+		}
 	}
 
 	virtual void coolDown() {
-		copyMemDTH(m_ptrA, devA, m_size);
-		copyMemDTH(m_ptrB, devB, m_size);
+		// copy memory from the gpu back to the cpu
+		{
+			checkStatus(cudaMemcpy(m_ptrA, devA, m_size * sizeof(T), cudaMemcpyDeviceToHost), "cudaMemcpy of type device to host");
+			checkStatus(cudaMemcpy(m_ptrB, devB, m_size * sizeof(T), cudaMemcpyDeviceToHost), "cudaMemcpy of type device to host");
+		}
+		// synchronize the device
+		checkStatus(cudaDeviceSynchronize(), "cudaDeviceSynchronize");
 		release();
 	}
 };

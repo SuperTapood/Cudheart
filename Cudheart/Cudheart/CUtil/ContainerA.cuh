@@ -2,6 +2,7 @@
 
 #include "cuda_runtime.h"
 #include "device_launch_parameters.h"
+#include "../Exceptions/CudaException.cuh"
 
 #include <stdio.h>
 
@@ -9,7 +10,7 @@
 template <typename T>
 class ContainerA {
 private:
-	void** m_ptrA;
+	T* m_ptrA;
 	cudaError_t cudaStatus;
 	int m_size;
 
@@ -17,47 +18,42 @@ public:
 	T* devA;
 
 private:
-	void error() {
-		fprintf(stderr, "cudaMalloc failed!");
-		release();
-
-	}
-
 	void release() {
-		cudaFree(m_ptrA);
+		cudaFree((void*)devA);
+		cudaFree((void*)devB);
+		cudaFree((void*)devC);
 	}
 
-	void allocate(T* ptr, int size) {
-		cudaStatus = cudaMalloc(ptr, sizeof(T) * size);
-		if (cudaStatus != cudaSuccess) {
-			error();
-		}
-	}
-
-	void copyMemHTD(T* dst, T* src, int size) {
-		cudaStatus = cudaMemcpy(dst, src, size * sizeof(T), cudaMemcpyHostToDevice);
-		if (cudaStatus != cudaSuccess) {
-			error();
-		}
-	}
-
-	void copyMemDTH(T* dst, T* src, int size) {
-		cudaStatus = cudaMemcpy(dst, src, size * sizeof(T), cudaMemcpyDeviceToHost);
-		if (cudaStatus != cudaSuccess) {
-			error();
+	void checkStatus(cudaError_t status, string func) {
+		if (status != cudaSuccess) {
+			release();
+			Cudheart::Exceptions::CudaException(status, func).raise();
 		}
 	}
 
 public:
-	void warmUp(void** a, int size) {
+	virtual void warmUp(T* a, int size) {
+		cudaSetDevice(0);
 		m_size = size;
-		m_ptrA = (void**)a;
-		allocate(devA, size);
-		copyMemHTD(devA, m_ptrA, size);
+		m_ptrA = a;
+		// allocate the needed memory on the gpu
+		{
+			checkStatus(cudaMalloc((void**)&devA, sizeof(T) * size), "cudaMalloc");
+		}
+		// copy data from cpu (host) memory to gpu (device) memory
+
+		{
+			checkStatus(cudaMemcpy(devA, m_ptrA, size * sizeof(T), cudaMemcpyHostToDevice), "cudaMemcpy of type host to device");
+		}
 	}
 
-	void coolDown() {
-		copyMemDTH(m_ptrA, devA, m_size);
+	virtual void coolDown() {
+		// copy memory from the gpu back to the cpu
+		{
+			checkStatus(cudaMemcpy(m_ptrA, devA, m_size * sizeof(T), cudaMemcpyDeviceToHost), "cudaMemcpy of type device to host");
+		}
+		// synchronize the device
+		checkStatus(cudaDeviceSynchronize(), "cudaDeviceSynchronize");
 		release();
 	}
 };
