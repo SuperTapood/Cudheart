@@ -8,7 +8,7 @@ namespace Cudheart::Exceptions {
 	public:
 		CudaException(const char* name, const char* full) {
 			ostringstream os;
-			os << "CudaException: " << name << full;
+			os << "CudaException: " << name << " " << full << endl;
 			m_msg = os.str();
 		}
 	};

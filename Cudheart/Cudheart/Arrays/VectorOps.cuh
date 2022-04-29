@@ -129,7 +129,7 @@ namespace Cudheart::VectorOps {
 	template <typename T>
 	Vector<T>* logspace(T start, T stop, T num, bool endpoint, double base) {
 		Vector<T>* vec = linspace<T>(start, stop, num, endpoint);
-		throw new Exceptions::NotImplementedException("logspace", "power");
+		Exceptions::NotImplementedException("logspace", "power").raise();
 		// return this instead
 		// out = Math::power(base, vec);
 		// delete vec;
@@ -164,7 +164,7 @@ namespace Cudheart::VectorOps {
 
 	template <typename T>
 	Vector<T>* geomspace(T start, T stop, T num, bool endpoint) {
-		throw new Exceptions::NotImplementedException("geomspace", "log10 and logspace");
+		Exceptions::NotImplementedException("geomspace", "log10 and logspace").raise();
 		/*
 		* start = Math::log10(start);
 		* stop = Math::log10(stop);

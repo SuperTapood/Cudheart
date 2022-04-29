@@ -10,7 +10,7 @@ namespace Cudheart::Exceptions {
 	/// similar to that of higher languages
 	/// </para>
 	/// </summary>
-	class BaseException : public exception {
+	class BaseException {
 	protected:
 		/// <summary>
 		/// the message to be presented in its fullest
@@ -27,10 +27,9 @@ namespace Cudheart::Exceptions {
 		/// <param name="msg"> : string - the message to be presented</param>
 		BaseException(string msg);
 		/// <summary>
-		/// i have no idea what that does actually
+		/// raises the exception
 		/// </summary>
-		/// <returns> c string - the presented message</returns>
-		const char* what() const throw();
+		void raise();
 		/// <summary>
 		/// print the exception
 		/// </summary>

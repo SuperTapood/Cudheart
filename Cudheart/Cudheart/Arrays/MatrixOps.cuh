@@ -68,7 +68,7 @@ namespace Cudheart::MatrixOps {
 	template <typename T>
 	Matrix<T>* fromVector(Vector<T>* vec, int width, int height) {
 		if (width * height != vec->getSize()) {
-			throw Exceptions::MatrixConversionException(width, height, vec->getSize());
+			Exceptions::MatrixConversionException(width, height, vec->getSize()).raise();
 		}
 		Matrix<T>* out = empty<T>(width, height);
 
@@ -274,7 +274,7 @@ namespace Cudheart::MatrixOps {
 	Matrix<T>* tril(Matrix<T>* mat, int k) {
 		Matrix<T>* out = tri<T>(mat->getWidth(), mat->getHeight(), k);
 
-		throw new Exceptions::NotImplementedException("tril", "multiply");
+		Exceptions::NotImplementedException("tril", "multiply").raise();
 
 		// return Math::multiply(out, mat);
 
@@ -288,7 +288,7 @@ namespace Cudheart::MatrixOps {
 
 	template <typename T>
 	Matrix<T>* triu(Matrix<T>* mat, int k) {
-		throw new NotImplementedException("tril", "transpose and multiply");
+		NotImplementedException("tril", "transpose and multiply").raise();
 
 		// Matrix<T>* a = transpose(mat);
 		// Matrix<T>* b = tril(a);
@@ -307,7 +307,7 @@ namespace Cudheart::MatrixOps {
 
 	template <typename T>
 	Matrix<T>* vander(Vector<T>* vec, int N, bool increasing) {
-		throw new NotImplementedException("vander", "flip, transpose and rotate");
+		NotImplementedException("vander", "flip, transpose and rotate").raise();
 
 		/*
 		Matrix<T>* out = empty(vec->getSize(), N);

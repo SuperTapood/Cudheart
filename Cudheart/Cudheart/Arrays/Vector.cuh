@@ -2,6 +2,7 @@
 
 #include "NDArray.cuh"
 #include "../CUtil/CUtil.cuh"
+#include "../Exceptions/Exceptions.cuh"
 
 // check about using longs and stuff as lengths and indices for bigger tensors
 
@@ -103,6 +104,12 @@ namespace Cudheart::NDArrays {
 			out->warmUp(m_data, b->m_data, c->m_data, m_size);
 
 			return out;
+		}
+
+		void assertMatchSize(Vector<T>* other) {
+			if (m_size != other->m_size) {
+				Cudheart::Exceptions::ShapeMismatchException(m_size, other->m_size).raise();
+			}
 		}
 	};
 }

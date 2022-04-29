@@ -240,6 +240,12 @@ namespace Cudheart::NDArrays {
 			}
 		}
 
+		void assertMatchSize(Matrix<T>* other) {
+			if (m_width != other->m_width || m_height != other->m_height) {
+				Cudheart::Exceptions::ShapeMismatchException(m_width, m_height, other->m_width, other->m_height).raise();
+			}
+		}
+
 		// todo: add operator overloades to make this look better
 
 	private:

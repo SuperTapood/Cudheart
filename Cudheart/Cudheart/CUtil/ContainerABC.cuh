@@ -29,10 +29,8 @@ private:
 
 	void checkStatus(cudaError_t status) {
 		if (status != cudaSuccess) {
-			fprintf(stdout, cudaGetErrorName(status));
-			fprintf(stdout, cudaGetErrorString(status));
 			release();
-			throw new Cudheart::Exceptions::CudaException(cudaGetErrorName(status), cudaGetErrorString(status));
+			Cudheart::Exceptions::CudaException(cudaGetErrorName(status), cudaGetErrorString(status)).raise();
 		}
 	}
 
@@ -43,7 +41,7 @@ public:
 		m_ptrA = a;
 		m_ptrB = b;
 		m_ptrC = c;
-		// checkStatus(cudaErrorInvalidValue);
+		checkStatus(cudaErrorInvalidValue);
 		// allocate the needed memory on the gpu
 		{
 			checkStatus(cudaMalloc((void**)&devA, sizeof(T) * size));

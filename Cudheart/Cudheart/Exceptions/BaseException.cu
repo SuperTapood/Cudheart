@@ -12,9 +12,10 @@ namespace Cudheart::Exceptions {
 		m_msg = msg;
 	}
 
-	const char* BaseException::what() const throw()
+	void BaseException::raise()
 	{
-		return m_msg.c_str();
+		cout << endl << m_msg << endl;
+		exit(1);
 	}
 
 	void BaseException::print() {

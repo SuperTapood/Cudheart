@@ -11,9 +11,7 @@ using Cudheart::VectorOps::empty;
 namespace Cudheart::Math::CPP::Bitwise {
 	template <typename T>
 	static Vector<T>* bitwiseAnd(Vector<T>* a, Vector<T>* b) {
-		if (a->getSize() != b->getSize()) {
-			throw new ShapeMismatchException(a->getSize(), b->getSize());
-		}
+		a->assertMatchSize(b);
 
 		int len = a->getSize();
 		Vector<T>* out = empty<T>(len);
@@ -27,9 +25,7 @@ namespace Cudheart::Math::CPP::Bitwise {
 
 	template <typename T>
 	static Matrix<T>* bitwiseAnd(Matrix<T>* a, Matrix<T>* b) {
-		if (a->getWidth() != b->getWidth() || a->getHeight() != b->getHeight()) {
-			throw new ShapeMismatchException(a->getWidth(), a->getHeight(), b->getWidth(), b->getHeight());
-		}
+		a->assertMatchSize(b);
 
 		Vector<T>* flat = bitwiseAnd(a->flatten(), b->flatten());
 
@@ -38,9 +34,7 @@ namespace Cudheart::Math::CPP::Bitwise {
 
 	template <typename T>
 	static Vector<T>* bitwiseOr(Vector<T>* a, Vector<T>* b) {
-		if (a->getSize() != b->getSize()) {
-			throw new ShapeMismatchException(a->getSize(), b->getSize());
-		}
+		a->assertMatchSize(b);
 
 		int len = a->getSize();
 		Vector<T>* out = empty<T>(len);
@@ -54,9 +48,7 @@ namespace Cudheart::Math::CPP::Bitwise {
 
 	template <typename T>
 	static Matrix<T>* bitwiseOr(Matrix<T>* a, Matrix<T>* b) {
-		if (a->getWidth() != b->getWidth() || a->getHeight() != b->getHeight()) {
-			throw new ShapeMismatchException(a->getWidth(), a->getHeight(), b->getWidth(), b->getHeight());
-		}
+		a->assertMatchSize(b);
 
 		Vector<T>* flat = bitwiseOr(a->flatten(), b->flatten());
 
@@ -65,9 +57,7 @@ namespace Cudheart::Math::CPP::Bitwise {
 
 	template <typename T>
 	static Vector<T>* bitwiseXor(Vector<T>* a, Vector<T>* b) {
-		if (a->getSize() != b->getSize()) {
-			throw new ShapeMismatchException(a->getSize(), b->getSize());
-		}
+		a->assertMatchSize(b);
 
 		int len = a->getSize();
 		Vector<T>* out = empty<T>(len);
@@ -81,9 +71,7 @@ namespace Cudheart::Math::CPP::Bitwise {
 
 	template <typename T>
 	static Matrix<T>* bitwiseXor(Matrix<T>* a, Matrix<T>* b) {
-		if (a->getWidth() != b->getWidth() || a->getHeight() != b->getHeight()) {
-			throw new ShapeMismatchException(a->getWidth(), a->getHeight(), b->getWidth(), b->getHeight());
-		}
+		a->assertMatchSize(b);
 
 		Vector<T>* flat = bitwiseXor(a->flatten(), b->flatten());
 
@@ -92,9 +80,7 @@ namespace Cudheart::Math::CPP::Bitwise {
 
 	template <typename T>
 	static Vector<T>* bitwiseLeftShift(Vector<T>* a, Vector<T>* b) {
-		if (a->getSize() != b->getSize()) {
-			throw new ShapeMismatchException(a->getSize(), b->getSize());
-		}
+		a->assertMatchSize(b);
 
 		int len = a->getSize();
 		Vector<T>* out = empty<T>(len);
@@ -108,9 +94,7 @@ namespace Cudheart::Math::CPP::Bitwise {
 
 	template <typename T>
 	static Matrix<T>* bitwiseLeftShift(Matrix<T>* a, Matrix<T>* b) {
-		if (a->getWidth() != b->getWidth() || a->getHeight() != b->getHeight()) {
-			throw new ShapeMismatchException(a->getWidth(), a->getHeight(), b->getWidth(), b->getHeight());
-		}
+		a->assertMatchSize(b);
 
 		Vector<T>* flat = bitwiseLeftShift(a->flatten(), b->flatten());
 
@@ -119,9 +103,7 @@ namespace Cudheart::Math::CPP::Bitwise {
 
 	template <typename T>
 	static Vector<T>* bitwiseRightShift(Vector<T>* a, Vector<T>* b) {
-		if (a->getSize() != b->getSize()) {
-			throw new ShapeMismatchException(a->getSize(), b->getSize());
-		}
+		a->assertMatchSize(b);
 
 		int len = a->getSize();
 		Vector<T>* out = empty<T>(len);
@@ -135,9 +117,7 @@ namespace Cudheart::Math::CPP::Bitwise {
 
 	template <typename T>
 	static Matrix<T>* bitwiseRightShift(Matrix<T>* a, Matrix<T>* b) {
-		if (a->getWidth() != b->getWidth() || a->getHeight() != b->getHeight()) {
-			throw new ShapeMismatchException(a->getWidth(), a->getHeight(), b->getWidth(), b->getHeight());
-		}
+		a->assertMatchSize(b);
 
 		Vector<T>* flat = bitwiseRightShift(a->flatten(), b->flatten());
 
