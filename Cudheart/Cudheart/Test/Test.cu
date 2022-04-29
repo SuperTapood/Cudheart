@@ -104,7 +104,7 @@ void testEMathOpsCPP() {
 	auto a = VectorOps::full<float>(25, 25);
 
 	squareRoot(a)->print();
-	sqrt(25);
+	logarithm(a)->print();
 }
 
 void test() {
