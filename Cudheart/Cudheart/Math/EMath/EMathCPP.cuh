@@ -121,4 +121,52 @@ namespace Cudheart::CPP::Math::EMath {
 
 		return fromVector(out, mat->getWidth(), mat->getHeight(), true);
 	}
+
+	template <typename T>
+	Vector<T>* power(Vector<T>* base, T power) {
+		Vector<T>* out = emptyLike(base);
+
+		for (int i = 0; i < out->getSize(); i++) {
+			out->set(i, pow(base->get(i), power))
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Vector<T>* power(Vector<T>* base, Vector<T>* power) {
+		base->assertMatchSize(power);
+		Vector<T>* out = emptyLike(base);
+
+		for (int i = 0; i < out->getSize(); i++) {
+			out->set(i, pow(base->get(i), power->get(i))
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* power(Matrix<T>* base, T power) {
+		Vector<T>* flat = base->flatten();
+
+		Vector<T>* out = power(flat, power);
+
+		delete flat;
+
+		return fromVector(out, base->getWidth(), base->getHeight());
+	}
+
+	template <typename T>
+	Matrix<T>* power(Matrix<T>* base, Matrix<T>* power) {
+		base->assertMatchSize(power);
+		Vector<T>* b = base->flatten();
+		Vector<T>* p = base->flatten();
+
+		Vector<T>* output = power(b, p);
+
+		delete b;
+		delete p;
+
+		return fromVector(output, base->getWidth(), base->getHeight());
+	}
 }

@@ -13,6 +13,7 @@ Currently, no actual CUDA kernels are implemented, but they will be in the futur
 - [ ] even more types for functions
 - [ ] make sure there is no undefined behavior when passing negative k (offset) to a function
 - [ ] add built in casting for math functions with flags
+- [ ] maybe more function variations?
 - [ ] add complex numbers (Ai + B)
 - [ ] add inf
 - [ ] add negInf

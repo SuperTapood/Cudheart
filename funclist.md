@@ -13,7 +13,6 @@ any ticked funcs are added, but incomplete
 
 ## array manipulation
 ## emath
-- [ ] power
 - [ ] arccos
 - [ ] arcsin
 - [ ] arctanh
