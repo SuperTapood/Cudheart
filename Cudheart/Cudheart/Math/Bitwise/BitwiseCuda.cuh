@@ -32,7 +32,7 @@ namespace Cudheart::CUDA::Math::Bitwise {
 
 		Vector<T>* flat = bitwiseAnd(a->flatten(), b->flatten());
 
-		return fromVector(flat, a->getWidth(), b->getHeight());
+		return fromVector(flat, a->getWidth(), b->getHeight(), true);
 	}
 
 	template <typename T>
@@ -57,7 +57,7 @@ namespace Cudheart::CUDA::Math::Bitwise {
 
 		Vector<T>* flat = bitwiseOr(a->flatten(), b->flatten());
 
-		return fromVector(flat, a->getWidth(), b->getHeight());
+		return fromVector(flat, a->getWidth(), b->getHeight(), true);
 	}
 
 	template <typename T>
@@ -82,7 +82,7 @@ namespace Cudheart::CUDA::Math::Bitwise {
 
 		Vector<T>* flat = bitwiseXor(a->flatten(), b->flatten());
 
-		return fromVector(flat, a->getWidth(), b->getHeight());
+		return fromVector(flat, a->getWidth(), b->getHeight(), true);
 	}
 
 	template <typename T>
@@ -107,7 +107,7 @@ namespace Cudheart::CUDA::Math::Bitwise {
 
 		Vector<T>* flat = bitwiseLeftShift(a->flatten(), b->flatten());
 
-		return fromVector(flat, a->getWidth(), b->getHeight());
+		return fromVector(flat, a->getWidth(), b->getHeight(), true);
 	}
 
 	template <typename T>
@@ -132,7 +132,7 @@ namespace Cudheart::CUDA::Math::Bitwise {
 
 		Vector<T>* flat = bitwiseRightShift(a->flatten(), b->flatten());
 
-		return fromVector(flat, a->getWidth(), b->getHeight());
+		return fromVector(flat, a->getWidth(), b->getHeight(), true);
 	}
 
 	template <typename T>
@@ -153,6 +153,6 @@ namespace Cudheart::CUDA::Math::Bitwise {
 	Matrix<T>* bitwiseNot(Matrix<T>* mat) {
 		Vector<T>* flat = bitwiseNot(mat->flatten());
 
-		return fromVector(flat, mat->getWidth(), mat->getHeight());
+		return fromVector(flat, mat->getWidth(), mat->getHeight(), true);
 	}
 }

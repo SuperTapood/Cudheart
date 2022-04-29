@@ -388,8 +388,8 @@ namespace Cudheart::NDArrays {
 		/// <summary>
 		/// flatten a 2 dimensional index into a 1 dimensional index
 		/// </summary>
-		/// <param name="i"></param>
-		/// <param name="j"></param>
+		/// <param name="i"> - index</param>
+		/// <param name="j"> - jdex</param>
 		/// <returns>a flattened index</returns>
 		int flatten(int i, int j) {
 			return j + (i * m_width);

@@ -21,7 +21,16 @@ namespace Cudheart::MatrixOps {
 
 	template <typename T>
 	Matrix<T>* fromVector(Vector<T>* vec, int width, int height, bool destroy) {
-		Matrix<T>* res = asMatrix(vec, width, height);
+		if (width * height != vec->getSize()) {
+			// good for now
+			exit(420);
+		}
+		Matrix<T>* res = new Matrix<T>(width, height);
+
+		for (int i = 0; i < res->getSize(); i++) {
+			res->set(i, vec->get(i));
+		}
+
 		if (destroy) {
 			delete vec;
 		}
@@ -32,7 +41,7 @@ namespace Cudheart::MatrixOps {
 	// if you do, prepare for trouble and make it double
 	template <typename T>
 	Matrix<T>* arange(T start, T end, T jump, int width, int height) {
-		return fromVector(VectorOps::arange<T>(start, end, jump), width, height);
+		return fromVector(VectorOps::arange<T>(start, end, jump), width, height, true);
 	}
 
 	template <typename T>
@@ -57,7 +66,7 @@ namespace Cudheart::MatrixOps {
 
 	template <typename T>
 	Matrix<T>* full(int width, int height, T value) {
-		return fromVector<T>(VectorOps::full(width * height, value), width, height);
+		return fromVector<T>(VectorOps::full(width * height, value), width, height, true);
 	}
 
 	template <typename T>
@@ -318,7 +327,7 @@ namespace Cudheart::MatrixOps {
 			}
 		}
 
-		Matrix<T>* a = rotate(out, -1);
+		Matrix<T>* a = rotate(out, -90);
 		delete out;
 		if (!increasing) {
 			return a;
