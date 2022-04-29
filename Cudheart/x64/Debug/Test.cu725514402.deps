@@ -168,7 +168,9 @@ C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Exceptions\ShapeMisma
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Bitwise\Bitwise.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Bitwise\BitwiseCPP.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Bitwise\BitwiseCuda.cuh
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Kernels.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Bitwise\BitwiseKernels.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\EMath\EMath.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\EMath\EMathCPP.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Math.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Test\Test.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Util.cuh

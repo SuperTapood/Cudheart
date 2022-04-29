@@ -12,44 +12,7 @@ any ticked funcs are added, but incomplete
 - [X] vander
 
 ## array manipulation
-## String ops
-- [ ] add
-- [ ] multiply
-- [ ] capitalize
-- [ ] center
-- [ ] decode
-- [ ] encode
-- [ ] expandTabs
-- [ ] join
-- [ ] lower
-- [ ] lJust
-- [ ] lStrip
-- [ ] partition
-- [ ] replace
-- [ ] rJust
-- [ ] RSplit
-- [ ] RStrip
-- [ ] strip
-- [ ] translate
-- [ ] upper
-- [ ] equal
-- [ ] notEqual
-- [ ] greaterEqual
-- [ ] lessEqual
-- [ ] greater
-- [ ] less
-- [ ] count
-- [ ] endsWith
-- [ ] find
-- [ ] index
-- [ ] isNumeric
-- [ ] isLower
-- [ ] isUpper
-- [ ] startsWith
-
 ## emath
-- [ ] sqrt
-- [ ] log
 - [ ] log2
 - [ ] logn
 - [ ] log10
@@ -324,3 +287,38 @@ any ticked funcs are added, but incomplete
 - [ ] resize
 - [ ] trimZero
 - [ ] unique
+
+## String ops
+- [ ] add
+- [ ] multiply
+- [ ] capitalize
+- [ ] center
+- [ ] decode
+- [ ] encode
+- [ ] expandTabs
+- [ ] join
+- [ ] lower
+- [ ] lJust
+- [ ] lStrip
+- [ ] partition
+- [ ] replace
+- [ ] rJust
+- [ ] RSplit
+- [ ] RStrip
+- [ ] strip
+- [ ] translate
+- [ ] upper
+- [ ] equal
+- [ ] notEqual
+- [ ] greaterEqual
+- [ ] lessEqual
+- [ ] greater
+- [ ] less
+- [ ] count
+- [ ] endsWith
+- [ ] find
+- [ ] index
+- [ ] isNumeric
+- [ ] isLower
+- [ ] isUpper
+- [ ] startsWith

@@ -69,7 +69,7 @@ void testMatrixCreation() {
 } 
 
 void testBinaryOpsCuda() {
-	using namespace Cudheart::Math::CUDA::Bitwise;
+	using namespace Cudheart::CUDA::Math::Bitwise;
 
 	auto a = VectorOps::full(4, 5);
 	auto b = VectorOps::full(4, 9);
@@ -84,7 +84,7 @@ void testBinaryOpsCuda() {
 }
 
 void testBinaryOpsCPP() {
-	using namespace Cudheart::Math::CPP::Bitwise;
+	using namespace Cudheart::CPP::Math::Bitwise;
 
 	auto a = VectorOps::full(4, 5);
 	auto b = VectorOps::full(4, 9);
@@ -98,10 +98,19 @@ void testBinaryOpsCPP() {
 	bitwiseRightShift(b, c)->print();
 }
 
+void testEMathOpsCPP() {
+	using namespace Cudheart::CPP::Math::EMath;
+
+	auto a = VectorOps::full<float>(25, 25);
+
+	squareRoot(a)->print();
+	sqrt(25);
+}
+
 void test() {
 	//testVectorCreation();
 	//testMatrixCreation();
-	testBinaryOpsCPP();
-	cout << "\n";
-	testBinaryOpsCuda();
+	//testBinaryOpsCPP();
+	//testBinaryOpsCuda();
+	testEMathOpsCPP();
 }

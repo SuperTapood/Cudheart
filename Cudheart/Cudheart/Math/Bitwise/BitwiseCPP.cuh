@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Arrays/Arrays.cuh"
+#include "../../Arrays/Arrays.cuh"
 
 using Cudheart::NDArrays::Vector;
 using Cudheart::NDArrays::Matrix;
@@ -8,9 +8,9 @@ using namespace Cudheart::Exceptions;
 using Cudheart::VectorOps::empty;
 
 
-namespace Cudheart::Math::CPP::Bitwise {
+namespace Cudheart::CPP::Math::Bitwise {
 	template <typename T>
-	static Vector<T>* bitwiseAnd(Vector<T>* a, Vector<T>* b) {
+	Vector<T>* bitwiseAnd(Vector<T>* a, Vector<T>* b) {
 		a->assertMatchSize(b);
 
 		int len = a->getSize();
@@ -24,16 +24,16 @@ namespace Cudheart::Math::CPP::Bitwise {
 	}
 
 	template <typename T>
-	static Matrix<T>* bitwiseAnd(Matrix<T>* a, Matrix<T>* b) {
+	Matrix<T>* bitwiseAnd(Matrix<T>* a, Matrix<T>* b) {
 		a->assertMatchSize(b);
 
 		Vector<T>* flat = bitwiseAnd(a->flatten(), b->flatten());
 
-		return fromVector(flat, a->getWidth(), b->getHeight());
+		return fromVector(flat, a->getWidth(), b->getHeight(), true);
 	}
 
 	template <typename T>
-	static Vector<T>* bitwiseOr(Vector<T>* a, Vector<T>* b) {
+	Vector<T>* bitwiseOr(Vector<T>* a, Vector<T>* b) {
 		a->assertMatchSize(b);
 
 		int len = a->getSize();
@@ -47,16 +47,16 @@ namespace Cudheart::Math::CPP::Bitwise {
 	}
 
 	template <typename T>
-	static Matrix<T>* bitwiseOr(Matrix<T>* a, Matrix<T>* b) {
+	Matrix<T>* bitwiseOr(Matrix<T>* a, Matrix<T>* b) {
 		a->assertMatchSize(b);
 
 		Vector<T>* flat = bitwiseOr(a->flatten(), b->flatten());
 
-		return fromVector(flat, a->getWidth(), b->getHeight());
+		return fromVector(flat, a->getWidth(), b->getHeight(), true);
 	}
 
 	template <typename T>
-	static Vector<T>* bitwiseXor(Vector<T>* a, Vector<T>* b) {
+	Vector<T>* bitwiseXor(Vector<T>* a, Vector<T>* b) {
 		a->assertMatchSize(b);
 
 		int len = a->getSize();
@@ -70,16 +70,16 @@ namespace Cudheart::Math::CPP::Bitwise {
 	}
 
 	template <typename T>
-	static Matrix<T>* bitwiseXor(Matrix<T>* a, Matrix<T>* b) {
+	Matrix<T>* bitwiseXor(Matrix<T>* a, Matrix<T>* b) {
 		a->assertMatchSize(b);
 
 		Vector<T>* flat = bitwiseXor(a->flatten(), b->flatten());
 
-		return fromVector(flat, a->getWidth(), b->getHeight());
+		return fromVector(flat, a->getWidth(), b->getHeight(), true);
 	}
 
 	template <typename T>
-	static Vector<T>* bitwiseLeftShift(Vector<T>* a, Vector<T>* b) {
+	Vector<T>* bitwiseLeftShift(Vector<T>* a, Vector<T>* b) {
 		a->assertMatchSize(b);
 
 		int len = a->getSize();
@@ -93,16 +93,16 @@ namespace Cudheart::Math::CPP::Bitwise {
 	}
 
 	template <typename T>
-	static Matrix<T>* bitwiseLeftShift(Matrix<T>* a, Matrix<T>* b) {
+	Matrix<T>* bitwiseLeftShift(Matrix<T>* a, Matrix<T>* b) {
 		a->assertMatchSize(b);
 
 		Vector<T>* flat = bitwiseLeftShift(a->flatten(), b->flatten());
 
-		return fromVector(flat, a->getWidth(), b->getHeight());
+		return fromVector(flat, a->getWidth(), b->getHeight(), true);
 	}
 
 	template <typename T>
-	static Vector<T>* bitwiseRightShift(Vector<T>* a, Vector<T>* b) {
+	Vector<T>* bitwiseRightShift(Vector<T>* a, Vector<T>* b) {
 		a->assertMatchSize(b);
 
 		int len = a->getSize();
@@ -116,16 +116,16 @@ namespace Cudheart::Math::CPP::Bitwise {
 	}
 
 	template <typename T>
-	static Matrix<T>* bitwiseRightShift(Matrix<T>* a, Matrix<T>* b) {
+	Matrix<T>* bitwiseRightShift(Matrix<T>* a, Matrix<T>* b) {
 		a->assertMatchSize(b);
 
 		Vector<T>* flat = bitwiseRightShift(a->flatten(), b->flatten());
 
-		return fromVector(flat, a->getWidth(), b->getHeight());
+		return fromVector(flat, a->getWidth(), b->getHeight(), true);
 	}
 
 	template <typename T>
-	static Vector<T>* bitwiseNot(Vector<T>* vec) {
+	Vector<T>* bitwiseNot(Vector<T>* vec) {
 		int len = vec->getSize();
 		Vector<T>* out = empty<T>(len);
 
@@ -137,9 +137,9 @@ namespace Cudheart::Math::CPP::Bitwise {
 	}
 
 	template <typename T>
-	static Matrix<T>* bitwiseNot(Matrix<T>* mat) {
+	Matrix<T>* bitwiseNot(Matrix<T>* mat) {
 		Vector<T>* flat = bitwiseNot(mat->flatten());
 
-		return fromVector(flat, mat->getWidth(), mat->getHeight());
+		return fromVector(flat, mat->getWidth(), mat->getHeight(), true);
 	}
 }

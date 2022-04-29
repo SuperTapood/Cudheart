@@ -10,8 +10,10 @@ The aim of this project is to provide a back end framework for a Tensorflow-esqu
 Currently, no actual CUDA kernels are implemented, but they will be in the future.
 
 
-- [ ] make sure there is no undefined behavior when passing negative k (offset) to a function
-- [ ] maybe don't copy all arrays from gpu memory to cpu memory to save time (don't copy the input arrays)
+- [ ] fix general memory leaks (pointers not being deleted)
+- [ ] even more types for functions
+- [ ] fix whatever the fuck is happening with from vector and as matrix
+- [ ] make sure there is no undefined behavior when passing negative k (offset) to a function\
 - [ ] add built in casting for math functions
 - [ ] add documentation
 - [ ] add custom complex numbers (Ai + B)
