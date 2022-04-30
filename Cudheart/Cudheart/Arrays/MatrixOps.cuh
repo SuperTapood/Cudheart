@@ -76,7 +76,7 @@ namespace Cudheart::MatrixOps {
 
 	template <typename T>
 	Matrix<T>* emptyLike(Matrix<T>* mat) {
-		return empty(mat->getWidth(), mat->getHeight());
+		return empty<T>(mat->getWidth(), mat->getHeight());
 	}
 
 	template <typename T>
@@ -86,7 +86,7 @@ namespace Cudheart::MatrixOps {
 
 	template <typename T>
 	Matrix<T>* fullLike(Matrix<T>* mat, T value) {
-		return full(mat->getWidth(), mat->getHeight(), value);
+		return full<T>(mat->getWidth(), mat->getHeight(), value);
 	}
 
 	template <typename T>

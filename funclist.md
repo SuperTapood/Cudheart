@@ -12,10 +12,7 @@ any ticked funcs are added, but incomplete
 - [X] vander
 
 ## array manipulation
-## products
-- [ ] dot
-- [ ] multidot
-- [ ] vdot
+## linalg
 - [ ] inner
 - [ ] outer
 - [ ] matmul
@@ -314,3 +311,10 @@ any ticked funcs are added, but incomplete
 - [ ] isLower
 - [ ] isUpper
 - [ ] startsWith
+
+
+
+# functions which have been declared redundent and their replacement:
+ 
+- matmul => multiply
+- multi_dot, vdot, inner for vectors => why even

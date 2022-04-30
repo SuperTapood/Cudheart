@@ -42,6 +42,8 @@
     <ClInclude Include="Cudheart\Math\Constants.cuh" />
     <ClInclude Include="Cudheart\Math\EMath\EMathCUDA.cuh" />
     <ClInclude Include="Cudheart\Math\EMath\EMathKernels.cuh" />
+    <ClInclude Include="Cudheart\Math\Linalg\Linalg.cuh" />
+    <ClInclude Include="Cudheart\Math\Linalg\LinalgCPP.cuh" />
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="Sample\kernel.cu">

@@ -11,6 +11,8 @@ Currently, no actual CUDA kernels are implemented, but they will be in the futur
 
 
 - [ ] even more types for functions
+- [ ] optimize the functions
+- [ ] add more scenerios to shape mismatch exception
 - [ ] test every function
 - [ ] inplace in every function
 - [ ] fix issue with cuda and massive vectors?
@@ -22,11 +24,6 @@ Currently, no actual CUDA kernels are implemented, but they will be in the futur
 - [ ] add inf
 - [ ] add negInf
 - [ ] add NaN
-- [ ] add math virtual class
-- [ ] add calc funcs
-- [ ] add trigo funcs
-- [ ] add bitwise funcs
-- [ ] add comparison funcs
 - [ ] make util actually good for integrating cudheart in projects
 
 p.s.: future me, please do remember to do all of the computations on flat vectors, and convert them "outside" of the math ty xoxo

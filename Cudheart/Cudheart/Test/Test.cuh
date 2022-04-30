@@ -9,4 +9,5 @@ void testBinaryOpsCPP();
 void testBinaryOpsCuda();
 void testEMathOpsCPP();
 void testEMathOpsCuda();
+void testLinalgOpsCPP();
 void test();

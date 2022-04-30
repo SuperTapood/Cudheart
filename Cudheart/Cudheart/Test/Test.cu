@@ -187,12 +187,30 @@ void testEMathOpsCuda() {
 	// p->print();
 }
 
+void testLinalgOpsCPP() {
+	using namespace Cudheart::CPP::Math::Linalg;
+	auto a = VectorOps::arange(1, 5, 1);
+	auto b = VectorOps::arange(1, 5, 1);
+	auto c = VectorOps::arange(1, 17, 1);
+	auto d = MatrixOps::fromVector(c, 4, 4);
+
+	auto e = dot(a, b);
+	// cout << c << endl;
+	auto f = dot(b, d);
+	f->print();
+	auto g = dot(d, b);
+	g->print();
+
+	// todo: implement dot for two matrices
+}
+
 void test() {
 	//testVectorCreation();
 	//testMatrixCreation();
 	//testBinaryOpsCPP();
 	//testBinaryOpsCuda();
-	testEMathOpsCPP();
-	cout << endl << endl << "cpp done" << endl;
-	testEMathOpsCuda();
+	// testEMathOpsCPP();
+	// testEMathOpsCuda();
+	testLinalgOpsCPP();
+	cout << "cpp done" << endl;
 }
