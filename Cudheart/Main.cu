@@ -5,5 +5,6 @@
 using Cudheart::Exceptions::CudaException;
 
 int main() {
+	cout << "started execution" << endl;
 	test();
 }

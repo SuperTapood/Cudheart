@@ -59,13 +59,20 @@ void testMatrixCreation() {
 	auto k = MatrixOps::arange(12, 4, 3);
 	// k->print();
 	//f->print();
-	//f[0].transpose()->print();
-	//f[0].transpose()->transpose()->print();
-	//f[0].reverseRows()->print();
-	//f->rotate(90)->print();
-	//f->rotate(180)->print();
-	//f->rotate(-180)->print();
-	//f->rotate(-90)->print();
+	auto l = f[0].transpose();
+	//l->print();
+	auto m = f[0].transpose()->transpose();
+	//m->print();
+	auto n = f[0].reverseRows();
+	// n->print();
+	auto o = f->rotate(90);
+	// o->print();
+	auto p = f->rotate(180);
+	// p->print();
+	auto q = f->rotate(-180);
+	// q->print();
+	auto r = f->rotate(-90);
+	// r->print();
 } 
 
 void testBinaryOpsCuda() {
@@ -75,12 +82,18 @@ void testBinaryOpsCuda() {
 	auto b = VectorOps::full(4, 9);
 	auto c = VectorOps::full(4, 1);
 
-	bitwiseAnd(a, b)->print();;
-	bitwiseOr(a, b)->print();
-	bitwiseXor(a, b)->print();
-	bitwiseNot(a)->print();
-	bitwiseLeftShift(b, c)->print();
-	bitwiseRightShift(b, c)->print();
+	auto d = bitwiseAnd(a, b);
+	// d->print();
+	auto e = bitwiseOr(a, b);
+	// e->print();
+	auto f = bitwiseXor(a, b);
+	// f->print();
+	auto g = bitwiseNot(a);
+	// g->print();
+	auto h = bitwiseLeftShift(b, c);
+	// h->print();
+	auto i = bitwiseRightShift(b, c);
+	// i->print();
 }
 
 void testBinaryOpsCPP() {
@@ -90,12 +103,18 @@ void testBinaryOpsCPP() {
 	auto b = VectorOps::full(4, 9);
 	auto c = VectorOps::full(4, 1);
 
-	bitwiseAnd(a, b)->print();;
-	bitwiseOr(a, b)->print();
-	bitwiseXor(a, b)->print();
-	bitwiseNot(a)->print();
-	bitwiseLeftShift(b, c)->print();
-	bitwiseRightShift(b, c)->print();
+	auto d = bitwiseAnd(a, b);
+	// d->print();
+	auto e = bitwiseOr(a, b);
+	// e->print();
+	auto f = bitwiseXor(a, b);
+	// f->print();
+	auto g = bitwiseNot(a);
+	// g->print();
+	auto h = bitwiseLeftShift(b, c);
+	// h->print();
+	auto i = bitwiseRightShift(b, c);
+	// i->print();
 }
 
 void testEMathOpsCPP() {
@@ -105,19 +124,67 @@ void testEMathOpsCPP() {
 	auto b = VectorOps::full(25, 0.5);
 	auto c = MatrixOps::fromVector(b, 5, 5);
 
-	//squareRoot(a)->print();
-	//loga(a)->print();
-	//loga2(a)->print();
-	//logan(a, 5.f)->print();
-	//loga10(a)->print();
-	arccos(b)->print();
-	arccos(c)->print();
-	arcsin(b)->print();
-	arcsin(c)->print();
-	arctan(b)->print();
-	arctan(c)->print();
-	arccot(b)->print();
-	arccot(c)->print();
+	auto d = squareRoot(a);
+	// d->print();
+	auto e = loga(a);
+	// e->print();
+	auto f = loga2(a);
+	// f->print();
+	auto g = logan(a, 5.f);
+	// g->print();
+	auto h = loga10(a);
+	// h->print();
+	auto i = arccos(b);
+	// i->print();
+	auto j = arccos(c);
+	// j->print();
+	auto k = arcsin(b);
+	// k->print();
+	auto l = arcsin(c);
+	// l->print();
+	auto m = arctan(b);
+	// m->print();
+	auto n = arctan(c);
+	// n->print();
+	auto o = arccot(b);
+	// o->print();
+	auto p = arccot(c);
+	// p->print();
+}
+
+void testEMathOpsCuda() {
+	using namespace Cudheart::CPP::Math::EMath;
+
+	auto a = VectorOps::full<float>(25, 25);
+	auto b = VectorOps::full(25, 0.5);
+	auto c = MatrixOps::fromVector(b, 5, 5);
+
+	auto d = squareRoot(a);
+	// d->print();
+	auto e = loga(a);
+	// e->print();
+	auto f = loga2(a);
+	// f->print();
+	auto g = logan(a, 5.f);
+	// g->print();
+	auto h = loga10(a);
+	// h->print();
+	auto i = arccos(b);
+	// i->print();
+	auto j = arccos(c);
+	// j->print();
+	auto k = arcsin(b);
+	// k->print();
+	auto l = arcsin(c);
+	// l->print();
+	auto m = arctan(b);
+	// m->print();
+	auto n = arctan(c);
+	// n->print();
+	auto o = arccot(b);
+	// o->print();
+	auto p = arccot(c);
+	// p->print();
 }
 
 void test() {
@@ -125,5 +192,6 @@ void test() {
 	//testMatrixCreation();
 	//testBinaryOpsCPP();
 	//testBinaryOpsCuda();
-	testEMathOpsCPP();
+	//testEMathOpsCPP();
+	testEMathOpsCuda();
 }
