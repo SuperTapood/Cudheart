@@ -110,9 +110,14 @@ void testEMathOpsCPP() {
 	//loga2(a)->print();
 	//logan(a, 5.f)->print();
 	//loga10(a)->print();
-	cout << arccos(-1) << endl;
 	arccos(b)->print();
 	arccos(c)->print();
+	arcsin(b)->print();
+	arcsin(c)->print();
+	arctan(b)->print();
+	arctan(c)->print();
+	arccot(b)->print();
+	arccot(c)->print();
 }
 
 void test() {

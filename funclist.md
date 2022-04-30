@@ -12,10 +12,6 @@ any ticked funcs are added, but incomplete
 - [X] vander
 
 ## array manipulation
-## emath
-- [ ] arcsin
-- [ ] arctanh
-
 ## products
 - [ ] dot
 - [ ] multidot

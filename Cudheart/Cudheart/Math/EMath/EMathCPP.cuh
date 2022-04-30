@@ -190,28 +190,10 @@ namespace Cudheart::CPP::Math::EMath {
 	}
 
 	template <typename T>
-	long double arccos(T a) {
-		if (a == 1) {
-			return 0;
-		}
-		long double delta = 1e-5;
-		long double pi = 3.1415926535897932384626433;
-		// a lousy first approximation
-		long double x = pi * (1 - a) / 2;
-		long double last = x;
-		x += ((cos(x) - a) / sin(x));
-		while (abs(x - last) > delta) {
-			last = x; 
-x += ((cos(x) - a) / sin(x));
-		}
-		return x;
-	}
-
-	template <typename T>
 	Vector<T>* arccos(Vector<T>* vec) {
 		Vector<T>* out = emptyLike(vec);
 		for (int i = 0; i < vec->getSize(); i++) {
-			out->set(i, arccos(vec->get(i)));
+			out->set(i, acos(vec->get(i)));
 		}
 		return out;
 	}
@@ -228,8 +210,63 @@ x += ((cos(x) - a) / sin(x));
 	}
 
 	template <typename T>
-	long double arcsin(T a) {
+	Vector<T>* arcsin(Vector<T>* vec) {
+		Vector<T>* out = emptyLike(vec);
+		for (int i = 0; i < vec->getSize(); i++) {
+			out->set(i, asin(vec->get(i)));
+		}
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* arcsin(Matrix<T>* mat) {
+		Vector<T>* flat = mat->flatten();
+
+		Vector<T>* out = arccos(flat);
+
+		delete flat;
+
+		return fromVector(out, mat->getWidth(), mat->getHeight(), true);
+	}
+
+	template <typename T>
+	Vector<T>* arctan(Vector<T>* vec) {
+		Vector<T>* out = emptyLike(vec);
+		for (int i = 0; i < vec->getSize(); i++) {
+			out->set(i, atan(vec->get(i)));
+		}
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* arctan(Matrix<T>* mat) {
+		Vector<T>* flat = mat->flatten();
+
+		Vector<T>* out = arctan(flat);
+
+		delete flat;
+
+		return fromVector(out, mat->getWidth(), mat->getHeight(), true);
+	}
+
+	template <typename T>
+	Vector<T>* arccot(Vector<T>* vec) {
+		Vector<T>* out = emptyLike(vec);
 		long double pi = 3.1415926535897932384626433;
-		return (pi / 2) - arccos(a);
+		for (int i = 0; i < vec->getSize(); i++) {
+			out->set(i, (pi / 2) - atan(vec->get(i)));
+		}
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* arccot(Matrix<T>* mat) {
+		Vector<T>* flat = mat->flatten();
+
+		Vector<T>* out = arccot(flat);
+
+		delete flat;
+
+		return fromVector(out, mat->getWidth(), mat->getHeight(), true);
 	}
 }
