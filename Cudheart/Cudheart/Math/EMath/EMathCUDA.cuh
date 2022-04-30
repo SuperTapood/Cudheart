@@ -11,15 +11,19 @@ using namespace Cudheart::Exceptions;
 using Cudheart::VectorOps::empty;
 using Cudheart::VectorOps::emptyLike;
 using Cudheart::MatrixOps::fromVector;
+using namespace Cudheart::Kernels::Math::EMath;
 
 namespace Cudheart::CUDA::Math::EMath {
 	template <typename T>
 	Vector<T>* squareRoot(Vector<T>* vec) {
-		Vector<T>* output = emptyLike(vec);
 
-		for (int i = 0; i < vec->getSize(); i++) {
-			output->set(i, sqrt(vec->get(i)));
-		}
+		int len = vec->getSize();
+		Vector<T>* output = empty(len);
+		ContainerAB<T>* con = vec->getContainerAB(output);
+
+		kernelSqrt << <1, len >> > (con->devB, con->devA);
+
+		delete con;
 
 		return output;
 	}
@@ -37,11 +41,14 @@ namespace Cudheart::CUDA::Math::EMath {
 
 	template <typename T>
 	Vector<T>* loga(Vector<T>* vec) {
-		Vector<T>* output = emptyLike(vec);
+		int len = vec->getSize();
+		Vector<T>* output = empty(len);
 
-		for (int i = 0; i < vec->getSize(); i++) {
-			output->set(i, log(vec->get(i)));
-		}
+		ContainerAB<T>* con = vec->getContainerAB(output);
+
+		kernelLog << <1, len >> > (con->devB, con->devA);
+
+		delete con;
 
 		return output;
 	}
@@ -59,11 +66,12 @@ namespace Cudheart::CUDA::Math::EMath {
 
 	template <typename T>
 	Vector<T>* loga2(Vector<T>* vec) {
-		Vector<T>* output = emptyLike(vec);
+		int len = vec->getSize();
+		Vector<T>* output = empty(len);
 
-		for (int i = 0; i < vec->getSize(); i++) {
-			output->set(i, log2(vec->get(i)));
-		}
+		ContainerAB<T>* con = vec->getContainerAB(output);
+
+		kernelLog2 << <1, len >> > (con->devB, con->devA);
 
 		return output;
 	}
@@ -81,7 +89,8 @@ namespace Cudheart::CUDA::Math::EMath {
 
 	template <typename T>
 	Vector<T>* logan(Vector<T>* vec, T n) {
-		Vector<T>* output = emptyLike(vec);
+		int len = vec->getSize();
+		Vector<T>* output = empty(len);
 
 		for (int i = 0; i < vec->getSize(); i++) {
 			// using the change of bases rule:
@@ -105,7 +114,8 @@ namespace Cudheart::CUDA::Math::EMath {
 
 	template <typename T>
 	Vector<T>* loga10(Vector<T>* vec) {
-		Vector<T>* output = emptyLike(vec);
+		int len = vec->getSize();
+		Vector<T>* output = empty(len);
 
 		for (int i = 0; i < vec->getSize(); i++) {
 			output->set(i, log10(vec->get(i)));
@@ -127,7 +137,8 @@ namespace Cudheart::CUDA::Math::EMath {
 
 	template <typename T>
 	Vector<T>* power(Vector<T>* base, T po) {
-		Vector<T>* out = emptyLike(base);
+		int len = base->getSize();
+		Vector<T>* output = empty(len);
 
 		for (int i = 0; i < out->getSize(); i++) {
 			out->set(i, pow(base->get(i), power));
@@ -139,7 +150,8 @@ namespace Cudheart::CUDA::Math::EMath {
 	template <typename T>
 	Vector<T>* power(Vector<T>* base, Vector<T>* po) {
 		base->assertMatchSize(power);
-		Vector<T>* out = emptyLike(base);
+		int len = base->getSize();
+		Vector<T>* output = empty(len);
 
 		for (int i = 0; i < out->getSize(); i++) {
 			out->set(i, pow(base->get(i), po->get(i)));

@@ -32,7 +32,7 @@ namespace Cudheart::Kernels::Math::EMath {
 	{
 		int i = threadIdx.x;
 		long double pi = 3.1415926535897932384626433;
-		out[i] = (pi / 2) - atan(in[i]));
+		out[i] = (pi / 2) - atan(in[i]);
 	}
 
 	template <typename T>
