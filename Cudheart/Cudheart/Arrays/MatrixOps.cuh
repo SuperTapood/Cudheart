@@ -37,6 +37,21 @@ namespace Cudheart::MatrixOps {
 		return res;
 	}
 
+	template <typename T>
+	Matrix<T>* fromVectorArray(Vector<T>* vecs, int len) {
+		Vector<T> a = vecs[0];
+		Matrix<T>* out = empty(len, a.getSize());
+
+		for (int i = 0; i < len; i++) {
+			for (int j = 0; j < a.getSize(); j++) {
+				// if a.getSize() != vecs[i].getSize()
+				out->set(i, j, vecs[i].get(j));
+			}
+		}
+
+		return out;
+	}
+
 	// do not fucking use this with T = char, string or custom class
 	// if you do, prepare for trouble and make it double
 	template <typename T>
@@ -88,7 +103,7 @@ namespace Cudheart::MatrixOps {
 		return out;
 	}
 
-	
+
 
 	template <typename T>
 	Matrix<T>* linspace(T start, T stop, T num, bool endpoint, int width, int height) {

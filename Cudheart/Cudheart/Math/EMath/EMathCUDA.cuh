@@ -18,7 +18,7 @@ namespace Cudheart::CUDA::Math::EMath {
 	Vector<T>* squareRoot(Vector<T>* vec) {
 
 		int len = vec->getSize();
-		Vector<T>* output = empty(len);
+		Vector<T>* output = empty<T>(len);
 		ContainerAB<T>* con = vec->getContainerAB(output);
 
 		kernelSqrt << <1, len >> > (con->devB, con->devA);
@@ -42,7 +42,7 @@ namespace Cudheart::CUDA::Math::EMath {
 	template <typename T>
 	Vector<T>* loga(Vector<T>* vec) {
 		int len = vec->getSize();
-		Vector<T>* output = empty(len);
+		Vector<T>* output = empty<T>(len);
 
 		ContainerAB<T>* con = vec->getContainerAB(output);
 
@@ -67,11 +67,13 @@ namespace Cudheart::CUDA::Math::EMath {
 	template <typename T>
 	Vector<T>* loga2(Vector<T>* vec) {
 		int len = vec->getSize();
-		Vector<T>* output = empty(len);
+		Vector<T>* output = empty<T>(len);
 
 		ContainerAB<T>* con = vec->getContainerAB(output);
 
 		kernelLog2 << <1, len >> > (con->devB, con->devA);
+
+		delete con;
 
 		return output;
 	}
@@ -90,13 +92,13 @@ namespace Cudheart::CUDA::Math::EMath {
 	template <typename T>
 	Vector<T>* logan(Vector<T>* vec, T n) {
 		int len = vec->getSize();
-		Vector<T>* output = empty(len);
+		Vector<T>* output = empty<T>(len);
 
-		for (int i = 0; i < vec->getSize(); i++) {
-			// using the change of bases rule:
-			// log n of vec[i] = log(vec[i]) / log(n)
-			output->set(i, (log(vec->get(i)) / log(n)));
-		}
+		ContainerAB<T>* con = vec->getContainerAB(output);
+
+		kernelLogN << < 1, len >> > (con->devB, con->devA, n);
+
+		delete con;
 
 		return output;
 	}
@@ -115,11 +117,13 @@ namespace Cudheart::CUDA::Math::EMath {
 	template <typename T>
 	Vector<T>* loga10(Vector<T>* vec) {
 		int len = vec->getSize();
-		Vector<T>* output = empty(len);
+		Vector<T>* output = empty<T>(len);
 
-		for (int i = 0; i < vec->getSize(); i++) {
-			output->set(i, log10(vec->get(i)));
-		}
+		ContainerAB<T>* con = vec->getContainerAB(output);
+
+		kernelLog10 << <1, len >> > (con->devB, con->devA);
+
+		delete con;
 
 		return output;
 	}
@@ -138,26 +142,30 @@ namespace Cudheart::CUDA::Math::EMath {
 	template <typename T>
 	Vector<T>* power(Vector<T>* base, T po) {
 		int len = base->getSize();
-		Vector<T>* output = empty(len);
+		Vector<T>* output = empty<T>(len);
 
-		for (int i = 0; i < out->getSize(); i++) {
-			out->set(i, pow(base->get(i), power));
-		}
+		ContainerAB<T>* con = base->getContainerAB(output);
 
-		return out;
+		kernelPower << <1, len >> > (con->devB, con->devA, po);
+
+		delete con;
+
+		return output;
 	}
 
 	template <typename T>
 	Vector<T>* power(Vector<T>* base, Vector<T>* po) {
 		base->assertMatchSize(power);
 		int len = base->getSize();
-		Vector<T>* output = empty(len);
+		Vector<T>* output = empty<T>(len);
 
-		for (int i = 0; i < out->getSize(); i++) {
-			out->set(i, pow(base->get(i), po->get(i)));
-		}
+		ContainerAB<T>* con = base->getContainerABC(po, output);
 
-		return out;
+		kernelPower << <1, len >> > (con->devC, con->devA, con->devB);
+
+		delete con;
+
+		return output;
 	}
 
 	template <typename T>
@@ -190,24 +198,30 @@ namespace Cudheart::CUDA::Math::EMath {
 		if (base->getHeight() != po->getSize()) {
 			Cudheart::Exceptions::ShapeMismatchException(base->getHeight(), po->getSize()).raise();
 		}
-		Matrix<T>* out = emptyLike(base);
+
+		Vector<T>* arr = base->toVectorArray();
+		Vector<T>* a = (Vector<T>*)malloc(sizeof(Vector<T>) * base->getHeight());
 
 		for (int i = 0; i < base->getHeight(); i++) {
-			T p = po->get(i);
-			for (int j = 0; j < base->getWidth(); j++) {
-				out->set(i, j, pow(p, base->get(i, j)));
-			}
+			Vector<T> v = arr[i];
+			a[i] = power(v, po->get(i));
 		}
 
-		return out;
+		delete arr;
+
+		return MatrixOps::fromVectorArray(a, base->getHeight());
 	}
 
 	template <typename T>
 	Vector<T>* arccos(Vector<T>* vec) {
 		Vector<T>* out = emptyLike(vec);
-		for (int i = 0; i < vec->getSize(); i++) {
-			out->set(i, acos(vec->get(i)));
-		}
+
+		ContainerAB<T>* con = vec->getContainerAB(out);
+
+		kernelArccos << <1, vec->getSize() >> > (con->devB, con->devA);
+
+		delete con;
+
 		return out;
 	}
 
@@ -225,9 +239,13 @@ namespace Cudheart::CUDA::Math::EMath {
 	template <typename T>
 	Vector<T>* arcsin(Vector<T>* vec) {
 		Vector<T>* out = emptyLike(vec);
-		for (int i = 0; i < vec->getSize(); i++) {
-			out->set(i, asin(vec->get(i)));
-		}
+
+		ContainerAB<T>* con = vec->getContainerAB(out);
+
+		kernelArcsin << <1, vec->getSize() >> > (con->devB, con->devA);
+
+		delete con;
+
 		return out;
 	}
 
@@ -245,9 +263,13 @@ namespace Cudheart::CUDA::Math::EMath {
 	template <typename T>
 	Vector<T>* arctan(Vector<T>* vec) {
 		Vector<T>* out = emptyLike(vec);
-		for (int i = 0; i < vec->getSize(); i++) {
-			out->set(i, atan(vec->get(i)));
-		}
+
+		ContainerAB<T>* con = vec->getContainerAB(out);
+
+		kernelArctan << <1, vec->getSize() >> > (con->devB, con->devA);
+
+		delete con;
+
 		return out;
 	}
 
@@ -265,10 +287,13 @@ namespace Cudheart::CUDA::Math::EMath {
 	template <typename T>
 	Vector<T>* arccot(Vector<T>* vec) {
 		Vector<T>* out = emptyLike(vec);
-		long double pi = 3.1415926535897932384626433;
-		for (int i = 0; i < vec->getSize(); i++) {
-			out->set(i, (pi / 2) - atan(vec->get(i)));
-		}
+
+		ContainerAB<T>* con = vec->getContainerAB(out);
+
+		kernelArccot << <1, vec->getSize() >> > (con->devB, con->devA);
+
+		delete con;
+
 		return out;
 	}
 

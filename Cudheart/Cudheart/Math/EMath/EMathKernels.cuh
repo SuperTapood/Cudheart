@@ -7,7 +7,7 @@
 
 namespace Cudheart::Kernels::Math::EMath {
 	template <typename T>
-	__global__ void kernelArccos(T* out, const T* in) 
+	__global__ void kernelArccos(T* out, const T* in)
 	{
 		int i = threadIdx.x;
 		out[i] = acos(in[i]);
@@ -68,6 +68,13 @@ namespace Cudheart::Kernels::Math::EMath {
 	{
 		int i = threadIdx.x;
 		c[i] = pow(a[i], b[i]);
+	}
+
+	template <typename T>
+	__global__ void kernelPower(T* output, const T* input, const T power)
+	{
+		int i = threadIdx.x;
+		output[i] = pow(input[i], power);
 	}
 
 	template <typename T>

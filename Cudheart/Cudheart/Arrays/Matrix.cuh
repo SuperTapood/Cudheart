@@ -388,6 +388,20 @@ namespace Cudheart::NDArrays {
 			return out;
 		}
 
+		Vector<T>* toVectorArray() {
+			Vector<T>* out = (Vector<T>*)malloc(sizeof(Vector<T>) * m_height);
+
+			for (int i = 0; i < m_height; i++) {
+				out[i] = Vector<T>(m_width);
+
+				for (int j = 0; j < m_width; j++) {
+					out[i].set(j, get(i, j));
+				}
+			}
+
+			return out;
+		}
+
 		// todo: add operator overloades to make this look better
 
 	private:

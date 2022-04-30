@@ -52,7 +52,7 @@ void testMatrixCreation() {
 	// h->print();
 	auto i = MatrixOps::diagflat<int>(h, 2);
 	// i->print();
-	
+
 	auto j = MatrixOps::tri<int>(3, 5, 2);
 	// j->print();
 
@@ -73,7 +73,7 @@ void testMatrixCreation() {
 	// q->print();
 	auto r = f->rotate(-90);
 	// r->print();
-} 
+}
 
 void testBinaryOpsCuda() {
 	using namespace Cudheart::CUDA::Math::Bitwise;
@@ -120,7 +120,7 @@ void testBinaryOpsCPP() {
 void testEMathOpsCPP() {
 	using namespace Cudheart::CPP::Math::EMath;
 
-	auto a = VectorOps::full<float>(250, 25);
+	auto a = VectorOps::full<float>(25, 25);
 	auto b = VectorOps::full(25, 0.5);
 	auto c = MatrixOps::fromVector(b, 5, 5);
 
@@ -155,13 +155,12 @@ void testEMathOpsCPP() {
 void testEMathOpsCuda() {
 	using namespace Cudheart::CUDA::Math::EMath;
 
-	auto a = VectorOps::full<float>(250, 25);
+	auto a = VectorOps::full<float>(25, 25);
 	auto b = VectorOps::full(25, 0.5);
 	auto c = MatrixOps::fromVector(b, 5, 5);
 
-	cout << "cuda" << endl;
 	auto d = squareRoot(a);
-	d->print();
+	// d->print();
 	auto e = loga(a);
 	// e->print();
 	auto f = loga2(a);
@@ -194,5 +193,6 @@ void test() {
 	//testBinaryOpsCPP();
 	//testBinaryOpsCuda();
 	testEMathOpsCPP();
+	cout << endl << endl << "cpp done" << endl;
 	testEMathOpsCuda();
 }
