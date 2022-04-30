@@ -111,6 +111,8 @@
     <ClInclude Include="Cudheart\Math\Constants.cuh" />
     <ClInclude Include="Cudheart\Math\EMath\EMath.cuh" />
     <ClInclude Include="Cudheart\Math\EMath\EMathCPP.cuh" />
+    <ClInclude Include="Cudheart\Math\EMath\EMathCUDA.cuh" />
+    <ClInclude Include="Cudheart\Math\EMath\EMathKernels.cuh" />
     <ClInclude Include="Cudheart\Math\Math.cuh" />
     <ClInclude Include="Cudheart\Exceptions\ShapeMismatchException.cuh" />
     <ClInclude Include="Cudheart\Test\Test.cuh" />

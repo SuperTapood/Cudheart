@@ -153,7 +153,7 @@ void testEMathOpsCPP() {
 }
 
 void testEMathOpsCuda() {
-	using namespace Cudheart::CPP::Math::EMath;
+	using namespace Cudheart::CUDA::Math::EMath;
 
 	auto a = VectorOps::full<float>(25, 25);
 	auto b = VectorOps::full(25, 0.5);
