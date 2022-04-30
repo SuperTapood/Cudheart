@@ -11,6 +11,8 @@ Currently, no actual CUDA kernels are implemented, but they will be in the futur
 
 
 - [ ] even more types for functions
+- [ ] test every function
+- [ ] inplace in every function
 - [ ] make sure there is no undefined behavior when passing negative k (offset) to a function
 - [ ] add built in casting for math functions with flags
 - [ ] maybe more function variations?

@@ -108,6 +108,7 @@
     <ClInclude Include="Cudheart\Exceptions\NotImplementedException.cuh" />
     <ClInclude Include="Cudheart\Math\Bitwise\Bitwise.cuh" />
     <ClInclude Include="Cudheart\Math\Bitwise\BitwiseKernels.cuh" />
+    <ClInclude Include="Cudheart\Math\Constants.cuh" />
     <ClInclude Include="Cudheart\Math\EMath\EMath.cuh" />
     <ClInclude Include="Cudheart\Math\EMath\EMathCPP.cuh" />
     <ClInclude Include="Cudheart\Math\Math.cuh" />

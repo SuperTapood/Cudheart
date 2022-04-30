@@ -14,6 +14,10 @@ namespace Cudheart::NDArrays {
 		T* m_data;
 
 	public:
+		Vector() {
+
+		}
+
 		Vector(T* data, int size) {
 			m_data = data;
 			m_size = size;

@@ -164,7 +164,7 @@ namespace Cudheart::NDArrays {
 		/// </summary>
 		/// <returns>a string presenting the matrix</returns>
 		string toString() {
- 			ostringstream os;
+			ostringstream os;
 			os << "[\n";
 			for (int i = 0; i < m_height; i++) {
 				os << " [";
@@ -229,7 +229,7 @@ namespace Cudheart::NDArrays {
 				delete mat;
 				return this;
 			}
-			
+
 			return mat;
 		}
 
@@ -329,7 +329,7 @@ namespace Cudheart::NDArrays {
 				mat->transpose(true);
 				out = mat;
 			}
-			
+
 			return out;
 		}
 
@@ -379,7 +379,7 @@ namespace Cudheart::NDArrays {
 		/// </summary>
 		/// <returns>the output vector</returns>
 		Vector<T>* flatten() {
-			Vector<T>* out = new Vector(getSize());
+			Vector<T>* out = new Vector<T>(getSize());
 
 			for (int i = 0; i < getSize(); i++) {
 				out->set(i, get(i));

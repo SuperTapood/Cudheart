@@ -69,7 +69,7 @@ namespace Cudheart::VectorOps {
 		Vector<T>* out = zeros(mat->getSize());
 
 		for (int i = 0; i < mat->getSize(); i++) {
-			out->set(i, mat->get(i));
+			out->set(i, mat->getAbs(i));
 		}
 
 		return out;

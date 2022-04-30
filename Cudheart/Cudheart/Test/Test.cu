@@ -102,12 +102,17 @@ void testEMathOpsCPP() {
 	using namespace Cudheart::CPP::Math::EMath;
 
 	auto a = VectorOps::full<float>(25, 25);
+	auto b = VectorOps::full(25, 0.5);
+	auto c = MatrixOps::fromVector(b, 5, 5);
 
-	squareRoot(a)->print();
-	loga(a)->print();
-	loga2(a)->print();
-	logan(a, 5.f)->print();
-	loga10(a)->print();
+	//squareRoot(a)->print();
+	//loga(a)->print();
+	//loga2(a)->print();
+	//logan(a, 5.f)->print();
+	//loga10(a)->print();
+	cout << arccos(-1) << endl;
+	arccos(b)->print();
+	arccos(c)->print();
 }
 
 void test() {
