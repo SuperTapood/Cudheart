@@ -13,7 +13,6 @@ any ticked funcs are added, but incomplete
 
 ## array manipulation
 ## linalg
-- [ ] matmul
 - [ ] tensordot
 - [ ] einsum
 - [ ] einsumpath
@@ -309,10 +308,3 @@ any ticked funcs are added, but incomplete
 - [ ] isLower
 - [ ] isUpper
 - [ ] startsWith
-
-
-
-# functions which have been declared redundent and their replacement:
- 
-- matmul => multiply
-- inner and outer for vectors => its just dot at that point
