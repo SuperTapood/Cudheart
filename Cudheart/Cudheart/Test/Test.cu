@@ -197,11 +197,24 @@ void testLinalgOpsCPP() {
 	auto e = dot(a, b);
 	// cout << c << endl;
 	auto f = dot(b, d);
-	f->print();
+	//f->print();
 	auto g = dot(d, b);
-	g->print();
+	//g->print();
 
-	// todo: implement dot for two matrices
+	auto h = inner(d, d);
+	// h->print();
+
+	auto i = outer(a, a);
+	// i->print();
+
+	auto j = outer(d, d);
+	// j->print();
+
+	auto k = outer(d, a);
+	// k->print();
+
+	auto l = outer(a, d);
+	// l->print();
 }
 
 void test() {

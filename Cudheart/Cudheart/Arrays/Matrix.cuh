@@ -4,6 +4,7 @@
 
 #include "../Util.cuh"
 #include "../Exceptions/Exceptions.cuh"
+#include "Vector.cuh"
 
 namespace Cudheart::NDArrays {
 	using namespace Cudheart::Exceptions;
@@ -105,6 +106,14 @@ namespace Cudheart::NDArrays {
 				j += m_width;
 			}
 			return get(flatten(i, j));
+		}
+
+		Vector<T>* getRow(int i) {
+			Vector<T>* out = new Vector<T>(m_width);
+			for (int k = 0; k < m_width; k++) {
+				out->set(k, get(i, k));
+			}
+			return out;
 		}
 
 		/// <summary>

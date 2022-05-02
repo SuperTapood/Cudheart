@@ -31,7 +31,7 @@ namespace Cudheart::Kernels::Math::EMath {
 	__global__ void kernelArccot(T* out, const T* in)
 	{
 		int i = threadIdx.x;
-		long double pi = 3.1415926535897932384626433;
+		double pi = 3.1415926535897932384626433;
 		out[i] = (pi / 2) - atan(in[i]);
 	}
 

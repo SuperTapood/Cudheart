@@ -9,6 +9,7 @@ using Cudheart::VectorOps::empty;
 using Cudheart::VectorOps::emptyLike;
 using Cudheart::MatrixOps::empty;
 using Cudheart::MatrixOps::emptyLike;
+using Cudheart::MatrixOps::fromVectorArray;
 
 
 namespace Cudheart::CPP::Math::Linalg {
@@ -76,6 +77,89 @@ namespace Cudheart::CPP::Math::Linalg {
 				sum += t->get(i, j);
 			}
 			out->set(i, sum);
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Vector<T>* inner(Matrix<T>* mat, Vector<T>* vec) {
+		return dot(mat, vec);
+	}
+
+	template <typename T>
+	Vector<T>* inner(Vector<T>* vec, Matrix<T>* mat) {
+		return dot(mat, vec);
+	}
+
+	template <typename T>
+	Matrix<T>* inner(Matrix<T>* a, Matrix<T>* b) {
+		a->assertMatchSize(b);
+
+		Matrix<T>* out = emptyLike<T>(a);
+
+		for (int i = 0; i < a->getHeight(); i++) {
+			Vector<T>* v = dot<T>(b, a->getRow(i));
+			for (int j = 0; j < v->getSize(); j++) {
+				out->set(i, j, v->get(j));
+			}
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* outer(Vector<T>* a, Vector<T>* b) {
+		Matrix<T>* out = empty<T>(a->getSize(), b->getSize());
+
+		for (int i = 0; i < a->getSize(); i++) {
+			for (int j = 0; j < b->getSize(); j++) {
+				out->set(i, j, a->get(i) * b->get(j));
+			}
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* outer(Matrix<T>* a, Matrix<T>* b) {
+		Vector<T>* va = a->flatten();
+		Vector<T>* vb = b->flatten();
+
+		Matrix<T>* out = empty<T>(a->getSize(), b->getSize());
+
+		for (int i = 0; i < va->getSize(); i++) {
+			for (int j = 0; j < vb->getSize(); j++) {
+				out->set(i, j, va->get(i) * vb->get(j));
+			}
+		}
+
+		delete va, vb;
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* outer(Matrix<T>* mat, Vector<T>* vec) {
+		Matrix<T>* out = empty<T>(mat->getSize(), vec->getSize());
+
+		for (int i = 0; i < mat->getSize(); i++) {
+			for (int j = 0; j < vec->getSize(); j++) {
+				out->set(i, j, mat->get(i) * vec->get(j));
+			}
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* outer(Vector<T>* vec, Matrix<T>* mat) {
+		Matrix<T>* out = empty<T>(vec->getSize(), mat->getSize());
+
+		for (int i = 0; i < vec->getSize(); i++) {
+			for (int j = 0; j < mat->getSize(); j++) {
+				out->set(i, j, vec->get(i) * mat->get(j));
+			}
 		}
 
 		return out;

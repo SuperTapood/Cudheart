@@ -13,8 +13,6 @@ any ticked funcs are added, but incomplete
 
 ## array manipulation
 ## linalg
-- [ ] inner
-- [ ] outer
 - [ ] matmul
 - [ ] tensordot
 - [ ] einsum
@@ -317,4 +315,4 @@ any ticked funcs are added, but incomplete
 # functions which have been declared redundent and their replacement:
  
 - matmul => multiply
-- multi_dot, vdot, inner for vectors => why even
+- inner and outer for vectors => its just dot at that point
