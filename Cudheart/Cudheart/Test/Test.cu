@@ -238,6 +238,9 @@ void testLogicOpsCPP() {
 	cout << any(b) << endl;
 	cout << any(c) << endl;
 	cout << any(d) << endl;
+	cout << 0 && 0;
+	cout << endl;
+	logicalAnd(a, c)->print();
 }
 
 void test() {

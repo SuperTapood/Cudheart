@@ -46,4 +46,30 @@ namespace Cudheart::CPP::Logic {
 
 		return false;
 	}
+
+	template <typename T>
+	Vector<bool>* logicalAnd(Vector<T>* a, Vector<T>* b) {
+		a->assertMatchSize(b);
+		
+		Vector<bool>* out = new Vector<bool>(a->getSize());
+
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) && b->get(i));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<bool>* logicalAnd(Matrix<T>* a, Matrix<T>* b) {
+		a->assertMatchSize(b);
+
+		Matrix<bool>* out = new Matrix<bool>(a->getSize());
+
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) && b->get(i));
+		}
+
+		return out;
+	}
 }

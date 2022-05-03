@@ -17,7 +17,9 @@ The aim of this project is to provide a back-end framework for a Tensorflow-esqu
 - [ ] create vector using initializer list
 - [ ] assert instead of print in the tests
 - [ ] manually handle all possible exceptions (because cpp exceptions suck)
+- [ ] don't flatten matrices unless its needed (or ur lazy or cuda is involved)
 - [ ] deprecate containers and get rid of CUtil
+- [ ] a bunch of new assertions and their exceptions
 - [ ] optimize the functions (mainly for loops)
 - [ ] add more scenerios to shape mismatch exception
 - [ ] test every function

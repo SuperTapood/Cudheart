@@ -17,14 +17,6 @@ any ticked funcs are added, but incomplete
 - [X] inv
 
 ## boolean functions
-- [ ] isFinite
-- [ ] isInf
-- [ ] isNaN
-- [ ] isNegInf
-- [ ] isPosInf
-- [ ] isComplex
-- [ ] isReal
-- [ ] logicalAnd
 - [ ] logicalOr
 - [ ] logicalNot
 - [ ] logicalXor
@@ -284,3 +276,13 @@ any ticked funcs are added, but incomplete
 - [ ] isLower
 - [ ] isUpper
 - [ ] startsWith
+
+
+## boolean functions (need new dtypes)
+- [ ] isFinite
+- [ ] isInf
+- [ ] isNaN
+- [ ] isNegInf
+- [ ] isPosInf
+- [ ] isComplex
+- [ ] isReal
