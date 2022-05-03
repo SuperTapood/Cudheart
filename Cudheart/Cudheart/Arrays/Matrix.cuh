@@ -70,7 +70,7 @@ namespace Cudheart::NDArrays {
 		/// <returns></returns>
 		template<typename U>
 		Matrix<U>* castTo() {
-			Matrix<U>* output = new Matrix<U>(getSize());
+			Matrix<U>* output = new Matrix<U>(m_height, m_width);
 
 			for (int i = 0; i < getSize(); i++) {
 				output->set(i, (U)get(i));

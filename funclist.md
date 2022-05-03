@@ -13,20 +13,6 @@ any ticked funcs are added, but incomplete
 
 ## array manipulation
 ## linalg
-- [ ] tensordot
-- [ ] einsum
-- [ ] einsumpath
-- [ ] matrixPower
-- [ ] kron
-- [ ] cholesky
-- [ ] qr
-- [ ] svd
-- [ ] eig
-- [ ] eigh
-- [ ] eigvals
-- [ ] eigvalsh
-- [ ] norm
-- [ ] cond
 - [ ] det
 - [ ] matrixRank
 - [ ] slogDet

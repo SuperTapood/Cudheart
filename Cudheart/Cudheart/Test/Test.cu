@@ -193,6 +193,8 @@ void testLinalgOpsCPP() {
 	auto b = VectorOps::arange(1, 5, 1);
 	auto c = VectorOps::arange(1, 17, 1);
 	auto d = MatrixOps::fromVector(c, 4, 4);
+	auto y = MatrixOps::fromVector(VectorOps::arange(1, 10, 1), 3, 3);
+	auto z = MatrixOps::fromVector(b, 2, 2);
 
 	auto e = dot(a, b);
 	// cout << c << endl;
@@ -215,6 +217,7 @@ void testLinalgOpsCPP() {
 
 	auto l = outer(a, d);
 	// l->print();
+	cout << det(d->castTo<long double>()) << endl;
 }
 
 void test() {
@@ -225,5 +228,4 @@ void test() {
 	// testEMathOpsCPP();
 	// testEMathOpsCuda();
 	testLinalgOpsCPP();
-	cout << "cpp done" << endl;
 }

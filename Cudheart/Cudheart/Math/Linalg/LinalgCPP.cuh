@@ -164,4 +164,50 @@ namespace Cudheart::CPP::Math::Linalg {
 
 		return out;
 	}
+
+	template <typename T>
+	T det(Matrix<T>* mat) {
+		// idfk how numpy implemented their determinant algorithm
+		// this is a mirror of the algorithm implemented in a plethera of websites
+		if (mat->getHeight() != mat->getWidth()) {
+			NotImplementedException("det needs custom exception").raise();
+		}
+
+		if (mat->getHeight() == 1) {
+			return mat->get(0, 0);
+		}
+
+		if (mat->getHeight() == 2) {
+			return (mat->get(0, 0) * mat->get(1, 1)) - (mat->get(0, 1) * mat->get(1, 0));
+		}
+
+		T value = 0;
+		int sign = 1;
+
+		for (int i = 0; i < mat->getWidth(); i++) {
+			//mat->print();
+			//cout << "value: " << mat->get(0, i) << " of index " << i << endl;
+			Matrix<T>* sub = empty<T>(mat->getHeight() - 1, mat->getWidth() - 1);
+			int idx = 0;
+			int jdx = 0;
+			for (int k = 1; k < mat->getHeight(); k++) {
+				for (int m = 0; m < mat->getWidth(); m++) {
+					if (m != i) {
+						//cout << "m: " << m << " k: " << k << " " << mat->get(k, m) << endl;
+						//cout << "i: " << idx << " j: " << jdx << endl;
+						sub->set(jdx, idx, mat->get(k, m));
+						idx++;
+						if (idx == mat->getHeight() - 1) {
+							idx = 0;
+							jdx++;
+						}
+					}
+				}
+			}
+			value += sign * mat->get(0, i) * det(sub);
+			sign *= -1;
+		}
+
+		return value;
+	}
 }
