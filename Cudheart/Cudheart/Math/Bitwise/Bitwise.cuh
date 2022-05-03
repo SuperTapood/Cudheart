@@ -3,4 +3,4 @@
 
 
 #include "BitwiseCPP.cuh"
-#include "BitwiseCuda.cuh"
+#include "BitwiseCUDA.cuh"

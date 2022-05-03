@@ -16,9 +16,7 @@ any ticked funcs are added, but incomplete
 - [X] solve
 - [X] inv
 
-## logic functions
-- [ ] all
-- [ ] any
+## boolean functions
 - [ ] isFinite
 - [ ] isInf
 - [ ] isNaN

@@ -165,9 +165,11 @@ C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Exceptions\Exceptions
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Exceptions\MatrixConversionException.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Exceptions\NotImplementedException.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Exceptions\ShapeMismatchException.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Logic\Logic.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Logic\LogicCPP.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Bitwise\Bitwise.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Bitwise\BitwiseCPP.cuh
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Bitwise\BitwiseCuda.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Bitwise\BitwiseCUDA.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Bitwise\BitwiseKernels.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Constants.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\EMath\EMath.cuh
@@ -176,6 +178,7 @@ C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\EMath\EMathCUDA.
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\EMath\EMathKernels.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Linalg\Linalg.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Linalg\LinalgCPP.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Linalg\LinalgCUDA.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Math.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Test\Test.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Util.cuh

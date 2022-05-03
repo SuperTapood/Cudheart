@@ -243,6 +243,6 @@ namespace Cudheart::CPP::Math::Linalg {
 		// and solved for x as such:
 		// x = (eye(a.shape[0])) / mat
 		// return Math::divide(Cudheart::MatrixOps::eye(mat->getHeight()), mat);
-		NotImplementedException("inv", "divide")
+		NotImplementedException("inv", "divide").raise();
 	}
 }

@@ -223,12 +223,30 @@ void testLinalgOpsCPP() {
 	cout << m << endl;
 }
 
+void testLogicOpsCPP() {
+	using namespace Cudheart::CPP::Logic;
+	auto a = VectorOps::arange(9);
+	auto b = MatrixOps::fromVector(a, 3, 3);
+	auto c = VectorOps::zeros<int>(9);
+	auto d = MatrixOps::fromVector(c, 3, 3);
+
+	cout << all(a) << endl;
+	cout << all(b) << endl;
+	cout << all(c) << endl;
+	cout << all(d) << endl;
+	cout << any(a) << endl;
+	cout << any(b) << endl;
+	cout << any(c) << endl;
+	cout << any(d) << endl;
+}
+
 void test() {
-	//testVectorCreation();
-	//testMatrixCreation();
-	//testBinaryOpsCPP();
-	//testBinaryOpsCuda();
+	// testVectorCreation();
+	// testMatrixCreation();
+	// testBinaryOpsCPP();
+	// testBinaryOpsCuda();
 	// testEMathOpsCPP();
 	// testEMathOpsCuda();
-	testLinalgOpsCPP();
+	// testLinalgOpsCPP();
+	testLogicOpsCPP();
 }
