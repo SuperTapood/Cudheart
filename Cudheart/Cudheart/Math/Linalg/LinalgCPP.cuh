@@ -233,4 +233,16 @@ namespace Cudheart::CPP::Math::Linalg {
 		// see https://www.youtube.com/watch?v=GKkUU4T6o08 for help i think
 		NotImplementedException("solve because i can't be asked").raise();
 	}
+
+	template <typename T>
+	Matrix<T>* inv(Matrix<T>* mat) {
+		// find x where
+		// dot(mat, x) = eye(a.shape[0])
+		// or rather
+		// mat * x = eye(a.shape[0])
+		// and solved for x as such:
+		// x = (eye(a.shape[0])) / mat
+		// return Math::divide(Cudheart::MatrixOps::eye(mat->getHeight()), mat);
+		NotImplementedException("inv", "divide")
+	}
 }

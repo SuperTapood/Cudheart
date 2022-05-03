@@ -13,12 +13,8 @@ any ticked funcs are added, but incomplete
 
 ## array manipulation
 ## linalg
-- [ ] solve
-- [ ] tensorsolve
-- [ ] lstsq
-- [ ] inv
-- [ ] pinv
-- [ ] tensorInv
+- [X] solve
+- [X] inv
 
 ## logic functions
 - [ ] all
