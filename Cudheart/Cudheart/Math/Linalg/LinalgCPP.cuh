@@ -214,14 +214,23 @@ namespace Cudheart::CPP::Math::Linalg {
 	template <typename T>
 	T trace(Matrix<T>* mat, int offset) {
 		T value = mat->get(offset, offset);
+
 		for (int i = offset + 1; i < mat->getHeight(); i++) {
 			value += mat->get(i, i);
 		}
+
 		return value;
 	}
 
 	template <typename T>
 	T trace(Matrix<T>* mat) {
 		return trace(mat, 0);
+	}
+
+	template <typename T>
+	Vector<T>* solve(Matrix<T>* a, Vector<T>* b) {
+		// assert a height == b size
+		// see https://www.youtube.com/watch?v=GKkUU4T6o08 for help i think
+		NotImplementedException("solve because i can't be asked").raise();
 	}
 }

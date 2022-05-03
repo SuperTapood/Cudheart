@@ -11,6 +11,7 @@ This library takes great inspiration and attempts to mimic the structure of pyth
 The aim of this project is to provide a back-end framework for a Tensorflow-esque library to be developed at a later date.
 
 
+- [ ] check and add the missing comments things
 - [ ] even more types for functions
 - [ ] remove fromVectorArray
 - [ ] create vector using initializer list
