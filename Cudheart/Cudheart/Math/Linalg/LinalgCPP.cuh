@@ -210,4 +210,18 @@ namespace Cudheart::CPP::Math::Linalg {
 
 		return value;
 	}
+
+	template <typename T>
+	T trace(Matrix<T>* mat, int offset) {
+		T value = mat->get(offset, offset);
+		for (int i = offset + 1; i < mat->getHeight(); i++) {
+			value += mat->get(i, i);
+		}
+		return value;
+	}
+
+	template <typename T>
+	T trace(Matrix<T>* mat) {
+		return trace(mat, 0);
+	}
 }

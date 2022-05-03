@@ -217,7 +217,10 @@ void testLinalgOpsCPP() {
 
 	auto l = outer(a, d);
 	// l->print();
-	cout << det(d->castTo<long double>()) << endl;
+	// cout << det(d->castTo<long double>()) << endl;
+
+	auto m = trace(MatrixOps::eye<int>(3));
+	cout << m << endl;
 }
 
 void test() {

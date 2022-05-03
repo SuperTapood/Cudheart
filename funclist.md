@@ -13,10 +13,6 @@ any ticked funcs are added, but incomplete
 
 ## array manipulation
 ## linalg
-- [ ] det
-- [ ] matrixRank
-- [ ] slogDet
-- [ ] trace
 - [ ] solve
 - [ ] tensorsolve
 - [ ] lstsq

@@ -13,6 +13,8 @@ The aim of this project is to provide a back-end framework for a Tensorflow-esqu
 
 - [ ] even more types for functions
 - [ ] remove fromVectorArray
+- [ ] create vector using initializer list
+- [ ] assert instead of print in the tests
 - [ ] manually handle all possible exceptions (because cpp exceptions suck)
 - [ ] optimize the functions (mainly for loops)
 - [ ] add more scenerios to shape mismatch exception
