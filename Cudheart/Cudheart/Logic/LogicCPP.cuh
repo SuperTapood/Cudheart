@@ -2,7 +2,7 @@
 
 #include "../Arrays/Arrays.cuh"
 
-namespace Cudheart::CPP::Logic {
+namespace Cudheart::Logic {
 	template <typename T>
 	bool all(Vector<T>* vec) {
 		for (int i = 0; i < vec->getSize(); i++) {
@@ -71,5 +71,25 @@ namespace Cudheart::CPP::Logic {
 		}
 
 		return out;
+	}
+
+	template <typename T>
+	Matrix<bool>* logicalAnd(Matrix<T>* mat, Vector<T>* vec) {
+		// assert mat width == vec size
+		
+		Matrix<bool>* out = new Matrix<bool>(mat->getHeight(), mat->getWidth());
+		
+		for (int i = 0; i < mat->getHeight(), i++) {
+			for (int j = 0; j < mat->getWidth(); j++) {
+				out->set(i, j, mat->get(i, j) && vec->get(j));
+			}
+		}
+		
+		return out;
+	}
+
+	template <typename T> 
+	Matrix<bool>* logicalAnd(Vector<T>* vec, Matrix<T>* mat) {
+		return logicalAnd(mat, vec);
 	}
 }

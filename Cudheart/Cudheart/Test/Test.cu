@@ -224,7 +224,7 @@ void testLinalgOpsCPP() {
 }
 
 void testLogicOpsCPP() {
-	using namespace Cudheart::CPP::Logic;
+	using namespace Cudheart::Logic;
 	auto a = VectorOps::arange(9);
 	auto b = MatrixOps::fromVector(a, 3, 3);
 	auto c = VectorOps::zeros<int>(9);
