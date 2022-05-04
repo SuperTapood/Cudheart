@@ -17,7 +17,6 @@ any ticked funcs are added, but incomplete
 - [X] inv
 
 ## boolean functions
-- [ ] arrayEqual
 - [ ] greater
 - [ ] greaterEqual
 - [ ] less

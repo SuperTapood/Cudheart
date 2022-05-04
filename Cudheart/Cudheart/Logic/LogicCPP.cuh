@@ -288,17 +288,60 @@ namespace Cudheart::Logic {
 	}
 
 	template <typename T>
-	bool allclose(Vector<T>* a, Matrix<T>* b, double rtol, double atol) {
-		return allclose(b, a);
+	bool allclose(Vector<T>* vec, T val, double rtol, double atol) {
+		for (int i = 0; i < vec->getSize(); i++) {
+			if (abs(vec->get(i) - val) >(atol + rtol * abs(val))) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 	template <typename T>
-	bool allclose(Vector<T>* a, Matrix<T>* b, double rtol) {
-		return allclose(a, b, rtol, 1e-08);
+	bool allclose(Vector<T>* vec, T val, double rtol) {
+		return allclose(vec, val, rtol, 1e-08);
 	}
 
 	template <typename T>
-	bool allclose(Vector<T>* a, Matrix<T>* b) {
-		return allclose(a, b, 1e-05, 1e-08);
+	bool allclose(Vector<T>* vec, T val) {
+		return allclose(vec, val, 1e-05, 1e-08);
+	}
+
+	template <typename T>
+	bool allclose(Matrix<T>* mat, T val, double rtol, double atol) {
+		for (int i = 0; i < mat->getSize(); i++) {
+			if (abs(mat->get(i) - val) > (atol + rtol * abs(val))) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	template <typename T>
+	bool allclose(Matrix<T>* mat, T val, double rtol) {
+		return allclose(mat, val, rtol, 1e-08);
+	}
+
+	template <typename T>
+	bool allclose(Matrix<T>* mat, T val) {
+		return allclose(mat, val, 1e-05, 1e-08);
+	}
+
+	template<typename T>
+	bool equals(Vector<T>* a, Vector<T>* b) {
+		if (a->getSize() != b->getSize()) {
+			return false;
+		}
+		return allclose(a, b, 0, 0);
+	}
+
+	template<typename T>
+	bool equals(Matrix<T>* a, Matrix<T>* b) {
+		if (a->getWidth() != b->getWidth() || a->getHeight() != b->getHeight()) {
+			return false;
+		}
+		return allclose(a, b, 0, 0);
 	}
 }

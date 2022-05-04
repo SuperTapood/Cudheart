@@ -125,6 +125,7 @@
     <ClInclude Include="Sample\kernel.cuh" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\Changelog.md" />
     <None Include="..\funclist.md" />
     <None Include="..\README.md" />
   </ItemGroup>

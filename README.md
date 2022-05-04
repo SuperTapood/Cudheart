@@ -17,6 +17,8 @@ The aim of this project is to provide a back-end framework for a Tensorflow-esqu
 - [ ] create vector using initializer list
 - [ ] assert instead of print in the tests
 - [ ] manually handle all possible exceptions (because cpp exceptions suck)
+- [ ] add shape equals to both matrix and vector
+- [ ] replace cpp funcs in cuda namespaces with using
 - [ ] fix non numeric vectors and matrices
 - [ ] don't flatten matrices unless its needed (or ur lazy or cuda is involved)
 - [ ] use ndarray to reduce number of overrides

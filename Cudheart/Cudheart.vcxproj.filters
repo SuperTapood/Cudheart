@@ -59,5 +59,6 @@
   <ItemGroup>
     <None Include="..\README.md" />
     <None Include="..\funclist.md" />
+    <None Include="..\Changelog.md" />
   </ItemGroup>
 </Project>
