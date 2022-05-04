@@ -79,7 +79,7 @@ namespace Cudheart::Logic {
 		
 		Matrix<bool>* out = new Matrix<bool>(mat->getHeight(), mat->getWidth());
 		
-		for (int i = 0; i < mat->getHeight(), i++) {
+		for (int i = 0; i < mat->getHeight(); i++) {
 			for (int j = 0; j < mat->getWidth(); j++) {
 				out->set(i, j, mat->get(i, j) && vec->get(j));
 			}
@@ -91,5 +91,51 @@ namespace Cudheart::Logic {
 	template <typename T> 
 	Matrix<bool>* logicalAnd(Vector<T>* vec, Matrix<T>* mat) {
 		return logicalAnd(mat, vec);
+	}
+
+	template <typename T>
+	Vector<bool>* logicalOr(Vector<T>* a, Vector<T>* b) {
+		a->assertMatchSize(b);
+
+		Vector<bool>* out = new Vector<bool>(a->getSize());
+
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) || b->get(i));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<bool>* logicalOr(Matrix<T>* a, Matrix<T>* b) {
+		a->assertMatchSize(b);
+
+		Matrix<bool>* out = new Matrix<bool>(a->getSize());
+
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) || b->get(i));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<bool>* logicalOr(Matrix<T>* mat, Vector<T>* vec) {
+		// assert mat width == vec size
+
+		Matrix<bool>* out = new Matrix<bool>(mat->getHeight(), mat->getWidth());
+
+		for (int i = 0; i < mat->getHeight(); i++) {
+			for (int j = 0; j < mat->getWidth(); j++) {
+				out->set(i, j, mat->get(i, j) || vec->get(j));
+			}
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<bool>* logicalOr(Vector<T>* vec, Matrix<T>* mat) {
+		return logicalOr(mat, vec);
 	}
 }

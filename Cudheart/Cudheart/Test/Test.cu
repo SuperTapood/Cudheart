@@ -230,7 +230,7 @@ void testLogicOpsCPP() {
 	auto c = VectorOps::zeros<int>(9);
 	auto d = MatrixOps::fromVector(c, 3, 3);
 
-	cout << all(a) << endl;
+	/*cout << all(a) << endl;
 	cout << all(b) << endl;
 	cout << all(c) << endl;
 	cout << all(d) << endl;
@@ -240,7 +240,8 @@ void testLogicOpsCPP() {
 	cout << any(d) << endl;
 	cout << 0 && 0;
 	cout << endl;
-	logicalAnd(a, c)->print();
+	logicalAnd(a, c)->print();*/
+	// logicalOr(a, c)->print();
 }
 
 void test() {
