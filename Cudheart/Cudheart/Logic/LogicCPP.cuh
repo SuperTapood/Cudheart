@@ -344,4 +344,66 @@ namespace Cudheart::Logic {
 		}
 		return allclose(a, b, 0, 0);
 	}
+	
+	template<typename T>
+	bool equals(Vector<T>* a, T b) {
+		return allclose(a, b, 0, 0);
+	}
+
+	template<typename T>
+	bool equals(Matrix<T>* a, T b) {
+		return allclose(a, b, 0, 0);
+	}
+
+	template<typename T>
+	Vector<bool>* greater(Vector<T>* a, Vector<T>* b) {
+		a->assertMatchSize(b);
+
+		Vector<bool>* out = emptyLike(a);
+		
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) <= b->get(i));
+		}
+
+		return out;
+	}
+
+	template<typename T>
+	Matrix<bool>* greater(Matrix<T>* a, Matrix<T>* b) {
+		a->assertMatchSize(b);
+
+		Matrix<bool>* out = emptyLike(a);
+
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) <= b->get(i));
+		}
+
+		return out;
+	}
+
+	template<typename T>
+	Vector<bool>* greater(Vector<T>* a, T b) {
+		a->assertMatchSize(b);
+
+		Vector<bool>* out = emptyLike(a);
+
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) <= b);
+		}
+
+		return out;
+	}
+
+	template<typename T>
+	Matrix<bool>* greater(Matrix<T>* a, T b) {
+		a->assertMatchSize(b);
+
+		Matrix<bool>* out = emptyLike(a);
+
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) <= b);
+		}
+
+		return out;
+	}
 }

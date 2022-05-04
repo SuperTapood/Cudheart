@@ -19,6 +19,7 @@ The aim of this project is to provide a back-end framework for a Tensorflow-esqu
 - [ ] manually handle all possible exceptions (because cpp exceptions suck)
 - [ ] add shape equals to both matrix and vector
 - [ ] replace cpp funcs in cuda namespaces with using
+- [ ] divide code into regions like in C#
 - [ ] fix non numeric vectors and matrices
 - [ ] don't flatten matrices unless its needed (or ur lazy or cuda is involved)
 - [ ] use ndarray to reduce number of overrides
