@@ -138,4 +138,167 @@ namespace Cudheart::Logic {
 	Matrix<bool>* logicalOr(Vector<T>* vec, Matrix<T>* mat) {
 		return logicalOr(mat, vec);
 	}
+
+	template <typename T>
+	Vector<bool>* logicalNot(Vector<T>* vec) {
+		Vector<bool>* out = emptyLike(vec);
+
+		for (int i = 0; i < vec->getSize(); i++) {
+			out->set(i, !vec->get(i));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<bool>* logicalNot(Matrix<T>* mat) {
+		Matrix<bool>* out = emptyLike(mat);
+
+		for (int i = 0; i < mat->getSize(); i++) {
+			out->set(i, !mat->get(i));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Vector<bool>* logicalXor(Vector<T>* a, Vector<T>* b) {
+		a->assertMatchSize(b);
+
+		Vector<bool>* out = new Vector<bool>(a->getSize());
+
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) ^ b->get(i));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<bool>* logicalXor(Matrix<T>* a, Matrix<T>* b) {
+		a->assertMatchSize(b);
+
+		Matrix<bool>* out = new Matrix<bool>(a->getSize());
+
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) ^ b->get(i));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<bool>* logicalXor(Matrix<T>* mat, Vector<T>* vec) {
+		// assert mat width == vec size
+
+		Matrix<bool>* out = new Matrix<bool>(mat->getHeight(), mat->getWidth());
+
+		for (int i = 0; i < mat->getHeight(); i++) {
+			for (int j = 0; j < mat->getWidth(); j++) {
+				out->set(i, j, mat->get(i, j) ^ vec->get(j));
+			}
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<bool>* logicalXor(Vector<T>* vec, Matrix<T>* mat) {
+		return logicalXor(mat, vec);
+	}
+
+	template <typename T>
+	bool allclose(Vector<T>* a, Vector<T>* b, double rtol, double atol) {
+		a->assertMatchSize(b);
+
+		for (int i = 0; i < a->getSize(); i++) {
+			T va = a->get(i);
+			T vb = b->get(i);
+
+			if (abs(va - vb) > (atol + rtol * abs(vb))) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	template <typename T>
+	bool allclose(Vector<T>* a, Vector<T>* b, double rtol) {
+		return allclose(a, b, rtol, 1e-08);
+	}
+
+	template <typename T>
+	bool allclose(Vector<T>* a, Vector<T>* b) {
+		return allclose(a, b, 1e-05, 1e-08);
+	}
+
+	template <typename T>
+	bool allclose(Matrix<T>* a, Matrix<T>* b, double rtol, double atol) {
+		a->assertMatchSize(b);
+
+		for (int i = 0; i < a->getSize(); i++) {
+			T va = a->get(i);
+			T vb = b->get(i);
+
+			if (abs(va - vb) > (atol + rtol * abs(vb))) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	template <typename T>
+	bool allclose(Matrix<T>* a, Matrix<T>* b, double rtol) {
+		return allclose(a, b, rtol, 1e-08);
+	}
+
+	template <typename T>
+	bool allclose(Matrix<T>* a, Matrix<T>* b) {
+		return allclose(a, b, 1e-05, 1e-08);
+	}
+
+	template <typename T>
+	bool allclose(Matrix<T>* a, Vector<T>* b, double rtol, double atol) {
+		// assert a width == b size
+
+		for (int i = 0; i < a->getHeight(); i++) {
+			for (int j = 0; j < a->getWidth(); j++) {
+				T va = a->get(i, j);
+				T vb = b->get(j);
+
+				if (abs(va - vb) > (atol + rtol * abs(vb))) {
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
+
+	template <typename T>
+	bool allclose(Matrix<T>* a, Vector<T>* b, double rtol) {
+		return allclose(a, b, rtol, 1e-08);
+	}
+
+	template <typename T>
+	bool allclose(Matrix<T>* a, Vector<T>* b) {
+		return allclose(a, b, 1e-05, 1e-08);
+	}
+
+	template <typename T>
+	bool allclose(Vector<T>* a, Matrix<T>* b, double rtol, double atol) {
+		return allclose(b, a);
+	}
+
+	template <typename T>
+	bool allclose(Vector<T>* a, Matrix<T>* b, double rtol) {
+		return allclose(a, b, rtol, 1e-08);
+	}
+
+	template <typename T>
+	bool allclose(Vector<T>* a, Matrix<T>* b) {
+		return allclose(a, b, 1e-05, 1e-08);
+	}
 }

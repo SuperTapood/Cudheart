@@ -17,12 +17,7 @@ any ticked funcs are added, but incomplete
 - [X] inv
 
 ## boolean functions
-- [ ] logicalNot
-- [ ] logicalXor
-- [ ] allClose
-- [ ] isClose
-- [ ] arrrayEqual
-- [ ] arrayEquiv
+- [ ] arrayEqual
 - [ ] greater
 - [ ] greaterEqual
 - [ ] less
