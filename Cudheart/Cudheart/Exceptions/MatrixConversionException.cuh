@@ -10,6 +10,7 @@ namespace Cudheart::Exceptions {
 			ostringstream os;
 			os << "expected matrix size of " << size << "got width " << width << " and height " << height << "\n";
 			m_msg = os.str();
+			raise();
 		}
 	};
 }

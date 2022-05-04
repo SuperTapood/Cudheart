@@ -26,6 +26,7 @@ namespace Cudheart::Exceptions {
 					os << "unknown error " << cudaGetErrorString(error);
 			}
 			m_msg = os.str();
+			raise();
 		}
 	};
 }

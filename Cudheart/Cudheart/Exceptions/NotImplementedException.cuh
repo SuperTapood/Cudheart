@@ -19,6 +19,7 @@ namespace Cudheart::Exceptions {
 				os << " because " << dep << exp << " also not implemeted";
 			}
 			m_msg = os.str();
+			raise();
 		}
 
 		NotImplementedException(string name) : NotImplementedException(name, "") {}

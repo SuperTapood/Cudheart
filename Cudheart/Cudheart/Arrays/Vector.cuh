@@ -14,10 +14,6 @@ namespace Cudheart::NDArrays {
 		T* m_data;
 
 	public:
-		Vector() {
-
-		}
-
 		Vector(T* data, int size) {
 			m_data = data;
 			m_size = size;
@@ -53,12 +49,19 @@ namespace Cudheart::NDArrays {
 			if (index < 0) {
 				index += m_size;
 			}
+			
+			if (index >= m_size) {
+				IndexOutOfBoundsException(m_size, index);
+			}
 			return m_data[index];
 		}
 
 		void set(int index, T value) {
 			if (index < 0) {
 				index += m_size;
+			}
+			if (index >= m_size) {
+				IndexOutOfBoundsException(m_size, index);
 			}
 			m_data[index] = value;
 		}

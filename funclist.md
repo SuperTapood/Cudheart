@@ -16,10 +16,6 @@ any ticked funcs are added, but incomplete
 - [X] solve
 - [X] inv
 
-## boolean functions
-- [ ] less
-- [ ] lessEqual
-
 ## math
 ### normal trigonometric funcs
 - [ ] sin

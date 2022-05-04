@@ -162,6 +162,7 @@ C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\CUtil\CUtil.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Exceptions\BaseException.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Exceptions\CudaException.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Exceptions\Exceptions.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Exceptions\IndexOutOfBoundsException.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Exceptions\MatrixConversionException.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Exceptions\NotImplementedException.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Exceptions\ShapeMismatchException.cuh

@@ -88,6 +88,10 @@ namespace Cudheart::NDArrays {
 			if (index < 0) {
 				index += m_size;
 			}
+
+			if (index > m_size) {
+				IndexOutOfBoundsException(m_width, m_height, index);
+			}
 			return m_data[index];
 		}
 
@@ -105,10 +109,16 @@ namespace Cudheart::NDArrays {
 			if (j < 0) {
 				j += m_width;
 			}
+			if (i >= m_height || j >= m_width) {
+				IndexOutOfBoundsException(m_width, m_height, i, j);
+			}
 			return get(flatten(i, j));
 		}
 
 		Vector<T>* getRow(int i) {
+			if (i >= m_height) {
+				IndexOutOfBoundsException(m_width, m_height, i);
+			}
 			Vector<T>* out = new Vector<T>(m_width);
 			for (int k = 0; k < m_width; k++) {
 				out->set(k, get(i, k));
@@ -125,6 +135,9 @@ namespace Cudheart::NDArrays {
 			if (index < 0) {
 				index += m_size;
 			}
+			if (index > m_size) {
+				IndexOutOfBoundsException(m_width, m_height, index);
+			}
 			m_data[index] = value;
 		}
 
@@ -140,6 +153,9 @@ namespace Cudheart::NDArrays {
 			}
 			if (j < 0) {
 				j += m_width;
+			}
+			if (i >= m_height || j >= m_width) {
+				IndexOutOfBoundsException(m_width, m_height, i, j);
 			}
 			m_data[flatten(i, j)] = value;
 		}

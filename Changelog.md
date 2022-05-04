@@ -11,3 +11,11 @@ a changelog list for the next release
 - greaterEqual
 - less
 - lessEqual
+- IndexOutOfBoundsException
+
+### fixed:
+
+
+### improved:
+- vector and matrix will raise a custom exception instead of letting c++ do its thing whatever the fuck that is
+- exceptions will now raise themselves when created
