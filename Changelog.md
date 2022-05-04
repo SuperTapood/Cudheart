@@ -7,3 +7,6 @@ a changelog list for the next release
 - added equals
 - added missing allclose functions
 - added greater
+- greaterEqual
+- less
+- lessEqual

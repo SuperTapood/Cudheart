@@ -17,11 +17,8 @@ any ticked funcs are added, but incomplete
 - [X] inv
 
 ## boolean functions
-- [ ] greaterEqual
 - [ ] less
 - [ ] lessEqual
-- [ ] equal
-- [ ] notEqual
 
 ## math
 ### normal trigonometric funcs
