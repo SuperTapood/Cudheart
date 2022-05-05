@@ -2,31 +2,10 @@
 
 a changelog list for the next release
 
-## Version 0.0.1
+## build post 20220505
 
 ### added:
-- equals
-- some missing allclose functions
-- greater
-- greaterEqual
-- less
-- lessEqual
-- IndexOutOfBoundsException
-- sin
-- cos
-- tan
-- cot
-- hypot
-- deg2rad and rad2deg
-- sinc
-- ZeroDivisionException
-- BadValueException
 
 ### fixed:
-- removed the emath module bc its not needed
-- better assertion for functions
 
 ### improved:
-- vector and matrix will raise a custom exception instead of letting c++ do its thing whatever the fuck that is
-- exceptions will now raise themselves when created
-- functions are no longer dependent on each other
