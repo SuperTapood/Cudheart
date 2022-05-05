@@ -18,7 +18,6 @@ any ticked funcs are added, but incomplete
 
 ## math
 ### normal trigonometric funcs
-- [ ] hypot
 - [ ] arctan2
 - [ ] degrees
 - [ ] radians

@@ -178,4 +178,34 @@ namespace Cudheart::CPP::Math::Trigo {
 
 		return fromVector(out, mat->getWidth(), mat->getHeight(), true);
 	}
+
+	template <typename T>
+	Vector<T>* hypot(Vector<T>* a, Vector<T>* b) {
+		a->assertMatchSize(b);
+
+		Vector<T>* out = emptyLike(a);
+
+		for (int i = 0; i < a->getSize(); i++) {
+			T va = a->get(i);
+			T vb = b->get(i);
+			out->set(i, sqrt((va * va) + (vb * vb)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* hypot(Matrix<T>* a, Matrix<T>* b) {
+		a->assertMatchSize(b);
+
+		Matrix<T>* out = emptyLike(a);
+
+		for (int i = 0; i < a->getSize(); i++) {
+			T va = a->get(i);
+			T vb = b->get(i);
+			out->set(i, sqrt((va * va) + (vb * vb)));
+		}
+
+		return out;
+	}
 }

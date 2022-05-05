@@ -18,6 +18,7 @@ The aim of this project is to provide a back-end framework for a Tensorflow-esqu
 - [ ] add cuda to linalg
 - [ ] add cuda to trigo
 - [ ] add more tests
+- [ ] remove functions' dependecy on each other to minimize for loops
 - [ ] add readme to every module
 - [ ] sort imports
 - [ ] allow trigo funcs to accept angles with flags

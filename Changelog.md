@@ -16,6 +16,7 @@ a changelog list for the next release
 - cos
 - tan
 - cot
+- hypot
 
 ### fixed:
 - removed the emath module bc its not needed
