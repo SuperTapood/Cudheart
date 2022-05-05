@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cmath>
 
 using Cudheart::NDArrays::Vector;
 using Cudheart::NDArrays::Matrix;
@@ -7,14 +8,14 @@ using namespace Cudheart::Exceptions;
 using Cudheart::VectorOps::empty;
 using Cudheart::VectorOps::emptyLike;
 using Cudheart::MatrixOps::fromVector;
+using namespace std;
 
 namespace Cudheart::CPP::Math::Trigo {
 	template <typename T>
 	Vector<T>* sin(Vector<T>* rads) {
 		Vector<T>* out = emptyLike<T>(rads);
-		
 		for (int i = 0; i < rads->size(); i++) {
-			out->at(i) = sin(rads->at(i));
+			out->set(i, std::sin(rads->get(i)));
 		}
 
 		return out;
@@ -25,7 +26,73 @@ namespace Cudheart::CPP::Math::Trigo {
 		Matrix<T>* out = emptyLike<T>(rads);
 
 		for (int i = 0; i < rads->size(); i++) {
-			out->at(i) = sin(rads->at(i));
+			out->set(i, std::sin(rads->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Vector<T>* cos(Vector<T>* rads) {
+		Vector<T>* out = emptyLike<T>(rads);
+
+		for (int i = 0; i < rads->size(); i++) {
+			out->set(i, std::cos(rads->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* cos(Matrix<T>* rads) {
+		Matrix<T>* out = emptyLike<T>(rads);
+
+		for (int i = 0; i < rads->size(); i++) {
+			out->set(i, std::cos(rads->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Vector<T>* tan(Vector<T>* rads) {
+		Vector<T>* out = emptyLike<T>(rads);
+
+		for (int i = 0; i < rads->size(); i++) {
+			out->set(i, std::tan(rads->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* tan(Matrix<T>* rads) {
+		Matrix<T>* out = emptyLike<T>(rads);
+
+		for (int i = 0; i < rads->size(); i++) {
+			out->set(i, std::tan(rads->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Vector<T>* cot(Vector<T>* rads) {
+		Vector<T>* out = emptyLike<T>(rads);
+
+		for (int i = 0; i < rads->size(); i++) {
+			out->set(i, 1 / std::tan(rads->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* cot(Matrix<T>* rads) {
+		Matrix<T>* out = emptyLike<T>(rads);
+
+		for (int i = 0; i < rads->size(); i++) {
+			out->set(i, 1 / std::tan(rads->get(i)));
 		}
 
 		return out;

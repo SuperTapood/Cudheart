@@ -20,6 +20,7 @@ The aim of this project is to provide a back-end framework for a Tensorflow-esqu
 - [ ] add more tests
 - [ ] add readme to every module
 - [ ] sort imports
+- [ ] allow trigo funcs to accept angles with flags
 - [ ] create vector using initializer list
 - [ ] assert instead of print in the tests
 - [ ] manually handle all possible exceptions (because cpp exceptions suck)

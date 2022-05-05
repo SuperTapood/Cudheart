@@ -18,12 +18,6 @@ any ticked funcs are added, but incomplete
 
 ## math
 ### normal trigonometric funcs
-- [ ] sin
-- [ ] cos
-- [ ] tan
-- [ ] arcsin
-- [ ] arccos
-- [ ] arctan
 - [ ] hypot
 - [ ] arctan2
 - [ ] degrees

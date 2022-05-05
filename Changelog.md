@@ -12,6 +12,10 @@ a changelog list for the next release
 - less
 - lessEqual
 - IndexOutOfBoundsException
+- sin
+- cos
+- tan
+- cot
 
 ### fixed:
 - removed the emath module bc its not needed
