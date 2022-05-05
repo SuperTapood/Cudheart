@@ -77,7 +77,7 @@ namespace Cudheart::Logic {
 
 	template <typename T>
 	Matrix<bool>* logicalAnd(Matrix<T>* mat, Vector<T>* vec) {
-		// assert mat width == vec size
+		mat->assertMatchSize(vec);
 		
 		Matrix<bool>* out = new Matrix<bool>(mat->getHeight(), mat->getWidth());
 		
@@ -123,7 +123,7 @@ namespace Cudheart::Logic {
 
 	template <typename T>
 	Matrix<bool>* logicalOr(Matrix<T>* mat, Vector<T>* vec) {
-		// assert mat width == vec size
+		mat->assertMatchSize(vec);
 
 		Matrix<bool>* out = new Matrix<bool>(mat->getHeight(), mat->getWidth());
 
@@ -191,7 +191,7 @@ namespace Cudheart::Logic {
 
 	template <typename T>
 	Matrix<bool>* logicalXor(Matrix<T>* mat, Vector<T>* vec) {
-		// assert mat width == vec size
+		mat->assertMatchSize(vec);
 
 		Matrix<bool>* out = new Matrix<bool>(mat->getHeight(), mat->getWidth());
 
@@ -263,7 +263,7 @@ namespace Cudheart::Logic {
 
 	template <typename T>
 	bool allclose(Matrix<T>* a, Vector<T>* b, double rtol, double atol) {
-		// assert a width == b size
+		a->assertMatchSize(b);
 
 		for (int i = 0; i < a->getHeight(); i++) {
 			for (int j = 0; j < a->getWidth(); j++) {

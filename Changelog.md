@@ -20,10 +20,13 @@ a changelog list for the next release
 - deg2rad and rad2deg
 - sinc
 - ZeroDivisionException
+- BadValueException
 
 ### fixed:
 - removed the emath module bc its not needed
+- better assertion for functions
 
 ### improved:
 - vector and matrix will raise a custom exception instead of letting c++ do its thing whatever the fuck that is
 - exceptions will now raise themselves when created
+- functions are no longer dependent on each other

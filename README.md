@@ -11,20 +11,18 @@ This library takes great inspiration and attempts to mimic the structure of pyth
 The aim of this project is to provide a back-end framework for a Tensorflow-esque library to be developed at a later date.
 
 
-- [ ] check and add the missing comments things
 - [ ] even more types for functions
 - [ ] remove fromVectorArray
 - [ ] add cuda to logic funcs
 - [ ] add cuda to linalg
 - [ ] add cuda to trigo
 - [ ] add more tests
-- [ ] remove functions' dependecy on each other to minimize for loops
 - [ ] add readme to every module
-- [ ] sort imports
 - [ ] allow trigo funcs to accept angles with flags
 - [ ] create vector using initializer list
 - [ ] assert instead of print in the tests
 - [ ] manually handle all possible exceptions (because cpp exceptions suck)
+- [ ] fix vander
 - [ ] add some meta data
 - [ ] add shape equals to both matrix and vector
 - [ ] replace cpp funcs in cuda namespaces with using

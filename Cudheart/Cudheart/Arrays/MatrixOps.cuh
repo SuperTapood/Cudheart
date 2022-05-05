@@ -22,8 +22,8 @@ namespace Cudheart::MatrixOps {
 	template <typename T>
 	Matrix<T>* fromVector(Vector<T>* vec, int width, int height, bool destroy) {
 		if (width * height != vec->getSize()) {
-			// good for now
-			exit(420);
+			BadValueException("fromVector", 
+				"width * height = " + std::to_string(width * height), "width * height = " + std::to_string(vec->getSize()));
 		}
 		Matrix<T>* res = new Matrix<T>(width, height);
 
@@ -297,11 +297,13 @@ namespace Cudheart::MatrixOps {
 
 	template <typename T>
 	Matrix<T>* tril(Matrix<T>* mat, int k) {
-		Matrix<T>* out = tri<T>(mat->getWidth(), mat->getHeight(), k);
+		Matrix<T>* out = zerosLike<T>(mat);
 
-		Exceptions::NotImplementedException("tril", "multiply").raise();
-
-		// return Math::multiply(out, mat);
+		for (int i = 0; i < mat->getHeight(); i++) {
+			for (int j = mat->getWidth(); j > i + k; j++) {
+				out->set(i, j, mat->get(i, j));
+			}
+		}
 
 		return out;
 	}
@@ -313,7 +315,6 @@ namespace Cudheart::MatrixOps {
 
 	template <typename T>
 	Matrix<T>* triu(Matrix<T>* mat, int k) {
-		NotImplementedException("tril", "transpose and multiply").raise();
 
 		// Matrix<T>* a = transpose(mat);
 		// Matrix<T>* b = tril(a);
@@ -321,6 +322,14 @@ namespace Cudheart::MatrixOps {
 		// delete a;
 		// delete b;
 		// return c;
+
+		Matrix<T>* out = zerosLike<T>(mat);
+
+		for (int i = 1 - k; i < mat->getHeight(); i--) {
+			for (int j = i; j < mat->getWidth(); j++) {
+				out->set(i, j, mat->get(i, j));
+			}
+		}
 
 		return out;
 	}
@@ -332,28 +341,21 @@ namespace Cudheart::MatrixOps {
 
 	template <typename T>
 	Matrix<T>* vander(Vector<T>* vec, int N, bool increasing) {
-		NotImplementedException("vander", "flip, transpose and rotate").raise();
-
-		/*
 		Matrix<T>* out = empty(vec->getSize(), N);
 
 		for (int i = 0; i < out->getHeight(); i++) {
 			for (int j = 0; j < out->getWidth(); j++) {
-				out->set(i, j, Math::power(vec->get(j), i));
+				out->set(i, j, pow(vec->get(j), i));
 			}
 		}
 
-		Matrix<T>* a = rotate(out, -90);
-		delete out;
-		if (!increasing) {
-			return a;
+		out = out->rotate(-90, true);
+		
+		if (increasing) {
+			return out->flip(true);
 		}
-		Matrix<T>* b = flip(a);
-		delete a;
-		return b;
-		*/
 
-		return nullptr;
+		return out;
 	}
 
 	template <typename T>

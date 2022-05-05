@@ -1,5 +1,6 @@
 #pragma once
 
+#include "BadValueException.cuh"
 #include "BaseException.cuh"
 #include "CudaException.cuh"
 #include "IndexOutOfBoundsException.cuh"

@@ -229,7 +229,7 @@ namespace Cudheart::CPP::Math::Linalg {
 
 	template <typename T>
 	Vector<T>* solve(Matrix<T>* a, Vector<T>* b) {
-		// assert a height == b size
+		a->assertAxis(b, 1);
 		// see https://www.youtube.com/watch?v=GKkUU4T6o08 for help i think
 		NotImplementedException("solve because i can't be asked").raise();
 	}
@@ -242,7 +242,13 @@ namespace Cudheart::CPP::Math::Linalg {
 		// mat * x = eye(a.shape[0])
 		// and solved for x as such:
 		// x = (eye(a.shape[0])) / mat
-		// return Math::divide(Cudheart::MatrixOps::eye(mat->getHeight()), mat);
-		NotImplementedException("inv", "divide").raise();
+		
+		Matrix<T>* eye = Cudheart::MatrixOps::eye(mat->getHeight());
+		
+		for (int i = 0; i < mat->getSize(); i++) {
+			eye->set(i, (eye->get(i) / mat->get(i)));
+		}
+		
+		return eye;
 	}
 }

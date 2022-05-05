@@ -18,5 +18,9 @@ namespace Cudheart::Exceptions {
 			m_msg = os.str();
 			raise();
 		}
+
+		ShapeMismatchException(string custom) {
+			m_msg = "ShapeMismatchException: " + custom;
+		}
 	};
 }

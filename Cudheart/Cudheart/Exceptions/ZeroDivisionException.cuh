@@ -9,6 +9,7 @@ namespace Cudheart::Exceptions {
 			ostringstream os;
 			os << "ZeroDivisionException in " << funcName << "()";
 			m_msg = os.str();
+			raise();
 		}
 	};
 }

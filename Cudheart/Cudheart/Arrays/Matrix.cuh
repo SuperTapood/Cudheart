@@ -395,8 +395,26 @@ namespace Cudheart::NDArrays {
 		/// <param name="other">the matrix to compare to</param>
 		void assertMatchSize(Matrix<T>* other) {
 			if (m_width != other->m_width || m_height != other->m_height) {
-				Cudheart::Exceptions::ShapeMismatchException(m_width, m_height, other->m_width, other->m_height).raise();
+				ShapeMismatchException(m_width, m_height, other->m_width, other->m_height).raise();
 			}
+		}
+
+		void assertAxis(Vector<T>* other, int axis) {
+			if (axis == 0) {
+				if (m_width != other->getSize()) {
+					ShapeMismatchException("vector of size " + to_string(other->getSize() + " doesn't match matrix of width" + to_string(m_width)));
+				}
+			}
+			else if (axis == 1) {
+				if (m_height != other->getSize()) {
+					ShapeMismatchException("vector of size " + to_string(other->getSize() + " doesn't match matrix of height" + to_string(m_width)));
+				}
+			}
+			BadValueException("assertAxis", to_string(axis), "axis either 1 or 0");
+		}
+
+		void assertMatchSize(Vector<T>* other) {
+			assertAxis(other, 0);
 		}
 
 		/// <summary>

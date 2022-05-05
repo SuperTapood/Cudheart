@@ -128,13 +128,19 @@ namespace Cudheart::VectorOps {
 
 	template <typename T>
 	Vector<T>* logspace(T start, T stop, T num, bool endpoint, double base) {
-		Vector<T>* vec = linspace<T>(start, stop, num, endpoint);
-		Exceptions::NotImplementedException("logspace", "power").raise();
-		// return this instead
-		// out = Math::power(base, vec);
-		// delete vec;
-		// return out;
-		return vec;
+		T jump = (stop - start) / num;
+		if (endpoint) {
+			jump = (stop - start) / (num - 1);
+			stop += jump;
+		}
+		int len = (int)((end - start) / jump);
+		Vector<T>* out = empty<T>(len);
+
+		for (int i = 0; start < end; start += jump) {
+			out->set(i++, pow(base, start));
+		}
+
+		return out;
 	}
 
 	template <typename T>
@@ -163,19 +169,15 @@ namespace Cudheart::VectorOps {
 	}
 
 	template <typename T>
-	Vector<T>* geomspace(T start, T stop, T num, bool endpoint) {
-		Exceptions::NotImplementedException("geomspace", "log10 and logspace").raise();
-		/*
-		* start = Math::log10(start);
-		* stop = Math::log10(stop);
-		* auto res = logspace(start, stop, num, endpoint);
-		* res.set(0, start);
-		* if (endpoint) {
-		*	res.set(-1, stop);
-		* }
-		* return res;
-		*/
-		return nullptr;
+	Vector<T>* geomspace(T start, T stop, T num, bool endpoint) {		
+		start = log10(start);
+		stop = log10(stop);
+		auto res = logspace(start, stop, num, endpoint);
+		res.set(0, start);
+		if (endpoint) {
+			res.set(-1, stop);
+		}
+		return res;
 	}
 
 	template <typename T>

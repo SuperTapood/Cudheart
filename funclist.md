@@ -2,19 +2,9 @@
 
 any ticked funcs are added, but incomplete
 
-## Creation funcs
-### general creation functions
-- [X] logspace
-- [X] geomspace
-### matrix creation
-- [X] tril
-- [X] triu
-- [X] vander
-
 ## array manipulation
 ## linalg
 - [X] solve
-- [X] inv
 
 ## math
 ### hyperbolic

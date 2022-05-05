@@ -87,7 +87,7 @@ namespace Cudheart::CPP::Math {
 		if (base->getHeight() != po->getSize()) {
 			Cudheart::Exceptions::ShapeMismatchException(base->getHeight(), po->getSize()).raise();
 		}
-		Matrix<T>* out = emptyLike(base);
+		Matrix<T>* out = emptyLike<T>(base);
 
 		for (int i = 0; i < base->getHeight(); i++) {
 			T p = po->get(i);
