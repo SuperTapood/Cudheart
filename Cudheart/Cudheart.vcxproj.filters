@@ -37,17 +37,19 @@
     <ClInclude Include="Cudheart\Math\Bitwise\Bitwise.cuh" />
     <ClInclude Include="Cudheart\Math\Bitwise\BitwiseKernels.cuh" />
     <ClInclude Include="Cudheart\Exceptions\CudaException.cuh" />
-    <ClInclude Include="Cudheart\Math\EMath\EMath.cuh" />
-    <ClInclude Include="Cudheart\Math\EMath\EMathCPP.cuh" />
     <ClInclude Include="Cudheart\Math\Constants.cuh" />
-    <ClInclude Include="Cudheart\Math\EMath\EMathCUDA.cuh" />
-    <ClInclude Include="Cudheart\Math\EMath\EMathKernels.cuh" />
     <ClInclude Include="Cudheart\Math\Linalg\Linalg.cuh" />
     <ClInclude Include="Cudheart\Math\Linalg\LinalgCPP.cuh" />
     <ClInclude Include="Cudheart\Math\Linalg\LinalgCUDA.cuh" />
     <ClInclude Include="Cudheart\Logic\Logic.cuh" />
     <ClInclude Include="Cudheart\Logic\LogicCPP.cuh" />
     <ClInclude Include="Cudheart\Exceptions\IndexOutOfBoundsException.cuh" />
+    <ClInclude Include="Cudheart\Math\Trigo\Trigo.cuh" />
+    <ClInclude Include="Cudheart\Math\Trigo\TrigoCPP.cuh" />
+    <ClInclude Include="Cudheart\Math\BaseMath\BaseMath.cuh" />
+    <ClInclude Include="Cudheart\Math\BaseMath\BaseMathCPP.cuh" />
+    <ClInclude Include="Cudheart\Math\Exps\Exps.cuh" />
+    <ClInclude Include="Cudheart\Math\Exps\ExpsCPP.cuh" />
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="Sample\kernel.cu">

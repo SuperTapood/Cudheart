@@ -14,7 +14,7 @@ a changelog list for the next release
 - IndexOutOfBoundsException
 
 ### fixed:
-
+- removed the emath module bc its not needed
 
 ### improved:
 - vector and matrix will raise a custom exception instead of letting c++ do its thing whatever the fuck that is

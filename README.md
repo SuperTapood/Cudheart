@@ -14,6 +14,12 @@ The aim of this project is to provide a back-end framework for a Tensorflow-esqu
 - [ ] check and add the missing comments things
 - [ ] even more types for functions
 - [ ] remove fromVectorArray
+- [ ] add cuda to logic funcs
+- [ ] add cuda to linalg
+- [ ] add cuda to trigo
+- [ ] add more tests
+- [ ] add readme to every module
+- [ ] sort imports
 - [ ] create vector using initializer list
 - [ ] assert instead of print in the tests
 - [ ] manually handle all possible exceptions (because cpp exceptions suck)
@@ -24,6 +30,7 @@ The aim of this project is to provide a back-end framework for a Tensorflow-esqu
 - [ ] fix non numeric vectors and matrices
 - [ ] fix index error for getting info from flat matrix to say matrix
 - [ ] don't flatten matrices unless its needed (or ur lazy or cuda is involved)
+- [ ] convert project to static library project
 - [ ] use ndarray to reduce number of overrides
 - [ ] make matrix a vector of vectors to handle row fetching faster
 - [ ] add axis for mixed operations (vectors and matrices) where usually a horizontal vector is assumed

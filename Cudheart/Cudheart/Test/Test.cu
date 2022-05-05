@@ -118,7 +118,9 @@ void testBinaryOpsCPP() {
 }
 
 void testEMathOpsCPP() {
-	using namespace Cudheart::CPP::Math::EMath;
+	using namespace Cudheart::CPP::Math;
+	using namespace Cudheart::CPP::Math::Exp;
+	using namespace Cudheart::CPP::Math::Trigo;
 
 	auto a = VectorOps::full<float>(25, 25);
 	auto b = VectorOps::full(25, 0.5);
@@ -153,38 +155,7 @@ void testEMathOpsCPP() {
 }
 
 void testEMathOpsCuda() {
-	using namespace Cudheart::CUDA::Math::EMath;
-
-	auto a = VectorOps::full<float>(25, 25);
-	auto b = VectorOps::full(25, 0.5);
-	auto c = MatrixOps::fromVector(b, 5, 5);
-
-	auto d = squareRoot(a);
-	// d->print();
-	auto e = loga(a);
-	// e->print();
-	auto f = loga2(a);
-	// f->print();
-	auto g = logan(a, 5.f);
-	// g->print();
-	auto h = loga10(a);
-	// h->print();
-	auto i = arccos(b);
-	// i->print();
-	auto j = arccos(c);
-	// j->print();
-	auto k = arcsin(b);
-	// k->print();
-	auto l = arcsin(c);
-	// l->print();
-	auto m = arctan(b);
-	// m->print();
-	auto n = arctan(c);
-	// n->print();
-	auto o = arccot(b);
-	// o->print();
-	auto p = arccot(c);
-	// p->print();
+	
 }
 
 void testLinalgOpsCPP() {
