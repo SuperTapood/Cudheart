@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../Util.cuh"
-#include "../Cudheart.cuh"
+#include "../../Cudheart/Util.cuh"
+#include "../../Cudheart/Cudheart.cuh"
 
 void testVectorCreation();
 void testMatrixCreation();

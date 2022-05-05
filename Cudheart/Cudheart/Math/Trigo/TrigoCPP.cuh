@@ -14,7 +14,7 @@ namespace Cudheart::CPP::Math::Trigo {
 	template <typename T>
 	Vector<T>* sin(Vector<T>* rads) {
 		Vector<T>* out = emptyLike<T>(rads);
-		for (int i = 0; i < rads->size(); i++) {
+		for (int i = 0; i < rads->getSize(); i++) {
 			out->set(i, std::sin(rads->get(i)));
 		}
 
@@ -25,7 +25,7 @@ namespace Cudheart::CPP::Math::Trigo {
 	Matrix<T>* sin(Matrix<T>* rads) {
 		Matrix<T>* out = emptyLike<T>(rads);
 
-		for (int i = 0; i < rads->size(); i++) {
+		for (int i = 0; i < rads->getSize(); i++) {
 			out->set(i, std::sin(rads->get(i)));
 		}
 
@@ -36,7 +36,7 @@ namespace Cudheart::CPP::Math::Trigo {
 	Vector<T>* cos(Vector<T>* rads) {
 		Vector<T>* out = emptyLike<T>(rads);
 
-		for (int i = 0; i < rads->size(); i++) {
+		for (int i = 0; i < rads->getSize(); i++) {
 			out->set(i, std::cos(rads->get(i)));
 		}
 
@@ -47,7 +47,7 @@ namespace Cudheart::CPP::Math::Trigo {
 	Matrix<T>* cos(Matrix<T>* rads) {
 		Matrix<T>* out = emptyLike<T>(rads);
 
-		for (int i = 0; i < rads->size(); i++) {
+		for (int i = 0; i < rads->getSize(); i++) {
 			out->set(i, std::cos(rads->get(i)));
 		}
 
@@ -58,7 +58,7 @@ namespace Cudheart::CPP::Math::Trigo {
 	Vector<T>* tan(Vector<T>* rads) {
 		Vector<T>* out = emptyLike<T>(rads);
 
-		for (int i = 0; i < rads->size(); i++) {
+		for (int i = 0; i < rads->getSize(); i++) {
 			out->set(i, std::tan(rads->get(i)));
 		}
 
@@ -69,7 +69,7 @@ namespace Cudheart::CPP::Math::Trigo {
 	Matrix<T>* tan(Matrix<T>* rads) {
 		Matrix<T>* out = emptyLike<T>(rads);
 
-		for (int i = 0; i < rads->size(); i++) {
+		for (int i = 0; i < rads->getSize(); i++) {
 			out->set(i, std::tan(rads->get(i)));
 		}
 
@@ -80,7 +80,7 @@ namespace Cudheart::CPP::Math::Trigo {
 	Vector<T>* cot(Vector<T>* rads) {
 		Vector<T>* out = emptyLike<T>(rads);
 
-		for (int i = 0; i < rads->size(); i++) {
+		for (int i = 0; i < rads->getSize(); i++) {
 			out->set(i, 1 / std::tan(rads->get(i)));
 		}
 
@@ -91,7 +91,7 @@ namespace Cudheart::CPP::Math::Trigo {
 	Matrix<T>* cot(Matrix<T>* rads) {
 		Matrix<T>* out = emptyLike<T>(rads);
 
-		for (int i = 0; i < rads->size(); i++) {
+		for (int i = 0; i < rads->getSize(); i++) {
 			out->set(i, 1 / std::tan(rads->get(i)));
 		}
 
@@ -252,7 +252,7 @@ namespace Cudheart::CPP::Math::Trigo {
 	template <typename T>
 	Vector<T>* sinc(Vector<T>* rads) {
 		Vector<T>* out = emptyLike<T>(rads);
-		for (int i = 0; i < rads->size(); i++) {
+		for (int i = 0; i < rads->getSize(); i++) {
 			if (rads->get(i) == 0) {
 				ZeroDivisionException("sinc");
 			}
@@ -266,7 +266,7 @@ namespace Cudheart::CPP::Math::Trigo {
 	Matrix<T>* sinc(Matrix<T>* rads) {
 		Matrix<T>* out = emptyLike<T>(rads);
 
-		for (int i = 0; i < rads->size(); i++) {
+		for (int i = 0; i < rads->getSize(); i++) {
 			if (rads->get(i) == 0) {
 				ZeroDivisionException("sinc");
 			}

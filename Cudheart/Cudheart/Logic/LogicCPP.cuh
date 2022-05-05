@@ -2,6 +2,8 @@
 
 #include "../Arrays/Arrays.cuh"
 
+using namespace Cudheart::NDArrays;
+
 namespace Cudheart::Logic {
 	template <typename T>
 	bool all(Vector<T>* vec) {

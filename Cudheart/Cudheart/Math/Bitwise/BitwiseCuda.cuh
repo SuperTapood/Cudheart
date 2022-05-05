@@ -1,10 +1,11 @@
 #pragma once
 
-#include "../Arrays/Arrays.cuh"
-#include "../CUtil/CUtil.cuh"
+#include "../../Arrays/Arrays.cuh"
+#include "../../CUtil/CUtil.cuh"
 #include "BitwiseKernels.cuh"
 
 using Cudheart::NDArrays::Vector;
+using Cudheart::NDArrays::Matrix;
 using namespace Cudheart::Exceptions;
 using Cudheart::VectorOps::empty;
 using namespace Cudheart::Kernels::Math::Bitwise;

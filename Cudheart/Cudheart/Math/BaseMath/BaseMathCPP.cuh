@@ -2,7 +2,6 @@
 
 #include "../../Arrays/Arrays.cuh"
 #include <cmath>
-#include "../Constants.cuh"
 
 using Cudheart::NDArrays::Vector;
 using Cudheart::NDArrays::Matrix;
@@ -40,7 +39,7 @@ namespace Cudheart::CPP::Math {
 		Vector<T>* out = emptyLike(base);
 
 		for (int i = 0; i < out->getSize(); i++) {
-			out->set(i, pow(base->get(i), power));
+			out->set(i, pow(base->get(i), po));
 		}
 
 		return out;
@@ -62,7 +61,7 @@ namespace Cudheart::CPP::Math {
 	Matrix<T>* power(Matrix<T>* base, T po) {
 		Vector<T>* flat = base->flatten();
 
-		Vector<T>* out = power(flat, power);
+		Vector<T>* out = power(flat, po);
 
 		delete flat;
 
@@ -71,7 +70,7 @@ namespace Cudheart::CPP::Math {
 
 	template <typename T>
 	Matrix<T>* power(Matrix<T>* base, Matrix<T>* high) {
-		base->assertMatchSize(power);
+		base->assertMatchSize(high);
 		Vector<T>* b = base->flatten();
 		Vector<T>* p = high->flatten();
 

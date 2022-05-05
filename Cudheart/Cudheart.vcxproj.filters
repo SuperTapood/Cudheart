@@ -37,10 +37,8 @@
     <ClInclude Include="Cudheart\Math\Bitwise\Bitwise.cuh" />
     <ClInclude Include="Cudheart\Math\Bitwise\BitwiseKernels.cuh" />
     <ClInclude Include="Cudheart\Exceptions\CudaException.cuh" />
-    <ClInclude Include="Cudheart\Math\Constants.cuh" />
     <ClInclude Include="Cudheart\Math\Linalg\Linalg.cuh" />
     <ClInclude Include="Cudheart\Math\Linalg\LinalgCPP.cuh" />
-    <ClInclude Include="Cudheart\Math\Linalg\LinalgCUDA.cuh" />
     <ClInclude Include="Cudheart\Logic\Logic.cuh" />
     <ClInclude Include="Cudheart\Logic\LogicCPP.cuh" />
     <ClInclude Include="Cudheart\Exceptions\IndexOutOfBoundsException.cuh" />

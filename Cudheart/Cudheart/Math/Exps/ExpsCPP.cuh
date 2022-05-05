@@ -2,7 +2,6 @@
 
 #include "../../Arrays/Arrays.cuh"
 #include <cmath>
-#include "../Constants.cuh"
 
 using Cudheart::NDArrays::Vector;
 using Cudheart::NDArrays::Matrix;
@@ -14,7 +13,7 @@ using Cudheart::MatrixOps::fromVector;
 namespace Cudheart::CPP::Math::Exp {
 	template <typename T>
 	Vector<T>* loga(Vector<T>* vec) {
-		Vector<T>* output = emptyLike(vec);
+		Vector<T>* output = emptyLike<T>(vec);
 
 		for (int i = 0; i < vec->getSize(); i++) {
 			output->set(i, log(vec->get(i)));
@@ -36,7 +35,7 @@ namespace Cudheart::CPP::Math::Exp {
 
 	template <typename T>
 	Vector<T>* loga2(Vector<T>* vec) {
-		Vector<T>* output = emptyLike(vec);
+		Vector<T>* output = emptyLike<T>(vec);
 
 		for (int i = 0; i < vec->getSize(); i++) {
 			output->set(i, log2(vec->get(i)));
@@ -58,7 +57,7 @@ namespace Cudheart::CPP::Math::Exp {
 
 	template <typename T>
 	Vector<T>* logan(Vector<T>* vec, T n) {
-		Vector<T>* output = emptyLike(vec);
+		Vector<T>* output = emptyLike<T>(vec);
 
 		for (int i = 0; i < vec->getSize(); i++) {
 			// using the change of bases rule:
@@ -82,7 +81,7 @@ namespace Cudheart::CPP::Math::Exp {
 
 	template <typename T>
 	Vector<T>* loga10(Vector<T>* vec) {
-		Vector<T>* output = emptyLike(vec);
+		Vector<T>* output = emptyLike<T>(vec);
 
 		for (int i = 0; i < vec->getSize(); i++) {
 			output->set(i, log10(vec->get(i)));
