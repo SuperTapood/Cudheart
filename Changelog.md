@@ -17,6 +17,9 @@ a changelog list for the next release
 - tan
 - cot
 - hypot
+- deg2rad and rad2deg
+- sinc
+- ZeroDivisionException
 
 ### fixed:
 - removed the emath module bc its not needed

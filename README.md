@@ -17,6 +17,7 @@ The aim of this project is to provide a back-end framework for a Tensorflow-esqu
 - [ ] add cuda to logic funcs
 - [ ] add cuda to linalg
 - [ ] add cuda to trigo
+- [ ] sort including by names
 - [ ] add more tests
 - [ ] remove functions' dependecy on each other to minimize for loops
 - [ ] add readme to every module

@@ -6,3 +6,4 @@
 #include "ShapeMismatchException.cuh"
 #include "CudaException.cuh"
 #include "IndexOutOfBoundsException.cuh"
+#include "ZeroDivisionException.cuh"

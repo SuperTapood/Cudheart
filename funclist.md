@@ -17,11 +17,6 @@ any ticked funcs are added, but incomplete
 - [X] inv
 
 ## math
-### normal trigonometric funcs
-- [ ] arctan2
-- [ ] degrees
-- [ ] radians
-- [ ] sinc
 ### hyperbolic
 - [ ] sinh
 - [ ] cosh

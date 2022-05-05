@@ -208,4 +208,71 @@ namespace Cudheart::CPP::Math::Trigo {
 
 		return out;
 	}
+
+	template <typename T>
+	Vector<T>* deg2rad(Vector<T>* degs) {
+		Vector<T>* out = emptyLike(degs);
+		long double pi = 3.1415926535897932384626433;
+		
+		for (int i = 0; i < out->getSize(); i++) {
+			out->set(i, degs->get(i) * (pi / 180));
+		}
+	}
+
+	template <typename T>
+	Matrix<T>* deg2rad(Matrix<T>* degs) {
+		Matrix<T>* out = emptyLike(degs);
+		long double pi = 3.1415926535897932384626433;
+
+		for (int i = 0; i < out->getSize(); i++) {
+			out->set(i, degs->get(i) * (pi / 180));
+		}
+	}
+
+	template <typename T>
+	Vector<T>* rad2deg(Vector<T>* degs) {
+		Vector<T>* out = emptyLike(degs);
+		long double pi = 3.1415926535897932384626433;
+
+		for (int i = 0; i < out->getSize(); i++) {
+			out->set(i, degs->get(i) / (pi / 180));
+		}
+	}
+
+	template <typename T>
+	Matrix<T>* rad2deg(Matrix<T>* degs) {
+		Matrix<T>* out = emptyLike(degs);
+		long double pi = 3.1415926535897932384626433;
+
+		for (int i = 0; i < out->getSize(); i++) {
+			out->set(i, degs->get(i) / (pi / 180));
+		}
+	}
+
+	template <typename T>
+	Vector<T>* sinc(Vector<T>* rads) {
+		Vector<T>* out = emptyLike<T>(rads);
+		for (int i = 0; i < rads->size(); i++) {
+			if (rads->get(i) == 0) {
+				ZeroDivisionException("sinc");
+			}
+			out->set(i, std::sin(rads->get(i)) / rads->get(i));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* sinc(Matrix<T>* rads) {
+		Matrix<T>* out = emptyLike<T>(rads);
+
+		for (int i = 0; i < rads->size(); i++) {
+			if (rads->get(i) == 0) {
+				ZeroDivisionException("sinc");
+			}
+			out->set(i, std::sin(rads->get(i)) / rads->get(i));
+		}
+
+		return out;
+	}
 }
