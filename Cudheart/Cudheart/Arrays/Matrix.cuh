@@ -63,8 +63,7 @@ namespace Cudheart::NDArrays {
 			m_width = width;
 			m_height = height;
 			if (m_size != width * height) {
-				BadValueException("Matrix creator ",
-					"width: " + to_string(width) + " and height: " + to_string(height), to_string(width * height)  " (same as amount of initializer list elements provided");
+				BadValueException("Matrix creator ", "width: " + to_string(width) + " and height : " + to_string(height), to_string(width * height) + " (same as amount of initializer list elements provided)");
 			}
 			m_data = new T[m_size];
 			int i = 0;

@@ -12,6 +12,7 @@ The aim of this project is to provide a back-end framework for a Tensorflow-esqu
 
 
 - [ ] assert instead of print in the tests
+- [ ] test exceptions
 - [ ] even more types for functions
 - [ ] remove fromVectorArray
 - [ ] add cuda to logic funcs
