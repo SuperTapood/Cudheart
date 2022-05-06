@@ -29,6 +29,7 @@ The aim of this project is to provide a back-end framework for a Tensorflow-esqu
 - [ ] replace cpp funcs in cuda namespaces with using
 - [ ] divide functions into pragma regions
 - [ ] fix non numeric vectors and matrices
+- [ ] add reshape function
 - [ ] fix index error for getting info from flat matrix to say matrix
 - [ ] don't flatten matrices unless its needed (or ur lazy or cuda is involved)
 - [ ] convert project to static library project

@@ -11,7 +11,7 @@ namespace Cudheart::NDArrays {
 	/// <summary>
 	/// the matrix class
 	/// </summary>
-	/// <typeparam name="T">a provided type for the data contained in the class</typeparam>
+	/// <typeparam name="T"> - provided type for the data contained in the class</typeparam>
 	template <typename T>
 	class Matrix {
 	private:
@@ -58,15 +58,23 @@ namespace Cudheart::NDArrays {
 			m_size = width * height;
 		}
 
-		Matrix(initializer_list<T> list, int width, int height) {
+		/// <summary>
+		/// create a matrix out of a initilizer list
+		/// </summary>
+		/// <param name="list"> - the given init list</param>
+		/// <param name="height"> - the height of the matrix</param>
+		/// <param name="width"> - the width of the matrix</param>
+		Matrix(initializer_list<T> list, int height, int width) {
 			m_size = list.size();
 			m_width = width;
 			m_height = height;
+			// assert that the width and height are of the correct size
 			if (m_size != width * height) {
 				BadValueException("Matrix creator ", "width: " + to_string(width) + " and height : " + to_string(height), to_string(width * height) + " (same as amount of initializer list elements provided)");
 			}
 			m_data = new T[m_size];
 			int i = 0;
+			// iterate through the list
 			for (auto& x : list) {
 				m_data[i] = x;
 				i++;
@@ -75,6 +83,7 @@ namespace Cudheart::NDArrays {
 
 		/// destroy the matrix object
 		~Matrix() {
+			// delete the raw data
 			delete[] m_data;
 		}
 
@@ -129,6 +138,11 @@ namespace Cudheart::NDArrays {
 			return get(flatten(i, j));
 		}
 
+		/// <summary>
+		/// fetch a specific row out of the matrix
+		/// </summary>
+		/// <param name="i"> - the index of the row</param>
+		/// <returns>the row as vector</returns>
 		Vector<T>* getRow(int i) {
 			if (i >= m_height) {
 				IndexOutOfBoundsException(m_width, m_height, i);
@@ -183,7 +197,7 @@ namespace Cudheart::NDArrays {
 		}
 
 		/// <summary>
-		///
+		/// get the width of the matrix
 		/// </summary>
 		/// <returns>the width of the matrix</returns>
 		int getWidth() {
@@ -191,7 +205,7 @@ namespace Cudheart::NDArrays {
 		}
 
 		/// <summary>
-		///
+		/// get the height of the matrix
 		/// </summary>
 		/// <returns>the height of the matrix</returns>
 		int getHeight() {
@@ -412,6 +426,11 @@ namespace Cudheart::NDArrays {
 			}
 		}
 
+		/// <summary>
+		/// assert that this matrix is compatible with the given vector on a given axis
+		/// </summary>
+		/// <param name="other"> - vector to compare to</param>
+		/// <param name="axis"> - the axis to compare this matrix and the vector on</param>
 		void assertAxis(Vector<T>* other, int axis) {
 			if (axis == 0) {
 				if (m_width != other->getSize()) {
@@ -426,6 +445,10 @@ namespace Cudheart::NDArrays {
 			BadValueException("assertAxis", to_string(axis), "axis either 1 or 0");
 		}
 
+		/// <summary>
+		/// assert that this matrix is compatible with the given vector 
+		/// </summary>
+		/// <param name="other"> - the vector to check with</param>
 		void assertMatchSize(Vector<T>* other) {
 			assertAxis(other, 0);
 		}
@@ -443,7 +466,11 @@ namespace Cudheart::NDArrays {
 
 			return out;
 		}
-
+		
+		/// <summary>
+		/// convert this matrix to a vector array. deprecated as fuck
+		/// </summary>
+		/// <returns>a vector array</returns>
 		Vector<T>* toVectorArray() {
 			Vector<T>* out = (Vector<T>*)malloc(sizeof(Vector<T>) * m_height);
 

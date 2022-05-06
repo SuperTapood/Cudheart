@@ -6,18 +6,37 @@
 #include "VectorOps.cuh"
 #include "../Exceptions/Exceptions.cuh"
 
-// all this class does is call VectorOps functions and cast the resulting vector to a matrix lol
+using Cudheart::NDArrays::Matrix;
+using Cudheart::NDArrays::Vector;
+using namespace Cudheart::Exceptions;
+
+// all this namespace does is call VectorOps functions and cast the resulting vector to a matrix lol
 
 namespace Cudheart::MatrixOps {
-	using NDArrays::Matrix;
-	using NDArrays::Vector;
-	using namespace Exceptions;
-
+	
+#pragma region vector_matrix
+	/// <summary>
+	/// convert an array to a matrix
+	/// </summary>
+	/// <typeparam name="T"> - the type of the given array</typeparam>
+	/// <param name="arr"> - the array to convert to a matrix</param>
+	/// <param name="width"> - the desired width of the matrix</param>
+	/// <param name="height"> - the desired height of the matrix</param>
+	/// <returns>a matrix with the given parameters</returns>
 	template <typename T>
 	Matrix<T>* asMatrix(T* arr, int width, int height) {
 		return new Matrix<T>(arr, width, height);
 	}
 
+	/// <summary>
+	/// convert a vector to a matrix
+	/// </summary>
+	/// <typeparam name="T"> - the type of the vector</typeparam>
+	/// <param name="vec"> - the vector to deflat</param>
+	/// <param name="width"> - the width of the matrix</param>
+	/// <param name="height"> - the height of the matrix</param>
+	/// <param name="destroy"> - whether or not to destroy the vector when done</param>
+	/// <returns>the resulting matrix</returns>
 	template <typename T>
 	Matrix<T>* fromVector(Vector<T>* vec, int width, int height, bool destroy) {
 		if (width * height != vec->getSize()) {
@@ -36,6 +55,15 @@ namespace Cudheart::MatrixOps {
 		return res;
 	}
 
+	/// <summary>
+	/// convert a vector array to a matrix. 
+	/// don't get cute and give this a vector pointer
+	/// or cpp will actually send you to the shadow realm jimbo
+	/// </summary>
+	/// <typeparam name="T"> - the type of the vector array</typeparam>
+	/// <param name="vecs"> - the array of vectors to convert</param>
+	/// <param name="len"> - the length of the array of vectors</param>
+	/// <returns></returns>
 	template <typename T>
 	Matrix<T>* fromVectorArray(Vector<T>* vecs, int len) {
 		Vector<T> a = vecs[0];
@@ -43,7 +71,7 @@ namespace Cudheart::MatrixOps {
 
 		for (int i = 0; i < len; i++) {
 			for (int j = 0; j < a.getSize(); j++) {
-				// if a.getSize() != vecs[i].getSize()
+				a->assertMatchSize(vecs[i].getSize());
 				Vector<T> vec = vecs[i];
 				out->set(i, j, vec.get(j));
 			}
@@ -51,9 +79,8 @@ namespace Cudheart::MatrixOps {
 
 		return out;
 	}
+#pragma endregion
 
-	// do not fucking use this with T = char, string or custom class
-	// if you do, prepare for trouble and make it double
 	template <typename T>
 	Matrix<T>* arange(T start, T end, T jump, int width, int height) {
 		return fromVector(VectorOps::arange<T>(start, end, jump), width, height, true);

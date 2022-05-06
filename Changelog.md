@@ -9,3 +9,6 @@ a changelog list for the next release
 - you can now choose if your exceptions will be raised or thrown
 - fixed some exception things
 - added test for exceptions
+- added docs to matrix
+- added some asserts to tests
+- added some docs to matrix ops
