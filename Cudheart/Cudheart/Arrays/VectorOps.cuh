@@ -28,11 +28,11 @@ namespace Cudheart::VectorOps {
 	// if you do, prepare for trouble and make it double
 	template <typename T>
 	Vector<T>* arange(T start, T end, T jump) {
-		int len = (int)((end - start) / jump);
+		int len = (int)ceil((end - start) / jump);
 		Vector<T>* out = empty<T>(len);
 
-		for (int i = 0; start < end; start += jump) {
-			out->set(i++, start);
+		for (int i = 0; start < end; start += jump, i++) {
+			out->set(i, start);
 		}
 
 		return out;

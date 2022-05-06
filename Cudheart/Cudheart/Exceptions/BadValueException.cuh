@@ -9,7 +9,6 @@ namespace Cudheart::Exceptions {
 			ostringstream os;
 			os << "BadValueException: function " << funcName << " got " << got << " expected " << exp;
 			m_msg = os.str();
-			raise();
 		}
 	};
 }

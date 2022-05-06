@@ -1,5 +1,6 @@
 #pragma once
 
+#include "AssertionException.cuh"
 #include "BadValueException.cuh"
 #include "BaseException.cuh"
 #include "CudaException.cuh"
