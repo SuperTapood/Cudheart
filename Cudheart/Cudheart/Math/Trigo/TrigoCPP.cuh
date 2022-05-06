@@ -97,7 +97,7 @@ namespace Cudheart::CPP::Math::Trigo {
 
 		return out;
 	}
-	
+
 	template <typename T>
 	Vector<T>* arccos(Vector<T>* vec) {
 		Vector<T>* out = emptyLike(vec);
@@ -213,7 +213,7 @@ namespace Cudheart::CPP::Math::Trigo {
 	Vector<T>* deg2rad(Vector<T>* degs) {
 		Vector<T>* out = emptyLike(degs);
 		long double pi = 3.1415926535897932384626433;
-		
+
 		for (int i = 0; i < out->getSize(); i++) {
 			out->set(i, degs->get(i) * (pi / 180));
 		}

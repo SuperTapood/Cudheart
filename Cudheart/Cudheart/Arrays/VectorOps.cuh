@@ -169,7 +169,7 @@ namespace Cudheart::VectorOps {
 	}
 
 	template <typename T>
-	Vector<T>* geomspace(T start, T stop, T num, bool endpoint) {		
+	Vector<T>* geomspace(T start, T stop, T num, bool endpoint) {
 		start = log10(start);
 		stop = log10(stop);
 		auto res = logspace(start, stop, num, endpoint);

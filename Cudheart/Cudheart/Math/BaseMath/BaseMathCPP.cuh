@@ -10,7 +10,6 @@ using Cudheart::VectorOps::empty;
 using Cudheart::VectorOps::emptyLike;
 using Cudheart::MatrixOps::fromVector;
 
-
 namespace Cudheart::CPP::Math {
 	template <typename T>
 	Vector<T>* squareRoot(Vector<T>* vec) {
@@ -33,7 +32,7 @@ namespace Cudheart::CPP::Math {
 
 		return fromVector(out, mat->getWidth(), mat->getHeight(), true);
 	}
-	
+
 	template <typename T>
 	Vector<T>* power(Vector<T>* base, T po) {
 		Vector<T>* out = emptyLike(base);

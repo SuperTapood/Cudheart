@@ -1,6 +1,5 @@
 #include "BaseException.cuh"
 
-
 namespace Cudheart::Exceptions {
 	BaseException::BaseException()
 	{

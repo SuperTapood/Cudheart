@@ -2,7 +2,6 @@
 
 #include "../Util.cuh"
 
-
 namespace Cudheart::NDArrays {
 	template <typename T>
 	class NDArray {

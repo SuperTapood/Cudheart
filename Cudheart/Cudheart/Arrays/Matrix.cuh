@@ -58,6 +58,22 @@ namespace Cudheart::NDArrays {
 			m_size = width * height;
 		}
 
+		Matrix(initializer_list<T> list, int width, int height) {
+			m_size = list.size();
+			m_width = width;
+			m_height = height;
+			if (m_size != width * height) {
+				BadValueException("Matrix creator ",
+					"width: " + to_string(width) + " and height: " + to_string(height), to_string(width * height)  " (same as amount of initializer list elements provided");
+			}
+			m_data = new T[m_size];
+			int i = 0;
+			for (auto& x : list) {
+				m_data[i] = x;
+				i++;
+			}
+		}
+
 		/// destroy the matrix object
 		~Matrix() {
 			delete[] m_data;
@@ -102,7 +118,6 @@ namespace Cudheart::NDArrays {
 		/// <param name="j"> - pretty sure this means row</param>
 		/// <returns>the value at position j + (i * m_width)</returns>
 		T get(int i, int j) {
-
 			if (i < 0) {
 				i += m_height;
 			}
@@ -169,7 +184,7 @@ namespace Cudheart::NDArrays {
 		}
 
 		/// <summary>
-		/// 
+		///
 		/// </summary>
 		/// <returns>the width of the matrix</returns>
 		int getWidth() {
@@ -177,7 +192,7 @@ namespace Cudheart::NDArrays {
 		}
 
 		/// <summary>
-		/// 
+		///
 		/// </summary>
 		/// <returns>the height of the matrix</returns>
 		int getHeight() {
@@ -297,7 +312,6 @@ namespace Cudheart::NDArrays {
 		/// <returns>a copy of this matrix with its rows reversed</returns>
 		Matrix<T>* reverseRows() {
 			Matrix<T>* mat = new Matrix<T>(m_height, m_width);
-
 
 			for (int i = 0; i < m_height; i++) {
 				for (int j = m_width - 1, k = 0; j > -1; j--, k++) {

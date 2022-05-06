@@ -6,7 +6,6 @@
 
 #include <stdio.h>
 
-
 template <typename T>
 class ContainerA {
 private:
@@ -50,7 +49,7 @@ public:
 		// copy data from cpu (host) memory to gpu (device) memory
 
 		{
-			checkStatus(cudaMemcpy(devA, m_ptrA, size * sizeof(T), cudaMemcpyHostToDevice),"cudaMemcpy of type host to device");
+			checkStatus(cudaMemcpy(devA, m_ptrA, size * sizeof(T), cudaMemcpyHostToDevice), "cudaMemcpy of type host to device");
 		}
 	}
 

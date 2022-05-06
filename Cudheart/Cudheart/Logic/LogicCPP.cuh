@@ -12,7 +12,7 @@ namespace Cudheart::Logic {
 				return false;
 			}
 		}
-		
+
 		return true;
 	}
 
@@ -52,7 +52,7 @@ namespace Cudheart::Logic {
 	template <typename T>
 	Vector<bool>* logicalAnd(Vector<T>* a, Vector<T>* b) {
 		a->assertMatchSize(b);
-		
+
 		Vector<bool>* out = new Vector<bool>(a->getSize());
 
 		for (int i = 0; i < a->getSize(); i++) {
@@ -78,19 +78,19 @@ namespace Cudheart::Logic {
 	template <typename T>
 	Matrix<bool>* logicalAnd(Matrix<T>* mat, Vector<T>* vec) {
 		mat->assertMatchSize(vec);
-		
+
 		Matrix<bool>* out = new Matrix<bool>(mat->getHeight(), mat->getWidth());
-		
+
 		for (int i = 0; i < mat->getHeight(); i++) {
 			for (int j = 0; j < mat->getWidth(); j++) {
 				out->set(i, j, mat->get(i, j) && vec->get(j));
 			}
 		}
-		
+
 		return out;
 	}
 
-	template <typename T> 
+	template <typename T>
 	Matrix<bool>* logicalAnd(Vector<T>* vec, Matrix<T>* mat) {
 		return logicalAnd(mat, vec);
 	}
@@ -292,7 +292,7 @@ namespace Cudheart::Logic {
 	template <typename T>
 	bool allclose(Vector<T>* vec, T val, double rtol, double atol) {
 		for (int i = 0; i < vec->getSize(); i++) {
-			if (abs(vec->get(i) - val) >(atol + rtol * abs(val))) {
+			if (abs(vec->get(i) - val) > (atol + rtol * abs(val))) {
 				return false;
 			}
 		}
@@ -346,7 +346,7 @@ namespace Cudheart::Logic {
 		}
 		return allclose(a, b, 0, 0);
 	}
-	
+
 	template<typename T>
 	bool equals(Vector<T>* a, T b) {
 		return allclose(a, b, 0, 0);
@@ -356,220 +356,220 @@ namespace Cudheart::Logic {
 	bool equals(Matrix<T>* a, T b) {
 		return allclose(a, b, 0, 0);
 	}
-	
-	#pragma region greater
-		template<typename T>
-		Vector<bool>* greater(Vector<T>*a, Vector<T>*b) {
-			a->assertMatchSize(b);
 
-			Vector<bool>* out = emptyLike(a);
+#pragma region greater
+	template<typename T>
+	Vector<bool>* greater(Vector<T>* a, Vector<T>* b) {
+		a->assertMatchSize(b);
 
-			for (int i = 0; i < a->getSize(); i++) {
-				out->set(i, a->get(i) > b->get(i));
-			}
+		Vector<bool>* out = emptyLike(a);
 
-			return out;
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) > b->get(i));
 		}
 
-		template<typename T>
-		Matrix<bool>* greater(Matrix<T>*a, Matrix<T>*b) {
-			a->assertMatchSize(b);
+		return out;
+	}
 
-			Matrix<bool>* out = emptyLike(a);
+	template<typename T>
+	Matrix<bool>* greater(Matrix<T>* a, Matrix<T>* b) {
+		a->assertMatchSize(b);
 
-			for (int i = 0; i < a->getSize(); i++) {
-				out->set(i, a->get(i) > b->get(i));
-			}
+		Matrix<bool>* out = emptyLike(a);
 
-			return out;
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) > b->get(i));
 		}
 
-		template<typename T>
-		Vector<bool>* greater(Vector<T>*a, T b) {
-			a->assertMatchSize(b);
+		return out;
+	}
 
-			Vector<bool>* out = emptyLike(a);
+	template<typename T>
+	Vector<bool>* greater(Vector<T>* a, T b) {
+		a->assertMatchSize(b);
 
-			for (int i = 0; i < a->getSize(); i++) {
-				out->set(i, a->get(i) > b);
-			}
+		Vector<bool>* out = emptyLike(a);
 
-			return out;
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) > b);
 		}
 
-		template<typename T>
-		Matrix<bool>* greater(Matrix<T>*a, T b) {
-			a->assertMatchSize(b);
+		return out;
+	}
 
-			Matrix<bool>* out = emptyLike(a);
+	template<typename T>
+	Matrix<bool>* greater(Matrix<T>* a, T b) {
+		a->assertMatchSize(b);
 
-			for (int i = 0; i < a->getSize(); i++) {
-				out->set(i, a->get(i) > b);
-			}
+		Matrix<bool>* out = emptyLike(a);
 
-			return out;
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) > b);
 		}
+
+		return out;
+	}
 #pragma endregion
 
-	#pragma region greaterEquals
-		template<typename T>
-		Vector<bool>* greaterEquals(Vector<T>* a, Vector<T>* b) {
-			a->assertMatchSize(b);
+#pragma region greaterEquals
+	template<typename T>
+	Vector<bool>* greaterEquals(Vector<T>* a, Vector<T>* b) {
+		a->assertMatchSize(b);
 
-			Vector<bool>* out = emptyLike(a);
+		Vector<bool>* out = emptyLike(a);
 
-			for (int i = 0; i < a->getSize(); i++) {
-				out->set(i, a->get(i) >= b->get(i));
-			}
-
-			return out;
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) >= b->get(i));
 		}
 
-		template<typename T>
-		Matrix<bool>* greaterEquals(Matrix<T>* a, Matrix<T>* b) {
-			a->assertMatchSize(b);
+		return out;
+	}
 
-			Matrix<bool>* out = emptyLike(a);
+	template<typename T>
+	Matrix<bool>* greaterEquals(Matrix<T>* a, Matrix<T>* b) {
+		a->assertMatchSize(b);
 
-			for (int i = 0; i < a->getSize(); i++) {
-				out->set(i, a->get(i) >= b->get(i));
-			}
+		Matrix<bool>* out = emptyLike(a);
 
-			return out;
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) >= b->get(i));
 		}
 
-		template<typename T>
-		Vector<bool>* greaterEquals(Vector<T>* a, T b) {
-			a->assertMatchSize(b);
+		return out;
+	}
 
-			Vector<bool>* out = emptyLike(a);
+	template<typename T>
+	Vector<bool>* greaterEquals(Vector<T>* a, T b) {
+		a->assertMatchSize(b);
 
-			for (int i = 0; i < a->getSize(); i++) {
-				out->set(i, a->get(i) >= b);
-			}
+		Vector<bool>* out = emptyLike(a);
 
-			return out;
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) >= b);
 		}
 
-		template<typename T>
-		Matrix<bool>* greaterEquals(Matrix<T>* a, T b) {
-			a->assertMatchSize(b);
+		return out;
+	}
 
-			Matrix<bool>* out = emptyLike(a);
+	template<typename T>
+	Matrix<bool>* greaterEquals(Matrix<T>* a, T b) {
+		a->assertMatchSize(b);
 
-			for (int i = 0; i < a->getSize(); i++) {
-				out->set(i, a->get(i) >= b);
-			}
+		Matrix<bool>* out = emptyLike(a);
 
-			return out;
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) >= b);
 		}
+
+		return out;
+	}
 #pragma endregion
 
-	#pragma region less
-		template<typename T>
-		Vector<bool>* less(Vector<T>* a, Vector<T>* b) {
-			a->assertMatchSize(b);
+#pragma region less
+	template<typename T>
+	Vector<bool>* less(Vector<T>* a, Vector<T>* b) {
+		a->assertMatchSize(b);
 
-			Vector<bool>* out = emptyLike(a);
+		Vector<bool>* out = emptyLike(a);
 
-			for (int i = 0; i < a->getSize(); i++) {
-				out->set(i, a->get(i) < b->get(i));
-			}
-
-			return out;
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) < b->get(i));
 		}
 
-		template<typename T>
-		Matrix<bool>* less(Matrix<T>* a, Matrix<T>* b) {
-			a->assertMatchSize(b);
+		return out;
+	}
 
-			Matrix<bool>* out = emptyLike(a);
+	template<typename T>
+	Matrix<bool>* less(Matrix<T>* a, Matrix<T>* b) {
+		a->assertMatchSize(b);
 
-			for (int i = 0; i < a->getSize(); i++) {
-				out->set(i, a->get(i) < b->get(i));
-			}
+		Matrix<bool>* out = emptyLike(a);
 
-			return out;
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) < b->get(i));
 		}
 
-		template<typename T>
-		Vector<bool>* less(Vector<T>* a, T b) {
-			a->assertMatchSize(b);
+		return out;
+	}
 
-			Vector<bool>* out = emptyLike(a);
+	template<typename T>
+	Vector<bool>* less(Vector<T>* a, T b) {
+		a->assertMatchSize(b);
 
-			for (int i = 0; i < a->getSize(); i++) {
-				out->set(i, a->get(i) < b);
-			}
+		Vector<bool>* out = emptyLike(a);
 
-			return out;
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) < b);
 		}
 
-		template<typename T>
-		Matrix<bool>* less(Matrix<T>* a, T b) {
-			a->assertMatchSize(b);
+		return out;
+	}
 
-			Matrix<bool>* out = emptyLike(a);
+	template<typename T>
+	Matrix<bool>* less(Matrix<T>* a, T b) {
+		a->assertMatchSize(b);
 
-			for (int i = 0; i < a->getSize(); i++) {
-				out->set(i, a->get(i) < b);
-			}
+		Matrix<bool>* out = emptyLike(a);
 
-			return out;
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) < b);
 		}
+
+		return out;
+	}
 #pragma endregion
 
-	#pragma region lessEqual
-		template<typename T>
-		Vector<bool>* lessEqual(Vector<T>* a, Vector<T>* b) {
-			a->assertMatchSize(b);
+#pragma region lessEqual
+	template<typename T>
+	Vector<bool>* lessEqual(Vector<T>* a, Vector<T>* b) {
+		a->assertMatchSize(b);
 
-			Vector<bool>* out = emptyLike(a);
+		Vector<bool>* out = emptyLike(a);
 
-			for (int i = 0; i < a->getSize(); i++) {
-				out->set(i, a->get(i) <= b->get(i));
-			}
-
-			return out;
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) <= b->get(i));
 		}
 
-		template<typename T>
-		Matrix<bool>* lessEqual(Matrix<T>* a, Matrix<T>* b) {
-			a->assertMatchSize(b);
+		return out;
+	}
 
-			Matrix<bool>* out = emptyLike(a);
+	template<typename T>
+	Matrix<bool>* lessEqual(Matrix<T>* a, Matrix<T>* b) {
+		a->assertMatchSize(b);
 
-			for (int i = 0; i < a->getSize(); i++) {
-				out->set(i, a->get(i) <= b->get(i));
-			}
+		Matrix<bool>* out = emptyLike(a);
 
-			return out;
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) <= b->get(i));
 		}
 
-		template<typename T>
-		Vector<bool>* lessEqual(Vector<T>* a, T b) {
-			a->assertMatchSize(b);
+		return out;
+	}
 
-			Vector<bool>* out = emptyLike(a);
+	template<typename T>
+	Vector<bool>* lessEqual(Vector<T>* a, T b) {
+		a->assertMatchSize(b);
 
-			for (int i = 0; i < a->getSize(); i++) {
-				out->set(i, a->get(i) <= b);
-			}
+		Vector<bool>* out = emptyLike(a);
 
-			return out;
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) <= b);
 		}
 
-		template<typename T>
-		Matrix<bool>* lessEqual(Matrix<T>* a, T b) {
-			a->assertMatchSize(b);
+		return out;
+	}
 
-			Matrix<bool>* out = emptyLike(a);
+	template<typename T>
+	Matrix<bool>* lessEqual(Matrix<T>* a, T b) {
+		a->assertMatchSize(b);
 
-			for (int i = 0; i < a->getSize(); i++) {
-				out->set(i, a->get(i) <= b);
-			}
+		Matrix<bool>* out = emptyLike(a);
 
-			return out;
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) <= b);
 		}
+
+		return out;
+	}
 #pragma endregion
 }

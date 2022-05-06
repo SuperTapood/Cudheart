@@ -7,7 +7,6 @@ using Cudheart::NDArrays::Matrix;
 using namespace Cudheart::Exceptions;
 using Cudheart::VectorOps::empty;
 
-
 namespace Cudheart::CPP::Math::Bitwise {
 	template <typename T>
 	Vector<T>* bitwiseAnd(Vector<T>* a, Vector<T>* b) {

@@ -6,7 +6,6 @@
 #include "VectorOps.cuh"
 #include "../Exceptions/Exceptions.cuh"
 
-
 // all this class does is call VectorOps functions and cast the resulting vector to a matrix lol
 
 namespace Cudheart::MatrixOps {
@@ -22,7 +21,7 @@ namespace Cudheart::MatrixOps {
 	template <typename T>
 	Matrix<T>* fromVector(Vector<T>* vec, int width, int height, bool destroy) {
 		if (width * height != vec->getSize()) {
-			BadValueException("fromVector", 
+			BadValueException("fromVector",
 				"width * height = " + std::to_string(width * height), "width * height = " + std::to_string(vec->getSize()));
 		}
 		Matrix<T>* res = new Matrix<T>(width, height);
@@ -103,8 +102,6 @@ namespace Cudheart::MatrixOps {
 
 		return out;
 	}
-
-
 
 	template <typename T>
 	Matrix<T>* linspace(T start, T stop, T num, bool endpoint, int width, int height) {
@@ -315,7 +312,6 @@ namespace Cudheart::MatrixOps {
 
 	template <typename T>
 	Matrix<T>* triu(Matrix<T>* mat, int k) {
-
 		// Matrix<T>* a = transpose(mat);
 		// Matrix<T>* b = tril(a);
 		// Matrix<T>* c = transpose(b);
@@ -350,7 +346,7 @@ namespace Cudheart::MatrixOps {
 		}
 
 		out = out->rotate(-90, true);
-		
+
 		if (increasing) {
 			return out->flip(true);
 		}

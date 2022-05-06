@@ -11,7 +11,6 @@ using Cudheart::MatrixOps::empty;
 using Cudheart::MatrixOps::emptyLike;
 using Cudheart::MatrixOps::fromVectorArray;
 
-
 namespace Cudheart::CPP::Math::Linalg {
 	template <typename T>
 	T dot(Vector<T>* a, Vector<T>* b) {
@@ -242,13 +241,13 @@ namespace Cudheart::CPP::Math::Linalg {
 		// mat * x = eye(a.shape[0])
 		// and solved for x as such:
 		// x = (eye(a.shape[0])) / mat
-		
+
 		Matrix<T>* eye = Cudheart::MatrixOps::eye(mat->getHeight());
-		
+
 		for (int i = 0; i < mat->getSize(); i++) {
 			eye->set(i, (eye->get(i) / mat->get(i)));
 		}
-		
+
 		return eye;
 	}
 }

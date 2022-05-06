@@ -30,6 +30,16 @@ namespace Cudheart::NDArrays {
 			m_size = (&data)[1] - data;
 		}
 
+		Vector(initializer_list<T> list) {
+			m_size = list.size();
+			m_data = new T[m_size];
+			int i = 0;
+			for (auto& x : list) {
+				m_data[i] = x;
+				i++;
+			}
+		}
+
 		~Vector() {
 			delete[] m_data;
 		}
@@ -49,7 +59,7 @@ namespace Cudheart::NDArrays {
 			if (index < 0) {
 				index += m_size;
 			}
-			
+
 			if (index >= m_size) {
 				IndexOutOfBoundsException(m_size, index);
 			}

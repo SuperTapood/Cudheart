@@ -1,1 +1,2 @@
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\Cudheart.exe
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\NativeCodeAnalysis.read.1.tlog

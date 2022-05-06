@@ -11,6 +11,7 @@ This library takes great inspiration and attempts to mimic the structure of pyth
 The aim of this project is to provide a back-end framework for a Tensorflow-esque library to be developed at a later date.
 
 
+- [ ] assert instead of print in the tests
 - [ ] even more types for functions
 - [ ] remove fromVectorArray
 - [ ] add cuda to logic funcs
@@ -19,8 +20,6 @@ The aim of this project is to provide a back-end framework for a Tensorflow-esqu
 - [ ] add more tests
 - [ ] add readme to every module
 - [ ] allow trigo funcs to accept angles with flags
-- [ ] create vector using initializer list
-- [ ] assert instead of print in the tests
 - [ ] manually handle all possible exceptions (because cpp exceptions suck)
 - [ ] fix vander
 - [ ] add some meta data

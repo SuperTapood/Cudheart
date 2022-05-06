@@ -14,16 +14,16 @@ namespace Cudheart::Exceptions {
 			ostringstream os;
 			os << "CudaException in '" << func << "':";
 			switch (error) {
-				case (cudaErrorInvalidValue):
-					os << "function got passed a value outside of an acceptable range";
-					break;
-				case (cudaErrorMemoryAllocation):
-					os << "cuda could not allocate enough memory in the GPU";
-					break;
-				case (cudaErrorInitializationError):
-					os << "cuda could not initialize the cuda driver and runtime";
-				default:
-					os << "unknown error " << cudaGetErrorString(error);
+			case (cudaErrorInvalidValue):
+				os << "function got passed a value outside of an acceptable range";
+				break;
+			case (cudaErrorMemoryAllocation):
+				os << "cuda could not allocate enough memory in the GPU";
+				break;
+			case (cudaErrorInitializationError):
+				os << "cuda could not initialize the cuda driver and runtime";
+			default:
+				os << "unknown error " << cudaGetErrorString(error);
 			}
 			m_msg = os.str();
 			raise();

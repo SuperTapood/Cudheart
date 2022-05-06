@@ -2,7 +2,6 @@
 
 #include "BaseException.cuh"
 
-
 namespace Cudheart::Exceptions {
 	class IndexOutOfBoundsException : public BaseException {
 	public:
