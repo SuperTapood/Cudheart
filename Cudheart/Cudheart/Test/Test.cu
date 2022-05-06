@@ -4,7 +4,6 @@
 using namespace Cudheart;
 
 void testVectorCreation() {
-
 #pragma region test_ones
 	auto arr = VectorOps::ones<int>(2);
 	// cout << arr->toString() << endl;
@@ -12,26 +11,26 @@ void testVectorCreation() {
 	for (int i = 0; i < 2; i++) {
 		assertTest("test ones", arr->get(i), 1);
 	}
-#pragma endregion	
+#pragma endregion
 
 #pragma region test_arange
 	auto a = VectorOps::arange<double>(1, 5, 0.2);
-	
+
 	double dv = 1;
 	for (int i = 0; i < a->getSize(); i++) {
 		assertTest("test arange(1, 5, 0.2)", a->get(i), dv);
 		dv += 0.2;
 	}
-	
+
 	auto b = VectorOps::arange<double>(5.4, 0.3);
-	
+
 	dv = 0;
 	for (int i = 0; i < b->getSize(); i++) {
 		assertTest("test arange(5.4, 0.3)", b->get(i), dv);
 		dv += 0.3;
 	}
 	auto c = VectorOps::arange<double>(6.9f);
-	
+
 	for (int i = 0; i < c->getSize(); i++) {
 		assertTest("test arange(6.9f)", c->get(i), i);
 	}
@@ -53,14 +52,13 @@ void testVectorCreation() {
 	auto d = VectorOps::arange<double>(20.0);
 	auto e = d->castTo<long>();
 #pragma endregion
-	
+
 #pragma region test_fromVector
 	auto f = MatrixOps::fromVector<long>(e, 10, 2);
 	// f->print();
 	auto g = MatrixOps::fromVector<long>(e, 5, 4);
 	// g->print();
 #pragma endregion
-	
 }
 
 void testMatrixCreation() {
@@ -187,7 +185,6 @@ void testEMathOpsCPP() {
 }
 
 void testEMathOpsCuda() {
-
 }
 
 void testLinalgOpsCPP() {

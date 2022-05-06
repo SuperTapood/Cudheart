@@ -2,7 +2,6 @@
 
 #include "BaseException.cuh"
 
-
 namespace Cudheart::Exceptions {
 	template <typename T, typename U>
 	class AssertionException : public BaseException {

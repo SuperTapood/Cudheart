@@ -11,4 +11,6 @@ a changelog list for the next release
 - added test for exceptions
 - added docs to matrix
 - added some asserts to tests
+- fixed matrix ops width height mismatch
+- fixed missing parameters
 - added some docs to matrix ops

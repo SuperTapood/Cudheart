@@ -446,7 +446,7 @@ namespace Cudheart::NDArrays {
 		}
 
 		/// <summary>
-		/// assert that this matrix is compatible with the given vector 
+		/// assert that this matrix is compatible with the given vector
 		/// </summary>
 		/// <param name="other"> - the vector to check with</param>
 		void assertMatchSize(Vector<T>* other) {
@@ -466,7 +466,7 @@ namespace Cudheart::NDArrays {
 
 			return out;
 		}
-		
+
 		/// <summary>
 		/// convert this matrix to a vector array. deprecated as fuck
 		/// </summary>

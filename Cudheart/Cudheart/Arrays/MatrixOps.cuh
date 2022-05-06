@@ -13,19 +13,18 @@ using namespace Cudheart::Exceptions;
 // all this namespace does is call VectorOps functions and cast the resulting vector to a matrix lol
 
 namespace Cudheart::MatrixOps {
-	
 #pragma region vector_matrix
 	/// <summary>
 	/// convert an array to a matrix
 	/// </summary>
 	/// <typeparam name="T"> - the type of the given array</typeparam>
 	/// <param name="arr"> - the array to convert to a matrix</param>
-	/// <param name="width"> - the desired width of the matrix</param>
 	/// <param name="height"> - the desired height of the matrix</param>
+	/// <param name="width"> - the desired width of the matrix</param>
 	/// <returns>a matrix with the given parameters</returns>
 	template <typename T>
-	Matrix<T>* asMatrix(T* arr, int width, int height) {
-		return new Matrix<T>(arr, width, height);
+	Matrix<T>* asMatrix(T* arr, int height, int width) {
+		return new Matrix<T>(arr, height, width);
 	}
 
 	/// <summary>
@@ -33,17 +32,17 @@ namespace Cudheart::MatrixOps {
 	/// </summary>
 	/// <typeparam name="T"> - the type of the vector</typeparam>
 	/// <param name="vec"> - the vector to deflat</param>
-	/// <param name="width"> - the width of the matrix</param>
 	/// <param name="height"> - the height of the matrix</param>
+	/// <param name="width"> - the width of the matrix</param>
 	/// <param name="destroy"> - whether or not to destroy the vector when done</param>
 	/// <returns>the resulting matrix</returns>
 	template <typename T>
-	Matrix<T>* fromVector(Vector<T>* vec, int width, int height, bool destroy) {
+	Matrix<T>* fromVector(Vector<T>* vec, int height, int width, bool destroy) {
 		if (width * height != vec->getSize()) {
 			BadValueException("fromVector",
 				"width * height = " + std::to_string(width * height), "width * height = " + std::to_string(vec->getSize()));
 		}
-		Matrix<T>* res = new Matrix<T>(width, height);
+		Matrix<T>* res = new Matrix<T>(height, width);
 
 		for (int i = 0; i < res->getSize(); i++) {
 			res->set(i, vec->get(i));
@@ -56,7 +55,7 @@ namespace Cudheart::MatrixOps {
 	}
 
 	/// <summary>
-	/// convert a vector array to a matrix. 
+	/// convert a vector array to a matrix.
 	/// don't get cute and give this a vector pointer
 	/// or cpp will actually send you to the shadow realm jimbo
 	/// </summary>
@@ -81,47 +80,139 @@ namespace Cudheart::MatrixOps {
 	}
 #pragma endregion
 
+#pragma region arange
+	/// <summary>
+	/// create a matrix from an arange of values
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix </typeparam>
+	/// <param name="start"> - the beginning value of the matrix </param>
+	/// <param name="end"> - the end value of the matrix </param>
+	/// <param name="jump"> - the difference between each element</param>
+	/// <param name="height"> - the height of the element</param>
+	/// <param name="width"> - the width of the element</param>
+	/// <returns>the resulting matrix</returns>
 	template <typename T>
-	Matrix<T>* arange(T start, T end, T jump, int width, int height) {
+	Matrix<T>* arange(T start, T end, T jump, int height, int width) {
 		return fromVector(VectorOps::arange<T>(start, end, jump), width, height, true);
 	}
 
+	/// <summary>
+	/// create a matrix from an arange of values
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix </typeparam>
+	/// <param name="end"> - the end value of the matrix </param>
+	/// <param name="jump"> - the difference between each element</param>
+	/// <param name="height"> - the height of the element</param>
+	/// <param name="width"> - the width of the element</param>
+	/// <returns>the resulting matrix</returns>
 	template <typename T>
-	Matrix<T>* arange(T end, T jump, int width, int height) {
-		return arange((T)0, end, jump, width, height);
+	Matrix<T>* arange(T end, T jump, int height, int width) {
+		return arange((T)0, end, jump, height, width);
 	}
 
+	/// <summary>
+	/// create a matrix from an arange of values
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix </typeparam>
+	/// <param name="end"> - the end value of the matrix </param>
+	/// <param name="height"> - the height of the element</param>
+	/// <param name="width"> - the width of the element</param>
+	/// <returns>the resulting matrix</returns>
 	template <typename T>
-	Matrix<T>* arange(T end, int width, int height) {
-		return arange((T)0, end, (T)1, width, height);
+	Matrix<T>* arange(T end, int height, int width) {
+		return arange((T)0, end, (T)1, height, width);
+	}
+#pragma endregion
+
+#pragma region fulls
+	/// <summary>
+	/// get a new empty matrix
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="width"> - the width of the matrix</param>
+	/// <param name="height"> - the height of the matrix</param>
+	/// <returns>a new empty matrix</returns>
+	template <typename T>
+	Matrix<T>* empty(int height, int width) {
+		return new Matrix<T>(height, width);
 	}
 
-	template <typename T>
-	Matrix<T>* empty(int width, int height) {
-		return new Matrix<T>(width, height);
-	}
-
+	/// <summary>
+	/// get a new matrix like the given one
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="mat"> - the reference matrix</param>
+	/// <returns>a new empty matrix with matching dims</returns>
 	template <typename T>
 	Matrix<T>* emptyLike(Matrix<T>* mat) {
 		return empty<T>(mat->getWidth(), mat->getHeight());
 	}
 
+	/// <summary>
+	/// get a full matrix with the given value
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="height"> - the height of the matrix</param>
+	/// <param name="width"> - the width of the matrix</param>
+	/// <param name="value"> - the value to fill the matrix with</param>
+	/// <returns>a full matrix</returns>
 	template <typename T>
-	Matrix<T>* full(int width, int height, T value) {
+	Matrix<T>* full(int height, int width, T value) {
 		return fromVector<T>(VectorOps::full(width * height, value), width, height, true);
 	}
 
+	/// <summary>
+	/// get a full matrix with the given value with the same dims as the given matrix
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="mat"> - the reference matrix</param>
+	/// <param name="value"> - the value to fill with</param>
+	/// <returns>a full matrix like the given matrix</returns>
 	template <typename T>
 	Matrix<T>* fullLike(Matrix<T>* mat, T value) {
 		return full<T>(mat->getWidth(), mat->getHeight(), value);
 	}
 
+	/// <summary>
+	/// get a matrix filled with ones
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="height"> - the height of the matrix</param>
+	/// <param name="width"> - the width of the matrix</param>
+	/// <returns>a matrix filled with ones</returns>
 	template <typename T>
-	Matrix<T>* fromVector(Vector<T>* vec, int width, int height) {
+	Matrix<T>* ones(int height, int width) {
+		return full(height, width, 1);
+	}
+
+	/// <summary>
+	/// a matrix filled with ones with the same dims as the given matrix
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="mat"> - the reference matrix</param>
+	/// <returns>a matrix filled with ones</returns>
+	template <typename T>
+	Matrix<T>* onesLike(Matrix<T>* mat) {
+		return ones(mat->getWidth(), mat->getHeight());
+	}
+
+	template <typename T>
+	Matrix<T>* zeros(int height, int width) {
+		return full<T>(height, width, 0);
+	}
+
+	template <typename T>
+	Matrix<T>* zerosLike(Matrix<T>* mat) {
+		return zeros(mat->getWidth(), mat->getHeight());
+	}
+#pragma endregion
+
+	template <typename T>
+	Matrix<T>* fromVector(Vector<T>* vec, int height, int width) {
 		if (width * height != vec->getSize()) {
 			Exceptions::MatrixConversionException(width, height, vec->getSize()).raise();
 		}
-		Matrix<T>* out = empty<T>(width, height);
+		Matrix<T>* out = empty<T>(height, width);
 
 		for (int i = 0; i < out->getSize(); i++) {
 			out->set(i, vec->get(i));
@@ -131,83 +222,63 @@ namespace Cudheart::MatrixOps {
 	}
 
 	template <typename T>
-	Matrix<T>* linspace(T start, T stop, T num, bool endpoint, int width, int height) {
-		return fromVector(VectorOps::linspace<T>(start, stop, num, endpoint), width, height, true);
+	Matrix<T>* linspace(T start, T stop, T num, bool endpoint, int height, int width) {
+		return fromVector(VectorOps::linspace<T>(start, stop, num, endpoint), height, width, true);
 	}
 
 	template <typename T>
-	Matrix<T>* linspace(T start, T stop, T num) {
-		return linspace(start, stop, num, true);
+	Matrix<T>* linspace(T start, T stop, T num, int height, int width) {
+		return linspace(start, stop, num, true, height, width);
 	}
 
 	template <typename T>
-	Matrix<T>* linspace(T start, T stop) {
-		return linspace(start, stop, (T)50, true);
+	Matrix<T>* linspace(T start, T stop, int height, int width) {
+		return linspace(start, stop, (T)50, true, height, width);
 	}
 
 	template <typename T>
-	Matrix<T>* ones(int width, int height) {
-		return full(width, height, 1);
+	Matrix<T>* logspace(T start, T stop, T num, bool endpoint, double base, int height, int width) {
+		return fromVector(VectorOps::logspace<T>(start, stop, num, endpoint, base), height, width, true);
 	}
 
 	template <typename T>
-	Matrix<T>* onesLike(Matrix<T>* mat) {
-		return ones(mat->getWidth(), mat->getHeight());
+	Matrix<T>* logspace(T start, T stop, T num, bool endpoint, int height, int width) {
+		return logspace<T>(start, stop, num, endpoint, 10.0, height, width);
 	}
 
 	template <typename T>
-	Matrix<T>* zeros(int width, int height) {
-		return full<T>(width, height, 0);
+	Matrix<T>* logspace(T start, T stop, T num, int height, int width) {
+		return logspace<T>(start, stop, num, true, 10.0, height, width);
 	}
 
 	template <typename T>
-	Matrix<T>* zerosLike(Matrix<T>* mat) {
-		return zeros(mat->getWidth(), mat->getHeight());
+	Matrix<T>* logspace(T start, T stop, T num, double base, int height, int width) {
+		return logspace<T>(start, stop, num, true, base, height, width);
 	}
 
 	template <typename T>
-	Matrix<T>* logspace(T start, T stop, T num, bool endpoint, double base, int width, int height) {
-		return fromVector(VectorOps::logspace<T>(start, stop, num, endpoint, base), width, height, true);
+	Matrix<T>* logspace(T start, T stop, double base, int height, int width) {
+		return logspace<T>(start, stop, (T)50, true, base, height, width);
 	}
 
 	template <typename T>
-	Matrix<T>* logspace(T start, T stop, T num, bool endpoint, int width, int height) {
-		return logspace<T>(start, stop, num, endpoint, 10.0, width, height);
+	Matrix<T>* logspace(T start, T stop, int height, int width) {
+		return logspace<T>(start, stop, (T)50, true, 10.0, height, width);
 	}
 
 	template <typename T>
-	Matrix<T>* logspace(T start, T stop, T num, int width, int height) {
-		return logspace<T>(start, stop, num, true, 10.0, width, height);
+	Matrix<T>* geomspace(T start, T stop, T num, bool endpoint, int height, int width) {
+		return fromVector(VectorOps::geomspace(start, stop, num, endpoint), height, width, true);
 	}
 
 	template <typename T>
-	Matrix<T>* logspace(T start, T stop, T num, double base, int width, int height) {
-		return logspace<T>(start, stop, num, true, base, width, height);
+	Matrix<T>* geomspace(T start, T stop, T num, int height, int width) {
+		return geomspace<T>(start, stop, num, true, height, width);
 	}
 
 	template <typename T>
-	Matrix<T>* logspace(T start, T stop, double base, int width, int height) {
-		return logspace<T>(start, stop, (T)50, true, base, width, height);
-	}
-
-	template <typename T>
-	Matrix<T>* logspace(T start, T stop, int width, int height) {
-		return logspace<T>(start, stop, (T)50, true, 10.0, width, height);
-	}
-
-	template <typename T>
-	Matrix<T>* geomspace(T start, T stop, T num, bool endpoint, int width, int height) {
-		return fromVector(VectorOps::geomspace(start, stop, num, endpoint), width, height, true);
-	}
-
-	template <typename T>
-	Matrix<T>* geomspace(T start, T stop, T num, int width, int height) {
-		return geomspace<T>(start, stop, num, true, width, height);
-	}
-
-	template <typename T>
-	Matrix<T>* geomspace(T start, T stop, int width, int height) {
-		return geomspace<T>(start, stop, (T)50, true, width, height);
+	Matrix<T>* geomspace(T start, T stop, int height, int width) {
+		return geomspace<T>(start, stop, (T)50, true, height, width);
 	}
 
 	template <typename T>
@@ -339,6 +410,7 @@ namespace Cudheart::MatrixOps {
 
 	template <typename T>
 	Matrix<T>* triu(Matrix<T>* mat, int k) {
+		// the algorithm
 		// Matrix<T>* a = transpose(mat);
 		// Matrix<T>* b = tril(a);
 		// Matrix<T>* c = transpose(b);
