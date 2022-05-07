@@ -9,23 +9,48 @@ namespace Cudheart::VectorOps {
 	using NDArrays::Vector;
 	using NDArrays::Matrix;
 
+	/// <summary>
+	/// convert a c++ array to a vector
+	/// </summary>
+	/// <typeparam name="T"> - the type of the vector</typeparam>
+	/// <param name="arr"> - the array to convert</param>
+	/// <param name="len"> - the length of the array</param>
+	/// <returns>the resulting vector</returns>
 	template <typename T>
 	Vector<T>* asVector(T* arr, int len) {
 		return new Vector<T>(arr, len);
 	}
 
+	/// <summary>
+	/// get a new empty vector
+	/// </summary>
+	/// <typeparam name="T"> - the type of the vector</typeparam>
+	/// <param name="len"> - the size of the vector</param>
+	/// <returns>the resulting vector</returns>
 	template <typename T>
 	Vector<T>* empty(int len) {
 		return new Vector<T>(len);
 	}
 
+	/// <summary>
+	/// get an empty vector with the same size as the other vector
+	/// </summary>
+	/// <typeparam name="T"> - the type of the vector</typeparam>
+	/// <param name="arr"> - the reference vector</param>
+	/// <returns>the resulting vector</returns>
 	template <typename T>
 	Vector<T>* emptyLike(Vector<T>* arr) {
 		return empty<T>(arr->getSize());
 	}
 
-	// do not fucking use this with T = char, string or custom class
-	// if you do, prepare for trouble and make it double
+	/// <summary>
+	/// create a vector from an arange of values
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix </typeparam>
+	/// <param name="start"> - the beginning value of the matrix </param>
+	/// <param name="end"> - the end value of the matrix </param>
+	/// <param name="jump"> - the difference between each element</param>
+	/// <returns>the resulting vector</returns>
 	template <typename T>
 	Vector<T>* arange(T start, T end, T jump) {
 		int len = (int)ceil((end - start) / jump);
@@ -38,11 +63,24 @@ namespace Cudheart::VectorOps {
 		return out;
 	}
 
+	/// <summary>
+	/// create a vector from an arange of values
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix </typeparam>
+	/// <param name="start"> - the beginning value of the matrix </param>
+	/// <param name="end"> - the end value of the matrix </param>
+	/// <returns>the resulting vector</returns>
 	template <typename T>
 	Vector<T>* arange(T end, T jump) {
 		return arange<T>((T)0, end, jump);
 	}
 
+	/// <summary>
+	/// create a vector from an arange of values
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix </typeparam>
+	/// <param name="end"> - the end value of the matrix </param>
+	/// <returns>the resulting vector</returns>
 	template <typename T>
 	Vector<T>* arange(T end) {
 		return arange<T>((T)0, end, (T)1);
