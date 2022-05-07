@@ -102,7 +102,7 @@ namespace Cudheart::CPP::Math {
 	Vector<T>* around(Vector<T>* vec, int decimals) {
 		Vector<T>* out = emptyLike(vec);
 		int v = std::pow(10, decimals);
-		
+
 		for (int i = 0; i < out->getSize(); i++) {
 			T value = vec->get(i) * v;
 			value = std::round(value);
@@ -119,7 +119,7 @@ namespace Cudheart::CPP::Math {
 
 	template <typename T>
 	Matrix<T>* around(Matrix<T>* mat, int decimals) {
-		Matrix<T>* out = emptyLike(vecmat;
+		Matrix<T>* out = emptyLike(mat);
 		int v = std::pow(10, decimals);
 
 		for (int i = 0; i < out->getSize(); i++) {
@@ -134,5 +134,171 @@ namespace Cudheart::CPP::Math {
 	template <typename T>
 	Matrix<T>* around(Matrix<T>* mat) {
 		return around(mat, 0);
+	}
+
+	template <typename T>
+	Vector<T>* rint(Vector<T>* vec) {
+		Vector<T>* out = emptyLike(vec);
+
+		for (int i = 0; i < out->getSize(); i++) {
+			out->set(i, std::rint(vec->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* rint(Matrix<T>* mat) {
+		Matrix<T>* out = emptyLike(mat);
+
+		for (int i = 0; i < out->getSize(); i++) {
+			out->set(i, std::rint(mat->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Vector<T>* fix(Vector<T>* x) {
+		Vector<T>* out = emptyLike(x);
+
+		for (int i = 0; i < x->getSize(); i++) {
+			T v = x->get(i);
+			if (v > 0) {
+				out->set(i, std::floor(v));
+			}
+			else {
+				out->set(i, std::ceil(v));
+			}
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* fix(Matrix<T>* x) {
+		Matrix<T>* out = emptyLike(x);
+
+		for (int i = 0; i < x->getSize(); i++) {
+			T v = x->get(i);
+			if (v > 0) {
+				out->set(i, std::floor(v));
+			}
+			else {
+				out->set(i, std::ceil(v));
+			}
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Vector<T>* floor(Vector<T>* x) {
+		Vector<T>* out = emptyLike(x);
+
+		for (int i = 0; i < x->getSize(); i++) {
+			out->set(i, std::floor(x->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* floor(Matrix<T>* x) {
+		Matrix<T>* out = emptyLike(x);
+
+		for (int i = 0; i < x->getSize(); i++) {
+			out->set(i, std::floor(x->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Vector<T>* ceil(Vector<T>* x) {
+		Vector<T>* out = emptyLike(x);
+
+		for (int i = 0; i < x->getSize(); i++) {
+			out->set(i, std::ceil(x->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* ceil(Matrix<T>* x) {
+		Matrix<T>* out = emptyLike(x);
+
+		for (int i = 0; i < x->getSize(); i++) {
+			out->set(i, std::ceil(x->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Vector<T>* trunc(Vector<T>* x) {
+		Vector<T>* out = emptyLike(x);
+
+		for (int i = 0; i < x->getSize(); i++) {
+			out->set(i, std::trunc(x->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* trunc(Matrix<T>* x) {
+		Matrix<T>* out = emptyLike(x);
+
+		for (int i = 0; i < x->getSize(); i++) {
+			out->set(i, std::trunc(x->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	T prod(Vector<T>* x) {
+		T out = (T)1;
+		
+		for (int i = 0; i < x->getSize(); i++) {
+			out *= x->get(i);
+		}
+		
+		return out;
+	}
+
+	template <typename T>
+	T prod(Matrix<T>* x) {
+		T out = (T)1;
+
+		for (int i = 0; i < x->getSize(); i++) {
+			out *= x->get(i);
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	T sum(Vector<T>* x) {
+		T out = (T)0;
+
+		for (int i = 0; i < x->getSize(); i++) {
+			out += x->get(i);
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	T sum(Matrix<T>* x) {
+		T out = (T)0;
+
+		for (int i = 0; i < x->getSize(); i++) {
+			out += x->get(i);
+		}
+
+		return out;
 	}
 }

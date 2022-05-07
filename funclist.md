@@ -7,15 +7,7 @@ any ticked funcs are added, but incomplete
 - [X] solve
 
 ## math
-### rounding
-- [ ] rint
-- [ ] fix
-- [ ] floor
-- [ ] ceil
-- [ ] trunc
 ### sums and prods
-- [ ] prod
-- [ ] sum
 - [ ] nanProd
 - [ ] nanSum
 - [ ] cumProd

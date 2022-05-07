@@ -24,4 +24,11 @@ a changelog list for the next build release
 - added arccosh 
 - added arctanh
 - added around
+- added rint
+- added fix
+- added floor
+- added ceil
+- added trunc
+- added prod
+- added sum
 - added docs to ndarray
