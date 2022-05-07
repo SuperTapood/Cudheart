@@ -21,7 +21,9 @@ a changelog list for the next build release
 - added cosh 
 - added tanh
 - added arcsinh
-- added arccosh 
+- added arccosh
+- added cumProd
+- added cumSum
 - added arctanh
 - added around
 - added rint

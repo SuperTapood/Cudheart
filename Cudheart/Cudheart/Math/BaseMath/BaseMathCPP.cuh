@@ -301,4 +301,60 @@ namespace Cudheart::CPP::Math {
 
 		return out;
 	}
+
+	template <typename T>
+	Vector<T>* cumProd(Vector<T>* x) {
+		Vector<T>* out = emptyLike(x);
+
+		T prod = (T)1;
+		
+		for (int i = 0; i < x->getSize(); i++) {
+			prod *= x->get(i);
+			out->set(i, prod);
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* cumProd(Matrix<T>* x) {
+		Matrix<T>* out = emptyLike(x);
+
+		T prod = (T)1;
+
+		for (int i = 0; i < x->getSize(); i++) {
+			prod *= x->get(i);
+			out->set(i, prod);
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Vector<T>* cumSum(Vector<T>* x) {
+		Vector<T>* out = emptyLike(x);
+
+		T prod = (T)0;
+
+		for (int i = 0; i < x->getSize(); i++) {
+			prod += x->get(i);
+			out->set(i, prod);
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* cumSum(Matrix<T>* x) {
+		Matrix<T>* out = emptyLike(x);
+
+		T prod = (T)0;
+
+		for (int i = 0; i < x->getSize(); i++) {
+			prod += x->get(i);
+			out->set(i, prod);
+		}
+
+		return out;
+	}
 }

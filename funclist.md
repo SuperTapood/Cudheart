@@ -7,13 +7,6 @@ any ticked funcs are added, but incomplete
 - [X] solve
 
 ## math
-### sums and prods
-- [ ] nanProd
-- [ ] nanSum
-- [ ] cumProd
-- [ ] cumSum
-- [ ] nanCumProd
-- [ ] nanCumSum
 ### exps
 - [ ] exp
 - [ ] expm1
@@ -232,3 +225,9 @@ any ticked funcs are added, but incomplete
 - [ ] isPosInf
 - [ ] isComplex
 - [ ] isReal
+
+### sums and prods
+- [ ] nanProd
+- [ ] nanSum
+- [ ] nanCumProd
+- [ ] nanCumSum
