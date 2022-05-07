@@ -15,4 +15,5 @@ a changelog list for the next build release
 - fixed missing parameters
 - added docs to matrix ops
 - added diag overload
+- added docs to vector
 - added docs to ndarray
