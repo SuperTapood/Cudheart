@@ -240,7 +240,8 @@ namespace Cudheart::MatrixOps {
 	Matrix<T>* zerosLike(Matrix<T>* mat) {
 		return zeros(mat->getWidth(), mat->getHeight());
 	}
-#pragma endregion 
+#pragma endregion
+
 #pragma region linspace
 	/// <summary>
 	/// get a matrix made out of linearly spaced values
@@ -431,6 +432,15 @@ namespace Cudheart::MatrixOps {
 	}
 #pragma endregion
 
+#pragma region eye
+	/// <summary>
+	/// get a matrix with ones on its diagonals
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="N"> - the number of rows in the output</param>
+	/// <param name="M"> - the number of columns in the output</param>
+	/// <param name="k"> - index of the diagonal</param>
+	/// <returns>a matrix where all elements are 0 except for the k-th diagonal, whose values are equal to 1</returns>
 	template <typename T>
 	Matrix<T>* eye(int N, int M, int k) {
 		Matrix<T>* mat = zeros<T>(N, M);
@@ -443,21 +453,50 @@ namespace Cudheart::MatrixOps {
 		return mat;
 	}
 
+	/// <summary>
+	/// get a matrix with ones on its diagonals
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="N"> - the number of rows in the output</param>
+	/// <param name="k"> - index of the diagonal</param>
+	/// <returns>a matrix where all elements are 0 except for the k-th diagonal, whose values are equal to 1</returns>
 	template <typename T>
 	Matrix<T>* eye(int N, int k) {
 		return eye<T>(N, N, k);
 	}
 
+	/// <summary>
+	/// get a matrix with ones on its diagonals
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="N"> - the number of rows in the output</param>
+	/// <returns>a matrix where all elements are 0 except for the diagonal, whose values are equal to 1</returns>
 	template <typename T>
 	Matrix<T>* eye(int N) {
 		return eye<T>(N, N, 0);
 	}
 
+	/// <summary>
+	/// return an identity matrix
+	/// </summary>
+	/// <typeparam name="T"> - the type of the output matrix</typeparam>
+	/// <param name="N"> - the number of rows and columns in the output</param>
+	/// <returns>a square matrix with ones on its main diagonal</returns>
 	template <typename T>
 	Matrix<T>* identity(int N) {
 		return eye<T>(N, N, 0);
 	}
+#pragma endregion
 
+	/// <summary>
+	/// return coordinate matrices for vectorized evaluations of given one dimensional coordinate arrays a and b
+	/// </summary>
+	/// <typeparam name="T"> - the type of the output matrix</typeparam>
+	/// <typeparam name="U"> - the type of the a input vector</typeparam>
+	/// <typeparam name="K"> - the type of the b input vector</typeparam>
+	/// <param name="a"> - first input vector</param>
+	/// <param name="b"> - second input vector</param>
+	/// <returns>an array containing two matrices</returns>
 	template <typename T, typename U, typename K>
 	Matrix<T>* meshgrid(Vector<U>* a, Vector<K>* b) {
 		Matrix<T>* out = (Matrix<T>*)malloc(sizeof(Matrix<T>) * 2);
@@ -481,6 +520,15 @@ namespace Cudheart::MatrixOps {
 		return out;
 	}
 
+#pragma region diags
+
+	/// <summary>
+	/// construct a diagonal vector
+	/// </summary>
+	/// <typeparam name="T"> - the type of the output vector</typeparam>
+	/// <param name="mat"> - the matrix to construct a diagonal vector from</param>
+	/// <param name="k"> - the diagonal in question</param>
+	/// <returns>the constructed diagonal vector</returns>
 	template <typename T>
 	Vector<T>* diag(Matrix<T>* mat, int k) {
 		int len;
@@ -501,6 +549,24 @@ namespace Cudheart::MatrixOps {
 		return out;
 	}
 
+	/// <summary>
+	/// construct a diagonal vector
+	/// </summary>
+	/// <typeparam name="T"> - the type of the output vector</typeparam>
+	/// <param name="mat"> - the matrix to construct a diagonal vector from</param>
+	/// <returns>the constructed diagonal vector</returns>
+	template <typename T>
+	Vector<T>* diag(Matrix<T>* mat) {
+		return diag<T>(mat, 0);
+	}
+
+	/// <summary>
+	/// create a two-dimensional array with the given vector as a diagonal
+	/// </summary>
+	/// <typeparam name="T"> - the type of the output matrix</typeparam>
+	/// <param name="vec"> - the given vector</param>
+	/// <param name="k"> - the diagonal to set</param>
+	/// <returns>the output matrix</returns>
 	template <typename T>
 	Matrix<T>* diagflat(Vector<T>* vec, int k) {
 		Matrix<T>* mat = zeros<T>(vec->getSize() + k, vec->getSize() + k);
@@ -512,11 +578,28 @@ namespace Cudheart::MatrixOps {
 		return mat;
 	}
 
+	/// <summary>
+	/// create a two-dimensional array with the given vector as a diagonal
+	/// </summary>
+	/// <typeparam name="T"> - the type of the output matrix</typeparam>
+	/// <param name="vec"> - the given vector</param>
+	/// <returns>the output matrix</returns>
 	template <typename T>
 	Matrix<T>* diagflat(Vector<T>* vec) {
 		return diagflat(vec, 0);
 	}
+#pragma endregion
 
+#pragma region triags
+
+	/// <summary>
+	/// a matrix with ones at and below the given diagonal
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="N"> - number of rows</param>
+	/// <param name="M"> - number of columns</param>
+	/// <param name="k"> - the sub diagonal at and below which the matrix is filled</param>
+	/// <returns>array with its lower triangle filled with ones and zeros elsewhere</returns>
 	template <typename T>
 	Matrix<T>* tri(int N, int M, int k) {
 		Matrix<T>* out = zeros<T>(N, M);
@@ -530,16 +613,36 @@ namespace Cudheart::MatrixOps {
 		return out;
 	}
 
+	/// <summary>
+	/// a matrix with ones at and below the given diagonal
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="N"> - number of rows and columns</param>
+	/// <param name="k"> - the sub diagonal at and below which the matrix is filled</param>
+	/// <returns>array with its lower triangle filled with ones and zeros elsewhere</returns>
 	template <typename T>
 	Matrix<T>* tri(int N, int k) {
 		return tri<T>(N, N, k);
 	}
 
+	/// <summary>
+	/// a matrix with ones at and below the given diagonal
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="N"> - number of rows and columns</param>
+	/// <returns>array with its lower triangle filled with ones and zeros elsewhere</returns>
 	template <typename T>
 	Matrix<T>* tri(int N) {
 		return tri<T>(N, N, 0);
 	}
 
+	/// <summary>
+	/// return a copy of the matrix with elements above the k-th diagonal zeroed
+	/// </summary>
+	/// <typeparam name="T"> - the type of the output matrix</typeparam>
+	/// <param name="mat"> - the matrix to work on</param>
+	/// <param name="k"> - the index of the diagonal</param>
+	/// <returns>lower triangle of mat</returns>
 	template <typename T>
 	Matrix<T>* tril(Matrix<T>* mat, int k) {
 		Matrix<T>* out = zerosLike<T>(mat);
@@ -553,21 +656,26 @@ namespace Cudheart::MatrixOps {
 		return out;
 	}
 
+	/// <summary>
+	/// return a copy of the matrix with elements above the main diagonal zeroed
+	/// </summary>
+	/// <typeparam name="T"> - the type of the output matrix</typeparam>
+	/// <param name="mat"> - the matrix to work on</param>
+	/// <returns>lower triangle of mat</returns>
 	template <typename T>
 	Matrix<T>* tril(Matrix<T>* mat) {
 		return tril(mat, 0);
 	}
 
+	/// <summary>
+	/// return a copy of the matrix with elements below the k-th diagonal zeroed
+	/// </summary>
+	/// <typeparam name="T"> - the type of the output matrix</typeparam>
+	/// <param name="mat"> - the matrix to work on</param>
+	/// <param name="k"> - the index of the diagonal</param>
+	/// <returns>upper triangle of mat</returns>
 	template <typename T>
 	Matrix<T>* triu(Matrix<T>* mat, int k) {
-		// the algorithm
-		// Matrix<T>* a = transpose(mat);
-		// Matrix<T>* b = tril(a);
-		// Matrix<T>* c = transpose(b);
-		// delete a;
-		// delete b;
-		// return c;
-
 		Matrix<T>* out = zerosLike<T>(mat);
 
 		for (int i = 1 - k; i < mat->getHeight(); i--) {
@@ -579,11 +687,25 @@ namespace Cudheart::MatrixOps {
 		return out;
 	}
 
+	/// <summary>
+	/// return a copy of the matrix with elements below the main diagonal zeroed
+	/// </summary>
+	/// <typeparam name="T"> - the type of the output matrix</typeparam>
+	/// <param name="mat"> - the matrix to work on</param>
+	/// <returns>upper triangle of mat</returns>
 	template <typename T>
 	Matrix<T>* triu(Matrix<T>* mat) {
 		return triu(mat, 0);
 	}
 
+	/// <summary>
+	/// generate a Vandermonde matrix
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="vec"> - a vector input array</param>
+	/// <param name="N"> - number of columns in the output</param>
+	/// <param name="increasing"> - whether or not to increase powers from left to right or the other way around</param>
+	/// <returns>output vandermonde matrix</returns>
 	template <typename T>
 	Matrix<T>* vander(Vector<T>* vec, int N, bool increasing) {
 		Matrix<T>* out = empty(vec->getSize(), N);
@@ -603,20 +725,42 @@ namespace Cudheart::MatrixOps {
 		return out;
 	}
 
+	/// <summary>
+	/// generate a Vandermonde matrix
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="vec"> - a vector input array</param>
+	/// <param name="N"> - number of columns in the output</param>
+	/// <returns>output vandermonde matrix</returns>
 	template <typename T>
 	Matrix<T>* vander(Vector<T>* vec, int N) {
 		return vander(vec, N, false);
 	}
 
+	/// <summary>
+	/// generate a Vandermonde matrix
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="vec"> - a vector input array</param>
+	/// <param name="increasing"> - whether or not to increase powers from left to right or the other way around</param>
+	/// <returns>output vandermonde matrix</returns>
 	template <typename T>
 	Matrix<T>* vander(Vector<T>* vec, bool increasing) {
 		return vander(vec, vec->getSize(), increasing);
 	}
 
+	/// <summary>
+	/// generate a Vandermonde matrix
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="vec"> - a vector input array</param>
+	/// <returns>output vandermonde matrix</returns>
 	template <typename T>
 	Matrix<T>* vander(Vector<T>* vec) {
 		return vander(vec, vec->getSize(), false);
 	}
+
+#pragma endregion
 
 	template <typename T>
 	Matrix<T>* transpose(Matrix<T>* mat) {

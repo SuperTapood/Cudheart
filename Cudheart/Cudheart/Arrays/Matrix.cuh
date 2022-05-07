@@ -33,6 +33,8 @@ namespace Cudheart::NDArrays {
 		T* m_data;
 
 	public:
+
+#pragma region constructors
 		/// <summary>
 		/// create a new matrix object from existing data
 		/// </summary>
@@ -80,6 +82,7 @@ namespace Cudheart::NDArrays {
 				i++;
 			}
 		}
+#pragma endregion
 
 		/// destroy the matrix object
 		~Matrix() {
@@ -102,6 +105,8 @@ namespace Cudheart::NDArrays {
 
 			return output;
 		}
+
+#pragma region getters_and_setters
 
 		/// <summary>
 		/// get a value using a one dimensional index
@@ -211,6 +216,8 @@ namespace Cudheart::NDArrays {
 		int getHeight() {
 			return m_height;
 		}
+
+#pragma endregion
 
 		/// <summary>
 		/// convert the matrix to a string representation

@@ -8,17 +8,26 @@
 
 namespace Cudheart::NDArrays {
 	template <typename T>
-	class Vector : public NDArray<T> {
+	class Vector {
 	private:
 		int m_size;
 		T* m_data;
 
 	public:
+		/// <summary>
+		/// construct a new vector from the given data and size
+		/// </summary>
+		/// <param name="data"> - the given raw data</param>
+		/// <param name="size"> - the given size of the raw data</param>
 		Vector(T* data, int size) {
 			m_data = data;
 			m_size = size;
 		}
 
+		/// <summary>
+		/// create a new empty vector with the given size
+		/// </summary>
+		/// <param name="size"> - the size of the vector</param>
 		Vector(int size) {
 			// m_data = (T*)malloc(size * sizeof(T));
 			m_data = new T[size];

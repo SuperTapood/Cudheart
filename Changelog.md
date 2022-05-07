@@ -1,6 +1,6 @@
 # Change Log
 
-a changelog list for the next release
+a changelog list for the next build release
 
 - matrices and vectors can now be created using initializer lists
 - fixed index error formatting issue
@@ -13,4 +13,6 @@ a changelog list for the next release
 - added some asserts to tests
 - fixed matrix ops width height mismatch
 - fixed missing parameters
-- added some docs to matrix ops
+- added docs to matrix ops
+- added diag overload
+- added docs to ndarray

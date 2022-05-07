@@ -30,10 +30,14 @@ The aim of this project is to provide a back-end framework for a Tensorflow-esqu
 - [ ] divide functions into pragma regions
 - [ ] fix non numeric vectors and matrices
 - [ ] add reshape function
+- [ ] match docs with numpy with the first matrix ops funcs
 - [ ] fix index error for getting info from flat matrix to say matrix
 - [ ] don't flatten matrices unless its needed (or ur lazy or cuda is involved)
 - [ ] convert project to static library project
 - [ ] use ndarray to reduce number of overrides
+- [ ] fix internal casting in meshgrid
+- [ ] add another type argument for set and get methods
+- [ ] fix docs typos
 - [ ] make matrix a vector of vectors to handle row fetching faster
 - [ ] add axis for mixed operations (vectors and matrices) where usually a horizontal vector is assumed
 - [ ] deprecate containers and get rid of CUtil
