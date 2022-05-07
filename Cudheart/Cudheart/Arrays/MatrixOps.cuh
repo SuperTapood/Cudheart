@@ -55,6 +55,28 @@ namespace Cudheart::MatrixOps {
 	}
 
 	/// <summary>
+	/// convert a vector to a matrix
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="vec"> - the vector to convert</param>
+	/// <param name="height"> - the height of the matrix</param>
+	/// <param name="width"> - the width of the matrix</param>
+	/// <returns>a matrix with the same values as the vector</returns>
+	template <typename T>
+	Matrix<T>* fromVector(Vector<T>* vec, int height, int width) {
+		if (width * height != vec->getSize()) {
+			Exceptions::MatrixConversionException(width, height, vec->getSize()).raise();
+		}
+		Matrix<T>* out = empty<T>(height, width);
+
+		for (int i = 0; i < out->getSize(); i++) {
+			out->set(i, vec->get(i));
+		}
+
+		return out;
+	}
+
+	/// <summary>
 	/// convert a vector array to a matrix.
 	/// don't get cute and give this a vector pointer
 	/// or cpp will actually send you to the shadow realm jimbo
@@ -196,90 +218,218 @@ namespace Cudheart::MatrixOps {
 		return ones(mat->getWidth(), mat->getHeight());
 	}
 
+	/// <summary>
+	/// get a matrix filled with zeros
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="height"> - the height of the matrix</param>
+	/// <param name="width"> - the width of the matrix</param>
+	/// <returns>a matrix filled with zeros</returns>
 	template <typename T>
 	Matrix<T>* zeros(int height, int width) {
 		return full<T>(height, width, 0);
 	}
 
+	/// <summary>
+	/// get a matrix filled with zeros with the same dims as the given matrix
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="mat"> - the reference matrix</param>
+	/// <returns>a matrix filled with zeros</returns>
 	template <typename T>
 	Matrix<T>* zerosLike(Matrix<T>* mat) {
 		return zeros(mat->getWidth(), mat->getHeight());
 	}
-#pragma endregion
-
-	template <typename T>
-	Matrix<T>* fromVector(Vector<T>* vec, int height, int width) {
-		if (width * height != vec->getSize()) {
-			Exceptions::MatrixConversionException(width, height, vec->getSize()).raise();
-		}
-		Matrix<T>* out = empty<T>(height, width);
-
-		for (int i = 0; i < out->getSize(); i++) {
-			out->set(i, vec->get(i));
-		}
-
-		return out;
-	}
-
+#pragma endregion 
+#pragma region linspace
+	/// <summary>
+	/// get a matrix made out of linearly spaced values
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="start"> - the start value</param>
+	/// <param name="stop"> - the final value</param>
+	/// <param name="num"> - the number of steps to take </param>
+	/// <param name="endpoint"> - whether or not to include the final value in the matrix</param>
+	/// <param name="height"> - the height of the matrix</param>
+	/// <param name="width"> - the width of the matrix</param>
+	/// <returns>a matrix filled linearly spaced values</returns>
 	template <typename T>
 	Matrix<T>* linspace(T start, T stop, T num, bool endpoint, int height, int width) {
 		return fromVector(VectorOps::linspace<T>(start, stop, num, endpoint), height, width, true);
 	}
 
+	/// <summary>
+	/// get a matrix made out of linearly spaced values
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="start"> - the start value</param>
+	/// <param name="stop"> - the final value</param>
+	/// <param name="num"> - the number of steps to take </param>
+	/// <param name="height"> - the height of the matrix</param>
+	/// <param name="width"> - the width of the matrix</param>
+	/// <returns>a matrix filled linearly spaced values</returns>
 	template <typename T>
 	Matrix<T>* linspace(T start, T stop, T num, int height, int width) {
 		return linspace(start, stop, num, true, height, width);
 	}
 
+	/// <summary>
+	/// get a matrix made out of linearly spaced values
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="start"> - the start value</param>
+	/// <param name="stop"> - the final value</param>
+	/// <param name="height"> - the height of the matrix</param>
+	/// <param name="width"> - the width of the matrix</param>
+	/// <returns>a matrix filled linearly spaced values</returns>
 	template <typename T>
 	Matrix<T>* linspace(T start, T stop, int height, int width) {
 		return linspace(start, stop, (T)50, true, height, width);
 	}
 
+#pragma endregion
+
+#pragma region logspace
+	/// <summary>
+	/// get a matrix with logarithmically spaced values
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="start"> - the starting value of the matrix</param>
+	/// <param name="stop"> - the final value of the matrix</param>
+	/// <param name="num"> - the number of steps to take</param>
+	/// <param name="endpoint"> - whether or not to include the final value</param>
+	/// <param name="base"> - the base to raise the values to</param>
+	/// <param name="height"> - the height of the matrix</param>
+	/// <param name="width"> - the width of the matrix</param>
+	/// <returns>a logarithmically spaced matrix</returns>
 	template <typename T>
 	Matrix<T>* logspace(T start, T stop, T num, bool endpoint, double base, int height, int width) {
 		return fromVector(VectorOps::logspace<T>(start, stop, num, endpoint, base), height, width, true);
 	}
 
+	/// <summary>
+	/// get a matrix with logarithmically spaced values
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="start"> - the starting value of the matrix</param>
+	/// <param name="stop"> - the final value of the matrix</param>
+	/// <param name="num"> - the number of steps to take</param>
+	/// <param name="endpoint"> - whether or not to include the final value</param>
+	/// <param name="height"> - the height of the matrix</param>
+	/// <param name="width"> - the width of the matrix</param>
+	/// <returns>a logarithmically spaced matrix</returns>
 	template <typename T>
 	Matrix<T>* logspace(T start, T stop, T num, bool endpoint, int height, int width) {
 		return logspace<T>(start, stop, num, endpoint, 10.0, height, width);
 	}
 
+	/// <summary>
+	/// get a matrix with logarithmically spaced values
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="start"> - the starting value of the matrix</param>
+	/// <param name="stop"> - the final value of the matrix</param>
+	/// <param name="num"> - the number of steps to take</param>
+	/// <param name="height"> - the height of the matrix</param>
+	/// <param name="width"> - the width of the matrix</param>
+	/// <returns>a logarithmically spaced matrix</returns>
 	template <typename T>
 	Matrix<T>* logspace(T start, T stop, T num, int height, int width) {
 		return logspace<T>(start, stop, num, true, 10.0, height, width);
 	}
 
+	/// <summary>
+	/// get a matrix with logarithmically spaced values
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="start"> - the starting value of the matrix</param>
+	/// <param name="stop"> - the final value of the matrix</param>
+	/// <param name="num"> - the number of steps to take</param>
+	/// <param name="base"> - the base to raise the values to</param>
+	/// <param name="height"> - the height of the matrix</param>
+	/// <param name="width"> - the width of the matrix</param>
+	/// <returns>a logarithmically spaced matrix</returns>
 	template <typename T>
 	Matrix<T>* logspace(T start, T stop, T num, double base, int height, int width) {
 		return logspace<T>(start, stop, num, true, base, height, width);
 	}
 
+	/// <summary>
+	/// get a matrix with logarithmically spaced values
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="start"> - the starting value of the matrix</param>
+	/// <param name="stop"> - the final value of the matrix</param>
+	/// <param name="base"> - the base to raise the values to</param>
+	/// <param name="height"> - the height of the matrix</param>
+	/// <param name="width"> - the width of the matrix</param>
+	/// <returns>a logarithmically spaced matrix</returns>
 	template <typename T>
 	Matrix<T>* logspace(T start, T stop, double base, int height, int width) {
 		return logspace<T>(start, stop, (T)50, true, base, height, width);
 	}
 
+	/// <summary>
+	/// get a matrix with logarithmically spaced values
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="start"> - the starting value of the matrix</param>
+	/// <param name="stop"> - the final value of the matrix</param>
+	/// <param name="height"> - the height of the matrix</param>
+	/// <param name="width"> - the width of the matrix</param>
+	/// <returns>a logarithmically spaced matrix</returns>
 	template <typename T>
 	Matrix<T>* logspace(T start, T stop, int height, int width) {
 		return logspace<T>(start, stop, (T)50, true, 10.0, height, width);
 	}
+#pragma endregion
 
+#pragma region geomspace
+	/// <summary>
+	/// get a matrix with geometrically spaced values
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="start"> - the starting value</param>
+	/// <param name="stop"> - the final value</param>
+	/// <param name="num"> - the number of steps between start and stop</param>
+	/// <param name="endpoint"> - whether or not to include the final value</param>
+	/// <param name="height"> - the height of the matrix</param>
+	/// <param name="width"> - the width of the matrix</param>
+	/// <returns>a geometrically spaced values matrix</returns>
 	template <typename T>
 	Matrix<T>* geomspace(T start, T stop, T num, bool endpoint, int height, int width) {
 		return fromVector(VectorOps::geomspace(start, stop, num, endpoint), height, width, true);
 	}
 
+	/// <summary>
+	/// get a matrix with geometrically spaced values
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="start"> - the starting value</param>
+	/// <param name="stop"> - the final value</param>
+	/// <param name="num"> - the number of steps between start and stop</param>
+	/// <param name="height"> - the height of the matrix</param>
+	/// <param name="width"> - the width of the matrix</param>
+	/// <returns>a geometrically spaced values matrix</returns>
 	template <typename T>
 	Matrix<T>* geomspace(T start, T stop, T num, int height, int width) {
 		return geomspace<T>(start, stop, num, true, height, width);
 	}
 
+	/// <summary>
+	/// get a matrix with geometrically spaced values
+	/// </summary>
+	/// <typeparam name="T"> - the type of the matrix</typeparam>
+	/// <param name="start"> - the starting value</param>
+	/// <param name="stop"> - the final value</param>
+	/// <param name="height"> - the height of the matrix</param>
+	/// <param name="width"> - the width of the matrix</param>
+	/// <returns>a geometrically spaced values matrix</returns>
 	template <typename T>
 	Matrix<T>* geomspace(T start, T stop, int height, int width) {
 		return geomspace<T>(start, stop, (T)50, true, height, width);
 	}
+#pragma endregion
 
 	template <typename T>
 	Matrix<T>* eye(int N, int M, int k) {
