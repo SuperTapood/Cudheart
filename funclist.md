@@ -7,16 +7,7 @@ any ticked funcs are added, but incomplete
 - [X] solve
 
 ## math
-### hyperbolic
-- [ ] sinh
-- [ ] cosh
-- [ ] tanh
-- [ ] arcsinh
-- [ ] arccosh
-- [ ] arctanh
 ### rounding
-- [ ] around
-- [ ] round_
 - [ ] rint
 - [ ] fix
 - [ ] floor

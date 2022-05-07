@@ -275,4 +275,136 @@ namespace Cudheart::CPP::Math::Trigo {
 
 		return out;
 	}
+
+	template <typename T>
+	Vector<T>* sinh(Vector<T>* vec) {
+		Vector<T>* out = emptyLike(vec);
+		
+		for (int i = 0; i < vec->getSize(); i++) {
+			out->set(i, std::sinh(vec->get(i)));
+		}
+		
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* sinh(Matrix<T>* mat) {
+		Matrix<T>* out = emptyLike(mat);
+		
+		for (int i = 0; i < mat->getSize(); i++) {
+			out->set(i, std::sinh(mat->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Vector<T>* cosh(Vector<T>* vec) {
+		Vector<T>* out = emptyLike(vec);
+
+		for (int i = 0; i < vec->getSize(); i++) {
+			out->set(i, std::cosh(vec->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* cosh(Matrix<T>* mat) {
+		Matrix<T>* out = emptyLike(mat);
+
+		for (int i = 0; i < mat->getSize(); i++) {
+			out->set(i, std::cosh(mat->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Vector<T>* tanh(Vector<T>* vec) {
+		Vector<T>* out = emptyLike(vec);
+
+		for (int i = 0; i < vec->getSize(); i++) {
+			out->set(i, std::tanh(vec->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* tanh(Matrix<T>* mat) {
+		Matrix<T>* out = emptyLike(mat);
+
+		for (int i = 0; i < mat->getSize(); i++) {
+			out->set(i, std::tanh(mat->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Vector<T>* arcsinh(Vector<T>* vec) {
+		Vector<T>* out = emptyLike(vec);
+
+		for (int i = 0; i < vec->getSize(); i++) {
+			out->set(i, std::asinh(vec->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* arcsinh(Matrix<T>* mat) {
+		Matrix<T>* out = emptyLike(mat);
+
+		for (int i = 0; i < mat->getSize(); i++) {
+			out->set(i, std::asinh(mat->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Vector<T>* arccosh(Vector<T>* vec) {
+		Vector<T>* out = emptyLike(vec);
+
+		for (int i = 0; i < vec->getSize(); i++) {
+			out->set(i, std::acosh(vec->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* arccosh(Matrix<T>* mat) {
+		Matrix<T>* out = emptyLike(mat);
+
+		for (int i = 0; i < mat->getSize(); i++) {
+			out->set(i, std::acosh(mat->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Vector<T>* arctanh(Vector<T>* vec) {
+		Vector<T>* out = emptyLike(vec);
+
+		for (int i = 0; i < vec->getSize(); i++) {
+			out->set(i, std::atanh(vec->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* arctanh(Matrix<T>* mat) {
+		Matrix<T>* out = emptyLike(mat);
+
+		for (int i = 0; i < mat->getSize(); i++) {
+			out->set(i, std::atanh(mat->get(i)));
+		}
+
+		return out;
+	}
 }

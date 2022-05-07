@@ -97,4 +97,42 @@ namespace Cudheart::CPP::Math {
 
 		return out;
 	}
+
+	template <typename T>
+	Vector<T>* around(Vector<T>* vec, int decimals) {
+		Vector<T>* out = emptyLike(vec);
+		int v = std::pow(10, decimals);
+		
+		for (int i = 0; i < out->getSize(); i++) {
+			T value = vec->get(i) * v;
+			value = std::round(value);
+			out->set(i, value / v);
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Vector<T>* around(Vector<T>* vec) {
+		return around(vec, 0);
+	}
+
+	template <typename T>
+	Matrix<T>* around(Matrix<T>* mat, int decimals) {
+		Matrix<T>* out = emptyLike(vecmat;
+		int v = std::pow(10, decimals);
+
+		for (int i = 0; i < out->getSize(); i++) {
+			T value = mat->get(i) * v;
+			value = std::round(value);
+			out->set(i, value / v);
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* around(Matrix<T>* mat) {
+		return around(mat, 0);
+	}
 }

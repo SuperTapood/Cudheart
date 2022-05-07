@@ -16,4 +16,12 @@ a changelog list for the next build release
 - added docs to matrix ops
 - added diag overload
 - added docs to vector
+- added some docs to vector ops
+- added sinh 
+- added cosh 
+- added tanh
+- added arcsinh
+- added arccosh 
+- added arctanh
+- added around
 - added docs to ndarray
