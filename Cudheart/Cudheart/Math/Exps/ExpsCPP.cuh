@@ -12,92 +12,48 @@ using Cudheart::MatrixOps::fromVector;
 
 namespace Cudheart::CPP::Math::Exp {
 	template <typename T>
-	Vector<T>* loga(Vector<T>* vec) {
-		Vector<T>* output = emptyLike<T>(vec);
+	NDArray<T>* loga(NDArray<T>* x) {
+		NDArray<T>* output = x->emptyLike();
 
-		for (int i = 0; i < vec->getSize(); i++) {
-			output->set(i, log(vec->get(i)));
+		for (int i = 0; i < x->getSize(); i++) {
+			output->set(i, log(x->get(i)));
 		}
 
 		return output;
 	}
 
 	template <typename T>
-	Matrix<T>* loga(Matrix<T>* mat) {
-		Vector<T>* flat = mat->flatten();
+	NDArray<T>* loga2(NDArray<T>* x) {
+		NDArray<T>* output = x->emptyLike();
 
-		Vector<T>* out = loga(flat);
-
-		delete flat;
-
-		return fromVector(out, mat->getWidth(), mat->getHeight(), true);
-	}
-
-	template <typename T>
-	Vector<T>* loga2(Vector<T>* vec) {
-		Vector<T>* output = emptyLike<T>(vec);
-
-		for (int i = 0; i < vec->getSize(); i++) {
-			output->set(i, log2(vec->get(i)));
+		for (int i = 0; i < x->getSize(); i++) {
+			output->set(i, log2(x->get(i)));
 		}
 
 		return output;
 	}
 
 	template <typename T>
-	Matrix<T>* loga2(Matrix<T>* mat) {
-		Vector<T>* flat = mat->flatten();
+	NDArray<T>* logan(NDArray<T>* x, T n) {
+		NDArray<T>* output = x->emptyLike();
 
-		Vector<T>* out = loga2(flat);
-
-		delete flat;
-
-		return fromVector(out, mat->getWidth(), mat->getHeight(), true);
-	}
-
-	template <typename T>
-	Vector<T>* logan(Vector<T>* vec, T n) {
-		Vector<T>* output = emptyLike<T>(vec);
-
-		for (int i = 0; i < vec->getSize(); i++) {
+		for (int i = 0; i < x->getSize(); i++) {
 			// using the change of bases rule:
-			// log n of vec[i] = log(vec[i]) / log(n)
-			output->set(i, (log(vec->get(i)) / log(n)));
+			// log n of x[i] = log(x[i]) / log(n)
+			output->set(i, (log(x->get(i)) / log(n)));
 		}
 
 		return output;
 	}
 
 	template <typename T>
-	Matrix<T>* logan(Matrix<T>* mat, T n) {
-		Vector<T>* flat = mat->flatten();
+	NDArray<T>* loga10(NDArray<T>* x) {
+		NDArray<T>* output = x->emptyLike();
 
-		Vector<T>* out = logan(flat, n);
-
-		delete flat;
-
-		return fromVector(out, mat->getWidth(), mat->getHeight(), true);
-	}
-
-	template <typename T>
-	Vector<T>* loga10(Vector<T>* vec) {
-		Vector<T>* output = emptyLike<T>(vec);
-
-		for (int i = 0; i < vec->getSize(); i++) {
-			output->set(i, log10(vec->get(i)));
+		for (int i = 0; i < x->getSize(); i++) {
+			output->set(i, log10(x->get(i)));
 		}
 
 		return output;
-	}
-
-	template <typename T>
-	Matrix<T>* loga10(Matrix<T>* mat) {
-		Vector<T>* flat = mat->flatten();
-
-		Vector<T>* out = loga10(flat);
-
-		delete flat;
-
-		return fromVector(out, mat->getWidth(), mat->getHeight(), true);
 	}
 }
