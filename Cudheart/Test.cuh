@@ -50,14 +50,14 @@ NDArray<T>* add(NDArray<T>* a, NDArray<T>* b, int axis) {
 			if (axis == 0) {
 				for (int i = 0; i < m->getHeight(); i++) {
 					for (int j = 0; j < m->getWidth(); j++) {
-						res->setAbs(i * m->getWidth() + j, v->getAbs(j) + m->getAbs(i * m->getWidth() + j));
+						res->set(i * m->getWidth() + j, v->getAbs(j) + m->get(i * m->getWidth() + j));
 					}
 				}
 			}
 			else if (axis == 1) {
 				for (int i = 0; i < m->getHeight(); i++) {
 					for (int j = 0; j < m->getWidth(); j++) {
-						res->setAbs(i * m->getWidth() + j, v->getAbs(i) + m->getAbs(i * m->getWidth() + j));
+						res->set(i * m->getWidth() + j, v->getAbs(i) + m->get(i * m->getWidth() + j));
 					}
 				}
 			}
@@ -69,14 +69,14 @@ NDArray<T>* add(NDArray<T>* a, NDArray<T>* b, int axis) {
 			if (axis == 0) {
 				for (int i = 0; i < m->getHeight(); i++) {
 					for (int j = 0; j < m->getWidth(); j++) {
-						res->setAbs(i * m->getWidth() + j, v->getAbs(j) + m->getAbs(i * m->getWidth() + j));
+						res->set(i * m->getWidth() + j, v->getAbs(j) + m->get(i * m->getWidth() + j));
 					}
 				}
 			}
 			else if (axis == 1) {
 				for (int i = 0; i < m->getHeight(); i++) {
 					for (int j = 0; j < m->getWidth(); j++) {
-						res->setAbs(i * m->getWidth() + j, v->getAbs(i) + m->getAbs(i * m->getWidth() + j));
+						res->set(i * m->getWidth() + j, v->getAbs(i) + m->get(i * m->getWidth() + j));
 					}
 				}
 			}
@@ -86,7 +86,7 @@ NDArray<T>* add(NDArray<T>* a, NDArray<T>* b, int axis) {
 		res = a->emptyLike();
 
 		for (int i = 0; i < a->getSize(); i++) {
-			res->setAbs(i, a->getAbs(i) + b->getAbs(i));
+			res->set(i, a->get(i) + b->get(i));
 		}
 	}
 

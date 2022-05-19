@@ -143,14 +143,6 @@ namespace Cudheart::NDArrays {
 			return get(flatten(i, j));
 		}
 
-		T getAbs(int index) {
-			return m_data[index];
-		}
-
-		void setAbs(int index, T value) {
-			m_data[index] = value;
-		}
-
 		NDArray<T>* emptyLike() {
 			return new Matrix<T>(m_height, m_width);
 		}

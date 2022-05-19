@@ -15,9 +15,9 @@ namespace Cudheart::NDArrays {
 		/// </summary>
 		virtual ~NDArray() {}
 
-		virtual T getAbs(int index) = 0;
+		virtual T get(int index) = 0;
 		
-		virtual void setAbs(int index, T value) = 0;
+		virtual void set(int index, T value) = 0;
 		
 		virtual NDArray<T>* emptyLike() = 0;
 		

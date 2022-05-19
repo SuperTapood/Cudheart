@@ -16,7 +16,7 @@ The aim of this project is to provide a back-end framework for a Tensorflow-esqu
 - [ ] test
 - [ ] remove all the useless overloads
 - [ ] fix docs in ndarray vector and matrix
-
+- [ ] organise the function in matrix ndarray and vector
 
 
 
