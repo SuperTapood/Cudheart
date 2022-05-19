@@ -38,7 +38,7 @@ namespace Cudheart::CPP::Math {
 		NDArray<T>* output = po->emptyLike();
 
 		for (int i = 0; i < po->getSize(); i++) {
-			output->set(i, pow(base, po->get(i));
+			output->set(i, pow(base, po->get(i)));
 		}
 
 		return output;
@@ -51,48 +51,10 @@ namespace Cudheart::CPP::Math {
 		NDArray<T>* output = base->emptyLike();
 
 		for (int i = 0; i < base->getSize(); i++) {
-			output->set(i, pow(base->get(i), po->get(i));
+			output->set(i, pow(base->get(i), po->get(i)));
 		}
 
 		return output;
-	}
-	
-
-	template <typename T>
-	Vector<T>* power(Vector<T>* base, Vector<T>* po) {
-		base->assertMatchShape(power);
-		Vector<T>* out = emptyLike(base);
-
-		for (int i = 0; i < out->getSize(); i++) {
-			out->set(i, pow(base->get(i), po->get(i)));
-		}
-
-		return out;
-	}
-
-	template <typename T>
-	Matrix<T>* power(Matrix<T>* base, T po) {
-		Vector<T>* flat = base->flatten();
-
-		Vector<T>* out = power(flat, po);
-
-		delete flat;
-
-		return fromVector(out, base->getWidth(), base->getHeight());
-	}
-
-	template <typename T>
-	Matrix<T>* power(Matrix<T>* base, Matrix<T>* high) {
-		base->assertMatchSize(high);
-		Vector<T>* b = base->flatten();
-		Vector<T>* p = high->flatten();
-
-		Vector<T>* output = power(b, p);
-
-		delete b;
-		delete p;
-
-		return fromVector(output, base->getWidth(), base->getHeight());
 	}
 
 	template <typename T>
@@ -113,12 +75,12 @@ namespace Cudheart::CPP::Math {
 	}
 
 	template <typename T>
-	Vector<T>* around(Vector<T>* vec, int decimals) {
-		Vector<T>* out = emptyLike(vec);
+	NDArray<T>* around(NDArray<T>* arr, int decimals) {
+		NDArray<T>* out = arr->emptyLike();
 		int v = std::pow(10, decimals);
 
 		for (int i = 0; i < out->getSize(); i++) {
-			T value = vec->get(i) * v;
+			T value = arr->get(i) * v;
 			value = std::round(value);
 			out->set(i, value / v);
 		}
@@ -127,54 +89,24 @@ namespace Cudheart::CPP::Math {
 	}
 
 	template <typename T>
-	Vector<T>* around(Vector<T>* vec) {
-		return around(vec, 0);
+	NDArray<T>* around(NDArray<T>* arr) {
+		return around(arr, 0);
 	}
 
 	template <typename T>
-	Matrix<T>* around(Matrix<T>* mat, int decimals) {
-		Matrix<T>* out = emptyLike(mat);
-		int v = std::pow(10, decimals);
+	NDArray<T>* rint(NDArray<T>* arr) {
+		NDArray<T>* out = emptyLike(arr);
 
 		for (int i = 0; i < out->getSize(); i++) {
-			T value = mat->get(i) * v;
-			value = std::round(value);
-			out->set(i, value / v);
+			out->set(i, std::rint(arr->get(i)));
 		}
 
 		return out;
 	}
 
 	template <typename T>
-	Matrix<T>* around(Matrix<T>* mat) {
-		return around(mat, 0);
-	}
-
-	template <typename T>
-	Vector<T>* rint(Vector<T>* vec) {
-		Vector<T>* out = emptyLike(vec);
-
-		for (int i = 0; i < out->getSize(); i++) {
-			out->set(i, std::rint(vec->get(i)));
-		}
-
-		return out;
-	}
-
-	template <typename T>
-	Matrix<T>* rint(Matrix<T>* mat) {
-		Matrix<T>* out = emptyLike(mat);
-
-		for (int i = 0; i < out->getSize(); i++) {
-			out->set(i, std::rint(mat->get(i)));
-		}
-
-		return out;
-	}
-
-	template <typename T>
-	Vector<T>* fix(Vector<T>* x) {
-		Vector<T>* out = emptyLike(x);
+	NDArray<T>* fix(NDArray<T>* x) {
+		NDArray<T>* out = x->emptyLike();
 
 		for (int i = 0; i < x->getSize(); i++) {
 			T v = x->get(i);
@@ -190,25 +122,8 @@ namespace Cudheart::CPP::Math {
 	}
 
 	template <typename T>
-	Matrix<T>* fix(Matrix<T>* x) {
-		Matrix<T>* out = emptyLike(x);
-
-		for (int i = 0; i < x->getSize(); i++) {
-			T v = x->get(i);
-			if (v > 0) {
-				out->set(i, std::floor(v));
-			}
-			else {
-				out->set(i, std::ceil(v));
-			}
-		}
-
-		return out;
-	}
-
-	template <typename T>
-	Vector<T>* floor(Vector<T>* x) {
-		Vector<T>* out = emptyLike(x);
+	NDArray<T>* floor(NDArray<T>* x) {
+		NDArray<T>* out = x->emptyLike();
 
 		for (int i = 0; i < x->getSize(); i++) {
 			out->set(i, std::floor(x->get(i)));
@@ -218,19 +133,8 @@ namespace Cudheart::CPP::Math {
 	}
 
 	template <typename T>
-	Matrix<T>* floor(Matrix<T>* x) {
-		Matrix<T>* out = emptyLike(x);
-
-		for (int i = 0; i < x->getSize(); i++) {
-			out->set(i, std::floor(x->get(i)));
-		}
-
-		return out;
-	}
-
-	template <typename T>
-	Vector<T>* ceil(Vector<T>* x) {
-		Vector<T>* out = emptyLike(x);
+	NDArray<T>* ceil(NDArray<T>* x) {
+		NDArray<T>* out = x->emptyLike();
 
 		for (int i = 0; i < x->getSize(); i++) {
 			out->set(i, std::ceil(x->get(i)));
@@ -240,19 +144,8 @@ namespace Cudheart::CPP::Math {
 	}
 
 	template <typename T>
-	Matrix<T>* ceil(Matrix<T>* x) {
-		Matrix<T>* out = emptyLike(x);
-
-		for (int i = 0; i < x->getSize(); i++) {
-			out->set(i, std::ceil(x->get(i)));
-		}
-
-		return out;
-	}
-
-	template <typename T>
-	Vector<T>* trunc(Vector<T>* x) {
-		Vector<T>* out = emptyLike(x);
+	NDArray<T>* trunc(NDArray<T>* x) {
+		NDArray<T>* out = x->emptyLike();
 
 		for (int i = 0; i < x->getSize(); i++) {
 			out->set(i, std::trunc(x->get(i)));
@@ -262,18 +155,7 @@ namespace Cudheart::CPP::Math {
 	}
 
 	template <typename T>
-	Matrix<T>* trunc(Matrix<T>* x) {
-		Matrix<T>* out = emptyLike(x);
-
-		for (int i = 0; i < x->getSize(); i++) {
-			out->set(i, std::trunc(x->get(i)));
-		}
-
-		return out;
-	}
-
-	template <typename T>
-	T prod(Vector<T>* x) {
+	T prod(NDArray<T>* x) {
 		T out = (T)1;
 		
 		for (int i = 0; i < x->getSize(); i++) {
@@ -284,18 +166,7 @@ namespace Cudheart::CPP::Math {
 	}
 
 	template <typename T>
-	T prod(Matrix<T>* x) {
-		T out = (T)1;
-
-		for (int i = 0; i < x->getSize(); i++) {
-			out *= x->get(i);
-		}
-
-		return out;
-	}
-
-	template <typename T>
-	T sum(Vector<T>* x) {
+	T sum(NDArray<T>* x) {
 		T out = (T)0;
 
 		for (int i = 0; i < x->getSize(); i++) {
@@ -306,19 +177,8 @@ namespace Cudheart::CPP::Math {
 	}
 
 	template <typename T>
-	T sum(Matrix<T>* x) {
-		T out = (T)0;
-
-		for (int i = 0; i < x->getSize(); i++) {
-			out += x->get(i);
-		}
-
-		return out;
-	}
-
-	template <typename T>
-	Vector<T>* cumProd(Vector<T>* x) {
-		Vector<T>* out = emptyLike(x);
+	NDArray<T>* cumProd(NDArray<T>* x) {
+		NDArray<T>* out = x->emptyLike();
 
 		T prod = (T)1;
 		
@@ -331,36 +191,8 @@ namespace Cudheart::CPP::Math {
 	}
 
 	template <typename T>
-	Matrix<T>* cumProd(Matrix<T>* x) {
-		Matrix<T>* out = emptyLike(x);
-
-		T prod = (T)1;
-
-		for (int i = 0; i < x->getSize(); i++) {
-			prod *= x->get(i);
-			out->set(i, prod);
-		}
-
-		return out;
-	}
-
-	template <typename T>
-	Vector<T>* cumSum(Vector<T>* x) {
-		Vector<T>* out = emptyLike(x);
-
-		T prod = (T)0;
-
-		for (int i = 0; i < x->getSize(); i++) {
-			prod += x->get(i);
-			out->set(i, prod);
-		}
-
-		return out;
-	}
-
-	template <typename T>
-	Matrix<T>* cumSum(Matrix<T>* x) {
-		Matrix<T>* out = emptyLike(x);
+	NDArray<T>* cumSum(NDArray<T>* x) {
+		NDArray<T>* out = x->emptyLike();
 
 		T prod = (T)0;
 

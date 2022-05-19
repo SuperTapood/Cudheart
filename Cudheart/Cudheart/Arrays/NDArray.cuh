@@ -13,7 +13,7 @@ namespace Cudheart::NDArrays {
 		/// <summary>
 		/// destroy this object
 		/// </summary>
-		virtual ~NDArray() {
+		~NDArray() {
 			// std::cout << "ndarray destructor called" << std::endl;
 		}
 
@@ -60,6 +60,8 @@ namespace Cudheart::NDArrays {
 		/// </summary>
 		virtual void print() = 0;
 
-		virtual void assertMatchShape(NDArray<T>* arr, int axis) = 0;
+		virtual void AssertMatchShape(NDArray<T>* arr, int axis) = 0;
+
+		virtual void AssertMatchShape(NDArray<T>* arr) = 0;
 	};
 }

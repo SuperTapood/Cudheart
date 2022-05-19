@@ -13,7 +13,7 @@ using namespace Cudheart::Kernels::Math::Bitwise;
 namespace Cudheart::CUDA::Math::Bitwise {
 	template <typename T>
 	Vector<T>* bitwiseAnd(Vector<T>* a, Vector<T>* b) {
-		a->assertMatchSize(b);
+		a->AssertMatchShape(b);
 
 		int len = a->getSize();
 		Vector<T>* out = empty<T>(len);
@@ -29,7 +29,7 @@ namespace Cudheart::CUDA::Math::Bitwise {
 
 	template <typename T>
 	Matrix<T>* bitwiseAnd(Matrix<T>* a, Matrix<T>* b) {
-		a->assertMatchSize(b);
+		a->AssertMatchSize(b);
 
 		Vector<T>* flat = bitwiseAnd(a->flatten(), b->flatten());
 
@@ -38,7 +38,7 @@ namespace Cudheart::CUDA::Math::Bitwise {
 
 	template <typename T>
 	Vector<T>* bitwiseOr(Vector<T>* a, Vector<T>* b) {
-		a->assertMatchSize(b);
+		a->AssertMatchShape(b);
 
 		int len = a->getSize();
 		Vector<T>* out = empty<T>(len);
@@ -54,7 +54,7 @@ namespace Cudheart::CUDA::Math::Bitwise {
 
 	template <typename T>
 	Matrix<T>* bitwiseOr(Matrix<T>* a, Matrix<T>* b) {
-		a->assertMatchSize(b);
+		a->AssertMatchSize(b);
 
 		Vector<T>* flat = bitwiseOr(a->flatten(), b->flatten());
 
@@ -63,7 +63,7 @@ namespace Cudheart::CUDA::Math::Bitwise {
 
 	template <typename T>
 	Vector<T>* bitwiseXor(Vector<T>* a, Vector<T>* b) {
-		a->assertMatchSize(b);
+		a->AssertMatchShape(b);
 
 		int len = a->getSize();
 		Vector<T>* out = empty<T>(len);
@@ -79,7 +79,7 @@ namespace Cudheart::CUDA::Math::Bitwise {
 
 	template <typename T>
 	Matrix<T>* bitwiseXor(Matrix<T>* a, Matrix<T>* b) {
-		a->assertMatchSize(b);
+		a->AssertMatchSize(b);
 
 		Vector<T>* flat = bitwiseXor(a->flatten(), b->flatten());
 
@@ -88,7 +88,7 @@ namespace Cudheart::CUDA::Math::Bitwise {
 
 	template <typename T>
 	Vector<T>* bitwiseLeftShift(Vector<T>* a, Vector<T>* b) {
-		a->assertMatchSize(b);
+		a->AssertMatchShape(b);
 
 		int len = a->getSize();
 		Vector<T>* out = empty<T>(len);
@@ -104,7 +104,7 @@ namespace Cudheart::CUDA::Math::Bitwise {
 
 	template <typename T>
 	Matrix<T>* bitwiseLeftShift(Matrix<T>* a, Matrix<T>* b) {
-		a->assertMatchSize(b);
+		a->AssertMatchShape(b);
 
 		Vector<T>* flat = bitwiseLeftShift(a->flatten(), b->flatten());
 
@@ -113,7 +113,7 @@ namespace Cudheart::CUDA::Math::Bitwise {
 
 	template <typename T>
 	Vector<T>* bitwiseRightShift(Vector<T>* a, Vector<T>* b) {
-		a->assertMatchSize(b);
+		a->AssertMatchShape(b);
 
 		int len = a->getSize();
 		Vector<T>* out = empty<T>(len);

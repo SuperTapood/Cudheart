@@ -100,7 +100,7 @@ namespace Cudheart::NDArrays {
 		/// <param name="index"> - the index of the row / column</param>
 		/// <param name="axis"> - whether or not to use row (axis 0) or column (axis 1)</param>
 		/// <returns>this vector dummy</returns>
-		virtual Vector<T>* get(int index, int axis) {
+		Vector<T>* get(int index, int axis) {
 			return this;
 		}
 
@@ -217,25 +217,20 @@ namespace Cudheart::NDArrays {
 		/// assert that this vector matches another vector
 		/// </summary>
 		/// <param name="other"> - the other vector</param>
-		void assertMatchShape(NDArray<T>* arr, int axis) {
+		void AssertMatchShape(NDArray<T>* arr, int axis) {
 			if (arr->getDims() == 1) {
 				if (m_size != arr->getSize()) {
-					Cudheart::Exceptions::ShapeMismatchException(m_size, arr->getSize()).raise();
+					Cudheart::Exceptions::ShapeMismatchException(m_size, 
+						arr->getSize()).raise();
 				}
 			}
-			else {
-				Matrix<T>* mat = (Matrix<T>*)arr;
-				if (axis == 0) {
-					if (m_size != mat->getWidth()) {
-						Cudheart::Exceptions::ShapeMismatchException("vector of size " + std::to_string(m_size) + " (along axis 0) does not match matrix of width " + std::to_string(mat->getWidth()));
-					}
-				}
-				else if (axis == 1) {
-					if (m_size != mat->getHeight()) {
-						Cudheart::Exceptions::ShapeMismatchException("vector of size " + std::to_string(m_size) + " (along axis 1) does not match matrix of height " + std::to_string(mat->getHeight()));
-					}
-				}
+			else if (arr->getDims() == 2) {
+				return arr->AssertMatchShape(this, axis);
 			}
+		}
+
+		void AssertMatchShape(NDArray<T>* arr) {
+			return AssertMatchShape(arr, 0);
 		}
 	};
 }
