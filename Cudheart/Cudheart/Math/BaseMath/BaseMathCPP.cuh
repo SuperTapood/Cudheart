@@ -12,41 +12,55 @@ using Cudheart::MatrixOps::fromVector;
 
 namespace Cudheart::CPP::Math {
 	template <typename T>
-	Vector<T>* squareRoot(Vector<T>* vec) {
-		Vector<T>* output = emptyLike(vec);
-
-		for (int i = 0; i < vec->getSize(); i++) {
-			output->set(i, sqrt(vec->get(i)));
+	NDArray<T>* squareRoot(NDArray<T>* arr) {
+		NDArray<T>* output = arr->emptyLike();
+		
+		for (int i = 0; i < arr->getSize(); i++) {
+			output->set(i, sqrt(arr->get(i)));
 		}
 
 		return output;
 	}
 
 	template <typename T>
-	Matrix<T>* squareRoot(Matrix<T>* mat) {
-		Vector<T>* flat = mat->flatten();
+	NDArray<T>* power(NDArray<T>* base, T po) {
+		NDArray<T>* output = base->emptyLike();
 
-		Vector<T>* out = squareRoot(flat);
+		for (int i = 0; i < base->getSize(); i++) {
+			output->set(i, pow(base->get(i), po));
+		}
 
-		delete flat;
-
-		return fromVector(out, mat->getWidth(), mat->getHeight(), true);
+		return output;
 	}
 
 	template <typename T>
-	Vector<T>* power(Vector<T>* base, T po) {
-		Vector<T>* out = emptyLike(base);
+	NDArray<T>* power(T base, NDArray<T>* po) {
+		NDArray<T>* output = po->emptyLike();
 
-		for (int i = 0; i < out->getSize(); i++) {
-			out->set(i, pow(base->get(i), po));
+		for (int i = 0; i < po->getSize(); i++) {
+			output->set(i, pow(base, po->get(i));
 		}
 
-		return out;
+		return output;
 	}
+
+	template <typename T>
+	NDArray<T>* power(NDArray<T>* base, NDArray<T>* po) {
+		base->assertMatchShape(po);
+
+		NDArray<T>* output = base->emptyLike();
+
+		for (int i = 0; i < base->getSize(); i++) {
+			output->set(i, pow(base->get(i), po->get(i));
+		}
+
+		return output;
+	}
+	
 
 	template <typename T>
 	Vector<T>* power(Vector<T>* base, Vector<T>* po) {
-		base->assertMatchSize(power);
+		base->assertMatchShape(power);
 		Vector<T>* out = emptyLike(base);
 
 		for (int i = 0; i < out->getSize(); i++) {

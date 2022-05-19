@@ -52,6 +52,7 @@
     <ClInclude Include="Cudheart\Exceptions\BadValueException.cuh" />
     <ClInclude Include="Cudheart\Exceptions\AssertionException.cuh" />
     <ClInclude Include="Test.cuh" />
+    <ClInclude Include="Cudheart\Exceptions\BadTypeException.cuh" />
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="Sample\kernel.cu">

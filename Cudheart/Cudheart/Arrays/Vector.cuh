@@ -217,9 +217,24 @@ namespace Cudheart::NDArrays {
 		/// assert that this vector matches another vector
 		/// </summary>
 		/// <param name="other"> - the other vector</param>
-		void assertMatchSize(Vector<T>* other) {
-			if (m_size != other->m_size) {
-				Cudheart::Exceptions::ShapeMismatchException(m_size, other->m_size).raise();
+		void assertMatchShape(NDArray<T>* arr, int axis) {
+			if (arr->getDims() == 1) {
+				if (m_size != arr->getSize()) {
+					Cudheart::Exceptions::ShapeMismatchException(m_size, arr->getSize()).raise();
+				}
+			}
+			else {
+				Matrix<T>* mat = (Matrix<T>*)arr;
+				if (axis == 0) {
+					if (m_size != mat->getWidth()) {
+						Cudheart::Exceptions::ShapeMismatchException("vector of size " + std::to_string(m_size) + " (along axis 0) does not match matrix of width " + std::to_string(mat->getWidth()));
+					}
+				}
+				else if (axis == 1) {
+					if (m_size != mat->getHeight()) {
+						Cudheart::Exceptions::ShapeMismatchException("vector of size " + std::to_string(m_size) + " (along axis 1) does not match matrix of height " + std::to_string(mat->getHeight()));
+					}
+				}
 			}
 		}
 	};

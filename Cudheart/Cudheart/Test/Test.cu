@@ -72,11 +72,11 @@ void testMatrixCreation() {
 	auto d = VectorOps::arange(4);
 	auto e = VectorOps::arange(5);
 
-	Cudheart::NDArrays::Matrix<int>* f = MatrixOps::meshgrid<int, int, int>(d, e);
+	Cudheart::NDArrays::Matrix<int>** f = MatrixOps::meshgrid<int, int, int>(d, e);
 	//f[0].print();
 	//f[1].print();
 
-	Cudheart::NDArrays::Matrix<int>* g = &f[0];
+	Cudheart::NDArrays::Matrix<int>* g = f[0];
 
 	auto h = MatrixOps::diag<int>(g, 2);
 	// h->print();
@@ -89,19 +89,19 @@ void testMatrixCreation() {
 	auto k = MatrixOps::arange(12, 4, 3);
 	// k->print();
 	//f->print();
-	auto l = f[0].transpose();
+	auto l = f[0]->transpose();
 	//l->print();
-	auto m = f[0].transpose()->transpose();
+	auto m = f[0]->transpose()->transpose();
 	//m->print();
-	auto n = f[0].reverseRows();
+	auto n = f[0]->reverseRows();
 	// n->print();
-	auto o = f->rotate(90);
+	auto o = f[0]->rotate(90);
 	// o->print();
-	auto p = f->rotate(180);
+	auto p = f[0]->rotate(180);
 	// p->print();
-	auto q = f->rotate(-180);
+	auto q = f[0]->rotate(-180);
 	// q->print();
-	auto r = f->rotate(-90);
+	auto r = f[0]->rotate(-90);
 	// r->print();
 }
 
@@ -230,18 +230,18 @@ void testLogicOpsCPP() {
 	auto c = VectorOps::zeros<int>(9);
 	auto d = MatrixOps::fromVector(c, 3, 3);
 
-	cout << all(a) << endl;
-	cout << all(b) << endl;
-	cout << all(c) << endl;
-	cout << all(d) << endl;
-	cout << any(a) << endl;
-	cout << any(b) << endl;
-	cout << any(c) << endl;
-	cout << any(d) << endl;
-	cout << 0 && 0;
-	cout << endl;
-	logicalAnd(a, c)->print();
-	logicalOr(a, c)->print();
+	//cout << all(a) << endl;
+	//cout << all(b) << endl;
+	//cout << all(c) << endl;
+	//cout << all(d) << endl;
+	//cout << any(a) << endl;
+	//cout << any(b) << endl;
+	//cout << any(c) << endl;
+	//cout << any(d) << endl;
+	//cout << 0 && 0;
+	//cout << endl;
+	//logicalAnd(a, c)->print();
+	//logicalOr(a, c)->print();
 }
 
 void testExceptions() {
@@ -262,11 +262,11 @@ void testExceptions() {
 }
 
 void test() {
-	/*testExceptions();
+	testExceptions();
 	testVectorCreation();
 	testMatrixCreation();
 	testBinaryOpsCPP();
 	testBinaryOpsCuda();
 	testLinalgOpsCPP();
-	testLogicOpsCPP();*/
+	testLogicOpsCPP();
 }

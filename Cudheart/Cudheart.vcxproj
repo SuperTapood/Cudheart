@@ -106,6 +106,7 @@
     <ClInclude Include="Cudheart\CUtil\ContainerABC.cuh" />
     <ClInclude Include="Cudheart\CUtil\CUtil.cuh" />
     <ClInclude Include="Cudheart\Exceptions\AssertionException.cuh" />
+    <ClInclude Include="Cudheart\Exceptions\BadTypeException.cuh" />
     <ClInclude Include="Cudheart\Exceptions\BadValueException.cuh" />
     <ClInclude Include="Cudheart\Exceptions\CudaException.cuh" />
     <ClInclude Include="Cudheart\Exceptions\IndexOutOfBoundsException.cuh" />

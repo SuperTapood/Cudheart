@@ -1,9 +1,8 @@
-//#include "Cudheart/Test/Test.cuh"
-//#include "Cudheart/Cudheart.cuh"
+#include "Cudheart/Test/Test.cuh"
+#include "Cudheart/Cudheart.cuh"
 
-// using Cudheart::Exceptions::CudaException;
-#include "Test.cuh"
+using Cudheart::Exceptions::CudaException;
 
 int main() {
-	testThing();
+	test();
 }

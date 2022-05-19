@@ -10,16 +10,15 @@ This library takes great inspiration and attempts to mimic the structure of pyth
 <br>
 The aim of this project is to provide a back-end framework for a Tensorflow-esque library to be developed at a later date.
 
-- [ ] add stuff like get shape and get shape length to ndarray
-- [ ] decide on a stupid fucking interface for vectors and matrices
-- [ ] implement that
+
+Currently refactoring overloads in basemath.cuh
+
 - [ ] test
 - [ ] remove all the useless overloads
+- [ ] handle stupid exceptions (things like axis > 1 or axis < 0 things like that)
 - [ ] fix docs in ndarray vector and matrix
 - [ ] organise the function in matrix ndarray and vector
-
-
-
+- [ ] get rid of util.cuh
 - [ ] assert instead of print in the tests
 - [ ] remove using
 - [ ] even more types for functions

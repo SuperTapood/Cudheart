@@ -198,7 +198,7 @@ namespace Cudheart::NDArrays {
 			if (i >= m_height || j >= m_width) {
 				IndexOutOfBoundsException(m_width, m_height, i, j);
 			}
-			m_data[flatten(i, j)] = value;
+			set(flatten(i, j), value);
 		}
 
 		/// <summary>
@@ -435,37 +435,14 @@ namespace Cudheart::NDArrays {
 		/// assert that the dims of this matrix equal the dims of matrix other. if they are not an exception is "raised"
 		/// </summary>
 		/// <param name="other">the matrix to compare to</param>
-		void assertMatchSize(Matrix<T>* other) {
+		void AssertMatchShape(NDArray<T>* arr, int axis) {
+			if (arr->getDims() == 1) {
+				return arr->assertMatchShape(this, axis);
+			}
+			Matrix<T>* other = (Matrix<T>*)arr;
 			if (m_width != other->m_width || m_height != other->m_height) {
 				ShapeMismatchException(m_width, m_height, other->m_width, other->m_height).raise();
 			}
-		}
-
-		/// <summary>
-		/// assert that this matrix is compatible with the given vector on a given axis
-		/// </summary>
-		/// <param name="other"> - vector to compare to</param>
-		/// <param name="axis"> - the axis to compare this matrix and the vector on</param>
-		void assertAxis(Vector<T>* other, int axis) {
-			if (axis == 0) {
-				if (m_width != other->getSize()) {
-					ShapeMismatchException("vector of size " + to_string(other->getSize() + " doesn't match matrix of width" + to_string(m_width)));
-				}
-			}
-			else if (axis == 1) {
-				if (m_height != other->getSize()) {
-					ShapeMismatchException("vector of size " + to_string(other->getSize() + " doesn't match matrix of height" + to_string(m_width)));
-				}
-			}
-			BadValueException("assertAxis", to_string(axis), "axis either 1 or 0");
-		}
-
-		/// <summary>
-		/// assert that this matrix is compatible with the given vector
-		/// </summary>
-		/// <param name="other"> - the vector to check with</param>
-		void assertMatchSize(Vector<T>* other) {
-			assertAxis(other, 0);
 		}
 
 		/// <summary>

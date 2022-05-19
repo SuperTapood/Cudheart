@@ -498,12 +498,12 @@ namespace Cudheart::MatrixOps {
 	/// <param name="b"> - second input vector</param>
 	/// <returns>an array containing two matrices</returns>
 	template <typename T, typename U, typename K>
-	Matrix<T>* meshgrid(Vector<U>* a, Vector<K>* b) {
-		Matrix<T>* out = (Matrix<T>*)malloc(sizeof(Matrix<T>) * 2);
+	Matrix<T>** meshgrid(Vector<U>* a, Vector<K>* b) {
+		Matrix<T>** out = (Matrix<T>**)malloc(sizeof(Matrix<T>) * 2);
 		Matrix<T>* first = empty<T>(b->getSize(), a->getSize());
 		Matrix<T>* second = empty<T>(b->getSize(), a->getSize());
-		out[0] = *first;
-		out[1] = *second;
+		out[0] = first;
+		out[1] = second;
 
 		for (int i = 0; i < b->getSize(); i++) {
 			for (int j = 0; j < a->getSize(); j++) {
