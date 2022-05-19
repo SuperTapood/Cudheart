@@ -14,7 +14,7 @@ using Cudheart::MatrixOps::fromVectorArray;
 namespace Cudheart::CPP::Math::Linalg {
 	template <typename T>
 	T dot(Vector<T>* a, Vector<T>* b) {
-		a->AssertMatchShape(b);
+		a->assertMatchShape(b);
 
 		T result = 0;
 
@@ -93,7 +93,7 @@ namespace Cudheart::CPP::Math::Linalg {
 
 	template <typename T>
 	Matrix<T>* inner(Matrix<T>* a, Matrix<T>* b) {
-		a->AssertMatchShape(b);
+		a->assertMatchShape(b);
 
 		Matrix<T>* out = emptyLike<T>(a);
 

@@ -11,6 +11,7 @@ This library takes great inspiration and attempts to mimic the structure of pyth
 The aim of this project is to provide a back-end framework for a Tensorflow-esque library to be developed at a later date.
 
 - [ ] add more bitwise function variation
+- [ ] maybe add matrix and vector ops ndarray compatibility?
 - [ ] remove all the useless overloads
 - [ ] handle stupid exceptions (things like axis > 1 or axis < 0 things like that)
 - [ ] fix docs in ndarray vector and matrix

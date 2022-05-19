@@ -12,8 +12,8 @@ using namespace std;
 
 namespace Cudheart::CPP::Math::Trigo {
 	template <typename T>
-	Vector<T>* sin(Vector<T>* rads) {
-		Vector<T>* out = emptyLike<T>(rads);
+	NDArray<T>* sin(NDArray<T>* rads) {
+		NDArray<T>* out = rads->emptyLike();
 		for (int i = 0; i < rads->getSize(); i++) {
 			out->set(i, std::sin(rads->get(i)));
 		}
@@ -22,19 +22,8 @@ namespace Cudheart::CPP::Math::Trigo {
 	}
 
 	template <typename T>
-	Matrix<T>* sin(Matrix<T>* rads) {
-		Matrix<T>* out = emptyLike<T>(rads);
-
-		for (int i = 0; i < rads->getSize(); i++) {
-			out->set(i, std::sin(rads->get(i)));
-		}
-
-		return out;
-	}
-
-	template <typename T>
-	Vector<T>* cos(Vector<T>* rads) {
-		Vector<T>* out = emptyLike<T>(rads);
+	NDArray<T>* cos(NDArray<T>* rads) {
+		NDArray<T>* out = rads->emptyLike();
 
 		for (int i = 0; i < rads->getSize(); i++) {
 			out->set(i, std::cos(rads->get(i)));
@@ -44,19 +33,8 @@ namespace Cudheart::CPP::Math::Trigo {
 	}
 
 	template <typename T>
-	Matrix<T>* cos(Matrix<T>* rads) {
-		Matrix<T>* out = emptyLike<T>(rads);
-
-		for (int i = 0; i < rads->getSize(); i++) {
-			out->set(i, std::cos(rads->get(i)));
-		}
-
-		return out;
-	}
-
-	template <typename T>
-	Vector<T>* tan(Vector<T>* rads) {
-		Vector<T>* out = emptyLike<T>(rads);
+	NDArray<T>* tan(NDArray<T>* rads) {
+		NDArray<T>* out = rads->emptyLike();
 
 		for (int i = 0; i < rads->getSize(); i++) {
 			out->set(i, std::tan(rads->get(i)));
@@ -66,19 +44,8 @@ namespace Cudheart::CPP::Math::Trigo {
 	}
 
 	template <typename T>
-	Matrix<T>* tan(Matrix<T>* rads) {
-		Matrix<T>* out = emptyLike<T>(rads);
-
-		for (int i = 0; i < rads->getSize(); i++) {
-			out->set(i, std::tan(rads->get(i)));
-		}
-
-		return out;
-	}
-
-	template <typename T>
-	Vector<T>* cot(Vector<T>* rads) {
-		Vector<T>* out = emptyLike<T>(rads);
+	NDArray<T>* cot(NDArray<T>* rads) {
+		NDArray<T>* out = rads->emptyLike();
 
 		for (int i = 0; i < rads->getSize(); i++) {
 			out->set(i, 1 / std::tan(rads->get(i)));
@@ -88,102 +55,47 @@ namespace Cudheart::CPP::Math::Trigo {
 	}
 
 	template <typename T>
-	Matrix<T>* cot(Matrix<T>* rads) {
-		Matrix<T>* out = emptyLike<T>(rads);
-
-		for (int i = 0; i < rads->getSize(); i++) {
-			out->set(i, 1 / std::tan(rads->get(i)));
+	NDArray<T>* arcsin(NDArray<T>* x) {
+		NDArray<T>* out = x->emptyLike();
+		for (int i = 0; i < x->getSize(); i++) {
+			out->set(i, asin(x->get(i)));
 		}
-
 		return out;
-	}
+	}	
 
 	template <typename T>
-	Vector<T>* arccos(Vector<T>* vec) {
-		Vector<T>* out = emptyLike(vec);
-		for (int i = 0; i < vec->getSize(); i++) {
-			out->set(i, acos(vec->get(i)));
+	NDArray<T>* arccos(NDArray<T>* x) {
+		NDArray<T>* out = x->emptyLike();
+		for (int i = 0; i < x->getSize(); i++) {
+			out->set(i, acos(x->get(i)));
 		}
 		return out;
 	}
 
 	template <typename T>
-	Matrix<T>* arccos(Matrix<T>* mat) {
-		Vector<T>* flat = mat->flatten();
-
-		Vector<T>* out = arccos(flat);
-
-		delete flat;
-
-		return fromVector(out, mat->getWidth(), mat->getHeight(), true);
-	}
-
-	template <typename T>
-	Vector<T>* arcsin(Vector<T>* vec) {
-		Vector<T>* out = emptyLike(vec);
-		for (int i = 0; i < vec->getSize(); i++) {
-			out->set(i, asin(vec->get(i)));
+	NDArray<T>* arctan(NDArray<T>* x) {
+		NDArray<T>* out = x->emptyLike();
+		for (int i = 0; i < x->getSize(); i++) {
+			out->set(i, atan(x->get(i)));
 		}
 		return out;
 	}
 
 	template <typename T>
-	Matrix<T>* arcsin(Matrix<T>* mat) {
-		Vector<T>* flat = mat->flatten();
-
-		Vector<T>* out = arccos(flat);
-
-		delete flat;
-
-		return fromVector(out, mat->getWidth(), mat->getHeight(), true);
-	}
-
-	template <typename T>
-	Vector<T>* arctan(Vector<T>* vec) {
-		Vector<T>* out = emptyLike(vec);
-		for (int i = 0; i < vec->getSize(); i++) {
-			out->set(i, atan(vec->get(i)));
-		}
-		return out;
-	}
-
-	template <typename T>
-	Matrix<T>* arctan(Matrix<T>* mat) {
-		Vector<T>* flat = mat->flatten();
-
-		Vector<T>* out = arctan(flat);
-
-		delete flat;
-
-		return fromVector(out, mat->getWidth(), mat->getHeight(), true);
-	}
-
-	template <typename T>
-	Vector<T>* arccot(Vector<T>* vec) {
-		Vector<T>* out = emptyLike(vec);
+	NDArray<T>* arccot(NDArray<T>* x) {
+		NDArray<T>* out = x->emptyLike();
 		long double pi = 3.1415926535897932384626433;
-		for (int i = 0; i < vec->getSize(); i++) {
-			out->set(i, (pi / 2) - atan(vec->get(i)));
+		for (int i = 0; i < x->getSize(); i++) {
+			out->set(i, (pi / 2) - atan(x->get(i)));
 		}
 		return out;
 	}
 
 	template <typename T>
-	Matrix<T>* arccot(Matrix<T>* mat) {
-		Vector<T>* flat = mat->flatten();
+	NDArray<T>* hypot(NDArray<T>* a, NDArray<T>* b) {
+		a->assertMatchShape(b);
 
-		Vector<T>* out = arccot(flat);
-
-		delete flat;
-
-		return fromVector(out, mat->getWidth(), mat->getHeight(), true);
-	}
-
-	template <typename T>
-	Vector<T>* hypot(Vector<T>* a, Vector<T>* b) {
-		a->assertMatchSize(b);
-
-		Vector<T>* out = emptyLike(a);
+		NDArray<T>* out = a->emptyLike();
 
 		for (int i = 0; i < a->getSize(); i++) {
 			T va = a->get(i);
@@ -195,23 +107,8 @@ namespace Cudheart::CPP::Math::Trigo {
 	}
 
 	template <typename T>
-	Matrix<T>* hypot(Matrix<T>* a, Matrix<T>* b) {
-		a->assertMatchSize(b);
-
-		Matrix<T>* out = emptyLike(a);
-
-		for (int i = 0; i < a->getSize(); i++) {
-			T va = a->get(i);
-			T vb = b->get(i);
-			out->set(i, sqrt((va * va) + (vb * vb)));
-		}
-
-		return out;
-	}
-
-	template <typename T>
-	Vector<T>* deg2rad(Vector<T>* degs) {
-		Vector<T>* out = emptyLike(degs);
+	NDArray<T>* deg2rad(NDArray<T>* degs) {
+		NDArray<T>* out = degs->emptyLike();
 		long double pi = 3.1415926535897932384626433;
 
 		for (int i = 0; i < out->getSize(); i++) {
@@ -220,38 +117,18 @@ namespace Cudheart::CPP::Math::Trigo {
 	}
 
 	template <typename T>
-	Matrix<T>* deg2rad(Matrix<T>* degs) {
-		Matrix<T>* out = emptyLike(degs);
+	NDArray<T>* rad2deg(NDArray<T>* rads) {
+		NDArray<T>* out = rads->emptyLike();
 		long double pi = 3.1415926535897932384626433;
 
 		for (int i = 0; i < out->getSize(); i++) {
-			out->set(i, degs->get(i) * (pi / 180));
+			out->set(i, rads->get(i) / (pi / 180));
 		}
 	}
 
 	template <typename T>
-	Vector<T>* rad2deg(Vector<T>* degs) {
-		Vector<T>* out = emptyLike(degs);
-		long double pi = 3.1415926535897932384626433;
-
-		for (int i = 0; i < out->getSize(); i++) {
-			out->set(i, degs->get(i) / (pi / 180));
-		}
-	}
-
-	template <typename T>
-	Matrix<T>* rad2deg(Matrix<T>* degs) {
-		Matrix<T>* out = emptyLike(degs);
-		long double pi = 3.1415926535897932384626433;
-
-		for (int i = 0; i < out->getSize(); i++) {
-			out->set(i, degs->get(i) / (pi / 180));
-		}
-	}
-
-	template <typename T>
-	Vector<T>* sinc(Vector<T>* rads) {
-		Vector<T>* out = emptyLike<T>(rads);
+	NDArray<T>* sinc(NDArray<T>* rads) {
+		NDArray<T>* out = rads->emptyLike();
 		for (int i = 0; i < rads->getSize(); i++) {
 			if (rads->get(i) == 0) {
 				ZeroDivisionException("sinc");
@@ -263,146 +140,66 @@ namespace Cudheart::CPP::Math::Trigo {
 	}
 
 	template <typename T>
-	Matrix<T>* sinc(Matrix<T>* rads) {
-		Matrix<T>* out = emptyLike<T>(rads);
-
-		for (int i = 0; i < rads->getSize(); i++) {
-			if (rads->get(i) == 0) {
-				ZeroDivisionException("sinc");
-			}
-			out->set(i, std::sin(rads->get(i)) / rads->get(i));
-		}
-
-		return out;
-	}
-
-	template <typename T>
-	Vector<T>* sinh(Vector<T>* vec) {
-		Vector<T>* out = emptyLike(vec);
+	NDArray<T>* sinh(NDArray<T>* x) {
+		NDArray<T>* out = x->emptyLike();
 		
-		for (int i = 0; i < vec->getSize(); i++) {
-			out->set(i, std::sinh(vec->get(i)));
+		for (int i = 0; i < x->getSize(); i++) {
+			out->set(i, std::sinh(x->get(i)));
 		}
 		
 		return out;
 	}
 
 	template <typename T>
-	Matrix<T>* sinh(Matrix<T>* mat) {
-		Matrix<T>* out = emptyLike(mat);
-		
-		for (int i = 0; i < mat->getSize(); i++) {
-			out->set(i, std::sinh(mat->get(i)));
+	NDArray<T>* cosh(NDArray<T>* x) {
+		NDArray<T>* out = x->emptyLike();
+
+		for (int i = 0; i < x->getSize(); i++) {
+			out->set(i, std::cosh(x->get(i)));
 		}
 
 		return out;
 	}
 
 	template <typename T>
-	Vector<T>* cosh(Vector<T>* vec) {
-		Vector<T>* out = emptyLike(vec);
+	NDArray<T>* tanh(NDArray<T>* x) {
+		NDArray<T>* out = x->emptyLike();
 
-		for (int i = 0; i < vec->getSize(); i++) {
-			out->set(i, std::cosh(vec->get(i)));
+		for (int i = 0; i < x->getSize(); i++) {
+			out->set(i, std::tanh(x->get(i)));
 		}
 
 		return out;
 	}
 
 	template <typename T>
-	Matrix<T>* cosh(Matrix<T>* mat) {
-		Matrix<T>* out = emptyLike(mat);
+	NDArray<T>* arcsinh(NDArray<T>* x) {
+		NDArray<T>* out = x->emptyLike();
 
-		for (int i = 0; i < mat->getSize(); i++) {
-			out->set(i, std::cosh(mat->get(i)));
+		for (int i = 0; i < x->getSize(); i++) {
+			out->set(i, std::asinh(x->get(i)));
 		}
 
 		return out;
 	}
 
 	template <typename T>
-	Vector<T>* tanh(Vector<T>* vec) {
-		Vector<T>* out = emptyLike(vec);
+	NDArray<T>* arccosh(NDArray<T>* x) {
+		NDArray<T>* out = x->emptyLike();
 
-		for (int i = 0; i < vec->getSize(); i++) {
-			out->set(i, std::tanh(vec->get(i)));
+		for (int i = 0; i < x->getSize(); i++) {
+			out->set(i, std::acosh(x->get(i)));
 		}
 
 		return out;
 	}
 
 	template <typename T>
-	Matrix<T>* tanh(Matrix<T>* mat) {
-		Matrix<T>* out = emptyLike(mat);
+	NDArray<T>* arctanh(NDArray<T>* x) {
+		NDArray<T>* out = x->emptyLike();
 
-		for (int i = 0; i < mat->getSize(); i++) {
-			out->set(i, std::tanh(mat->get(i)));
-		}
-
-		return out;
-	}
-
-	template <typename T>
-	Vector<T>* arcsinh(Vector<T>* vec) {
-		Vector<T>* out = emptyLike(vec);
-
-		for (int i = 0; i < vec->getSize(); i++) {
-			out->set(i, std::asinh(vec->get(i)));
-		}
-
-		return out;
-	}
-
-	template <typename T>
-	Matrix<T>* arcsinh(Matrix<T>* mat) {
-		Matrix<T>* out = emptyLike(mat);
-
-		for (int i = 0; i < mat->getSize(); i++) {
-			out->set(i, std::asinh(mat->get(i)));
-		}
-
-		return out;
-	}
-
-	template <typename T>
-	Vector<T>* arccosh(Vector<T>* vec) {
-		Vector<T>* out = emptyLike(vec);
-
-		for (int i = 0; i < vec->getSize(); i++) {
-			out->set(i, std::acosh(vec->get(i)));
-		}
-
-		return out;
-	}
-
-	template <typename T>
-	Matrix<T>* arccosh(Matrix<T>* mat) {
-		Matrix<T>* out = emptyLike(mat);
-
-		for (int i = 0; i < mat->getSize(); i++) {
-			out->set(i, std::acosh(mat->get(i)));
-		}
-
-		return out;
-	}
-
-	template <typename T>
-	Vector<T>* arctanh(Vector<T>* vec) {
-		Vector<T>* out = emptyLike(vec);
-
-		for (int i = 0; i < vec->getSize(); i++) {
-			out->set(i, std::atanh(vec->get(i)));
-		}
-
-		return out;
-	}
-
-	template <typename T>
-	Matrix<T>* arctanh(Matrix<T>* mat) {
-		Matrix<T>* out = emptyLike(mat);
-
-		for (int i = 0; i < mat->getSize(); i++) {
-			out->set(i, std::atanh(mat->get(i)));
+		for (int i = 0; i < x->getSize(); i++) {
+			out->set(i, std::atanh(x->get(i)));
 		}
 
 		return out;

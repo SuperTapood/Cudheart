@@ -217,7 +217,7 @@ namespace Cudheart::NDArrays {
 		/// assert that this vector matches another vector
 		/// </summary>
 		/// <param name="other"> - the other vector</param>
-		void AssertMatchShape(NDArray<T>* arr, int axis) {
+		void assertMatchShape(NDArray<T>* arr, int axis) {
 			if (arr->getDims() == 1) {
 				if (m_size != arr->getSize()) {
 					Cudheart::Exceptions::ShapeMismatchException(m_size, 
@@ -225,12 +225,12 @@ namespace Cudheart::NDArrays {
 				}
 			}
 			else if (arr->getDims() == 2) {
-				return arr->AssertMatchShape(this, axis);
+				return arr->assertMatchShape(this, axis);
 			}
 		}
 
-		void AssertMatchShape(NDArray<T>* arr) {
-			return AssertMatchShape(arr, 0);
+		void assertMatchShape(NDArray<T>* arr) {
+			return assertMatchShape(arr, 0);
 		}
 	};
 }

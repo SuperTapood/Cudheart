@@ -8,3 +8,5 @@ a changelog list for the next build release
 - improved ndarrays shape matching assertions
 - improved baseMathCPP namespace
 - improved bitwiseCPP namespace
+- improved expCPP namespace
+- improved trioCPP namespace

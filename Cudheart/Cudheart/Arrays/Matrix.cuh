@@ -435,7 +435,7 @@ namespace Cudheart::NDArrays {
 		/// assert that the dims of this matrix equal the dims of matrix other. if they are not an exception is "raised"
 		/// </summary>
 		/// <param name="other">the matrix to compare to</param>
-		void AssertMatchShape(NDArray<T>* arr, int axis) {
+		void assertMatchShape(NDArray<T>* arr, int axis) {
 			if (arr->getDims() == 1) {
 				Vector<T>* vec = (Vector<T>*)arr;
 				if (axis == 0) {
@@ -455,8 +455,8 @@ namespace Cudheart::NDArrays {
 			}
 		}
 
-		void AssertMatchShape(NDArray<T>* arr) {
-			return AssertMatchShape(arr, 0);
+		void assertMatchShape(NDArray<T>* arr) {
+			return assertMatchShape(arr, 0);
 		}
 
 		/// <summary>

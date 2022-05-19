@@ -60,8 +60,8 @@ namespace Cudheart::NDArrays {
 		/// </summary>
 		virtual void print() = 0;
 
-		virtual void AssertMatchShape(NDArray<T>* arr, int axis) = 0;
+		virtual void assertMatchShape(NDArray<T>* arr, int axis) = 0;
 
-		virtual void AssertMatchShape(NDArray<T>* arr) = 0;
+		virtual void assertMatchShape(NDArray<T>* arr) = 0;
 	};
 }
