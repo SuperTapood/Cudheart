@@ -105,27 +105,6 @@ void testMatrixCreation() {
 	// r->print();
 }
 
-void testBinaryOpsCuda() {
-	using namespace Cudheart::CUDA::Math::Bitwise;
-
-	auto a = VectorOps::full(4, 5);
-	auto b = VectorOps::full(4, 9);
-	auto c = VectorOps::full(4, 1);
-
-	auto d = bitwiseAnd(a, b);
-	// d->print();
-	auto e = bitwiseOr(a, b);
-	// e->print();
-	auto f = bitwiseXor(a, b);
-	// f->print();
-	auto g = bitwiseNot(a);
-	// g->print();
-	auto h = bitwiseLeftShift(b, c);
-	// h->print();
-	auto i = bitwiseRightShift(b, c);
-	// i->print();
-}
-
 void testBinaryOpsCPP() {
 	using namespace Cudheart::CPP::Math::Bitwise;
 
@@ -266,7 +245,6 @@ void test() {
 	testVectorCreation();
 	testMatrixCreation();
 	testBinaryOpsCPP();
-	testBinaryOpsCuda();
 	testLinalgOpsCPP();
 	testLogicOpsCPP();
 }

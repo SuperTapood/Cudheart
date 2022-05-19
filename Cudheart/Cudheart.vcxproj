@@ -114,7 +114,6 @@
     <ClInclude Include="Cudheart\Math\BaseMath\BaseMath.cuh" />
     <ClInclude Include="Cudheart\Math\BaseMath\BaseMathCPP.cuh" />
     <ClInclude Include="Cudheart\Math\Bitwise\BitwiseCPP.cuh" />
-    <ClInclude Include="Cudheart\Math\Bitwise\BitwiseCUDA.cuh" />
     <ClInclude Include="Cudheart\Cudheart.cuh" />
     <ClInclude Include="Cudheart\Exceptions\BaseException.cuh" />
     <ClInclude Include="Cudheart\Exceptions\Exceptions.cuh" />

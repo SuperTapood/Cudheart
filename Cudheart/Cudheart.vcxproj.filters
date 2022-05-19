@@ -28,7 +28,6 @@
     <ClInclude Include="Cudheart\Exceptions\NotImplementedException.cuh" />
     <ClInclude Include="Cudheart\Arrays\NDArray.cuh" />
     <ClInclude Include="Cudheart\Exceptions\ShapeMismatchException.cuh" />
-    <ClInclude Include="Cudheart\Math\Bitwise\BitwiseCUDA.cuh" />
     <ClInclude Include="Cudheart\Math\Bitwise\BitwiseCPP.cuh" />
     <ClInclude Include="Cudheart\CUtil\ContainerA.cuh" />
     <ClInclude Include="Cudheart\CUtil\CUtil.cuh" />

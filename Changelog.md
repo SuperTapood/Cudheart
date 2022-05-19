@@ -6,3 +6,5 @@ a changelog list for the next build release
 - meshgrid will now return an array of Matrix pointers (Matrix< T >**)
 - added bad type exception
 - improved ndarrays shape matching assertions
+- improved baseMathCPP namespace
+- improved bitwiseCPP namespace

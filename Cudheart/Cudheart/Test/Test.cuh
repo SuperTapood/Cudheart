@@ -14,7 +14,6 @@ void testExceptions();
 void testVectorCreation();
 void testMatrixCreation();
 void testBinaryOpsCPP();
-void testBinaryOpsCuda();
 void testLinalgOpsCPP();
 void testLogicOpsCPP();
 void test();

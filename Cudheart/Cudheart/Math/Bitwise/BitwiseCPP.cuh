@@ -9,13 +9,12 @@ using Cudheart::VectorOps::empty;
 
 namespace Cudheart::CPP::Math::Bitwise {
 	template <typename T>
-	Vector<T>* bitwiseAnd(Vector<T>* a, Vector<T>* b) {
+	NDArray<T>* bitwiseAnd(NDArray<T>* a, NDArray<T>* b) {
 		a->AssertMatchShape(b);
+		
+		NDArray<T>* out = a->emptyLike();
 
-		int len = a->getSize();
-		Vector<T>* out = empty<T>(len);
-
-		for (int i = 0; i < len; i++) {
+		for (int i = 0; i < a->getSize(); i++) {
 			out->set(i, a->get(i) & b->get(i));
 		}
 
@@ -23,22 +22,12 @@ namespace Cudheart::CPP::Math::Bitwise {
 	}
 
 	template <typename T>
-	Matrix<T>* bitwiseAnd(Matrix<T>* a, Matrix<T>* b) {
+	NDArray<T>* bitwiseOr(NDArray<T>* a, NDArray<T>* b) {
 		a->AssertMatchShape(b);
 
-		Vector<T>* flat = bitwiseAnd(a->flatten(), b->flatten());
+		NDArray<T>* out = a->emptyLike();
 
-		return fromVector(flat, a->getWidth(), b->getHeight(), true);
-	}
-
-	template <typename T>
-	Vector<T>* bitwiseOr(Vector<T>* a, Vector<T>* b) {
-		a->AssertMatchShape(b);
-
-		int len = a->getSize();
-		Vector<T>* out = empty<T>(len);
-
-		for (int i = 0; i < len; i++) {
+		for (int i = 0; i < a->getSize(); i++) {
 			out->set(i, a->get(i) | b->get(i));
 		}
 
@@ -46,22 +35,12 @@ namespace Cudheart::CPP::Math::Bitwise {
 	}
 
 	template <typename T>
-	Matrix<T>* bitwiseOr(Matrix<T>* a, Matrix<T>* b) {
-		a->assertMatchSize(b);
-
-		Vector<T>* flat = bitwiseOr(a->flatten(), b->flatten());
-
-		return fromVector(flat, a->getWidth(), b->getHeight(), true);
-	}
-
-	template <typename T>
-	Vector<T>* bitwiseXor(Vector<T>* a, Vector<T>* b) {
+	NDArray<T>* bitwiseXor(NDArray<T>* a, NDArray<T>* b) {
 		a->AssertMatchShape(b);
 
-		int len = a->getSize();
-		Vector<T>* out = empty<T>(len);
+		NDArray<T>* out = a->emptyLike();
 
-		for (int i = 0; i < len; i++) {
+		for (int i = 0; i < a->getSize(); i++) {
 			out->set(i, a->get(i) ^ b->get(i));
 		}
 
@@ -69,22 +48,12 @@ namespace Cudheart::CPP::Math::Bitwise {
 	}
 
 	template <typename T>
-	Matrix<T>* bitwiseXor(Matrix<T>* a, Matrix<T>* b) {
+	NDArray<T>* bitwiseLeftShift(NDArray<T>* a, NDArray<T>* b) {
 		a->AssertMatchShape(b);
 
-		Vector<T>* flat = bitwiseXor(a->flatten(), b->flatten());
+		NDArray<T>* out = a->emptyLike();
 
-		return fromVector(flat, a->getWidth(), b->getHeight(), true);
-	}
-
-	template <typename T>
-	Vector<T>* bitwiseLeftShift(Vector<T>* a, Vector<T>* b) {
-		a->AssertMatchShape(b);
-
-		int len = a->getSize();
-		Vector<T>* out = empty<T>(len);
-
-		for (int i = 0; i < len; i++) {
+		for (int i = 0; i < a->getSize(); i++) {
 			out->set(i, a->get(i) << b->get(i));
 		}
 
@@ -92,22 +61,12 @@ namespace Cudheart::CPP::Math::Bitwise {
 	}
 
 	template <typename T>
-	Matrix<T>* bitwiseLeftShift(Matrix<T>* a, Matrix<T>* b) {
+	NDArray<T>* bitwiseRightShift(NDArray<T>* a, NDArray<T>* b) {
 		a->AssertMatchShape(b);
 
-		Vector<T>* flat = bitwiseLeftShift(a->flatten(), b->flatten());
+		NDArray<T>* out = a->emptyLike();
 
-		return fromVector(flat, a->getWidth(), b->getHeight(), true);
-	}
-
-	template <typename T>
-	Vector<T>* bitwiseRightShift(Vector<T>* a, Vector<T>* b) {
-		a->AssertMatchShape(b);
-
-		int len = a->getSize();
-		Vector<T>* out = empty<T>(len);
-
-		for (int i = 0; i < len; i++) {
+		for (int i = 0; i < a->getSize(); i++) {
 			out->set(i, a->get(i) >> b->get(i));
 		}
 
@@ -115,30 +74,14 @@ namespace Cudheart::CPP::Math::Bitwise {
 	}
 
 	template <typename T>
-	Matrix<T>* bitwiseRightShift(Matrix<T>* a, Matrix<T>* b) {
-		a->assertMatchSize(b);
-
-		Vector<T>* flat = bitwiseRightShift(a->flatten(), b->flatten());
-
-		return fromVector(flat, a->getWidth(), b->getHeight(), true);
-	}
-
-	template <typename T>
-	Vector<T>* bitwiseNot(Vector<T>* vec) {
-		int len = vec->getSize();
-		Vector<T>* out = empty<T>(len);
+	NDArray<T>* bitwiseNot(NDArray<T>* x) {
+		int len = x->getSize();
+		NDArray<T>* out = x->emptyLike();
 
 		for (int i = 0; i < len; i++) {
-			out->set(i, ~(vec->get(i)));
+			out->set(i, ~(x->get(i)));
 		}
 
 		return out;
-	}
-
-	template <typename T>
-	Matrix<T>* bitwiseNot(Matrix<T>* mat) {
-		Vector<T>* flat = bitwiseNot(mat->flatten());
-
-		return fromVector(flat, mat->getWidth(), mat->getHeight(), true);
 	}
 }
