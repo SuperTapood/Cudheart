@@ -11,10 +11,6 @@ any ticked funcs are added, but incomplete
 - [ ] exp
 - [ ] expm1
 - [ ] exp2
-- [ ] log
-- [ ] log10
-- [ ] log2
-- [ ] log1p
 - [ ] logaddexp
 - [ ] logaddexp2
 ### fp routines
