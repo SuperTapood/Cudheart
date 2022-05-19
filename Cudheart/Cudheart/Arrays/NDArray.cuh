@@ -15,19 +15,15 @@ namespace Cudheart::NDArrays {
 		/// </summary>
 		virtual ~NDArray() {}
 
-		/// <summary>
-		/// get the element in the specified index
-		/// </summary>
-		/// <param name="index"> - the index</param>
-		/// <returns>the element in the specified position</returns>
-		virtual T get(int index) = 0;
-
-		/// <summary>
-		/// set the element in the specified index
-		/// </summary>
-		/// <param name="index"> - the index to set</param>
-		/// <param name="value"> - the value to set to</param>
-		virtual void set(int index, T value) = 0;
+		virtual T getAbs(int index) = 0;
+		
+		virtual void setAbs(int index, T value) = 0;
+		
+		virtual NDArray<T>* emptyLike() = 0;
+		
+		virtual int getSize() = 0;
+		
+		virtual int getDims() = 0;
 
 		/// <summary>
 		/// convert this ndarray to a string

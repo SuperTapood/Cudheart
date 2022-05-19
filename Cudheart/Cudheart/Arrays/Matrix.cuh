@@ -13,7 +13,7 @@ namespace Cudheart::NDArrays {
 	/// </summary>
 	/// <typeparam name="T"> - provided type for the data contained in the class</typeparam>
 	template <typename T>
-	class Matrix {
+	class Matrix : public NDArray<T> {
 	private:
 		/// <summary>
 		/// the width of the matrix
@@ -141,6 +141,22 @@ namespace Cudheart::NDArrays {
 				IndexOutOfBoundsException(m_width, m_height, i, j);
 			}
 			return get(flatten(i, j));
+		}
+
+		T getAbs(int index) {
+			return m_data[index];
+		}
+
+		void setAbs(int index, T value) {
+			m_data[index] = value;
+		}
+
+		NDArray<T>* emptyLike() {
+			return new Matrix<T>(m_height, m_width);
+		}
+
+		int getDims() {
+			return 2;
 		}
 
 		/// <summary>

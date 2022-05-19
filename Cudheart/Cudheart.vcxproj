@@ -134,6 +134,7 @@
     <ClInclude Include="Cudheart\Test\Test.cuh" />
     <ClInclude Include="Cudheart\Util.cuh" />
     <ClInclude Include="Sample\kernel.cuh" />
+    <ClInclude Include="Test.cuh" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Changelog.md" />

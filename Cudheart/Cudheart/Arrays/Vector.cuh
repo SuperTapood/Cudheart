@@ -8,7 +8,7 @@
 
 namespace Cudheart::NDArrays {
 	template <typename T>
-	class Vector {
+	class Vector : public NDArray<T> {
 	private:
 		int m_size;
 		T* m_data;
@@ -95,6 +95,16 @@ namespace Cudheart::NDArrays {
 		}
 
 		/// <summary>
+		/// helper function for generalization
+		/// </summary>
+		/// <param name="index"> - the index of the row / column</param>
+		/// <param name="axis"> - whether or not to use row (axis 0) or column (axis 1)</param>
+		/// <returns>this vector dummy</returns>
+		virtual Vector<T>* get(int index, int axis) {
+			return this;
+		}
+
+		/// <summary>
 		/// set the element at index position to value
 		/// </summary>
 		/// <param name="index"> - the index of the element</param>
@@ -107,6 +117,22 @@ namespace Cudheart::NDArrays {
 				IndexOutOfBoundsException(m_size, index);
 			}
 			m_data[index] = value;
+		}
+
+		T getAbs(int index) {
+			return get(index);
+		}
+
+		void setAbs(int index, T value) {
+			return set(index, value);
+		}
+
+		NDArray<T>* emptyLike() {
+			return new Vector<T>(m_size);
+		}
+
+		int getDims() {
+			return 1;
 		}
 
 		/// <summary>

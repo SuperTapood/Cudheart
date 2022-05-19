@@ -10,6 +10,15 @@ This library takes great inspiration and attempts to mimic the structure of pyth
 <br>
 The aim of this project is to provide a back-end framework for a Tensorflow-esque library to be developed at a later date.
 
+- [ ] add stuff like get shape and get shape length to ndarray
+- [ ] decide on a stupid fucking interface for vectors and matrices
+- [ ] implement that
+- [ ] test
+- [ ] remove all the useless overloads
+- [ ] fix docs in ndarray vector and matrix
+
+
+
 
 - [ ] assert instead of print in the tests
 - [ ] remove using
