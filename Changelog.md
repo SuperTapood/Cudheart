@@ -10,3 +10,4 @@ a changelog list for the next build release
 - improved bitwiseCPP namespace
 - improved expCPP namespace
 - improved trioCPP namespace
+- added both pi and the euler constant

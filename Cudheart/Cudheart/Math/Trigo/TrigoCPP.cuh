@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cmath>
+#include "../Constants.cuh"
 
 using Cudheart::NDArrays::Vector;
 using Cudheart::NDArrays::Matrix;
@@ -9,6 +10,8 @@ using Cudheart::VectorOps::empty;
 using Cudheart::VectorOps::emptyLike;
 using Cudheart::MatrixOps::fromVector;
 using namespace std;
+using Cudheart::Constants::euler;
+using Cudheart::Constants::pi;
 
 namespace Cudheart::CPP::Math::Trigo {
 	template <typename T>
@@ -84,7 +87,6 @@ namespace Cudheart::CPP::Math::Trigo {
 	template <typename T>
 	NDArray<T>* arccot(NDArray<T>* x) {
 		NDArray<T>* out = x->emptyLike();
-		long double pi = 3.1415926535897932384626433;
 		for (int i = 0; i < x->getSize(); i++) {
 			out->set(i, (pi / 2) - atan(x->get(i)));
 		}
@@ -109,7 +111,6 @@ namespace Cudheart::CPP::Math::Trigo {
 	template <typename T>
 	NDArray<T>* deg2rad(NDArray<T>* degs) {
 		NDArray<T>* out = degs->emptyLike();
-		long double pi = 3.1415926535897932384626433;
 
 		for (int i = 0; i < out->getSize(); i++) {
 			out->set(i, degs->get(i) * (pi / 180));
@@ -119,7 +120,6 @@ namespace Cudheart::CPP::Math::Trigo {
 	template <typename T>
 	NDArray<T>* rad2deg(NDArray<T>* rads) {
 		NDArray<T>* out = rads->emptyLike();
-		long double pi = 3.1415926535897932384626433;
 
 		for (int i = 0; i < out->getSize(); i++) {
 			out->set(i, rads->get(i) / (pi / 180));

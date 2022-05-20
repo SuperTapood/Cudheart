@@ -5,3 +5,4 @@
 #include "Exps/Exps.cuh"
 #include "Linalg/Linalg.cuh"
 #include "Trigo/Trigo.cuh"
+#include "Constants.cuh"
