@@ -24,3 +24,12 @@ a changelog list for the next build release
 - added sub
 - added mul
 - added divide
+- added reciprocal
+- added positive
+- added negative
+- added trueDivide
+- added floorDivide
+- added floatPower
+- added mod
+- added remainder
+- added divMod

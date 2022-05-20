@@ -7,18 +7,6 @@ any ticked funcs are added, but incomplete
 - [X] solve
 
 ## math
-### arithmatic
-- [ ] reciprocal
-- [ ] positive
-- [ ] negative
-- [ ] trueDivide
-- [ ] floorDivide
-- [ ] floatPower
-- [ ] fMod
-- [ ] mod
-- [ ] modF
-- [ ] remainder
-- [ ] divMod
 ### complex math
 - [ ] angle
 - [ ] real

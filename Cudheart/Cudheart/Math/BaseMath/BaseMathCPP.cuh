@@ -319,4 +319,86 @@ namespace Cudheart::CPP::Math {
 
 		return out;
 	}
+
+	template <typename T>
+	NDArray<T>* trueDivide(NDArray<T>* a, NDArray<T>* b) {
+		return divide<T>(a, b);
+	}
+
+	template <typename T>
+	NDArray<int>* floorDivide(NDArray<T>* a, NDArray<T>* b) {
+		a->assertMatchShape(b);
+		NDArray<int>* out = a->emptyLike();
+
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, std::floor(a->get(i) / b->get(i)));
+		}
+
+		return out;
+	}
+	
+
+	template <typename T>
+	NDArray<T>* mod(NDArray<T>* a, NDArray<T>* b) {
+		a->assertMatchShape(b);
+		NDArray<T>* out = a->emptyLike();
+
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) % b->get(i));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	NDArray<T>** divMod(NDArray<T>* a, NDArray<T>* b) {
+		a->assertMatchShape(b);
+		NDArray<T>* div = a->emptyLike();
+		NDArray<T>* mod = a->emptyLike();
+
+		for (int i = 0; i < a->getSize(); i++) {
+			int d = a->get(i) / b->get(i);
+			div->set(i, d);
+			mod->set(i, a->get(i) - (d * b->get(i)));
+		}
+		
+		Matrix<T>** out = (Matrix<T>**)malloc(sizeof(Matrix<T>) * 2);
+		out[0] = div;
+		out[1] = mod;
+
+		return out;
+	}
+
+	template <typename T>
+	NDArray<T>* reciprocal(NDArray<T>* x) {
+		NDArray<T>* out = x->emptyLike();
+
+		for (int i = 0; i < x->getSize(); i++) {
+			out->set(i, (T)1 / x->get(i));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	NDArray<T>* positive(NDArray<T>* x) {
+		NDArray<T>* out = x->emptyLike();
+
+		for (int i = 0; i < x->getSize(); i++) {
+			out->set(i, +x->get(i));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	NDArray<T>* negative(NDArray<T>* x) {
+		NDArray<T>* out = x->emptyLike();
+
+		for (int i = 0; i < x->getSize(); i++) {
+			out->set(i, -std::abs(x->get(i)));
+		}
+
+		return out;
+	}
 }
