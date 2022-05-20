@@ -67,7 +67,7 @@ namespace Cudheart::CPP::Math::Exp {
 
 		return output;
 	}
-	
+
 	template <typename T>
 	NDArray<T>* expom1(NDArray<T>* x) {
 		NDArray<T>* output = x->emptyLike();

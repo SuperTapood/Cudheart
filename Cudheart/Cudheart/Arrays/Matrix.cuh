@@ -27,6 +27,7 @@ namespace Cudheart::NDArrays {
 		/// the overall element count of the matrix
 		/// </summary>
 		int m_size;
+
 		/// <summary>
 		/// the raw data of the matrix
 		/// </summary>
@@ -143,8 +144,32 @@ namespace Cudheart::NDArrays {
 			return get(flatten(i, j));
 		}
 
+		template <typename U>
+		NDArray<T>* emptyLike() {
+			return new Matrix<U>(m_height, m_width);
+		}
+
 		NDArray<T>* emptyLike() {
 			return new Matrix<T>(m_height, m_width);
+		}
+
+		template <typename U>
+		NDArray<T>* shapeLike(Shape* other) {
+			assertMatchShape(other);
+			if (other->getDims() == 2) {
+				return this;
+			}
+			else if (other->getDims() == 1) {
+				Vector<T>* out = new Vector<T>(other->getSize());
+
+				for (int i = 0; i < m_size; i++) {
+					out->set(i, get(i));
+				}
+
+				return v;
+			}
+
+			return nullptr;
 		}
 
 		int getDims() {
@@ -435,34 +460,30 @@ namespace Cudheart::NDArrays {
 		/// assert that the dims of this matrix equal the dims of matrix other. if they are not an exception is "raised"
 		/// </summary>
 		/// <param name="other">the matrix to compare to</param>
-		void assertMatchShape(NDArray<T>* arr, int axis) {
-			if (arr->getDims() == 1) {
-				Vector<T>* vec = (Vector<T>*)arr;
-				if (axis == 0) {
-					if (m_size != getWidth()) {
-						Cudheart::Exceptions::ShapeMismatchException("vector of size " + std::to_string(vec->getSize()) + " (along axis 0) does not match matrix of width " + std::to_string(getWidth()));
-						}
-					}
-				else if (axis == 1) {
-					if (m_size != getHeight()) {
-							Cudheart::Exceptions::ShapeMismatchException("vector of size " + std::to_string(vec->getSize()) + " (along axis 1) does not match matrix of height " + std::to_string(m_height));
-						}
-					}
+		void assertMatchShape(Shape* shape, int axis) {
+			if (shape->getDims() == 2) {
+				if (getWidth() != shape->getX() || getHeight() != shape->getY()) {
+					ShapeMismatchException(m_width, m_height, shape->getX(), shape->getY()).raise();
+				}
 			}
-			Matrix<T>* other = (Matrix<T>*)arr;
-			if (m_width != other->m_width || m_height != other->m_height) {
-				ShapeMismatchException(m_width, m_height, other->m_width, other->m_height).raise();
+			else if (shape->getDims() == 1) {
+				if (axis == 0) {
+					if (m_width != shape->getSize()) {
+						Cudheart::Exceptions::ShapeMismatchException(m_width,
+							shape->getSize()).raise();
+					}
+				}
+				else if (axis == 1) {
+					if (m_height != shape->getSize()) {
+						Cudheart::Exceptions::ShapeMismatchException(m_height,
+							shape->getSize()).raise();
+					}
+				}
 			}
 		}
 
-		void assertMatchShape(NDArray<T>* arr) {
-			// axisless
-			if (arr->getDims() != getDims()) {
-				ShapeMismatchException("Matrix does not match vector on axisless operation").raise();
-			}
-			else {
-				assertMatchShape(arr, 0);
-			}
+		void assertMatchShape(Shape* shape) {
+			return assertMatchShape(shape, 0);
 		}
 
 		/// <summary>
@@ -479,22 +500,8 @@ namespace Cudheart::NDArrays {
 			return out;
 		}
 
-		/// <summary>
-		/// convert this matrix to a vector array. deprecated as fuck
-		/// </summary>
-		/// <returns>a vector array</returns>
-		Vector<T>* toVectorArray() {
-			Vector<T>* out = (Vector<T>*)malloc(sizeof(Vector<T>) * m_height);
-
-			for (int i = 0; i < m_height; i++) {
-				out[i] = Vector<T>(m_width);
-
-				for (int j = 0; j < m_width; j++) {
-					out[i].set(j, get(i, j));
-				}
-			}
-
-			return out;
+		Shape* getShape() {
+			return new Shape(m_width, m_height);
 		}
 
 		// todo: add operator overloades to make this look better

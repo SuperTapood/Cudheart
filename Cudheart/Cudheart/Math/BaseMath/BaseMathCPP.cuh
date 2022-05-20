@@ -15,7 +15,7 @@ namespace Cudheart::CPP::Math {
 	template <typename T>
 	NDArray<T>* squareRoot(NDArray<T>* arr) {
 		NDArray<T>* output = arr->emptyLike();
-		
+
 		for (int i = 0; i < arr->getSize(); i++) {
 			output->set(i, sqrt(arr->get(i)));
 		}
@@ -158,11 +158,11 @@ namespace Cudheart::CPP::Math {
 	template <typename T>
 	T prod(NDArray<T>* x) {
 		T out = (T)1;
-		
+
 		for (int i = 0; i < x->getSize(); i++) {
 			out *= x->get(i);
 		}
-		
+
 		return out;
 	}
 
@@ -182,7 +182,7 @@ namespace Cudheart::CPP::Math {
 		NDArray<T>* out = x->emptyLike();
 
 		T prod = (T)1;
-		
+
 		for (int i = 0; i < x->getSize(); i++) {
 			prod *= x->get(i);
 			out->set(i, prod);
@@ -216,11 +216,11 @@ namespace Cudheart::CPP::Math {
 
 		return out;
 	}
-	
+
 	template <typename T>
 	NDArray<T>* copySign(NDArray<T>* a, NDArray<T>* b) {
 		a->assertMatchShape(b);
-		
+
 		NDArray<T>* out = a->emptyLike();
 
 		for (int i = 0; i < a->getSize(); i++) {
@@ -228,7 +228,8 @@ namespace Cudheart::CPP::Math {
 			T vb = b->get(i);
 			if (vb < 0 && va > 0) {
 				va = -va;
-			} else if (vb > 0 && va < 0) {
+			}
+			else if (vb > 0 && va < 0) {
 				va = -va;
 			}
 			out->set(i, va);
@@ -336,7 +337,6 @@ namespace Cudheart::CPP::Math {
 
 		return out;
 	}
-	
 
 	template <typename T>
 	NDArray<T>* mod(NDArray<T>* a, NDArray<T>* b) {
@@ -361,7 +361,7 @@ namespace Cudheart::CPP::Math {
 			div->set(i, d);
 			mod->set(i, a->get(i) - (d * b->get(i)));
 		}
-		
+
 		Matrix<T>** out = (Matrix<T>**)malloc(sizeof(Matrix<T>) * 2);
 		out[0] = div;
 		out[1] = mod;

@@ -10,8 +10,8 @@ using Cudheart::VectorOps::empty;
 namespace Cudheart::CPP::Math::Bitwise {
 	template <typename T>
 	NDArray<T>* bitwiseAnd(NDArray<T>* a, NDArray<T>* b) {
-		a->assertMatchShape(b);
-		
+		a->assertMatchShape(b->getShape());
+
 		NDArray<T>* out = a->emptyLike();
 
 		for (int i = 0; i < a->getSize(); i++) {
@@ -23,7 +23,7 @@ namespace Cudheart::CPP::Math::Bitwise {
 
 	template <typename T>
 	NDArray<T>* bitwiseOr(NDArray<T>* a, NDArray<T>* b) {
-		a->assertMatchShape(b);
+		a->assertMatchShape(b->getShape());
 
 		NDArray<T>* out = a->emptyLike();
 
@@ -36,7 +36,7 @@ namespace Cudheart::CPP::Math::Bitwise {
 
 	template <typename T>
 	NDArray<T>* bitwiseXor(NDArray<T>* a, NDArray<T>* b) {
-		a->assertMatchShape(b);
+		a->assertMatchShape(b->getShape());
 
 		NDArray<T>* out = a->emptyLike();
 
@@ -49,7 +49,7 @@ namespace Cudheart::CPP::Math::Bitwise {
 
 	template <typename T>
 	NDArray<T>* bitwiseLeftShift(NDArray<T>* a, NDArray<T>* b) {
-		a->assertMatchShape(b);
+		a->assertMatchShape(b->getShape());
 
 		NDArray<T>* out = a->emptyLike();
 
@@ -62,7 +62,7 @@ namespace Cudheart::CPP::Math::Bitwise {
 
 	template <typename T>
 	NDArray<T>* bitwiseRightShift(NDArray<T>* a, NDArray<T>* b) {
-		a->assertMatchShape(b);
+		a->assertMatchShape(b->getShape());
 
 		NDArray<T>* out = a->emptyLike();
 

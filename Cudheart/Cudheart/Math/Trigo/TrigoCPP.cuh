@@ -64,7 +64,7 @@ namespace Cudheart::CPP::Math::Trigo {
 			out->set(i, asin(x->get(i)));
 		}
 		return out;
-	}	
+	}
 
 	template <typename T>
 	NDArray<T>* arccos(NDArray<T>* x) {
@@ -142,11 +142,11 @@ namespace Cudheart::CPP::Math::Trigo {
 	template <typename T>
 	NDArray<T>* sinh(NDArray<T>* x) {
 		NDArray<T>* out = x->emptyLike();
-		
+
 		for (int i = 0; i < x->getSize(); i++) {
 			out->set(i, std::sinh(x->get(i)));
 		}
-		
+
 		return out;
 	}
 

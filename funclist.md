@@ -7,12 +7,6 @@ any ticked funcs are added, but incomplete
 - [X] solve
 
 ## math
-### complex math
-- [ ] angle
-- [ ] real
-- [ ] imag
-- [ ] conj
-- [ ] conjugate
 ### extrema finding
 - [ ] maximum
 - [ ] fMax

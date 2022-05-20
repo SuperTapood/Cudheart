@@ -8,6 +8,9 @@
 
 namespace Cudheart::NDArrays {
 	template <typename T>
+	class Matrix;
+
+	template <typename T>
 	class Vector : public NDArray<T> {
 	private:
 		int m_size;
@@ -55,6 +58,7 @@ namespace Cudheart::NDArrays {
 				m_data[i] = x;
 				i++;
 			}
+			shape = new Shape(m_size);
 		}
 
 		/// destroy the vector
@@ -127,8 +131,34 @@ namespace Cudheart::NDArrays {
 			return set(index, value);
 		}
 
+		template <typename U>
+		NDArray<T>* emptyLike() {
+			return new Vector<U>(m_size);
+		}
+
 		NDArray<T>* emptyLike() {
 			return new Vector<T>(m_size);
+		}
+
+		template <typename U>
+		NDArray<T>* shapeLike(Shape* other) {
+			assertMatchShape(other);
+			if (other->getDims() == 1) {
+				return this;
+			}
+			else if (other->getDims() == 2) {
+				Matrix<T>* out = new Matrix<T>(other->getY(), other->getX());
+
+				for (int i = 0; i < other->getX(); i++) {
+					for (int j = 0; j < other->getY(); j++) {
+						out->set(i, j, get(i));
+					}
+				}
+
+				return out;
+			}
+
+			return nullptr;
 		}
 
 		int getDims() {
@@ -217,20 +247,35 @@ namespace Cudheart::NDArrays {
 		/// assert that this vector matches another vector
 		/// </summary>
 		/// <param name="other"> - the other vector</param>
-		void assertMatchShape(NDArray<T>* arr, int axis) {
-			if (arr->getDims() == 1) {
-				if (m_size != arr->getSize()) {
-					Cudheart::Exceptions::ShapeMismatchException(m_size, 
-						arr->getSize()).raise();
+		void assertMatchShape(Shape* shape, int axis) {
+			if (shape->getDims() == 1) {
+				if (m_size != shape->getSize()) {
+					Cudheart::Exceptions::ShapeMismatchException(m_size,
+						shape->getSize()).raise();
 				}
 			}
-			else if (arr->getDims() == 2) {
-				return arr->assertMatchShape(this, axis);
+			else if (shape->getDims() == 2) {
+				if (axis == 0) {
+					if (m_size != shape->getX()) {
+						Cudheart::Exceptions::ShapeMismatchException(m_size,
+							shape->getX()).raise();
+					}
+				}
+				else if (axis == 1) {
+					if (m_size != shape->getY()) {
+						Cudheart::Exceptions::ShapeMismatchException(m_size,
+							shape->getY()).raise();
+					}
+				}
 			}
 		}
 
-		void assertMatchShape(NDArray<T>* arr) {
-			return assertMatchShape(arr, 0);
+		void assertMatchShape(Shape* shape) {
+			return assertMatchShape(shape, 0);
+		}
+
+		Shape* getShape() {
+			return new Shape(m_size);
 		}
 	};
 }

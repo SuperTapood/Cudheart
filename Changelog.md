@@ -33,3 +33,8 @@ a changelog list for the next build release
 - added mod
 - added remainder
 - added divMod
+- added angle
+- added real
+- added imag
+- added conj
+- added conjugate

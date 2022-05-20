@@ -14,7 +14,7 @@ using Cudheart::MatrixOps::fromVectorArray;
 namespace Cudheart::CPP::Math::Linalg {
 	template <typename T>
 	T dot(Vector<T>* a, Vector<T>* b) {
-		a->assertMatchShape(b);
+		a->assertMatchShape(b->getShape());
 
 		T result = 0;
 
@@ -56,9 +56,7 @@ namespace Cudheart::CPP::Math::Linalg {
 
 	template <typename T>
 	Vector<T>* dot(Matrix<T>* a, Vector<T>* b) {
-		if (a->getWidth() != b->getSize()) {
-			ShapeMismatchException(a->getWidth(), b->getSize()).raise();
-		}
+		a->assertMatchShape(b->getShape(), 1);
 
 		Matrix<T>* t = emptyLike<T>(a);
 
@@ -93,7 +91,7 @@ namespace Cudheart::CPP::Math::Linalg {
 
 	template <typename T>
 	Matrix<T>* inner(Matrix<T>* a, Matrix<T>* b) {
-		a->assertMatchShape(b);
+		a->assertMatchShape(b->getShape());
 
 		Matrix<T>* out = emptyLike<T>(a);
 

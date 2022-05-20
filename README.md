@@ -13,6 +13,12 @@ The aim of this project is to provide a back-end framework for a Tensorflow-esqu
 - [ ] add axis to everything
 - [ ] add more bitwise function variation
 - [ ] maybe add matrix and vector ops ndarray compatibility?
+- [ ] add inline to all namespace functions (or maybe sort them into classes)
+- [ ] move pi and euler into struct?
+- [ ] fix a bunch of stupid matrix building and indexing bugs that are sure to be found
+- [ ] fix shape mismatch exception
+- [ ] add map function to ndarray
+- [ ] add native math funcs to complex type
 - [ ] add more overloads for expscpp
 - [ ] add more overloads for basemathcpp
 - [ ] remove all the useless overloads

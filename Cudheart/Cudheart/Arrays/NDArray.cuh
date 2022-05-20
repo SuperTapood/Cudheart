@@ -3,6 +3,43 @@
 #include "../Util.cuh"
 
 namespace Cudheart::NDArrays {
+	class Shape {
+	private:
+		int x, y;
+		int size;
+		int dims;
+
+	public:
+		Shape(int x, int y) {
+			this->x = x;
+			this->y = y;
+			size = x * y;
+			this->dims = 2;
+		}
+
+		Shape(int x) {
+			this->x = x;
+			this->y = x;
+			size = x;
+			this->dims = 1;
+		}
+
+		int getX() {
+			return x;
+		}
+
+		int getY() {
+			return y;
+		}
+
+		int getDims() {
+			return dims;
+		}
+
+		int getSize() {
+			return size;
+		}
+	};
 	/// <summary>
 	/// the base ndarray class for both the vector and the matrix
 	/// </summary>
@@ -23,26 +60,22 @@ namespace Cudheart::NDArrays {
 		/// <param name="index"> - the index</param>
 		/// <returns>the element at index position</returns>
 		virtual T get(int index) = 0;
-		
+
 		/// <summary>
 		/// set the element at the given index to given value
 		/// </summary>
 		/// <param name="index"> - the index</param>
 		/// <param name="value"> - the value</param>
 		virtual void set(int index, T value) = 0;
-		
-		/// <summary>
-		/// return an empty object of the same type as this (vector or matrix)
-		/// </summary>
-		/// <returns>the resulting object as an ndarray</returns>
+
 		virtual NDArray<T>* emptyLike() = 0;
-		
+
 		/// <summary>
 		/// get the number elements this ndarray contains
 		/// </summary>
 		/// <returns></returns>
 		virtual int getSize() = 0;
-		
+
 		/// <summary>
 		/// get the number of dimensions this ndarray has (1 for vector, 2 for matrix)
 		/// </summary>
@@ -60,8 +93,10 @@ namespace Cudheart::NDArrays {
 		/// </summary>
 		virtual void print() = 0;
 
-		virtual void assertMatchShape(NDArray<T>* arr, int axis) = 0;
+		virtual void assertMatchShape(Shape* other, int axis) = 0;
 
-		virtual void assertMatchShape(NDArray<T>* arr) = 0;
+		virtual void assertMatchShape(Shape* other) = 0;
+
+		virtual Shape* getShape() = 0;
 	};
 }
