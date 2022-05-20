@@ -33,6 +33,7 @@ a changelog list for the next build release
 - added mod
 - added remainder
 - added divMod
+- added complex type class
 - added angle
 - added real
 - added imag
