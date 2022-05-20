@@ -8,8 +8,6 @@ any ticked funcs are added, but incomplete
 
 ## math
 ### misc
-- [ ] sqrt
-- [ ] cbrt
 - [ ] square
 - [ ] absolute
 - [ ] fabs

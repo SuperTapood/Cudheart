@@ -24,6 +24,17 @@ namespace Cudheart::CPP::Math {
 	}
 
 	template <typename T>
+	NDArray<T>* cubeRoot(NDArray<T>* arr) {
+		NDArray<T>* output = arr->emptyLike();
+
+		for (int i = 0; i < arr->getSize(); i++) {
+			output->set(i, cbrt(arr->get(i)));
+		}
+
+		return output;
+	}
+
+	template <typename T>
 	NDArray<T>* power(NDArray<T>* base, T po) {
 		NDArray<T>* output = base->emptyLike();
 
