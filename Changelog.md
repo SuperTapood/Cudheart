@@ -48,3 +48,8 @@ a changelog list for the next build release
 - added copy to vector and ndarray
 - added clip
 - added cbrt
+- added square
+- added complexAbs
+- added sign
+- added complexSign
+- added heaviside

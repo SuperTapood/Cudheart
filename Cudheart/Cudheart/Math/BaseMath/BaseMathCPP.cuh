@@ -13,17 +13,6 @@ using Cudheart::MatrixOps::fromVector;
 
 namespace Cudheart::CPP::Math {
 	template <typename T>
-	NDArray<T>* squareRoot(NDArray<T>* arr) {
-		NDArray<T>* output = arr->emptyLike();
-
-		for (int i = 0; i < arr->getSize(); i++) {
-			output->set(i, sqrt(arr->get(i)));
-		}
-
-		return output;
-	}
-
-	template <typename T>
 	NDArray<T>* cubeRoot(NDArray<T>* arr) {
 		NDArray<T>* output = arr->emptyLike();
 
@@ -33,8 +22,29 @@ namespace Cudheart::CPP::Math {
 
 		return output;
 	}
+	template <typename T>
+	NDArray<T>* square(NDArray<T>* base) {
+		NDArray<T>* output = base->emptyLike();
+
+		for (int i = 0; i < base->getSize(); i++) {
+			output->set(i, pow(base->get(i), 2));
+		}
+
+		return output;
+	}
+
+
 
 	template <typename T>
+	NDArray<T>* squareRoot(NDArray<T>* arr) {
+		NDArray<T>* output = arr->emptyLike();
+
+		for (int i = 0; i < arr->getSize(); i++) {
+			output->set(i, sqrt(arr->get(i)));
+		}
+
+		return output;
+	}	template <typename T>
 	NDArray<T>* power(NDArray<T>* base, T po) {
 		NDArray<T>* output = base->emptyLike();
 
@@ -145,17 +155,6 @@ namespace Cudheart::CPP::Math {
 	}
 
 	template <typename T>
-	NDArray<T>* ceil(NDArray<T>* x) {
-		NDArray<T>* out = x->emptyLike();
-
-		for (int i = 0; i < x->getSize(); i++) {
-			out->set(i, std::ceil(x->get(i)));
-		}
-
-		return out;
-	}
-
-	template <typename T>
 	NDArray<T>* trunc(NDArray<T>* x) {
 		NDArray<T>* out = x->emptyLike();
 
@@ -166,6 +165,16 @@ namespace Cudheart::CPP::Math {
 		return out;
 	}
 
+	template <typename T>
+	NDArray<T>* ceil(NDArray<T>* x) {
+		NDArray<T>* out = x->emptyLike();
+
+		for (int i = 0; i < x->getSize(); i++) {
+			out->set(i, std::ceil(x->get(i)));
+		}
+
+		return out;
+	}
 	template <typename T>
 	T prod(NDArray<T>* x) {
 		T out = (T)1;
@@ -408,6 +417,37 @@ namespace Cudheart::CPP::Math {
 
 		for (int i = 0; i < x->getSize(); i++) {
 			out->set(i, -std::abs(x->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	NDArray<T>* sign(NDArray<T>* x) {
+		NDArray<T>* out = x->emptyLike();
+
+		for (int i = 0; i < x->getSize(); i++) {
+			out->set(i, (T)std::signbit(x->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	NDArray<T>* heaviside(NDArray<T>* a, NDArray<T>* b) {
+		a->assertMatchShape(b);
+		NDArray<T>* out = a->emptyLike();
+
+		for (int i = 0; i < a->getSize(); i++) {
+			T x1 = a->get(i);
+			if (x1 < 0) {
+				out->set(i, 0);
+			}
+			else if (x1 == 0) {
+				out->set(i, b->get(i));
+			} else if (x1 > 0) {
+				out->set(i, 1);
+			}
 		}
 
 		return out;

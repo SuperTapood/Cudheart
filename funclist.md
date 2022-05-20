@@ -6,15 +6,6 @@ any ticked funcs are added, but incomplete
 ## linalg
 - [X] solve
 
-## math
-### misc
-- [ ] square
-- [ ] absolute
-- [ ] fabs
-- [ ] sign
-- [ ] heaviside
-- [ ] nanToNum
-- [ ] toBinary
 
 ## rng
 ### generator

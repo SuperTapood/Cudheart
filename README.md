@@ -16,6 +16,8 @@ The aim of this project is to provide a back-end framework for a Tensorflow-esqu
 - [ ] add inline to all namespace functions (or maybe sort them into classes)
 - [ ] move pi and euler into struct?
 - [ ] fix a bunch of stupid matrix building and indexing bugs that are sure to be found
+- [ ] fix the new object creation in complex math cpp
+- [ ] make sure complex numbers won't be placed where they shouldn't (wherever std is involved)
 - [ ] fix shape mismatch exception
 - [ ] add map function to ndarray
 - [ ] add native math funcs to complex type

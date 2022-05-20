@@ -71,4 +71,27 @@ namespace Cudheart::CPP::Math::Complex {
 	inline NDArray<ComplexType*>* conjugate(NDArray<ComplexType*>* x) {
 		return conj(x);
 	}
+
+	inline NDArray<double*>* complexAbs(NDArray<ComplexType*>* x) {
+		NDArray<double>* out = (new Vector<double>(x->getSize()))->shapeLike<double>(x->getShape());
+
+		for (int i = 0; i < x->getSize(); i++) {
+			ComplexType* current = x->get(i);
+			double x2 = std::pow(current->real, 2);
+			double y2 = std::pow(current->imag, 2);
+			out->set(i, std::sqrt(x2 + y2));
+		}
+	}
+	
+	inline NDArray<ComplexType*>* complexSign(NDArray<ComplexType*>* x) {
+		NDArray<ComplexType*>* out = x->emptyLike();
+
+		for (int i = 0; i < x->getSize(); i++) {
+			double real = x->get(i)->real;
+			double newReal = (real / std::sqrt(std::pow(real, 2)));
+			out->set(i, new ComplexType(real, 0));
+		}
+
+		return out;
+	}
 }
