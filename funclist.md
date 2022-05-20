@@ -7,26 +7,10 @@ any ticked funcs are added, but incomplete
 - [X] solve
 
 ## math
-### exps
-- [ ] expm1
-- [ ] exp2
-- [ ] logaddexp
-- [ ] logaddexp2
-### fp routines
-- [ ] signBit
-- [ ] copySign
-### rational
-- [ ] lcm
-- [ ] gcd
 ### arithmatic
-- [ ] add
 - [ ] reciprocal
 - [ ] positive
 - [ ] negative
-- [ ] multiply
-- [ ] divide
-- [ ] power
-- [ ] subtract
 - [ ] trueDivide
 - [ ] floorDivide
 - [ ] floatPower

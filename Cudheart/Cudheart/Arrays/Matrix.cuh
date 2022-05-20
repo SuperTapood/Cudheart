@@ -456,7 +456,17 @@ namespace Cudheart::NDArrays {
 		}
 
 		void assertMatchShape(NDArray<T>* arr) {
-			return assertMatchShape(arr, 0);
+			// axisless
+			if (arr->getDims() != getDims()) {
+				ShapeMismatchException("Matrix does not match vector on axisless operation").raise();
+			}
+			else {
+				for (int i = 0; i < getDims(); i++) {
+					if (getDims() != arr->getDims()) {
+						ShapeMismatchException(getDims(), arr->getDims()).raise();
+					}
+				}
+			}
 		}
 
 		/// <summary>

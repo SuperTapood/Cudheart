@@ -58,22 +58,57 @@ namespace Cudheart::CPP::Math::Exp {
 	}
 
 	template <typename T>
-	NDArray<T>* expa(NDArray<T>* x) {
+	NDArray<T>* expo(NDArray<T>* x) {
 		NDArray<T>* output = x->emptyLike();
 
 		for (int i = 0; i < x->getSize(); i++) {
-			output->set(i, exp(x->get(i)));
+			output->set(i, std::exp(x->get(i)));
 		}
 
 		return output;
 	}
 	
 	template <typename T>
-	NDArray<T>* expm(NDArray<T>* x) {
+	NDArray<T>* expom1(NDArray<T>* x) {
 		NDArray<T>* output = x->emptyLike();
 
 		for (int i = 0; i < x->getSize(); i++) {
-			output->set(i, exp(x->get(i) - 1));
+			output->set(i, std::expm1(x->get(i)));
+		}
+
+		return output;
+	}
+
+	template <typename T>
+	NDArray<T>* expo2(NDArray<T>* x) {
+		NDArray<T>* output = x->emptyLike();
+
+		for (int i = 0; i < x->getSize(); i++) {
+			output->set(i, std::exp2(x->get(i)));
+		}
+
+		return output;
+	}
+
+	template <typename T>
+	NDArray<T>* logaddexp(NDArray<T>* a, NDArray<T>* b) {
+		a->assertMatchShape(b);
+		NDArray<T>* output = a->emptyLike();
+
+		for (int i = 0; i < a->getSize(); i++) {
+			output->set(i, std::log(std::exp(a->get(i)) + std::exp(b->get(i))));
+		}
+
+		return output;
+	}
+
+	template <typename T>
+	NDArray<T>* logaddexp2(NDArray<T>* a, NDArray<T>* b) {
+		a->assertMatchShape(b);
+		NDArray<T>* output = a->emptyLike();
+
+		for (int i = 0; i < a->getSize(); i++) {
+			output->set(i, std::log(std::exp2(a->get(i)) + std::exp2(b->get(i))));
 		}
 
 		return output;

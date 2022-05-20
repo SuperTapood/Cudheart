@@ -2,6 +2,7 @@
 
 #include "../../Arrays/Arrays.cuh"
 #include <cmath>
+#include <numeric>
 
 using Cudheart::NDArrays::Vector;
 using Cudheart::NDArrays::Matrix;
@@ -199,6 +200,121 @@ namespace Cudheart::CPP::Math {
 		for (int i = 0; i < x->getSize(); i++) {
 			prod += x->get(i);
 			out->set(i, prod);
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	NDArray<bool>* signBit(NDArray<T>* x) {
+		NDArray<bool>* out = x->emptyLike<bool>();
+
+		for (int i = 0; i < x->getSize(); i++) {
+			T v = x->get(i);
+			out->set(i, v < 0);
+		}
+
+		return out;
+	}
+	
+	template <typename T>
+	NDArray<T>* copySign(NDArray<T>* a, NDArray<T>* b) {
+		a->assertMatchShape(b);
+		
+		NDArray<T>* out = a->emptyLike();
+
+		for (int i = 0; i < a->getSize(); i++) {
+			T va = a->get(i);
+			T vb = b->get(i);
+			if (vb < 0 && va > 0) {
+				va = -va;
+			} else if (vb > 0 && va < 0) {
+				va = -va;
+			}
+			out->set(i, va);
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	NDArray<T>* abs(NDArray<T>* x) {
+		NDArray<T>* out = x->emptyLike();
+
+		for (int i = 0; i < x->getSize(); i++) {
+			out->set(i, std::abs(x->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	NDArray<T>* lcm(NDArray<T>* a, NDArray<T>* b) {
+		a->assertMatchShape(b);
+		NDArray<T>* out = a->emptyLike();
+
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, std::lcm(a->get(i), b->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	NDArray<T>* gcd(NDArray<T>* a, NDArray<T>* b) {
+		a->assertMatchShape(b);
+		NDArray<T>* out = a->emptyLike();
+
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, std::gcd(a->get(i), b->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	NDArray<T>* add(NDArray<T>* a, NDArray<T>* b) {
+		a->assertMatchShape(b);
+		NDArray<T>* out = a->emptyLike();
+
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) + b->get(i));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	NDArray<T>* subtract(NDArray<T>* a, NDArray<T>* b) {
+		a->assertMatchShape(b);
+		NDArray<T>* out = a->emptyLike();
+
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) - b->get(i));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	NDArray<T>* multiply(NDArray<T>* a, NDArray<T>* b) {
+		a->assertMatchShape(b);
+		NDArray<T>* out = a->emptyLike();
+
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) * b->get(i));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	NDArray<T>* divide(NDArray<T>* a, NDArray<T>* b) {
+		a->assertMatchShape(b);
+		NDArray<T>* out = a->emptyLike();
+
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, a->get(i) / b->get(i));
 		}
 
 		return out;

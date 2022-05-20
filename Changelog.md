@@ -11,4 +11,16 @@ a changelog list for the next build release
 - improved expCPP namespace
 - improved trioCPP namespace
 - added both pi and the euler constants
-- added exp, expm
+- added exp
+- added expm1
+- added logaddexp
+- added logaddexp2
+- added signbit
+- added copySign
+- added abs
+- added lcm
+- added gcd
+- added add
+- added sub
+- added mul
+- added divide
