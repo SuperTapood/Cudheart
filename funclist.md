@@ -8,7 +8,6 @@ any ticked funcs are added, but incomplete
 
 ## math
 ### exps
-- [ ] exp
 - [ ] expm1
 - [ ] exp2
 - [ ] logaddexp

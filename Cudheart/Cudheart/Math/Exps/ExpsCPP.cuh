@@ -56,4 +56,26 @@ namespace Cudheart::CPP::Math::Exp {
 
 		return output;
 	}
+
+	template <typename T>
+	NDArray<T>* expa(NDArray<T>* x) {
+		NDArray<T>* output = x->emptyLike();
+
+		for (int i = 0; i < x->getSize(); i++) {
+			output->set(i, exp(x->get(i)));
+		}
+
+		return output;
+	}
+	
+	template <typename T>
+	NDArray<T>* expm(NDArray<T>* x) {
+		NDArray<T>* output = x->emptyLike();
+
+		for (int i = 0; i < x->getSize(); i++) {
+			output->set(i, exp(x->get(i) - 1));
+		}
+
+		return output;
+	}
 }
