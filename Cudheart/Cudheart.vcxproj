@@ -135,6 +135,9 @@
     <ClInclude Include="Cudheart\Exceptions\ShapeMismatchException.cuh" />
     <ClInclude Include="Cudheart\Math\Trigo\Trigo.cuh" />
     <ClInclude Include="Cudheart\Math\Trigo\TrigoCPP.cuh" />
+    <ClInclude Include="Cudheart\Random\Random.cuh" />
+    <ClInclude Include="Cudheart\Random\Simple\Simple.cuh" />
+    <ClInclude Include="Cudheart\Random\Simple\SimpleCPP.cuh" />
     <ClInclude Include="Cudheart\Test\Test.cuh" />
     <ClInclude Include="Cudheart\Util.cuh" />
     <ClInclude Include="Sample\kernel.cuh" />

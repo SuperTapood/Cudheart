@@ -20,6 +20,7 @@ The aim of this project is to provide a back-end framework for a Tensorflow-esqu
 - [ ] make sure complex numbers won't be placed where they shouldn't (wherever std is involved)
 - [ ] fix shape mismatch exception
 - [ ] add map function to ndarray
+- [ ] add overloads to simple random
 - [ ] add native math funcs to complex type
 - [ ] add more overloads for expscpp
 - [ ] add more overloads for basemathcpp
