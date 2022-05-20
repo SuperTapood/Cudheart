@@ -572,4 +572,52 @@ namespace Cudheart::Logic {
 		return out;
 	}
 #pragma endregion
+
+	template <typename T>
+	NDArray<T>* maximum(NDArray<T>* a, NDArray<T>* b) {
+		a->assertMatchShape(b->getShape());
+		
+		NDArray<T>* out = a->emptyLike();
+
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, std::max(a->get(i), b->get(i)));
+		}
+		
+		return out;
+	}
+
+	template <typename T>
+	T amax(NDArray<T>* x) {
+		T max = x->get(0);
+
+		for (int i = 1; i < x->getSize(); i++) {
+			max = std::max(max, x->get(i));
+		}
+
+		return max;
+	}
+
+	template <typename T>
+	NDArray<T>* minimum(NDArray<T>* a, NDArray<T>* b) {
+		a->assertMatchShape(b->getShape());
+
+		NDArray<T>* out = a->emptyLike();
+
+		for (int i = 0; i < a->getSize(); i++) {
+			out->set(i, std::min(a->get(i), b->get(i)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	T amin(NDArray<T>* x) {
+		T min = x->get(0);
+
+		for (int i = 1; i < x->getSize(); i++) {
+			min = std::min(min, x->get(i));
+		}
+
+		return min;
+	}
 }

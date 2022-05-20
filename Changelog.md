@@ -39,3 +39,7 @@ a changelog list for the next build release
 - added imag
 - added conj
 - added conjugate
+- added maximum
+- added aMax
+- added minimum
+- added aMin

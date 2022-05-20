@@ -7,15 +7,6 @@ any ticked funcs are added, but incomplete
 - [X] solve
 
 ## math
-### extrema finding
-- [ ] maximum
-- [ ] fMax
-- [ ] aMax
-- [ ] nanMax
-- [ ] minimum
-- [ ] fMin
-- [ ] aMin
-- [ ] nanMin
 ### misc
 - [ ] convolve
 - [ ] clip
