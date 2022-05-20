@@ -53,3 +53,6 @@ a changelog list for the next build release
 - added sign
 - added complexSign
 - added heaviside
+- added integers
+- added random
+- added choice
