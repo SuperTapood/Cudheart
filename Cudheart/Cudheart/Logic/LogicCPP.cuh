@@ -620,4 +620,18 @@ namespace Cudheart::Logic {
 
 		return min;
 	}
+
+	template <typename T>
+	Vector<T>* convolve(Vector<T>* a, Vector<T>* b) {
+		Vector<T>* out = Cudheart::VectorOps::zeros(a->getSize() + b->getSize() - 1);
+		
+		for (int i = 0; i < a->getSize(); i++) {
+			for (int j = 0; j < b->getSize(); j++) {
+				T last = out->get(i + j);
+				out->set(i + j, last + (a->get(i) * b->get(j)));
+			}
+		}
+
+		return out;
+	}
 }

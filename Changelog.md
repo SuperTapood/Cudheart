@@ -43,3 +43,4 @@ a changelog list for the next build release
 - added aMax
 - added minimum
 - added aMin
+- added convolve
