@@ -277,5 +277,15 @@ namespace Cudheart::NDArrays {
 		Shape* getShape() {
 			return new Shape(m_size);
 		}
+
+		NDArray<T>* copy() {
+			Vector<T>* out = new Vector<T>(m_size);
+
+			for (int i = 0; i < m_size; i++) {
+				out->set(i, m_data[i]);
+			}
+
+			return out;
+		}
 	};
 }

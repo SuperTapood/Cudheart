@@ -248,4 +248,46 @@ namespace Cudheart::CPP::Math::Linalg {
 
 		return eye;
 	}
+
+	template <typename T>
+	Vector<T>* convolve(Vector<T>* a, Vector<T>* b) {
+		Vector<T>* out = Cudheart::VectorOps::zeros(a->getSize() + b->getSize() - 1);
+
+		for (int i = 0; i < a->getSize(); i++) {
+			for (int j = 0; j < b->getSize(); j++) {
+				T last = out->get(i + j);
+				out->set(i + j, last + (a->get(i) * b->get(j)));
+			}
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	NDArray<T>* clip(NDArray<T>* arr, T min, T max) {
+		NDArray<T>* out = arr->copy();
+
+		for (int i = 0; i < out->getSize(); i++) {
+			if (out->get(i) < min) {
+				out->set(i, min);
+			} else if (out->get(i) > max) {
+				out->set(i, max);
+			}
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	NDArray<T>* clip(NDArray<T>* arr, T max) {
+		NDArray<T>* out = arr->copy();
+
+		for (int i = 0; i < out->getSize(); i++) {
+			if (out->get(i) > max) {
+				out->set(i, max);
+			}
+		}
+
+		return out;
+	}
 }

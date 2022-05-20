@@ -98,5 +98,7 @@ namespace Cudheart::NDArrays {
 		virtual void assertMatchShape(Shape* other) = 0;
 
 		virtual Shape* getShape() = 0;
+
+		virtual NDArray<T>* copy() = 0;
 	};
 }

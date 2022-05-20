@@ -299,7 +299,7 @@ namespace Cudheart::NDArrays {
 		/// dupe the matrix
 		/// </summary>
 		/// <returns>a copy of this matrix</returns>
-		Matrix<T>* dupe() {
+		NDArray<T>* copy() {
 			Matrix<T>* out = new Matrix<T>(m_height, m_width);
 
 			for (int i = 0; i < m_size; i++) {
@@ -399,7 +399,7 @@ namespace Cudheart::NDArrays {
 		/// <param name="angles"> - degrees to rotate by</param>
 		/// <returns>a rotated copy of this matrix</returns>
 		Matrix<T>* rotate(int angles) {
-			Matrix<T>* mat = dupe();
+			Matrix<T>* mat = (Matrix<T>*)copy();
 			Matrix<T>* out = nullptr;
 
 			if (angles == 90) {

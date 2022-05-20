@@ -8,7 +8,6 @@ any ticked funcs are added, but incomplete
 
 ## math
 ### misc
-- [ ] clip
 - [ ] sqrt
 - [ ] cbrt
 - [ ] square

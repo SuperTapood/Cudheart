@@ -44,3 +44,6 @@ a changelog list for the next build release
 - added minimum
 - added aMin
 - added convolve
+- renamed dupe to copy
+- added copy to vector and ndarray
+- added clip
