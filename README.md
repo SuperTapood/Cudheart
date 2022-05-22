@@ -21,6 +21,7 @@ The aim of this project is to provide a back-end framework for a Tensorflow-esqu
 - [ ] fix shape mismatch exception
 - [ ] add map function to ndarray
 - [ ] add overloads to simple random
+- [ ] add shape argument to functions instead of using return types (+ initializer list overload?)
 - [ ] add native math funcs to complex type
 - [ ] add more overloads for expscpp
 - [ ] add more overloads for basemathcpp

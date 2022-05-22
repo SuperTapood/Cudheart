@@ -56,3 +56,4 @@ a changelog list for the next build release
 - added integers
 - added random
 - added choice
+- added bytes

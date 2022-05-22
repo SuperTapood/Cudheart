@@ -2,11 +2,13 @@
 
 #include <time.h>
 #include <stdlib.h>
+#include <random>
 
 #include "../../Arrays/Arrays.cuh"
 
 using Cudheart::NDArrays::Vector;
 using Cudheart::NDArrays::Matrix;
+using random_bytes_engine = std::independent_bits_engine<std::default_random_engine, CHAR_BIT, unsigned char>;
 
 namespace Cudheart::CPP::Random {
 	inline void seed(unsigned seed) {
@@ -18,7 +20,6 @@ namespace Cudheart::CPP::Random {
 	}
 
 	inline Vector<int>* integers(int low, int high, int size, bool endpoint) {
-		seed();
 		Vector<int>* out = new Vector<int>(size);
 
 		for (int i = 0; i < size; i++) {
@@ -45,7 +46,6 @@ namespace Cudheart::CPP::Random {
 	}
 
 	inline Matrix<int>* integers2d(int low, int high, bool endpoint, int width, int height) {
-		seed();
 		int size = width * height;
 		Matrix<int>* out = new Matrix<int>(width, height);
 
@@ -75,7 +75,6 @@ namespace Cudheart::CPP::Random {
 
 	template <typename T>
 	inline Vector<T>* random(int size) {
-		seed();
 		Vector<T>* out = new Vector<T>(size);
 
 		for (int i = 0; i < size; i++) {
@@ -87,7 +86,6 @@ namespace Cudheart::CPP::Random {
 
 	template <typename T>
 	inline Matrix<T>* random(int height, int width) {
-		seed();
 		Matrix<T>* out = new Matrix<T>(height, width);
 
 		for (int i = 0; i < out->getSize(); i++) {
@@ -98,7 +96,6 @@ namespace Cudheart::CPP::Random {
 	}
 
 	inline double random() {
-		seed();
 		return rand() / RAND_MAX;
 	}
 	
@@ -134,5 +131,37 @@ namespace Cudheart::CPP::Random {
 		}
 
 		return choice<T>(a, size, p);
+	}
+
+	template <typename T>
+	inline Vector<T>* bytes(int length, unsigned int seed) {
+		random_bytes_engine engine;
+		engine.seed(seed);
+		std::vector<unsigned char> data(length);
+		std::generate(begin(data), end(data), std::ref(engine));
+		
+		Vector<T>* vec = new Vector<T>(length);
+
+		for (int i = 0; i < length; i++) {
+			vec->set(i, data.at(i));
+		}
+
+		return vec;
+	}
+
+	template <typename T>
+	inline Matrix<T>* bytes(int height, int width, unsigned int seed) {
+		random_bytes_engine engine;
+		engine.seed(seed);
+		std::vector<unsigned char> data(height * width);
+		std::generate(begin(data), end(data), std::ref(engine));
+
+		Matrix<T>* mat = new Matrix<T>(height, width);
+
+		for (int i = 0; i < mat->getSize(); i++) {
+			mat->set(i, data.at(i));
+		}
+
+		return mat;
 	}
 }

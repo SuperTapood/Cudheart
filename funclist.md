@@ -9,7 +9,6 @@ any ticked funcs are added, but incomplete
 
 ## rng
 ### generator
-- [ ] bytes
 - [ ] shuffle
 - [ ] permutation
 - [ ] permutated
