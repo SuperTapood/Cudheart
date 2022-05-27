@@ -65,3 +65,4 @@ a changelog list for the next build release
 - added dirichlet
 - added exponential
 - added f
+- random now uses constants and a static seed

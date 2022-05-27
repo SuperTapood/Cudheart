@@ -52,7 +52,7 @@
     <ClInclude Include="Cudheart\Exceptions\AssertionException.cuh" />
     <ClInclude Include="Test.cuh" />
     <ClInclude Include="Cudheart\Exceptions\BadTypeException.cuh" />
-    <ClInclude Include="Cudheart\Math\Constants.cuh" />
+    <ClInclude Include="Cudheart\Constants.cuh" />
     <ClInclude Include="Cudheart\Math\Complex\Complex.cuh" />
     <ClInclude Include="Cudheart\Math\Complex\ComplexType.cuh" />
     <ClInclude Include="Cudheart\Math\Complex\ComplexMathCPP.cuh" />

@@ -158,6 +158,7 @@ C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\MatrixOps.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\NDArray.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\VectorOps.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Constants.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\CUtil\ContainerA.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\CUtil\ContainerAB.cuh
@@ -182,7 +183,6 @@ C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Bitwise\BitwiseC
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Complex\Complex.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Complex\ComplexMathCPP.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Complex\ComplexType.cuh
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Constants.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Exps\Exps.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Exps\ExpsCPP.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Linalg\Linalg.cuh

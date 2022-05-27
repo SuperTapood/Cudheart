@@ -124,7 +124,7 @@
     <ClInclude Include="Cudheart\Math\Complex\Complex.cuh" />
     <ClInclude Include="Cudheart\Math\Complex\ComplexMathCPP.cuh" />
     <ClInclude Include="Cudheart\Math\Complex\ComplexType.cuh" />
-    <ClInclude Include="Cudheart\Math\Constants.cuh" />
+    <ClInclude Include="Cudheart\Constants.cuh" />
     <ClInclude Include="Cudheart\Math\Exps\Exps.cuh" />
     <ClInclude Include="Cudheart\Math\Exps\ExpsCPP.cuh" />
     <ClInclude Include="Cudheart\Math\Linalg\Linalg.cuh" />

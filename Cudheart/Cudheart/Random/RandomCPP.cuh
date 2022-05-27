@@ -9,17 +9,16 @@
 using Cudheart::NDArrays::Vector;
 using Cudheart::NDArrays::Matrix;
 using random_bytes_engine = std::independent_bits_engine<std::default_random_engine, CHAR_BIT, unsigned char>;
+using namespace Cudheart::Constants;
 
 namespace Cudheart::CPP::Random {
 	inline void seed(unsigned seed) {
-		srand(seed);
-	}
-
-	inline void seed() {
-		seed(time(NULL));
+		Constants::setSeed(seed);
 	}
 
 	inline Vector<int>* integers(int low, int high, int size, bool endpoint) {
+		srand(Constants::getSeed());
+		
 		Vector<int>* out = new Vector<int>(size);
 
 		for (int i = 0; i < size; i++) {
@@ -76,6 +75,8 @@ namespace Cudheart::CPP::Random {
 
 	template <typename T>
 	inline Vector<T>* random(int size) {
+		srand(Constants::getSeed());
+		
 		Vector<T>* out = new Vector<T>(size);
 
 		for (int i = 0; i < size; i++) {
@@ -87,6 +88,8 @@ namespace Cudheart::CPP::Random {
 
 	template <typename T>
 	inline Matrix<T>* random(int height, int width) {
+		srand(Constants::getSeed());
+		
 		Matrix<T>* out = new Matrix<T>(height, width);
 
 		for (int i = 0; i < out->getSize(); i++) {
@@ -97,19 +100,20 @@ namespace Cudheart::CPP::Random {
 	}
 
 	inline double random() {
+		srand(Constants::getSeed());
 		return rand() / RAND_MAX;
 	}
 
 	template <typename T>
 	inline Vector<T>* choice(NDArray<T>* a, int size, bool replace, Vector<double>* p) {
-		seed();
+		srand(Constants::getSeed());
 		Vector<T>* vec = new Vector<T>(size);
 		p->assertMatchShape(a->getShape());
 
 		// assert that size < a->getSize() if replace is false
 
 		for (int i = 0; i < size; i++) {
-			double prob = random();
+			double prob = rand() / RAND_MAX;
 			int j = 0;
 			while (prob > 0) {
 				prob -= p->get(j++);
@@ -125,6 +129,7 @@ namespace Cudheart::CPP::Random {
 
 	template <typename T>
 	inline Vector<T>* choice(NDArray<T>* a, int size) {
+		srand(Constants::getSeed());
 		Vector<double>* p = new Vector(a->getSize());
 
 		for (int i = 0; i < p->getSize(); i++) {
@@ -135,9 +140,10 @@ namespace Cudheart::CPP::Random {
 	}
 
 	template <typename T>
-	inline Vector<T>* bytes(int length, unsigned int seed) {
+	inline Vector<T>* bytes(int length) {
+		srand(Constants::getSeed());
 		random_bytes_engine engine;
-		engine.seed(seed);
+		engine.seed(Constants::getSeed());
 		std::vector<unsigned char> data(length);
 		std::generate(begin(data), end(data), std::ref(engine));
 
@@ -151,14 +157,10 @@ namespace Cudheart::CPP::Random {
 	}
 
 	template <typename T>
-	inline Matrix<T>* bytes(int length) {
-		return bytes<T>(length, time(NULL));
-	}
-
-	template <typename T>
-	inline Matrix<T>* bytes(int height, int width, unsigned int seed) {
+	inline Matrix<T>* bytes(int height, int width) {
+		srand(Constants::getSeed());
 		random_bytes_engine engine;
-		engine.seed(seed);
+		engine.seed(Constants::getSeed());
 		std::vector<unsigned char> data(height * width);
 		std::generate(begin(data), end(data), std::ref(engine));
 
@@ -172,12 +174,8 @@ namespace Cudheart::CPP::Random {
 	}
 
 	template <typename T>
-	inline Matrix<T>* bytes(int height, int width) {
-		return bytes<T>(height, width, time(NULL));
-	}
-
-	template <typename T>
 	inline void shuffle(NDArray<T>* a) {
+		srand(Constants::getSeed());
 		NDArray<T>* copy = a->copy();
 		int size = a->getSize();
 		int* indices = new int[size];
@@ -221,10 +219,11 @@ namespace Cudheart::CPP::Random {
 	}
 
 	template <typename T>
-	inline NDArray<T>* binomal(NDArray<T>* a, NDArray<T>* b, unsigned seed) {
+	inline NDArray<T>* binomal(NDArray<T>* a, NDArray<T>* b) {
+		srand(getSeed());
 		a->assertMatchShape(b);
 		NDArray<T>* out = a->copy();
-		default_random_engine generator(seed);
+		default_random_engine generator(getSeed());
 		std::binomial_distribution<T> dist;
 
 		for (int i = 0; i < a->getSize(); i++) {
@@ -235,14 +234,10 @@ namespace Cudheart::CPP::Random {
 	}
 
 	template <typename T>
-	inline NDArray<T>* binomal(NDArray<T>* a, NDArray<T>* b) {
-		return binomal<T>(a, b, time(NULL));
-	}
-
-	template <typename T>
-	inline NDArray<T>* chisquare(NDArray<T>* x, unsigned seed) {
+	inline NDArray<T>* chisquare(NDArray<T>* x) {
+		srand(getSeed());
 		NDArray<T>* out = x->copy();
-		default_random_engine generator(seed);
+		default_random_engine generator(getSeed());
 		std::chi_squared_distribution<T> dist;
 
 		for (int i = 0; i < x->getSize(); i++) {
@@ -253,14 +248,10 @@ namespace Cudheart::CPP::Random {
 	}
 
 	template <typename T>
-	inline NDArray<T>* chisquare(NDArray<T>* x) {
-		return chisquare<T>(x, time(NULL));
-	}
-
-	template <typename T>
-	inline NDArray<T>* dirichlet(NDArray<T>* alpha, unsigned seed) {
+	inline NDArray<T>* dirichlet(NDArray<T>* alpha) {
+		srand(getSeed());
 		NDArray<T>* out = alpha->emptyLike();
-		default_random_engine generator(seed);
+		default_random_engine generator(getSeed());
 		T sum = 0;
 
 		for (int i = 0; i < alpha->getSize(); i++) {
@@ -278,14 +269,10 @@ namespace Cudheart::CPP::Random {
 	}
 
 	template <typename T>
-	inline NDArray<T>* dirichlet(NDArray<T>* alpha) {
-		return dirichlet<T>(alpha, time(NULL));
-	}
-
-	template <typename T>
-	inline NDArray<T>* exponential(NDArray<T>* x, unsigned seed) {
+	inline NDArray<T>* exponential(NDArray<T>* x) {
+		srand(getSeed());
 		NDArray<T>* out = x->emptyLike();
-		default_random_engine generator(seed);
+		default_random_engine generator(getSeed());
 		std::exponential_distribution<T> dist;
 
 		for (int i = 0; i < x->getSize(); i++) {
@@ -296,15 +283,11 @@ namespace Cudheart::CPP::Random {
 	}
 
 	template <typename T>
-	inline NDArray<T>* exponential(NDArray<T>* x) {
-		return exponential<T>(x, time(NULL));
-	}
-
-	template <typename T>
-	inline NDArray<T>* f(NDArray<T>* dfnum, NDArray<T>* dfden, unsigned seed) {
+	inline NDArray<T>* f(NDArray<T>* dfnum, NDArray<T>* dfden) {
+		srand(getSeed());
 		dfnum->assertMatchShape(dfden);
 		NDArray<T>* out = dfnum->emptyLike();
-		default_random_engine generator(seed);
+		default_random_engine generator(getSeed());
 
 		for (int i = 0; i < dfnum->getSize(); i++) {
 			std::fisher_f_distribution dist(dfnum->get(i), dfden->get(i));
@@ -312,10 +295,5 @@ namespace Cudheart::CPP::Random {
 		}
 
 		return out;
-	}
-
-	template <typename T>
-	inline NDArray<T>* f(NDArray<T>* dfnum, NDArray<T>* dfden) {
-		return f<T>(dfnum, dfden, time(NULL));
 	}
 }
