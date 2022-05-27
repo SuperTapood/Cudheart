@@ -14,6 +14,12 @@ The aim of this project is to provide a back-end framework for a Tensorflow-esqu
 - [ ] add more bitwise function variation
 - [ ] maybe add matrix and vector ops ndarray compatibility?
 - [ ] add inline to all namespace functions (or maybe sort them into classes)
+- [ ] change namespaces into classes
+- [ ] add value guards to functions
+- [ ] more overrides in random
+- [ ] further generalize functions by passing shape
+- [ ] make seed part of constants
+- [ ] make random_bytes_engine part of constants
 - [ ] move pi and euler into struct?
 - [ ] fix a bunch of stupid matrix building and indexing bugs that are sure to be found
 - [ ] fix the new object creation in complex math cpp
@@ -22,6 +28,8 @@ The aim of this project is to provide a back-end framework for a Tensorflow-esqu
 - [ ] add map function to ndarray
 - [ ] add overloads to simple random
 - [ ] add shape argument to functions instead of using return types (+ initializer list overload?)
+- [ ] add option to reduce exceptions into warnings and maybe even disable them (and choose whether they will be thrown or not)
+- [ ] change exception color to red in the console
 - [ ] add native math funcs to complex type
 - [ ] add more overloads for expscpp
 - [ ] add more overloads for basemathcpp

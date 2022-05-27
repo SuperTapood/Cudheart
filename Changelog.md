@@ -57,3 +57,11 @@ a changelog list for the next build release
 - added random
 - added choice
 - added bytes
+- added shuffle
+- added permutation
+- added beta
+- added binomal
+- added chisquare
+- added dirichlet
+- added exponential
+- added f

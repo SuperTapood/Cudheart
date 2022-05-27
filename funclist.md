@@ -9,15 +9,6 @@ any ticked funcs are added, but incomplete
 
 ## rng
 ### generator
-- [ ] shuffle
-- [ ] permutation
-- [ ] permutated
-- [ ] beta
-- [ ] binomial
-- [ ] chisquare
-- [ ] dirichlet
-- [ ] exponential
-- [ ] f
 - [ ] gamma
 - [ ] geometric
 - [ ] gumbel
@@ -149,16 +140,6 @@ any ticked funcs are added, but incomplete
 - [ ] isLower
 - [ ] isUpper
 - [ ] startsWith
-
-
-## boolean functions (need new dtypes)
-- [ ] isFinite
-- [ ] isInf
-- [ ] isNaN
-- [ ] isNegInf
-- [ ] isPosInf
-- [ ] isComplex
-- [ ] isReal
 
 ### sums and prods
 - [ ] nanProd
