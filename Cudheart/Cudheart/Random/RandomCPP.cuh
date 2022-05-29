@@ -293,6 +293,124 @@ namespace Cudheart::CPP::Random {
 			std::fisher_f_distribution dist(dfnum->get(i), dfden->get(i));
 			out->set(i, dist(generator));
 		}
+		
+		return out;
+	}
+
+	template <typename T>
+	inline NDArray<T>* gamma(NDArray<T>* shape, NDArray<T>* scale) {
+		srand(getSeed());
+		shape->assertMatchShape(scale);
+		NDArray<T>* out = shape->emptyLike();
+		default_random_engine generator(getSeed());
+
+		for (int i = 0; i < shape->getSize(); i++) {
+			std::gamma_distribution<> dist(shape->get(i), scale->get(i));
+			out->set(i, dist(generator));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	inline Vector<T>* geometric(T p, int size) {
+		srand(getSeed());
+		Vector<T>* out = new Vector<T>(size);
+		default_random_engine generator(getSeed());
+		std::geometric_distribution<> dist(p);
+		
+		for (int i = 0; i < size; i++) {
+			out->set(i, dist(generator));
+		}
+	}
+
+	template <typename T>
+	inline Vector<T>* geometric(Vector<T>* p, int size) {
+		srand(getSeed());
+		// assert size <= p.size()
+		Vector<T>* out = new Vector<T>(size);
+		default_random_engine generator(getSeed());
+
+		for (int i = 0; i < size; i++) {
+			std::geometric_distribution<> dist(p->get(i));
+			out->set(i, dist(generator));
+		}
+	}
+
+	template <typename T>
+	inline Vector<T>* geometric(Vector<T>* p) {
+		return geometric<T>(p, p->getSize());
+	}
+
+	template <typename T>
+	inline Matrix<T>* geometric(Matrix<T>* p, int height, int width) {
+		srand(getSeed());
+		// assert size <= p.size()
+		Matrix<T>* out = new Matrix<T>(height, width);
+		default_random_engine generator(getSeed());
+
+		for (int i = 0; i < out->getSize(); i++) {
+			std::geometric_distribution<> dist(p->get(i));
+			out->set(i, dist(generator));
+		}
+	}
+
+	template <typename T>
+	inline Matrix<T>* geometric(Matrix<T>* p) {
+		return geometric<T>(p, p->getHeight(), p->getWidth());
+	}
+
+	template <typename T>
+	inline NDArray<T>* gumbel(NDArray<T>* loc, NDArray<T>* scale) {
+		loc->assertMatchShape(scale);
+		srand(getSeed());
+		default_random_engine generator(getSeed());
+		NDArray<T>* out = loc->emptyLike();
+
+		for (int i = 0; i < loc->getSize(); i++) {
+			std::extreme_value_distribution<> dist(loc->get(i), scale->get(i));
+			out->set(i, dist(generator));
+		}
+
+		return out;
+	}
+
+	// move somewhere else
+	// using code from https://www.youtube.com/watch?v=o-ZtGGXLogE
+	template <typename T>
+	inline T binomal(T n, T k) {
+		T ans = (T)1;
+
+		if (k > n - k) {
+			k = n - k;
+		}
+
+		for (int i = 0; i < k; i++) {
+			ans *= (n - i);
+			ans /= (i + 1);
+		}
+
+		return ans;
+	}
+
+	template <typename T>
+	inline NDArray<T>* hypergeometric(NDArray<T>* ngood, NDArray<T>* nbad, NDArray<T>* nsample) {
+		srand(getSeed());
+		ngood->assertMatchShape(nbad);
+		ngood->assertMatchShape(nsample);
+		NDArray<T>* out = ngood->emptyLike();
+
+		for (int i = 0; i < out->getSize(); i++) {
+			T N = ngood->get(i) + nbad->get(i);
+			T k = ngood->get(i);
+			T n = nsample->get(i);
+			T K = (T)rand() / (T)RAND_MAX;
+
+			T above = binomal<T>(K, k) * binomal<T>(N - k, n - k);
+			T below = binomal<T>(N, n);
+
+			out->set(i, above / below);
+		}
 
 		return out;
 	}

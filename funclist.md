@@ -9,10 +9,6 @@ any ticked funcs are added, but incomplete
 
 ## rng
 ### generator
-- [ ] gamma
-- [ ] geometric
-- [ ] gumbel
-- [ ] hypergeometric
 - [ ] laplace
 - [ ] logistic
 - [ ] lognormal

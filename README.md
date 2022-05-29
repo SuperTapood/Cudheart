@@ -40,7 +40,7 @@ The aim of this project is to provide a back-end framework for a Tensorflow-esqu
 - [ ] get rid of util.cuh
 - [ ] assert instead of print in the tests
 - [ ] remove using
-- [ ] even more types for functions
+- [ ] even more type templates for functions
 - [ ] remove fromVectorArray
 - [ ] add cuda to logic funcs
 - [ ] add cuda to linalg
@@ -83,5 +83,56 @@ The aim of this project is to provide a back-end framework for a Tensorflow-esqu
 - [ ] add negInf
 - [ ] add NaN
 - [ ] make util actually good for integrating cudheart in projects
+- [ ] add tests from numpy site
+- [ ] maybe add scalar overloads
+- [ ] make sure ndarray objects are called with new using new overloads and shit
+- [ ] add assert match size and insert it where needed during axis update
+- [ ] add default parameters to functions
 
 p.s.: future me, please do remember to do all of the computations on flat vectors, and convert them "outside" of the math ty xoxo
+
+
+p.s.s: this is how type enforcements work
+```cpp
+#include <type_traits>
+#include <iostream>
+using namespace std;
+
+//Overload for when T is not a pointer type
+template <typename T>
+typename std::enable_if<std::is_arithmetic<T>::value>::type
+does_something_special_with_pointer (T t) {
+    //Do something boring
+    cout << "not pointer\n";
+    // cout << t << endl;
+}
+
+//Overload for when T is a pointer type
+template <typename T>
+typename std::enable_if<!std::is_arithmetic<T>::value>::type 
+does_something_special_with_pointer (T t) {
+    //Do something special
+    cout << "pointer\n";
+    // cout << t << endl;
+}
+
+
+class C {
+    
+};
+
+int main()
+{
+    cout<<"Hello World\n";
+    C* c = new C();
+    int a = 5;
+    float b = 5.0;
+    does_something_special_with_pointer(a);
+    does_something_special_with_pointer(b);
+    does_something_special_with_pointer(c);
+    return 0;
+}
+
+```
+
+use the code above with (https://www.boost.org/doc/libs/1_74_0/libs/math/doc/html/math_toolkit/result_type.html) and (https://github.com/boostorg/math/blob/b2538faaf9802af8e856c603b9001e33db826676/include/boost/math/tools/promotion.hpp) to do type forcing and enable the use of different types in a function
