@@ -90,6 +90,7 @@ The aim of this project is to provide a back-end framework for a Tensorflow-esqu
 - [ ] add default parameters to functions
 - [ ] add factorial(int) (which is the same as tgamma(int + 1))
 - [ ] implement the numpy restrictions
+- [ ] add more creation functions to ndarray, vector and matrix
 
 p.s.: future me, please do remember to do all of the computations on flat vectors, and convert them "outside" of the math ty xoxo
 

@@ -82,7 +82,7 @@ namespace Cudheart::CPP::Math::Complex {
 			out->set(i, std::sqrt(x2 + y2));
 		}
 	}
-	
+
 	inline NDArray<ComplexType*>* complexSign(NDArray<ComplexType*>* x) {
 		NDArray<ComplexType*>* out = x->emptyLike();
 

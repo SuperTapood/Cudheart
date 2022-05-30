@@ -8,7 +8,7 @@ namespace Cudheart::Constants {
 		static unsigned int seed = 1;
 		static bool isSet = false;
 	}
-	
+
 	inline unsigned int getSeed() {
 		if (!isSet) {
 			return time(NULL);

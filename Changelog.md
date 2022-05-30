@@ -85,3 +85,7 @@ a changelog list for the next build release
 - added standardCauchy
 - added standardExponantial
 - added standardT
+- added uniform
+- added vnmises
+- added wald
+- added zipf

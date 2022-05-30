@@ -18,7 +18,7 @@ namespace Cudheart::CPP::Random {
 
 	inline Vector<int>* integers(int low, int high, int size, bool endpoint) {
 		srand(Constants::getSeed());
-		
+
 		Vector<int>* out = new Vector<int>(size);
 
 		for (int i = 0; i < size; i++) {
@@ -76,7 +76,7 @@ namespace Cudheart::CPP::Random {
 	template <typename T>
 	inline Vector<T>* random(int size) {
 		srand(Constants::getSeed());
-		
+
 		Vector<T>* out = new Vector<T>(size);
 
 		for (int i = 0; i < size; i++) {
@@ -89,7 +89,7 @@ namespace Cudheart::CPP::Random {
 	template <typename T>
 	inline Matrix<T>* random(int height, int width) {
 		srand(Constants::getSeed());
-		
+
 		Matrix<T>* out = new Matrix<T>(height, width);
 
 		for (int i = 0; i < out->getSize(); i++) {
@@ -293,7 +293,7 @@ namespace Cudheart::CPP::Random {
 			std::fisher_f_distribution dist(dfnum->get(i), dfden->get(i));
 			out->set(i, dist(generator));
 		}
-		
+
 		return out;
 	}
 
@@ -318,7 +318,7 @@ namespace Cudheart::CPP::Random {
 		Vector<T>* out = new Vector<T>(size);
 		default_random_engine generator(getSeed());
 		std::geometric_distribution<> dist(p);
-		
+
 		for (int i = 0; i < size; i++) {
 			out->set(i, dist(generator));
 		}
@@ -488,7 +488,7 @@ namespace Cudheart::CPP::Random {
 		// assert that the sum of pvals is 1, and all values are between 0 and 1
 		srand(getSeed());
 		NDArray<T>* out = pvals->emptyLike();
-		
+
 		for (int i = 0; i < out->getSize(); i++) {
 			out->set(i, 0);
 		}
@@ -517,7 +517,7 @@ namespace Cudheart::CPP::Random {
 
 		for (int i = 0; i < n->getSize(); i++) {
 			T nv = n->get(i);
-			T pv = p->get(i); 
+			T pv = p->get(i);
 			T N = rand();
 			T high = std::gamma_distribution<>()(nv + N);
 			T low = std::tgamma(N + 1) * std::gamma_distribution<>()(nv);
@@ -668,6 +668,82 @@ namespace Cudheart::CPP::Random {
 			T p = -((df + 1) / 2);
 			T right = std::pow(base, p);
 			out->set(i, left * right);
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	inline Vector<T>* uniform(T low, T high, int size) {
+		srand(getSeed());
+		Vector<T>* out = Cudheart::VectorOps::empty<T>(size);
+
+		for (int i = 0; i < out->getSize(); i++) {
+			T x = rand() / RAND_MAX;
+			out->set(i, low + (x * (high - low)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	inline Vector<T>* uniform(T high, int size) {
+		return uniform<T>(0, high, size);
+	}
+
+	template <typename T>
+	inline Vector<T>* uniform(int size) {
+		return uniform(0, RAND_MAX, size);
+	}
+
+	template <typename T>
+	inline NDArray<T>* vonmises(NDArray<T>* mu, NDArray<T>* kappa) {
+		// kappa > 0
+		mu->assertMatchShape(kappa);
+		NDArray<T>* out = mu->emptyLike();
+		srand(getSeed());
+
+		for (int i = 0; i < out->getSize(); i++) {
+			T x = rand() / RAND_MAX;
+			T u = mu->get(i);
+			T k = kappa->get(i);
+			T high = std::exp(k * std::cos(x - u));
+			T low = 2 * pi * std::cyl_bessel_i(0, k);
+			out->set(i, high / low);
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	inline NDArray<T>* wald(NDArray<T>* mean, NDArray<T>* scale) {
+		mean->assertMatchShape(scale);
+		NDArray<T>* out = mean->emptyLike();
+		srand(getSeed());
+
+		for (int i = 0; i < out->getSize(); i++) {
+			T x = rand() / RAND_MAX;
+			T m = mean->get(i);
+			T s = scale->get(i);
+			T left = std::sqrt(s / (2 * pi * std::pow(x, 3)));
+			T right = std::exp(((-s * std::pow(x - mean, 2)) / (2 * std::pow(scale, 2) * x)));
+			out->set(i, m + left * right);
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	inline NDArray<T>* zipf(NDArray<T>* a) {
+		NDArray<T>* out = a->emptyLike();
+		srand(getSeed());
+
+		for (int i = 0; i < a->getSize(); i++) {
+			T k = rand() / RAND_MAX;
+			T av = a->get(i);
+			T high = std::pow(k, -av);
+			T low = std::riemann_zeta(av);
+			out->set(i, high / low);
 		}
 
 		return out;

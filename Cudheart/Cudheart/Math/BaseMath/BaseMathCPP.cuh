@@ -33,8 +33,6 @@ namespace Cudheart::CPP::Math {
 		return output;
 	}
 
-
-
 	template <typename T>
 	NDArray<T>* squareRoot(NDArray<T>* arr) {
 		NDArray<T>* output = arr->emptyLike();
@@ -45,7 +43,7 @@ namespace Cudheart::CPP::Math {
 
 		return output;
 	}	template <typename T>
-	NDArray<T>* power(NDArray<T>* base, T po) {
+		NDArray<T>* power(NDArray<T>* base, T po) {
 		NDArray<T>* output = base->emptyLike();
 
 		for (int i = 0; i < base->getSize(); i++) {
@@ -445,7 +443,8 @@ namespace Cudheart::CPP::Math {
 			}
 			else if (x1 == 0) {
 				out->set(i, b->get(i));
-			} else if (x1 > 0) {
+			}
+			else if (x1 > 0) {
 				out->set(i, 1);
 			}
 		}

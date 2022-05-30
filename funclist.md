@@ -6,15 +6,6 @@ any ticked funcs are added, but incomplete
 ## linalg
 - [X] solve
 
-
-## rng
-### generator
-- [ ] uniform
-- [ ] vnmises
-- [ ] wald
-- [ ] weibull
-- [ ] zipf
-
 ## sorting
 - [ ] sort
 - [ ] lexsort

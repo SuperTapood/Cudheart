@@ -270,7 +270,8 @@ namespace Cudheart::CPP::Math::Linalg {
 		for (int i = 0; i < out->getSize(); i++) {
 			if (out->get(i) < min) {
 				out->set(i, min);
-			} else if (out->get(i) > max) {
+			}
+			else if (out->get(i) > max) {
 				out->set(i, max);
 			}
 		}

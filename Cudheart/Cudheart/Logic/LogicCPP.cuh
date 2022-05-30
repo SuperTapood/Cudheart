@@ -576,13 +576,13 @@ namespace Cudheart::Logic {
 	template <typename T>
 	NDArray<T>* maximum(NDArray<T>* a, NDArray<T>* b) {
 		a->assertMatchShape(b->getShape());
-		
+
 		NDArray<T>* out = a->emptyLike();
 
 		for (int i = 0; i < a->getSize(); i++) {
 			out->set(i, std::max(a->get(i), b->get(i)));
 		}
-		
+
 		return out;
 	}
 
