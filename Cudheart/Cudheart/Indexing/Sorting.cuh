@@ -14,7 +14,6 @@ using Cudheart::NDArrays::NDArray;
 
 // note! some algorithms have a parallel implementation. take a look at that pls.
 
-
 namespace Cudheart::Sorting {
 	enum Kind {
 		Quicksort, Mergesort, Heapsort
@@ -42,7 +41,7 @@ namespace Cudheart::Sorting {
 			arr->set(high, temp);
 			return (i + 1);
 		}
-		
+
 		template <typename T>
 		void quicksort(NDArray<T>* arr, int low, int high) {
 			if (low > high) {
@@ -153,7 +152,6 @@ namespace Cudheart::Sorting {
 			// One by one extract an element
 			// from heap
 			for (int i = n - 1; i > 0; i--) {
-
 				// Move current root to end
 				T temp = arr->get(0);
 				arr->set(0, arr->get(i));
@@ -164,7 +162,7 @@ namespace Cudheart::Sorting {
 			}
 		}
 	}
-	
+
 	template <typename T>
 	NDArray<T>* quicksort(NDArray<T>* a) {
 		NDArray<T>* arr = a->copy();
@@ -185,18 +183,18 @@ namespace Cudheart::Sorting {
 		heapsort(arr, a->getSize());
 		return arr;
 	}
-	
+
 	template <typename T>
 	NDArray<T>* sort(NDArray<T>* a, Kind kind = Quicksort) {
 		switch (kind) {
-			case Quicksort:
-				return quicksort(a);
-			case Mergesort:
-				return mergesort(a);
-			case Heapsort:
-				return heapsort(a);
-			default:
-				return quicksort(a);
+		case Quicksort:
+			return quicksort(a);
+		case Mergesort:
+			return mergesort(a);
+		case Heapsort:
+			return heapsort(a);
+		default:
+			return quicksort(a);
 		}
 
 		return nullptr;
