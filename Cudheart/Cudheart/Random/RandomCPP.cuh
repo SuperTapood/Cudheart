@@ -273,9 +273,9 @@ namespace Cudheart::CPP::Random {
 		srand(getSeed());
 		NDArray<T>* out = x->emptyLike();
 		default_random_engine generator(getSeed());
-		std::exponential_distribution<T> dist;
 
 		for (int i = 0; i < x->getSize(); i++) {
+			std::exponential_distribution<T> dist(x->get(i));
 			out->set(i, dist(generator));
 		}
 
@@ -523,6 +523,151 @@ namespace Cudheart::CPP::Random {
 			T low = std::tgamma(N + 1) * std::gamma_distribution<>()(nv);
 			T right = std::pow(pv, n) * std::pow(1 - pv, N);
 			out->set(i, (high / low) * right);
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	inline NDArray<T>* normal(NDArray<T>* loc, NDArray<T>* scale) {
+		loc->assertMatchShape(scale);
+		srand(getSeed());
+		NDArray<T>* out = loc->emptyLike();
+
+		for (int i = 0; i < loc->getSize(); i++) {
+			T u = loc->get(i);
+			T o = scale->get(i);
+			T x = rand() / RAND_MAX;
+			T o2 = o * o;
+			T left = 1 / std::sqrt(2 * pi * o2);
+			T right = std::exp(-((std::pow(x - u, 2) / 2 * o2)));
+			out->set(i, left * right);
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	inline NDArray<T>* pareto(NDArray<T>* a) {
+		// assert all of a is positive
+		NDArray<T>* out = a->emptyLike();
+		srand(getSeed());
+
+		for (int i = 0; i < out->getSize(); i++) {
+			T x = rand() / RAND_MAX;
+			T av = a->get(i);
+			out->set(i, av / (std::pow(x, av + 1)));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	inline NDArray<T>* poisson(NDArray<T>* lam) {
+		NDArray<T>* out = lam->emptyLike();
+		srand(getSeed());
+
+		for (int i = 0; i < out->getSize(); i++) {
+			T k = rand() / RAND_MAX;
+			T lambda = lam->get(i);
+			T high = std::pow(lambda, k) * std::exp(-lambda);
+			T low = std::tgamma(k);
+			out->set(i, high / low);
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	inline NDArray<T>* power(NDArray<T>* a) {
+		// assert all of a is positive
+		NDArray<T>* out = a->emptyLike();
+		srand(getSeed());
+
+		for (int i = 0; i < out->getSize(); i++) {
+			T x = rand() / RAND_MAX;
+			T av = a->get(i);
+			out->set(i, av * std::pow(x, av - 1));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	inline NDArray<T>* rayleigh(NDArray<T>* scale) {
+		// assert scale >= 0
+		NDArray<T>* out = scale->emptyLike();
+		srand(getSeed());
+
+		for (int i = 0; i < out->getSize(); i++) {
+			T x = rand() / RAND_MAX;
+			T s = scale->get(i);
+			T left = x / std::pow(scale, 2);
+			T right = std::exp(((-std::pow(x, 2) / 2 * std::pow(scale, 2))));
+			out->set(i, left * right);
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	inline NDArray<T>* cauchy(NDArray<T>* x0, NDArray<T>* g) {
+		x0->assertMatchShape(g);
+		NDArray<T>* out = x0->emptyLike();
+		srand(getSeed());
+
+		for (int i = 0; i < x0->getSize(); i++) {
+			T x = rand() / RAND_MAX;
+			T xv = x0->get(i);
+			T gv = g->get(i);
+			T exp = 1 + std::pow(((x - xv) / gv), 2);
+			out->set(i, 1 / (pi * g * exp));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	inline Vector<T>* standardCauchy(int size) {
+		Vector<T>* x0 = Cudheart::VectorOps::zeros<T>(size);
+		Vector<T>* g = Cudheart::VectorOps::ones<T>(size);
+		return cauchy(x0, g);
+	}
+
+	template <typename T>
+	inline Matrix<T>* standardCauchy(int height, int width) {
+		Matrix<T>* x0 = Cudheart::MatrixOps::zeros<T>(height, width);
+		Matrix<T>* g = Cudheart::MatrixOps::ones<T>(height, width);
+		return cauchy(x0, g);
+	}
+
+	template <typename T>
+	inline Vector<T>* standardExponantial(int size) {
+		Vector<T>* scale = Cudheart::VectorOps::ones<T>(size);
+		return exponential(scale);
+	}
+
+	template <typename T>
+	inline Matrix<T>* standardExponantial(int height, int width) {
+		Matrix<T>* scale = Cudheart::MatrixOps::ones<T>(height, width);
+		return exponential(scale);
+	}
+
+	template <typename T>
+	inline NDArray<T>* standardT(NDArray<T>* df) {
+		// df > 0
+		NDArray<T>* out = df->emptyLike();
+
+		for (int i = 0; i < out->getSize(); i++) {
+			T x = rand() / RAND_MAX;
+			T d = df->get(i);
+			T high = std::gamma_distribution<>()((d + 1) / 2);
+			T low = std::sqrt(pi * d) * std::gamma_distribution<>()(d / 2);
+			T left = high / low;
+			T base = 1 + (std::pow(x, 2), d);
+			T p = -((df + 1) / 2);
+			T right = std::pow(base, p);
+			out->set(i, left * right);
 		}
 
 		return out;

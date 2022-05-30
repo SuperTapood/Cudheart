@@ -9,17 +9,6 @@ any ticked funcs are added, but incomplete
 
 ## rng
 ### generator
-- [ ] normal
-- [ ] pareto
-- [ ] poisson
-- [ ] power
-- [ ] rayleigh
-- [ ] standardCauchy
-- [ ] standardExponantial
-- [ ] standardGamma
-- [ ] standardNormal
-- [ ] standardT
-- [ ] triangular
 - [ ] uniform
 - [ ] vnmises
 - [ ] wald

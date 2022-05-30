@@ -76,3 +76,12 @@ a changelog list for the next build release
 - added logseries
 - added multinomial
 - added negativeBinomal
+- added normal
+- added pareto
+- added poisson
+- added power
+- added rayleigh
+- added cauchy
+- added standardCauchy
+- added standardExponantial
+- added standardT

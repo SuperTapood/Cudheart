@@ -88,6 +88,8 @@ The aim of this project is to provide a back-end framework for a Tensorflow-esqu
 - [ ] make sure ndarray objects are called with new using new overloads and shit
 - [ ] add assert match size and insert it where needed during axis update
 - [ ] add default parameters to functions
+- [ ] add factorial(int) (which is the same as tgamma(int + 1))
+- [ ] implement the numpy restrictions
 
 p.s.: future me, please do remember to do all of the computations on flat vectors, and convert them "outside" of the math ty xoxo
 
