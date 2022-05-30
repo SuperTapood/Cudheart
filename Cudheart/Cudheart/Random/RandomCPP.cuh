@@ -414,4 +414,117 @@ namespace Cudheart::CPP::Random {
 
 		return out;
 	}
+
+	template <typename T>
+	inline NDArray<T>* laplace(NDArray<T>* loc, NDArray<T>* scale) {
+		loc->assertMatchShape(scale);
+		srand(getSeed());
+		NDArray<T>* out = loc->emptyLike();
+
+		for (int i = 0; i < loc->getSize(); i++) {
+			T mew = loc->get(i);
+			T lambda = scale->get(i);
+			T x = (T)rand() / (T)RAND_MAX;
+			T left = (T)1 / (2 * lambda);
+			T right = std::exp(-((std::abs(x - mew) / lambda)));
+			out->set(i, left * right);
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	inline NDArray<T>* logistic(NDArray<T>* loc, NDArray<T>* scale) {
+		loc->assertMatchShape(scale);
+		srand(getSeed());
+		NDArray<T>* out = loc->emptyLike();
+
+		for (int i = 0; i < loc->getSize(); i++) {
+			T mew = loc->get(i);
+			T s = scale->get(i);
+			T x = (T)rand() / (T)RAND_MAX;
+			T high = std::exp(-((x - mew) / s));
+			T low = s * std::pow(1 + high, 2);
+			out->set(i, high / low);
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	inline NDArray<T>* lognormal(NDArray<T>* mean, NDArray<T>* sigma) {
+		mean->assertMatchShape(sigma);
+		srand(getSeed());
+		NDArray<T>* out = mean->emptyLike();
+
+		for (int i = 0; i < mean->getSize(); i++) {
+			T mew = mean->get(i);
+			T o = sigma->get(i);
+			T x = (T)rand() / (T)RAND_MAX;
+			T left = 1 / (o * x * std::sqrt(2 * pi));
+			T right = std::exp(-(std::pow(std::log(x) - mew, 2) / 2 * o * o));
+			out->set(i, left * right);
+		}
+	}
+
+	template <typename T>
+	inline NDArray<T>* logseries(NDArray<T>* p) {
+		srand(getSeed());
+		NDArray<T>* out = p->emptyLike();
+
+		for (int i = 0; i < p->getSize(); i++) {
+			T k = (T)rand() / (T)RAND_MAX;
+			T prob = p->get(i);
+			T high = -std::pow(prob, k);
+			T low = k * std::log(1 - prob);
+			out->set(i, high / low);
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	inline NDArray<T>* multinominal(int n, NDArray<T>* pvals) {
+		// assert that the sum of pvals is 1, and all values are between 0 and 1
+		srand(getSeed());
+		NDArray<T>* out = pvals->emptyLike();
+		
+		for (int i = 0; i < out->getSize(); i++) {
+			out->set(i, 0);
+		}
+
+		for (int i = 0; i < n; i++) {
+			T k = (T)rand() / (T)RAND_MAX;
+			T prob = 0;
+			for (int j = 0; j < pvals->getSize(); j++) {
+				prob += pvals->get(j);
+				if (k <= prob) {
+					out->set(j, out->get(j) + 1);
+					break;
+				}
+			}
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	inline NDArray<T>* negativeBinomal(NDArray<T>* n, NDArray<T>* p) {
+		n->assertMatchShape(p);
+		srand(getSeed());
+		NDArray<T>* out = n->emptyLike();
+		std::default_random_engine rng(getSeed());
+
+		for (int i = 0; i < n->getSize(); i++) {
+			T nv = n->get(i);
+			T pv = p->get(i); 
+			T N = rand();
+			T high = std::gamma_distribution<>()(nv + N);
+			T low = std::tgamma(N + 1) * std::gamma_distribution<>()(nv);
+			T right = std::pow(pv, n) * std::pow(1 - pv, N);
+			out->set(i, (high / low) * right);
+		}
+
+		return out;
+	}
 }

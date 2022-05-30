@@ -70,3 +70,9 @@ a changelog list for the next build release
 - added geometric
 - added gumbel
 - added hypergeometric
+- added laplace
+- added logistic
+- added lognormal
+- added logseries
+- added multinomial
+- added negativeBinomal

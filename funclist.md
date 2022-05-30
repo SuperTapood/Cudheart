@@ -9,16 +9,6 @@ any ticked funcs are added, but incomplete
 
 ## rng
 ### generator
-- [ ] laplace
-- [ ] logistic
-- [ ] lognormal
-- [ ] logseries
-- [ ] multinomial
-- [ ] multivariateHypergeometric
-- [ ] multivariateNormal
-- [ ] negativeBinomal
-- [ ] noncentralChisquare
-- [ ] noncentralF
 - [ ] normal
 - [ ] pareto
 - [ ] poisson
