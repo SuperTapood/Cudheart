@@ -58,6 +58,8 @@
     <ClInclude Include="Cudheart\Math\Complex\ComplexMathCPP.cuh" />
     <ClInclude Include="Cudheart\Random\RandomCPP.cuh" />
     <ClInclude Include="Cudheart\Random\Random.cuh" />
+    <ClInclude Include="Cudheart\Indexing\Indexing.cuh" />
+    <ClInclude Include="Cudheart\Indexing\Sorting.cuh" />
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="Sample\kernel.cu">

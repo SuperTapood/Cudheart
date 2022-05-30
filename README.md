@@ -87,10 +87,11 @@ The aim of this project is to provide a back-end framework for a Tensorflow-esqu
 - [ ] maybe add scalar overloads
 - [ ] make sure ndarray objects are called with new using new overloads and shit
 - [ ] add assert match size and insert it where needed during axis update
-- [ ] add default parameters to functions
+- [ ] add default parameters to all functions
 - [ ] add factorial(int) (which is the same as tgamma(int + 1))
 - [ ] implement the numpy restrictions
 - [ ] add more creation functions to ndarray, vector and matrix
+- [ ] add swap function to ndarray family
 
 p.s.: future me, please do remember to do all of the computations on flat vectors, and convert them "outside" of the math ty xoxo
 

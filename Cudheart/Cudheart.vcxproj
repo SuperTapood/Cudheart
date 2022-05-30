@@ -111,6 +111,8 @@
     <ClInclude Include="Cudheart\Exceptions\CudaException.cuh" />
     <ClInclude Include="Cudheart\Exceptions\IndexOutOfBoundsException.cuh" />
     <ClInclude Include="Cudheart\Exceptions\ZeroDivisionException.cuh" />
+    <ClInclude Include="Cudheart\Indexing\Indexing.cuh" />
+    <ClInclude Include="Cudheart\Indexing\Sorting.cuh" />
     <ClInclude Include="Cudheart\Math\BaseMath\BaseMath.cuh" />
     <ClInclude Include="Cudheart\Math\BaseMath\BaseMathCPP.cuh" />
     <ClInclude Include="Cudheart\Math\Bitwise\BitwiseCPP.cuh" />

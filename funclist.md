@@ -7,7 +7,6 @@ any ticked funcs are added, but incomplete
 - [X] solve
 
 ## sorting
-- [ ] sort
 - [ ] lexsort
 - [ ] argsort
 - [ ] sortComplex

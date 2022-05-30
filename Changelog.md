@@ -89,3 +89,7 @@ a changelog list for the next build release
 - added vnmises
 - added wald
 - added zipf
+- added quicksort
+- added mergesort
+- added heapsort
+- added sort
