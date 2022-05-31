@@ -61,6 +61,8 @@
     <ClInclude Include="Cudheart\Indexing\Indexing.cuh" />
     <ClInclude Include="Cudheart\Indexing\Sorting.cuh" />
     <ClInclude Include="Cudheart\Indexing\Searching.cuh" />
+    <ClInclude Include="Cudheart\Math\Statistics\Statistics.cuh" />
+    <ClInclude Include="Cudheart\Math\Statistics\StatisticsCPP.cuh" />
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="Sample\kernel.cu">

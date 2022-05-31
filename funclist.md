@@ -7,7 +7,6 @@ any ticked funcs are added, but incomplete
 - [X] solve
 
 ## statistics
-- [ ] ptp
 - [ ] percentile
 - [ ] nanpercentile
 - [ ] quantile

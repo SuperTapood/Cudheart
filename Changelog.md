@@ -106,3 +106,4 @@ a changelog list for the next build release
 - added searchsorted
 - added extract
 - added countNonzero
+- added ptp

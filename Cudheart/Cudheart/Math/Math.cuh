@@ -5,5 +5,5 @@
 #include "Complex/Complex.cuh"
 #include "Exps/Exps.cuh"
 #include "Linalg/Linalg.cuh"
+#include "Statistics/Statistics.cuh"
 #include "Trigo/Trigo.cuh"
-#include "Constants.cuh"
