@@ -314,8 +314,8 @@ namespace Cudheart::NDArrays {
 		/// </summary>
 		/// <param name="inplace"> - whether or not to transpose this matrix, or a copy of it</param>
 		/// <returns>this matrix transposed if inplace is true, else a transposed copy</returns>
-		Matrix<T>* transpose(bool inplace) {
-			Matrix<T>* mat = transpose();
+		NDArray<T>* transpose(bool inplace) {
+			Matrix<T>* mat = (Matrix<T>*)transpose();
 
 			if (inplace) {
 				setData(mat);
@@ -330,7 +330,7 @@ namespace Cudheart::NDArrays {
 		/// transpose a copy of this matrix
 		/// </summary>
 		/// <returns>a transposed copy of this matrix</returns>
-		Matrix<T>* transpose() {
+		NDArray<T>* transpose() {
 			Matrix<T>* mat = new Matrix<T>(m_width, m_height);
 
 			for (int i = 0; i < m_width; i++) {
@@ -490,7 +490,7 @@ namespace Cudheart::NDArrays {
 		/// return a flattened vector with the same raw data as this matrix
 		/// </summary>
 		/// <returns>the output vector</returns>
-		Vector<T>* flatten() {
+		NDArray<T>* flatten() {
 			Vector<T>* out = new Vector<T>(getSize());
 
 			for (int i = 0; i < getSize(); i++) {

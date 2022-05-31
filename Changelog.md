@@ -93,3 +93,16 @@ a changelog list for the next build release
 - added mergesort
 - added heapsort
 - added sort
+- added argsort
+- added partition
+- added argpartition
+- added argmax
+- added argmin
+- changed some ndarray properties
+- added nonzero
+- added flatnonzero
+- added argwhere
+- added where
+- added searchsorted
+- added extract
+- added countNonzero

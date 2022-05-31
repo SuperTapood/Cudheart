@@ -60,6 +60,7 @@
     <ClInclude Include="Cudheart\Random\Random.cuh" />
     <ClInclude Include="Cudheart\Indexing\Indexing.cuh" />
     <ClInclude Include="Cudheart\Indexing\Sorting.cuh" />
+    <ClInclude Include="Cudheart\Indexing\Searching.cuh" />
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="Sample\kernel.cu">

@@ -287,5 +287,20 @@ namespace Cudheart::NDArrays {
 
 			return out;
 		}
+
+		NDArray<T>* transpose() {
+			return copy();
+		}
+		
+		NDArray<T>* transpose(bool inplace) {
+			if (inplace) {
+				return this;
+			}
+			return copy();
+		}
+
+		NDArray<T>* flatten() {
+			return copy();
+		}
 	};
 }

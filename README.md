@@ -10,6 +10,7 @@ This library takes great inspiration and attempts to mimic the structure of pyth
 <br>
 The aim of this project is to provide a back-end framework for a Tensorflow-esque library to be developed at a later date.
 
+- [ ] make sure assert match size and assert match shape (what are you even doing bro) works the way its expected to work lol (default axis -1 checks restrictly, 0 for length = width, 1 for length = height)
 - [ ] add axis to everything
 - [ ] add more bitwise function variation
 - [ ] maybe add matrix and vector ops ndarray compatibility?
@@ -92,7 +93,9 @@ The aim of this project is to provide a back-end framework for a Tensorflow-esqu
 - [ ] implement the numpy restrictions
 - [ ] add more creation functions to ndarray, vector and matrix
 - [ ] add swap function to ndarray family
-
+- [ ] test the complex type compatibility with the rest of the functions
+- [ ] make most of the functions applicable to the classes themselves (i.e. a.add(b) instead of add(a,b))
+- [ ] make matrix ops not dependent on vector ops
 p.s.: future me, please do remember to do all of the computations on flat vectors, and convert them "outside" of the math ty xoxo
 
 

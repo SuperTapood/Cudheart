@@ -70,6 +70,9 @@ namespace Cudheart::NDArrays {
 
 		virtual NDArray<T>* emptyLike() = 0;
 
+		virtual NDArray<T>* transpose() = 0;
+		virtual NDArray<T>* transpose(bool inplace) = 0;
+
 		/// <summary>
 		/// get the number elements this ndarray contains
 		/// </summary>
@@ -100,5 +103,7 @@ namespace Cudheart::NDArrays {
 		virtual Shape* getShape() = 0;
 
 		virtual NDArray<T>* copy() = 0;
+
+		virtual NDArray<T>* flatten() = 0;
 	};
 }

@@ -120,8 +120,8 @@ namespace Cudheart::CPP::Math::Linalg {
 
 	template <typename T>
 	Matrix<T>* outer(Matrix<T>* a, Matrix<T>* b) {
-		Vector<T>* va = a->flatten();
-		Vector<T>* vb = b->flatten();
+		Vector<T>* va = (Vector<T>*)a->flatten();
+		Vector<T>* vb = (Vector<T>*)b->flatten();
 
 		Matrix<T>* out = empty<T>(a->getSize(), b->getSize());
 

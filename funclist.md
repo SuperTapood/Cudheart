@@ -6,23 +6,6 @@ any ticked funcs are added, but incomplete
 ## linalg
 - [X] solve
 
-## sorting
-- [ ] argsort
-- [ ] sortComplex
-- [ ] partition
-- [ ] argpartition
-## searching
-- [ ] argmax
-- [ ] nanargmax
-- [ ] argmin
-- [ ] nanargmin
-- [ ] argwhere
-- [ ] nonzero
-- [ ] flatnonzero
-- [ ] where
-- [ ] searchsorted
-- [ ] extract
-- [ ] countNonzero
 ## statistics
 - [ ] ptp
 - [ ] percentile
