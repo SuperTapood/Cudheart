@@ -7,12 +7,7 @@ any ticked funcs are added, but incomplete
 - [X] solve
 
 ## statistics
-- [ ] mean
-- [ ] std
-- [ ] var
-- [ ] corrcoef
 - [ ] correlate
-- [ ] cov
 - [ ] histogram
 - [ ] histogram2d
 - [ ] bincount

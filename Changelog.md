@@ -111,3 +111,8 @@ a changelog list for the next build release
 - added quantile
 - added median
 - added average
+- added mean
+- added std
+- added var
+- added corrcoef
+- added cov
