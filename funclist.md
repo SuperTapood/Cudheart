@@ -7,19 +7,9 @@ any ticked funcs are added, but incomplete
 - [X] solve
 
 ## statistics
-- [ ] percentile
-- [ ] nanpercentile
-- [ ] quantile
-- [ ] nanquantile
-- [ ] median
-- [ ] average
 - [ ] mean
 - [ ] std
 - [ ] var
-- [ ] nanmedian
-- [ ] nanmean
-- [ ] nanstd
-- [ ] nanvar
 - [ ] corrcoef
 - [ ] correlate
 - [ ] cov
@@ -30,7 +20,7 @@ any ticked funcs are added, but incomplete
 - [ ] digitize
 
 
-### from files? - not yet
+### from files?
 - [ ] fromFile
 - [ ] fromFunction
 - [ ] fromIter
@@ -86,9 +76,3 @@ any ticked funcs are added, but incomplete
 - [ ] isLower
 - [ ] isUpper
 - [ ] startsWith
-
-### sums and prods
-- [ ] nanProd
-- [ ] nanSum
-- [ ] nanCumProd
-- [ ] nanCumSum

@@ -107,3 +107,7 @@ a changelog list for the next build release
 - added extract
 - added countNonzero
 - added ptp
+- added percentile
+- added quantile
+- added median
+- added average
