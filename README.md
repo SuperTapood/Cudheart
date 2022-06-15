@@ -96,6 +96,8 @@ The aim of this project is to provide a back-end framework for a Tensorflow-esqu
 - [ ] test the complex type compatibility with the rest of the functions
 - [ ] make most of the functions applicable to the classes themselves (i.e. a.add(b) instead of add(a,b))
 - [ ] make matrix ops not dependent on vector ops
+- [ ] add more overloads to histogram2d
+
 p.s.: future me, please do remember to do all of the computations on flat vectors, and convert them "outside" of the math ty xoxo
 
 
@@ -130,13 +132,12 @@ class C {
 
 int main()
 {
-    cout<<"Hello World\n";
     C* c = new C();
     int a = 5;
     float b = 5.0;
-    does_something_special_with_pointer(a);
-    does_something_special_with_pointer(b);
-    does_something_special_with_pointer(c);
+    does_something_special_with_pointer(a); \\not pointer
+    does_something_special_with_pointer(b); \\not pointer
+    does_something_special_with_pointer(c); \\pointer
     return 0;
 }
 
