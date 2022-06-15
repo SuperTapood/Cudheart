@@ -6,12 +6,6 @@ any ticked funcs are added, but incomplete
 ## linalg
 - [X] solve
 
-## statistics
-- [ ] histogram2d
-- [ ] bincount
-- [ ] histogramBinEdges
-- [ ] digitize
-
 ### from files?
 - [ ] fromFile
 - [ ] fromFunction

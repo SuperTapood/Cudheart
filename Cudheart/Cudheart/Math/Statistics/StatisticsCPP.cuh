@@ -289,4 +289,73 @@ namespace Cudheart::CPP::Math::Statistics {
 
 		return out;
 	}
+
+	template <typename T>
+	inline Vector<int>* bincount(NDArray<T>* x) {
+		// assert bins > 0
+		// assert T is whole and maybe cast it
+		// maybe this helps?
+		Vector<int>* bins = new Vector<T>(Cudheart::Logic::maximum(x) + 1);
+		
+		for (int i = 0; i < bins->getSize(); i++) {
+			int count = 0;
+			for (int j = 0; j < x->getSize(); j++) {
+				if (x->get(j) == i) {
+					count++;
+				}
+			}
+			bins->set(i, count);
+		}
+
+		return bins;
+ 	}
+
+	template <typename T>
+	inline int digitize(T x, Vector<T>* bins, bool right = false, bool BinIncreasing =  true) {
+		if (right) {
+			if (BinIncreasing) {
+				for (int i = 1; i < bins->getSize(); i++) {
+					if (bins->get(i - 1) < x && x <= bins[i]) {
+						return i;
+					}
+				}
+			}
+			else {
+				for (int i = 1; i < bins->getSize(); i++) {
+					if (bins->get(i - 1) >= x && x > bins[i]) {
+						return i;
+					}
+				}
+			}
+		}
+		else {
+			if (BinIncreasing) {
+				for (int i = 1; i < bins->getSize(); i++) {
+					if (bins->get(i - 1) <= x && x < bins[i]) {
+						return i;
+					}
+				}
+			}
+			else {
+				for (int i = 1; i < bins->getSize(); i++) {
+					if (bins->get(i - 1) > x && x >= bins[i]) {
+						return i;
+					}
+				}
+			}
+		}
+		
+		return -1;
+	}
+
+	template <typename T>
+	inline Vector<int> digitize(Vector<T>* x, Vector<T>* bins, bool right = false, bool BinIncreasing = true) {
+		Vector<int>* out = (x->emptyLike)->castTo<int>();
+		
+		for (int i = 0; i < x->getSize(); i++) {
+			out->set(i, digitize(x->get(i), bins, right, BinIncreasing));
+		}
+
+		return out;
+	}
 }

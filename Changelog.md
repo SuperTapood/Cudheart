@@ -117,3 +117,5 @@ a changelog list for the next build release
 - added corrcoef
 - added cov
 - added histogram
+- added histogram2d
+- added digitize
