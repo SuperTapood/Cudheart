@@ -10,7 +10,7 @@ namespace Cudheart::NDArrays {
 	template <typename T>
 	class Matrix;
 
-	template <typename T>
+	template <class T>
 	class Vector : public NDArray<T> {
 	private:
 		int m_size;
