@@ -6,12 +6,13 @@ any ticked funcs are added, but incomplete
 ## linalg
 - [X] solve
 
-### from files?
+### from existing data
 - [ ] fromFile
 - [ ] fromFunction
-- [ ] fromIter
 - [ ] fromString
-- [ ] fromTxt
+- [ ] save
+- [ ] load
+
 ### joining and splitting arrays
 - [ ] concatenate
 - [ ] stack
