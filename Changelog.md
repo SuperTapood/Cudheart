@@ -116,3 +116,4 @@ a changelog list for the next build release
 - added var
 - added corrcoef
 - added cov
+- added histogram

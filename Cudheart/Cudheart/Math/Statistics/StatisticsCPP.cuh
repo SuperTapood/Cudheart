@@ -88,7 +88,7 @@ namespace Cudheart::CPP::Math::Statistics {
 
 	template <typename T>
 	inline T average(NDArray<T>* a, NDArray<T>* weights) {
-		a->assertMatchShape(weights);
+		a->assertMatchShape(weights->getShape());
 		T sumWeights;
 		T sumA;
 		
@@ -175,7 +175,7 @@ namespace Cudheart::CPP::Math::Statistics {
 
 	template <typename T>
 	Matrix<T>* corrcoef(Matrix<T>* x, bool rowvar = true) {
-		Matrix<T>* c = cov(x, rowvar);
+		Matrix<T>* c = cov<T>(x, rowvar);
 		Matrix<T>* r = (Matrix<T>*)c->emptyLike();
 
 		for (int i = 0; i < r->getHeight(); i++) {
@@ -189,5 +189,104 @@ namespace Cudheart::CPP::Math::Statistics {
 		delete c;
 
 		return r;
+	}
+
+	template <typename T>
+	Vector<T>* histogram(NDArray<T>* a, Vector<T>* bins, T low, T high) {
+		Vector<T>* out = bins->emptyLike();
+		T* arr = new T[bins->getSize() + 2];
+		
+		arr[0] = low;
+		arr[bins->getSize() + 1] = high;
+		
+		for (int i = 0; i < bins->getSize(); i++) {
+			out->set(i, 0);
+			arr[i] = bins->get(i + 1);
+		}
+
+		for (int i = 0; i < a->getSize(); i++) {
+			T elem = a->get(i);
+			for (int j = 1; j < bins->getSize() + 2; j++) {
+				if (elem >= arr[j - 1] && elem < arr[j]) {
+					out->set(j - 1, out->get(j - 1) + 1);
+					break;
+				}
+			}
+		}
+
+		for (int i = 0; i < bins->getSize() + 2; i++) {
+			delete arr[i];
+		}
+
+		delete[] arr;
+	}
+
+	template <typename T>
+	Vector<T>* histogram(NDArray<T>* a, Vector<T>* bins) {
+		return histogram(a, bins, Cudheart::Logic::minimum(a), Cudheart::Logic::maximum(a));
+	}
+
+	template <typename T>
+	Vector<T>* histogram(NDArray<T>* a, T low, T high) {
+		return histogram(a, bins, 10, low, high);
+	}
+
+	template <typename T>
+	Vector<T>* histogram(NDArray<T>* a, int bins) {
+		Vector<T>* bins = Cudheart::Math::linspace<T>(low, high, bins);
+		return histogram(a, bins, Cudheart::Logic::minimum(a), Cudheart::Logic::maximum(a));
+	}
+	
+	template <typename T>
+	Vector<T>* histogram(NDArray<T>* a) {
+		return histogram(a, 10, Cudheart::Logic::minimum(a), Cudheart::Logic::maximum(a));
+	}
+
+	template <typename T>
+	Matrix<T>* histogram2d(Vector<T>* x, Vector<T>* y, Vector<T>* binX, Vector<T>* binY, T lowX, T highX, T lowY, T highY) {
+		Vector<T>* xHist = histogram(x, binX, lowX, highX);
+		Vector<T>* yHist = histogram(y, binY, lowY, highY);
+		
+		Matrix<T>* out = new Matrix<T>(x->getSize(), y->getSize());
+		
+		for (int i = 0; i < x->getSize(); i++) {
+			for (int j = 0; j < y->getSize(); j++) {
+				out->set(i, j, xHist->get(i) * yHist->get(j));
+			}
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* histogram2d(Vector<T>* x, Vector<T>* y, Vector<T>* binX, Vector<T>* binY) {
+		Vector<T>* xHist = histogram(x, binX);
+		Vector<T>* yHist = histogram(y, binY);
+
+		Matrix<T>* out = new Matrix<T>(x->getSize(), y->getSize());
+
+		for (int i = 0; i < x->getSize(); i++) {
+			for (int j = 0; j < y->getSize(); j++) {
+				out->set(i, j, xHist->get(i) * yHist->get(j));
+			}
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* histogram2d(Vector<T>* x, Vector<T>* y, T lowX, T highX, T lowY, T highY) {
+		Vector<T>* xHist = histogram(x, lowX, highX);
+		Vector<T>* yHist = histogram(y, lowY, highY);
+
+		Matrix<T>* out = new Matrix<T>(x->getSize(), y->getSize());
+
+		for (int i = 0; i < x->getSize(); i++) {
+			for (int j = 0; j < y->getSize(); j++) {
+				out->set(i, j, xHist->get(i) * yHist->get(j));
+			}
+		}
+
+		return out;
 	}
 }

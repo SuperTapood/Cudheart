@@ -7,13 +7,10 @@ any ticked funcs are added, but incomplete
 - [X] solve
 
 ## statistics
-- [ ] correlate
-- [ ] histogram
 - [ ] histogram2d
 - [ ] bincount
 - [ ] histogramBinEdges
 - [ ] digitize
-
 
 ### from files?
 - [ ] fromFile
