@@ -53,6 +53,7 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.3151
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31517\include\cwchar
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31517\include\eh.h
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31517\include\exception
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31517\include\fstream
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31517\include\initializer_list
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31517\include\intrin0.h
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31517\include\intrin0.inl.h
@@ -153,6 +154,7 @@ C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include\vector_function
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include\vector_functions.hpp
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include\vector_types.h
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Arrays.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\IO.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\MatrixOps.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\NDArray.cuh
@@ -196,5 +198,7 @@ C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Trigo\Trigo.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Trigo\TrigoCPP.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\Random.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringOps\StringOps.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringOps\StringType.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Test\Test.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Util.cuh

@@ -119,3 +119,7 @@ a changelog list for the next build release
 - added histogram
 - added histogram2d
 - added digitize
+- added fromString
+- added fromFile
+- added load
+- added save

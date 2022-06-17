@@ -143,6 +143,8 @@
     <ClInclude Include="Cudheart\Math\Trigo\TrigoCPP.cuh" />
     <ClInclude Include="Cudheart\Random\Random.cuh" />
     <ClInclude Include="Cudheart\Random\RandomCPP.cuh" />
+    <ClInclude Include="Cudheart\StringOps\StringType.cuh" />
+    <ClInclude Include="Cudheart\StringOps\StringOps.cuh" />
     <ClInclude Include="Cudheart\Test\Test.cuh" />
     <ClInclude Include="Cudheart\Util.cuh" />
     <ClInclude Include="Sample\kernel.cuh" />

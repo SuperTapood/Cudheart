@@ -64,6 +64,8 @@
     <ClInclude Include="Cudheart\Math\Statistics\Statistics.cuh" />
     <ClInclude Include="Cudheart\Math\Statistics\StatisticsCPP.cuh" />
     <ClInclude Include="Cudheart\Arrays\IO.cuh" />
+    <ClInclude Include="Cudheart\StringOps\StringOps.cuh" />
+    <ClInclude Include="Cudheart\StringOps\StringType.cuh" />
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="Sample\kernel.cu">

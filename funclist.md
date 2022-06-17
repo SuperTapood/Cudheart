@@ -7,9 +7,7 @@ any ticked funcs are added, but incomplete
 - [X] solve
 
 ### from existing data
-- [ ] fromFile
 - [ ] fromFunction
-- [ ] fromString
 - [ ] save
 - [ ] load
 
