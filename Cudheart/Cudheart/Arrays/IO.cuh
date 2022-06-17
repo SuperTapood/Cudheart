@@ -178,4 +178,24 @@ namespace Cudheart::IO {
 	void save(std::string name, NDArray<T>* arr) {
 		save(name, arr, ' ');
 	}
+
+	template <typename T>
+	Vector<T>* fromFunction(T(*func)(int), int size) {
+		Vector<T>* out = new Vector<T>(size);
+		for (int i = 0; i < size; i++) {
+			out->set(i, func(i));
+		}
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* fromFunction(T(*func)(int, int), int height, int width) {
+		Matrix<T>* out = new Matrix<T>(height, width);
+		for (int i = 0; i < height; i++) {
+			for (int j = 0; j < width; j++) {
+				out->set(i, j, func(i, j));
+			}
+		}
+		return out;
+	}
 }

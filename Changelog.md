@@ -123,3 +123,4 @@ a changelog list for the next build release
 - added fromFile
 - added load
 - added save
+- added fromFunction

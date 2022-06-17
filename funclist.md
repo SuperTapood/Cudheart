@@ -6,11 +6,6 @@ any ticked funcs are added, but incomplete
 ## linalg
 - [X] solve
 
-### from existing data
-- [ ] fromFunction
-- [ ] save
-- [ ] load
-
 ### joining and splitting arrays
 - [ ] concatenate
 - [ ] stack
