@@ -5,6 +5,7 @@
 #include "../Util.cuh"
 #include "../Exceptions/Exceptions.cuh"
 #include "Vector.cuh"
+#include "Shape.cuh"
 
 namespace Cudheart::NDArrays {
 	using namespace Cudheart::Exceptions;

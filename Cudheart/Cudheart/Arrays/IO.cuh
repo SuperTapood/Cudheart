@@ -142,27 +142,52 @@ namespace Cudheart::IO {
 
 	template <typename T>
 	Vector<T>* load(std::string name, char sep, int count) {
-		return fromFile(name, sep, count)->castTo<T>();
+		Vector<StringType*>* vec = fromFile(name, sep, count);
+		Vector<T>* out = new Vector<T>(count);
+		for (int i = 0; i < count; i++) {
+			out->set(i, (T)atof(vec->get(i)->c_str()));
+		}
+		return out;
 	}
 
 	template <typename T>
 	Vector<T>* load(std::string name, char sep) {
-		return fromFile(name, sep)->castTo<T>();
+		Vector<StringType*>* vec = fromFile(name, sep);
+		Vector<T>* out = new Vector<T>(vec->getSize());
+		for (int i = 0; i < vec->getSize(); i++) {
+			out->set(i, (T)atof(vec->get(i)->c_str()));
+		}
+		return out;
 	}
 
 	template <typename T>
 	Vector<T>* load(std::string name, int count) {
-		return fromFile(name, ' ', count)->castTo<T>();
+		Vector<StringType*>* vec = fromFile(name, count);
+		Vector<T>* out = new Vector<T>(count);
+		for (int i = 0; i < count; i++) {
+			out->set(i, (T)atof(vec->get(i)->c_str()));
+		}
+		return out;
 	}
 
 	template <typename T>
 	Matrix<T>* load(std::string name, char sep, int height, int width) {
-		return fromFile(name, sep, height, width)->castTo<T>();
+		Matrix<StringType*>* mat = fromFile(name, sep, height, width);
+		Matrix<T>* out = new Matrix<T>(height, width);
+		for (int i = 0; i < out->getSize(); i++) {
+			out->set(i, (T)atof(mat->get(i)->c_str()));
+		}
+		return out;
 	}
 	
 	template <typename T>
 	Matrix<T>* load(std::string name, int height, int width) {
-		return fromFile(name, ' ', height, width)->castTo<T>();
+		Matrix<StringType*>* mat = fromFile(name, ' ', height, width);
+		Matrix<T>* out = new Matrix<T>(height, width);
+		for (int i = 0; i < out->getSize(); i++) {
+			out->set(i, (T)atof(mat->get(i)->c_str()));
+		}
+		return out;
 	}
 
 	template <typename T>

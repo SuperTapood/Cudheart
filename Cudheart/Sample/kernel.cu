@@ -2,9 +2,12 @@
 
 #include "cuda_runtime.h"
 #include "device_launch_parameters.h"
+#include "cuda.h"
 
 #include <stdio.h>
 #include <iostream>
+#include <chrono>
+#include <ctime> 
 
 using namespace std;
 
@@ -12,26 +15,43 @@ cudaError_t addWithCuda(int* c, const int* a, const int* b, unsigned int size);
 
 __global__ void addKernel(int* c, const int* a, const int* b)
 {
-	int i = threadIdx.x;
+	int i = blockIdx.x;
+	/*
+	c[i] = logf(a[i]) + logf(b[i]);
+	c[i] = sqrtf(c[i]);
+	int s = 50;
+	for (int i = 3; i < s; i+=i)
+	{
+		c[i] += 1;
+	}
+	*/
 	c[i] = a[i] + b[i];
+	// printf("%d: %d + %d = %d\n", i, a[i], b[i], c[i]);
 }
 
 int func()
 {
-	const int arraySize = 5;
-	const int a[arraySize] = { 1, 2, 3, 4, 5 };
-	const int b[arraySize] = { 10, 20, 30, 40, 50 };
-	int c[arraySize] = { 0 };
+	const int arraySize = 70000;
+	int a[arraySize];
+	int b[arraySize];
+	int c[arraySize];
+	
+	for (int i = 0; i < arraySize; i++) {
+		a[i] = (i + 1);
+		b[i] = (i + 1) * 10;
+	}
+	printf("cuda start\n");	
 
 	// Add vectors in parallel.
 	cudaError_t cudaStatus = addWithCuda(c, a, b, arraySize);
+	
 	if (cudaStatus != cudaSuccess) {
 		fprintf(stderr, "addWithCuda failed!");
 		return 1;
 	}
 
-	printf("{1,2,3,4,5} + {10,20,30,40,50} = {%d,%d,%d,%d,%d}\n",
-		c[0], c[1], c[2], c[3], c[4]);
+	//printf("{1,2,3,4,5} + {10,20,30,40,50} = {%d,%d,%d,%d,%d}\n",
+		//c[0], c[1], c[2], c[3], c[4]);
 
 	// cudaDeviceReset must be called before exiting in order for profiling and
 	// tracing tools such as Nsight and Visual Profiler to show complete traces.
@@ -40,6 +60,18 @@ int func()
 		fprintf(stderr, "cudaDeviceReset failed!");
 		return 1;
 	}
+
+	printf("cpp start\n");
+	auto start = std::chrono::system_clock::now();
+	for (int i = 0; i < arraySize; i++) {
+		c[i] = a[i] + b[i];
+	}
+	
+	auto end = std::chrono::system_clock::now();
+	std::chrono::duration<double> elapsed_seconds = end - start;
+	std::time_t end_time = std::chrono::system_clock::to_time_t(end);
+
+	std::cout << "elapsed time: " << elapsed_seconds.count() << "s" << std::endl;
 
 	return 0;
 }
@@ -58,8 +90,15 @@ cudaError_t addWithCuda(int* c, const int* a, const int* b, unsigned int size)
 		fprintf(stderr, "cudaSetDevice failed!  Do you have a CUDA-capable GPU installed?");
 		goto Error;
 	}
+	
+	cudaDeviceProp stDeviceProp;
+	cudaGetDeviceProperties(&stDeviceProp, 0);
+	if (!stDeviceProp.unifiedAddressing) {
+		fprintf(stderr, "fail");
+		goto Error;
+	}
 
-	cout << "c: " << dev_c << endl;
+	printf("Using device %d: %s\n", 0, stDeviceProp.name);
 
 	// Allocate GPU buffers for three vectors (two input, one output)    .
 	cudaStatus = cudaMalloc((void**)&dev_c, size * sizeof(int));
@@ -67,8 +106,6 @@ cudaError_t addWithCuda(int* c, const int* a, const int* b, unsigned int size)
 		fprintf(stderr, "cudaMalloc failed!");
 		goto Error;
 	}
-
-	cout << "c: " << dev_c << endl;
 
 	cudaStatus = cudaMalloc((void**)&dev_a, size * sizeof(int));
 	if (cudaStatus != cudaSuccess) {
@@ -95,8 +132,16 @@ cudaError_t addWithCuda(int* c, const int* a, const int* b, unsigned int size)
 		goto Error;
 	}
 
+	auto start = std::chrono::system_clock::now();
+	
 	// Launch a kernel on the GPU with one thread for each element.
-	addKernel << <1, size >> > (dev_c, dev_a, dev_b);
+	addKernel <<<size, 1>>> (dev_c, dev_a, dev_b);
+
+	auto end = std::chrono::system_clock::now();
+	std::chrono::duration<double> elapsed_seconds = end - start;
+	std::time_t end_time = std::chrono::system_clock::to_time_t(end);
+
+	std::cout << "elapsed time: " << elapsed_seconds.count() << "s" << std::endl;
 
 	// Check for any errors launching the kernel
 	cudaStatus = cudaGetLastError();

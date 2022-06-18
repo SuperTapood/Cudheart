@@ -3,6 +3,7 @@
 #include "NDArray.cuh"
 #include "../CUtil/CUtil.cuh"
 #include "../Exceptions/Exceptions.cuh"
+#include "Shape.cuh"
 
 // check about using longs and stuff as lengths and indices for bigger tensors
 
@@ -63,7 +64,7 @@ namespace Cudheart::NDArrays {
 
 		/// destroy the vector
 		~Vector() {
-			delete[] m_data;
+			delete[] m_data; 
 		}
 
 		/// <summary>

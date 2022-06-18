@@ -144,3 +144,16 @@ int main()
 ```
 
 use the code above with (https://www.boost.org/doc/libs/1_74_0/libs/math/doc/html/math_toolkit/result_type.html) and (https://github.com/boostorg/math/blob/b2538faaf9802af8e856c603b9001e33db826676/include/boost/math/tools/promotion.hpp) to do type forcing and enable the use of different types in a function
+
+
+
+use unified memory instead of regular cuda memory to save time. (see refrences)
+
+references:
+- https://programs.wiki/wiki/unified-virtual-addressing-unified-memory-addressing-for-memory-management.html
+- https://developer.download.nvidia.com/CUDA/training/cuda_webinars_GPUDirect_uva.pdf
+
+
+general links:
+- https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html
+- 
