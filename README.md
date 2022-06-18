@@ -156,4 +156,9 @@ references:
 
 general links:
 - https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html
-- 
+- https://docs.nvidia.com/cuda/thrust/index.html
+- https://www.run.ai/guides/nvidia-cuda-basics-and-best-practices/cuda-programming
+- https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/index.html
+- https://www.olcf.ornl.gov/wp-content/uploads/2013/02/Intro_to_CUDA_C-TS.pdf
+- https://www3.nd.edu/~zxu2/acms60212-40212/CUDA_C_Programming_Guide.pdf
+- https://www.cs.utexas.edu/~rossbach/cs380p/papers/cuda-programming.pdf
