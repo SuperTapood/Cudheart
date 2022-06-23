@@ -64,7 +64,7 @@ namespace Cudheart::NDArrays {
 
 		/// destroy the vector
 		~Vector() {
-			delete[] m_data; 
+			delete[] m_data;
 		}
 
 		/// <summary>
@@ -292,7 +292,7 @@ namespace Cudheart::NDArrays {
 		NDArray<T>* transpose() {
 			return copy();
 		}
-		
+
 		NDArray<T>* transpose(bool inplace) {
 			if (inplace) {
 				return this;

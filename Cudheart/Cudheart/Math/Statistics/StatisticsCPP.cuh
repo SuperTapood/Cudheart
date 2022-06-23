@@ -19,8 +19,7 @@ namespace Cudheart::CPP::Math::Statistics {
 	int ptp(NDArray<T>* a) {
 		return Cudheart::Logic::amax(a) - Cudheart::Logic::amin(a);
 	}
-	
-	
+
 	template <typename T>
 	inline T percentile(NDArray<T>* a, float q) {
 		// 0 <= q <= 100
@@ -29,7 +28,6 @@ namespace Cudheart::CPP::Math::Statistics {
 
 		double temp = (q / 100) * sorted->getSize();
 		int index;
-
 
 		if (temp != (int)temp) {
 			if ((temp - (int)temp) >= 0.5) {
@@ -43,14 +41,13 @@ namespace Cudheart::CPP::Math::Statistics {
 		}
 		else {
 			index = (int)temp;
-			
+
 			T i = sorted->get(index - 1);
 			T j = sorted->get(index);
 
 			return (i + j) / 2;
 		}
-		
-		
+
 		return NULL;
 	}
 
@@ -61,7 +58,7 @@ namespace Cudheart::CPP::Math::Statistics {
 		for (int i = 0; i < q->getSize(); i++) {
 			out->set(i, percentile(a, q->get(i)));
 		}
-		
+
 		return out;
 	}
 
@@ -91,7 +88,7 @@ namespace Cudheart::CPP::Math::Statistics {
 		a->assertMatchShape(weights->getShape());
 		T sumWeights;
 		T sumA;
-		
+
 		for (int i = 0; i < a->getSize(); i++) {
 			sumWeights += weights->get(i);
 			sumA += (a->get(i) * weights->get(i));
@@ -120,7 +117,7 @@ namespace Cudheart::CPP::Math::Statistics {
 	inline T std(NDArray<T>* a) {
 		T sum = 0;
 		T m = mean<T>(a);
-		
+
 		for (int i = 0; i < a->getSize(); i++) {
 			sum += std::pow(a->get(i) - m, 2);
 		}
@@ -143,7 +140,7 @@ namespace Cudheart::CPP::Math::Statistics {
 	template <typename T>
 	inline Matrix<T>* cov(Matrix<T>* m) {
 		T v = Cudheart::CPP::Math::sum(m);
-		
+
 		Matrix<T>* nm = (Matrix<T>*)m->emptyLike();
 
 		for (int i = 0; i < nm->getSize(); i++) {
@@ -155,7 +152,7 @@ namespace Cudheart::CPP::Math::Statistics {
 		Matrix<T>* mat = Cudheart::MatrixOps::fullLike(dotProduct, v2);
 
 		Matrix<T>* res = Cudheart::CPP::Math::multiply(mat, dotProduct);
-		
+
 		delete dotProduct, nm, mat, v2, v;
 
 		return res;
@@ -185,7 +182,7 @@ namespace Cudheart::CPP::Math::Statistics {
 				r->set(i, j, high / low);
 			}
 		}
-		
+
 		delete c;
 
 		return r;
@@ -195,10 +192,10 @@ namespace Cudheart::CPP::Math::Statistics {
 	Vector<T>* histogram(NDArray<T>* a, Vector<T>* bins, T low, T high) {
 		Vector<T>* out = bins->emptyLike();
 		T* arr = new T[bins->getSize() + 2];
-		
+
 		arr[0] = low;
 		arr[bins->getSize() + 1] = high;
-		
+
 		for (int i = 0; i < bins->getSize(); i++) {
 			out->set(i, 0);
 			arr[i] = bins->get(i + 1);
@@ -236,7 +233,7 @@ namespace Cudheart::CPP::Math::Statistics {
 		Vector<T>* bins = Cudheart::Math::linspace<T>(low, high, bins);
 		return histogram(a, bins, Cudheart::Logic::minimum(a), Cudheart::Logic::maximum(a));
 	}
-	
+
 	template <typename T>
 	Vector<T>* histogram(NDArray<T>* a) {
 		return histogram(a, 10, Cudheart::Logic::minimum(a), Cudheart::Logic::maximum(a));
@@ -246,9 +243,9 @@ namespace Cudheart::CPP::Math::Statistics {
 	Matrix<T>* histogram2d(Vector<T>* x, Vector<T>* y, Vector<T>* binX, Vector<T>* binY, T lowX, T highX, T lowY, T highY) {
 		Vector<T>* xHist = histogram(x, binX, lowX, highX);
 		Vector<T>* yHist = histogram(y, binY, lowY, highY);
-		
+
 		Matrix<T>* out = new Matrix<T>(x->getSize(), y->getSize());
-		
+
 		for (int i = 0; i < x->getSize(); i++) {
 			for (int j = 0; j < y->getSize(); j++) {
 				out->set(i, j, xHist->get(i) * yHist->get(j));
@@ -296,7 +293,7 @@ namespace Cudheart::CPP::Math::Statistics {
 		// assert T is whole and maybe cast it
 		// maybe this helps?
 		Vector<int>* bins = new Vector<T>(Cudheart::Logic::maximum(x) + 1);
-		
+
 		for (int i = 0; i < bins->getSize(); i++) {
 			int count = 0;
 			for (int j = 0; j < x->getSize(); j++) {
@@ -308,10 +305,10 @@ namespace Cudheart::CPP::Math::Statistics {
 		}
 
 		return bins;
- 	}
+	}
 
 	template <typename T>
-	inline int digitize(T x, Vector<T>* bins, bool right = false, bool BinIncreasing =  true) {
+	inline int digitize(T x, Vector<T>* bins, bool right = false, bool BinIncreasing = true) {
 		if (right) {
 			if (BinIncreasing) {
 				for (int i = 1; i < bins->getSize(); i++) {
@@ -344,14 +341,14 @@ namespace Cudheart::CPP::Math::Statistics {
 				}
 			}
 		}
-		
+
 		return -1;
 	}
 
 	template <typename T>
 	inline Vector<int> digitize(Vector<T>* x, Vector<T>* bins, bool right = false, bool BinIncreasing = true) {
 		Vector<int>* out = (x->emptyLike)->castTo<int>();
-		
+
 		for (int i = 0; i < x->getSize(); i++) {
 			out->set(i, digitize(x->get(i), bins, right, BinIncreasing));
 		}

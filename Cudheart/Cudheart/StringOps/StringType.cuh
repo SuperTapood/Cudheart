@@ -6,7 +6,7 @@ namespace Cudheart {
 	class StringType {
 	public:
 		std::string m_str;
-		
+
 	public:
 		StringType(std::string string) {
 			m_str = string;

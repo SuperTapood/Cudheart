@@ -51,7 +51,7 @@ namespace Cudheart::IO {
 	inline Vector<Cudheart::StringType*>* fromString(std::string str) {
 		return fromString(str, ' ');
 	}
-	
+
 	inline Vector<Cudheart::StringType*>* fromFile(std::string name, char sep, int count) {
 		string temp;
 		string all;
@@ -60,9 +60,9 @@ namespace Cudheart::IO {
 		while (getline(file, temp)) {
 			all += temp;
 		}
-		
+
 		Vector<Cudheart::StringType*>* out = fromString(all, sep, count);
-		
+
 		file.close();
 
 		return out;
@@ -179,7 +179,7 @@ namespace Cudheart::IO {
 		}
 		return out;
 	}
-	
+
 	template <typename T>
 	Matrix<T>* load(std::string name, int height, int width) {
 		Matrix<StringType*>* mat = fromFile(name, ' ', height, width);

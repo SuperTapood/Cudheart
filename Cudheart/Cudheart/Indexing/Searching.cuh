@@ -1,12 +1,11 @@
 #pragma once
 
-
 namespace Cudheart::Searching {
 	template <typename T>
 	int argmax(NDArray<T>* a) {
 		int index = 0;
 		T value = a->get(0);
-		
+
 		for (int i = 1; i < a->size(); i++) {
 			if (a->get(i) < value) {
 				value = a->get(i);
@@ -35,7 +34,7 @@ namespace Cudheart::Searching {
 	template <typename T>
 	Vector<T>* nonzero(Vector<T>* vec) {
 		int count = 0;
-		
+
 		for (int i = 0; i < vec->getSize(); i++) {
 			if (vec->get(i) != 0) {
 				count++;
@@ -58,7 +57,7 @@ namespace Cudheart::Searching {
 	template <typename T>
 	Matrix<T>* nonzero(Matrix<T>* mat) {
 		int count = 0;
-		
+
 		for (int i = 0; i < mat->getSize(); i++) {
 			if (mat->get(i) != 0) {
 				count++;
@@ -66,7 +65,7 @@ namespace Cudheart::Searching {
 		}
 
 		Matrix<T>* result = new Matrix<T>(2, count);
-		
+
 		int index = 0;
 		for (int i = 0; mat->getHeight(); i++) {
 			for (int j = 0; j < mat->getWidth(); j++) {
@@ -80,7 +79,6 @@ namespace Cudheart::Searching {
 
 		return result;
 	}
-
 
 	template <typename T>
 	NDArray<T>* argwhere(NDArray<T>* a) {
@@ -168,7 +166,7 @@ namespace Cudheart::Searching {
 	}
 
 	template <typename T>
-	inline Vector<int>* searchsorted(Vector<T>* a, Vector<T>* v, string side,	Vector<int>* sorter) {
+	inline Vector<int>* searchsorted(Vector<T>* a, Vector<T>* v, string side, Vector<int>* sorter) {
 		Vector<int>* out = new Vector<int>(a->getSize());
 
 		for (int i = 0; i < out->getSize(); i++) {
@@ -203,7 +201,7 @@ namespace Cudheart::Searching {
 	inline Vector<T>* extract(Vector<bool>* condition, Vector<T>* arr) {
 		condition->assertMatchShape(arr);
 		int size = 0;
-		
+
 		for (int i = 0; i < condition->getSize(); i++) {
 			if (condition->get(i)) {
 				size++;
@@ -226,7 +224,7 @@ namespace Cudheart::Searching {
 	template <typename T>
 	int count_nonzero(NDArray<T>* a) {
 		int count = 0;
-		
+
 		for (int i = 0; i < a->getSize(); i++) {
 			if (a->get(i) != 0) {
 				count++;

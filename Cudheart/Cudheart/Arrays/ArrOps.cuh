@@ -1,6 +1,4 @@
 #pragma once
 
-
-namespace Cudheart::ArrayOps{
-	
+namespace Cudheart::ArrayOps {
 }
