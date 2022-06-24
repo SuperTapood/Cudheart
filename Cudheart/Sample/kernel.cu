@@ -17,16 +17,17 @@ __global__ void addKernel(int* c, const int* a, const int* b, int n)
 {
 	int i = threadIdx.x + blockIdx.x * blockDim.x;
 
-	int v;
-	for (int j = 0; j < 500; j++) {
-		v = logf(a[i]) + logf(b[i]);
-		v = sqrtf(v);
-		int s = 50;
-		for (int i = 3; i < s; i += i)
-		{
-			v += 1;
-		}
-	}
+	//int v;
+	//for (int j = 0; j < 500; j++) {
+	//	v = logf(a[i]) + logf(b[i]);
+	//	v = sqrtf(v);
+	//	int s = 50;
+	//	for (int i = 3; i < s; i += i)
+	//	{
+	//		v += 1;
+	//	}
+	//}
+
 	if (i < n) {
 		c[i] = a[i] + b[i];
 	}
@@ -34,7 +35,7 @@ __global__ void addKernel(int* c, const int* a, const int* b, int n)
 
 int func()
 {
-	unsigned long long arraySize = 50000;
+	unsigned long long arraySize = 5000000;
 	int* a = new int[arraySize];
 	int* b = new int[arraySize];
 	int* ca = new int[arraySize];
@@ -63,7 +64,7 @@ int func()
 	printf("cpp start\n");
 	auto start = std::chrono::system_clock::now();
 	for (int i = 0; i < arraySize; i++) {
-		int v;
+		/*int v;
 		for (int j = 0; j < 500; j++) {
 			v = logf(a[i]) + logf(b[i]);
 			v = sqrtf(v);
@@ -72,10 +73,8 @@ int func()
 			{
 				v += 1;
 			}
-		}
+		}*/
 		cb[i] = a[i] + b[i];
-
-		cout << "\ncomputing i " << i;
 	}
 
 	auto end = std::chrono::system_clock::now();
@@ -85,7 +84,6 @@ int func()
 	std::cout << "elapsed time: " << elapsed_seconds.count() << "s" << std::endl;
 
 	for (int i = 0; i < arraySize; i++) {
-		printf("comparing i %d\n", i);
 		if (ca[i] != cb[i]) {
 			printf("%d: %d + %d = ", i, a[i], b[i]);
 			printf("%d == %d\n", ca[i], cb[i]);

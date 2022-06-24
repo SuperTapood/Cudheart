@@ -7,17 +7,12 @@ any ticked funcs are added, but incomplete
 - [X] solve
 
 ### joining and splitting arrays
-- [ ] concatenate
-- [ ] stack
-- [ ] columnStack
-- [ ] rowStack
 - [ ] split
 - [ ] tile
 - [ ] repeat
 ### modify
 - [ ] delete
 - [ ] insert
-- [ ] append
 - [ ] resize
 - [ ] trimZero
 - [ ] unique

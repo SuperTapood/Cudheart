@@ -5,6 +5,6 @@
 using Cudheart::Exceptions::CudaException;
 
 void main() {
-	func();
-	//test();
+	// func();
+	test();
 }

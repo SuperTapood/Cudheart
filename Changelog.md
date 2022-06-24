@@ -124,3 +124,5 @@ a changelog list for the next build release
 - added load
 - added save
 - added fromFunction
+- added concatenate
+- added append
