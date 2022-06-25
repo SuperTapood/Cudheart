@@ -4,7 +4,8 @@
 
 using Cudheart::Exceptions::CudaException;
 
-void main() {
-	// func();
+int main() {
+	func();
 	test();
+	return 0;
 }

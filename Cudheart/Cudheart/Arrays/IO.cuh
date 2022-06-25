@@ -123,7 +123,6 @@ namespace Cudheart::IO {
 		string temp;
 		string all;
 		std::ifstream file(name);
-		int count = height * width;
 
 		while (getline(file, temp)) {
 			all += temp;

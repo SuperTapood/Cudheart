@@ -126,3 +126,5 @@ a changelog list for the next build release
 - added fromFunction
 - added concatenate
 - added append
+- added split
+- added tile

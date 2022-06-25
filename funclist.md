@@ -5,11 +5,6 @@ any ticked funcs are added, but incomplete
 ## array manipulation
 ## linalg
 - [X] solve
-
-### joining and splitting arrays
-- [ ] split
-- [ ] tile
-- [ ] repeat
 ### modify
 - [ ] delete
 - [ ] insert

@@ -146,8 +146,9 @@ int main()
 use the code above with (https://www.boost.org/doc/libs/1_74_0/libs/math/doc/html/math_toolkit/result_type.html) and (https://github.com/boostorg/math/blob/b2538faaf9802af8e856c603b9001e33db826676/include/boost/math/tools/promotion.hpp) to do type forcing and enable the use of different types in a function
 
 
+p.s.s.s: use unified memory instead of regular cuda memory to save time. (see refrences)
 
-use unified memory instead of regular cuda memory to save time. (see refrences)
+p.s.s.s.s: it takes a lot longer to invoke a kernel than it does to actually execute it, so its better to make kernels bigger than to invoke multiple of them. this is proven by how little difference there is between cuda and cpp implementations during an increase in complexity
 
 references:
 - https://programs.wiki/wiki/unified-virtual-addressing-unified-memory-addressing-for-memory-management.html

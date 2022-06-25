@@ -35,7 +35,7 @@ __global__ void addKernel(int* c, const int* a, const int* b, int n)
 
 int func()
 {
-	unsigned long long arraySize = 5000000;
+	long long arraySize = 5000000;
 	int* a = new int[arraySize];
 	int* b = new int[arraySize];
 	int* ca = new int[arraySize];
@@ -203,7 +203,7 @@ std::chrono::duration<double> addWithCuda(int* c, const int* a, const int* b, un
 	// any errors encountered during the launch.
 	cudaStatus = cudaDeviceSynchronize();
 	if (cudaStatus != cudaSuccess) {
-		fprintf(stderr, "cudaDeviceSynchronize returned error code %f after launching addKernel!\n", cudaStatus);
+		fprintf(stderr, "cudaDeviceSynchronize returned error code %d after launching addKernel!\n", cudaStatus);
 		cudaFree(dev_c);
 		cudaFree(dev_a);
 		cudaFree(dev_b);

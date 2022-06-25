@@ -99,7 +99,7 @@ namespace Cudheart::ArrayOps {
 			elems++;
 			if (elems == sizes) {
 				elems = 0;
-				Vector<T>* vec = out[vectorIndex++];
+				Vector<T>* v = out[vectorIndex++];
 			}
 		}
 
@@ -108,7 +108,92 @@ namespace Cudheart::ArrayOps {
 
 	template <typename T>
 	Matrix<T>** split(Matrix<T>* mat, int sizes) {
+		// add axis parameter
+		// currently assumes axis = 0
+
 		int len = ceil(mat->getWidth() / sizes);
 		Matrix<T>** out = (Matrix<T>**)malloc(sizeof(Matrix<T>*) * len);
+		
+		int count = mat->getWidth();
+		for (int i = 0; i < len; i++) {
+			if (count > sizes) {
+				out[i] = new Matrix<T>(mat->getHeight(), sizes);
+				count -= sizes;
+			}
+			else {
+				out[i] = new Matrix<T>(mat->getHeight(), count);
+				break;
+			}
+		}
+
+		int matrixIndex = 0;
+		int elems = 0;
+		Matrix<T>* m = out[matrixIndex];
+		for (int i = 0; i < mat->getWidth(); i++) { 
+			for (int j = 0; j < mat->getHeight(); j++) {
+				m->set(elems, mat->get(j, i));
+			}
+			elems++;
+			if (elems == sizes) {
+				elems = 0;
+				Matrix<T>* m = out[matrixIndex++];
+			}
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Vector<T>* tile(Vector<T>* a, int reps) {
+		Vector<T>* out = new Vector<T>(a->getSize() * reps);
+
+		for (int i = 0; i < a->getSize() * reps; i++) {
+			out->set(i, a->get(i % a->getSize()));
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* tile(Vector<T>* a, int wReps, int hReps) {
+		Matrix<T>* out = new Matrix<T>(hReps, a->getSize() * wReps);
+
+		for (int i = 0; i < hReps; i++) {
+			for (int j = 0; j < a->getSize() * wReps; j++) {
+				out->set(i, j, a->get(j % a->getSize()));
+			}
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* tile(Matrix<T>* a, int reps) {
+		// add axis
+		// assumes axis = 0
+		Matrix<T>* out = new Matrix<T>(a->getHeight(), a->getWidth() * reps);
+
+		for (int i = 0; i < out->getHeight(); i++) {
+			for (int j = 0; j < out->getWidth(); j++) {
+				out->set(i, j, a->get(i, j % a->getWidth()));
+			}
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* tile(Matrix<T>* a, int hReps, int rReps) {
+		// add axis
+		// assumes axis = 0
+		Matrix<T>* out = new Matrix<T>(a->getHeight() * hReps, a->getWidth() * wReps);
+
+		for (int i = 0; i < out->getHeight(); i++) {
+			for (int j = 0; j < out->getWidth(); j++) {
+				out->set(i, j, a->get(i % a->getHeight(), j % a->getWidth()));
+			}
+		}
+
+		return out;
 	}
 }
