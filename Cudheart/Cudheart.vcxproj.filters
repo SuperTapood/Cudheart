@@ -64,10 +64,11 @@
     <ClInclude Include="Cudheart\Math\Statistics\Statistics.cuh" />
     <ClInclude Include="Cudheart\Math\Statistics\StatisticsCPP.cuh" />
     <ClInclude Include="Cudheart\Arrays\IO.cuh" />
-    <ClInclude Include="Cudheart\StringOps\StringOps.cuh" />
-    <ClInclude Include="Cudheart\StringOps\StringType.cuh" />
+    <ClInclude Include="Cudheart\StringTypes\StringTypes.cuh" />
+    <ClInclude Include="Cudheart\StringTypes\StringType.cuh" />
     <ClInclude Include="Cudheart\Arrays\Shape.cuh" />
     <ClInclude Include="Cudheart\Arrays\ArrOps.cuh" />
+    <ClInclude Include="Cudheart\StringTypes\StringOps.cuh" />
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="Sample\kernel.cu">
@@ -79,7 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />
-    <None Include="..\funclist.md" />
+    <None Include="..\roadmap.md" />
     <None Include="..\Changelog.md" />
   </ItemGroup>
 </Project>

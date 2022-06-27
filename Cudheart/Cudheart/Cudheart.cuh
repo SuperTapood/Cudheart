@@ -6,5 +6,5 @@
 #include "Logic/Logic.cuh"
 #include "Math/Math.cuh"
 #include "Random/Random.cuh"
-#include "StringOps/StringOps.cuh"
+#include "StringTypes/StringTypes.cuh"
 #include "Constants.cuh"

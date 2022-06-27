@@ -17,16 +17,16 @@ __global__ void addKernel(int* c, const int* a, const int* b, int n)
 {
 	int i = threadIdx.x + blockIdx.x * blockDim.x;
 
-	//int v;
-	//for (int j = 0; j < 500; j++) {
-	//	v = logf(a[i]) + logf(b[i]);
-	//	v = sqrtf(v);
-	//	int s = 50;
-	//	for (int i = 3; i < s; i += i)
-	//	{
-	//		v += 1;
-	//	}
-	//}
+	int v;
+	for (int j = 0; j < 500; j++) {
+		v = logf(a[i]) + logf(b[i]);
+		v = sqrtf(v);
+		int s = 50;
+		for (int i = 3; i < s; i += i)
+		{
+			v += 1;
+		}
+	}
 
 	if (i < n) {
 		c[i] = a[i] + b[i];
@@ -64,7 +64,7 @@ int func()
 	printf("cpp start\n");
 	auto start = std::chrono::system_clock::now();
 	for (int i = 0; i < arraySize; i++) {
-		/*int v;
+		int v;
 		for (int j = 0; j < 500; j++) {
 			v = logf(a[i]) + logf(b[i]);
 			v = sqrtf(v);
@@ -73,7 +73,7 @@ int func()
 			{
 				v += 1;
 			}
-		}*/
+		}
 		cb[i] = a[i] + b[i];
 	}
 

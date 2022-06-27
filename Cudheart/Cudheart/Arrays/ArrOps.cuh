@@ -8,6 +8,8 @@
 
 using Cudheart::NDArrays::Matrix;
 using Cudheart::NDArrays::Vector;
+using Cudheart::NDArrays::NDArray;
+using Cudheart::VectorOps::zeros;
 using namespace Cudheart::Exceptions;
 
 namespace Cudheart::ArrayOps {
@@ -183,7 +185,7 @@ namespace Cudheart::ArrayOps {
 	}
 
 	template <typename T>
-	Matrix<T>* tile(Matrix<T>* a, int hReps, int rReps) {
+	Matrix<T>* tile(Matrix<T>* a, int hReps, int wReps) {
 		// add axis
 		// assumes axis = 0
 		Matrix<T>* out = new Matrix<T>(a->getHeight() * hReps, a->getWidth() * wReps);
@@ -195,5 +197,162 @@ namespace Cudheart::ArrayOps {
 		}
 
 		return out;
+	}
+
+	template <typename T>
+	Vector<T>* remove(Vector<T>* arr, int index, int axis) {
+		Vector<T>* vec = new Vector<T>(arr->getSize() - 1);
+
+		int idx = 0;
+		for (int i = 0; i < arr->getSize(); i++) {
+			if (i == index) {
+				continue;
+			}
+			vec->set(idx++, arr->get(i));
+		}
+
+		return vec;
+	}
+
+	template <typename T>
+	Matrix<T>* remove(Matrix<T>* arr, int index, int axis) {
+		if (axis == 0) {
+			Matrix<T>* mat = new Matrix<T>(arr->getHeight() - 1, arr->getWidth());
+
+			int count = 0;
+			for (int i = 0; i < arr->getHeight(); i++) {
+				if (i == index) {
+					continue;
+				}
+
+				for (int j = 0; j < arr->getWidth(); j++) {
+					mat->set(count++, j, arr->get(i, j));
+				}
+			}
+
+			return mat;
+		}
+		else if (axis == 1) {
+			Matrix<T>* mat = new Matrix<T>(arr->getHeight(), arr->getWidth() - 1);
+
+			for (int i = 0; i < arr->getHeight(); i++) {
+				int count = 0;
+				for (int j = 0; j < arr->getWidth(); j++) {
+					if (j == index) {
+						continue;
+					}
+					mat->set(i, count, arr->get(i, j));
+				}
+			}
+
+			return mat;
+		}
+		return nullptr;
+	}
+
+	template <typename T>
+	Vector<T>* trimZeros(NDArray<T>* filt, string trim = "fb") {
+		int start = 0;
+		int end = filt->getSize();
+		if (trim == "fb") {
+			for (; start < filt->getSize(); start++) {
+				if (filt->get(start) != 0) {
+					break;
+				}
+			}
+
+			for (; end > start; end--) {
+				if (filt->get(end) != 0) {
+					break;
+				}
+			}
+		} else if (trim == "f") {
+			for (; start < filt->getSize(); start++) {
+				if (filt->get(start) != 0) {
+					break;
+				}
+			}
+		}
+		else if (trim == "b") {
+			for (; end > start; end--) {
+				if (filt->get(end) != 0) {
+					break;
+				}
+			}
+		}
+
+		Vector<T>* vec = new Vector<T>(end - start);
+
+		int index = 0;
+		for (; start < end; start++) {
+			vec->set(index++, filt->get(start));
+		}
+
+		return vec;
+	}
+
+
+	template <typename T>
+	Vector<T>** unique(NDArray<T>* ar, bool returnIndex = false, bool returnInverse = false, bool returnCounts = false) {
+
+		Vector<T>** vectors = new Vector<T>*[4];
+		
+		int countU = 1;
+		for (int i = 1; i < ar->getSize(); i++) {
+			bool unique = true;
+			for (int j = 0; j < i; i++) {
+				if (ar->get(j) == ar->get(i)) {
+					unique = false;
+					break;
+				}
+			}
+			if (unique) {
+				countU++;
+			}
+		}
+
+		Vector<T>* uniqueVec = new Vector<T>(countU);
+		Vector<T>* indexVec = returnIndex ? new Vector<T>(countU) : nullptr;
+		Vector<T>* inverseVec = returnInverse ? new Vector<T>(ar->getSize()) : nullptr;
+		Vector<T>* countVec = returnCounts ? zeros<T>(countU) : nullptr;
+
+
+		// this is some mega big brain stuff
+		// this has not been tested but if this works first try i will lose it
+
+		int index = 1;
+		uniqueVec->set(0, ar->get(0));
+		if (returnIndex)
+			indexVec->set(0, 0);
+		if (returnInverse)
+			inverseVec->set(0, 0);
+
+		for (int i = 1; i < ar->getSize(); i++) {
+			bool unique = true;
+			int j = 0;
+			for (; j < i; i++) {
+				if (ar->get(j) == ar->get(i)) {
+					unique = false;
+					break;
+				}
+			}
+			if (unique) {
+				uniqueVec->set(index++, ar->get(i));
+				if (returnIndex)
+					indexVec->set(index++, i);
+			}
+
+			if (returnInverse)
+				inverseVec->set(i, j);
+			if (returnCounts)
+				countVec->set(index, countVec->get(index) + 1);
+		}
+
+		vectors[0] = uniqueVec;
+		vectors[1] = indexVec;
+		vectors[2] = inverseVec;
+		vectors[3] = countVec;
+
+		return vectors;
 	}
 }

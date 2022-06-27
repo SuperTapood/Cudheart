@@ -128,3 +128,6 @@ a changelog list for the next build release
 - added append
 - added split
 - added tile
+- added remove
+- added trimZeros
+- added unique
