@@ -231,6 +231,9 @@ the modules that still need cuda testing:
 </details>
 
 ## notes
+<details> 
+    <summary> show details! </summary>
+
 this is how type enforcements work
 ```cpp
 #include <type_traits>
@@ -297,3 +300,6 @@ general links:
 - https://www.olcf.ornl.gov/wp-content/uploads/2013/02/Intro_to_CUDA_C-TS.pdf
 - https://www3.nd.edu/~zxu2/acms60212-40212/CUDA_C_Programming_Guide.pdf
 - https://www.cs.utexas.edu/~rossbach/cs380p/papers/cuda-programming.pdf
+
+
+</details>

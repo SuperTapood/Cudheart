@@ -5,7 +5,7 @@
 #include "../Arrays/NDArray.cuh"
 #include "../Arrays/Vector.cuh"
 #include "../Arrays/Matrix.cuh"
-#include "../StringOps/StringType.cuh"
+#include "../StringTypes/StringType.cuh"
 
 using Cudheart::NDArrays::NDArray;
 using Cudheart::NDArrays::Vector;
