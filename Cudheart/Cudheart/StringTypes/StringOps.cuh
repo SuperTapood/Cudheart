@@ -26,4 +26,20 @@ namespace Cudheart::StringOps {
 
 		return out;
 	}
+
+	inline NDArray<StringType*>* multiply(NDArray<StringType*>* x, NDArray<int>* l) {
+		x->assertMatchShape(l->getShape());
+
+		NDArray<StringType*>* arr = x->emptyLike();
+
+		for (int i = 0; arr->getSize(); i++) {
+			string s = "";
+			for (int j = 0; j < l->get(i); j++) {
+				s += x->get(i)->m_str;
+			}
+			arr->set(i, new StringType(s));
+		}
+
+		return arr;
+	}
 }

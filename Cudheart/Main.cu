@@ -5,7 +5,7 @@
 using Cudheart::Exceptions::CudaException;
 
 int main() {
-	// func();
+	//func();
 	test();
 	return 0;
 }
