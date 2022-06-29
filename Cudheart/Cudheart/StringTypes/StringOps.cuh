@@ -42,4 +42,22 @@ namespace Cudheart::StringOps {
 
 		return arr;
 	}
+
+	inline NDArray<StringType*>* capitalize(NDArray<StringType*>* x) {
+		NDArray<StringType*>* out = x->emptyLike();
+
+		for (int i = 0; i < out->getSize(); i++) {
+			const char* st = x->get(i)->c_str();
+			int code = toupper(st[0]);
+			std::string str = "" + code;
+
+			for (int j = 1; j < x->get(j)->str().size(); j++) {
+				str += x->get(j)->str().at(j);
+			}
+
+			out->set(i, new StringType(str));
+		}
+
+		return out;
+	}
 }

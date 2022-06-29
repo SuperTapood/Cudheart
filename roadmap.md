@@ -10,11 +10,7 @@ add all of the functions i plan to implement (at least on the numpy clone front)
 any ticked funcs are added, but incomplete
 
 - [X] solve
-
 ### String ops
-- [ ] multiply
-- [ ] capitalize
-- [ ] center
 - [ ] decode
 - [ ] encode
 - [ ] expandTabs
@@ -82,6 +78,8 @@ add and improve the library using the ideas i dumped onto the following list:
 
 - [ ] integrate std functions for optimization
 - [ ] revamp namespaces and make sure each one is self contained (does not contain stuff from other namespaces)
+- [ ] convert m_str to private
+- [ ] add getsize to string type
 - [ ] make sure assert match size and assert match shape (what are you even doing bro) works the way its expected to work lol (default axis -1 checks restrictly, 0 for length = width, 1 for length = height)
 - [ ] move string ops to where its counterparts are after the template overhaul
 - [ ] add magic methods and redo functions where they can be used

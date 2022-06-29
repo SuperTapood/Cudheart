@@ -132,3 +132,4 @@ a changelog list for the next build release
 - added trimZeros
 - added unique
 - added string ops add
+- added capitalize
