@@ -1,0 +1,10 @@
+﻿  helperFunctions.cpp
+C:\Users\yoavo\Documents\GitHub\Cudheart\cuda-samples\Samples\6_Performance\UnifiedMemoryPerf\helperFunctions.cpp(89,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\yoavo\Documents\GitHub\Cudheart\cuda-samples\Samples\6_Performance\UnifiedMemoryPerf\helperFunctions.cpp(85,16): warning C4101: 'i': unreferenced local variable
+C:\Users\yoavo\Documents\GitHub\Cudheart\cuda-samples\Samples\6_Performance\UnifiedMemoryPerf\helperFunctions.cpp(113,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\yoavo\Documents\GitHub\Cudheart\cuda-samples\Samples\6_Performance\UnifiedMemoryPerf\helperFunctions.cpp(258,8): warning C4101: 'resultNameNoSpaces': unreferenced local variable
+C:\Users\yoavo\Documents\GitHub\Cudheart\cuda-samples\Samples\6_Performance\UnifiedMemoryPerf\helperFunctions.cpp(259,22): warning C4101: 'k': unreferenced local variable
+C:\Users\yoavo\Documents\GitHub\Cudheart\cuda-samples\Samples\6_Performance\UnifiedMemoryPerf\helperFunctions.cpp(257,8): warning C4101: 'vulcanPrint': unreferenced local variable
+C:\Users\yoavo\Documents\GitHub\Cudheart\cuda-samples\Samples\6_Performance\UnifiedMemoryPerf\helperFunctions.cpp(261,8): warning C4101: 'sizeGreaterThan1MB': unreferenced local variable
+     Creating library ../../../bin/win64/Debug/UnifiedMemoryPerf.lib and object ../../../bin/win64/Debug/UnifiedMemoryPerf.exp
+  UnifiedMemoryPerf_vs2022.vcxproj -> C:\Users\yoavo\Documents\GitHub\Cudheart\cuda-samples\bin\win64\Debug\UnifiedMemoryPerf.exe
