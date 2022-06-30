@@ -11,14 +11,10 @@ any ticked funcs are added, but incomplete
 
 - [X] solve
 ### String ops
-- [ ] join
-- [ ] lower
-- [ ] lJust
 - [ ] lStrip
 - [ ] partition
-- [ ] rJust
-- [ ] RSplit
-- [ ] RStrip
+- [ ] rSplit
+- [ ] rStrip
 - [ ] strip
 - [ ] translate
 - [ ] upper
@@ -79,6 +75,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] copy getters and setters to string type
 - [ ] add getsize to string type
 - [ ] make sure assert match size and assert match shape (what are you even doing bro) works the way its expected to work lol (default axis -1 checks restrictly, 0 for length = width, 1 for length = height)
+- [ ] sort functions alphabetically
 - [ ] implement cuda samples and their helpers
 - [ ] move string ops to where its counterparts are after the template overhaul
 - [ ] add magic methods and redo functions where they can be used
@@ -88,6 +85,9 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] find a way to package this as a lib file
 - [ ] add more bitwise function variation
 - [ ] maybe add matrix and vector ops ndarray compatibility?
+- [ ] add operator overloads to both complex and string type
+- [ ] add many more parameter defaults
+- [ ] maybe add a cast from std string to string type
 - [ ] add inline to all namespace functions (or maybe sort them into classes)
 - [ ] change namespaces into classes
 - [ ] add value guards to functions

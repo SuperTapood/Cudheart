@@ -135,3 +135,7 @@ a changelog list for the next build release
 - added capitalize
 - added replace
 - added expandTabs
+- added join
+- added lower
+- added lJust
+- added rJust

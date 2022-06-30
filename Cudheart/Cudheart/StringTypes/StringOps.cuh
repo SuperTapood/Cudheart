@@ -93,5 +93,68 @@ namespace Cudheart::StringOps {
 		return replace(a, '\t', str);
 	}
 
+	inline NDArray<StringType*>* join(NDArray<StringType*>* sep, NDArray<StringType*>* seq) {
+		sep->assertMatchShape(seq->getShape());
+		NDArray<StringType*>* out = sep->emptyLike();
 
+		for (int i = 0; i < sep->getSize(); i++) {
+			std::string str = sep->get(i)->str() + seq->get(i)->str();
+
+			out->set(i, new StringType(str));
+		}
+
+		return out;
+	}
+
+	inline NDArray<StringType*>* lower(NDArray<StringType*>* x) {
+		NDArray<StringType*>* out = x->emptyLike();
+
+		for (int i = 0; i < out->getSize(); i++) {
+			std::string str = "";
+
+			for (int j = 0; j < x->get(j)->str().size(); j++) {
+				str += tolower(x->get(j)->str().at(j));
+			}
+
+			out->set(i, new StringType(str));
+		}
+
+		return out;
+	}
+
+	inline NDArray<StringType*>* lJust(NDArray<StringType*>* a, int width, char fillChar = ' ') {
+		NDArray<StringType*>* out = a->emptyLike();
+
+		for (int i = 0; i < a->getSize(); i++) {
+			std::string str = a->get(i)->str();
+			int size = a->get(i)->str().size();
+
+			for (int j = 0; j < (size - width); j++) {
+				str += fillChar;
+			}
+
+			out->set(i, new StringType(str));
+		}
+
+		return out;
+	}
+
+	inline NDArray<StringType*>* rJust(NDArray<StringType*>* a, int width, char fillChar = ' ') {
+		NDArray<StringType*>* out = a->emptyLike();
+
+		for (int i = 0; i < a->getSize(); i++) {
+			std::string str = "";
+			int size = a->get(i)->str().size();
+
+			for (int j = 0; j < (size - width); j++) {
+				str += fillChar;
+			}
+
+			str += a->get(i)->str();
+
+			out->set(i, new StringType(str));
+		}
+
+		return out;
+	}
 }
