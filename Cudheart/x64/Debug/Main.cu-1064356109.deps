@@ -1,4 +1,3 @@
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\assert.h
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt.h
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_malloc.h
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h
@@ -114,12 +113,6 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.3151
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31517\include\__msvc_xlocinfo_types.hpp
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include\builtin_types.h
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include\channel_descriptor.h
-C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include\cooperative_groups.h
-C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include\cooperative_groups\details\driver_abi.h
-C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include\cooperative_groups\details\helpers.h
-C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include\cooperative_groups\details\info.h
-C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include\cooperative_groups\details\partitioning.h
-C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include\cooperative_groups\details\sync.h
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include\crt\common_functions.h
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include\crt\device_double_functions.h
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include\crt\device_double_functions.hpp
@@ -211,8 +204,5 @@ C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringTyp
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringTypes.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Test\Test.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Util.cuh
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample\File.cuh
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample\helper_cuda.h
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample\helper_image.h
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample\helper_string.h
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample\Kernel.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Misc\kernel.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Misc\Test.cuh

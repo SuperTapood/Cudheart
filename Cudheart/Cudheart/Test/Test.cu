@@ -1,5 +1,4 @@
 #include "Test.cuh"
-#include "../../Sample/kernel.cuh"
 
 using namespace Cudheart;
 

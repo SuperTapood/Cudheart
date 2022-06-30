@@ -1,4 +1,4 @@
-Identity=Sample\kernel.cu
+Identity=Misc\kernel.cu
 AdditionalCompilerOptions=
 AdditionalCompilerOptions=
 AdditionalDependencies=
