@@ -81,6 +81,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] convert m_str to private
 - [ ] add getsize to string type
 - [ ] make sure assert match size and assert match shape (what are you even doing bro) works the way its expected to work lol (default axis -1 checks restrictly, 0 for length = width, 1 for length = height)
+- [ ] implement cuda samples and their helpers
 - [ ] move string ops to where its counterparts are after the template overhaul
 - [ ] add magic methods and redo functions where they can be used
 - [ ] convert cuda and cpp pointers to shared memory
