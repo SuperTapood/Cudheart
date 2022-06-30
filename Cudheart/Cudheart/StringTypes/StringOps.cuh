@@ -60,4 +60,38 @@ namespace Cudheart::StringOps {
 
 		return out;
 	}
+
+	inline NDArray<StringType*>* replace(NDArray<StringType*>* a, char oldChar, std::string newChar) {
+		NDArray<StringType*>* out = a->emptyLike();
+
+		for (int i = 0; i < out->getSize(); i++) {
+			std::string str = "";
+			std::string old = a->get(i)->str();
+
+			for (int j = 0; j < old.size(); j++) {
+				if (old.at(j) == oldChar) {
+					str += newChar;
+				}
+				else {
+					str += old.at(j);
+				}
+			}
+
+			out->set(i, new StringType(str));
+		}
+
+		return out;
+	}
+	
+	inline NDArray<StringType*>* expandTabs(NDArray<StringType*>* a, int tabsize = 8) {
+		std::string str = "";
+
+		for (; tabsize > 0; tabsize--) {
+			str += " ";
+		}
+
+		return replace(a, '\t', str);
+	}
+
+
 }

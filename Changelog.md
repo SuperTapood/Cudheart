@@ -133,3 +133,5 @@ a changelog list for the next build release
 - added unique
 - added string ops add
 - added capitalize
+- added replace
+- added expandTabs

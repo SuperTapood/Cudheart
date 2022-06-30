@@ -11,15 +11,11 @@ any ticked funcs are added, but incomplete
 
 - [X] solve
 ### String ops
-- [ ] decode
-- [ ] encode
-- [ ] expandTabs
 - [ ] join
 - [ ] lower
 - [ ] lJust
 - [ ] lStrip
 - [ ] partition
-- [ ] replace
 - [ ] rJust
 - [ ] RSplit
 - [ ] RStrip
@@ -76,9 +72,11 @@ the modules that still need testing:
 
 add and improve the library using the ideas i dumped onto the following list:
 
+- [ ] calling emptyLike on a stringtype is 100% gonna be a problem lmao (maybe call T() and add default constructor)
 - [ ] integrate std functions for optimization
 - [ ] revamp namespaces and make sure each one is self contained (does not contain stuff from other namespaces)
 - [ ] convert m_str to private
+- [ ] copy getters and setters to string type
 - [ ] add getsize to string type
 - [ ] make sure assert match size and assert match shape (what are you even doing bro) works the way its expected to work lol (default axis -1 checks restrictly, 0 for length = width, 1 for length = height)
 - [ ] implement cuda samples and their helpers

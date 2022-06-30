@@ -61,14 +61,13 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Helpers\lib\x64</AdditionalDependencies>
     </Link>
     <CudaCompile>
       <TargetMachinePlatform>64</TargetMachinePlatform>
       <AdditionalOptions>-std=c++17 -Xcompiler "/std:c++17" %(AdditionalOptions)</AdditionalOptions>
     </CudaCompile>
     <CudaLink>
-      <AdditionalLibraryDirectories>C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Helpers\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </CudaLink>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -86,13 +85,12 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Helpers\lib\x64</AdditionalDependencies>
     </Link>
     <CudaCompile>
       <TargetMachinePlatform>64</TargetMachinePlatform>
     </CudaCompile>
     <CudaLink>
-      <AdditionalLibraryDirectories>C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Helpers\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </CudaLink>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Build|x64'">
@@ -105,11 +103,9 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <CudaLink>
-      <AdditionalLibraryDirectories>C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Helpers\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </CudaLink>
-    <Link>
-      <AdditionalDependencies>%(AdditionalDependencies);cudart.lib;cudadevrt.lib;C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Helpers\lib\x64</AdditionalDependencies>
-    </Link>
+    <Link />
   </ItemDefinitionGroup>
   <ItemGroup>
     <CudaCompile Include="Cudheart\Exceptions\BaseException.cu" />
