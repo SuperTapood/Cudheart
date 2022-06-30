@@ -1,11 +1,60 @@
-﻿  Compiling CUDA source file Cudheart\Test\Test.cu...
-  Compiling CUDA source file Main.cu...
-  
-  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31517\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static -std=c++17 -Xcompiler "/std:c++17" -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc143.pdb /FS /Zi /RTC1 /MDd " -o C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\Test.cu.obj "C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Test\Test.cu" 
+﻿  Compiling CUDA source file Main.cu...
   
   C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31517\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static -std=c++17 -Xcompiler "/std:c++17" -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc143.pdb /FS /Zi /RTC1 /MDd " -o C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\Main.cu.obj "C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Main.cu" 
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample/File.cuh(55): error : name followed by "::" must be a class or namespace name
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample/File.cuh(55): error : expected a ";"
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample/File.cuh(69): error : name followed by "::" must be a class or namespace name
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample/File.cuh(69): error : identifier "cta" is undefined
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample/File.cuh(101): error : name followed by "::" must be a class or namespace name
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample/File.cuh(101): error : expected a ";"
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample/File.cuh(116): error : name followed by "::" must be a class or namespace name
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample/File.cuh(116): error : identifier "cta" is undefined
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample/File.cuh(128): error : name followed by "::" must be a class or namespace name
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample/File.cuh(128): error : expected a ";"
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample/File.cuh(143): error : name followed by "::" must be a class or namespace name
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample/File.cuh(143): error : identifier "cta" is undefined
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample/File.cuh(165): error : name followed by "::" must be a class or namespace name
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample/File.cuh(165): error : expected a ";"
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample/File.cuh(196): error : name followed by "::" must be a class or namespace name
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample/File.cuh(196): error : identifier "cta" is undefined
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample/File.cuh(215): error : name followed by "::" must be a class or namespace name
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample/File.cuh(215): error : expected a ";"
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample/File.cuh(226): error : name followed by "::" must be a class or namespace name
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample/File.cuh(226): error : identifier "cta" is undefined
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample/File.cuh(236): error : name followed by "::" must be a class or namespace name
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample/File.cuh(236): error : expected a ";"
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample/File.cuh(251): error : name followed by "::" must be a class or namespace name
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample/File.cuh(251): error : identifier "cta" is undefined
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample/File.cuh(367): error : identifier "argc" is undefined
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample/File.cuh(367): error : identifier "argv" is undefined
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Sample/File.cuh(496): error : cannot determine which instance of overloaded function "copy" is intended
+  
+  27 errors detected in the compilation of "C:/Users/yoavo/Documents/GitHub/Cudheart/Cudheart/Main.cu".
   Main.cu
-  Test.cu
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\../Constants.cuh(15): warning C4244: 'return': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\../Constants.cuh(15): warning C4244: 'return': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Cudheart.vcxproj -> C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\Cudheart.exe
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\BuildCustomizations\CUDA 11.6.targets(790,9): error MSB3721: The command ""C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31517\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static -std=c++17 -Xcompiler "/std:c++17" -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc143.pdb /FS /Zi /RTC1 /MDd " -o C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\Main.cu.obj "C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Main.cu"" exited with code 1.

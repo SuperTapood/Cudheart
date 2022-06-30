@@ -1,6 +1,7 @@
 #include "Cudheart/Test/Test.cuh"
 #include "Cudheart/Cudheart.cuh"
-#include "Sample/Kernel.cuh"
+#include "Misc/Kernel.cuh"
+#include "Misc/Test.cuh"
 
 using Cudheart::Exceptions::CudaException;
 
