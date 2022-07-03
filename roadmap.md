@@ -91,6 +91,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] add inline to all namespace functions (or maybe sort them into classes)
 - [ ] change namespaces into classes
 - [ ] add value guards to functions
+- [ ] use std tuple instead of using malloc and returning an array
 - [ ] more overrides in random
 - [ ] maybe add appendable vectors
 - [ ] further generalize functions by passing shape
