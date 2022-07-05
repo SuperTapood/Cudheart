@@ -1,0 +1,10 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\yoavo\\documents\\github\\cudheart\\test\\cudalibrary\\cudalibrary\\basicplane.figures-rectangle.ixx",
+        "ProvidedModule": "BasicPlane.Figures:Rectangle",
+        "Includes": [],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

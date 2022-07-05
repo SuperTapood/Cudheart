@@ -1,0 +1,3 @@
+﻿CudaLibrary.lib(libFile.cu.obj) : warning LNK4099: PDB 'CudaLibrary.pdb' was not found with 'CudaLibrary.lib(libFile.cu.obj)' or at 'C:\Users\yoavo\Documents\GitHub\Cudheart\test2\CudaRuntime1\x64\Debug\CudaLibrary.pdb'; linking object as if no debug info
+     Creating library C:\Users\yoavo\Documents\GitHub\Cudheart\test2\CudaRuntime1\x64\Debug\CudaRuntime1.lib and object C:\Users\yoavo\Documents\GitHub\Cudheart\test2\CudaRuntime1\x64\Debug\CudaRuntime1.exp
+  CudaRuntime1.vcxproj -> C:\Users\yoavo\Documents\GitHub\Cudheart\test2\CudaRuntime1\x64\Debug\CudaRuntime1.exe

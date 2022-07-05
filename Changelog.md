@@ -139,3 +139,8 @@ a changelog list for the next build release
 - added lower
 - added lJust
 - added rJust
+- added strip
+- added lStrip
+- added rStrip
+- added partition
+- added upper

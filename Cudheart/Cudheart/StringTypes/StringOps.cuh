@@ -52,7 +52,7 @@ namespace Cudheart::StringOps {
 			std::string str = "" + code;
 
 			for (int j = 1; j < x->get(j)->str().size(); j++) {
-				str += x->get(j)->str().at(j);
+				str += st[j];
 			}
 
 			out->set(i, new StringType(str));
@@ -154,6 +154,158 @@ namespace Cudheart::StringOps {
 
 			out->set(i, new StringType(str));
 		}
+
+		return out;
+	}
+
+	inline NDArray<StringType*>* strip(NDArray<StringType*>* a, std::string chars) {
+		NDArray<StringType*>* out = a->emptyLike();
+
+		for (int i = 0; i < a->getSize(); i++) {
+			std::string str = "";
+			std::string pre = a->get(i)->str();
+
+			for (int j = 0; j < pre.size(); j++) {
+				char c = pre.at(j);
+
+				int k = 0;
+				for (; k < chars.size(); k++) {
+					if (chars.at(k) == c) {
+						break;
+					}
+				}
+
+				if (k == chars.size()) {
+					str += c;
+				}
+			}
+
+			out->set(i, new StringType(str));
+		}
+
+		return out;
+	}
+
+	inline NDArray<StringType*>* lStrip(NDArray<StringType*>* a, std::string chars) {
+		NDArray<StringType*>* out = a->emptyLike();
+
+		for (int i = 0; i < a->getSize(); i++) {
+			std::string pre = a->get(i)->str();
+
+			int j = 0;
+
+			for (; j < pre.size(); j++) {
+				char c = pre.at(j);
+
+				int k = 0;
+				bool found = false;
+				for (; k < chars.size(); k++) {
+					if (chars.at(k) == c) {
+						found = true;
+						break;
+					}
+				}
+
+				if (!found) {
+					break;
+				}
+			}
+
+			out->set(i, new StringType(pre.substr(j, pre.size() - j)));
+		}
+
+		return out;
+	}
+
+	inline NDArray<StringType*>* rStrip(NDArray<StringType*>* a, std::string chars) {
+		NDArray<StringType*>* out = a->emptyLike();
+
+		for (int i = 0; i < a->getSize(); i++) {
+			std::string pre = a->get(i)->str();
+
+			int j = pre.size();
+
+			for (; j >= 0; j--) {
+				char c = pre.at(j);
+
+				int k = 0;
+				bool found = false;
+				for (; k < chars.size(); k++) {
+					if (chars.at(k) == c) {
+						found = true;
+						break;
+					}
+				}
+
+				if (!found) {
+					break;
+				}
+			}
+
+			out->set(i, new StringType(pre.substr(0, j)));
+		}
+
+		return out;
+	}
+
+	inline NDArray<StringType*>* upper(NDArray<StringType*>* x) {
+		NDArray<StringType*>* out = x->emptyLike();
+
+		for (int i = 0; i < out->getSize(); i++) {
+			std::string str = "";
+
+			for (int j = 0; j < x->get(j)->str().size(); j++) {
+				str += toupper(x->get(j)->str().at(j));
+			}
+
+			out->set(i, new StringType(str));
+		}
+
+		return out;
+	}
+
+	inline NDArray<StringType*>** partition(NDArray<StringType*>* a, std::string sep) {
+		NDArray<StringType*>** out = (NDArray<StringType*>**)malloc(sizeof(NDArray<StringType*>*) * a->getSize() * 2);
+
+		NDArray<StringType*>* before = a->emptyLike();
+		NDArray<StringType*>* after = a->emptyLike();
+
+		for (int i = 0; i < a->getSize(); i++) {
+			bool passed = false;
+			std::string str = a->get(i)->str();
+			std::string bef = "";
+			std::string aft = "";
+			int index = 0;
+			while (!passed) {
+				if (str.at(index) == sep.at(0)) {
+					int j = 1;
+					index++;
+					for (; j < sep.size(); j++) {
+						if (str.at(index++) != sep.at(j)) {
+							break;
+						}
+					}
+
+					passed = j == sep.size();
+				}
+				else {
+					bef += str.at(index);
+					index++;
+				}
+				
+			}
+
+			before->set(i, new StringType(bef));
+
+			for (; index < str.size(); index++) {
+				aft += str.at(index);
+			}
+
+			after->set(i, new StringType(aft));
+		}
+
+		out[0] = before;
+		out[1] = after;
 
 		return out;
 	}

@@ -1,0 +1,22 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\yoavo\\documents\\github\\cudheart\\test\\cudalibrary\\cudalibrary\\module.ixx",
+        "ProvidedModule": "Module",
+        "Includes": [
+            "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v11.6\\include\\driver_types.h",
+            "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v11.6\\include\\crt\\host_defines.h",
+            "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v11.6\\include\\vector_types.h",
+            "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v11.6\\include\\crt\\host_defines.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.33.31517\\include\\limits.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.33.31517\\include\\vcruntime.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.33.31517\\include\\sal.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.33.31517\\include\\concurrencysal.h",
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.33.31517\\include\\vadefs.h",
+            "c:\\program files (x86)\\windows kits\\10\\include\\10.0.19041.0\\ucrt\\stddef.h",
+            "c:\\program files (x86)\\windows kits\\10\\include\\10.0.19041.0\\ucrt\\corecrt.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

@@ -11,19 +11,9 @@ any ticked funcs are added, but incomplete
 
 - [X] solve
 ### String ops
-- [ ] lStrip
-- [ ] partition
-- [ ] rSplit
-- [ ] rStrip
-- [ ] strip
 - [ ] translate
-- [ ] upper
 - [ ] equal
 - [ ] notEqual
-- [ ] greaterEqual
-- [ ] lessEqual
-- [ ] greater
-- [ ] less
 - [ ] count
 - [ ] endsWith
 - [ ] find
@@ -74,6 +64,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] convert m_str to private
 - [ ] copy getters and setters to string type
 - [ ] add getsize to string type
+- [ ] add none array overloads
 - [ ] make sure assert match size and assert match shape (what are you even doing bro) works the way its expected to work lol (default axis -1 checks restrictly, 0 for length = width, 1 for length = height)
 - [ ] sort functions alphabetically
 - [ ] implement cuda samples and their helpers
@@ -125,6 +116,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] use max function to better print the matrix
 - [ ] add readme to every module
 - [ ] allow trigo funcs to accept angles with flags
+- [ ] add global flags for exceptions
 - [ ] manually handle all possible exceptions (because cpp exceptions suck)
 - [ ] fix vander
 - [ ] add some meta data

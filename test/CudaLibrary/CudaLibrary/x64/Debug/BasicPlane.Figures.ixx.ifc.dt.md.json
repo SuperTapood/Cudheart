@@ -1,0 +1,12 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "c:\\users\\yoavo\\documents\\github\\cudheart\\test\\cudalibrary\\cudalibrary\\basicplane.figures.ixx",
+        "ProvidedModule": "BasicPlane.Figures",
+        "ImportedModules": [
+            "BasicPlane.Figures:Point",
+            "BasicPlane.Figures:Rectangle"
+        ],
+        "ImportedHeaderUnits": []
+    }
+}
