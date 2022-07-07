@@ -1,1 +1,0 @@
-C:\Users\yoavo\Documents\GitHub\Cudheart\test3\CudaRuntime1\x64\Debug\CudaRuntime1.exe

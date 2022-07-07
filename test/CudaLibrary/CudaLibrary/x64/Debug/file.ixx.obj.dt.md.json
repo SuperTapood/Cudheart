@@ -1,9 +1,0 @@
-{
-    "Version": "1.1",
-    "Data": {
-        "Source": "c:\\users\\yoavo\\documents\\github\\cudheart\\test\\cudalibrary\\cudalibrary\\file.ixx",
-        "ProvidedModule": "ModuleA",
-        "ImportedModules": [],
-        "ImportedHeaderUnits": []
-    }
-}
