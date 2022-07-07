@@ -2,15 +2,12 @@
 
 ## the feature complete build
 
-<details>
-	<summary> show details! </summary>
-
 add all of the functions i plan to implement (at least on the numpy clone front)
 
 any ticked funcs are added, but incomplete
 
 - [X] solve
-### String ops
+String ops:
 - [ ] translate
 - [ ] equal
 - [ ] notEqual
@@ -23,12 +20,9 @@ any ticked funcs are added, but incomplete
 - [ ] isUpper
 - [ ] startsWith
 
-</details>
+
 
 ## the tested build
-
-<details>
-	<summary> show details! </summary>
 
 build unit tests for everything to iron out any major bugs
 
@@ -49,12 +43,9 @@ the modules that still need testing:
 - [ ] StringTypes
 
 
-</details>
+
 
 ## the tasks build
-
-<details>
-	<summary> show details! </summary>
 
 add and improve the library using the ideas i dumped onto the following list:
 
@@ -167,12 +158,9 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] add more overloads to histogram2d
 
 
-</details>
+
 
 ## the cuda build
-
-<details>
-	<summary> show details! </summary>
 
 add a cuda alternative function for every function (where applicable)
 
@@ -192,12 +180,9 @@ the modules that still need cuda-ing:
 - [ ] StringTypes
 
 
-</details>
+
 
 ## the cuda tested build
-
-<details>
-	<summary> show details! </summary>
 
 build unit tests for cuda to iron out any major bugs and prepare Cudheart for release
 
@@ -218,10 +203,17 @@ the modules that still need cuda testing:
 - [ ] StringTypes
 
 
-</details>
+## the cuda samples build
+
+just make sure that the cuda samples can be run on this framework
+
+- add the actual samples' names :cold_sweat:
+
+
+
 
 ## notes
-<details> 
+ 
     <summary> show details! </summary>
 
 this is how type enforcements work
@@ -292,4 +284,4 @@ general links:
 - https://www.cs.utexas.edu/~rossbach/cs380p/papers/cuda-programming.pdf
 
 
-</details>
+
