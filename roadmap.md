@@ -8,9 +8,6 @@ any ticked funcs are added, but incomplete
 
 - [X] solve
 String ops:
-- [ ] translate
-- [ ] equal
-- [ ] notEqual
 - [ ] count
 - [ ] endsWith
 - [ ] find
@@ -64,6 +61,8 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] convert cuda and cpp pointers to shared memory
 - [ ] add axis to everything
 - [ ] properly name variables
+- [ ] add functions that return boolean arrays in equal in logic (seperate by equal and equal all)
+- [ ] check if a string can be used without string type
 - [ ] find a way to package this as a lib file
 - [ ] add more bitwise function variation
 - [ ] maybe add matrix and vector ops ndarray compatibility?
@@ -205,9 +204,7 @@ the modules that still need cuda testing:
 
 ## the cuda samples build
 
-just make sure that the cuda samples can be run on this framework
-
-- add the actual samples' names :cold_sweat:
+just make sure that the cuda samples can be run on this framework (both c++ and cuda)
 
 
 

@@ -309,4 +309,48 @@ namespace Cudheart::StringOps {
 
 		return out;
 	}
+
+	inline Vector<bool>* equal(Vector<StringType*>* a, Vector<StringType*>* b) {
+		a->assertMatchShape(b->getShape());
+		Vector<bool>* out = new Vector<bool>(a->getSize());
+
+		for (int i = 0; i < out->getSize(); i++) {
+			out->set(i, a->get(i)->str() == b->get(i)->str());
+		}
+
+		return out;
+	}
+
+	inline Matrix<bool>* equal(Matrix<StringType*>* a, Matrix<StringType*>* b) {
+		a->assertMatchShape(b->getShape());
+		Matrix<bool>* out = new Matrix<bool>(a->getHeight(), a->getWidth());
+
+		for (int i = 0; i < out->getSize(); i++) {
+			out->set(i, a->get(i)->str() == b->get(i)->str());
+		}
+
+		return out;
+	}
+
+	inline Vector<bool>* notEqual(Vector<StringType*>* a, Vector<StringType*>* b) {
+		a->assertMatchShape(b->getShape());
+		Vector<bool>* out = new Vector<bool>(a->getSize());
+
+		for (int i = 0; i < out->getSize(); i++) {
+			out->set(i, a->get(i)->str() != b->get(i)->str());
+		}
+
+		return out;
+	}
+
+	inline Matrix<bool>* notEqual(Matrix<StringType*>* a, Matrix<StringType*>* b) {
+		a->assertMatchShape(b->getShape());
+		Matrix<bool>* out = new Matrix<bool>(a->getHeight(), a->getWidth());
+
+		for (int i = 0; i < out->getSize(); i++) {
+			out->set(i, a->get(i)->str() != b->get(i)->str());
+		}
+
+		return out;
+	}
 }

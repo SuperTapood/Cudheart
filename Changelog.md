@@ -144,3 +144,5 @@ a changelog list for the next build release
 - added rStrip
 - added partition
 - added upper
+- added equal
+- added notEqual
