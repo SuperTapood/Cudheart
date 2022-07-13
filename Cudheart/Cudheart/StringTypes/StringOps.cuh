@@ -13,7 +13,6 @@ using Cudheart::NDArrays::NDArray;
 using Cudheart::VectorOps::zeros;
 using namespace Cudheart::Exceptions;
 
-
 namespace Cudheart::StringOps {
 	inline NDArray<StringType*>* add(NDArray<StringType*>* x1, NDArray<StringType*>* x2) {
 		x1->assertMatchShape(x2->getShape());
@@ -82,7 +81,7 @@ namespace Cudheart::StringOps {
 
 		return out;
 	}
-	
+
 	inline NDArray<StringType*>* expandTabs(NDArray<StringType*>* a, int tabsize = 8) {
 		std::string str = "";
 
@@ -292,7 +291,6 @@ namespace Cudheart::StringOps {
 					bef += str.at(index);
 					index++;
 				}
-				
 			}
 
 			before->set(i, new StringType(bef));

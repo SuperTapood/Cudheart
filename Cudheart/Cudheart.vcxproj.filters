@@ -70,6 +70,7 @@
     <ClInclude Include="Cudheart\Arrays\ArrOps.cuh" />
     <ClInclude Include="Cudheart\StringTypes\StringOps.cuh" />
     <ClInclude Include="Misc\unified.cuh" />
+    <ClInclude Include="Misc\UtilKernel.cuh" />
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="Misc\kernel.cu">
@@ -79,6 +80,7 @@
     <CudaCompile Include="Cudheart\Exceptions\BaseException.cu" />
     <CudaCompile Include="Main.cu" />
     <CudaCompile Include="Misc\unified.cu" />
+    <CudaCompile Include="Misc\UtilKernel.cu" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />

@@ -63,7 +63,7 @@ int fmain()
 	int nElem = 1024;
 	size_t nBytes = nElem * sizeof(float);
 	printf("Vector size %d power %d nbytes %3.0f KB\n",
-			nElem, nPower, (float)nBytes / (1024.0f));
+		nElem, nPower, (float)nBytes / (1024.0f));
 
 	// malloc host memory
 	float* h_A, * h_B, * h_C, * hostRef;
@@ -103,7 +103,7 @@ int fmain()
 	//execute kernle with zero copy memory
 	GpuSumArrays << <grid, block >> > (h_A, h_B, h_C, nElem);
 
-	// must be add the code before access the unified managed memory, 
+	// must be add the code before access the unified managed memory,
 	// otherwise will throw undefined exception
 	cudaDeviceSynchronize();
 
@@ -125,7 +125,6 @@ int fmain()
 	cudaFreeHost(h_A);
 	cudaFreeHost(h_B);
 	cudaFreeHost(h_C);
-
 
 	free(hostRef);
 

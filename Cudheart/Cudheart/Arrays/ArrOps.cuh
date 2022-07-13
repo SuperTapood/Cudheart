@@ -115,7 +115,7 @@ namespace Cudheart::ArrayOps {
 
 		int len = ceil(mat->getWidth() / sizes);
 		Matrix<T>** out = (Matrix<T>**)malloc(sizeof(Matrix<T>*) * len);
-		
+
 		int count = mat->getWidth();
 		for (int i = 0; i < len; i++) {
 			if (count > sizes) {
@@ -131,7 +131,7 @@ namespace Cudheart::ArrayOps {
 		int matrixIndex = 0;
 		int elems = 0;
 		Matrix<T>* m = out[matrixIndex];
-		for (int i = 0; i < mat->getWidth(); i++) { 
+		for (int i = 0; i < mat->getWidth(); i++) {
 			for (int j = 0; j < mat->getHeight(); j++) {
 				m->set(elems, mat->get(j, i));
 			}
@@ -266,7 +266,8 @@ namespace Cudheart::ArrayOps {
 					break;
 				}
 			}
-		} else if (trim == "f") {
+		}
+		else if (trim == "f") {
 			for (; start < filt->getSize(); start++) {
 				if (filt->get(start) != 0) {
 					break;
@@ -291,12 +292,10 @@ namespace Cudheart::ArrayOps {
 		return vec;
 	}
 
-
 	template <typename T>
 	Vector<T>** unique(NDArray<T>* ar, bool returnIndex = false, bool returnInverse = false, bool returnCounts = false) {
-
 		Vector<T>** vectors = new Vector<T>*[4];
-		
+
 		int countU = 1;
 		for (int i = 1; i < ar->getSize(); i++) {
 			bool unique = true;
@@ -315,7 +314,6 @@ namespace Cudheart::ArrayOps {
 		Vector<T>* indexVec = returnIndex ? new Vector<T>(countU) : nullptr;
 		Vector<T>* inverseVec = returnInverse ? new Vector<T>(ar->getSize()) : nullptr;
 		Vector<T>* countVec = returnCounts ? zeros<T>(countU) : nullptr;
-
 
 		// this is some mega big brain stuff
 		// this has not been tested but if this works first try i will lose it
