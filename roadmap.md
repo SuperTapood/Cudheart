@@ -7,7 +7,6 @@ add all of the functions i plan to implement (at least on the numpy clone front)
 any ticked funcs are added, but incomplete
 
 - [X] solve
-String ops:
 - [ ] count
 - [ ] endsWith
 - [ ] find
@@ -46,6 +45,7 @@ the modules that still need testing:
 
 add and improve the library using the ideas i dumped onto the following list:
 
+- [ ] replace the regular array creation with a cuda unified memory allocation (check kernel.cu)
 - [ ] calling emptyLike on a stringtype is 100% gonna be a problem lmao (maybe call T() and add default constructor)
 - [ ] integrate std functions for optimization
 - [ ] revamp namespaces and make sure each one is self contained (does not contain stuff from other namespaces)
@@ -98,6 +98,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] get rid of util.cuh
 - [ ] assert instead of print in the tests
 - [ ] remove using
+- [ ] add magic methods to remove the need to cast object types and replace the existing redundent methods
 - [ ] even more type templates for functions
 - [ ] remove fromVectorArray
 - [ ] add cuda to logic funcs

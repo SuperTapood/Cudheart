@@ -112,6 +112,7 @@
     <CudaCompile Include="Cudheart\Test\Test.cu" />
     <CudaCompile Include="Main.cu" />
     <CudaCompile Include="Misc\kernel.cu" />
+    <CudaCompile Include="Misc\unified.cu" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cudheart\Arrays\ArrayOps.cuh" />
@@ -172,6 +173,7 @@
     <ClInclude Include="Cudheart\Util.cuh" />
     <ClInclude Include="Misc\kernel.cuh" />
     <ClInclude Include="Misc\Test.cuh" />
+    <ClInclude Include="Misc\unified.cuh" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Changelog.md" />

@@ -100,13 +100,13 @@ NDArray<T>* add(NDArray<T>* a, NDArray<T>* b) {
 
 void testThing() {
 	Vector<int>* a = Cudheart::VectorOps::arange<int>(1, 12, 2);
-	//print(a);
+	a->print();
 	Matrix<int>* b = Cudheart::MatrixOps::full(6, 6, 5);
-	//print(b);
-	//print((Vector<int>*)add(a, a));
-	//print((Matrix<int>*)add(b, b));
+	b->print();
+	((Vector<int>*)add(a, a))->print();
+	((Matrix<int>*)add(b, b))->print();
 	((Matrix<int>*)(add(a, b, 0)))->print();
 	((Matrix<int>*)(add(a, b, 1)))->print();
-	//print((Matrix<int>*)add(b, a, 0));
-	//print((Matrix<int>*)add(b, a, 1));
+	((Matrix<int>*)add(b, a, 0))->print();
+	((Matrix<int>*)add(b, a, 1))->print();
 }

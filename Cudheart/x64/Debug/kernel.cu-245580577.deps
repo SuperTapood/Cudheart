@@ -123,6 +123,7 @@ C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include\cuda_runtime_ap
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include\cuda_surface_types.h
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include\cuda_texture_types.h
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include\device_atomic_functions.h
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include\device_functions.h
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include\device_launch_parameters.h
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include\device_types.h
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include\driver_functions.h
