@@ -118,6 +118,8 @@ std::chrono::duration<double> addWithCuda(int* c, const int* a, const int* b, un
 		std::exit(69);
 	}
 
+	auto start = std::chrono::system_clock::now();
+
 	// Copy input vectors from host memory to GPU buffers.
 	cudaStatus = cudaMemcpy(dev_a, a, size * sizeof(int), cudaMemcpyHostToDevice);
 	if (cudaStatus != cudaSuccess) {
@@ -138,8 +140,6 @@ std::chrono::duration<double> addWithCuda(int* c, const int* a, const int* b, un
 	}
 
 	int threads = 1024;
-
-	auto start = std::chrono::system_clock::now();
 
 	int N = floor(size / threads) + 1;
 
@@ -177,13 +177,13 @@ std::chrono::duration<double> addWithCuda(int* c, const int* a, const int* b, un
 		std::exit(69);
 	}
 
-	cudaFree(dev_c);
-	cudaFree(dev_a);
-	cudaFree(dev_b);
-
 	auto end = std::chrono::system_clock::now();
 	std::chrono::duration<double> elapsed_seconds = end - start;
 	std::time_t end_time = std::chrono::system_clock::to_time_t(end);
+
+	cudaFree(dev_c);
+	cudaFree(dev_a);
+	cudaFree(dev_b);
 
 	//std::cout << "elapsed time: " << elapsed_seconds.count() << "s" << std::endl;
 

@@ -3,38 +3,51 @@
 
 using namespace std;
 
-int func()
+/// <summary>
+/// compare regular cuda, unified cuda, unified c++, and regular c++ and present the results.
+/// </summary>
+void func()
 {
-	long long arraySize = 500000;
+	long long arraySize = 50000;
 	int nBytes = sizeof(int) * arraySize;
 	int* a, * b, * ca, * hostRef, * ra, * rb, * rc, * cc;
+	// unified input and output arrays
 	a = (int*)malloc(nBytes);
 	b = (int*)malloc(nBytes);
+	hostRef = (int*)malloc(nBytes);
+	// raw c arrays
 	ra = (int*)malloc(nBytes);
 	rb = (int*)malloc(nBytes);
 	rc = (int*)malloc(nBytes);
+	// output raw cuda array
 	cc = (int*)malloc(nBytes);
-	hostRef = (int*)malloc(nBytes);
 
+	// try to allocate the memory on the cuda unified whatever
 	cudaError_t err = cudaMallocManaged(&a, nBytes, cudaMemAttachGlobal);
 	if (err != cudaSuccess)
 	{
 		printf("Not support cudaMallocManaged!\n");
-		goto EXIT;
+		cudaDeviceReset();
+		system("pause");
+		return;
 	}
 
 	err = cudaMallocManaged(&b, nBytes, cudaMemAttachGlobal);
 	if (err != cudaSuccess)
 	{
 		printf("Not support cudaMallocManaged!\n");
-		goto EXIT;
+		cudaDeviceReset();
+		system("pause");
+		return;
 	}
 
 	err = cudaMallocManaged(&ca, nBytes, cudaMemAttachGlobal);
 	if (err != cudaSuccess)
 	{
 		printf("Not support cudaMallocManaged!\n");
-		goto EXIT;
+		cudaDeviceReset();
+		system("pause");
+		return;
 	}
 
 	for (int i = 0; i < arraySize; i++) {
@@ -45,20 +58,13 @@ int func()
 		hostRef[i] = 0;
 	}
 
-	//printf("cuda start\n");
-
 	// Add vectors in parallel.
 	std::chrono::duration<double> cuda = addWithCudaUni(ca, a, b, arraySize);
 
-	//printf("{1,2,3,4,5} + {10,20,30,40,50} = {%f,%f,%f,%f,%f}\n",
-		//c[0], c[1], c[2], c[3], c[4]);
-
 	cudaDeviceSynchronize();
 
-	//printf("cuda memcopy start\n");
 	std::chrono::duration<double> cudaReg = addWithCuda(cc, ra, rb, arraySize);
 
-	//printf("cpp start\n");
 	auto start = std::chrono::system_clock::now();
 	for (int i = 0; i < arraySize; i++) {
 		int v;
@@ -78,9 +84,6 @@ int func()
 	std::chrono::duration<double> elapsed_seconds_uni = end - start;
 	std::time_t end_time = std::chrono::system_clock::to_time_t(end);
 
-	//std::cout << "elapsed time: " << elapsed_seconds_uni.count() << "s" << std::endl;
-
-	//printf("start raw cpp\n");
 	start = std::chrono::system_clock::now();
 	for (int i = 0; i < arraySize; i++) {
 		int v;
@@ -100,8 +103,6 @@ int func()
 	std::chrono::duration<double> elapsed_seconds_raw = end - start;
 	end_time = std::chrono::system_clock::to_time_t(end);
 
-	//std::cout << "elapsed time: " << elapsed_seconds_raw.count() << "s" << std::endl;
-
 	for (int i = 0; i < arraySize; i++) {
 		if (ca[i] != hostRef[i] || ca[i] != rc[i] || ca[i] != cc[i]) {
 			printf("%d: %d + %d = (%d + %d) = ", i, a[i], b[i], ra[i], rb[i]);
@@ -113,21 +114,19 @@ int func()
 
 	double diff = elapsed_seconds_uni.count() / cuda.count();
 
-	std::cout << "zero copy cuda is:\n" << elapsed_seconds_uni.count() / cuda.count() << " times faster than unified c++\n" << elapsed_seconds_raw.count() / cuda.count() << " times faster than raw c++\n" << cuda.count() / cudaReg.count() << " times slower than regular cuda with memory copy (" << cudaReg.count() << " vs " << cuda.count() << ")\n";
+	printf("on a %d elements array with semi complex math, zero copy (unified) cuda is:\n", arraySize);
+	printf("%.4f%% the speed of regular c++ (%.4fs vs %.4fs)\n", ((elapsed_seconds_raw.count() / cuda.count()) * 100), elapsed_seconds_raw.count(), cuda.count());
+	printf("%.4f%% the speed of unified c++ (%.4fs vs %.4fs)\n", ((elapsed_seconds_uni.count() / cuda.count()) * 100), elapsed_seconds_uni.count(), cuda.count());
+	printf("%.4f%% the speed of regular cuda (%.4fs vs %.4fs)\n", ((cudaReg.count() / cuda.count()) * 100), cudaReg.count(), cuda.count());
+	printf("(regular c++ is %.4f%% faster than unified c++) (%.4fs vs %.4fs)\n", ((elapsed_seconds_uni.count() / elapsed_seconds_raw.count()) * 100), elapsed_seconds_uni.count(), elapsed_seconds_raw.count());
 
 	// cudaDeviceReset must be called before exiting in order for profiling and
 	// tracing tools such as Nsight and Visual Profiler to show complete traces.
 	cudaError_t cudaStatus = cudaDeviceReset();
 	if (cudaStatus != cudaSuccess) {
 		fprintf(stderr, "cudaDeviceReset failed!");
-		return 1;
+		return;
 	}
 
-	return 0;
-
-EXIT:
-	cudaDeviceReset();
-
-	system("pause");
-	return 0;
+	return;
 }
