@@ -150,3 +150,7 @@ a changelog list for the next build release
 - added count
 - added startsWith
 - added endsWith
+- added find
+- added isNumeric
+- added isLower
+- added isUpper

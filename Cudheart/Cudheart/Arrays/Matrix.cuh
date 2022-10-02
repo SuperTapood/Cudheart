@@ -505,7 +505,6 @@ namespace Cudheart::NDArrays {
 			return new Shape(m_width, m_height);
 		}
 
-
 		Matrix<T>* augment(Vector<T>* other) {
 			assertMatchShape(other->getShape(), 1);
 

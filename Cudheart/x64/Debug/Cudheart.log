@@ -10,16 +10,18 @@ C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\../Constants.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(129): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(146): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(225): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(362): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(383): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(400): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(404): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(361): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(381): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(401): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(418): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\../Constants.cuh(15): warning C4244: 'return': conversion from 'time_t' to 'unsigned int', possible loss of data
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(129): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(146): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(225): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(362): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(383): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(400): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(404): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(361): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(381): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(401): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(418): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
   Cudheart.vcxproj -> C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\Cudheart.exe

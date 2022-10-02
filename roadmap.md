@@ -4,8 +4,6 @@
 
 add all of the functions i plan to implement (at least on the numpy clone front)
 
-- [ ] find
-- [ ] index
 - [ ] isNumeric
 - [ ] isLower
 - [ ] isUpper
