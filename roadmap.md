@@ -4,17 +4,11 @@
 
 add all of the functions i plan to implement (at least on the numpy clone front)
 
-any ticked funcs are added, but incomplete
-
-- [X] solve
-- [ ] count
-- [ ] endsWith
 - [ ] find
 - [ ] index
 - [ ] isNumeric
 - [ ] isLower
 - [ ] isUpper
-- [ ] startsWith
 
 
 
@@ -46,6 +40,7 @@ the modules that still need testing:
 add and improve the library using the ideas i dumped onto the following list:
 
 - [ ] replace the regular array creation with a cuda unified memory allocation (check kernel.cu)
+- [ ] maybe convert all namespaces to classes for easier cuda and c++ swapping?
 - [ ] calling emptyLike on a stringtype is 100% gonna be a problem lmao (maybe call T() and add default constructor)
 - [ ] integrate std functions for optimization
 - [ ] revamp namespaces and make sure each one is self contained (does not contain stuff from other namespaces)
@@ -63,6 +58,9 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] properly name variables
 - [ ] add functions that return boolean arrays in equal in logic (seperate by equal and equal all)
 - [ ] check if a string can be used without string type
+- [ ] maybe change to using custom datatypes (maybe could then make into lib?)
+- [ ] add a bunch of non array functions (maybe to use in array functions?)
+- [ ] jesus christ please make a better way to create an ndarray from a discrete ndarray (like in the complex or string things)
 - [ ] find a way to package this as a lib file
 - [ ] add more bitwise function variation
 - [ ] maybe add matrix and vector ops ndarray compatibility?

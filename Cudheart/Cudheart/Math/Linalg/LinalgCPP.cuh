@@ -226,9 +226,65 @@ namespace Cudheart::CPP::Math::Linalg {
 
 	template <typename T>
 	Vector<T>* solve(Matrix<T>* a, Vector<T>* b) {
-		a->assertAxis(b, 1);
-		// see https://www.youtube.com/watch?v=GKkUU4T6o08 for help i think
-		NotImplementedException("solve because i can't be asked").raise();
+		// a is the coefficients matrix
+		// b is the dependent variable (the ordinate) vector
+		a->assertMatchShape(b->getShape(), 1);
+		// assert a->getShape()->getX() == a->getShape()->getY();
+
+		// relentlessly ripped from https://martin-thoma.com/solving-linear-equations-with-gaussian-elimination/
+
+		int n = b->getSize();
+
+		Matrix<T>* A = a->augment(b);
+
+		Vector<T>* x = new Vector<T>(n);
+
+		for (int i = 1; i < n; i++) {
+			// search for maximum in this column
+
+			T maxEl = A->get(i, i);
+			int maxRow = i;
+
+			for (int k = i + 1; k <= n; k++) {
+				if (A->get(k, i) > maxEl) {
+					maxEl = A->get(k, i);
+					maxRow = k;
+				}
+			}
+
+			// swap maximum row with current row
+			for (int k = i; k <= n; k++) {
+				T tmp = A->get(maxRow, k);
+				A->set(maxRow, k, A->get(i, k));
+				A->set(i, k, tmp);
+			}
+
+			// make all rows below this one 0 in current column
+			for (int k = i + 1; k <= n; k++) {
+				T c = -(A->get(k, i) / A->get(i, i));
+
+				for (int j = i; j <= n; j++) {
+					if (i == j) {
+						A->set(k, j, 0);
+					}
+					else {
+						A->set(k, j, A->get(k, j) + c * A->get(i, j));
+					}
+				}
+			}
+		}
+
+		// solve equation for an upper triangular matrix
+		for (int i = n - 1; i >= 0; i--) {
+			T v = A->get(i, n) / A->get(i, i);
+			x->set(i, v);
+			for (int k = i - 1; k >= 0; k--) {
+				T value = A->get(k, n) - (A->get(k, i) * v);
+				A->set(k, n, value);
+			}
+		}
+
+		return x;
 	}
 
 	template <typename T>
@@ -238,7 +294,7 @@ namespace Cudheart::CPP::Math::Linalg {
 		// or rather
 		// mat * x = eye(a.shape[0])
 		// and solved for x as such:
-		// x = (eye(a.shape[0])) / mat
+		// (eye(a.shape[0])) / mat = x
 
 		Matrix<T>* eye = Cudheart::MatrixOps::eye(mat->getHeight());
 

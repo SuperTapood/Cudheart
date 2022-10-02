@@ -7,9 +7,13 @@
 using Cudheart::Exceptions::CudaException;
 
 int main() {
-	//fmain();
-	func();
-	//test();
-	//testThing();
+	// verify unified memory?
+	// fmain();
+	// compare speeds
+	// func();
+	// general tests
+	// test();
+	// test inheritance with the ndarrays (do we even need that)
+	// testThing();
 	return 0;
 }

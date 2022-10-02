@@ -351,4 +351,64 @@ namespace Cudheart::StringOps {
 
 		return out;
 	}
+
+	inline NDArray<int>* count(NDArray<StringType*>* a, string sub, int start = 0, int end = -1) {
+
+		NDArray<int>* out = (new Vector<int>(a->getSize()))->shapeLike<int>(a->getShape());
+
+		for (int i = 0; i < a->getSize(); i++) {
+			string str = a->get(i)->m_str;
+			if (end == -1) {
+				end = str.length();
+			}
+
+			for (int j = start; j < end; i++) {
+				int idx = 0;
+				while (idx < str.length() && j < end && sub[idx] == str[j]) {
+					idx++;
+					j++;
+				}
+				if (idx == sub.length()) {
+					out->set(i, out->get(i) + 1);
+				}
+			}
+		}
+
+		return out;
+	}
+
+	inline NDArray<bool>* startsWith(NDArray<StringType*>* a, string prefix, int start = 0, int end = -1) {
+
+		NDArray<bool>* out = (new Vector<bool>(a->getSize()))->shapeLike<bool>(a->getShape());
+		end = end == -1 ? prefix.length() : end;
+
+		for (int i = 0; i < a->getSize(); i++) {
+			string str = a->get(i)->m_str;
+			if (str.length() >= prefix.length()) {
+				if (str.substr(start, end) == prefix) {
+					out->set(i, true);
+				}
+			}
+		}
+
+		return out;
+	}
+
+	inline NDArray<bool>* endsWith(NDArray<StringType*>* a, string suffix, int start = -1, int end = -1) {
+
+		NDArray<bool>* out = (new Vector<bool>(a->getSize()))->shapeLike<bool>(a->getShape());
+		end = end == -1 ? suffix.length() : end;
+
+		for (int i = 0; i < a->getSize(); i++) {
+			string str = a->get(i)->m_str;
+			int st = start == -1 ? str.length() - suffix.length(): start;
+			if (str.length() >= suffix.length()) {
+				if (str.substr(st, end) == suffix) {
+					out->set(i, true);
+				}
+			}
+		}
+
+		return out;
+	}
 }

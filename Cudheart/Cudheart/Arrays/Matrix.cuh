@@ -505,7 +505,23 @@ namespace Cudheart::NDArrays {
 			return new Shape(m_width, m_height);
 		}
 
-		// todo: add operator overloades to make this look better
+
+		Matrix<T>* augment(Vector<T>* other) {
+			assertMatchShape(other->getShape(), 1);
+
+			Matrix<T>* res = new Matrix<T>(m_width + 1, m_height);
+
+			for (int i = 0; i < m_height; i++) {
+				for (int j = 0; j < m_width; j++) {
+					res->set(i, j, get(i, j));
+				}
+				res->set(i, m_width, other->get(i));
+			}
+
+			return res;
+		}
+
+		// todo add operator overloads to make this look better and add some augment overloads
 
 	private:
 		/// <summary>

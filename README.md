@@ -10,3 +10,7 @@ This library takes great inspiration and attempts to mimic the structure of pyth
 <br>
 The aim of this project is to provide a back-end framework for a Tensorflow-esque library to be developed at a later date.
 
+
+Right now, roots has been purposefully neglected as the effort to recreate that algorithm, even by plagiarism it directly, which was written by a slew of people way smarter than I am and  would be very unfun. 
+
+Currently I do not see roots as useful but that may change in the future.

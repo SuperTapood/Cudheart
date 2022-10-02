@@ -146,3 +146,7 @@ a changelog list for the next build release
 - added upper
 - added equal
 - added notEqual
+- added solve
+- added count
+- added startsWith
+- added endsWith
