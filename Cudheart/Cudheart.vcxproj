@@ -109,7 +109,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <CudaCompile Include="Cudheart\Exceptions\BaseException.cu" />
-    <CudaCompile Include="Cudheart\Test\Test.cu" />
+    <CudaCompile Include="Cudheart\Testing\Test.cu" />
+    <CudaCompile Include="Cudheart\Testing\TestArray.cu" />
     <CudaCompile Include="Main.cu" />
     <CudaCompile Include="Misc\kernel.cu" />
     <CudaCompile Include="Misc\unified.cu" />
@@ -126,10 +127,6 @@
     <ClInclude Include="Cudheart\Arrays\Shape.cuh" />
     <ClInclude Include="Cudheart\Arrays\Vector.cuh" />
     <ClInclude Include="Cudheart\Arrays\VectorOps.cuh" />
-    <ClInclude Include="Cudheart\CUtil\ContainerA.cuh" />
-    <ClInclude Include="Cudheart\CUtil\ContainerAB.cuh" />
-    <ClInclude Include="Cudheart\CUtil\ContainerABC.cuh" />
-    <ClInclude Include="Cudheart\CUtil\CUtil.cuh" />
     <ClInclude Include="Cudheart\Exceptions\AssertionException.cuh" />
     <ClInclude Include="Cudheart\Exceptions\BadTypeException.cuh" />
     <ClInclude Include="Cudheart\Exceptions\BadValueException.cuh" />
@@ -170,7 +167,8 @@
     <ClInclude Include="Cudheart\StringTypes\StringOps.cuh" />
     <ClInclude Include="Cudheart\StringTypes\StringType.cuh" />
     <ClInclude Include="Cudheart\StringTypes\StringTypes.cuh" />
-    <ClInclude Include="Cudheart\Test\Test.cuh" />
+    <ClInclude Include="Cudheart\Testing\Test.cuh" />
+    <ClInclude Include="Cudheart\Testing\TestArray.cuh" />
     <ClInclude Include="Cudheart\Util.cuh" />
     <ClInclude Include="Misc\kernel.cuh" />
     <ClInclude Include="Misc\Test.cuh" />

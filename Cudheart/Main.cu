@@ -1,4 +1,4 @@
-#include "Cudheart/Test/Test.cuh"
+#include "Cudheart/Testing/Test.cuh"
 #include "Cudheart/Cudheart.cuh"
 #include "Misc/kernel.cuh"
 #include "Misc/Test.cuh"
@@ -11,9 +11,9 @@ int main() {
 	// fmain();
 	// compare speeds
 	// func();
-	// general tests
-	// test();
-	// test inheritance with the ndarrays (do we even need that)
+	// test inheritance with the ndarrays (do we even need that?)
 	// testThing();
+	// test everything
+	testAll();
 	return 0;
 }

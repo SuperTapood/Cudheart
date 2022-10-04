@@ -31,11 +31,15 @@ namespace Cudheart::IO {
 			}
 		}
 
+		if (index != count) {
+			out->set(count - 1, new StringType(temp));
+		}
+
 		return out;
 	}
 
 	inline Vector<Cudheart::StringType*>* fromString(std::string str, char sep) {
-		int count = 0;
+		int count = 1;
 		for (int i = 0; i < str.size(); i++) {
 			if (str.at(i) == sep) {
 				count++;

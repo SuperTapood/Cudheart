@@ -1,13 +1,14 @@
 #pragma once
 
 #include "NDArray.cuh"
-#include "../CUtil/CUtil.cuh"
 #include "../Exceptions/Exceptions.cuh"
 #include "Shape.cuh"
 
 // check about using longs and stuff as lengths and indices for bigger tensors
 
 namespace Cudheart::NDArrays {
+	using Cudheart::to_string;
+
 	template <typename T>
 	class Matrix;
 
@@ -182,7 +183,7 @@ namespace Cudheart::NDArrays {
 			ostringstream os;
 			os << "[";
 			for (int i = 0; i < getSize() - 1; i++) {
-				os << m_data[i] << ", ";
+				os << to_string(m_data[i]) << ", ";
 			}
 			os << get(-1) << "]";
 			return os.str();
@@ -202,47 +203,6 @@ namespace Cudheart::NDArrays {
 			cout << "Vector of size: " << m_size << endl;
 		}
 		// todo: add operator overloades to make this look better
-
-		/// <summary>
-		/// get a cuda container containing this vector as a cuda array
-		/// </summary>
-		/// <returns>the resulting container</returns>
-		ContainerA<T>* getContainerA() {
-			ContainerA<T>* out = new ContainerA<T>();
-
-			out->warmUp(m_data, m_size);
-
-			return out;
-		}
-
-		/// <summary>
-		/// get a cuda container containing this vector and another one as
-		/// cuda arrays
-		/// </summary>
-		/// <param name="other"> - the other vector</param>
-		/// <returns>the resulting container</returns>
-		ContainerAB<T>* getContainerAB(Vector<T>* other) {
-			ContainerAB<T>* out = new ContainerAB<T>();
-
-			out->warmUp(m_data, other->m_data, m_size);
-
-			return out;
-		}
-
-		/// <summary>
-		/// get a cuda container containing this vector and two other ones as
-		/// cuda arrays
-		/// </summary>
-		/// <param name="b"> - the second vector</param>
-		/// <param name="c"> - the third vector</param>
-		/// <returns></returns>
-		ContainerABC<T>* getContainerABC(Vector<T>* b, Vector<T>* c) {
-			ContainerABC<T>* out = new ContainerABC<T>();
-
-			out->warmUp(m_data, b->m_data, c->m_data, m_size);
-
-			return out;
-		}
 
 		/// <summary>
 		/// assert that this vector matches another vector

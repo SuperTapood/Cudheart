@@ -20,7 +20,7 @@ namespace Cudheart::StringOps {
 		NDArray<StringType*>* out = x1->emptyLike();
 
 		for (int i = 0; i < x1->getSize(); i++) {
-			out->set(i, new StringType(x1->get(i)->m_str + x2->get(i)->m_str));
+			out->set(i, new StringType(x1->get(i)->str() + x2->get(i)->str()));
 		}
 
 		return out;
@@ -34,7 +34,7 @@ namespace Cudheart::StringOps {
 		for (int i = 0; arr->getSize(); i++) {
 			string s = "";
 			for (int j = 0; j < l->get(i); j++) {
-				s += x->get(i)->m_str;
+				s += x->get(i)->str();
 			}
 			arr->set(i, new StringType(s));
 		}
@@ -356,7 +356,7 @@ namespace Cudheart::StringOps {
 		NDArray<int>* out = (new Vector<int>(a->getSize()))->shapeLike<int>(a->getShape());
 
 		for (int i = 0; i < a->getSize(); i++) {
-			string str = a->get(i)->m_str;
+			string str = a->get(i)->str();
 			if (end == -1) {
 				end = str.length();
 			}
@@ -381,7 +381,7 @@ namespace Cudheart::StringOps {
 		end = end == -1 ? prefix.length() : end;
 
 		for (int i = 0; i < a->getSize(); i++) {
-			string str = a->get(i)->m_str;
+			string str = a->get(i)->str();
 			if (str.length() >= prefix.length()) {
 				if (str.substr(start, end) == prefix) {
 					out->set(i, true);
@@ -397,7 +397,7 @@ namespace Cudheart::StringOps {
 		end = end == -1 ? suffix.length() : end;
 
 		for (int i = 0; i < a->getSize(); i++) {
-			string str = a->get(i)->m_str;
+			string str = a->get(i)->str();
 			int st = start == -1 ? str.length() - suffix.length() : start;
 			if (str.length() >= suffix.length()) {
 				if (str.substr(st, end) == suffix) {
@@ -413,7 +413,7 @@ namespace Cudheart::StringOps {
 		NDArray<int>* out = (new Vector<int>(a->getSize()))->shapeLike<int>(a->getShape());
 
 		for (int i = 0; i < a->getSize(); i++) {
-			string str = a->get(i)->m_str;
+			string str = a->get(i)->str();
 			if (end == -1) {
 				end = str.length();
 			}
@@ -437,7 +437,7 @@ namespace Cudheart::StringOps {
 		NDArray<bool>* out = (new Vector<bool>(a->getSize()))->shapeLike<bool>(a->getShape());
 
 		for (int i = 0; i < a->getSize(); i++) {
-			string str = a->get(i)->m_str;
+			string str = a->get(i)->str();
 			out->set(i, true);
 			for (char c : str) {
 				if (!isdigit(c)) {
@@ -454,7 +454,7 @@ namespace Cudheart::StringOps {
 		NDArray<bool>* out = (new Vector<bool>(a->getSize()))->shapeLike<bool>(a->getShape());
 
 		for (int i = 0; i < a->getSize(); i++) {
-			string str = a->get(i)->m_str;
+			string str = a->get(i)->str();
 			out->set(i, true);
 			for (char c : str) {
 				if (!isupper(c)) {
@@ -471,7 +471,7 @@ namespace Cudheart::StringOps {
 		NDArray<bool>* out = (new Vector<bool>(a->getSize()))->shapeLike<bool>(a->getShape());
 
 		for (int i = 0; i < a->getSize(); i++) {
-			string str = a->get(i)->m_str;
+			string str = a->get(i)->str();
 			out->set(i, true);
 			for (char c : str) {
 				if (!islower(c)) {

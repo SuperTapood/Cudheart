@@ -1,15 +1,5 @@
 # Roadmap for upcoming builds
 
-## the feature complete build
-
-add all of the functions i plan to implement (at least on the numpy clone front)
-
-- [ ] isNumeric
-- [ ] isLower
-- [ ] isUpper
-
-
-
 ## the tested build
 
 build unit tests for everything to iron out any major bugs
@@ -61,6 +51,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] jesus christ please make a better way to create an ndarray from a discrete ndarray (like in the complex or string things)
 - [ ] find a way to package this as a lib file
 - [ ] add more bitwise function variation
+- [ ] sort includes and methods
 - [ ] maybe add matrix and vector ops ndarray compatibility?
 - [ ] add operator overloads to both complex and string type
 - [ ] add many more parameter defaults
@@ -207,8 +198,6 @@ just make sure that the cuda samples can be run on this framework (both c++ and 
 
 
 ## notes
- 
-    <summary> show details! </summary>
 
 this is how type enforcements work
 ```cpp

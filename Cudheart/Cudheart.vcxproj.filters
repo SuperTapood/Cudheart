@@ -13,7 +13,7 @@
       <Filter>Sample</Filter>
     </ClInclude>
     <ClInclude Include="Cudheart\Util.cuh" />
-    <ClInclude Include="Cudheart\Test\Test.cuh" />
+    <ClInclude Include="Cudheart\Testing\Test.cuh" />
     <ClInclude Include="Cudheart\Cudheart.cuh" />
     <ClInclude Include="Cudheart\Exceptions\Exceptions.cuh" />
     <ClInclude Include="Cudheart\Exceptions\BaseException.cuh" />
@@ -29,10 +29,6 @@
     <ClInclude Include="Cudheart\Arrays\NDArray.cuh" />
     <ClInclude Include="Cudheart\Exceptions\ShapeMismatchException.cuh" />
     <ClInclude Include="Cudheart\Math\Bitwise\BitwiseCPP.cuh" />
-    <ClInclude Include="Cudheart\CUtil\ContainerA.cuh" />
-    <ClInclude Include="Cudheart\CUtil\CUtil.cuh" />
-    <ClInclude Include="Cudheart\CUtil\ContainerAB.cuh" />
-    <ClInclude Include="Cudheart\CUtil\ContainerABC.cuh" />
     <ClInclude Include="Cudheart\Math\Bitwise\Bitwise.cuh" />
     <ClInclude Include="Cudheart\Math\Bitwise\BitwiseKernels.cuh" />
     <ClInclude Include="Cudheart\Exceptions\CudaException.cuh" />
@@ -71,16 +67,18 @@
     <ClInclude Include="Cudheart\StringTypes\StringOps.cuh" />
     <ClInclude Include="Misc\unified.cuh" />
     <ClInclude Include="Misc\UtilKernel.cuh" />
+    <ClInclude Include="Cudheart\Testing\TestArray.cuh" />
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="Misc\kernel.cu">
       <Filter>Sample</Filter>
     </CudaCompile>
-    <CudaCompile Include="Cudheart\Test\Test.cu" />
+    <CudaCompile Include="Cudheart\Testing\Test.cu" />
     <CudaCompile Include="Cudheart\Exceptions\BaseException.cu" />
     <CudaCompile Include="Main.cu" />
     <CudaCompile Include="Misc\unified.cu" />
     <CudaCompile Include="Misc\UtilKernel.cu" />
+    <CudaCompile Include="Cudheart\Testing\TestArray.cu" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />

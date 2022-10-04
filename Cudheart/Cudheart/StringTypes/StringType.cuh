@@ -16,6 +16,10 @@ namespace Cudheart {
 			return m_str;
 		}
 
+		string toString() {
+			return m_str;
+		}
+
 		const char* c_str() {
 			return m_str.c_str();
 		}
