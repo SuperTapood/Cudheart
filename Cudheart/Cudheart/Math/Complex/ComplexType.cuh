@@ -3,7 +3,6 @@
 #include <stdio.h>
 
 namespace Cudheart {
-	using std::to_string;
 
 	class ComplexType {
 	public:

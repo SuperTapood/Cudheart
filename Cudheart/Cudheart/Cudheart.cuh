@@ -8,16 +8,3 @@
 #include "Random/Random.cuh"
 #include "StringTypes/StringTypes.cuh"
 #include "Constants.cuh"
-
-
-namespace Cudheart {
-	std::string to_string(const StringType& c) {
-		return c.m_str;
-	}
-
-	std::string to_string(const ComplexType& c) {
-		string r = to_string(c.real);
-		string i = to_string(c.imag);
-		return r + " " + i + "i";
-	}
-}

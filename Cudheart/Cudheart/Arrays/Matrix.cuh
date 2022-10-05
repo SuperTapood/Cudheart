@@ -260,22 +260,62 @@ namespace Cudheart::NDArrays {
 		string toString() {
 			ostringstream os;
 			os << "[\n";
-			for (int i = 0; i < m_height; i++) {
-				os << " [";
-				for (int j = 0; j < m_width; j++) {
-					if (j + 1 == m_width) {
-						os << get(i, j);
+			if constexpr (is_same_v<T, StringType*>) {
+				for (int i = 0; i < m_height; i++) {
+					os << " [";
+					for (int j = 0; j < m_width; j++) {
+						if (j + 1 == m_width) {
+							os << ((StringType*)get(i, j))->toString();
+						}
+						else {
+							T res = get(i, j);
+							os << ((StringType*)res)->toString() << ", ";
+						}
+					}
+					if (i + 1 == m_height) {
+						os << "]\n";
 					}
 					else {
-						T res = get(i, j);
-						os << res << ", ";
+						os << "],\n";
 					}
 				}
-				if (i + 1 == m_height) {
-					os << "]\n";
+			} else if constexpr (is_same_v<T, ComplexType*>) {
+				for (int i = 0; i < m_height; i++) {
+					os << " [";
+					for (int j = 0; j < m_width; j++) {
+						if (j + 1 == m_width) {
+							os << ((ComplexType*)get(i, j))->toString();
+						}
+						else {
+							T res = get(i, j);
+							os << ((ComplexType*)res)->toString() << ", ";
+						}
+					}
+					if (i + 1 == m_height) {
+						os << "]\n";
+					}
+					else {
+						os << "],\n";
+					}
 				}
-				else {
-					os << "],\n";
+			} else {
+				for (int i = 0; i < m_height; i++) {
+					os << " [";
+					for (int j = 0; j < m_width; j++) {
+						if (j + 1 == m_width) {
+							os << get(i, j);
+						}
+						else {
+							T res = get(i, j);
+							os << res << ", ";
+						}
+					}
+					if (i + 1 == m_height) {
+						os << "]\n";
+					}
+					else {
+						os << "],\n";
+					}
 				}
 			}
 			os << "]";

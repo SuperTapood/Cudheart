@@ -3,11 +3,12 @@
 #include "NDArray.cuh"
 #include "../Exceptions/Exceptions.cuh"
 #include "Shape.cuh"
+#include "../StringTypes/StringType.cuh"
+#include "../Math/Complex/ComplexType.cuh"
 
 // check about using longs and stuff as lengths and indices for bigger tensors
 
 namespace Cudheart::NDArrays {
-	using Cudheart::to_string;
 
 	template <typename T>
 	class Matrix;
@@ -182,10 +183,24 @@ namespace Cudheart::NDArrays {
 		string toString() {
 			ostringstream os;
 			os << "[";
-			for (int i = 0; i < getSize() - 1; i++) {
-				os << to_string(m_data[i]) << ", ";
+			if constexpr (is_same_v<T, StringType*>) {
+				for (int i = 0; i < getSize() - 1; i++) {
+					os << ((StringType*)(m_data[i]))->toString() << ", ";
+				}
+				os << ((StringType*)(get(-1)))->toString() << "]";
 			}
-			os << get(-1) << "]";
+			else if constexpr (is_same_v<T, ComplexType*>) {
+				for (int i = 0; i < getSize() - 1; i++) {
+					os << ((ComplexType*)(m_data[i]))->toString() << ", ";
+				}
+				os << ((ComplexType*)(get(-1)))->toString() << "]";
+			}
+			else {
+				for (int i = 0; i < getSize() - 1; i++) {
+					os << m_data[i] << ", ";
+				}
+				os << get(-1) << "]";
+			}
 			return os.str();
 		}
 

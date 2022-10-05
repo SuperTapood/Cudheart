@@ -1,42 +1,22 @@
-﻿  Compiling CUDA source file Main.cu...
-  Compiling CUDA source file Cudheart\Testing\TestArray.cu...
+﻿  Compiling CUDA source file Cudheart\Testing\TestArray.cu...
+  Compiling CUDA source file Main.cu...
   Compiling CUDA source file Cudheart\Testing\Test.cu...
   
-  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31823\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static -std=c++17 -Xcompiler "/std:c++17" -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc143.pdb /FS /Zi /RTC1 /MDd " -o C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\TestArray.cu.obj "C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Testing\TestArray.cu" 
   
   C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31823\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static -std=c++17 -Xcompiler "/std:c++17" -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc143.pdb /FS /Zi /RTC1 /MDd " -o C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\Main.cu.obj "C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Main.cu" 
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31823\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static -std=c++17 -Xcompiler "/std:c++17" -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc143.pdb /FS /Zi /RTC1 /MDd " -o C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\TestArray.cu.obj "C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Testing\TestArray.cu" 
   
   C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31823\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static -std=c++17 -Xcompiler "/std:c++17" -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc143.pdb /FS /Zi /RTC1 /MDd " -o C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\Test.cu.obj "C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Testing\Test.cu" 
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\../Arrays/Vector.cuh(184): error : no instance of overloaded function "to_string" matches the argument list
-              argument types are: (Cudheart::StringType *)
-            detected during:
-              instantiation of "std::string Cudheart::NDArrays::Vector<T>::toString() [with T=Cudheart::StringType *]" 
-  (38): here
-              instantiation of "Cudheart::NDArrays::Vector<T>::Vector(int) [with T=Cudheart::StringType *]" 
-  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Testing\../Arrays/IO.cuh(18): here
-  
-  1 error detected in the compilation of "C:/Users/yoavo/Documents/GitHub/Cudheart/Cudheart/Cudheart/Testing/TestArray.cu".
   TestArray.cu
-C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\BuildCustomizations\CUDA 11.6.targets(790,9): error MSB3721: The command ""C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31823\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static -std=c++17 -Xcompiler "/std:c++17" -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc143.pdb /FS /Zi /RTC1 /MDd " -o C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\TestArray.cu.obj "C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Testing\TestArray.cu"" exited with code 1.
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\../Arrays/Vector.cuh(184): error : no instance of overloaded function "Cudheart::to_string" matches the argument list
-              argument types are: (Cudheart::StringType *)
-            detected during:
-              instantiation of "std::string Cudheart::NDArrays::Vector<T>::toString() [with T=Cudheart::StringType *]" 
-  (38): here
-              instantiation of "Cudheart::NDArrays::Vector<T>::Vector(int) [with T=Cudheart::StringType *]" 
-  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Testing\../Arrays/IO.cuh(18): here
-  
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\../Arrays/Vector.cuh(184): error : no instance of overloaded function "to_string" matches the argument list
-              argument types are: (Cudheart::StringType *)
-            detected during:
-              instantiation of "std::string Cudheart::NDArrays::Vector<T>::toString() [with T=Cudheart::StringType *]" 
-  (38): here
-              instantiation of "Cudheart::NDArrays::Vector<T>::Vector(int) [with T=Cudheart::StringType *]" 
-  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Testing\../Arrays/IO.cuh(18): here
-  
-  1 error detected in the compilation of "C:/Users/yoavo/Documents/GitHub/Cudheart/Cudheart/Cudheart/Testing/Test.cu".
   Test.cu
-C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\BuildCustomizations\CUDA 11.6.targets(790,9): error MSB3721: The command ""C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31823\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static -std=c++17 -Xcompiler "/std:c++17" -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc143.pdb /FS /Zi /RTC1 /MDd " -o C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\Test.cu.obj "C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Testing\Test.cu"" exited with code 1.
-  1 error detected in the compilation of "C:/Users/yoavo/Documents/GitHub/Cudheart/Cudheart/Main.cu".
   Main.cu
-C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\BuildCustomizations\CUDA 11.6.targets(790,9): error MSB3721: The command ""C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31823\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static -std=c++17 -Xcompiler "/std:c++17" -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc143.pdb /FS /Zi /RTC1 /MDd " -o C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\Main.cu.obj "C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Main.cu"" exited with code 1.
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\../Constants.cuh(15): warning C4244: 'return': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(129): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(146): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(225): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(361): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(381): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(401): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(418): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  Cudheart.vcxproj -> C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\Cudheart.exe
