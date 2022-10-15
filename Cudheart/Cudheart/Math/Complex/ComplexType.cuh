@@ -3,7 +3,6 @@
 #include <stdio.h>
 
 namespace Cudheart {
-
 	class ComplexType {
 	public:
 		double real;

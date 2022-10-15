@@ -3,13 +3,10 @@
 #include "NDArray.cuh"
 #include "../Exceptions/Exceptions.cuh"
 #include "Shape.cuh"
-#include "../StringTypes/StringType.cuh"
-#include "../Math/Complex/ComplexType.cuh"
 
 // check about using longs and stuff as lengths and indices for bigger tensors
 
 namespace Cudheart::NDArrays {
-
 	template <typename T>
 	class Matrix;
 

@@ -111,6 +111,7 @@
     <CudaCompile Include="Cudheart\Exceptions\BaseException.cu" />
     <CudaCompile Include="Cudheart\Testing\Test.cu" />
     <CudaCompile Include="Cudheart\Testing\TestArray.cu" />
+    <CudaCompile Include="Cudheart\Testing\TestUtil.cu" />
     <CudaCompile Include="Main.cu" />
     <CudaCompile Include="Misc\kernel.cu" />
     <CudaCompile Include="Misc\unified.cu" />
@@ -169,6 +170,8 @@
     <ClInclude Include="Cudheart\StringTypes\StringTypes.cuh" />
     <ClInclude Include="Cudheart\Testing\Test.cuh" />
     <ClInclude Include="Cudheart\Testing\TestArray.cuh" />
+    <ClInclude Include="Cudheart\Testing\TestID.cuh" />
+    <ClInclude Include="Cudheart\Testing\TestUtil.cuh" />
     <ClInclude Include="Cudheart\Util.cuh" />
     <ClInclude Include="Misc\kernel.cuh" />
     <ClInclude Include="Misc\Test.cuh" />

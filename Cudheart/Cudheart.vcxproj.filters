@@ -68,6 +68,8 @@
     <ClInclude Include="Misc\unified.cuh" />
     <ClInclude Include="Misc\UtilKernel.cuh" />
     <ClInclude Include="Cudheart\Testing\TestArray.cuh" />
+    <ClInclude Include="Cudheart\Testing\TestUtil.cuh" />
+    <ClInclude Include="Cudheart\Testing\TestID.cuh" />
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="Misc\kernel.cu">
@@ -79,6 +81,7 @@
     <CudaCompile Include="Misc\unified.cu" />
     <CudaCompile Include="Misc\UtilKernel.cu" />
     <CudaCompile Include="Cudheart\Testing\TestArray.cu" />
+    <CudaCompile Include="Cudheart\Testing\TestUtil.cu" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />

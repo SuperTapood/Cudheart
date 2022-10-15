@@ -196,9 +196,10 @@ namespace Cudheart::IO {
 	template <typename T>
 	void save(std::string name, NDArray<T>* arr, char sep) {
 		std::ofstream file(name);
-		for (int i = 0; i < arr->getSize(); i++) {
-			file << arr->get(i) << sep;
+		for (int i = 0; i < arr->getSize() - 1; i++) {
+			file << arr->getString(i) << sep;
 		}
+		file << arr->getString(-1);
 		file.close();
 	}
 

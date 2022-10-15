@@ -145,6 +145,19 @@ namespace Cudheart::NDArrays {
 			return get(flatten(i, j));
 		}
 
+		string getString(int i, int j) {
+			if constexpr (is_same_v<T, StringType*>) {
+				return ((StringType*)(get(i, j)))->toString();
+			}
+			else if constexpr (is_same_v<T, ComplexType*>) {
+				return ((ComplexType*)(get(i, j)))->toString();
+			}
+			else {
+				return to_string(get(i, j));
+			}
+			return "";
+		}
+
 		template <typename U>
 		NDArray<T>* emptyLike() {
 			return new Matrix<U>(m_height, m_width);
@@ -279,7 +292,8 @@ namespace Cudheart::NDArrays {
 						os << "],\n";
 					}
 				}
-			} else if constexpr (is_same_v<T, ComplexType*>) {
+			}
+			else if constexpr (is_same_v<T, ComplexType*>) {
 				for (int i = 0; i < m_height; i++) {
 					os << " [";
 					for (int j = 0; j < m_width; j++) {
@@ -298,7 +312,8 @@ namespace Cudheart::NDArrays {
 						os << "],\n";
 					}
 				}
-			} else {
+			}
+			else {
 				for (int i = 0; i < m_height; i++) {
 					os << " [";
 					for (int j = 0; j < m_width; j++) {

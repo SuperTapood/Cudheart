@@ -2,6 +2,8 @@
 
 #include "../Util.cuh"
 #include "Shape.cuh"
+#include "../StringTypes/StringType.cuh"
+#include "../Math/Complex/ComplexType.cuh"
 
 namespace Cudheart::NDArrays {
 	/// <summary>
@@ -35,6 +37,7 @@ namespace Cudheart::NDArrays {
 		virtual NDArray<T>* emptyLike() = 0;
 
 		virtual NDArray<T>* transpose() = 0;
+
 		virtual NDArray<T>* transpose(bool inplace) = 0;
 
 		/// <summary>
@@ -69,5 +72,18 @@ namespace Cudheart::NDArrays {
 		virtual NDArray<T>* copy() = 0;
 
 		virtual NDArray<T>* flatten() = 0;
+
+		string getString(int index) {
+			if constexpr (std::is_same_v<T, StringType*>) {
+				return ((StringType*)(get(index)))->toString();
+			}
+			else if constexpr (std::is_same_v<T, ComplexType*>) {
+				return ((ComplexType*)(get(index)))->toString();
+			}
+			else {
+				return std::to_string(get(index));
+			}
+			return "";
+		}
 	};
 }

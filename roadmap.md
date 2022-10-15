@@ -76,6 +76,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] add option to reduce exceptions into warnings and maybe even disable them (and choose whether they will be thrown or not)
 - [ ] change exception color to red in the console
 - [ ] add native math funcs to complex type
+- [ ] change overloads to defaults
 - [ ] add more overloads for expscpp
 - [ ] add more overloads for basemathcpp
 - [ ] remove all the useless overloads
