@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cmath>
-#include "../Constants.cuh"
+#include "../../Constants.cuh"
 
 using Cudheart::NDArrays::Vector;
 using Cudheart::NDArrays::Matrix;

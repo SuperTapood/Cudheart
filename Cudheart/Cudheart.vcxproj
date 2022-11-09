@@ -110,7 +110,7 @@
   <ItemGroup>
     <CudaCompile Include="Cudheart\Exceptions\BaseException.cu" />
     <CudaCompile Include="Cudheart\Testing\Test.cu" />
-    <CudaCompile Include="Cudheart\Testing\TestArray.cu" />
+    <CudaCompile Include="Cudheart\Testing\Arrays\TestArray.cu" />
     <CudaCompile Include="Cudheart\Testing\TestUtil.cu" />
     <CudaCompile Include="Main.cu" />
     <CudaCompile Include="Misc\kernel.cu" />
@@ -132,6 +132,7 @@
     <ClInclude Include="Cudheart\Exceptions\BadTypeException.cuh" />
     <ClInclude Include="Cudheart\Exceptions\BadValueException.cuh" />
     <ClInclude Include="Cudheart\Exceptions\CudaException.cuh" />
+    <ClInclude Include="Cudheart\Exceptions\FileNotFoundException.cuh" />
     <ClInclude Include="Cudheart\Exceptions\IndexOutOfBoundsException.cuh" />
     <ClInclude Include="Cudheart\Exceptions\ZeroDivisionException.cuh" />
     <ClInclude Include="Cudheart\Indexing\Indexing.cuh" />
@@ -169,7 +170,7 @@
     <ClInclude Include="Cudheart\StringTypes\StringType.cuh" />
     <ClInclude Include="Cudheart\StringTypes\StringTypes.cuh" />
     <ClInclude Include="Cudheart\Testing\Test.cuh" />
-    <ClInclude Include="Cudheart\Testing\TestArray.cuh" />
+    <ClInclude Include="Cudheart\Testing\Arrays\TestArray.cuh" />
     <ClInclude Include="Cudheart\Testing\TestID.cuh" />
     <ClInclude Include="Cudheart\Testing\TestUtil.cuh" />
     <ClInclude Include="Cudheart\Util.cuh" />

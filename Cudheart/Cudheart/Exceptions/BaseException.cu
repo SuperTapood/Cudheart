@@ -1,4 +1,5 @@
 #include "BaseException.cuh"
+#include "../Constants.cuh"
 
 namespace Cudheart::Exceptions {
 	BaseException::BaseException()
@@ -13,7 +14,11 @@ namespace Cudheart::Exceptions {
 
 	void BaseException::raise()
 	{
-		cout << endl << m_msg << endl;
+		if (Cudheart::Constants::getShouldThrow()) {
+			
+			throwException();
+		}
+		cout << m_msg << endl;
 		exit(1);
 	}
 

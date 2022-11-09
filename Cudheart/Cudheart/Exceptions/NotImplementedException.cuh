@@ -5,7 +5,7 @@
 namespace Cudheart::Exceptions {
 	class NotImplementedException : public BaseException {
 	public:
-		NotImplementedException(string name, string dep) {
+		NotImplementedException(string name, string dep, bool autoraise = true) {
 			ostringstream os;
 			string exp = "is ";
 			for (int i = 0; i < dep.size(); i++) {
@@ -19,8 +19,11 @@ namespace Cudheart::Exceptions {
 				os << " because " << dep << exp << " also not implemeted";
 			}
 			m_msg = os.str();
+			if (autoraise) {
+				raise();
+			}
 		}
 
-		NotImplementedException(string name) : NotImplementedException(name, "") {}
+		NotImplementedException(string name, bool autoraise = true) : NotImplementedException(name, "", autoraise) {}
 	};
 }

@@ -126,7 +126,7 @@ namespace Cudheart::StringOps {
 
 		for (int i = 0; i < a->getSize(); i++) {
 			std::string str = a->get(i)->str();
-			int size = a->get(i)->str().size();
+			size_t size = a->get(i)->str().size();
 
 			for (int j = 0; j < (size - width); j++) {
 				str += fillChar;
@@ -219,15 +219,15 @@ namespace Cudheart::StringOps {
 	inline NDArray<StringType*>* rStrip(NDArray<StringType*>* a, std::string chars) {
 		NDArray<StringType*>* out = a->emptyLike();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (size_t i = 0; i < a->getSize(); i++) {
 			std::string pre = a->get(i)->str();
 
-			int j = pre.size();
+			size_t j = pre.size();
 
 			for (; j >= 0; j--) {
 				char c = pre.at(j);
 
-				int k = 0;
+				size_t k = 0;
 				bool found = false;
 				for (; k < chars.size(); k++) {
 					if (chars.at(k) == c) {
@@ -352,7 +352,7 @@ namespace Cudheart::StringOps {
 		return out;
 	}
 
-	inline NDArray<int>* count(NDArray<StringType*>* a, string sub, int start = 0, int end = -1) {
+	inline NDArray<int>* count(NDArray<StringType*>* a, string sub, int start = 0, size_t end = -1) {
 		NDArray<int>* out = (new Vector<int>(a->getSize()))->shapeLike<int>(a->getShape());
 
 		for (int i = 0; i < a->getSize(); i++) {
@@ -392,13 +392,13 @@ namespace Cudheart::StringOps {
 		return out;
 	}
 
-	inline NDArray<bool>* endsWith(NDArray<StringType*>* a, string suffix, int start = -1, int end = -1) {
+	inline NDArray<bool>* endsWith(NDArray<StringType*>* a, string suffix, int start = -1, size_t end = -1) {
 		NDArray<bool>* out = (new Vector<bool>(a->getSize()))->shapeLike<bool>(a->getShape());
 		end = end == -1 ? suffix.length() : end;
 
 		for (int i = 0; i < a->getSize(); i++) {
 			string str = a->get(i)->str();
-			int st = start == -1 ? str.length() - suffix.length() : start;
+			size_t st = start == -1 ? str.length() - suffix.length() : start;
 			if (str.length() >= suffix.length()) {
 				if (str.substr(st, end) == suffix) {
 					out->set(i, true);

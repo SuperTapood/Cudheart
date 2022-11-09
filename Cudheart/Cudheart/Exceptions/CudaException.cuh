@@ -9,7 +9,7 @@ using namespace std;
 namespace Cudheart::Exceptions {
 	class CudaException : public BaseException {
 	public:
-		CudaException(cudaError_t error, string func) {
+		CudaException(cudaError_t error, string func, bool autoraise = true) {
 			// add more exceptions as i encounter them
 			ostringstream os;
 			os << "CudaException in '" << func << "': ";
@@ -26,6 +26,9 @@ namespace Cudheart::Exceptions {
 				os << "unknown error: '" << cudaGetErrorString(error) << "'";
 			}
 			m_msg = os.str();
+			if (autoraise) {
+				raise();
+			}
 		}
 	};
 }

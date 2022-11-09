@@ -3,6 +3,7 @@
 #include "Misc/kernel.cuh"
 #include "Misc/Test.cuh"
 #include "Misc/unified.cuh"
+#include "Cudheart/Exceptions/FileNotFoundException.cuh"
 
 using Cudheart::Exceptions::CudaException;
 

@@ -29,8 +29,10 @@ add and improve the library using the ideas i dumped onto the following list:
 
 - [ ] replace the regular array creation with a cuda unified memory allocation (check kernel.cu)
 - [ ] maybe convert all namespaces to classes for easier cuda and c++ swapping?
+- [ ] fix exceptions not throwing correctly
 - [ ] calling emptyLike on a stringtype is 100% gonna be a problem lmao (maybe call T() and add default constructor)
 - [ ] integrate std functions for optimization
+- [ ] further integrate more exceptions
 - [ ] revamp namespaces and make sure each one is self contained (does not contain stuff from other namespaces)
 - [ ] convert m_str to private
 - [ ] copy getters and setters to string type
@@ -67,6 +69,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] make random_bytes_engine part of constants
 - [ ] move pi and euler into struct?
 - [ ] fix a bunch of stupid matrix building and indexing bugs that are sure to be found
+- [ ] implement ndarray comparisons and use that in the unit tests
 - [ ] fix the new object creation in complex math cpp
 - [ ] make sure complex numbers won't be placed where they shouldn't (wherever std is involved)
 - [ ] fix shape mismatch exception
@@ -93,6 +96,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] add cuda to linalg
 - [ ] add cuda to trigo
 - [ ] make sure every function is tested
+- [ ] add specific tests for matrices
 - [ ] use max function to better print the matrix
 - [ ] add readme to every module
 - [ ] allow trigo funcs to accept angles with flags
@@ -100,6 +104,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] manually handle all possible exceptions (because cpp exceptions suck)
 - [ ] fix vander
 - [ ] add some meta data
+- [ ] maybe add additional functionality to Complex and String
 - [ ] add shape equals to both matrix and vector
 - [ ] replace cpp funcs in cuda namespaces with using
 - [ ] divide functions into pragma regions
@@ -118,6 +123,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] deprecate containers and get rid of CUtil
 - [ ] a bunch of new assertions and their exceptions
 - [ ] optimize the functions (mainly for loops)
+- [ ] implement a few python type functions (mainly print and stuff)
 - [ ] add more scenerios to shape mismatch exception
 - [ ] test every function
 - [ ] inplace in every function

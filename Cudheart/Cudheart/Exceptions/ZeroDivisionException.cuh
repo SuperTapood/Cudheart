@@ -5,10 +5,13 @@
 namespace Cudheart::Exceptions {
 	class ZeroDivisionException : public BaseException {
 	public:
-		ZeroDivisionException(string funcName) {
+		ZeroDivisionException(string funcName, bool autoraise = true) {
 			ostringstream os;
-			os << "ZeroDivisionException in " << funcName << "()";
+			os << "ZeroDivisionException: cannot compute " << funcName << "(0)";
 			m_msg = os.str();
+			if (autoraise) {
+				raise();
+			}
 		}
 	};
 }

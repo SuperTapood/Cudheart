@@ -1,4 +1,4 @@
 #pragma once
-#include "TestArray.cuh"
+#include "Arrays/TestArray.cuh"
 
 void testAll();

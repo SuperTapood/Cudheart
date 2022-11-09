@@ -174,6 +174,17 @@ namespace Cudheart::IO {
 	}
 
 	template <typename T>
+	Vector<T>* load(std::string name) {
+		Vector<StringType*>* vec = fromFile(name);
+		int count = vec->getSize();
+		Vector<T>* out = new Vector<T>(count);
+		for (int i = 0; i < count; i++) {
+			out->set(i, (T)atof(vec->get(i)->c_str()));
+		}
+		return out;
+	}
+
+	template <typename T>
 	Matrix<T>* load(std::string name, char sep, int height, int width) {
 		Matrix<StringType*>* mat = fromFile(name, sep, height, width);
 		Matrix<T>* out = new Matrix<T>(height, width);

@@ -5,7 +5,11 @@
 - kinda fixed stringtype and complextype arrays not printing correctly
 - fixed save writing object pointers rather than actual data
 - fixed save not being compatible with the loading functions
-
+- added missing load overload with only the file name
+- added unit tests for IO methods
+- added missing arrops include
+- exceptions will now be automatically raised when created
+- added a new argument to exceptions which allows you to create them without raising them automatically
 
 ## notes:
 - 

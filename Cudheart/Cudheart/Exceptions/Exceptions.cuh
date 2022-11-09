@@ -9,3 +9,4 @@
 #include "NotImplementedException.cuh"
 #include "ShapeMismatchException.cuh"
 #include "ZeroDivisionException.cuh"
+#include "FileNotFoundException.cuh"

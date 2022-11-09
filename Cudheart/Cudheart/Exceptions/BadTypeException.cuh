@@ -5,10 +5,13 @@
 namespace Cudheart::Exceptions {
 	class BadTypeException : public BaseException {
 	public:
-		BadTypeException(string expected, string got) {
+		BadTypeException(string expected, string got, bool autoraise = true) {
 			ostringstream os;
 			os << "BadTypeException: expected " << expected << " but got " << got << endl;
 			m_msg = os.str();
+			if (autoraise) {
+				raise();
+			}
 		}
 	};
 }
