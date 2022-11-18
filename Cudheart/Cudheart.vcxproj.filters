@@ -71,6 +71,7 @@
     <ClInclude Include="Cudheart\Testing\TestUtil.cuh" />
     <ClInclude Include="Cudheart\Testing\TestID.cuh" />
     <ClInclude Include="Cudheart\Exceptions\FileNotFoundException.cuh" />
+    <ClInclude Include="Misc\Custom.cuh" />
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="Misc\kernel.cu">

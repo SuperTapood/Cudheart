@@ -13,16 +13,17 @@ void testArrOps() {
 
 void testAppend() {
 	using namespace Cudheart::ArrayOps;
-	using namespace Cudheart::VectorOps;
+	using namespace Cudheart::MatrixOps;
 	using namespace Cudheart::IO;
 	string str = "1 2 3";
 	string res = "[1, 2, 3, 4]";
-
-	auto vec = load<int>(str);
-	vec->print();
-	append(vec, 4)->print();
-	//assertTest(ARRAYS_ARROPS_APPEND_VecT, append(vec, 4)->toString() == res);
-	
+	string matres ="[\n [0, 1, 2],\n [3, 4, 5],\n [6, 7, 8],\n [1, 2, 3]\n]";
+	string filename = "file.txt";
+	save("file.txt", fromString(str));
+	auto vec = load<int>(filename);
+	auto mat = arange(9, 3, 3);
+	assertTest(ARRAYS_ARROPS_APPEND_VecT, append(vec, 4)->toString() == res);
+	assertTest(ARRAYS_ARROPS_APPEND_VecT, append(mat, vec)->toString() == matres);
 }
 
 #pragma endregion

@@ -14,7 +14,6 @@ using Cudheart::NDArrays::Matrix;
 namespace Cudheart::IO {
 	inline Vector<Cudheart::StringType*>* fromString(std::string str, char sep, int count) {
 		std::string temp = "";
-
 		Vector<StringType*>* out = new Vector<StringType*>(count);
 		int index = 0;
 		for (int i = 0; i < str.size(); i++) {

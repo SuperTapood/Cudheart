@@ -3,6 +3,7 @@
 #include "Misc/kernel.cuh"
 #include "Misc/Test.cuh"
 #include "Misc/unified.cuh"
+#include "Misc/Custom.cuh"
 #include "Cudheart/Exceptions/FileNotFoundException.cuh"
 
 using Cudheart::Exceptions::CudaException;
@@ -16,5 +17,7 @@ int main() {
 	// testThing();
 	// test everything
 	testAll();
+	// test templating with cuda
+	// testCustom();
 	return 0;
 }

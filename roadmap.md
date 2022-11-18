@@ -68,7 +68,10 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] make seed part of constants
 - [ ] make random_bytes_engine part of constants
 - [ ] move pi and euler into struct?
+- [ ] allow IO functions to cast vectors and matrices and test
+- [ ] edge test empty vectors and matrices of all types
 - [ ] fix a bunch of stupid matrix building and indexing bugs that are sure to be found
+- [ ] differentiate matrix and vector ops (maybe by removing duplicates and just reshaping?)
 - [ ] implement ndarray comparisons and use that in the unit tests
 - [ ] fix the new object creation in complex math cpp
 - [ ] make sure complex numbers won't be placed where they shouldn't (wherever std is involved)
