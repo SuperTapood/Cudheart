@@ -171,7 +171,6 @@
     <ClInclude Include="Cudheart\StringTypes\StringTypes.cuh" />
     <ClInclude Include="Cudheart\Testing\Test.cuh" />
     <ClInclude Include="Cudheart\Testing\Arrays\TestArray.cuh" />
-    <ClInclude Include="Cudheart\Testing\TestID.cuh" />
     <ClInclude Include="Cudheart\Testing\TestUtil.cuh" />
     <ClInclude Include="Cudheart\Util.cuh" />
     <ClInclude Include="Misc\Custom.cuh" />

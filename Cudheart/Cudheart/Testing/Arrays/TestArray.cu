@@ -22,8 +22,8 @@ void testAppend() {
 	save("file.txt", fromString(str));
 	auto vec = load<int>(filename);
 	auto mat = arange(9, 3, 3);
-	assertTest(ARRAYS_ARROPS_APPEND_VecT, append(vec, 4)->toString() == res);
-	assertTest(ARRAYS_ARROPS_APPEND_VecT, append(mat, vec)->toString() == matres);
+	assertTest("append(Vector<int>*, int)", append(vec, 4)->toString() == res);
+	assertTest("append(Matrix<int>*, Vector<int>*)", append(mat, vec)->toString() == matres);
 }
 
 #pragma endregion
@@ -44,15 +44,15 @@ void testFromString() {
 
 	auto a = fromString(str, ' ', 4);
 
-	assertTest(ARRAYS_IO_FROM_STRING_SCI, a->toString() == res);
+	assertTest("fromString(string, char, int)", a->toString() == res);
 
 	auto b = fromString(str);
 
-	assertTest(ARRAYS_IO_FROM_STRING_S, b->toString() == res);
+	assertTest("fromString(string)", b->toString() == res);
 
 	auto c = fromString(str, 3);
 
-	assertTest(ARRAYS_IO_FROM_STRING_SI, c->toString() == "[1, 2, 3]");
+	assertTest("fromString(string, int)", c->toString() == "[1, 2, 3]");
 }
 
 void testSave() {
@@ -71,7 +71,7 @@ void testSave() {
 		all += temp;
 	}
 
-	assertTest(ARRAYS_IO_SAVE_SAC, a->toString() == fromString(all, 'x')->toString());
+	assertTest("save(string, Vector<StringType*>*, char)", a->toString() == fromString(all, 'x')->toString());
 
 	file.close();
 
@@ -86,7 +86,7 @@ void testSave() {
 		all += temp;
 	}
 
-	assertTest(ARRAYS_IO_SAVE_SA, a->toString() == fromString(all)->toString());
+	assertTest("save(string, Vector<StringType*>*)", a->toString() == fromString(all)->toString());
 
 	file.close();
 
@@ -100,13 +100,13 @@ void testFromFile() {
 
 	save("file.txt", fromString(str));
 
-	assertTest(ARRAYS_IO_FROM_FILE_SCI, fromFile("file.txt", ' ', 3)->toString() == "[11, 21, 31]");
+	assertTest("fromFile(string, char, int)", fromFile("file.txt", ' ', 3)->toString() == "[11, 21, 31]");
 
-	assertTest(ARRAYS_IO_FROM_FILE_SC, fromFile("file.txt", ' ')->toString() == res);
+	assertTest("fromFile(string, char)", fromFile("file.txt", ' ')->toString() == res);
 
-	assertTest(ARRAYS_IO_FROM_FILE_SI, fromFile("file.txt", 3)->toString() == "[11, 21, 31]");
+	assertTest("fromFile(string, int)", fromFile("file.txt", 3)->toString() == "[11, 21, 31]");
 
-	assertTest(ARRAYS_IO_FROM_FILE_S, fromFile("file.txt")->toString() == res);
+	assertTest("fromFile(string)", fromFile("file.txt")->toString() == res);
 
 
 	remove("file.txt");
@@ -121,13 +121,13 @@ void testLoad() {
 
 	save("file.txt", fromString(str));
 
-	assertTest(ARRAYS_IO_LOAD_SCI, load<float>("file.txt", ' ', 4)->toString() == "[1, 2, 3, 4]");
+	assertTest("load(string, char, int)", load<float>("file.txt", ' ', 4)->toString() == "[1, 2, 3, 4]");
 
-	assertTest(ARRAYS_IO_LOAD_SC, load<int>("file.txt", ' ')->toString() == res);
+	assertTest("load(string, char)", load<int>("file.txt", ' ')->toString() == res);
 
-	assertTest(ARRAYS_IO_LOAD_SI, load<int>("file.txt", 3)->toString() == "[1, 2, 3]");
+	assertTest("load(string, int)", load<int>("file.txt", 3)->toString() == "[1, 2, 3]");
 
-	assertTest(ARRAYS_IO_LOAD_S, load<int>("file.txt")->toString() == res);
+	assertTest("load(string)", load<int>("file.txt")->toString() == res);
 
 
 	remove("file.txt");
@@ -146,6 +146,6 @@ void testFromFunction() {
 		pass = vec->get(i) == i * 10;
 	}
 
-	assertTest(ARRAYS_IO_FROM_FUNCTION_FuncI, pass);
+	assertTest("fromFunction(int func(int), int)", pass);
 }
 #pragma endregion
