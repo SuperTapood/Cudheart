@@ -64,6 +64,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] use std tuple instead of using malloc and returning an array
 - [ ] more overrides in random
 - [ ] maybe add appendable vectors
+- [ ] add overrides to append
 - [ ] further generalize functions by passing shape
 - [ ] make seed part of constants
 - [ ] make random_bytes_engine part of constants
