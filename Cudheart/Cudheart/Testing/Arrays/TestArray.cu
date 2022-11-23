@@ -1,8 +1,12 @@
 #include "TestArray.cuh"
 
 void testArray() {
+	auto start = std::chrono::system_clock::now();
 	testArrOps();
 	testIO();
+	auto end = std::chrono::system_clock::now();
+	std::chrono::duration<double> elapsed = end - start;
+	// cout << "array tests passed in " << elapsed.count() << "s\n";	
 }
 
 #pragma region ArrOpsTesting
@@ -21,8 +25,8 @@ void testAppend() {
 	string matres ="[\n [0, 1, 2],\n [3, 4, 5],\n [6, 7, 8],\n [1, 2, 3]\n]";
 	auto vec = fromString<int>(str);
 	auto mat = arange(9, 3, 3);
-	assertTest("append<int>(Vector<int>*, int)", append(vec, 4)->toString() == res);
-	assertTest("append<int>(Matrix<int>*, Vector<int>*)", append(mat, vec)->toString() == matres);
+	assertTest("append(Vector<int>*, int)", append(vec, 4)->toString() == res);
+	assertTest("append(Matrix<int>*, Vector<int>*)", append(mat, vec)->toString() == matres);
 }
 
 void testConcatenate() {
@@ -31,6 +35,19 @@ void testConcatenate() {
 	using namespace Cudheart::IO;
 	string str = "1 2 3";
 	string res = "[1, 2, 3, 1, 2, 3]";
+	auto a = fromString<float>(str);
+	auto b = fromString<float>(str);
+
+	assertTest("concatenate(Vector<float>, Vector<float>)", concatenate(a, b)->toString() == res);
+
+	string matres = "[\n [0, 1],\n [2, 3],\n [0, 1],\n [2, 3]\n]";
+
+	auto c = arange(4, 2, 2);
+	auto d = arange(4, 2, 2);
+
+	assertTest("concatenate(Matrix<int>, Matrix<int>)", concatenate(c, d)->toString() == matres);
+
+
 }
 
 #pragma endregion

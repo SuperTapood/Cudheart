@@ -4,18 +4,21 @@
 #include "Matrix.cuh"
 #include "Vector.cuh"
 #include "VectorOps.cuh"
+#include "MatrixOps.cuh"
 #include "../Exceptions/Exceptions.cuh"
 
 using Cudheart::NDArrays::Matrix;
 using Cudheart::NDArrays::Vector;
 using Cudheart::NDArrays::NDArray;
 using Cudheart::VectorOps::zeros;
+using Cudheart::VectorOps::empty;
 using namespace Cudheart::Exceptions;
+using namespace Cudheart::MatrixOps;
 
 namespace Cudheart::ArrayOps {
 	template <typename T>
 	Vector<T>* append(Vector<T>* a, T b) {
-		Vector<T>* vec = new Vector<T>(a->getSize() + 1);
+		auto* vec = new Vector<T>(a->getSize() + 1);
 
 		for (int i = 0; i < a->getSize(); i++) {
 			vec->set(i, a->get(i));
@@ -47,14 +50,15 @@ namespace Cudheart::ArrayOps {
 
 	template <typename T>
 	Vector<T>* concatenate(Vector<T>* a, Vector<T>* b) {
-		Vector<T>* vec = new Vector(a->getSize() + b->getSize());
+		int newSize = a->getSize() + b->getSize();
+		Vector<T>* vec = empty<T>(newSize);
 
 		for (int i = 0; i < a->getSize(); i++) {
 			vec->set(i, a->get(i));
 		}
 
 		for (int i = 0; i < b->getSize(); i++) {
-			vec->set(i, b->get(i));
+			vec->set(i + a->getSize(), b->get(i));
 		}
 
 		return vec;
@@ -62,8 +66,8 @@ namespace Cudheart::ArrayOps {
 
 	template <typename T>
 	Matrix<T>* concatenate(Matrix<T>* a, Matrix<T>* b) {
-		a->assertMatchShape(b);
-		Matrix<T>* mat = new Matrix(a->getHeight() * 2, a->getWidth());
+		a->assertMatchShape(b->getShape());
+		Matrix<T>* mat = MatrixOps::empty<T>(a->getHeight() * 2, a->getWidth());
 
 		for (int i = 0; i < a->getSize(); i++) {
 			mat->set(i, a->get(i));

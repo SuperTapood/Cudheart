@@ -4,8 +4,6 @@
 #include "../Exceptions/Exceptions.cuh"
 #include "Shape.cuh"
 
-// check about using longs and stuff as lengths and indices for bigger tensors
-
 namespace Cudheart::NDArrays {
 	template <typename T>
 	class Matrix;
@@ -94,7 +92,7 @@ namespace Cudheart::NDArrays {
 			constexpr bool isVoid = is_void_v<U>;
 			constexpr bool isNull = is_null_pointer_v<U>;
 			if (isStringType) {
-				Vector<StringType*>* out = new Vector<StringType*>(getSize());
+				auto out = new Vector<StringType*>(getSize());
 
 				for (int i = 0; i < getSize(); i++) {
 					out->set(i, new StringType(getString(i)));
@@ -102,9 +100,9 @@ namespace Cudheart::NDArrays {
 
 				return (Vector<U>*)out;
 			}
-			else if (isComplexType) {
+			if (isComplexType) {
 				if (amArithmetic) {
-					Vector<ComplexType*>* out = new Vector<ComplexType*>(getSize());
+					auto out = new Vector<ComplexType*>(getSize());
 
 					for (int i = 0; i < getSize(); i++) {
 						out->set(i, new ComplexType(get(i)));
@@ -113,9 +111,9 @@ namespace Cudheart::NDArrays {
 					return (Vector<U>*)out;
 				}
 			}
-			else if (isArithmetic) {
+			if (isArithmetic) {
 				if (amStringType) {
-					Vector<U>* out = new Vector<U>(getSize());
+					auto* out = new Vector<U>(getSize());
 
 					for (int i = 0; i < getSize(); i++) {
 						auto str = (StringType*)get(i);
@@ -125,14 +123,17 @@ namespace Cudheart::NDArrays {
 					return out;
 				}
 			}
-			else if (isArithmetic) {
+			if (isArithmetic) {
 				if (!isVoid) {
 					if (!isNull) {
 						if (amArithmetic) {
-							Vector<U>* out = new Vector<U>(getSize());
+							auto out = new Vector<U>(getSize());
 
 							for (int i = 0; i < getSize(); i++) {
-								out->set(i, (U)get(i));
+								// jumping through hoops to appease
+								// our compiler overlord
+								// lots of performance left on the table here
+								out->set(i, std::stold(getString(i)));
 							}
 
 							return out;
@@ -140,17 +141,14 @@ namespace Cudheart::NDArrays {
 					}
 				}
 			}
-			else {
-				ostringstream os;
-				os << "BadTypeException: cannot cast ";
-				os << typeid(T).name();
-				os << " type to ";
-				os << typeid(U).name();
-				os << " type.";
-				BadTypeException(os.str());
-			}
+			ostringstream os;
+			os << "BadTypeException: cannot cast ";
+			os << typeid(T).name();
+			os << " type to ";
+			os << typeid(U).name();
+			os << " type.";
+			BadTypeException(os.str());
 
-			cout << "oh no" << endl;
 			return NULL;
 		}
 

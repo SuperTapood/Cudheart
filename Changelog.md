@@ -14,6 +14,7 @@
 - removed shape initializing in vector initializer list constructor
 - ndarray will now type check in its constructor
 - vectors and matrices should now cast correctly ;)
+- fixed concatenate lol
 
 ## notes:
 - 

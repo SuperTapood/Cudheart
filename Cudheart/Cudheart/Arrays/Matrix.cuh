@@ -107,7 +107,7 @@ namespace Cudheart::NDArrays {
 			constexpr bool isVoid = is_void_v<U>;
 			constexpr bool isNull = is_null_pointer_v<U>;
 			if (isStringType) {
-				Matrix<StringType*>* out = new Matrix<StringType*>(getHeight(), getWidth());
+				auto out = new Matrix<StringType*>(getHeight(), getWidth());
 
 				for (int i = 0; i < getSize(); i++) {
 					out->set(i, new StringType(getString(i)));
@@ -117,7 +117,7 @@ namespace Cudheart::NDArrays {
 			}
 			else if (isComplexType) {
 				if (amArithmetic) {
-					Matrix<ComplexType*>* out = new Matrix<ComplexType*>(getHeight(), getWidth());
+					auto out = new Matrix<ComplexType*>(getHeight(), getWidth());
 
 					for (int i = 0; i < getSize(); i++) {
 						out->set(i, new ComplexType(get(i)));
@@ -128,7 +128,7 @@ namespace Cudheart::NDArrays {
 			}
 			else if (isArithmetic) {
 				if (amStringType) {
-					Matrix<U>* out = new Matrix<U>(getHeight(), getWidth());
+					auto out = new Matrix<U>(getHeight(), getWidth());
 
 					for (int i = 0; i < getSize(); i++) {
 						auto str = (StringType*)get(i);
@@ -136,16 +136,16 @@ namespace Cudheart::NDArrays {
 					}
 
 					return out;
-				}
-			}
-			else if (isArithmetic) {
-				if (!isVoid) {
+				} else if (!isVoid) {
 					if (!isNull) {
 						if (amArithmetic) {
-							Matrix<U>* out = new Matrix<U>(getHeight(), getWidth());
+							auto out = new Matrix<U>(getHeight(), getWidth());
 
 							for (int i = 0; i < getSize(); i++) {
-								out->set(i, (U)get(i));
+								// jumping through hoops to appease
+								// our compiler overlord
+								// lots of performance left on the table here
+								out->set(i, std::stold(getString(i)));
 							}
 
 							return out;
@@ -203,17 +203,21 @@ namespace Cudheart::NDArrays {
 			return get(flatten(i, j));
 		}
 
-		string getString(int i, int j) {
+		string getString(int index) {
 			if constexpr (is_same_v<T, StringType*>) {
-				return ((StringType*)(get(i, j)))->toString();
+				return ((StringType*)(get(index)))->toString();
 			}
 			else if constexpr (is_same_v<T, ComplexType*>) {
-				return ((ComplexType*)(get(i, j)))->toString();
+				return ((ComplexType*)(get(index)))->toString();
 			}
 			else {
-				return to_string(get(i, j));
+				return to_string(get(index));
 			}
 			return "";
+		}
+
+		string getString(int i, int j) {
+			return getString(flatten(i, j));
 		}
 
 		template <typename U>
@@ -232,7 +236,7 @@ namespace Cudheart::NDArrays {
 				return this;
 			}
 			else if (other->getDims() == 1) {
-				Vector<T>* out = new Vector<T>(other->getSize());
+				auto out = new Vector<T>(other->getSize());
 
 				for (int i = 0; i < m_size; i++) {
 					out->set(i, get(i));

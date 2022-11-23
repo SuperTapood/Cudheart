@@ -15,6 +15,7 @@
 #include <algorithm>
 #include <array>
 #include <iterator>
+#include <vector>
 #include <string>
 
 using std::exception;
@@ -30,3 +31,4 @@ using std::array;
 using std::copy;
 using std::begin;
 using std::end;
+using std::vector;

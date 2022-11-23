@@ -29,6 +29,7 @@ add and improve the library using the ideas i dumped onto the following list:
 
 - [ ] replace the regular array creation with a cuda unified memory allocation (check kernel.cu)
 - [ ] maybe convert all namespaces to classes for easier cuda and c++ swapping?
+- [ ] refactor code according to the linter
 - [ ] fix exceptions not throwing correctly
 - [ ] calling emptyLike on a stringtype is 100% gonna be a problem lmao (maybe call T() and add default constructor)
 - [ ] integrate std functions for optimization
@@ -80,6 +81,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] add map function to ndarray
 - [ ] make all overrides inlines maybe?
 - [ ] add overloads to simple random
+- [ ] add support for massive vectors and matrices
 - [ ] add shape argument to functions instead of using return types (+ initializer list overload?)
 - [ ] add option to reduce exceptions into warnings and maybe even disable them (and choose whether they will be thrown or not)
 - [ ] change exception color to red in the console
@@ -278,6 +280,12 @@ general links:
 - https://www.olcf.ornl.gov/wp-content/uploads/2013/02/Intro_to_CUDA_C-TS.pdf
 - https://www3.nd.edu/~zxu2/acms60212-40212/CUDA_C_Programming_Guide.pdf
 - https://www.cs.utexas.edu/~rossbach/cs380p/papers/cuda-programming.pdf
+
+
+style guide and refactor things:
+- https://google.github.io/styleguide/cppguide.html
+- https://refactoring.guru/refactoring
+
 
 
 
