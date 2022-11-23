@@ -10,6 +10,10 @@
 - added missing arrops include
 - exceptions will now be automatically raised when created
 - added a new argument to exceptions which allows you to create them without raising them automatically
+- commented out the load functions because they were redundent
+- removed shape initializing in vector initializer list constructor
+- ndarray will now type check in its constructor
+- vectors and matrices should now cast correctly ;)
 
 ## notes:
 - 

@@ -9,6 +9,7 @@ void testArray();
 void testArrOps();
 
 void testAppend();
+void testConcatenate();
 #pragma endregion
 
 #pragma region IOTesting
@@ -19,8 +20,6 @@ void testFromString();
 void testSave();
 
 void testFromFile();
-
-void testLoad();
 
 void testFromFunction();
 #pragma endregion

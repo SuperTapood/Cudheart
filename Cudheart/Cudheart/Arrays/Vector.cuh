@@ -16,6 +16,20 @@ namespace Cudheart::NDArrays {
 		int m_size;
 		T* m_data;
 
+		string getString(int i) {
+			if constexpr (is_same_v<T, StringType*>) {
+				return ((StringType*)get(i))->toString();
+			}
+			else if constexpr (is_same_v<T, ComplexType*>) {
+				return ((ComplexType*)get(i))->toString();
+			}
+			else if constexpr (std::is_fundamental<T>::value ) {
+				return to_string(get(i));
+			}
+
+			return "";
+		}
+
 	public:
 		/// <summary>
 		/// construct a new vector from the given data and size
@@ -58,7 +72,6 @@ namespace Cudheart::NDArrays {
 				m_data[i] = x;
 				i++;
 			}
-			shape = new Shape(m_size);
 		}
 
 		/// destroy the vector
@@ -73,13 +86,72 @@ namespace Cudheart::NDArrays {
 		/// <returns>this vector but of U type</returns>
 		template<typename U>
 		Vector<U>* castTo() {
-			Vector<U>* output = new Vector<U>(getSize());
+			constexpr bool isStringType = is_same_v<U, StringType*>;
+			constexpr bool amStringType = is_same_v<T, StringType*>;
+			constexpr bool isComplexType = is_same_v<U, ComplexType*>;
+			constexpr bool amArithmetic = is_arithmetic_v<T>;
+			constexpr bool isArithmetic = is_arithmetic_v<U>;
+			constexpr bool isVoid = is_void_v<U>;
+			constexpr bool isNull = is_null_pointer_v<U>;
+			if (isStringType) {
+				Vector<StringType*>* out = new Vector<StringType*>(getSize());
 
-			for (int i = 0; i < getSize(); i++) {
-				output->set(i, (U)get(i));
+				for (int i = 0; i < getSize(); i++) {
+					out->set(i, new StringType(getString(i)));
+				}
+
+				return (Vector<U>*)out;
+			}
+			else if (isComplexType) {
+				if (amArithmetic) {
+					Vector<ComplexType*>* out = new Vector<ComplexType*>(getSize());
+
+					for (int i = 0; i < getSize(); i++) {
+						out->set(i, new ComplexType(get(i)));
+					}
+
+					return (Vector<U>*)out;
+				}
+			}
+			else if (isArithmetic) {
+				if (amStringType) {
+					Vector<U>* out = new Vector<U>(getSize());
+
+					for (int i = 0; i < getSize(); i++) {
+						auto str = (StringType*)get(i);
+						out->set(i, (U)str->toFloating());
+					}
+
+					return out;
+				}
+			}
+			else if (isArithmetic) {
+				if (!isVoid) {
+					if (!isNull) {
+						if (amArithmetic) {
+							Vector<U>* out = new Vector<U>(getSize());
+
+							for (int i = 0; i < getSize(); i++) {
+								out->set(i, (U)get(i));
+							}
+
+							return out;
+						}
+					}
+				}
+			}
+			else {
+				ostringstream os;
+				os << "BadTypeException: cannot cast ";
+				os << typeid(T).name();
+				os << " type to ";
+				os << typeid(U).name();
+				os << " type.";
+				BadTypeException(os.str());
 			}
 
-			return output;
+			cout << "oh no" << endl;
+			return NULL;
 		}
 
 		/// <summary>

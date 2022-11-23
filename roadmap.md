@@ -78,11 +78,13 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] make sure complex numbers won't be placed where they shouldn't (wherever std is involved)
 - [ ] fix shape mismatch exception
 - [ ] add map function to ndarray
+- [ ] make all overrides inlines maybe?
 - [ ] add overloads to simple random
 - [ ] add shape argument to functions instead of using return types (+ initializer list overload?)
 - [ ] add option to reduce exceptions into warnings and maybe even disable them (and choose whether they will be thrown or not)
 - [ ] change exception color to red in the console
 - [ ] add native math funcs to complex type
+- [ ] add so many checks bro
 - [ ] change overloads to defaults
 - [ ] add more overloads for expscpp
 - [ ] add more overloads for basemathcpp

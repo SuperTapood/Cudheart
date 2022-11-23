@@ -13,5 +13,12 @@ namespace Cudheart::Exceptions {
 				raise();
 			}
 		}
+
+		BadTypeException(string msg, bool autoraise = true) {
+			m_msg = msg;
+			if (autoraise) {
+				raise();
+			}
+		}
 	};
 }

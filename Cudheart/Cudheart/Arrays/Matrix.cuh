@@ -99,13 +99,71 @@ namespace Cudheart::NDArrays {
 		/// <returns></returns>
 		template<typename U>
 		Matrix<U>* castTo() {
-			Matrix<U>* output = new Matrix<U>(m_height, m_width);
+			constexpr bool isStringType = is_same_v<U, StringType*>;
+			constexpr bool amStringType = is_same_v<T, StringType*>;
+			constexpr bool isComplexType = is_same_v<U, ComplexType*>;
+			constexpr bool amArithmetic = is_arithmetic_v<T>;
+			constexpr bool isArithmetic = is_arithmetic_v<U>;
+			constexpr bool isVoid = is_void_v<U>;
+			constexpr bool isNull = is_null_pointer_v<U>;
+			if (isStringType) {
+				Matrix<StringType*>* out = new Matrix<StringType*>(getHeight(), getWidth());
 
-			for (int i = 0; i < getSize(); i++) {
-				output->set(i, (U)get(i));
+				for (int i = 0; i < getSize(); i++) {
+					out->set(i, new StringType(getString(i)));
+				}
+
+				return (Matrix<U>*)out;
+			}
+			else if (isComplexType) {
+				if (amArithmetic) {
+					Matrix<ComplexType*>* out = new Matrix<ComplexType*>(getHeight(), getWidth());
+
+					for (int i = 0; i < getSize(); i++) {
+						out->set(i, new ComplexType(get(i)));
+					}
+
+					return (Matrix<U>*)out;
+				}
+			}
+			else if (isArithmetic) {
+				if (amStringType) {
+					Matrix<U>* out = new Matrix<U>(getHeight(), getWidth());
+
+					for (int i = 0; i < getSize(); i++) {
+						auto str = (StringType*)get(i);
+						out->set(i, (U)str->toFloating());
+					}
+
+					return out;
+				}
+			}
+			else if (isArithmetic) {
+				if (!isVoid) {
+					if (!isNull) {
+						if (amArithmetic) {
+							Matrix<U>* out = new Matrix<U>(getHeight(), getWidth());
+
+							for (int i = 0; i < getSize(); i++) {
+								out->set(i, (U)get(i));
+							}
+
+							return out;
+						}
+					}
+				}
+			}
+			else {
+				ostringstream os;
+				os << "BadTypeException: cannot cast matrix of type ";
+				os << typeid(T).name();
+				os << " to a matrix of type ";
+				os << typeid(U).name();
+				BadTypeException(os.str());
 			}
 
-			return output;
+			cout << "oh no" << endl;
+			return NULL;
 		}
 
 #pragma region getters_and_setters

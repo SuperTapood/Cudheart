@@ -4,9 +4,9 @@
 
 void assertTest(string id, bool b) {
 	if (b) {
-		// cout << "Test ID " << id << " passed!\n";
+		// cout << "Test " << id << " passed!\n";
 		return;
 	}
-	cout << "Tests Failed! Test (ID " << id << ") failed assertion\n";
+	cout << "Tests Failed! " << id << " failed assertion\n";
 	exit(1);
 }

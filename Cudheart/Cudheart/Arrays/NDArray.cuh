@@ -4,6 +4,7 @@
 #include "Shape.cuh"
 #include "../StringTypes/StringType.cuh"
 #include "../Math/Complex/ComplexType.cuh"
+#include "../Exceptions/BadTypeException.cuh"
 
 namespace Cudheart::NDArrays {
 	/// <summary>
@@ -13,6 +14,17 @@ namespace Cudheart::NDArrays {
 	template <typename T>
 	class NDArray {
 	public:
+		NDArray() {
+			if constexpr (std::is_void_v<T>) {
+				if constexpr (std::is_null_pointer_v<T>) {
+					ostringstream os;
+					os << "BadTypeException: cannot create an ndarray of type ";
+					os << typeid(T).name();
+					os << ".";
+					BadTypeException(os.str());
+				}
+			}
+		}
 		/// <summary>
 		/// destroy this object
 		/// </summary>

@@ -12,13 +12,14 @@ using Cudheart::NDArrays::Vector;
 using Cudheart::NDArrays::Matrix;
 
 namespace Cudheart::IO {
-	inline Vector<Cudheart::StringType*>* fromString(std::string str, char sep, int count) {
+	template <typename T>
+	Vector<T>* fromString(std::string str, char sep, int count) {
 		std::string temp = "";
-		Vector<StringType*>* out = new Vector<StringType*>(count);
+		Vector<StringType*>* res = new Vector<StringType*>(count);
 		int index = 0;
 		for (int i = 0; i < str.size(); i++) {
 			if (str.at(i) == sep) {
-				out->set(index, new StringType(temp));
+				res->set(index, new StringType(temp));
 				temp = "";
 				index++;
 				if (index == count) {
@@ -31,31 +32,39 @@ namespace Cudheart::IO {
 		}
 
 		if (index != count) {
-			out->set(count - 1, new StringType(temp));
+			res->set(count - 1, new StringType(temp));
 		}
+
+		Vector<T>* out = res->castTo<T>();
+
+		delete res;
 
 		return out;
 	}
-
-	inline Vector<Cudheart::StringType*>* fromString(std::string str, char sep) {
+	
+	template <typename T>
+	Vector<T>* fromString(std::string str, char sep) {
 		int count = 1;
 		for (int i = 0; i < str.size(); i++) {
 			if (str.at(i) == sep) {
 				count++;
 			}
 		}
-		return fromString(str, sep, count);
+		return fromString<T>(str, sep, count);
 	}
 
-	inline Vector<Cudheart::StringType*>* fromString(std::string str, int count) {
-		return fromString(str, ' ', count);
+	template <typename T>
+	Vector<T>* fromString(std::string str, int count) {
+		return fromString<T>(str, ' ', count);
 	}
 
-	inline Vector<Cudheart::StringType*>* fromString(std::string str) {
-		return fromString(str, ' ');
+	template <typename T>
+	Vector<T>* fromString(std::string str) {
+		return fromString<T>(str, ' ');
 	}
 
-	inline Vector<Cudheart::StringType*>* fromFile(std::string name, char sep, int count) {
+	template <typename T>
+	Vector<T>* fromFile(std::string name, char sep, int count) {
 		string temp;
 		string all;
 		std::ifstream file(name);
@@ -64,38 +73,15 @@ namespace Cudheart::IO {
 			all += temp;
 		}
 
-		Vector<Cudheart::StringType*>* out = fromString(all, sep, count);
+		Vector<T>* out = fromString<T>(all, sep, count);
 
 		file.close();
 
 		return out;
 	}
 
-	inline Vector<Cudheart::StringType*>* fromFile(std::string name, char sep) {
-		string temp;
-		string all;
-		std::ifstream file(name);
-
-		while (getline(file, temp)) {
-			all += temp;
-		}
-
-		Vector<Cudheart::StringType*>* out = fromString(all, sep);
-
-		file.close();
-
-		return out;
-	}
-
-	inline Vector<Cudheart::StringType*>* fromFile(std::string name, int count) {
-		return fromFile(name, ' ', count);
-	}
-
-	inline Vector<Cudheart::StringType*>* fromFile(std::string name) {
-		return fromFile(name, ' ');
-	}
-
-	inline Matrix<Cudheart::StringType*>* fromString(std::string str, char sep, int height, int width) {
+	template <typename T>
+	Matrix<T>* fromString(std::string str, char sep, int height, int width) {
 		std::string temp = "";
 
 		Matrix<StringType*>* out = new Matrix<StringType*>(height, width);
@@ -115,14 +101,20 @@ namespace Cudheart::IO {
 			}
 		}
 
-		return out;
+		auto res = out->castTo<T>();
+
+		delete out;
+
+		return res;
 	}
 
-	inline Matrix<Cudheart::StringType*>* fromString(std::string str, int height, int width) {
-		return fromString(str, ' ', height, width);
+	template <typename T>
+	Matrix<T>* fromString(std::string str, int height, int width) {
+		return fromString<T>(str, ' ', height, width);
 	}
 
-	inline Matrix<Cudheart::StringType*>* fromFile(std::string name, char sep, int height, int width) {
+	template <typename T>
+	Vector<T>* fromFile(std::string name, char sep) {
 		string temp;
 		string all;
 		std::ifstream file(name);
@@ -131,18 +123,47 @@ namespace Cudheart::IO {
 			all += temp;
 		}
 
-		Matrix<Cudheart::StringType*>* out = fromString(all, sep, height, width);
+		Vector<T>* out = fromString<T>(all, sep);
 
 		file.close();
 
 		return out;
 	}
 
-	inline Matrix<Cudheart::StringType*>* fromFile(std::string name, int height, int width) {
-		return fromFile(name, ' ', height, width);
+	template <typename T>
+	Vector<T>* fromFile(std::string name, int count) {
+		return fromFile<T>(name, ' ', count);
 	}
 
 	template <typename T>
+	Vector<T>* fromFile(std::string name) {
+		return fromFile<T>(name, ' ');
+	}
+
+	template <typename T>
+	Matrix<T>* fromFile(std::string name, char sep, int height, int width) {
+		string temp;
+		string all;
+		std::ifstream file(name);
+
+		while (getline(file, temp)) {
+			all += temp;
+		}
+
+		Matrix<T>* out = fromString<T>(all, sep, height, width);
+
+		file.close();
+
+		return out;
+	}
+
+	template <typename T>
+	Matrix<T>* fromFile(std::string name, int height, int width) {
+		return fromFile<T>(name, ' ', height, width);
+	}
+
+	// redundent until i make a brand new binary file format
+	/*template <typename T>
 	Vector<T>* load(std::string name, char sep, int count) {
 		Vector<StringType*>* vec = fromFile(name, sep, count);
 		Vector<T>* out = new Vector<T>(count);
@@ -201,7 +222,7 @@ namespace Cudheart::IO {
 			out->set(i, (T)atof(mat->get(i)->c_str()));
 		}
 		return out;
-	}
+	}*/
 
 	template <typename T>
 	void save(std::string name, NDArray<T>* arr, char sep) {

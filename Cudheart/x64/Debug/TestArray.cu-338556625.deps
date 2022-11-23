@@ -174,6 +174,7 @@ C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Shape.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\VectorOps.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Exceptions\AssertionException.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Exceptions\BadTypeException.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Exceptions\BadValueException.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Exceptions\BaseException.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Exceptions\CudaException.cuh

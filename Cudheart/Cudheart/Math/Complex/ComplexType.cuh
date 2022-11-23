@@ -14,6 +14,18 @@ namespace Cudheart {
 			this->imag = imag;
 		}
 
+		template <typename T>
+		ComplexType(T real) {
+			if constexpr (is_arithmetic_v<T>) {
+				this->real = real;
+				this->imag = 0;
+			}
+			else {
+				this->real = 0;
+				this->imag = 0;
+			}
+		}
+
 		ComplexType() : ComplexType(0, 0) {}
 
 		string toString() {

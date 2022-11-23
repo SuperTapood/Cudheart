@@ -2,13 +2,14 @@
 
 void testArray() {
 	testArrOps();
-	//testIO();
+	testIO();
 }
 
 #pragma region ArrOpsTesting
 
 void testArrOps() {
 	testAppend();
+	testConcatenate();
 }
 
 void testAppend() {
@@ -18,12 +19,18 @@ void testAppend() {
 	string str = "1 2 3";
 	string res = "[1, 2, 3, 4]";
 	string matres ="[\n [0, 1, 2],\n [3, 4, 5],\n [6, 7, 8],\n [1, 2, 3]\n]";
-	string filename = "file.txt";
-	save("file.txt", fromString(str));
-	auto vec = load<int>(filename);
+	auto vec = fromString<int>(str);
 	auto mat = arange(9, 3, 3);
-	assertTest("append(Vector<int>*, int)", append(vec, 4)->toString() == res);
-	assertTest("append(Matrix<int>*, Vector<int>*)", append(mat, vec)->toString() == matres);
+	assertTest("append<int>(Vector<int>*, int)", append(vec, 4)->toString() == res);
+	assertTest("append<int>(Matrix<int>*, Vector<int>*)", append(mat, vec)->toString() == matres);
+}
+
+void testConcatenate() {
+	using namespace Cudheart::ArrayOps;
+	using namespace Cudheart::MatrixOps;
+	using namespace Cudheart::IO;
+	string str = "1 2 3";
+	string res = "[1, 2, 3, 1, 2, 3]";
 }
 
 #pragma endregion
@@ -33,7 +40,6 @@ void testIO() {
 	testFromString();
 	testSave();
 	testFromFile();
-	testLoad();
 	testFromFunction();
 }
 
@@ -42,17 +48,17 @@ void testFromString() {
 	string str = "1 2 3 4";
 	string res = "[1, 2, 3, 4]";
 
-	auto a = fromString(str, ' ', 4);
+	auto a = fromString<int>(str, ' ', 4);
 
-	assertTest("fromString(string, char, int)", a->toString() == res);
+	assertTest("fromString<int>(string, char, int)", a->toString() == res);
 
-	auto b = fromString(str);
+	auto b = fromString<int>(str);
 
-	assertTest("fromString(string)", b->toString() == res);
+	assertTest("fromString<int>(string)", b->toString() == res);
 
-	auto c = fromString(str, 3);
+	auto c = fromString<int>(str, 3);
 
-	assertTest("fromString(string, int)", c->toString() == "[1, 2, 3]");
+	assertTest("fromString<int>(string, int)", c->toString() == "[1, 2, 3]");
 }
 
 void testSave() {
@@ -60,7 +66,7 @@ void testSave() {
 	string str = "11 21 31 41";
 	string res = "[11, 21, 31, 41]";
 
-	auto a = fromString(str);
+	auto a = fromString<int>(str);
 	save("savedArray.txt", a, 'x');
 
 	string temp;
@@ -71,11 +77,11 @@ void testSave() {
 		all += temp;
 	}
 
-	assertTest("save(string, Vector<StringType*>*, char)", a->toString() == fromString(all, 'x')->toString());
+	assertTest("save<int>(string, Vector<StringType*>*, char)", a->toString() == fromString<int>(all, 'x')->toString());
 
 	file.close();
 
-	auto b = fromString(str);
+	auto b = fromString<int>(str);
 	save("savedArray.txt", a);
 
 	all = "";
@@ -86,7 +92,7 @@ void testSave() {
 		all += temp;
 	}
 
-	assertTest("save(string, Vector<StringType*>*)", a->toString() == fromString(all)->toString());
+	assertTest("save<int>(string, Vector<StringType*>*)", a->toString() == fromString<int>(all)->toString());
 
 	file.close();
 
@@ -98,36 +104,15 @@ void testFromFile() {
 	string str = "11 21 31 41";
 	string res = "[11, 21, 31, 41]";
 
-	save("file.txt", fromString(str));
+	save("file.txt", fromString<int>(str));
 
-	assertTest("fromFile(string, char, int)", fromFile("file.txt", ' ', 3)->toString() == "[11, 21, 31]");
+	assertTest("fromFile<int>(string, char, int)", fromFile<int>("file.txt", ' ', 3)->toString() == "[11, 21, 31]");
 
-	assertTest("fromFile(string, char)", fromFile("file.txt", ' ')->toString() == res);
+	assertTest("fromFile<int>(string, char)", fromFile<int>("file.txt", ' ')->toString() == res);
 
-	assertTest("fromFile(string, int)", fromFile("file.txt", 3)->toString() == "[11, 21, 31]");
+	assertTest("fromFile<int>(string, int)", fromFile<int>("file.txt", 3)->toString() == "[11, 21, 31]");
 
-	assertTest("fromFile(string)", fromFile("file.txt")->toString() == res);
-
-
-	remove("file.txt");
-}
-
-void testLoad() {
-	using namespace Cudheart::IO;
-	using namespace Cudheart::VectorOps;
-
-	string str = "1 2 3 4";
-	string res = "[1, 2, 3, 4]";
-
-	save("file.txt", fromString(str));
-
-	assertTest("load(string, char, int)", load<float>("file.txt", ' ', 4)->toString() == "[1, 2, 3, 4]");
-
-	assertTest("load(string, char)", load<int>("file.txt", ' ')->toString() == res);
-
-	assertTest("load(string, int)", load<int>("file.txt", 3)->toString() == "[1, 2, 3]");
-
-	assertTest("load(string)", load<int>("file.txt")->toString() == res);
+	assertTest("fromFile<int>(string)", fromFile<int>("file.txt")->toString() == res);
 
 
 	remove("file.txt");

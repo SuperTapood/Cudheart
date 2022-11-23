@@ -20,6 +20,10 @@ namespace Cudheart {
 			return m_str;
 		}
 
+		long double toFloating() {
+			return std::stold(m_str);
+		}
+
 		const char* c_str() {
 			return m_str.c_str();
 		}
