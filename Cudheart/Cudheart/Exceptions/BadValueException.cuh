@@ -13,5 +13,12 @@ namespace Cudheart::Exceptions {
 				raise();
 			}
 		}
+
+		BadValueException(string msg, bool autoraise = true) {
+			m_msg = "BadValueException: " + msg;
+			if (autoraise) {
+				raise();
+			}
+		}
 	};
 }

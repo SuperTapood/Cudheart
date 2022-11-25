@@ -14,6 +14,7 @@ void testArray() {
 void testArrOps() {
 	testAppend();
 	testConcatenate();
+	testSplit();
 }
 
 void testAppend() {
@@ -46,9 +47,26 @@ void testConcatenate() {
 	auto d = arange(4, 2, 2);
 
 	assertTest("concatenate(Matrix<int>, Matrix<int>)", concatenate(c, d)->toString() == matres);
-
-
 }
+
+void testSplit() {
+	using namespace Cudheart::VectorOps;
+	using namespace Cudheart::ArrayOps;
+
+	int size = 15;
+	int vecs = 5;
+
+	auto a = arange(size);
+	auto b = arange(size);
+	auto arr = split(a, vecs);
+
+	for (int i = 0; i < vecs; i++) {
+		for (int j = 0; j < size / vecs; j++) {
+			assertTest("split(Vector<int>, int)", arr[i]->get(j) == b->get(i * (size / vecs) + j));
+		}
+	}
+}
+
 
 #pragma endregion
 

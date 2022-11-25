@@ -46,6 +46,8 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] add magic methods and redo functions where they can be used
 - [ ] convert cuda and cpp pointers to shared memory
 - [ ] add axis to everything
+- [ ] differentiate between vector and matrix ops (name wise) (maybe?)
+- [ ] maybe start returning vectors of vectors?
 - [ ] properly name variables
 - [ ] add functions that return boolean arrays in equal in logic (seperate by equal and equal all)
 - [ ] check if a string can be used without string type

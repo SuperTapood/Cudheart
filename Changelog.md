@@ -15,6 +15,7 @@
 - ndarray will now type check in its constructor
 - vectors and matrices should now cast correctly ;)
 - fixed concatenate lol
+- fixed split function and improved its performance maybe
 
 ## notes:
 - 

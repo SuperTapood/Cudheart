@@ -9,7 +9,11 @@ void testArray();
 void testArrOps();
 
 void testAppend();
+
 void testConcatenate();
+
+void testSplit();
+
 #pragma endregion
 
 #pragma region IOTesting

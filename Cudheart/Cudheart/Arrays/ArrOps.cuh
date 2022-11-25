@@ -82,71 +82,40 @@ namespace Cudheart::ArrayOps {
 
 	template <typename T>
 	Vector<T>** split(Vector<T>* vec, int sizes) {
-		int len = ceil(vec->getSize() / sizes);
-		Vector<T>** out = (Vector<T>**)malloc(sizeof(Vector<T>*) * len);
-
-		int count = vec->getSize();
-		for (int i = 0; i < len; i++) {
-			if (count > sizes) {
-				out[i] = new Vector<T>(sizes);
-				count -= sizes;
-			}
-			else {
-				out[i] = new Vector<T>(count);
-				break;
-			}
+		if (vec->getSize() % sizes != 0) {
+			BadValueException("vector split does not result in an equal division");
+			return nullptr;
 		}
 
-		int vectorIndex = 0;
-		int elems = 0;
-		Vector<T>* v = out[vectorIndex];
-		for (int i = 0; i < vec->getSize(); i++) {
-			v->set(elems, vec->get(i));
-			elems++;
-			if (elems == sizes) {
-				elems = 0;
-				Vector<T>* v = out[vectorIndex++];
+		int vecs = vec->getSize() / sizes;
+		Vector<T>** out = (Vector<T>**)malloc(sizeof(Vector<T>*) * sizes);
+
+		int index = 0;
+		int jdex = 0;
+		out[0] = new Vector<T>(vecs);
+		for (int i = 0; i < vec->getSize(); i++, index++) {
+			if (index == vecs) {
+				index = 0;
+				jdex++;
+				out[jdex] = new Vector<T>(vecs);
 			}
+			((Vector<T>*)(out[jdex]))->set(index, vec->get(i));
 		}
 
 		return out;
 	}
 
 	template <typename T>
-	Matrix<T>** split(Matrix<T>* mat, int sizes) {
+	Vector<T>** split(Matrix<T>* mat, int sizes) {
 		// add axis parameter
 		// currently assumes axis = 0
 
-		int len = ceil(mat->getWidth() / sizes);
-		Matrix<T>** out = (Matrix<T>**)malloc(sizeof(Matrix<T>*) * len);
-
-		int count = mat->getWidth();
-		for (int i = 0; i < len; i++) {
-			if (count > sizes) {
-				out[i] = new Matrix<T>(mat->getHeight(), sizes);
-				count -= sizes;
-			}
-			else {
-				out[i] = new Matrix<T>(mat->getHeight(), count);
-				break;
-			}
+		if (mat->getHeight() % sizes != 0) {
+			BadValueException("matrix split does not result in an equal division");
+			return nullptr;
 		}
 
-		int matrixIndex = 0;
-		int elems = 0;
-		Matrix<T>* m = out[matrixIndex];
-		for (int i = 0; i < mat->getWidth(); i++) {
-			for (int j = 0; j < mat->getHeight(); j++) {
-				m->set(elems, mat->get(j, i));
-			}
-			elems++;
-			if (elems == sizes) {
-				elems = 0;
-				Matrix<T>* m = out[matrixIndex++];
-			}
-		}
-
-		return out;
+		return split(mat->flatten(), sizes);
 	}
 
 	template <typename T>
