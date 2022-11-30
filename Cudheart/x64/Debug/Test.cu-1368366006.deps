@@ -74,8 +74,10 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.3201
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32019\include\mmintrin.h
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32019\include\new
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32019\include\nmmintrin.h
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32019\include\numeric
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32019\include\ostream
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32019\include\pmmintrin.h
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32019\include\random
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32019\include\ratio
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32019\include\sal.h
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32019\include\setjmp.h
@@ -102,6 +104,7 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.3201
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32019\include\vector
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32019\include\wmmintrin.h
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32019\include\xatomic.h
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32019\include\xbit_ops.h
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32019\include\xcall_once.h
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32019\include\xerrc.h
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32019\include\xfacet
@@ -177,6 +180,8 @@ C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\NDArray.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Shape.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\VectorOps.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Constants.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Cudheart.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Exceptions\AssertionException.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Exceptions\BadTypeException.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Exceptions\BadValueException.cuh
@@ -189,8 +194,31 @@ C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Exceptions\MatrixConv
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Exceptions\NotImplementedException.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Exceptions\ShapeMismatchException.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Exceptions\ZeroDivisionException.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Indexing\Indexing.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Indexing\Searching.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Indexing\Sorting.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Logic\Logic.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Logic\LogicCPP.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\BaseMath\BaseMath.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\BaseMath\BaseMathCPP.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Bitwise\Bitwise.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Bitwise\BitwiseCPP.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Complex\Complex.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Complex\ComplexMathCPP.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Complex\ComplexType.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Exps\Exps.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Exps\ExpsCPP.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Linalg\Linalg.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Linalg\LinalgCPP.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Math.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Statistics\Statistics.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Trigo\Trigo.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\Trigo\TrigoCPP.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\Random.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringType.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringTypes.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Testing\Arrays\TestArray.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Testing\Test.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Testing\TestUtil.cuh

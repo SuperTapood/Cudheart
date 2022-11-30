@@ -17,7 +17,7 @@ namespace Cudheart::NDArrays {
 
 		Shape(int x) {
 			this->x = x;
-			this->y = x;
+			this->y = 1;
 			size = x;
 			this->dims = 1;
 		}

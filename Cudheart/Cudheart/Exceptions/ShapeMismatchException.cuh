@@ -29,5 +29,14 @@ namespace Cudheart::Exceptions {
 				raise();
 			}
 		}
+		
+		ShapeMismatchException(string s1, string s2, bool autoraise = true) {
+			ostringstream os;
+			os << "ShapeMismatchException: cannot reshape array of shape " << s1 << " into shape " << s2;
+			m_msg = os.str();
+			if (autoraise) {
+				raise();
+			}
+		}
 	};
 }

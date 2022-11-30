@@ -1,5 +1,4 @@
 #pragma once
-#include "../../Arrays/Arrays.cuh"
 #include <stdio.h>
 #include "../TestUtil.cuh"
 
@@ -13,6 +12,8 @@ void testAppend();
 void testConcatenate();
 
 void testSplit();
+
+void testTile();
 
 #pragma endregion
 

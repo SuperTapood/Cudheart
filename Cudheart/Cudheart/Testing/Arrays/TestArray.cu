@@ -1,4 +1,4 @@
-#include "TestArray.cuh"
+#include "TestArray.cuh" 
 
 void testArray() {
 	auto start = std::chrono::system_clock::now();
@@ -57,12 +57,31 @@ void testSplit() {
 	int vecs = 5;
 
 	auto a = arange(size);
-	auto b = arange(size);
 	auto arr = split(a, vecs);
 
 	for (int i = 0; i < vecs; i++) {
 		for (int j = 0; j < size / vecs; j++) {
-			assertTest("split(Vector<int>, int)", arr[i]->get(j) == b->get(i * (size / vecs) + j));
+			assertTest("split(Vector<int>, int)", arr[i]->get(j) == a->get(i * (size / vecs) + j));
+		}
+	}
+
+	auto b = a->shapeLike<int>(new Shape((int)(vecs / size), vecs));
+
+}
+
+void testTile() {
+	using namespace Cudheart::VectorOps;
+	using namespace Cudheart::ArrayOps;
+
+	int size = 15;
+	int reps = 5;
+
+	auto a = arange(size);
+	auto arr = tile(a, reps);
+
+	for (int i = 0; i < reps; i++) {
+		for (int j = 0; j < size; j++) {
+			assertTest("tile(Vector<int>, int)", arr->get(i * size + j) == a->get(j));
 		}
 	}
 }

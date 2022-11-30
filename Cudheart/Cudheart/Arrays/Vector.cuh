@@ -210,7 +210,7 @@ namespace Cudheart::NDArrays {
 			return new Vector<T>(m_size);
 		}
 
-		template <typename U>
+		template <typename T>
 		NDArray<T>* shapeLike(Shape* other) {
 			assertMatchShape(other);
 			if (other->getDims() == 1) {
@@ -286,35 +286,10 @@ namespace Cudheart::NDArrays {
 		}
 		// todo: add operator overloades to make this look better
 
-		/// <summary>
-		/// assert that this vector matches another vector
-		/// </summary>
-		/// <param name="other"> - the other vector</param>
-		void assertMatchShape(Shape* shape, int axis) {
-			if (shape->getDims() == 1) {
-				if (m_size != shape->getSize()) {
-					Cudheart::Exceptions::ShapeMismatchException(m_size,
-						shape->getSize()).raise();
-				}
-			}
-			else if (shape->getDims() == 2) {
-				if (axis == 0) {
-					if (m_size != shape->getX()) {
-						Cudheart::Exceptions::ShapeMismatchException(m_size,
-							shape->getX()).raise();
-					}
-				}
-				else if (axis == 1) {
-					if (m_size != shape->getY()) {
-						Cudheart::Exceptions::ShapeMismatchException(m_size,
-							shape->getY()).raise();
-					}
-				}
-			}
-		}
-
 		void assertMatchShape(Shape* shape) {
-			return assertMatchShape(shape, 0);
+			if (shape->getSize() == getSize()) {
+				ShapeMismatchException("(" + getSize() + ",)", shape->toString());
+			}
 		}
 
 		Shape* getShape() {
