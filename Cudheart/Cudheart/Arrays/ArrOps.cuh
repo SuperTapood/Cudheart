@@ -18,7 +18,7 @@ using namespace Cudheart::MatrixOps;
 namespace Cudheart::ArrayOps {
 	template <typename T>
 	Vector<T>* append(Vector<T>* a, T b) {
-		auto* vec = new Vector<T>(a->getSize() + 1);
+		Vector<T>* vec = new Vector<T>(a->getSize() + 1);
 
 		for (int i = 0; i < a->getSize(); i++) {
 			vec->set(i, a->get(i));

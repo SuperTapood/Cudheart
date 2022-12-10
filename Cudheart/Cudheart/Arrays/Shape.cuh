@@ -37,5 +37,17 @@ namespace Cudheart::NDArrays {
 		int getSize() {
 			return size;
 		}
+
+		string toString() {
+			ostringstream os;
+			os << "(";
+			os << x;
+			os << ",";
+			if (y != 1) {
+				os << y;
+			}
+			os << ")";
+			return os.str();
+		}
 	};
 }

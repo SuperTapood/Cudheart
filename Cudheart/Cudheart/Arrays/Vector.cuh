@@ -102,7 +102,7 @@ namespace Cudheart::NDArrays {
 			}
 			if (isComplexType) {
 				if (amArithmetic) {
-					auto out = new Vector<ComplexType*>(getSize());
+					Vector<ComplexType*>* out = new Vector<ComplexType*>(getSize());
 
 					for (int i = 0; i < getSize(); i++) {
 						out->set(i, new ComplexType(get(i)));
@@ -113,7 +113,7 @@ namespace Cudheart::NDArrays {
 			}
 			if (isArithmetic) {
 				if (amStringType) {
-					auto* out = new Vector<U>(getSize());
+					Vector<U>* out = new Vector<U>(getSize());
 
 					for (int i = 0; i < getSize(); i++) {
 						auto str = (StringType*)get(i);
@@ -288,8 +288,16 @@ namespace Cudheart::NDArrays {
 
 		void assertMatchShape(Shape* shape) {
 			if (shape->getSize() == getSize()) {
-				ShapeMismatchException("(" + getSize() + ",)", shape->toString());
+				ostringstream os;
+				os << "(";
+				os << getSize();
+				os << ",)";
+				ShapeMismatchException(os.str(), shape->toString());
 			}
+		}
+		
+		void assertMatchShape(Shape* shape, int axis) {
+			assertMatchShape(shape);
 		}
 
 		Shape* getShape() {
