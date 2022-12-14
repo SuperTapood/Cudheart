@@ -27,6 +27,9 @@ the modules that still need testing:
 
 add and improve the library using the ideas i dumped onto the following list:
 
+- [ ] compile entire thing into lib or dll file by predefining templates
+- [ ] use ifndef and undefine and ifdef and stuff
+- [ ] enforce member naming conventions lol
 - [ ] replace the regular array creation with a cuda unified memory allocation (check kernel.cu)
 - [ ] maybe convert all namespaces to classes for easier cuda and c++ swapping?
 - [ ] refactor code according to the linter
