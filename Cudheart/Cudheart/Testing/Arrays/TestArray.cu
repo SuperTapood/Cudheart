@@ -135,7 +135,38 @@ void testRemove() {
 	using namespace Cudheart::VectorOps;
 	using namespace Cudheart::ArrayOps;
 
+	int size = 20;
+	int rem = 3;
 
+	auto a = arange(size);
+	auto arr = remove(a, rem);
+	int idx = 0;
+
+	for (int i = 0; i < size; i++) {
+		if (i != rem) {
+			assertTest("remove(Vector<int>, int)", i == arr->get(idx));
+			idx++;
+		}
+		
+	}
+
+	auto b = (Matrix<int>*)a->shapeLike<int>(new Shape(4, 5));
+	auto brr = remove(b, rem);
+
+	for (int i = 0; i < size - 1; i++) {
+		assertTest("remove(Matrix<int>, int, axis=-1)", brr->get(i) == arr->get(i));
+	}
+
+	auto crr = (Matrix<int>*)(remove<int>(b, rem, 0));
+
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 5; j++) {
+			assertTest("remove(Matrix<int>, int, axis=0)", crr->get(i, j) == b->get(i, j));
+		}
+	}
+
+
+	auto drr = (Matrix<int>*)(remove<int>(b, rem, 1));
 }
 
 

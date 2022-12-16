@@ -17,6 +17,9 @@
 - fixed concatenate lol
 - fixed split function and improved its performance maybe
 - fixed reshape :D
+- removed axis argument from remove vector
+- added axis default to 'remove' function
+- fixed remove function
 
 ## notes:
 - 

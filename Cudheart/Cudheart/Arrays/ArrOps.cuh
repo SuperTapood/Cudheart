@@ -173,7 +173,7 @@ namespace Cudheart::ArrayOps {
 	}
 
 	template <typename T>
-	Vector<T>* remove(Vector<T>* arr, int index, int axis) {
+	Vector<T>* remove(Vector<T>* arr, int index) {
 		Vector<T>* vec = new Vector<T>(arr->getSize() - 1);
 
 		int idx = 0;
@@ -188,18 +188,17 @@ namespace Cudheart::ArrayOps {
 	}
 
 	template <typename T>
-	Matrix<T>* remove(Matrix<T>* arr, int index, int axis) {
+	NDArray<T>* remove(Matrix<T>* arr, int index, int axis = -1) {
 		if (axis == 0) {
 			Matrix<T>* mat = new Matrix<T>(arr->getHeight() - 1, arr->getWidth());
 
 			int count = 0;
-			for (int i = 0; i < arr->getHeight(); i++) {
-				if (i == index) {
-					continue;
-				}
-
-				for (int j = 0; j < arr->getWidth(); j++) {
-					mat->set(count++, j, arr->get(i, j));
+			
+			for (int i = 0; i < mat->getHeight(); i++) {
+				for (int j = 0; j < mat->getWidth(); j++) {
+					if (i != index) {
+						mat->set(i, j, arr->get(count++));
+					}
 				}
 			}
 
@@ -208,17 +207,20 @@ namespace Cudheart::ArrayOps {
 		else if (axis == 1) {
 			Matrix<T>* mat = new Matrix<T>(arr->getHeight(), arr->getWidth() - 1);
 
+			int idx = 0;
 			for (int i = 0; i < arr->getHeight(); i++) {
-				int count = 0;
 				for (int j = 0; j < arr->getWidth(); j++) {
-					if (j == index) {
-						continue;
+					if (j != index) {
+						mat->set(idx++, arr->get(i, j));
 					}
-					mat->set(i, count, arr->get(i, j));
 				}
 			}
 
 			return mat;
+		}
+
+		else if (axis == -1) {
+			return remove((Vector<T>*)(arr->flatten()), index);
 		}
 		return nullptr;
 	}

@@ -35,6 +35,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] simplify the way functions are used
 - [ ] refactor code according to the linter
 - [ ] fix exceptions not throwing correctly
+- [ ] add overrides that do not require creating shape object
 - [ ] calling emptyLike on a stringtype is 100% gonna be a problem lmao (maybe call T() and add default constructor)
 - [ ] integrate std functions for optimization
 - [ ] allow functions to accept ndarray and take it from there
@@ -59,10 +60,12 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] check if a string can be used without string type
 - [ ] maybe change to using custom datatypes (maybe could then make into lib?)
 - [ ] add a bunch of non array functions (maybe to use in array functions?)
+- [ ] add randomness to tests
 - [ ] jesus christ please make a better way to create an ndarray from a discrete ndarray (like in the complex or string things)
 - [ ] find a way to package this as a lib file
 - [ ] add more bitwise function variation
 - [ ] sort includes and methods
+- [ ] mass test and time
 - [ ] maybe add matrix and vector ops ndarray compatibility?
 - [ ] add operator overloads to both complex and string type
 - [ ] add many more parameter defaults
