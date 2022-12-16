@@ -4,21 +4,18 @@ namespace Cudheart::NDArrays {
 	class Shape {
 	private:
 		int x, y;
-		int size;
 		int dims;
 
 	public:
 		Shape(int x, int y) {
 			this->x = x;
 			this->y = y;
-			size = x * y;
 			this->dims = 2;
 		}
 
 		Shape(int x) {
 			this->x = x;
 			this->y = 1;
-			size = x;
 			this->dims = 1;
 		}
 
@@ -35,7 +32,7 @@ namespace Cudheart::NDArrays {
 		}
 
 		int getSize() {
-			return size;
+			return x * y;
 		}
 
 		string toString() {

@@ -115,7 +115,7 @@ namespace Cudheart::ArrayOps {
 			return nullptr;
 		}
 
-		return split(mat->flatten(), sizes);
+		return split((Vector<T>*)mat->flatten(), sizes);
 	}
 
 	template <typename T>

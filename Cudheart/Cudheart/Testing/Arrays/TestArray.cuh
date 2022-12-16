@@ -15,6 +15,8 @@ void testSplit();
 
 void testTile();
 
+void testRemove();
+
 #pragma endregion
 
 #pragma region IOTesting

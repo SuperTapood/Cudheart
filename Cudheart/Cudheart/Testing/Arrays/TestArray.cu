@@ -15,6 +15,8 @@ void testArrOps() {
 	testAppend();
 	testConcatenate();
 	testSplit();
+	testTile();
+	testRemove();
 }
 
 void testAppend() {
@@ -65,16 +67,26 @@ void testSplit() {
 		}
 	}
 
-	auto b = a->shapeLike<int>(new Shape((int)(vecs / size), vecs));
+	auto b = (Matrix<int>*)a->shapeLike<int>(new Shape((int)(size / vecs), vecs));
+	auto brr = split(b, size / vecs);
 
+	for (int i = 0; i < size / vecs; i++) {
+		for (int j = 0; j < vecs; j++) {
+			assertTest("split(Matrix<int>, int)", brr[i]->get(j) == b->get(i * vecs + j));
+		}
+	}
 }
 
 void testTile() {
 	using namespace Cudheart::VectorOps;
 	using namespace Cudheart::ArrayOps;
 
-	int size = 15;
+	int w = 5;
+	int h = 3;
+	int size = w * h;
 	int reps = 5;
+	int hReps = 2;
+	int wReps = 2;
 
 	auto a = arange(size);
 	auto arr = tile(a, reps);
@@ -84,6 +96,46 @@ void testTile() {
 			assertTest("tile(Vector<int>, int)", arr->get(i * size + j) == a->get(j));
 		}
 	}
+
+	auto brr = tile(a, wReps, hReps);
+
+	for (int i = 0; i < hReps; i++) {
+		for (int j = 0; j < wReps; j++) {
+			for (int k = 0; k < a->getSize(); k++) {
+				assertTest("tile(Vector<int>, int, int)", brr->get(i, k + a->getSize() * j) == a->get(k));
+			}
+		}
+	}
+
+	auto c = (Matrix<int>*)(a->shapeLike<int>(new Shape(h, w)));
+	auto crr = tile(c, reps);
+
+	for (int i = 0; i < h; i++) {
+		for (int j = 0; j < reps; j++) {
+			for (int k = 0; k < w; k++) {
+				assertTest("tile(Matrix<int>, int)", crr->get(i, k + w * j) == c->get(i, k));
+			}
+		}
+	}
+
+	auto drr = tile(c, wReps, hReps);
+
+	for (int i = 0; i < hReps; i++) {
+		for (int j = 0; j < h; j++) {
+			for (int k = 0; k < wReps; k++) {
+				for (int m = 0; m < w; m++) {
+					assertTest("tile(Matrix<int>, int, int)", drr->get(j + i * h, m + k * w) == c->get(j, m));
+				}
+			}
+		}
+	}
+}
+
+void testRemove() {
+	using namespace Cudheart::VectorOps;
+	using namespace Cudheart::ArrayOps;
+
+
 }
 
 

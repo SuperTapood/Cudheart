@@ -16,6 +16,7 @@
 - vectors and matrices should now cast correctly ;)
 - fixed concatenate lol
 - fixed split function and improved its performance maybe
+- fixed reshape :D
 
 ## notes:
 - 

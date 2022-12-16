@@ -32,10 +32,13 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] enforce member naming conventions lol
 - [ ] replace the regular array creation with a cuda unified memory allocation (check kernel.cu)
 - [ ] maybe convert all namespaces to classes for easier cuda and c++ swapping?
+- [ ] simplify the way functions are used
 - [ ] refactor code according to the linter
 - [ ] fix exceptions not throwing correctly
 - [ ] calling emptyLike on a stringtype is 100% gonna be a problem lmao (maybe call T() and add default constructor)
 - [ ] integrate std functions for optimization
+- [ ] allow functions to accept ndarray and take it from there
+- [ ] rename shapelike to reshape
 - [ ] further integrate more exceptions
 - [ ] revamp namespaces and make sure each one is self contained (does not contain stuff from other namespaces)
 - [ ] convert m_str to private

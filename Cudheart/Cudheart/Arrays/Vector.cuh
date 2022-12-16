@@ -217,14 +217,11 @@ namespace Cudheart::NDArrays {
 				return this;
 			}
 			else if (other->getDims() == 2) {
-				Matrix<T>* out = new Matrix<T>(other->getY(), other->getX());
+				Matrix<T>* out = new Matrix<T>(other->getX(), other->getY());
 
-				for (int i = 0; i < other->getX(); i++) {
-					for (int j = 0; j < other->getY(); j++) {
-						out->set(i, j, get(i));
-					}
+				for (int i = 0; i < out->getSize(); i++) {
+					out->set(i, get(i));
 				}
-
 				return out;
 			}
 
@@ -287,7 +284,7 @@ namespace Cudheart::NDArrays {
 		// todo: add operator overloades to make this look better
 
 		void assertMatchShape(Shape* shape) {
-			if (shape->getSize() == getSize()) {
+			if (shape->getSize() != getSize()) {
 				ostringstream os;
 				os << "(";
 				os << getSize();
