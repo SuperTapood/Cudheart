@@ -17,6 +17,8 @@ void testArrOps() {
 	testSplit();
 	testTile();
 	testRemove();
+	testTrimZeros();
+	testUnique();
 }
 
 void testAppend() {
@@ -169,6 +171,31 @@ void testRemove() {
 	auto drr = (Matrix<int>*)(remove<int>(b, rem, 1));
 }
 
+void testTrimZeros() {
+	using namespace Cudheart::VectorOps;
+	using namespace Cudheart::ArrayOps;
+	using namespace Cudheart::IO;
+
+	auto a = fromString<int>("0, 0, 0, 1, 2, 3, 0, 2, 1, 0");
+	
+	assertTest("trimZeros(Vector<int>, 'fb')", trimZeros(a)->toString() == "[1, 2, 3, 0, 2, 1]");
+	assertTest("trimZeros(Vector<int>, 'f')",  trimZeros(a, "f")->toString() == "[1, 2, 3, 0, 2, 1, 0]");
+	assertTest("trimZeros(Vector<int>, 'b')",  trimZeros(a, "b")->toString() == "[0, 0, 0, 1, 2, 3, 0, 2, 1]");
+}
+
+void testUnique() {
+	using namespace Cudheart::VectorOps;
+	using namespace Cudheart::ArrayOps;
+	using namespace Cudheart::IO;
+
+	auto a = fromString<int>("0, 0, 0, 1, 3, 2, 0, 2, 1, 0");
+
+	auto res = unique(a, true, true, true);
+
+	for (int i = 0; i < 4; i++) {
+		res[i]->print();
+	}
+}
 
 #pragma endregion
 

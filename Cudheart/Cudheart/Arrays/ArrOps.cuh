@@ -229,102 +229,108 @@ namespace Cudheart::ArrayOps {
 	Vector<T>* trimZeros(NDArray<T>* filt, string trim = "fb") {
 		int start = 0;
 		int end = filt->getSize();
-		if (trim == "fb") {
-			for (; start < filt->getSize(); start++) {
-				if (filt->get(start) != 0) {
-					break;
-				}
-			}
 
-			for (; end > start; end--) {
-				if (filt->get(end) != 0) {
-					break;
-				}
-			}
-		}
-		else if (trim == "f") {
-			for (; start < filt->getSize(); start++) {
-				if (filt->get(start) != 0) {
-					break;
-				}
-			}
-		}
-		else if (trim == "b") {
-			for (; end > start; end--) {
-				if (filt->get(end) != 0) {
+		if (trim.find("f") != std::string::npos) {
+			for (int i = 0; i < filt->getSize(); i++) {
+				if (filt->get(i) != 0) {
+					start = i;
 					break;
 				}
 			}
 		}
 
-		Vector<T>* vec = new Vector<T>(end - start);
-
-		int index = 0;
-		for (; start < end; start++) {
-			vec->set(index++, filt->get(start));
+		if (trim.find("b") != std::string::npos) {
+			for (int i = filt->getSize() - 1; i > start; i--) {
+				if (filt->get(i) != 0) {
+					end = i + 1;
+					break;
+				}
+			}
 		}
 
-		return vec;
+		int size = end - start;
+
+		Vector<T>* out = new Vector<T>(size);
+
+		for (int i = 0; i < size; i++) {
+			out->set(i, filt->get(i + start));
+		}
+
+		return out;
 	}
 
 	template <typename T>
 	Vector<T>** unique(NDArray<T>* ar, bool returnIndex = false, bool returnInverse = false, bool returnCounts = false) {
 		Vector<T>** vectors = new Vector<T>*[4];
 
-		int countU = 1;
-		for (int i = 1; i < ar->getSize(); i++) {
+		int uniques = 0;
+
+		for (int i = 0; i < ar->getSize(); i++) {
+			bool isUnique = true;
+			for (int j = 0; j < i; j++) {
+				if (ar->get(i) == ar->get(j)) {
+					isUnique = false;
+				}
+			}
+
+			if (isUnique) {
+				uniques++;
+			}
+		}
+
+		auto uniqueArr = new Vector<T>(uniques);
+		auto indexArr = new Vector<T>(uniques);
+		auto inverseArr = new Vector<T>(ar->getSize());
+		auto countsArr = zeros<T>(uniques);
+
+		int index = 0;
+
+		for (int i = 0; i < ar->getSize(); i++) {
 			bool unique = true;
-			for (int j = 0; j < i; i++) {
-				if (ar->get(j) == ar->get(i)) {
+			for (int j = 0; j < index; j++) {
+				if (uniqueArr->get(j) == ar->get(i)) {
 					unique = false;
 					break;
 				}
 			}
+
 			if (unique) {
-				countU++;
-			}
-		}
+				uniqueArr->set(index, ar->get(i));
+				if (returnIndex) {
+					indexArr->set(index, i);
+				}
+				index++;
 
-		Vector<T>* uniqueVec = new Vector<T>(countU);
-		Vector<T>* indexVec = returnIndex ? new Vector<T>(countU) : nullptr;
-		Vector<T>* inverseVec = returnInverse ? new Vector<T>(ar->getSize()) : nullptr;
-		Vector<T>* countVec = returnCounts ? zeros<T>(countU) : nullptr;
-
-		// this is some mega big brain stuff
-		// this has not been tested but if this works first try i will lose it
-
-		int index = 1;
-		uniqueVec->set(0, ar->get(0));
-		if (returnIndex)
-			indexVec->set(0, 0);
-		if (returnInverse)
-			inverseVec->set(0, 0);
-
-		for (int i = 1; i < ar->getSize(); i++) {
-			bool unique = true;
-			int j = 0;
-			for (; j < i; i++) {
-				if (ar->get(j) == ar->get(i)) {
-					unique = false;
+				if (index == uniques) {
 					break;
 				}
 			}
-			if (unique) {
-				uniqueVec->set(index++, ar->get(i));
-				if (returnIndex)
-					indexVec->set(index++, i);
-			}
-
-			if (returnInverse)
-				inverseVec->set(i, j);
-			if (returnCounts)
-				countVec->set(index, countVec->get(index) + 1);
 		}
 
-		vectors[0] = uniqueVec;
-		vectors[1] = indexVec;
-		vectors[2] = inverseVec;
-		vectors[3] = countVec;
+		if (returnInverse) {
+			for (int i = 0; i < ar->getSize(); i++) {
+				for (int j = 0; j < uniqueArr->getSize(); j++) {
+					if (ar->get(i) == uniqueArr->get(j)) {
+						inverseArr->set(i, j);
+					}
+				}
+			}
+		}
+
+		if (returnCounts) {
+			for (int i = 0; i < ar->getSize(); i++) {
+				for (int j = 0; j < uniqueArr->getSize(); j++) {
+					if (ar->get(i) == uniqueArr->get(j)) {
+						countsArr->set(j, countsArr->get(j) + 1);
+					}
+				}
+			}
+		}
+
+		vectors[0] = uniqueArr;
+		vectors[1] = returnIndex ? indexArr : nullptr;
+		vectors[2] = returnInverse ? inverseArr : nullptr;
+		vectors[3] = returnCounts ? countsArr: nullptr;
 
 		return vectors;
 	}

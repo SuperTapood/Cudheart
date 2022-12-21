@@ -20,6 +20,8 @@
 - removed axis argument from remove vector
 - added axis default to 'remove' function
 - fixed remove function
+- improved (and maybe fixed?) trimzeros
+- fixed the unique function
 
 ## notes:
 - 
