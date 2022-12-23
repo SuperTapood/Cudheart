@@ -2,35 +2,44 @@
 #include <stdio.h>
 #include "../TestUtil.cuh"
 
-void testArray();
+namespace Cudheart::Testing {
+	void testArrays();
+}
 
-#pragma region ArrOpsTesting
-void testArrOps();
 
-void testAppend();
+namespace Cudheart::Testing::Arrays::ArrayOps{
+	void test();
 
-void testConcatenate();
+	void testAppend();
 
-void testSplit();
+	void testConcatenate();
 
-void testTile();
+	void testSplit();
 
-void testRemove();
+	void testTile();
 
-void testTrimZeros();
+	void testRemove();
 
-void testUnique();
+	void testTrimZeros();
 
-#pragma endregion
+	void testUnique();
+}
 
-#pragma region IOTesting
-void testIO();
+namespace Cudheart::Testing::Arrays::IO {
+	void test();
 
-void testFromString();
+	void testFromString();
 
-void testSave();
+	void testSave();
 
-void testFromFile();
+	void testFromFile();
 
-void testFromFunction();
-#pragma endregion
+	void testFromFunction();
+}
+
+
+namespace Cudheart::Testing::Arrays::VecTest {
+	void test();
+
+	void testConstructors();
+}

@@ -122,6 +122,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] add global flags for exceptions
 - [ ] manually handle all possible exceptions (because cpp exceptions suck)
 - [ ] fix vander
+- [ ] when returning an array of vectors, maybe return a vector of vectors
 - [ ] add some meta data
 - [ ] maybe add additional functionality to Complex and String
 - [ ] add shape equals to both matrix and vector
@@ -139,7 +140,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] fix docs typos
 - [ ] make matrix a vector of vectors to handle row fetching faster
 - [ ] add axis for mixed operations (vectors and matrices) where usually a horizontal vector is assumed
-- [ ] deprecate containers and get rid of CUtil
+- [ ] generalize and randomize tests (and perform them multiple times)
 - [ ] a bunch of new assertions and their exceptions
 - [ ] optimize the functions (mainly for loops)
 - [ ] implement a few python type functions (mainly print and stuff)

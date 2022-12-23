@@ -22,6 +22,7 @@
 - fixed remove function
 - improved (and maybe fixed?) trimzeros
 - fixed the unique function
+- tests now use namespaces instead of regions
 
 ## notes:
 - 
