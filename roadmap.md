@@ -161,6 +161,8 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] maybe add scalar overloads
 - [ ] make sure ndarray objects are called with new using new overloads and shit
 - [ ] add assert match size and insert it where needed during axis update
+- [ ] integrate exceptions and the testing
+- [ ] maybe switch to std vectors
 - [ ] add default parameters to all functions
 - [ ] add factorial(int) (which is the same as tgamma(int + 1))
 - [ ] implement the numpy restrictions

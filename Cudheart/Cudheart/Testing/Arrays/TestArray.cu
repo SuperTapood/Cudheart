@@ -315,6 +315,7 @@ namespace Cudheart::Testing::Arrays::IO {
 namespace Cudheart::Testing::Arrays::VecTest {
 	void test() {
 		testConstructors();
+		testCastTo();
 	}
 
 	void testConstructors() {
@@ -325,6 +326,25 @@ namespace Cudheart::Testing::Arrays::VecTest {
 		for (int i = 0; i < 9; i++) {
 			assertTest("Vector<int>(int*, int)", vec->get(i) == arr[i]);
 		}
+
+		vec = new Vector<int>(7);
+		for (int i = 0; i < 7; i++) {
+			assertTest("Vector<int>(int)", vec->get(i) == vec->get(i));
+		}
+
+		vec = new Vector<int>({ 5, 7, 451, 14, 25, 250, 52205, 255, 897 });
+		for (int i = 0; i < 9; i++) {
+			assertTest("Vector<int>(initializer_list<int>)", vec->get(i) == arr[i]);
+		}
+	}
+
+	void testCastTo() {
+		int* arr = new int[] {5, 7, 451, 14, 25, 250, 52205, 255, 897};
+		Vector<int>* a = new Vector<int>(arr, 9);
+
+		Vector<StringType*>* b = a->castTo<StringType*>();
+		
+		assertTest("Vector<int>->cast<StringType*>()", a->toString() == b->toString());
 	}
 }
 

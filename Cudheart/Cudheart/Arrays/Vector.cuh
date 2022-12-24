@@ -49,14 +49,14 @@ namespace Cudheart::NDArrays {
 			m_size = size;
 		}
 
-		/// <summary>
+		/*/// <summary>
 		/// create a vector from the given raw data, and guess its size using pointer arithmetic. may or may not work.
 		/// </summary>
 		/// <param name="data"> - the provided raw data</param>
 		Vector(T* data) {
 			m_data = data;
-			m_size = (&data)[1] - data;
-		}
+			m_size = ????
+		}*/
 
 		/// <summary>
 		/// create a vector from an initializer list
@@ -84,72 +84,60 @@ namespace Cudheart::NDArrays {
 		/// <returns>this vector but of U type</returns>
 		template<typename U>
 		Vector<U>* castTo() {
-			constexpr bool isStringType = is_same_v<U, StringType*>;
-			constexpr bool amStringType = is_same_v<T, StringType*>;
-			constexpr bool isComplexType = is_same_v<U, ComplexType*>;
-			constexpr bool amArithmetic = is_arithmetic_v<T>;
-			constexpr bool isArithmetic = is_arithmetic_v<U>;
-			constexpr bool isVoid = is_void_v<U>;
-			constexpr bool isNull = is_null_pointer_v<U>;
-			if (isStringType) {
-				auto out = new Vector<StringType*>(getSize());
-
+			if constexpr (std::is_same_v<U, StringType*>) {
+				// Convert the vector of T to a vector of StringType*.
+				// For example, if T is a numeric type, then each element of the vector
+				// will be converted to a string representation.
+				Vector<StringType*>* out = new Vector<StringType*>(getSize());
 				for (int i = 0; i < getSize(); i++) {
 					out->set(i, new StringType(getString(i)));
 				}
-
 				return (Vector<U>*)out;
 			}
-			if (isComplexType) {
-				if (amArithmetic) {
+			else if constexpr (std::is_same_v<U, ComplexType*>) {
+				if constexpr (std::is_arithmetic_v<T>) {
+					// Convert the vector of T to a vector of ComplexType*.
+					// For example, if T is a numeric type, then each element of the vector
+					// will be wrapped in a ComplexType object.
 					Vector<ComplexType*>* out = new Vector<ComplexType*>(getSize());
-
 					for (int i = 0; i < getSize(); i++) {
 						out->set(i, new ComplexType(get(i)));
 					}
-
 					return (Vector<U>*)out;
 				}
 			}
-			if (isArithmetic) {
-				if (amStringType) {
+			else if constexpr (std::is_arithmetic_v<U>) {
+				if constexpr (std::is_same_v<T, StringType*>) {
+					// Convert the vector of StringType* to a vector of U.
+					// For example, if U is a numeric type, then each element of the vector
+					// will be converted from a string representation to a numeric value.
 					Vector<U>* out = new Vector<U>(getSize());
-
 					for (int i = 0; i < getSize(); i++) {
 						auto str = (StringType*)get(i);
-						out->set(i, (U)str->toFloating());
+						out->set(i, (U)(str->toFloating()));
 					}
-
+					return out;
+				}
+				else if constexpr (std::is_arithmetic_v<T>) {
+					// Convert the vector of T to a vector of U.
+					// For example, if T and U are both numeric types, then each element of the vector
+					// will be converted from one type to the other.
+					Vector<U>* out = new Vector<U>(getSize());
+					for (int i = 0; i < getSize(); i++) {
+						out->set(i, static_cast<U>(get(i)));
+					}
 					return out;
 				}
 			}
-			if (isArithmetic) {
-				if (!isVoid) {
-					if (!isNull) {
-						if (amArithmetic) {
-							auto out = new Vector<U>(getSize());
 
-							for (int i = 0; i < getSize(); i++) {
-								// jumping through hoops to appease
-								// our compiler overlord
-								// lots of performance left on the table here
-								out->set(i, std::stold(getString(i)));
-							}
-
-							return out;
-						}
-					}
-				}
-			}
-			ostringstream os;
+			// If none of the above conditions are met, then it is not possible to perform the conversion.
+			std::ostringstream os;
 			os << "BadTypeException: cannot cast ";
 			os << typeid(T).name();
 			os << " type to ";
 			os << typeid(U).name();
 			os << " type.";
-			BadTypeException(os.str());
-
-			return NULL;
+			throw BadTypeException(os.str());
 		}
 
 		/// <summary>
@@ -162,7 +150,7 @@ namespace Cudheart::NDArrays {
 				index += m_size;
 			}
 
-			if (index >= m_size) {
+			if (index >= m_size || index < 0) {
 				IndexOutOfBoundsException(m_size, index);
 			}
 			return m_data[index];
