@@ -23,6 +23,8 @@
 - improved (and maybe fixed?) trimzeros
 - fixed the unique function
 - tests now use namespaces instead of regions
+- fixed vector casting
+- removed the pointer only vector constructor
 
 ## notes:
 - 
