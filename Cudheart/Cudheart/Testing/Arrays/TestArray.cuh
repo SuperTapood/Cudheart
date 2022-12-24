@@ -44,4 +44,6 @@ namespace Cudheart::Testing::Arrays::VecTest {
 	void testConstructors();
 
 	void testCastTo();
+
+	void testReshape();
 }

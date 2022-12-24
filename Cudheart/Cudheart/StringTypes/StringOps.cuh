@@ -353,7 +353,7 @@ namespace Cudheart::StringOps {
 	}
 
 	inline NDArray<int>* count(NDArray<StringType*>* a, string sub, int start = 0, size_t end = -1) {
-		NDArray<int>* out = (new Vector<int>(a->getSize()))->shapeLike<int>(a->getShape());
+		NDArray<int>* out = (new Vector<int>(a->getSize()))->reshape<int>(a->getShape());
 
 		for (int i = 0; i < a->getSize(); i++) {
 			string str = a->get(i)->str();
@@ -377,7 +377,7 @@ namespace Cudheart::StringOps {
 	}
 
 	inline NDArray<bool>* startsWith(NDArray<StringType*>* a, string prefix, int start = 0, int end = -1) {
-		NDArray<bool>* out = (new Vector<bool>(a->getSize()))->shapeLike<bool>(a->getShape());
+		NDArray<bool>* out = (new Vector<bool>(a->getSize()))->reshape<bool>(a->getShape());
 		end = end == -1 ? prefix.length() : end;
 
 		for (int i = 0; i < a->getSize(); i++) {
@@ -393,7 +393,7 @@ namespace Cudheart::StringOps {
 	}
 
 	inline NDArray<bool>* endsWith(NDArray<StringType*>* a, string suffix, int start = -1, size_t end = -1) {
-		NDArray<bool>* out = (new Vector<bool>(a->getSize()))->shapeLike<bool>(a->getShape());
+		NDArray<bool>* out = (new Vector<bool>(a->getSize()))->reshape<bool>(a->getShape());
 		end = end == -1 ? suffix.length() : end;
 
 		for (int i = 0; i < a->getSize(); i++) {
@@ -410,7 +410,7 @@ namespace Cudheart::StringOps {
 	}
 
 	inline NDArray<int>* find(NDArray<StringType*>* a, string sub, int start = 0, int end = -1) {
-		NDArray<int>* out = (new Vector<int>(a->getSize()))->shapeLike<int>(a->getShape());
+		NDArray<int>* out = (new Vector<int>(a->getSize()))->reshape<int>(a->getShape());
 
 		for (int i = 0; i < a->getSize(); i++) {
 			string str = a->get(i)->str();
@@ -434,7 +434,7 @@ namespace Cudheart::StringOps {
 	}
 
 	inline NDArray<bool>* isNumeric(NDArray<StringType*>* a) {
-		NDArray<bool>* out = (new Vector<bool>(a->getSize()))->shapeLike<bool>(a->getShape());
+		NDArray<bool>* out = (new Vector<bool>(a->getSize()))->reshape<bool>(a->getShape());
 
 		for (int i = 0; i < a->getSize(); i++) {
 			string str = a->get(i)->str();
@@ -451,7 +451,7 @@ namespace Cudheart::StringOps {
 	}
 
 	inline NDArray<bool>* isUpper(NDArray<StringType*>* a) {
-		NDArray<bool>* out = (new Vector<bool>(a->getSize()))->shapeLike<bool>(a->getShape());
+		NDArray<bool>* out = (new Vector<bool>(a->getSize()))->reshape<bool>(a->getShape());
 
 		for (int i = 0; i < a->getSize(); i++) {
 			string str = a->get(i)->str();
@@ -468,7 +468,7 @@ namespace Cudheart::StringOps {
 	}
 
 	inline NDArray<bool>* isLower(NDArray<StringType*>* a) {
-		NDArray<bool>* out = (new Vector<bool>(a->getSize()))->shapeLike<bool>(a->getShape());
+		NDArray<bool>* out = (new Vector<bool>(a->getSize()))->reshape<bool>(a->getShape());
 
 		for (int i = 0; i < a->getSize(); i++) {
 			string str = a->get(i)->str();

@@ -230,7 +230,7 @@ namespace Cudheart::NDArrays {
 		}
 
 		template <typename U>
-		NDArray<T>* shapeLike(Shape* other) {
+		NDArray<T>* reshape(Shape* other) {
 			assertMatchShape(other);
 			if (other->getDims() == 2) {
 				return this;

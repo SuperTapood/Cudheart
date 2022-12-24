@@ -45,7 +45,7 @@ namespace Cudheart::NDArrays {
 		/// <param name="index"> - the index</param>
 		/// <param name="value"> - the value</param>
 		virtual void set(int index, T value) = 0;
-
+		
 		virtual NDArray<T>* emptyLike() = 0;
 
 		virtual NDArray<T>* transpose() = 0;

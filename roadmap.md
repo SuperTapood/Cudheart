@@ -28,6 +28,7 @@ the modules that still need testing:
 add and improve the library using the ideas i dumped onto the following list:
 
 - [ ] compile entire thing into lib or dll file by predefining templates
+- [ ] replace StringType* and ComplexType* with StringPtr and ComplexPtr respectivly
 - [ ] use ifndef and undefine and ifdef and stuff
 - [ ] enforce member naming conventions lol
 - [ ] replace the regular array creation with a cuda unified memory allocation (check kernel.cu)
@@ -35,6 +36,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] simplify the way functions are used
 - [ ] refactor code according to the linter
 - [ ] fix exceptions not throwing correctly
+- [ ] maybe remove emptylike
 - [ ] add overrides that do not require creating shape object
 - [ ] calling emptyLike on a stringtype is 100% gonna be a problem lmao (maybe call T() and add default constructor)
 - [ ] integrate std functions for optimization

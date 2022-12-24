@@ -84,6 +84,9 @@ namespace Cudheart::NDArrays {
 		/// <returns>this vector but of U type</returns>
 		template<typename U>
 		Vector<U>* castTo() {
+			if constexpr (std::is_same_v<T, U>) {
+				return this;
+			}
 			if constexpr (std::is_same_v<U, StringType*>) {
 				// Convert the vector of T to a vector of StringType*.
 				// For example, if T is a numeric type, then each element of the vector
@@ -102,6 +105,62 @@ namespace Cudheart::NDArrays {
 					Vector<ComplexType*>* out = new Vector<ComplexType*>(getSize());
 					for (int i = 0; i < getSize(); i++) {
 						out->set(i, new ComplexType(get(i)));
+					}
+					return (Vector<U>*)out;
+				}
+				else if constexpr (std::is_same_v<T, StringType*>) {
+					// Convert the vector of T to a vector of ComplexType*.
+					// For example, if T is a numeric type, then each element of the vector
+					// will be wrapped in a ComplexType object.
+					Vector<ComplexType*>* out = new Vector<ComplexType*>(getSize());
+					for (int i = 0; i < getSize(); i++) {
+						string current = getString(i);
+						int pos = current.find("+");
+						if (current.find("j") == string::npos || pos == string::npos) {
+							bool isInt = true;
+							for (int i = 0; i < current.size() && isInt; i++) {
+								isInt = isdigit(current[i]);
+							}
+
+							if (!isInt) {
+								std::ostringstream os;
+								os << "BadTypeException: cannot convert ";
+								os << current;
+								os << " to a Complex type.";
+								throw BadTypeException(os.str());
+							}
+							out->set(i, new ComplexType(std::stold(getString(i))));
+						}
+						else {
+							bool isInt = true;
+							for (int i = 0; i < pos && isInt; i++) {
+								isInt = isdigit(current[i]);
+							}
+
+							if (!isInt) {
+								std::ostringstream os;
+								os << "BadTypeException: cannot convert ";
+								os << current;
+								os << " to a Complex type.";
+								throw BadTypeException(os.str());
+							}
+
+							pos++;
+
+							for (int i = pos; i < current.size() - 1 && isInt; i++) {
+								isInt = isdigit(current[i]);
+							}
+
+							if (!isInt) {
+								std::ostringstream os;
+								os << "BadTypeException: cannot convert ";
+								os << current;
+								os << " to a Complex type.";
+								throw BadTypeException(os.str());
+							}
+
+							out->set(i, new ComplexType(std::stold(getString(i))));
+						}
 					}
 					return (Vector<U>*)out;
 				}
@@ -181,14 +240,7 @@ namespace Cudheart::NDArrays {
 			m_data[index] = value;
 		}
 
-		T getAbs(int index) {
-			return get(index);
-		}
-
-		void setAbs(int index, T value) {
-			return set(index, value);
-		}
-
+		// why tf are these functions needed
 		template <typename U>
 		NDArray<T>* emptyLike() {
 			return new Vector<U>(m_size);
@@ -199,7 +251,7 @@ namespace Cudheart::NDArrays {
 		}
 
 		template <typename T>
-		NDArray<T>* shapeLike(Shape* other) {
+		NDArray<T>* reshape(Shape* other) {
 			assertMatchShape(other);
 			if (other->getDims() == 1) {
 				return this;

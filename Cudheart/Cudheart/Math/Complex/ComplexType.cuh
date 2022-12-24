@@ -29,9 +29,12 @@ namespace Cudheart {
 		ComplexType() : ComplexType(0, 0) {}
 
 		string toString() {
-			string r = to_string(real);
-			string i = to_string(5);
-			return r + " " + i + "i";
+			ostringstream os;
+			os << real;
+			os << "+";
+			os << imag;
+			os << "j";
+			return os.str();
 		}
 	};
 }

@@ -6,7 +6,6 @@
 - fixed save writing object pointers rather than actual data
 - fixed save not being compatible with the loading functions
 - added missing load overload with only the file name
-- added unit tests for IO methods
 - added missing arrops include
 - exceptions will now be automatically raised when created
 - added a new argument to exceptions which allows you to create them without raising them automatically
@@ -25,6 +24,10 @@
 - tests now use namespaces instead of regions
 - fixed vector casting
 - removed the pointer only vector constructor
+- fixed complex printing
+- fixed casting for like the 20th time :\
+- removed getabs and setabs from vector as they are no longer needed
+- renamed shapeLike to reshape :)
 
 ## notes:
 - 

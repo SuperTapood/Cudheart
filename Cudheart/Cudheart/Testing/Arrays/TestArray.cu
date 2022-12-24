@@ -74,7 +74,7 @@ namespace Cudheart::Testing::Arrays::ArrayOps {
 			}
 		}
 
-		auto b = (Matrix<int>*)a->shapeLike<int>(new Shape((int)(size / vecs), vecs));
+		auto b = (Matrix<int>*)a->reshape<int>(new Shape((int)(size / vecs), vecs));
 		auto brr = split(b, size / vecs);
 
 		for (int i = 0; i < size / vecs; i++) {
@@ -114,7 +114,7 @@ namespace Cudheart::Testing::Arrays::ArrayOps {
 			}
 		}
 
-		auto c = (Matrix<int>*)(a->shapeLike<int>(new Shape(h, w)));
+		auto c = (Matrix<int>*)(a->reshape<int>(new Shape(h, w)));
 		auto crr = tile(c, reps);
 
 		for (int i = 0; i < h; i++) {
@@ -157,7 +157,7 @@ namespace Cudheart::Testing::Arrays::ArrayOps {
 
 		}
 
-		auto b = (Matrix<int>*)a->shapeLike<int>(new Shape(4, 5));
+		auto b = (Matrix<int>*)a->reshape<int>(new Shape(4, 5));
 		auto brr = remove(b, rem);
 
 		for (int i = 0; i < size - 1; i++) {
@@ -316,6 +316,7 @@ namespace Cudheart::Testing::Arrays::VecTest {
 	void test() {
 		testConstructors();
 		testCastTo();
+		testReshape();
 	}
 
 	void testConstructors() {
@@ -344,7 +345,28 @@ namespace Cudheart::Testing::Arrays::VecTest {
 
 		Vector<StringType*>* b = a->castTo<StringType*>();
 		
-		assertTest("Vector<int>->cast<StringType*>()", a->toString() == b->toString());
+		assertTest("int to string cast", a->toString() == b->toString());
+
+		Vector<ComplexType*>* c = a->castTo<ComplexType*>();
+		Vector<ComplexType*>* d = b->castTo<ComplexType*>();
+
+		assertTest("int and string to complex", c->toString() == d->toString());
+
+		Vector<ComplexType*>* e = c->castTo<StringType*>()->castTo<ComplexType*>();
+
+		assertTest("complex to string to complex", c->toString() == e->toString());
+
+		Vector<float>* f = a->castTo<float>();
+
+		for (int i = 0; i < f->getSize(); i++) {
+			f->set(i, f->get(i) + 0.22);
+		}
+
+		assertTest("complex to string to complex", f->castTo<int>()->toString() == a->toString());
+	}
+
+	void testReshape() {
+
 	}
 }
 
