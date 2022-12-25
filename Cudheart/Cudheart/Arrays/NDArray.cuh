@@ -48,9 +48,12 @@ namespace Cudheart::NDArrays {
 		
 		virtual NDArray<T>* emptyLike() = 0;
 
-		virtual NDArray<T>* transpose() = 0;
+		virtual NDArray<T>* transpose(bool inplace = false) = 0;
 
-		virtual NDArray<T>* transpose(bool inplace) = 0;
+		template <typename U>
+		NDArray<U>* reshape(Shape* shape) {
+			throw NotImplementedException("reshape");
+		}
 
 		/// <summary>
 		/// get the number elements this ndarray contains

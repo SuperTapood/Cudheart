@@ -250,22 +250,38 @@ namespace Cudheart::NDArrays {
 			return new Vector<T>(m_size);
 		}
 
-		template <typename T>
-		NDArray<T>* reshape(Shape* other) {
-			assertMatchShape(other);
-			if (other->getDims() == 1) {
-				return this;
-			}
-			else if (other->getDims() == 2) {
-				Matrix<T>* out = new Matrix<T>(other->getX(), other->getY());
-
-				for (int i = 0; i < out->getSize(); i++) {
-					out->set(i, get(i));
-				}
-				return out;
+		template <typename U>
+		NDArray<U>* reshape(Shape* shape) {
+			if (shape->getDims() == 2) {
+				return asMatrix<U>(shape->getX(), shape->getY());
 			}
 
-			return nullptr;
+			if (shape->getX() != m_size) {
+				throw ShapeMismatchException(to_string(m_size), to_string(shape->getX()));
+			}
+
+			return castTo<U>();
+		}
+
+		template <typename U>
+		Matrix<U>* asMatrix(int x, int y) {
+			if (x * y != m_size) {
+				ostringstream os;
+				os << "(";
+				os << x;
+				os << ",";
+				os << y;
+				os << ")";
+				throw ShapeMismatchException(to_string(m_size), os.str());
+			}
+
+			Matrix<U>* out = new Matrix<U>(x, y);
+
+			for (int i = 0; i < m_size; i++) {
+				out->set(i, (U)get(i));
+			}
+
+			return out;
 		}
 
 		int getDims() {
@@ -321,7 +337,6 @@ namespace Cudheart::NDArrays {
 		void printInfo() {
 			cout << "Vector of size: " << m_size << endl;
 		}
-		// todo: add operator overloades to make this look better
 
 		void assertMatchShape(Shape* shape) {
 			if (shape->getSize() != getSize()) {
@@ -351,11 +366,7 @@ namespace Cudheart::NDArrays {
 			return out;
 		}
 
-		NDArray<T>* transpose() {
-			return copy();
-		}
-
-		NDArray<T>* transpose(bool inplace) {
+		NDArray<T>* transpose(bool inplace = false) {
 			if (inplace) {
 				return this;
 			}

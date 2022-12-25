@@ -44,6 +44,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] rename shapelike to reshape
 - [ ] further integrate more exceptions
 - [ ] revamp namespaces and make sure each one is self contained (does not contain stuff from other namespaces)
+- [ ] add and test operator overloads for all types (vectors, matrices, stringtypes and complextypes)
 - [ ] convert m_str to private
 - [ ] copy getters and setters to string type
 - [ ] add getsize to string type

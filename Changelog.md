@@ -28,6 +28,7 @@
 - fixed casting for like the 20th time :\
 - removed getabs and setabs from vector as they are no longer needed
 - renamed shapeLike to reshape :)
+- added overload to vector transpose
 
 ## notes:
 - 

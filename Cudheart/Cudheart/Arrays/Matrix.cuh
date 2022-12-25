@@ -230,22 +230,25 @@ namespace Cudheart::NDArrays {
 		}
 
 		template <typename U>
-		NDArray<T>* reshape(Shape* other) {
-			assertMatchShape(other);
-			if (other->getDims() == 2) {
-				return this;
+		NDArray<U>* reshape(Shape* shape) {
+			if (shape->getX() * shape->getY() != m_size) {
+				ostringstream os;
+				os << "(" << m_height << ", " << m_width << ")";
+				throw ShapeMismatchException(os.str(), shape->toString());
 			}
-			else if (other->getDims() == 1) {
-				auto out = new Vector<T>(other->getSize());
+			
+			if (shape->getDims() == 2) {
+
+				auto out = Matrix<U>(shape);
 
 				for (int i = 0; i < m_size; i++) {
-					out->set(i, get(i));
+					out->set(i, (U)get(i));
 				}
 
-				return v;
+				return out;
 			}
 
-			return nullptr;
+			return castTo<U>->flatten();
 		}
 
 		int getDims() {
@@ -432,24 +435,15 @@ namespace Cudheart::NDArrays {
 		/// </summary>
 		/// <param name="inplace"> - whether or not to transpose this matrix, or a copy of it</param>
 		/// <returns>this matrix transposed if inplace is true, else a transposed copy</returns>
-		NDArray<T>* transpose(bool inplace) {
-			Matrix<T>* mat = (Matrix<T>*)transpose();
+		NDArray<T>* transpose(bool inplace = false) {
+			Matrix<T>* mat;
 
 			if (inplace) {
-				setData(mat);
-				delete mat;
-				return this;
+				mat = this;
 			}
-
-			return mat;
-		}
-
-		/// <summary>
-		/// transpose a copy of this matrix
-		/// </summary>
-		/// <returns>a transposed copy of this matrix</returns>
-		NDArray<T>* transpose() {
-			Matrix<T>* mat = new Matrix<T>(m_width, m_height);
+			else {
+				mat = new Matrix<T>(m_width, m_height);
+			}
 
 			for (int i = 0; i < m_width; i++) {
 				for (int j = 0; j < m_height; j++) {

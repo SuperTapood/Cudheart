@@ -5,7 +5,7 @@ namespace Cudheart::Testing {
 		auto start = std::chrono::system_clock::now();
 		// tests are sorted in a hierarchical order
 		// dependencies will be tested first, then the modules that depend on them
-		// this is done to simplify debugging upon feature breaking
+		// this is done to simplify debugging upon feature break
 		Arrays::VecTest::test();
 		Arrays::IO::test();
 		Arrays::ArrayOps::test();
@@ -366,7 +366,14 @@ namespace Cudheart::Testing::Arrays::VecTest {
 	}
 
 	void testReshape() {
+		int* arr = new int[] {5, 7, 451, 14, 25, 250};
+		Vector<int>* a = new Vector<int>(arr, 6);
+		
+		auto b = a->reshape<int>(new Shape(2, 3));
 
+		for (int i = 0; i < a->getSize(); i++) {
+			assertTest("reshape vector -> matrix", a->get(i) == b->get(i));
+		}
 	}
 }
 
