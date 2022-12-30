@@ -251,7 +251,7 @@ namespace Cudheart::NDArrays {
 			return castTo<U>->flatten();
 		}
 
-		int getDims() {
+		int getDims() const {
 			return 2;
 		}
 
@@ -309,7 +309,7 @@ namespace Cudheart::NDArrays {
 		/// get the element size of the matrix
 		/// </summary>
 		/// <returns>the element size</returns>
-		int getSize() {
+		int getSize() const {
 			return m_size;
 		}
 
@@ -459,29 +459,19 @@ namespace Cudheart::NDArrays {
 		/// </summary>
 		/// <param name="inplace"> - whehter or not to reverse the rows of this matrix or of a copy of it</param>
 		/// <returns>this matrix with reversed rows if inplace is true, else a copy with its rows reversed</returns>
-		Matrix<T>* reverseRows(bool inplace) {
-			Matrix<T>* mat = reverseRows();
-
-			if (inplace) {
-				setData(mat);
-				delete mat;
-				return this;
-			}
-
-			return mat;
-		}
-
-		/// <summary>
-		/// reverse the rows of this matrix
-		/// </summary>
-		/// <returns>a copy of this matrix with its rows reversed</returns>
-		Matrix<T>* reverseRows() {
+		Matrix<T>* reverseRows(bool inplace = false) {
 			Matrix<T>* mat = new Matrix<T>(m_height, m_width);
 
 			for (int i = 0; i < m_height; i++) {
 				for (int j = m_width - 1, k = 0; j > -1; j--, k++) {
 					mat->set(i, k, get(i, j));
 				}
+			}
+
+			if (inplace) {
+				setData(mat);
+				delete mat;
+				return this;
 			}
 
 			return mat;
@@ -493,24 +483,7 @@ namespace Cudheart::NDArrays {
 		/// <param name="degrees"> - the amount of degrees to rotate this matrix for (degrees % 90 == 0)</param>
 		/// <param name="inplace"> - whether to rotate this matrix, or a copy of it</param>
 		/// <returns></returns>
-		Matrix<T>* rotate(int degrees, bool inplace) {
-			Matrix<T>* mat = rotate(degrees);
-
-			if (inplace) {
-				setData(mat);
-				delete mat;
-				return this;
-			}
-
-			return mat;
-		}
-
-		/// <summary>
-		/// rotate this matrix
-		/// </summary>
-		/// <param name="angles"> - degrees to rotate by</param>
-		/// <returns>a rotated copy of this matrix</returns>
-		Matrix<T>* rotate(int angles) {
+		Matrix<T>* rotate(int degrees, bool inplace = false) {
 			Matrix<T>* mat = (Matrix<T>*)copy();
 			Matrix<T>* out = nullptr;
 
@@ -532,6 +505,12 @@ namespace Cudheart::NDArrays {
 				mat->reverseRows(true);
 				mat->transpose(true);
 				out = mat;
+			}
+
+			if (inplace) {
+				setData(out);
+				delete out;
+				return this;
 			}
 
 			return out;
@@ -572,7 +551,7 @@ namespace Cudheart::NDArrays {
 		/// assert that the dims of this matrix equal the dims of matrix other. if they are not an exception is "raised"
 		/// </summary>
 		/// <param name="other">the matrix to compare to</param>
-		void assertMatchShape(Shape* shape, int axis) {
+		void assertMatchShape(Shape* shape, int axis = 0) {
 			if (shape->getDims() == 2) {
 				if (getWidth() != shape->getX() || getHeight() != shape->getY()) {
 					ShapeMismatchException(m_width, m_height, shape->getX(), shape->getY()).raise();
@@ -592,10 +571,6 @@ namespace Cudheart::NDArrays {
 					}
 				}
 			}
-		}
-
-		void assertMatchShape(Shape* shape) {
-			return assertMatchShape(shape, 0);
 		}
 
 		/// <summary>

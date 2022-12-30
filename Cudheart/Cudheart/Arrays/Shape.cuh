@@ -39,12 +39,16 @@ namespace Cudheart::NDArrays {
 			ostringstream os;
 			os << "(";
 			os << x;
-			os << ",";
+			os << ", ";
 			if (y != 1) {
 				os << y;
 			}
 			os << ")";
 			return os.str();
+		}
+
+		void print() {
+			cout << toString() << endl;
 		}
 	};
 }

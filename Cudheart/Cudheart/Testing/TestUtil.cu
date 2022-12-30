@@ -2,7 +2,7 @@
 #include "TestUtil.cuh"
 #include <iostream>
 
-void assertTest(string id, bool b) {
+void check(string id, bool b) {
 	if (b) {
 		// cout << "Test " << id << " passed!\n";
 		return;

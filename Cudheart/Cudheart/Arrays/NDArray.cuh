@@ -59,13 +59,13 @@ namespace Cudheart::NDArrays {
 		/// get the number elements this ndarray contains
 		/// </summary>
 		/// <returns></returns>
-		virtual int getSize() = 0;
+		virtual int getSize() const = 0;
 
 		/// <summary>
 		/// get the number of dimensions this ndarray has (1 for vector, 2 for matrix)
 		/// </summary>
 		/// <returns></returns>
-		virtual int getDims() = 0;
+		virtual int getDims() const = 0;
 
 		/// <summary>
 		/// convert this ndarray to a string
@@ -78,9 +78,7 @@ namespace Cudheart::NDArrays {
 		/// </summary>
 		virtual void print() = 0;
 
-		virtual void assertMatchShape(Shape* other, int axis) = 0;
-
-		virtual void assertMatchShape(Shape* other) = 0;
+		virtual void assertMatchShape(Shape* other, int axis = 0) = 0;
 
 		virtual Shape* getShape() = 0;
 

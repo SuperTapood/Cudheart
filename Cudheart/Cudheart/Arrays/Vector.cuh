@@ -13,6 +13,7 @@ namespace Cudheart::NDArrays {
 	private:
 		int m_size;
 		T* m_data;
+		Shape* m_shape = nullptr;
 
 		string getString(int i) {
 			if constexpr (is_same_v<T, StringType*>) {
@@ -44,7 +45,6 @@ namespace Cudheart::NDArrays {
 		/// </summary>
 		/// <param name="size"> - the size of the vector</param>
 		Vector(int size) {
-			// m_data = (T*)malloc(size * sizeof(T));
 			m_data = new T[size];
 			m_size = size;
 		}
@@ -82,6 +82,7 @@ namespace Cudheart::NDArrays {
 		/// </summary>
 		/// <typeparam name="U"> - the type to cast to</typeparam>
 		/// <returns>this vector but of U type</returns>
+		// even god himself can't help this function
 		template<typename U>
 		Vector<U>* castTo() {
 			if constexpr (std::is_same_v<T, U>) {
@@ -284,7 +285,7 @@ namespace Cudheart::NDArrays {
 			return out;
 		}
 
-		int getDims() {
+		inline int getDims() const {
 			return 1;
 		}
 
@@ -292,7 +293,7 @@ namespace Cudheart::NDArrays {
 		/// get the size of the vector
 		/// </summary>
 		/// <returns>the size of the vector</returns>
-		int getSize() {
+		int getSize() const {
 			return m_size;
 		}
 
@@ -338,7 +339,7 @@ namespace Cudheart::NDArrays {
 			cout << "Vector of size: " << m_size << endl;
 		}
 
-		void assertMatchShape(Shape* shape) {
+		void assertMatchShape(Shape* shape, int axis = 0) {
 			if (shape->getSize() != getSize()) {
 				ostringstream os;
 				os << "(";
@@ -347,13 +348,12 @@ namespace Cudheart::NDArrays {
 				ShapeMismatchException(os.str(), shape->toString());
 			}
 		}
-		
-		void assertMatchShape(Shape* shape, int axis) {
-			assertMatchShape(shape);
-		}
 
 		Shape* getShape() {
-			return new Shape(m_size);
+			if (m_shape == nullptr) {
+				m_shape = new Shape(m_size);
+			}
+			return m_shape;
 		}
 
 		NDArray<T>* copy() {

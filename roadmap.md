@@ -27,6 +27,7 @@ the modules that still need testing:
 
 add and improve the library using the ideas i dumped onto the following list:
 
+- [ ] get rid of shape object for good
 - [ ] compile entire thing into lib or dll file by predefining templates
 - [ ] replace StringType* and ComplexType* with StringPtr and ComplexPtr respectivly
 - [ ] use ifndef and undefine and ifdef and stuff
@@ -37,6 +38,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] refactor code according to the linter
 - [ ] fix exceptions not throwing correctly
 - [ ] maybe remove emptylike
+- [ ] maybe remove default contructors?
 - [ ] add overrides that do not require creating shape object
 - [ ] calling emptyLike on a stringtype is 100% gonna be a problem lmao (maybe call T() and add default constructor)
 - [ ] integrate std functions for optimization
@@ -46,6 +48,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] revamp namespaces and make sure each one is self contained (does not contain stuff from other namespaces)
 - [ ] add and test operator overloads for all types (vectors, matrices, stringtypes and complextypes)
 - [ ] convert m_str to private
+- [ ] handle the type conversion issues
 - [ ] copy getters and setters to string type
 - [ ] add getsize to string type
 - [ ] add none array overloads

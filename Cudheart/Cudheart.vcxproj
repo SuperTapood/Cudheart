@@ -109,6 +109,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <CudaCompile Include="Cudheart\Exceptions\BaseException.cu" />
+    <CudaCompile Include="Cudheart\Testing\Arrays\ArrayOps\ArrayOps.cu" />
+    <CudaCompile Include="Cudheart\Testing\Arrays\IO\IO.cu" />
+    <CudaCompile Include="Cudheart\Testing\Arrays\MatTest\MatTest.cu" />
+    <CudaCompile Include="Cudheart\Testing\Arrays\VecTest\VecTest.cu" />
     <CudaCompile Include="Cudheart\Testing\Test.cu" />
     <CudaCompile Include="Cudheart\Testing\Arrays\TestArray.cu" />
     <CudaCompile Include="Cudheart\Testing\TestUtil.cu" />
@@ -169,6 +173,10 @@
     <ClInclude Include="Cudheart\StringTypes\StringOps.cuh" />
     <ClInclude Include="Cudheart\StringTypes\StringType.cuh" />
     <ClInclude Include="Cudheart\StringTypes\StringTypes.cuh" />
+    <ClInclude Include="Cudheart\Testing\Arrays\ArrayOps\ArrayOps.cuh" />
+    <ClInclude Include="Cudheart\Testing\Arrays\IO\IO.cuh" />
+    <ClInclude Include="Cudheart\Testing\Arrays\MatTest\MatTest.cuh" />
+    <ClInclude Include="Cudheart\Testing\Arrays\VecTest\VecTest.cuh" />
     <ClInclude Include="Cudheart\Testing\Test.cuh" />
     <ClInclude Include="Cudheart\Testing\Arrays\TestArray.cuh" />
     <ClInclude Include="Cudheart\Testing\TestUtil.cuh" />

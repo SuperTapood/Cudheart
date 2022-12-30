@@ -8,4 +8,4 @@
 
 using namespace std;
 
-void assertTest(string id, bool b);
+void check(string id, bool b);
