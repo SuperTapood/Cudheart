@@ -27,7 +27,8 @@ the modules that still need testing:
 
 add and improve the library using the ideas i dumped onto the following list:
 
-- [ ] get rid of shape object for good
+- [ ] get rid of shape object for good (maybe?)
+- [ ] make sure the library matches numpy
 - [ ] compile entire thing into lib or dll file by predefining templates
 - [ ] replace StringType* and ComplexType* with StringPtr and ComplexPtr respectivly
 - [ ] use ifndef and undefine and ifdef and stuff
