@@ -34,16 +34,16 @@ namespace Cudheart::Testing::Arrays::VecTest {
 
 		Vector<StringType*>* b = a->castTo<StringType*>();
 
-		check("int to string cast", a->toString() == b->toString());
+		check("int to string cast (Vector)", a->toString() == b->toString());
 
 		Vector<ComplexType*>* c = a->castTo<ComplexType*>();
 		Vector<ComplexType*>* d = b->castTo<ComplexType*>();
 
-		check("int and string to complex", c->toString() == d->toString());
+		check("int and string to complex (Vector)", c->toString() == d->toString());
 
 		Vector<ComplexType*>* e = c->castTo<StringType*>()->castTo<ComplexType*>();
 
-		check("complex to string to complex", c->toString() == e->toString());
+		check("complex to string to complex (Vector)", c->toString() == e->toString());
 
 		Vector<float>* f = a->castTo<float>();
 
@@ -51,7 +51,7 @@ namespace Cudheart::Testing::Arrays::VecTest {
 			f->set(i, f->get(i) + 0.22);
 		}
 
-		check("complex to string to complex", f->castTo<int>()->toString() == a->toString());
+		check("complex to string to complex (Vector)", f->castTo<int>()->toString() == a->toString());
 	}
 
 	void testReshape() {

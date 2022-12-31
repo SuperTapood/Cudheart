@@ -84,6 +84,15 @@ namespace Cudheart::NDArrays {
 				i++;
 			}
 		}
+
+		Matrix(Shape* shape) {
+			int height = shape->getX();
+			int width = shape->getY();
+			m_data = new T[width * height];
+			m_width = width;
+			m_height = height;
+			m_size = width * height;
+		}
 #pragma endregion
 
 		/// destroy the matrix object
@@ -99,71 +108,119 @@ namespace Cudheart::NDArrays {
 		/// <returns></returns>
 		template<typename U>
 		Matrix<U>* castTo() {
-			constexpr bool isStringType = is_same_v<U, StringType*>;
-			constexpr bool amStringType = is_same_v<T, StringType*>;
-			constexpr bool isComplexType = is_same_v<U, ComplexType*>;
-			constexpr bool amArithmetic = is_arithmetic_v<T>;
-			constexpr bool isArithmetic = is_arithmetic_v<U>;
-			constexpr bool isVoid = is_void_v<U>;
-			constexpr bool isNull = is_null_pointer_v<U>;
-			if (isStringType) {
-				auto out = new Matrix<StringType*>(getHeight(), getWidth());
-
+			if constexpr (std::is_same_v<T, U>) {
+				return this;
+			}
+			if constexpr (std::is_same_v<U, StringType*>) {
+				// Convert the vector of T to a vector of StringType*.
+				// For example, if T is a numeric type, then each element of the vector
+				// will be converted to a string representation.
+				Matrix<StringType*>* out = new Matrix<StringType*>(getHeight(), getWidth());
 				for (int i = 0; i < getSize(); i++) {
 					out->set(i, new StringType(getString(i)));
 				}
-
 				return (Matrix<U>*)out;
 			}
-			else if (isComplexType) {
-				if (amArithmetic) {
-					auto out = new Matrix<ComplexType*>(getHeight(), getWidth());
-
+			else if constexpr (std::is_same_v<U, ComplexType*>) {
+				if constexpr (std::is_arithmetic_v<T>) {
+					// Convert the vector of T to a vector of ComplexType*.
+					// For example, if T is a numeric type, then each element of the vector
+					// will be wrapped in a ComplexType object.
+					Matrix<ComplexType*>* out = new Matrix<ComplexType*>(getHeight(), getWidth());
 					for (int i = 0; i < getSize(); i++) {
 						out->set(i, new ComplexType(get(i)));
 					}
+					return (Matrix<U>*)out;
+				}
+				else if constexpr (std::is_same_v<T, StringType*>) {
+					// Convert the vector of T to a vector of ComplexType*.
+					// For example, if T is a numeric type, then each element of the vector
+					// will be wrapped in a ComplexType object.
+					Matrix<ComplexType*>* out = new Matrix<ComplexType*>(getHeight(), getWidth());
+					for (int i = 0; i < getSize(); i++) {
+						string current = getString(i);
+						int pos = current.find("+");
+						if (current.find("j") == string::npos || pos == string::npos) {
+							bool isInt = true;
+							for (int i = 0; i < current.size() && isInt; i++) {
+								isInt = isdigit(current[i]);
+							}
 
+							if (!isInt) {
+								std::ostringstream os;
+								os << "BadTypeException: cannot convert ";
+								os << current;
+								os << " to a Complex type.";
+								throw BadTypeException(os.str());
+							}
+							out->set(i, new ComplexType(std::stold(getString(i))));
+						}
+						else {
+							bool isInt = true;
+							for (int i = 0; i < pos && isInt; i++) {
+								isInt = isdigit(current[i]);
+							}
+
+							if (!isInt) {
+								std::ostringstream os;
+								os << "BadTypeException: cannot convert ";
+								os << current;
+								os << " to a Complex type.";
+								throw BadTypeException(os.str());
+							}
+
+							pos++;
+
+							for (int i = pos; i < current.size() - 1 && isInt; i++) {
+								isInt = isdigit(current[i]);
+							}
+
+							if (!isInt) {
+								std::ostringstream os;
+								os << "BadTypeException: cannot convert ";
+								os << current;
+								os << " to a Complex type.";
+								throw BadTypeException(os.str());
+							}
+
+							out->set(i, new ComplexType(std::stold(getString(i))));
+						}
+					}
 					return (Matrix<U>*)out;
 				}
 			}
-			else if (isArithmetic) {
-				if (amStringType) {
-					auto out = new Matrix<U>(getHeight(), getWidth());
-
+			else if constexpr (std::is_arithmetic_v<U>) {
+				if constexpr (std::is_same_v<T, StringType*>) {
+					// Convert the vector of StringType* to a vector of U.
+					// For example, if U is a numeric type, then each element of the vector
+					// will be converted from a string representation to a numeric value.
+					Matrix<U>* out = new Matrix<U>(getHeight(), getWidth());
 					for (int i = 0; i < getSize(); i++) {
 						auto str = (StringType*)get(i);
-						out->set(i, (U)str->toFloating());
+						out->set(i, (U)(str->toFloating()));
 					}
-
 					return out;
-				} else if (!isVoid) {
-					if (!isNull) {
-						if (amArithmetic) {
-							auto out = new Matrix<U>(getHeight(), getWidth());
-
-							for (int i = 0; i < getSize(); i++) {
-								// jumping through hoops to appease
-								// our compiler overlord
-								// lots of performance left on the table here
-								out->set(i, std::stold(getString(i)));
-							}
-
-							return out;
-						}
+				}
+				else if constexpr (std::is_arithmetic_v<T>) {
+					// Convert the vector of T to a vector of U.
+					// For example, if T and U are both numeric types, then each element of the vector
+					// will be converted from one type to the other.
+					Matrix<U>* out = new Matrix<U>(getHeight(), getWidth());
+					for (int i = 0; i < getSize(); i++) {
+						out->set(i, static_cast<U>(get(i)));
 					}
+					return out;
 				}
 			}
-			else {
-				ostringstream os;
-				os << "BadTypeException: cannot cast matrix of type ";
-				os << typeid(T).name();
-				os << " to a matrix of type ";
-				os << typeid(U).name();
-				BadTypeException(os.str());
-			}
 
-			cout << "oh no" << endl;
-			return NULL;
+			// If none of the above conditions are met, then it is not possible to perform the conversion.
+			std::ostringstream os;
+			os << "BadTypeException: cannot cast ";
+			os << typeid(T).name();
+			os << " type to ";
+			os << typeid(U).name();
+			os << " type.";
+			throw BadTypeException(os.str());
 		}
 
 #pragma region getters_and_setters
@@ -239,7 +296,7 @@ namespace Cudheart::NDArrays {
 			
 			if (shape->getDims() == 2) {
 
-				auto out = Matrix<U>(shape);
+				auto out = new Matrix<U>(shape);
 
 				for (int i = 0; i < m_size; i++) {
 					out->set(i, (U)get(i));
@@ -248,7 +305,7 @@ namespace Cudheart::NDArrays {
 				return out;
 			}
 
-			return castTo<U>->flatten();
+			return castTo<U>()->flatten();
 		}
 
 		int getDims() const {
@@ -457,7 +514,7 @@ namespace Cudheart::NDArrays {
 		/// <summary>
 		/// reverse the rows of this matrix
 		/// </summary>
-		/// <param name="inplace"> - whehter or not to reverse the rows of this matrix or of a copy of it</param>
+		/// <param name="inplace"> - whether or not to reverse the rows of this matrix or of a copy of it</param>
 		/// <returns>this matrix with reversed rows if inplace is true, else a copy with its rows reversed</returns>
 		Matrix<T>* reverseRows(bool inplace = false) {
 			Matrix<T>* mat = new Matrix<T>(m_height, m_width);
