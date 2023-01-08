@@ -46,6 +46,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] integrate std functions for optimization
 - [ ] allow functions to accept ndarray and take it from there
 - [ ] rename shapelike to reshape
+- [ ] test and optimize the inplace argument
 - [ ] further integrate more exceptions
 - [ ] revamp namespaces and make sure each one is self contained (does not contain stuff from other namespaces)
 - [ ] add and test operator overloads for all types (vectors, matrices, stringtypes and complextypes)

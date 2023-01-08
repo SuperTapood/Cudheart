@@ -29,6 +29,7 @@
 - removed getabs and setabs from vector as they are no longer needed
 - renamed shapeLike to reshape :)
 - added overload to vector transpose
+- replaced rotate with rot90 and fixed it
 
 ## notes:
 - 

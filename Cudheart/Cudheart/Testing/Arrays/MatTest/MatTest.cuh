@@ -10,4 +10,10 @@ namespace Cudheart::Testing::Arrays::MatTest {
 	void testReshape();
 
 	void testReverseRows();
+
+	void testReverseCols();
+
+	void testTranspose();
+
+	void testRot90();
 }

@@ -3,6 +3,12 @@
 namespace Cudheart::Testing::Arrays::MatTest {
 	void test() {
 		testConstructors();
+		testCastTo();
+		testReshape();
+		testReverseRows();
+		testReverseCols();
+		testTranspose();
+		testRot90();
 	}
 
 	void testConstructors() {
@@ -73,5 +79,55 @@ namespace Cudheart::Testing::Arrays::MatTest {
 
 	void testReverseRows() {
 		int* arr = new int[] {5, 7, 451, 14, 25, 250, 52205, 255, 897};
+		Matrix<int>* a = new Matrix<int>(arr, 3, 3);
+
+		auto b = a->reverseRows();
+
+		for (int i = 0; i < a->getHeight(); i++) {
+			for (int j = 0; j < a->getWidth(); j++) {
+				check("Matrix<int>->reverseRows()", a->get(i, j) == b->get(i, a->getWidth() - j - 1));
+			}
+		}
+
+	}
+
+	void testReverseCols() {
+		int* arr = new int[] {5, 7, 451, 14, 25, 250, 52205, 255, 897};
+		Matrix<int>* a = new Matrix<int>(arr, 3, 3);
+
+		auto b = a->reverseCols();
+
+		for (int i = 0; i < a->getHeight(); i++) {
+			for (int j = 0; j < a->getWidth(); j++) {
+				check("Matrix<int>->reverseCols()", a->get(i, j) == b->get(a->getHeight() - i - 1, j));
+			}
+		}
+
+	}
+
+	void testTranspose() {
+		int* arr = new int[] {5, 7, 451, 14, 25, 250, 52205, 255, 897};
+		Matrix<int>* a = new Matrix<int>(arr, 3, 3);
+
+		auto b = (Matrix<int>*)a->transpose();
+
+		for (int i = 0; i < a->getHeight(); i++) {
+			for (int j = 0; j < a->getWidth(); j++) {
+				check("Matrix<int>->transpose()", a->get(i, j) == b->get(j, i));
+			}
+		}
+	}
+
+	void testRot90() {
+		int* arr = new int[] {5, 7, 451, 14, 25, 250, 52205, 255, 897};
+		Matrix<int>* a = new Matrix<int>(arr, 3, 3);
+
+		auto b = ((Matrix<int>*)(a->transpose()))->reverseCols();
+		check("Matrix<int>->rot90(k=1)", a->rot90(1)->toString() == b->toString());
+		b = ((Matrix<int>*)(b->transpose()))->reverseCols();
+		check("Matrix<int>->rot90(k=2)", a->rot90(2)->toString() == b->toString());
+		b = ((Matrix<int>*)(b->transpose()))->reverseCols();
+		check("Matrix<int>->rot90(k=3)", a->rot90(3)->toString() == b->toString());
+		check("Matrix<int>->rot90(k=4)", a->rot90(4)->toString() == a->toString());
 	}
 }

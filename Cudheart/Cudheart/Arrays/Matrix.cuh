@@ -520,8 +520,8 @@ namespace Cudheart::NDArrays {
 			Matrix<T>* mat = new Matrix<T>(m_height, m_width);
 
 			for (int i = 0; i < m_height; i++) {
-				for (int j = m_width - 1, k = 0; j > -1; j--, k++) {
-					mat->set(i, k, get(i, j));
+				for (int j = 0; j < m_width; j++) {
+					mat->set(i, m_width - j - 1, get(i, j));
 				}
 			}
 
@@ -534,43 +534,38 @@ namespace Cudheart::NDArrays {
 			return mat;
 		}
 
-		/// <summary>
-		/// rotate this matrix
-		/// </summary>
-		/// <param name="degrees"> - the amount of degrees to rotate this matrix for (degrees % 90 == 0)</param>
-		/// <param name="inplace"> - whether to rotate this matrix, or a copy of it</param>
-		/// <returns></returns>
-		Matrix<T>* rotate(int degrees, bool inplace = false) {
-			Matrix<T>* mat = (Matrix<T>*)copy();
-			Matrix<T>* out = nullptr;
+		Matrix<T>* reverseCols(bool inplace = false) {
+			Matrix<T>* mat = new Matrix<T>(m_height, m_width);
 
-			if (angles == 90) {
-				mat->transpose(true);
-				mat->reverseRows(true);
-				out = mat;
-			}
-			else if (angles == 180) {
-				out = mat->rotate(90)->rotate(90);
-			}
-			else if (angles == 270) {
-				out = rotate(-90);
-			}
-			else if (angles == -180) {
-				out = rotate(180);
-			}
-			else if (angles == -90) {
-				mat->reverseRows(true);
-				mat->transpose(true);
-				out = mat;
+			for (int i = 0; i < m_height; i++) {
+				for (int j = 0; j < m_width; j++) {
+					mat->set(m_height - i - 1, j, get(i, j));
+				}
 			}
 
 			if (inplace) {
-				setData(out);
-				delete out;
+				setData(mat);
+				delete mat;
 				return this;
 			}
 
-			return out;
+			return mat;
+		}
+
+		Matrix<T>* rot90(int k = 1, bool inplace = false) {
+			Matrix<T>* mat = (Matrix<T>*)copy();
+
+			for (int i = 0; i < (k % 4); i++) {
+				mat = ((Matrix<T>*)(mat->transpose()))->reverseCols();
+			}
+
+			if (inplace) {
+				setData(mat);
+				delete mat;
+				return this;
+			}
+
+			return mat;
 		}
 
 		/// <summary>
@@ -578,16 +573,8 @@ namespace Cudheart::NDArrays {
 		/// </summary>
 		/// <param name="inplace">whether or not to flip this matrix, or a copy of it</param>
 		/// <returns>if inplace is true, this matrix, otherwise a flipped copy</returns>
-		Matrix<T>* flip(bool inplace) {
-			return rotate(180, inplace);
-		}
-
-		/// <summary>
-		/// flip this matrix
-		/// </summary>
-		/// <returns>a flipped copy</returns>
-		Matrix<T>* flip() {
-			return rotate(180);
+		Matrix<T>* flip(bool inplace = false) {
+			return rot90(2, inplace);
 		}
 
 		/// <summary>
