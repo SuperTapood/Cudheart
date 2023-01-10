@@ -14,14 +14,14 @@ namespace Cudheart::Testing::Arrays::MatTest {
 	void testConstructors() {
 		using Cudheart::NDArrays::Matrix;
 
-		int* arr = new int[]{ 25, 25, 45, 588, 655555, 55, 568, 58, 999 };
+		int arr[] = {25, 25, 45, 588, 655555, 55, 568, 58, 999};
 
-		auto a = new Matrix<int>(5, 5);
+		auto a = new Matrix<int>(3, 3);
 
-		check("Matrix(int, int)", a->getShape()->toString() == "(5, 5)");
+		check("Matrix(int, int)", a->getShape()->toString() == "(3, 3)");
 
-		for (int i = 0; i < 5; i++) {
-			for (int j = 0; j < 5; j++) {
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
 				a->get(i, j);
 			}
 		}
@@ -33,7 +33,7 @@ namespace Cudheart::Testing::Arrays::MatTest {
 			check("Matrix(int*, int, int)", b->get(i) == c->get(i));
 		}
 
-		auto d = new Matrix(new int[] { 25, 25, 45, 588, 655555, 55, 568, 58, 999 }, 5, 5);
+		auto d = new Matrix({ 25, 25, 45, 588, 655555, 55, 568, 58, 999 }, 3, 3);
 
 		for (int i = 0; i < c->getSize(); i++) {
 			check("Matrix(int{}, int, int)", d->get(i) == c->get(i));
@@ -41,7 +41,7 @@ namespace Cudheart::Testing::Arrays::MatTest {
 	}
 
 	void testCastTo() {
-		int* arr = new int[] {5, 7, 451, 14, 25, 250, 52205, 255, 897};
+		int arr[] = {5, 7, 451, 14, 25, 250, 52205, 255, 897};
 		Matrix<int>* a = new Matrix<int>(arr, 3, 3);
 
 		Matrix<StringType*>* b = a->castTo<StringType*>();
@@ -67,7 +67,7 @@ namespace Cudheart::Testing::Arrays::MatTest {
 	}
 
 	void testReshape() {
-		int* arr = new int[] {5, 7, 451, 14, 25, 250};
+		int arr[] = {5, 7, 451, 14, 25, 250};
 		Matrix<int>* a = new Matrix<int>(arr, 2, 3);
 
 		auto b = a->reshape<int>(new Shape(6));
@@ -78,7 +78,7 @@ namespace Cudheart::Testing::Arrays::MatTest {
 	}
 
 	void testReverseRows() {
-		int* arr = new int[] {5, 7, 451, 14, 25, 250, 52205, 255, 897};
+		int arr[] = {5, 7, 451, 14, 25, 250, 52205, 255, 897};
 		Matrix<int>* a = new Matrix<int>(arr, 3, 3);
 
 		auto b = a->reverseRows();
@@ -92,7 +92,7 @@ namespace Cudheart::Testing::Arrays::MatTest {
 	}
 
 	void testReverseCols() {
-		int* arr = new int[] {5, 7, 451, 14, 25, 250, 52205, 255, 897};
+		int arr[] = {5, 7, 451, 14, 25, 250, 52205, 255, 897};
 		Matrix<int>* a = new Matrix<int>(arr, 3, 3);
 
 		auto b = a->reverseCols();
@@ -106,7 +106,7 @@ namespace Cudheart::Testing::Arrays::MatTest {
 	}
 
 	void testTranspose() {
-		int* arr = new int[] {5, 7, 451, 14, 25, 250, 52205, 255, 897};
+		int arr[] = {5, 7, 451, 14, 25, 250, 52205, 255, 897};
 		Matrix<int>* a = new Matrix<int>(arr, 3, 3);
 
 		auto b = (Matrix<int>*)a->transpose();
@@ -119,7 +119,7 @@ namespace Cudheart::Testing::Arrays::MatTest {
 	}
 
 	void testRot90() {
-		int* arr = new int[] {5, 7, 451, 14, 25, 250, 52205, 255, 897};
+		int arr[] = {5, 7, 451, 14, 25, 250, 52205, 255, 897};
 		Matrix<int>* a = new Matrix<int>(arr, 3, 3);
 
 		auto b = ((Matrix<int>*)(a->transpose()))->reverseCols();

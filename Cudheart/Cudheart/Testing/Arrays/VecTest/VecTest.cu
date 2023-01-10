@@ -9,7 +9,7 @@ namespace Cudheart::Testing::Arrays::VecTest {
 	}
 
 	void testConstructors() {
-		int* arr = new int[] {5, 7, 451, 14, 25, 250, 52205, 255, 897};
+		int arr[] = {5, 7, 451, 14, 25, 250, 52205, 255, 897};
 
 		Vector<int>* vec = new Vector<int>(arr, 9);
 
@@ -29,7 +29,7 @@ namespace Cudheart::Testing::Arrays::VecTest {
 	}
 
 	void testCastTo() {
-		int* arr = new int[] {5, 7, 451, 14, 25, 250, 52205, 255, 897};
+		int arr[] = {5, 7, 451, 14, 25, 250, 52205, 255, 897};
 		Vector<int>* a = new Vector<int>(arr, 9);
 
 		Vector<StringType*>* b = a->castTo<StringType*>();
@@ -55,7 +55,7 @@ namespace Cudheart::Testing::Arrays::VecTest {
 	}
 
 	void testReshape() {
-		int* arr = new int[] {5, 7, 451, 14, 25, 250};
+		int arr[] = {5, 7, 451, 14, 25, 250};
 		Vector<int>* a = new Vector<int>(arr, 6);
 
 		auto b = a->reshape<int>(new Shape(2, 3));
@@ -66,7 +66,7 @@ namespace Cudheart::Testing::Arrays::VecTest {
 	}
 
 	void testCopy() {
-		float* arr = new float[] {5.5, 7.5, 451.5, 14.5, 25.5, 250.5, 41.5, 58.5};
+		float arr[] = {5.5, 7.5, 451.5, 14.5, 25.5, 250.5, 41.5, 58.5};
 		Vector<float>* a = new Vector<float>(arr, 8);
 		Vector<float>* b = (Vector<float>*)a->copy();
 
@@ -75,4 +75,3 @@ namespace Cudheart::Testing::Arrays::VecTest {
 		}
 	}
 }
-

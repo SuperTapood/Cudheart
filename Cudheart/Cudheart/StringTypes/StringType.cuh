@@ -2,6 +2,8 @@
 
 #include <string>
 
+using namespace std;
+
 namespace Cudheart {
 	class StringType {
 	public:

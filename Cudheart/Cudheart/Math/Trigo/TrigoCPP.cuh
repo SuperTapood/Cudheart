@@ -2,6 +2,7 @@
 
 #include <cmath>
 #include "../../Constants.cuh"
+#include "../../Arrays/Arrays.cuh"
 
 using Cudheart::NDArrays::Vector;
 using Cudheart::NDArrays::Matrix;

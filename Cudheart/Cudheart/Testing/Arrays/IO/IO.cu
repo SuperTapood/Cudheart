@@ -1,4 +1,7 @@
 #include "IO.cuh"
+#include <string>
+
+using namespace std;
 
 namespace Cudheart::Testing::Arrays::IO {
 	void test() {

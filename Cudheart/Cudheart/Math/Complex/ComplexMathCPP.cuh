@@ -4,7 +4,8 @@
 #include <cmath>
 #include <numeric>
 #include "ComplexType.cuh"
-#include "../Constants.cuh"
+#include "../../Constants.cuh"
+#include "../../Constants.cuh"
 
 using Cudheart::NDArrays::NDArray;
 using Cudheart::NDArrays::Vector;

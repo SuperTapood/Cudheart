@@ -1,6 +1,9 @@
 #pragma once
 
+#include <string>
 #include <stdio.h>
+
+using namespace std;
 
 namespace Cudheart {
 	class ComplexType {

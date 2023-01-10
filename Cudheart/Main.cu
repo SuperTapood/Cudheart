@@ -1,4 +1,4 @@
-#include "Cudheart/Testing/Test.cuh"
+﻿#include "Cudheart/Testing/Test.cuh"
 #include "Cudheart/Cudheart.cuh"
 #include "Misc/kernel.cuh"
 #include "Misc/Test.cuh"
@@ -6,7 +6,7 @@
 #include "Misc/Custom.cuh"
 #include "Cudheart/Exceptions/FileNotFoundException.cuh"
 
-using Cudheart::Exceptions::CudaException;
+// using Cudheart::Exceptions::CudaException;
 
 int main() {
 	// verify unified memory?

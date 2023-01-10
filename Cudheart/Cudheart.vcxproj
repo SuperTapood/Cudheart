@@ -1,10 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="Build|x64">
-      <Configuration>Build</Configuration>
-      <Platform>x64</Platform>
-    </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
@@ -15,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{E4F019B1-85C5-48ED-A478-893FF5ECDC6A}</ProjectGuid>
+    <ProjectGuid>{34DC3CD8-79C9-49F7-A63E-55FA0401F4A0}</ProjectGuid>
     <RootNamespace>Cudheart</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -33,12 +29,9 @@
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
-  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Build|x64'">
-    <PlatformToolset>v143</PlatformToolset>
-  </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
-    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 11.6.props" />
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 12.0.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -55,20 +48,18 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;WIN64;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <CudaCompile>
       <TargetMachinePlatform>64</TargetMachinePlatform>
-      <AdditionalOptions>-std=c++17 -Xcompiler "/std:c++17" %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>--std c++17 %(AdditionalOptions)</AdditionalOptions>
     </CudaCompile>
-    <CudaLink>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-    </CudaLink>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -77,44 +68,26 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;WIN64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <LanguageStandard>stdcpp20</LanguageStandard>
-      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <CudaCompile>
       <TargetMachinePlatform>64</TargetMachinePlatform>
     </CudaCompile>
-    <CudaLink>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-    </CudaLink>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Build|x64'">
-    <ClCompile>
-      <LanguageStandard>stdcpp20</LanguageStandard>
-    </ClCompile>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Build|x64'">
-    <ClCompile>
-      <LanguageStandard_C>stdc17</LanguageStandard_C>
-    </ClCompile>
-    <CudaLink>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-    </CudaLink>
-    <Link />
   </ItemDefinitionGroup>
   <ItemGroup>
     <CudaCompile Include="Cudheart\Exceptions\BaseException.cu" />
     <CudaCompile Include="Cudheart\Testing\Arrays\ArrayOps\ArrayOps.cu" />
     <CudaCompile Include="Cudheart\Testing\Arrays\IO\IO.cu" />
+    <CudaCompile Include="Cudheart\Testing\Arrays\TestArray.cu" />
     <CudaCompile Include="Cudheart\Testing\Arrays\MatTest\MatTest.cu" />
     <CudaCompile Include="Cudheart\Testing\Arrays\VecTest\VecTest.cu" />
     <CudaCompile Include="Cudheart\Testing\Test.cu" />
-    <CudaCompile Include="Cudheart\Testing\Arrays\TestArray.cu" />
     <CudaCompile Include="Cudheart\Testing\TestUtil.cu" />
     <CudaCompile Include="Main.cu" />
     <CudaCompile Include="Misc\kernel.cu" />
@@ -122,9 +95,8 @@
     <CudaCompile Include="Misc\UtilKernel.cu" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Cudheart\Arrays\ArrayOps.cuh" />
-    <ClInclude Include="Cudheart\Arrays\Arrays.cuh" />
     <ClInclude Include="Cudheart\Arrays\ArrOps.cuh" />
+    <ClInclude Include="Cudheart\Arrays\Arrays.cuh" />
     <ClInclude Include="Cudheart\Arrays\IO.cuh" />
     <ClInclude Include="Cudheart\Arrays\Matrix.cuh" />
     <ClInclude Include="Cudheart\Arrays\MatrixOps.cuh" />
@@ -132,38 +104,38 @@
     <ClInclude Include="Cudheart\Arrays\Shape.cuh" />
     <ClInclude Include="Cudheart\Arrays\Vector.cuh" />
     <ClInclude Include="Cudheart\Arrays\VectorOps.cuh" />
+    <ClInclude Include="Cudheart\Constants.cuh" />
+    <ClInclude Include="Cudheart\Cudheart.cuh" />
     <ClInclude Include="Cudheart\Exceptions\AssertionException.cuh" />
     <ClInclude Include="Cudheart\Exceptions\BadTypeException.cuh" />
     <ClInclude Include="Cudheart\Exceptions\BadValueException.cuh" />
+    <ClInclude Include="Cudheart\Exceptions\BaseException.cuh" />
     <ClInclude Include="Cudheart\Exceptions\CudaException.cuh" />
+    <ClInclude Include="Cudheart\Exceptions\Exceptions.cuh" />
     <ClInclude Include="Cudheart\Exceptions\FileNotFoundException.cuh" />
     <ClInclude Include="Cudheart\Exceptions\IndexOutOfBoundsException.cuh" />
+    <ClInclude Include="Cudheart\Exceptions\MatrixConversionException.cuh" />
+    <ClInclude Include="Cudheart\Exceptions\NotImplementedException.cuh" />
+    <ClInclude Include="Cudheart\Exceptions\ShapeMismatchException.cuh" />
     <ClInclude Include="Cudheart\Exceptions\ZeroDivisionException.cuh" />
     <ClInclude Include="Cudheart\Indexing\Indexing.cuh" />
     <ClInclude Include="Cudheart\Indexing\Searching.cuh" />
     <ClInclude Include="Cudheart\Indexing\Sorting.cuh" />
+    <ClInclude Include="Cudheart\Logic\Logic.cuh" />
+    <ClInclude Include="Cudheart\Logic\LogicCPP.cuh" />
     <ClInclude Include="Cudheart\Math\BaseMath\BaseMath.cuh" />
     <ClInclude Include="Cudheart\Math\BaseMath\BaseMathCPP.cuh" />
-    <ClInclude Include="Cudheart\Math\Bitwise\BitwiseCPP.cuh" />
-    <ClInclude Include="Cudheart\Cudheart.cuh" />
-    <ClInclude Include="Cudheart\Exceptions\BaseException.cuh" />
-    <ClInclude Include="Cudheart\Exceptions\Exceptions.cuh" />
-    <ClInclude Include="Cudheart\Exceptions\MatrixConversionException.cuh" />
-    <ClInclude Include="Cudheart\Exceptions\NotImplementedException.cuh" />
     <ClInclude Include="Cudheart\Math\Bitwise\Bitwise.cuh" />
+    <ClInclude Include="Cudheart\Math\Bitwise\BitwiseCPP.cuh" />
     <ClInclude Include="Cudheart\Math\Bitwise\BitwiseKernels.cuh" />
     <ClInclude Include="Cudheart\Math\Complex\Complex.cuh" />
     <ClInclude Include="Cudheart\Math\Complex\ComplexMathCPP.cuh" />
     <ClInclude Include="Cudheart\Math\Complex\ComplexType.cuh" />
-    <ClInclude Include="Cudheart\Constants.cuh" />
     <ClInclude Include="Cudheart\Math\Exps\Exps.cuh" />
     <ClInclude Include="Cudheart\Math\Exps\ExpsCPP.cuh" />
     <ClInclude Include="Cudheart\Math\Linalg\Linalg.cuh" />
     <ClInclude Include="Cudheart\Math\Linalg\LinalgCPP.cuh" />
-    <ClInclude Include="Cudheart\Logic\Logic.cuh" />
-    <ClInclude Include="Cudheart\Logic\LogicCPP.cuh" />
     <ClInclude Include="Cudheart\Math\Math.cuh" />
-    <ClInclude Include="Cudheart\Exceptions\ShapeMismatchException.cuh" />
     <ClInclude Include="Cudheart\Math\Statistics\Statistics.cuh" />
     <ClInclude Include="Cudheart\Math\Statistics\StatisticsCPP.cuh" />
     <ClInclude Include="Cudheart\Math\Trigo\Trigo.cuh" />
@@ -175,10 +147,10 @@
     <ClInclude Include="Cudheart\StringTypes\StringTypes.cuh" />
     <ClInclude Include="Cudheart\Testing\Arrays\ArrayOps\ArrayOps.cuh" />
     <ClInclude Include="Cudheart\Testing\Arrays\IO\IO.cuh" />
+    <ClInclude Include="Cudheart\Testing\Arrays\TestArray.cuh" />
     <ClInclude Include="Cudheart\Testing\Arrays\MatTest\MatTest.cuh" />
     <ClInclude Include="Cudheart\Testing\Arrays\VecTest\VecTest.cuh" />
     <ClInclude Include="Cudheart\Testing\Test.cuh" />
-    <ClInclude Include="Cudheart\Testing\Arrays\TestArray.cuh" />
     <ClInclude Include="Cudheart\Testing\TestUtil.cuh" />
     <ClInclude Include="Cudheart\Util.cuh" />
     <ClInclude Include="Misc\Custom.cuh" />
@@ -189,11 +161,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Changelog.md" />
-    <None Include="..\roadmap.md" />
     <None Include="..\README.md" />
+    <None Include="..\roadmap.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 11.6.targets" />
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 12.0.targets" />
   </ImportGroup>
 </Project>

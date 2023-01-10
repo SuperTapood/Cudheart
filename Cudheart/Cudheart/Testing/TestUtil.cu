@@ -4,7 +4,7 @@
 
 void check(string id, bool b) {
 	if (b) {
-		// cout << "Test " << id << " passed!\n";
+		//cout << "Test " << id << " passed!\n";
 		return;
 	}
 	cout << "Tests Failed! " << id << " failed assertion\n";

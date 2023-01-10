@@ -8,6 +8,9 @@
 #include <chrono>
 #include <ctime>
 #include <device_functions.h>
+#include <iostream>
+
+using namespace std;
 
 template <typename A, typename B, typename C>
 __global__ void add(A* c, B* a, C* b) {
@@ -16,10 +19,9 @@ __global__ void add(A* c, B* a, C* b) {
 	printf("Hello thread %d with values: %f, %d, %f\n", i, a[i], b[i], c[i]);
 }
 
-
 void testCustom() {
-	float a[] = {1.5, 2.5, 3.5, 4.5};
-	int b[] = {7, 12, 54, 578};
+	float a[] = { 1.5, 2.5, 3.5, 4.5 };
+	int b[] = { 7, 12, 54, 578 };
 	double* c = (double*)malloc(sizeof(double) * 4);
 	float* dev_a;
 	int* dev_b;
@@ -49,7 +51,7 @@ void testCustom() {
 		std::exit(69);
 	}
 
-	add << <1, 4>> > (dev_c, dev_a, dev_b);
+	add << <1, 4 >> > (dev_c, dev_a, dev_b);
 	// cudaDeviceSynchronize waits for the kernel to finish, and returns
 	// any errors encountered during the launch.
 	cudaDeviceSynchronize();

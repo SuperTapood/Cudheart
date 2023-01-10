@@ -5,6 +5,7 @@
 #include <random>
 
 #include "../Arrays/Arrays.cuh"
+#include "../Constants.cuh"
 
 using Cudheart::NDArrays::Vector;
 using Cudheart::NDArrays::Matrix;
