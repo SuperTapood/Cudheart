@@ -677,7 +677,7 @@ namespace Cudheart::CPP::Random {
 	template <typename T>
 	inline Vector<T>* uniform(T low, T high, int size) {
 		srand(getSeed());
-		Vector<T>* out = Cudheart::VectorOps::empty<T>(size);
+		Vector<T>* out = new Vector<T>(size);
 
 		for (int i = 0; i < out->getSize(); i++) {
 			T x = rand() / RAND_MAX;

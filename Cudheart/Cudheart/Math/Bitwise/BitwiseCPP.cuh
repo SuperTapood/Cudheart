@@ -5,7 +5,6 @@
 using Cudheart::NDArrays::Vector;
 using Cudheart::NDArrays::Matrix;
 using namespace Cudheart::Exceptions;
-using Cudheart::VectorOps::empty;
 
 namespace Cudheart::CPP::Math::Bitwise {
 	template <typename T>

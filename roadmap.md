@@ -38,6 +38,8 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] remove pragma region
 - [ ] simplify the way functions are used
 - [ ] refactor code according to the linter
+- [ ] allow functions to support more than 1 type template thing
+- [ ] add equal operation to shape objects and use in testing and stuff
 - [ ] fix exceptions not throwing correctly
 - [ ] maybe remove emptylike
 - [ ] maybe remove default contructors?
@@ -65,6 +67,8 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] differentiate between vector and matrix ops (name wise) (maybe?)
 - [ ] maybe start returning vectors of vectors?
 - [ ] properly name variables
+- [ ] add specific "testing" mode to allow exceptions and stuff
+- [ ] extract testing from cudheart
 - [ ] add functions that return boolean arrays in equal in logic (seperate by equal and equal all)
 - [ ] check if a string can be used without string type
 - [ ] maybe change to using custom datatypes (maybe could then make into lib?)

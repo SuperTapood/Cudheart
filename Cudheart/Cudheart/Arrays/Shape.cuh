@@ -43,8 +43,9 @@ namespace Cudheart {
 				ostringstream os;
 				os << "(";
 				os << x;
-				os << ", ";
+				os << ",";
 				if (y != 1) {
+					os << " ";
 					os << y;
 				}
 				os << ")";

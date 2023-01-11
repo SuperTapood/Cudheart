@@ -303,6 +303,9 @@ namespace Cudheart {
 			/// </summary>
 			/// <returns>a string representation of this vector</returns>
 			string toString() {
+				if (getSize() == 0) {
+					return "[]";
+				}
 				ostringstream os;
 				os << "[";
 				if constexpr (is_same_v<T, StringType*>) {

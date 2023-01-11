@@ -1,4 +1,4 @@
-﻿#include "Cudheart/Testing/Test.cuh"
+﻿#include "Testing/Test.cuh"
 #include "Cudheart/Cudheart.cuh"
 #include "Misc/kernel.cuh"
 #include "Misc/Test.cuh"

@@ -1,4 +1,4 @@
-Identity=Cudheart\Testing\Arrays\MatTest\MatTest.cu
+Identity=Testing\Arrays\MatTest\MatTest.cu
 AdditionalCompilerOptions=
 AdditionalCompilerOptions=
 AdditionalDependencies=

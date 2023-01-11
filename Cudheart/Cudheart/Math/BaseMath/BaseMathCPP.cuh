@@ -7,7 +7,6 @@
 using Cudheart::NDArrays::Vector;
 using Cudheart::NDArrays::Matrix;
 using namespace Cudheart::Exceptions;
-using Cudheart::VectorOps::empty;
 using Cudheart::VectorOps::emptyLike;
 using Cudheart::MatrixOps::fromVector;
 

@@ -11,7 +11,6 @@ using Cudheart::NDArrays::Matrix;
 using Cudheart::NDArrays::Vector;
 using Cudheart::NDArrays::NDArray;
 using Cudheart::VectorOps::zeros;
-using Cudheart::VectorOps::empty;
 using namespace Cudheart::Exceptions;
 using namespace Cudheart::MatrixOps;
 
@@ -52,7 +51,7 @@ namespace Cudheart {
 		template <typename T>
 		Vector<T>* concatenate(Vector<T>* a, Vector<T>* b) {
 			int newSize = a->getSize() + b->getSize();
-			Vector<T>* vec = empty<T>(newSize);
+			Vector<T>* vec = new Vector<T>(newSize);
 
 			for (int i = 0; i < a->getSize(); i++) {
 				vec->set(i, a->get(i));

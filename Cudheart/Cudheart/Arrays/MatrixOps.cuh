@@ -542,7 +542,7 @@ namespace Cudheart {
 
 			len = len - k;
 
-			Vector<T>* out = VectorOps::empty<T>(len);
+			Vector<T>* out = new Vector<T>(len);
 			for (int i = 0, j = k; i < mat->getHeight() && j < mat->getWidth(); i++, j++) {
 				out->set(i, mat->get(i, j));
 			}

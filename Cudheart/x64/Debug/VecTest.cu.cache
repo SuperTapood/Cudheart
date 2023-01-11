@@ -1,4 +1,4 @@
-Identity=Cudheart\Testing\Arrays\VecTest\VecTest.cu
+Identity=Testing\Arrays\VecTest\VecTest.cu
 AdditionalCompilerOptions=
 AdditionalCompilerOptions=
 AdditionalDependencies=

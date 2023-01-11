@@ -1,6 +1,7 @@
 ## changelog:
 
 - finally got rid of CUtil
+- testing module no longer included in cudheart
 - fixed fromString not actually parsing all the string data
 - kinda fixed stringtype and complextype arrays not printing correctly
 - fixed save writing object pointers rather than actual data
@@ -30,6 +31,10 @@
 - renamed shapeLike to reshape :)
 - added overload to vector transpose
 - replaced rotate with rot90 and fixed it
+- fixed fromMatrix
+- removed empty and asVector in favor of creating a vector like a normal person
+- removed fromMatrix in favor of flatten
+- arange now handles bad arguments like numpy
 
 ## notes:
 - 
