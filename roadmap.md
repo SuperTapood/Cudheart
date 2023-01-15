@@ -29,6 +29,7 @@ add and improve the library using the ideas i dumped onto the following list:
 
 - [ ] get rid of shape object for good (maybe?)
 - [ ] make sure the library matches numpy
+- [ ] try to directly compare program output with numpy lol
 - [ ] compile entire thing into lib or dll file by predefining templates
 - [ ] replace StringType* and ComplexType* with StringPtr and ComplexPtr respectivly
 - [ ] use ifndef and undefine and ifdef and stuff
@@ -44,16 +45,20 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] maybe remove emptylike
 - [ ] maybe remove default contructors?
 - [ ] add overrides that do not require creating shape object
+- [ ] make sure everything is tested lol
 - [ ] calling emptyLike on a stringtype is 100% gonna be a problem lmao (maybe call T() and add default constructor)
 - [ ] integrate std functions for optimization
 - [ ] allow functions to accept ndarray and take it from there
 - [ ] rename shapelike to reshape
+- [ ] dummy proof the constructors and stuff
 - [ ] test and optimize the inplace argument
 - [ ] further integrate more exceptions
+- [ ] differentiate between release and debug mode maybe :)
 - [ ] revamp namespaces and make sure each one is self contained (does not contain stuff from other namespaces)
 - [ ] add and test operator overloads for all types (vectors, matrices, stringtypes and complextypes)
 - [ ] convert m_str to private
 - [ ] handle the type conversion issues
+- [ ] check types with constexpr
 - [ ] copy getters and setters to string type
 - [ ] add getsize to string type
 - [ ] add none array overloads

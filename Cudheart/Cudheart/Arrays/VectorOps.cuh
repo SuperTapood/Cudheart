@@ -82,23 +82,33 @@ namespace Cudheart::VectorOps {
 	}
 
 	template <typename T>
-	Vector<T>* linspace(T start, T stop, T num, bool endpoint) {
-		T jump = (stop - start) / num;
+	Vector<T>* linspace(T start, T stop, int num, bool endpoint) {
+		double diff = (double)stop - (double)start;
+
+		Vector<T>* vec = new Vector<T>(num);
+
 		if (endpoint) {
-			jump = (stop - start) / (num - 1);
-			stop += jump;
+			num--;
+			vec->set(-1, stop);
 		}
-		return arange<T>(start, stop, jump);
+
+		T jump = (T)(diff / num);
+
+		for (int i = 0; i < num; i++) {
+			vec->set(i, (T)(start + jump * i));
+		}
+
+		return vec;
 	}
 
 	template <typename T>
-	Vector<T>* linspace(T start, T stop, T num) {
+	Vector<T>* linspace(T start, T stop, int num) {
 		return linspace<T>(start, stop, num, true);
 	}
 
 	template <typename T>
 	Vector<T>* linspace(T start, T stop) {
-		return linspace<T>(start, stop, (T)50, true);
+		return linspace<T>(start, stop, 50, true);
 	}
 
 	template <typename T>
@@ -122,61 +132,52 @@ namespace Cudheart::VectorOps {
 	}
 
 	template <typename T>
-	Vector<T>* logspace(T start, T stop, T num, bool endpoint, double base) {
-		T jump = (stop - start) / num;
+	Vector<T>* logspace(T start, T stop, int num, bool endpoint, T base) {
+		double diff = (double)stop - (double)start;
+
+		Vector<T>* vec = new Vector<T>(num);
+
 		if (endpoint) {
-			jump = (stop - start) / (num - 1);
-			stop += jump;
-		}
-		int len = (int)((end - start) / jump);
-		Vector<T>* out = empty<T>(len);
-
-		for (int i = 0; start < end; start += jump) {
-			out->set(i++, pow(base, start));
+			num--;
+			vec->set(-1, pow(base, stop));
 		}
 
-		return out;
+		T jump = (T)(diff / num);
+
+		for (int i = 0; i < num; i++) {
+			vec->set(i, pow(base, (T)(start + jump * i)));
+		}
+
+		return vec;
 	}
 
 	template <typename T>
-	Vector<T>* logspace(T start, T stop, T num, bool endpoint) {
+	Vector<T>* logspace(T start, T stop, int num, bool endpoint) {
 		return logspace<T>(start, stop, num, endpoint, 10.0);
 	}
 
 	template <typename T>
-	Vector<T>* logspace(T start, T stop, T num) {
-		return logspace<T>(start, stop, num, true, 10.0);
-	}
-
-	template <typename T>
-	Vector<T>* logspace(T start, T stop, T num, double base) {
+	Vector<T>* logspace(T start, T stop, int num, double base) {
 		return logspace<T>(start, stop, num, true, base);
 	}
 
 	template <typename T>
-	Vector<T>* logspace(T start, T stop, double base) {
-		return logspace<T>(start, stop, (T)50, true, base);
+	Vector<T>* logspace(T start, T stop, int num) {
+		return logspace<T>(start, stop, num, true, 10.0);
 	}
 
 	template <typename T>
 	Vector<T>* logspace(T start, T stop) {
-		return logspace<T>(start, stop, (T)50, true, 10.0);
+		return logspace<T>(start, stop, 50, true, 10.0);
 	}
 
 	template <typename T>
-	Vector<T>* geomspace(T start, T stop, T num, bool endpoint) {
-		start = log10(start);
-		stop = log10(stop);
-		auto res = logspace(start, stop, num, endpoint);
-		res.set(0, start);
-		if (endpoint) {
-			res.set(-1, stop);
-		}
-		return res;
+	Vector<T>* geomspace(T start, T stop, int num, bool endpoint) {
+		return logspace((T)log10(start), (T)log10(stop), num, endpoint, (T)10.0);
 	}
 
 	template <typename T>
-	Vector<T>* geomspace(T start, T stop, T num) {
+	Vector<T>* geomspace(T start, T stop, int num) {
 		return geomspace<T>(start, stop, num, true);
 	}
 

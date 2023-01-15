@@ -260,7 +260,7 @@ namespace Cudheart {
 		}
 
 		template <typename T>
-		Vector<T>** unique(NDArray<T>* ar, bool returnIndex = false, bool returnInverse = false, bool returnCounts = false) {
+		Vector<T>** unique(NDArray<T>* ar, bool returnIndex, bool returnInverse, bool returnCounts) {
 			Vector<T>** vectors = new Vector<T>*[4];
 
 			int uniques = 0;
@@ -333,6 +333,21 @@ namespace Cudheart {
 			vectors[3] = returnCounts ? countsArr : nullptr;
 
 			return vectors;
+		}
+
+		template <typename T>
+		Vector<T>** unique(NDArray<T>* ar, bool returnIndex, bool returnInverse) {
+			return unique<T>(ar, returnIndex, returnInverse, false);
+		}
+
+		template <typename T>
+		Vector<T>** unique(NDArray<T>* ar, bool returnIndex) {
+			return unique<T>(ar, returnIndex, false, false);
+		}
+
+		template <typename T>
+		Vector<T>** unique(NDArray<T>* ar) {
+			return unique<T>(ar, false, false, false);
 		}
 	}
 }

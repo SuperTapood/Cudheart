@@ -58,7 +58,7 @@ C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning #68-D: integer conversion resulted in a change of sign
   
   VecOpsTest.cu
-  tmpxft_00006e84_00000000-7_VecOpsTest.cudafe1.cpp
+  tmpxft_0000467c_00000000-7_VecOpsTest.cudafe1.cpp
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(21): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(104): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(146): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
@@ -66,4 +66,16 @@ C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(244): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(381): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(418): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\VecOpsTest\VecOpsTest.cu(80): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\VecOpsTest\VecOpsTest.cu(86): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\VectorOps.cuh(186): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\VecOpsTest\VecOpsTest.cu(160): note: see reference to function template instantiation 'Cudheart::NDArrays::Vector<float> *Cudheart::VectorOps::geomspace<float>(T,T)' being compiled
+          with
+          [
+              T=float
+          ]
   Cudheart.vcxproj -> C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\Cudheart.exe

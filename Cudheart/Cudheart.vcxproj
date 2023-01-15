@@ -81,20 +81,6 @@
     </CudaCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CudaCompile Include="Cudheart\Exceptions\BaseException.cu" />
-    <CudaCompile Include="Testing\Arrays\ArrayOps\ArrayOps.cu" />
-    <CudaCompile Include="Testing\Arrays\IO\IO.cu" />
-    <CudaCompile Include="Testing\Arrays\TestArray.cu" />
-    <CudaCompile Include="Testing\Arrays\MatTest\MatTest.cu" />
-    <CudaCompile Include="Testing\Arrays\VecTest\VecTest.cu" />
-    <CudaCompile Include="Testing\Arrays\VecOpsTest\VecOpsTest.cu" />
-    <CudaCompile Include="Testing\Test.cu" />
-    <CudaCompile Include="Main.cu" />
-    <CudaCompile Include="Misc\kernel.cu" />
-    <CudaCompile Include="Misc\unified.cu" />
-    <CudaCompile Include="Misc\UtilKernel.cu" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Cudheart\Arrays\ArrOps.cuh" />
     <ClInclude Include="Cudheart\Arrays\Arrays.cuh" />
     <ClInclude Include="Cudheart\Arrays\IO.cuh" />
@@ -164,6 +150,20 @@
     <None Include="..\Changelog.md" />
     <None Include="..\README.md" />
     <None Include="..\roadmap.md" />
+    <None Include="Misc\kernel.cu" />
+    <None Include="Misc\unified.cu" />
+    <None Include="Misc\UtilKernel.cu" />
+  </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="Cudheart\Exceptions\BaseException.cu" />
+    <CudaCompile Include="Main.cu" />
+    <CudaCompile Include="Testing\Arrays\ArrayOps\ArrayOps.cu" />
+    <CudaCompile Include="Testing\Arrays\IO\IO.cu" />
+    <CudaCompile Include="Testing\Arrays\MatTest\MatTest.cu" />
+    <CudaCompile Include="Testing\Arrays\TestArray.cu" />
+    <CudaCompile Include="Testing\Arrays\VecOpsTest\VecOpsTest.cu" />
+    <CudaCompile Include="Testing\Arrays\VecTest\VecTest.cu" />
+    <CudaCompile Include="Testing\Test.cu" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

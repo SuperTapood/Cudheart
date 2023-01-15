@@ -554,7 +554,7 @@ namespace Cudheart {
 				return mat;
 			}
 
-			Matrix<T>* rot90(int k = 1, bool inplace = false) {
+			Matrix<T>* rot90(int k, bool inplace = false) {
 				Matrix<T>* mat = (Matrix<T>*)copy();
 
 				for (int i = 0; i < (k % 4); i++) {
@@ -568,6 +568,10 @@ namespace Cudheart {
 				}
 
 				return mat;
+			}
+
+			Matrix<T>* rot90(bool inplace = false) {
+				return rot90(1, inplace);
 			}
 
 			/// <summary>

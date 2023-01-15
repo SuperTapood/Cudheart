@@ -35,6 +35,9 @@
 - removed empty and asVector in favor of creating a vector like a normal person
 - removed fromMatrix in favor of flatten
 - arange now handles bad arguments like numpy
+- fixed linspace
+- fixed logspace
+- fixed geomspace
 
 ## notes:
 - 

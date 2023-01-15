@@ -16,19 +16,6 @@ namespace Cudheart {
 	namespace MatrixOps {
 #pragma region vector_matrix
 		/// <summary>
-		/// convert an array to a matrix
-		/// </summary>
-		/// <typeparam name="T"> - the type of the given array</typeparam>
-		/// <param name="arr"> - the array to convert to a matrix</param>
-		/// <param name="height"> - the desired height of the matrix</param>
-		/// <param name="width"> - the desired width of the matrix</param>
-		/// <returns>a matrix with the given parameters</returns>
-		template <typename T>
-		Matrix<T>* asMatrix(T* arr, int height, int width) {
-			return new Matrix<T>(arr, height, width);
-		}
-
-		/// <summary>
 		/// convert a vector to a matrix
 		/// </summary>
 		/// <typeparam name="T"> - the type of the vector</typeparam>
@@ -89,7 +76,7 @@ namespace Cudheart {
 		template <typename T>
 		Matrix<T>* fromVectorArray(Vector<T>* vecs, int len) {
 			Vector<T> a = vecs[0];
-			Matrix<T>* out = empty<T>(len, a.getSize());
+			Matrix<T>* out = new Matrix<T>(len, a.getSize());
 
 			for (int i = 0; i < len; i++) {
 				for (int j = 0; j < a.getSize(); j++) {
@@ -149,18 +136,6 @@ namespace Cudheart {
 
 #pragma region fulls
 		/// <summary>
-		/// get a new empty matrix
-		/// </summary>
-		/// <typeparam name="T"> - the type of the matrix</typeparam>
-		/// <param name="width"> - the width of the matrix</param>
-		/// <param name="height"> - the height of the matrix</param>
-		/// <returns>a new empty matrix</returns>
-		template <typename T>
-		Matrix<T>* empty(int height, int width) {
-			return new Matrix<T>(height, width);
-		}
-
-		/// <summary>
 		/// get a new matrix like the given one
 		/// </summary>
 		/// <typeparam name="T"> - the type of the matrix</typeparam>
@@ -168,7 +143,7 @@ namespace Cudheart {
 		/// <returns>a new empty matrix with matching dims</returns>
 		template <typename T>
 		Matrix<T>* emptyLike(Matrix<T>* mat) {
-			return empty<T>(mat->getWidth(), mat->getHeight());
+			return new Matrix<T>(mat->getWidth(), mat->getHeight());
 		}
 
 		/// <summary>

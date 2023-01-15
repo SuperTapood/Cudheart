@@ -1,10 +1,8 @@
 ﻿#include "Testing/Test.cuh"
-#include "Cudheart/Cudheart.cuh"
 #include "Misc/kernel.cuh"
 #include "Misc/Test.cuh"
 #include "Misc/unified.cuh"
 #include "Misc/Custom.cuh"
-#include "Cudheart/Exceptions/FileNotFoundException.cuh"
 
 // using Cudheart::Exceptions::CudaException;
 
