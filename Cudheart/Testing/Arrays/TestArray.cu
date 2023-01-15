@@ -10,6 +10,7 @@ namespace Cudheart::Testing {
 		Arrays::MatTest::test();
 		Arrays::IO::test();
 		Arrays::VecOpsTest::test();
+		Arrays::MatOpsTest::test();
 		Arrays::ArrayOps::test();
 		// auto end = std::chrono::system_clock::now();
 		// std::chrono::duration<double> elapsed = end - start;

@@ -133,6 +133,7 @@
     <ClInclude Include="Cudheart\StringTypes\StringTypes.cuh" />
     <ClInclude Include="Testing\Arrays\ArrayOps\ArrayOps.cuh" />
     <ClInclude Include="Testing\Arrays\IO\IO.cuh" />
+    <ClInclude Include="Testing\Arrays\MatOpsTest\MatOpsTest.cuh" />
     <ClInclude Include="Testing\Arrays\TestArray.cuh" />
     <ClInclude Include="Testing\Arrays\MatTest\MatTest.cuh" />
     <ClInclude Include="Testing\Arrays\VecTest\VecTest.cuh" />
@@ -159,6 +160,7 @@
     <CudaCompile Include="Main.cu" />
     <CudaCompile Include="Testing\Arrays\ArrayOps\ArrayOps.cu" />
     <CudaCompile Include="Testing\Arrays\IO\IO.cu" />
+    <CudaCompile Include="Testing\Arrays\MatOpsTest\MatOpsTest.cu" />
     <CudaCompile Include="Testing\Arrays\MatTest\MatTest.cu" />
     <CudaCompile Include="Testing\Arrays\TestArray.cu" />
     <CudaCompile Include="Testing\Arrays\VecOpsTest\VecOpsTest.cu" />

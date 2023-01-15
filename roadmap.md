@@ -7,7 +7,7 @@ build unit tests for everything to iron out any major bugs
 the modules that still need testing:
 
 - [ ] Arrays
-    - [ ] ArrOps
+    - [X] ArrOps
     - [X] IO
     - [X] Matrix
     - [ ] MatrixOps

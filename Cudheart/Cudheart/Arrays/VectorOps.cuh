@@ -31,7 +31,9 @@ namespace Cudheart::VectorOps {
 	template <typename T>
 	Vector<T>* arange(T start, T end, T jump) {
 		if (end - start < jump) {
-			return new Vector<T>(0);
+			ostringstream os;
+			os << "cannot define range from " << start << " to " << end;
+			BadValueException(os.str());
 		}
 
 		// thanks c++

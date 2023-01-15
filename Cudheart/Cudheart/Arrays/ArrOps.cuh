@@ -67,7 +67,7 @@ namespace Cudheart {
 		template <typename T>
 		Matrix<T>* concatenate(Matrix<T>* a, Matrix<T>* b) {
 			a->assertMatchShape(b->getShape());
-			Matrix<T>* mat = MatrixOps::empty<T>(a->getHeight() * 2, a->getWidth());
+			Matrix<T>* mat = new Matrix<T>(a->getHeight() * 2, a->getWidth());
 
 			for (int i = 0; i < a->getSize(); i++) {
 				mat->set(i, a->get(i));

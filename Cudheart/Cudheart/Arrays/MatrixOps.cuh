@@ -191,7 +191,7 @@ namespace Cudheart {
 		/// <returns>a matrix filled with ones</returns>
 		template <typename T>
 		Matrix<T>* onesLike(Matrix<T>* mat) {
-			return ones(mat->getWidth(), mat->getHeight());
+			return ones<T>(mat->getWidth(), mat->getHeight());
 		}
 
 		/// <summary>
@@ -214,7 +214,7 @@ namespace Cudheart {
 		/// <returns>a matrix filled with zeros</returns>
 		template <typename T>
 		Matrix<T>* zerosLike(Matrix<T>* mat) {
-			return zeros(mat->getWidth(), mat->getHeight());
+			return zeros<T>(mat->getWidth(), mat->getHeight());
 		}
 #pragma endregion
 

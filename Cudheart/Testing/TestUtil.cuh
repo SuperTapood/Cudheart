@@ -11,7 +11,7 @@ using namespace std;
 template <typename T, typename U>
 void check(string id, T a, U b) {
 	if (a == b) {
-		// cout << "Test " << id << " passed!\n";
+		//cout << "Test " << id << " passed!\n";
 		return;
 	}
 	cout << "Tests Failed! " << id << " failed assertion (" << a << " does not equal " << b << ")\n";
