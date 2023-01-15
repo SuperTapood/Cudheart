@@ -7,18 +7,30 @@ build unit tests for everything to iron out any major bugs
 the modules that still need testing:
 
 - [ ] Arrays
-- [ ] Exceptions (light testing)
+    - [ ] ArrOps
+    - [X] IO
+    - [X] Matrix
+    - [ ] MatrixOps
+    - [X] Vector
+    - [X] VectorOps
 - [ ] Indexing
+- [ ] Searching
+- [ ] Sorting
 - [ ] Logic
-- [ ] BaseMath
-- [ ] Bitwise
-- [ ] Complex
-- [ ] Exps
-- [ ] Linalg
-- [ ] Statistics
-- [ ] Trigo
+- [ ] Math
+    - [ ] BaseMath
+    - [ ] Bitwise
+    - [ ] Complex
+        - [ ] ComplexType
+        - [ ] ComplexOps
+    - [ ] Exps
+    - [ ] Linalg
+    - [ ] Statistics
+    - [ ] Trigo
 - [ ] Random
 - [ ] StringTypes
+    - [ ] StringType
+    - [ ] StringOps
 
 
 
@@ -28,6 +40,7 @@ the modules that still need testing:
 add and improve the library using the ideas i dumped onto the following list:
 
 - [ ] get rid of shape object for good (maybe?)
+- [ ] resolve all of the warnings
 - [ ] make sure the library matches numpy
 - [ ] try to directly compare program output with numpy lol
 - [ ] compile entire thing into lib or dll file by predefining templates
