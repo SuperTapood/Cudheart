@@ -156,7 +156,7 @@ namespace Cudheart {
 		/// <returns>a full matrix</returns>
 		template <typename T>
 		Matrix<T>* full(int height, int width, T value) {
-			return fromVector<T>(VectorOps::full(width * height, value), width, height, true);
+			return fromVector<T>(VectorOps::full(width * height, value), height, width, true);
 		}
 
 		/// <summary>
@@ -451,17 +451,6 @@ namespace Cudheart {
 		Matrix<T>* eye(int N) {
 			return eye<T>(N, N, 0);
 		}
-
-		/// <summary>
-		/// return an identity matrix
-		/// </summary>
-		/// <typeparam name="T"> - the type of the output matrix</typeparam>
-		/// <param name="N"> - the number of rows and columns in the output</param>
-		/// <returns>a square matrix with ones on its main diagonal</returns>
-		template <typename T>
-		Matrix<T>* identity(int N) {
-			return eye<T>(N, N, 0);
-		}
 #pragma endregion
 
 		/// <summary>
@@ -475,9 +464,10 @@ namespace Cudheart {
 		/// <returns>an array containing two matrices</returns>
 		template <typename T, typename U, typename K>
 		Matrix<T>** meshgrid(Vector<U>* a, Vector<K>* b) {
-			Matrix<T>** out = (Matrix<T>**)malloc(sizeof(Matrix<T>) * 2);
-			Matrix<T>* first = empty<T>(b->getSize(), a->getSize());
-			Matrix<T>* second = empty<T>(b->getSize(), a->getSize());
+			Matrix<T>** out = new Matrix<T>*[2];
+			Matrix<T>* first = new Matrix<T>(b->getSize(), a->getSize());
+			Matrix<T>* second = new Matrix<T>(b->getSize(), a->getSize());
+
 			out[0] = first;
 			out[1] = second;
 
@@ -494,6 +484,11 @@ namespace Cudheart {
 			}
 
 			return out;
+		}
+
+		template <typename T, typename U, typename K>
+		Matrix<T>** meshgrid(Matrix<U>* a, Matrix<K>* b) {
+			return meshgrid<T>(a->flatten(), b->flatten());
 		}
 
 #pragma region diags

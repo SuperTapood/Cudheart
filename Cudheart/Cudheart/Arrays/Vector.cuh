@@ -377,8 +377,14 @@ namespace Cudheart {
 				return copy();
 			}
 
-			NDArray<T>* flatten() {
-				return copy();
+			Vector<T>* flatten() {
+				Vector<T>* out = new Vector<T>(m_size);
+
+				for (int i = 0; i < m_size; i++) {
+					out->set(i, m_data[i]);
+				}
+
+				return out;
 			}
 		};
 	}

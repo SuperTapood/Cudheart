@@ -15,6 +15,10 @@ namespace Cudheart::Testing::Arrays::MatOpsTest {
 		testZerosLike();
 		testLogspace();
 		testGeomspace();
+		testEye();
+		testMeshgrid();
+		testDiag();
+		testTri();
 	}
 
 	void testEmptyLike() {
@@ -66,7 +70,6 @@ namespace Cudheart::Testing::Arrays::MatOpsTest {
 		for (int i = 0; i < a->getSize(); i++) {
 			check("MatrixOps::linspace(float, float)", a->get(i), (float)(5 + (5.f / 49.f) * i));
 		}
-
 
 		auto b = linspace(7.f, 12.f, 2.f, 2, 1);
 
@@ -126,7 +129,6 @@ namespace Cudheart::Testing::Arrays::MatOpsTest {
 			check("MatrixOps::logspace(float, float)", a->get(i), (float)pow(10, (float)(5.f + (5.f / 49.f) * i)));
 		}
 
-
 		auto b = logspace(7.f, 12.f, 2.f, 1, 2);
 
 		for (int i = 0; i < b->getSize(); i++) {
@@ -147,13 +149,11 @@ namespace Cudheart::Testing::Arrays::MatOpsTest {
 	}
 
 	void testGeomspace() {
-
 		auto a = geomspace(5.f, 10.f, 25, 2);
 
 		for (int i = 0; i < a->getSize(); i++) {
 			check("MatrixOps::geomspace(float, float)", a->get(i), (float)pow(10.f, log10(5.f) + ((log10(10.f) - log10(5.f)) / 49.f) * (float)i));
 		}
-
 
 		auto b = geomspace(7.f, 12.f, 2.f, 2, 1);
 
@@ -166,5 +166,117 @@ namespace Cudheart::Testing::Arrays::MatOpsTest {
 		for (int i = 0; i < c->getSize(); i++) {
 			check("MatrixOps::geomspace(float, float, int, bool)", c->get(i), (float)pow(10.f, (float)(log10(5.f) + ((log10(10.f) - log10(5.f)) / 10.f) * i)));
 		}
+	}
+
+	void testEye() {
+		auto a = eye<int>(7, 6, 2);
+
+		for (int i = 0; i < a->getHeight(); i++) {
+			for (int j = 0; j < a->getWidth(); j++) {
+				int comp = 0;
+
+				if (i + 2 == j) {
+					comp = 1;
+				}
+
+				check("MatrixOps::eye(int, int, int)", a->get(i, j), comp);
+			}
+		}
+
+		auto b = eye<int>(7, 2);
+
+		for (int i = 0; i < b->getHeight(); i++) {
+			for (int j = 0; j < b->getWidth(); j++) {
+				int comp = 0;
+
+				if (i + 2 == j) {
+					comp = 1;
+				}
+
+				check("MatrixOps::eye(int, int)", b->get(i, j), comp);
+			}
+		}
+
+		auto c = eye<int>(4);
+
+		for (int i = 0; i < c->getHeight(); i++) {
+			for (int j = 0; j < c->getWidth(); j++) {
+				check("MatrixOps::eye(int)", c->get(i, j), (int)(i == j));
+			}
+		}
+	}
+
+	void testMeshgrid() {
+		auto base = arange(10, 5, 2);
+		auto va = (Vector<int>*)base->flatten();
+		auto vb = (Vector<int>*)base->flatten();
+
+		Matrix<double>** mats = meshgrid<double>(va, vb);
+
+		auto ma = mats[0];
+		auto mb = mats[1];
+
+		for (int i = 0; i < va->getSize(); i++) {
+			for (int j = 0; j < vb->getSize(); j++) {
+				check("MatrixOps::meshgrid(Vector<int>, Vector<int>)", ma->get(i, j), va->get(j));
+			}
+		}
+
+		for (int i = 0; i < va->getSize(); i++) {
+			for (int j = 0; j < vb->getSize(); j++) {
+				check("MatrixOps::meshgrid", mb->get(i, j), vb->get(i));
+			}
+		}
+
+		auto matss = meshgrid<int>(base, base);
+
+		check("MatrixOps::meshgrid(Matrix<int>, Matrix<int>)", matss[0]->toString(), ma->toString());
+		check("MatrixOps::meshgrid(Matrix<int>, Matrix<int>)", matss[1]->toString(), mb->toString());
+	}
+
+	void testDiag() {
+		auto mat = arange(9, 3, 3);
+		auto a = diag(mat, 1);
+
+		for (int i = 0; i < a->getSize(); i++) {
+			check("MatrixOps::diag(Matrix<int>, int)", a->get(i), mat->get(i, i + 1));
+		}
+
+		auto b = diag(mat);
+
+		for (int i = 0; i < b->getSize(); i++) {
+			check("MatrixOps::diag(Matrix<int>, int)", b->get(i), mat->get(i, i));
+		}
+
+		auto c = diagflat(mat->flatten(), 1);
+
+		for (int i = 0; i < c->getHeight(); i++) {
+			for (int j = 0; j < c->getWidth(); j++) {
+				int comp = 0;
+
+				if (i + 1 == j) {
+					comp = mat->get(i);
+				}
+
+				check("MatrixOps::diagflat(Vector<int>, int)", c->get(i, j), comp);
+			}
+		}
+
+		auto d = diagflat(mat->flatten());
+
+		for (int i = 0; i < d->getHeight(); i++) {
+			for (int j = 0; j < d->getWidth(); j++) {
+				int comp = 0;
+
+				if (i == j) {
+					comp = mat->get(i);
+				}
+
+				check("MatrixOps::diagflat(Vector<int>)", d->get(i, j), comp);
+			}
+		}
+	}
+
+	void testTri() {
 	}
 }

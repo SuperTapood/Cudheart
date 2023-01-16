@@ -38,6 +38,8 @@
 - fixed linspace
 - fixed logspace
 - fixed geomspace
+- removed identity
+- meshgrid will no longer dereference null pointer :D
 
 ## notes:
 - 

@@ -94,7 +94,7 @@ namespace Cudheart::Testing::Arrays::ArrayOps {
 		for (int i = 0; i < hReps; i++) {
 			for (int j = 0; j < wReps; j++) {
 				for (int k = 0; k < a->getSize(); k++) {
-					check("ArrayOps::tile(Vector<int>, int, int)", brr->get(i, k + a->getSize() * j),  a->get(k));
+					check("ArrayOps::tile(Vector<int>, int, int)", brr->get(i, k + a->getSize() * j), a->get(k));
 				}
 			}
 		}

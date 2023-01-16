@@ -24,4 +24,12 @@ namespace Cudheart::Testing::Arrays::MatOpsTest {
 	void testLogspace();
 
 	void testGeomspace();
+
+	void testEye();
+
+	void testMeshgrid();
+
+	void testDiag();
+
+	void testTri();
 }

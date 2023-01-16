@@ -627,7 +627,7 @@ namespace Cudheart {
 			/// return a flattened vector with the same raw data as this matrix
 			/// </summary>
 			/// <returns>the output vector</returns>
-			NDArray<T>* flatten() {
+			Vector<T>* flatten() {
 				Vector<T>* out = new Vector<T>(getSize());
 
 				for (int i = 0; i < getSize(); i++) {

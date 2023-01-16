@@ -66,8 +66,7 @@ namespace Cudheart::Testing::Arrays::VecOpsTest {
 		for (int i = 0; i < a->getSize(); i++) {
 			check("VectorOps::linspace(float, float)", a->get(i), (float)(5 + (5.f / 49.f) * i));
 		}
-		
-		
+
 		auto b = linspace(7.f, 12.f, 2.f);
 
 		for (int i = 0; i < b->getSize(); i++) {
@@ -126,7 +125,6 @@ namespace Cudheart::Testing::Arrays::VecOpsTest {
 			check("VectorOps::logspace(float, float)", a->get(i), (float)pow(10, (float)(5.f + (5.f / 49.f) * i)));
 		}
 
-
 		auto b = logspace(7.f, 12.f, 2);
 
 		for (int i = 0; i < b->getSize(); i++) {
@@ -147,13 +145,11 @@ namespace Cudheart::Testing::Arrays::VecOpsTest {
 	}
 
 	void testGeomspace() {
-		
 		auto a = geomspace(5.f, 10.f);
 
 		for (int i = 0; i < a->getSize(); i++) {
 			check("VectorOps::geomspace(float, float)", a->get(i), (float)pow(10.f, log10(5.f) + ((log10(10.f) - log10(5.f)) / 49.f) * (float)i));
 		}
-
 
 		auto b = geomspace(7.f, 12.f, 2);
 
