@@ -210,12 +210,13 @@ C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Misc\Custom.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Misc\kernel.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Misc\Test.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Misc\unified.cuh
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\ArrayOps\ArrayOps.cuh
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\IO\IO.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\ArrayOpsTest\ArrayOpsTest.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\IOTest\IOTest.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\MatOpsTest\MatOpsTest.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\MatTest\MatTest.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\TestArray.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\VecOpsTest\VecOpsTest.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\VecTest\VecTest.cuh
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\NumpyAPI\NumpyAPI.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Test.cuh
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\TestUtil.cuh

@@ -1,3 +1,4 @@
+#pragma once
 #include "../../TestUtil.cuh"
 
 namespace Cudheart::Testing::Arrays::MatOpsTest {

@@ -1,3 +1,4 @@
+#pragma once
 #include "../../TestUtil.cuh"
 
 namespace Cudheart::Testing::Arrays::VecTest {
@@ -8,6 +9,4 @@ namespace Cudheart::Testing::Arrays::VecTest {
 	void testCastTo();
 
 	void testReshape();
-
-	void testCopy();
 }

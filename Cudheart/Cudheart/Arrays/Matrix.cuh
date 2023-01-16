@@ -270,6 +270,9 @@ namespace Cudheart {
 				else if constexpr (is_same_v<T, ComplexType*>) {
 					return ((ComplexType*)(get(index)))->toString();
 				}
+				else if constexpr (is_same_v<T, NDArray<T>*>) {
+					return ((NDArray<T>*)(get(index)))->toString();
+				}
 				else {
 					return to_string(get(index));
 				}

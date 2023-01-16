@@ -1,9 +1,8 @@
 #pragma once
 #include <stdio.h>
-#include "../TestUtil.cuh"
-#include "ArrayOps/ArrayOps.cuh"
+#include "ArrayOpsTest/ArrayOpsTest.cuh"
 #include "VecOpsTest/VecOpsTest.cuh"
-#include "IO/IO.cuh"
+#include "IOTest/IOTest.cuh"
 #include "VecTest/VecTest.cuh"
 #include "MatTest/MatTest.cuh"
 #include "MatOpsTest/MatOpsTest.cuh"

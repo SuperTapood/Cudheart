@@ -463,13 +463,13 @@ namespace Cudheart {
 		/// <param name="b"> - second input vector</param>
 		/// <returns>an array containing two matrices</returns>
 		template <typename T, typename U, typename K>
-		Matrix<T>** meshgrid(Vector<U>* a, Vector<K>* b) {
-			Matrix<T>** out = new Matrix<T>*[2];
+		Vector<Matrix<T>*>* meshgrid(Vector<U>* a, Vector<K>* b) {
+			Vector<Matrix<T>*>* out = new Vector<Matrix<T>*>(2);
 			Matrix<T>* first = new Matrix<T>(b->getSize(), a->getSize());
 			Matrix<T>* second = new Matrix<T>(b->getSize(), a->getSize());
 
-			out[0] = first;
-			out[1] = second;
+			out->set(0, first);
+			out->set(1, second);
 
 			for (int i = 0; i < b->getSize(); i++) {
 				for (int j = 0; j < a->getSize(); j++) {
@@ -487,7 +487,7 @@ namespace Cudheart {
 		}
 
 		template <typename T, typename U, typename K>
-		Matrix<T>** meshgrid(Matrix<U>* a, Matrix<K>* b) {
+		Vector<Matrix<T>*>* meshgrid(Matrix<U>* a, Matrix<K>* b) {
 			return meshgrid<T>(a->flatten(), b->flatten());
 		}
 

@@ -81,32 +81,32 @@ namespace Cudheart {
 		}
 
 		template <typename T>
-		Vector<T>** split(Vector<T>* vec, int sizes) {
+		Vector<Vector<T>*>* split(Vector<T>* vec, int sizes) {
 			if (vec->getSize() % sizes != 0) {
 				BadValueException("vector split does not result in an equal division");
 				return nullptr;
 			}
 
 			int vecs = vec->getSize() / sizes;
-			Vector<T>** out = (Vector<T>**)malloc(sizeof(Vector<T>*) * sizes);
+			Vector<Vector<T>*>* out = new Vector<Vector<T>*>(vecs);
 
 			int index = 0;
 			int jdex = 0;
-			out[0] = new Vector<T>(vecs);
+			out->set(0, new Vector<T>(vecs));
 			for (int i = 0; i < vec->getSize(); i++, index++) {
 				if (index == vecs) {
 					index = 0;
 					jdex++;
-					out[jdex] = new Vector<T>(vecs);
+					out->set(jdex, new Vector<T>(vecs));
 				}
-				((Vector<T>*)(out[jdex]))->set(index, vec->get(i));
+				((Vector<T>*)out->get(jdex))->set(index, vec->get(i));
 			}
 
 			return out;
 		}
 
 		template <typename T>
-		Vector<T>** split(Matrix<T>* mat, int sizes) {
+		Vector<Vector<T>*>* split(Matrix<T>* mat, int sizes) {
 			// add axis parameter
 			// currently assumes axis = 0
 
@@ -115,7 +115,7 @@ namespace Cudheart {
 				return nullptr;
 			}
 
-			return split((Vector<T>*)mat->flatten(), sizes);
+			return split(mat->flatten(), sizes);
 		}
 
 		template <typename T>
@@ -260,8 +260,8 @@ namespace Cudheart {
 		}
 
 		template <typename T>
-		Vector<T>** unique(NDArray<T>* ar, bool returnIndex, bool returnInverse, bool returnCounts) {
-			Vector<T>** vectors = new Vector<T>*[4];
+		Vector<Vector<T>*>* unique(NDArray<T>* ar, bool returnIndex, bool returnInverse, bool returnCounts) {
+			Vector<Vector<T>*>* vectors = new Vector<Vector<T>*>(4);
 
 			int uniques = 0;
 
@@ -327,26 +327,26 @@ namespace Cudheart {
 				}
 			}
 
-			vectors[0] = uniqueArr;
-			vectors[1] = returnIndex ? indexArr : nullptr;
-			vectors[2] = returnInverse ? inverseArr : nullptr;
-			vectors[3] = returnCounts ? countsArr : nullptr;
+			vectors->set(0, uniqueArr);
+			vectors->set(1, returnIndex ? indexArr : nullptr);
+			vectors->set(2, returnInverse ? inverseArr : nullptr);
+			vectors->set(3, returnCounts ? countsArr : nullptr);
 
 			return vectors;
 		}
 
 		template <typename T>
-		Vector<T>** unique(NDArray<T>* ar, bool returnIndex, bool returnInverse) {
+		Vector<Vector<T>*>* unique(NDArray<T>* ar, bool returnIndex, bool returnInverse) {
 			return unique<T>(ar, returnIndex, returnInverse, false);
 		}
 
 		template <typename T>
-		Vector<T>** unique(NDArray<T>* ar, bool returnIndex) {
+		Vector<Vector<T>*>* unique(NDArray<T>* ar, bool returnIndex) {
 			return unique<T>(ar, returnIndex, false, false);
 		}
 
 		template <typename T>
-		Vector<T>** unique(NDArray<T>* ar) {
+		Vector<Vector<T>*>* unique(NDArray<T>* ar) {
 			return unique<T>(ar, false, false, false);
 		}
 	}
