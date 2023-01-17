@@ -647,13 +647,16 @@ namespace Cudheart {
 			Matrix<T>* augment(Vector<T>* other) {
 				assertMatchShape(other->getShape(), 1);
 
-				Matrix<T>* res = new Matrix<T>(m_width + 1, m_height);
+				Matrix<T>* res = new Matrix<T>(m_height, m_width + 1);
 
 				for (int i = 0; i < m_height; i++) {
 					for (int j = 0; j < m_width; j++) {
 						res->set(i, j, get(i, j));
 					}
-					res->set(i, m_width, other->get(i));
+				}
+
+				for (int i = 0; i < m_height; i++) {
+					res->set(i, -1, other->get(i));
 				}
 
 				return res;

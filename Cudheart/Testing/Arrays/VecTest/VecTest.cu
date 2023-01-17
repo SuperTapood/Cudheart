@@ -8,7 +8,7 @@ namespace Cudheart::Testing::Arrays::VecTest {
 	}
 
 	void testConstructors() {
-		int arr[] = { 5, 7, 451, 14, 25, 250, 52205, 255, 897 };
+		int arr[] = {5, 7, 451, 14, 25, 250, 52205, 255, 897};
 
 		string sarr = "[5, 7, 451, 14, 25, 250, 52205, 255, 897]";
 
@@ -18,9 +18,9 @@ namespace Cudheart::Testing::Arrays::VecTest {
 
 		check("Vector<int>(int[], int)", cmd, vec->toString());
 
-		vec = new Vector<int>({ 5, 7, 451, 14, 25, 250, 52205, 255, 897 });
+		vec = new Vector<int>({5, 7, 451, 14, 25, 250, 52205, 255, 897});
 
-		check("Vector<int>(int{})", vec->toString());
+		check("Vector<int>(int{})", cmd, vec->toString());
 	}
 
 	void testCastTo() {
@@ -56,6 +56,9 @@ namespace Cudheart::Testing::Arrays::VecTest {
 
 		auto b = a->reshape<int>(new Shape(2, 3));
 
-		check("reshape vector -> matrix", b->toString());
+		string cmd = Numpy::createArray("[5, 7, 451, 14, 25, 250]", "a");
+		cmd += Numpy::reshape("a", "(2, 3)", "res");
+
+		check("Vector<int>->reshape((2, 3))", cmd, b->toString());
 	}
 }

@@ -1,3 +1,3 @@
 import numpy as np
-Vector<int>(int{})
+IO::fromString<int>(string, char, int)
 print(res.tolist(), end='')

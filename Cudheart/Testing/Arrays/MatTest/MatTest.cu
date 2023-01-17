@@ -9,24 +9,28 @@ namespace Cudheart::Testing::Arrays::MatTest {
 		testReverseCols();
 		testTranspose();
 		testRot90();
+		testAugment();
 	}
 
 	void testConstructors() {
 		using Cudheart::NDArrays::Matrix;
+		string cmd;
 
 		int arr[] = { 25, 25, 45, 588, 655555, 55, 568, 58, 999 };
 
-		auto a = new Matrix<int>(3, 3);
-
-		check("Matrix(int, int)", a->toString());
-
 		auto b = new Matrix(arr, 4, 2);
 
-		check("Matrix(int, int)", b->toString());
+		cmd = Numpy::createArray("[25, 25, 45, 588, 655555, 55, 568, 58]", "vec");
+		cmd += Numpy::reshape("vec", "(4, 2)", "res");
+
+		check("Matrix(int, int)", cmd, b->toString());
 
 		auto c = new Matrix({ 25, 25, 45, 588, 655555, 55, 568, 58, 999 }, 3, 3);
 
-		check("Matrix(int{}, int)", c->toString());
+		cmd = Numpy::createArray("[25, 25, 45, 588, 655555, 55, 568, 58, 999]", "vec");
+		cmd += Numpy::reshape("vec", "(3, 3)", "res");
+
+		check("Matrix(int{}, int)", cmd, c->toString());
 	}
 
 	void testCastTo() {
@@ -58,60 +62,98 @@ namespace Cudheart::Testing::Arrays::MatTest {
 
 	void testReshape() {
 		int arr[] = { 5, 7, 451, 14, 25, 250 };
+		string cmd;
+
 		Matrix<int>* a = new Matrix<int>(arr, 2, 3);
 
 		auto b = a->reshape<int>(new Shape(6));
 
-		check("reshape Matrix -> Vector", b->toString());
+		cmd = Numpy::createArray("[5, 7, 451, 14, 25, 250]", "res");
+
+		check("Matrix<int>->reshape((6))", cmd, b->toString());
 	}
 
 	void testReverseRows() {
 		int arr[] = { 5, 7, 451, 14, 25, 250, 52205, 255, 897 };
+		string cmd;
+
 		Matrix<int>* a = new Matrix<int>(arr, 3, 3);
 
 		auto b = a->reverseRows();
 
-		check("Matrix<int>->reverseRows()", b->toString());
+		cmd = Numpy::createArray("[5, 7, 451, 14, 25, 250, 52205, 255, 897]", "(3, 3)", "mat");
+		cmd += "res = np.flip(mat, 1)";
+
+		check("Matrix<int>->reverseRows()", cmd, b->toString());
 	}
 
 	void testReverseCols() {
 		int arr[] = { 5, 7, 451, 14, 25, 250, 52205, 255, 897 };
+		string cmd;
+
 		Matrix<int>* a = new Matrix<int>(arr, 3, 3);
 
 		auto b = a->reverseCols();
 
-		check("Matrix<int>->reverseCols()", b->toString());
+		cmd = Numpy::createArray("[5, 7, 451, 14, 25, 250, 52205, 255, 897]", "(3, 3)", "mat");
+		cmd += "res = np.flip(mat, 0)";
+
+		check("Matrix<int>->reverseCols()", cmd, b->toString());
 	}
 
 	void testTranspose() {
 		int arr[] = { 5, 7, 451, 14, 25, 250, 52205, 255, 897 };
+		string cmd;
+
 		Matrix<int>* a = new Matrix<int>(arr, 3, 3);
 
 		auto b = (Matrix<int>*)a->transpose();
 
-		check("Matrix<int>->transpose()", b->toString());
+		cmd = Numpy::createArray("[5, 7, 451, 14, 25, 250, 52205, 255, 897]", "(3, 3)", "mat");
+		cmd += Numpy::T("mat", "res");
+
+		check("Matrix<int>->transpose()", cmd, b->toString());
 	}
 
 	void testRot90() {
 		int arr[] = { 5, 7, 451, 14, 25, 250, 52205, 255, 897 };
+		string cmd = Numpy::createArray("[5, 7, 451, 14, 25, 250, 52205, 255, 897]", "(3, 3)", "mat");
+		string add;
+
 		Matrix<int>* a = new Matrix<int>(arr, 3, 3);
 
-		auto b = ((Matrix<int>*)(a->transpose()))->reverseCols();
-		check("Matrix<int>->rot90(k=1)", b->toString());
-		b = ((Matrix<int>*)(b->transpose()))->reverseCols();
-		check("Matrix<int>->rot90(k=2)", b->toString());
-		b = ((Matrix<int>*)(b->transpose()))->reverseCols();
-		check("Matrix<int>->rot90(k=3)", b->toString());
-		check("Matrix<int>->rot90(k=4)", a->rot90(4)->toString());
+		auto b = a->rot90(1);
+
+		add = Numpy::rot90("mat", 1, "res");
+
+		check("Matrix<int>->rot90(k=1)", cmd + add, b->toString());
+
+		b = a->rot90(2);
+
+		add = Numpy::rot90("mat", 2, "res");
+
+		check("Matrix<int>->rot90(k=2)", cmd + add, b->toString());
+
+		b = a->rot90(3);
+
+		add = Numpy::rot90("mat", 3, "res");
+
+		check("Matrix<int>->rot90(k=3)", cmd + add, b->toString());
+
+		add = Numpy::rot90("mat", 4, "res");
+
+		check("Matrix<int>->rot90(k=4)", cmd + add, a->rot90(4)->toString());
 	}
 
 	void testAugment() {
 		int arr[] = { 5, 7, 451, 14, 25, 250, 52205, 255, 897 };
+		string cmd;
+
 		Matrix<int>* mat = new Matrix<int>(9, 2);
 
-		for (int i = 0; i < 2; i++) {
-			for (int j = 0; j < 9; j++) {
-				mat->set(i, j, arr[j]);
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 2; j++) {
+				mat->set(i, j, arr[i]);
 			}
 		}
 
@@ -119,6 +161,11 @@ namespace Cudheart::Testing::Arrays::MatTest {
 
 		Matrix<int>* mat2 = mat->augment(vec);
 
-		check("Matrix<int>->augment(Vector<int>)", mat2->toString());
+		cmd =  Numpy::createArray("[5, 7, 451, 14, 25, 250, 52205, 255, 897]", "vec");
+		cmd += Numpy::createArray(mat->toString(), "mat");
+		cmd += Numpy::createArray("[5, 7, 451, 14, 25, 250, 52205, 255, 897]", "(9, 1)", "mat2");
+		cmd += Numpy::augment("mat", "mat2", 1, "res");
+
+		check("Matrix<int>->augment(Vector<int>)", cmd, mat2->toString());
 	}
 }

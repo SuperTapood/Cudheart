@@ -15,13 +15,32 @@ std::string exec(const char* cmd) {
 	return result;
 }
 
+string procOutput(string output) {
+	auto arr = output.c_str();
+	string res = "";
+
+	for (int i = 0; i < output.size(); i++) {
+		if (arr[i] == '\n') {
+			if (arr[i - 1] != ',' && i + 1 < output.size() && arr[i + 1] == ' ') {
+				i++;
+			}
+			continue;
+		}
+		res += arr[i];
+	}
+
+	/*cout << "input: " << output << endl;
+	cout << "res: " << res << endl;*/
+	return res;
+}
 
 void check(string name, string cmd, string output) {
+	output = procOutput(output);
+
 	// why
 	ofstream file("file.py");
-	file << "import numpy as np\n";
+	cmd = "import numpy as np\n" + cmd + "\nprint(res.tolist(), end='')\n";
 	file << cmd;
-	file << "\nprint(res.tolist(), end='')";
 	file.close();
 
 	/*cout << "test: " << name << endl;
@@ -33,6 +52,9 @@ void check(string name, string cmd, string output) {
 
 	if (res != output) {
 		cout << "Test " << name << " failed!\n";
+		cout << "Cudheart generated: " << output;
+		cout << "\nNumpy generated: " << res;
+		cout << "\nCode Provided:\n\n" << cmd;
 		exit(69);
 	}
 }

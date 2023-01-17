@@ -23,4 +23,16 @@ using namespace std;
 
 namespace Numpy {
 	string createArray(string arr, string oName);
+
+	string createArray(string arr, string shape, string oName);
+	
+	string reshape(string name, string newShape, string oName);
+
+	string empty(string shape, string oName);
+
+	string T(string name, string oName);
+
+	string rot90(string name, int k, string oName);
+
+	string augment(string a, string b, int axis, string oName);
 }
