@@ -4,6 +4,9 @@
 #include "Misc/unified.cuh"
 #include "Misc/Custom.cuh"
 
+#include <iostream>
+#include <iomanip>
+
 using namespace std;
 
 // using Cudheart::Exceptions::CudaException;

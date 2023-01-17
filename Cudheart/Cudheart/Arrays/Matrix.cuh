@@ -444,12 +444,15 @@ namespace Cudheart {
 					for (int i = 0; i < m_height; i++) {
 						os << " [";
 						for (int j = 0; j < m_width; j++) {
-							if (j + 1 == m_width) {
-								os << get(i, j);
+							T res = get(i, j);
+							os << std::setprecision(17) << res;
+							if constexpr (std::is_floating_point_v<T>) {
+								if ((long)res == res) {
+									os << ".0";
+								}
 							}
-							else {
-								T res = get(i, j);
-								os << res << ", ";
+							if (j + 1 != m_width) {
+								os << ", ";
 							}
 						}
 						if (i + 1 == m_height) {

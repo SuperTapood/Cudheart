@@ -29,6 +29,8 @@ string procOutput(string output) {
 		res += arr[i];
 	}
 
+
+
 	/*cout << "input: " << output << endl;
 	cout << "res: " << res << endl;*/
 	return res;
@@ -39,22 +41,37 @@ void check(string name, string cmd, string output) {
 
 	// why
 	ofstream file("file.py");
-	cmd = "import numpy as np\n" + cmd + "\nprint(res.tolist(), end='')\n";
-	file << cmd;
+	ostringstream os;
+	os << "import numpy as np\n";
+	os << cmd << "\n";
+	// os << "shap = res.shape if type(res) == np.ndarray else None\n";
+	// os << "res = [round(i, 18) for i in res.flatten().tolist()] if type(res) == np.ndarray else res\n";
+	// os << "res = np.array(res).reshape(shap).tolist() if shap is not None else res\n";
+	os << "close = np.allclose(res, np.array(" << output << "))\n";
+	os << "print(str((res.tolist() if type(res) == np.ndarray else res)) + ('T' if close else 'F'), end = '')\n";
+	file << os.str();
 	file.close();
 
 	/*cout << "test: " << name << endl;
 	cout << exec("python file.py") << "END";*/
 	string res = exec("python file.py");
+	bool pass = false;
+
+
+	if (res.size() != 0) {
+		pass = res[res.size() - 1] == 'T';
+		res.pop_back();
+	}
 
 	/*cout << "output: " << output << "END" << endl;
 	cout << "res: " << res << "END" << endl;*/
 
-	if (res != output) {
+	if (!pass) {
 		cout << "Test " << name << " failed!\n";
 		cout << "Cudheart generated: " << output;
-		cout << "\nNumpy generated: " << res;
-		cout << "\nCode Provided:\n\n" << cmd;
+		cout << "\nNumpy generated:    " << res;
+		// cout << "\nCode Provided:\n\n" << cmd;
+		// cout << "\nPython Code:\n\n" << os.str();
 		exit(69);
 	}
 }

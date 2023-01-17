@@ -20,106 +20,156 @@ namespace Cudheart::Testing::Arrays::VecOpsTest {
 	void testEmptyLike() {
 		auto a = new Vector<int>(5);
 		auto b = emptyLike<int>(a);
+		string cmd;
 
-		check("VectorOps::emptyLike<int>", b->toString());
+		cmd =  Numpy::empty("(5,)", "res");
+		cmd += "res = res.shape";
+
+		check("VectorOps::emptyLike<int>", cmd, b->getShape()->toString());
 	}
 
 	void testArange() {
+		string cmd;
+
 		auto a = arange(5);
 
-		check("VectorOps::arange<int>(int)", a->toString());
+		cmd = Numpy::arange("0", "5", "1", "int", "res");
+
+		check("VectorOps::arange<int>(int)", cmd, a->toString());
 
 		auto b = arange(5, 2);
 
-		check("VectorOps::arange<int>(int, int)", b->toString());
+		cmd = Numpy::arange("0", "5", "2", "int", "res");
+
+		check("VectorOps::arange<int>(int, int)", cmd, b->toString());
 
 		auto c = arange(3, 7, 1);
 
-		check("VectorOps::arange<int>(int, int, int)", c->toString());
+		cmd = Numpy::arange("3", "7", "1", "int", "res");
+
+		check("VectorOps::arange<int>(int, int, int)", cmd, c->toString());
 	}
 
 	void testFull() {
 		auto vec = full(5, 5);
 
-		check("VectorOps::full<int>(int, int)", vec->toString());
+		string cmd = Numpy::full("(5,)", "5", "res");
+
+		check("VectorOps::full<int>(int, int)", cmd, vec->toString());
 	}
 
 	void testFullLike() {
 		auto a = full(5, 5);
 		auto b = fullLike(a, 5);
 
-		check("VectorOps::fullLike(int, int)", b->toString());
+		string cmd = Numpy::full("(5,)", "5", "res");
+
+		check("VectorOps::fullLike(int, int)", cmd, b->toString());
 	}
 
 	void testLinspace() {
-		auto a = linspace(5.f, 10.f);
+		string cmd;
 
-		check("VectorOps::linspace(float, float)", a->toString());
+		auto a = linspace<long double>(5.0, 10.0);
 
-		auto b = linspace(7.f, 12.f, 2.f);
+		cmd = Numpy::linspace("5", "10", "50", "True", "float", "res");
 
-		check("VectorOps::linspace(float, float, float)", b->toString());
+		check("VectorOps::linspace(float, float)", cmd, a->toString());
 
-		auto c = linspace(5.f, 10.f, 10.f, false);
+		auto b = linspace(7.0, 12.0, 2.0);
 
-		check("VectorOps::linspace(float, float, float, bool)", c->toString());
+		cmd = Numpy::linspace("7", "12", "2", "True", "float", "res");
+
+		check("VectorOps::linspace(float, float, float)", cmd, b->toString());
+
+		auto c = linspace(5.0, 10.0, 10.0, false);
+
+		cmd = Numpy::linspace("5", "10", "10", "False", "float", "res");
+
+		check("VectorOps::linspace(float, float, float, bool)", cmd, c->toString());
 	}
 
 	void testOnes() {
 		auto vec = ones<int>(5);
 
-		check("VectorOps::ones<int>", vec->toString());
+		string cmd = Numpy::full("(5,)", "1", "res");
+
+		check("VectorOps::ones<int>", cmd, vec->toString());
 	}
 
 	void testOnesLike() {
 		auto a = ones<int>(5);
 		auto b = onesLike(a);
 
-		check("VectorOps::onesLike<int>", b->toString());
+		string cmd = Numpy::full("(5,)", "1", "res");
+
+		check("VectorOps::onesLike<int>", cmd, b->toString());
 	}
 
 	void testZeros() {
 		auto vec = zeros<int>(5);
 
-		check("VectorOps::zeros<int>", vec->toString());
+		string cmd = Numpy::full("(5,)", "0", "res");
+
+		check("VectorOps::zeros<int>", cmd, vec->toString());
 	}
 
 	void testZerosLike() {
 		auto a = zeros<int>(5);
 		auto b = zerosLike(a);
 
-		check("VectorOps::zerosLike<int>", b->toString());
+		string cmd = Numpy::full("(5,)", "0", "res");
+
+		check("VectorOps::zerosLike<int>", cmd, b->toString());
 	}
 
 	void testLogspace() {
+		string cmd;
+
 		auto a = logspace(5.f, 10.f);
 
-		check("VectorOps::logspace(float, float)", a->toString());
+		cmd = Numpy::logspace("5", "10", "50", "True", "10", "float", "res");
+
+		check("VectorOps::logspace(float, float)", cmd, a->toString());
 
 		auto b = logspace(7.f, 12.f, 2);
 
-		check("VectorOps::logspace(float, float, int)", b->toString());
+		cmd = Numpy::logspace("7", "12", "2", "True", "10", "float", "res");
+
+		check("VectorOps::logspace(float, float, int)", cmd, b->toString());
 
 		auto c = logspace(5.f, 10.f, 10, false);
 
-		check("VectorOps::logspace(float, float, int, bool)", c->toString());
+		cmd = Numpy::logspace("5", "10", "10", "False", "10", "float", "res");
+
+		check("VectorOps::logspace(float, float, int, bool)", cmd, c->toString());
 
 		auto d = logspace(5.f, 10.f, 10, false, 2.f);
 
-		check("VectorOps::logspace(float, float, int, bool, float)", d->toString());
+		cmd = Numpy::logspace("5", "10", "10", "False", "2", "float", "res");
+
+		check("VectorOps::logspace(float, float, int, bool, float)", cmd, d->toString());
 	}
 
 	void testGeomspace() {
+		string cmd;
+
 		auto a = geomspace(5.f, 10.f);
 
-		check("VectorOps::geomspace(float, float)", a->toString());
+		cmd = Numpy::geomspace("5", "10", "50", "True", "float", "res");
+
+		check("VectorOps::geomspace(float, float)", cmd, a->toString());
 
 		auto b = geomspace(7.f, 12.f, 2);
 
-		check("VectorOps::geomspace(float, float, int)", b->toString());
+		cmd = Numpy::geomspace("7", "12", "2", "True", "float", "res");
+
+		check("VectorOps::geomspace(float, float, int)", cmd, b->toString());
 
 		auto c = geomspace(5.f, 10.f, 10, false);
 
-		check("VectorOps::geomspace(float, float, int, bool)", c->toString());
+		cmd = Numpy::geomspace("5", "10", "10", "False", "float", "res");
+
+		check("VectorOps::geomspace(float, float, int, bool)", cmd, c->toString());
 	}
 }

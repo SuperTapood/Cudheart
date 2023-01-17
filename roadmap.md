@@ -214,17 +214,31 @@ add a cuda alternative function for every function (where applicable)
 the modules that still need cuda-ing:
 
 - [ ] Arrays
+    - [ ] ArrOps
+    - [ ] IO
+    - [ ] Matrix
+    - [ ] MatrixOps
+    - [ ] Vector
+    - [ ] VectorOps
+- [ ] Exceptions
 - [ ] Indexing
+- [ ] Searching
+- [ ] Sorting
 - [ ] Logic
-- [ ] BaseMath
-- [ ] Bitwise
-- [ ] Complex
-- [ ] Exps
-- [ ] Linalg
-- [ ] Statistics
-- [ ] Trigo
+- [ ] Math
+    - [ ] BaseMath
+    - [ ] Bitwise
+    - [ ] Complex
+        - [ ] ComplexType
+        - [ ] ComplexOps
+    - [ ] Exps
+    - [ ] Linalg
+    - [ ] Statistics
+    - [ ] Trigo
 - [ ] Random
 - [ ] StringTypes
+    - [ ] StringType
+    - [ ] StringOps
 
 
 
@@ -236,18 +250,31 @@ build unit tests for cuda to iron out any major bugs and prepare Cudheart for re
 the modules that still need cuda testing:
 
 - [ ] Arrays
-- [ ] (cuda specific) Exceptions (light testing)
+    - [ ] ArrOps
+    - [ ] IO
+    - [ ] Matrix
+    - [ ] MatrixOps
+    - [ ] Vector
+    - [ ] VectorOps
+- [ ] Exceptions
 - [ ] Indexing
+- [ ] Searching
+- [ ] Sorting
 - [ ] Logic
-- [ ] BaseMath
-- [ ] Bitwise
-- [ ] Complex
-- [ ] Exps
-- [ ] Linalg
-- [ ] Statistics
-- [ ] Trigo
+- [ ] Math
+    - [ ] BaseMath
+    - [ ] Bitwise
+    - [ ] Complex
+        - [ ] ComplexType
+        - [ ] ComplexOps
+    - [ ] Exps
+    - [ ] Linalg
+    - [ ] Statistics
+    - [ ] Trigo
 - [ ] Random
 - [ ] StringTypes
+    - [ ] StringType
+    - [ ] StringOps
 
 
 ## the cuda samples build

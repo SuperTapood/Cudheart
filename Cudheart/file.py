@@ -1,3 +1,4 @@
 import numpy as np
-IO::fromString<int>(string, char, int)
-print(res.tolist(), end='')
+MatrixOps::emptyLike<int>
+close = np.allclose(res, np.array([[-842150451, -842150451, -842150451, -842150451, -842150451], [-842150451, -842150451, -842150451, -842150451, -842150451], [-842150451, -842150451, -842150451, -842150451, -842150451], [-842150451, -842150451, -842150451, -842150451, -842150451], [-842150451, -842150451, -842150451, -842150451, -842150451]]))
+print(str((res.tolist() if type(res) == np.ndarray else res)) + ('T' if close else 'F'), end = '')

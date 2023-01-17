@@ -23,6 +23,9 @@ namespace Cudheart {
 				else if constexpr (is_same_v<T, ComplexType*>) {
 					return ((ComplexType*)get(i))->toString();
 				}
+				else if constexpr (is_same_v<T, NDArray<T>*>) {
+					return ((NDArray<T>*)get(i))->toString();
+				}
 				else if constexpr (std::is_fundamental<T>::value) {
 					return to_string(get(i));
 				}
@@ -328,9 +331,23 @@ namespace Cudheart {
 				}
 				else {
 					for (int i = 0; i < getSize() - 1; i++) {
-						os << m_data[i] << ", ";
+						T res = m_data[i];
+						os << std::setprecision(17) << res;
+						if constexpr (std::is_floating_point_v<T>) {
+							if ((long)res == res) {
+								os << ".0";
+							}
+						}
+						os << ", ";
 					}
-					os << get(-1) << "]";
+					T res = get(-1);
+					os << std::setprecision(17) << res;
+					if constexpr (std::is_floating_point_v<T>) {
+						if ((long)res == res) {
+							os << ".0";
+						}
+					}
+					os << "]";
 				}
 				return os.str();
 			}

@@ -17,6 +17,8 @@
 #include <iterator>
 #include <vector>
 #include <string>
+#include <iostream>
+#include <iomanip>
 
 using std::exception;
 using std::cout;
