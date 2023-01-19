@@ -81,39 +81,39 @@ namespace Cudheart {
 		}
 
 		template <typename T>
-		Vector<Vector<T>*>* split(Vector<T>* vec, int sizes) {
+		Vector<T>** split(Vector<T>* vec, int sizes) {
 			if (vec->getSize() % sizes != 0) {
 				BadValueException("vector split does not result in an equal division");
 				return nullptr;
 			}
 
 			int vecs = vec->getSize() / sizes;
-			Vector<Vector<T>*>* out = new Vector<Vector<T>*>(vecs);
+			Vector<T>** out = new Vector<T>*[sizes];
 
 			int index = 0;
 			int jdex = 0;
-			out->set(0, new Vector<T>(vecs));
+			out[0] = new Vector<T>(vecs);
 			for (int i = 0; i < vec->getSize(); i++, index++) {
 				if (index == vecs) {
 					index = 0;
 					jdex++;
-					out->set(jdex, new Vector<T>(vecs));
+					out[jdex] = new Vector<T>(vecs);
 				}
-				((Vector<T>*)out->get(jdex))->set(index, vec->get(i));
+				((Vector<T>*)out[jdex])->set(index, vec->get(i));
 			}
 
 			return out;
 		}
 
 		template <typename T>
-		Vector<Vector<T>*>* split(Matrix<T>* mat, int sizes) {
+		Vector<T>** split(Matrix<T>* mat, int sizes) {
 			// add axis parameter
 			// currently assumes axis = 0
 
-			if (mat->getHeight() % sizes != 0) {
+			/*if (mat->getHeight() % sizes != 0) {
 				BadValueException("matrix split does not result in an equal division");
 				return nullptr;
-			}
+			}*/
 
 			return split(mat->flatten(), sizes);
 		}
@@ -130,7 +130,7 @@ namespace Cudheart {
 		}
 
 		template <typename T>
-		Matrix<T>* tile(Vector<T>* a, int wReps, int hReps) {
+		Matrix<T>* tile(Vector<T>* a, int hReps, int wReps) {
 			Matrix<T>* out = new Matrix<T>(hReps, a->getSize() * wReps);
 
 			for (int i = 0; i < hReps; i++) {
@@ -259,9 +259,44 @@ namespace Cudheart {
 			return out;
 		}
 
+		namespace {
+			// :,(
+			template <typename T>
+			int partition(NDArray<T>* arr, int low, int high) {
+				T pivot = arr->get(high);
+				int i = (low - 1);
+
+				for (int j = low; j <= high - 1; j++)
+				{
+					// If current element is smaller than the pivot
+					if (arr->get(j) < pivot)
+					{
+						i++; // increment index of smaller element
+						T temp = arr->get(i);
+						arr->set(i, arr->get(j));
+						arr->set(j, temp);
+					}
+				}
+				T temp = arr->get(i + 1);
+				arr->set(i + 1, arr->get(high));
+				arr->set(high, temp);
+				return (i + 1);
+			}
+
+			template <typename T>
+			void quicksort(NDArray<T>* arr, int low, int high) {
+				if (low < high) {
+					int pi = partition(arr, low, high);
+
+					quicksort(arr, low, pi - 1);
+					quicksort(arr, pi + 1, high);
+				}
+			}
+		}
+
 		template <typename T>
-		Vector<Vector<T>*>* unique(NDArray<T>* ar, bool returnIndex, bool returnInverse, bool returnCounts) {
-			Vector<Vector<T>*>* vectors = new Vector<Vector<T>*>(4);
+		Vector<T>** unique(NDArray<T>* ar, bool returnIndex, bool returnInverse, bool returnCounts) {
+			Vector<T>** vectors = new Vector<T>*[4];
 
 			int uniques = 0;
 
@@ -295,14 +330,23 @@ namespace Cudheart {
 				}
 
 				if (unique) {
-					uniqueArr->set(index, ar->get(i));
-					if (returnIndex) {
-						indexArr->set(index, i);
-					}
-					index++;
+					uniqueArr->set(index++, ar->get(i));
 
 					if (index == uniques) {
 						break;
+					}
+				}
+			}
+
+			quicksort(uniqueArr, 0, uniques - 1);
+
+			if (returnIndex) {
+				for (int i = 0; i < uniqueArr->getSize(); i++) {
+					for (int j = 0; j < ar->getSize(); j++) {
+						if (ar->get(j) == uniqueArr->get(i)) {
+							indexArr->set(i, j);
+							break;
+						}
 					}
 				}
 			}
@@ -327,26 +371,26 @@ namespace Cudheart {
 				}
 			}
 
-			vectors->set(0, uniqueArr);
-			vectors->set(1, returnIndex ? indexArr : nullptr);
-			vectors->set(2, returnInverse ? inverseArr : nullptr);
-			vectors->set(3, returnCounts ? countsArr : nullptr);
+			vectors[0] = uniqueArr;
+			vectors[1] = returnIndex ? indexArr : nullptr;
+			vectors[2] = returnInverse ? inverseArr : nullptr;
+			vectors[3] = returnCounts ? countsArr : nullptr;
 
 			return vectors;
 		}
 
 		template <typename T>
-		Vector<Vector<T>*>* unique(NDArray<T>* ar, bool returnIndex, bool returnInverse) {
+		Vector<T>** unique(NDArray<T>* ar, bool returnIndex, bool returnInverse) {
 			return unique<T>(ar, returnIndex, returnInverse, false);
 		}
 
 		template <typename T>
-		Vector<Vector<T>*>* unique(NDArray<T>* ar, bool returnIndex) {
+		Vector<T>** unique(NDArray<T>* ar, bool returnIndex) {
 			return unique<T>(ar, returnIndex, false, false);
 		}
 
 		template <typename T>
-		Vector<Vector<T>*>* unique(NDArray<T>* ar) {
+		Vector<T>** unique(NDArray<T>* ar) {
 			return unique<T>(ar, false, false, false);
 		}
 	}

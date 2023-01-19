@@ -18,169 +18,264 @@ namespace Cudheart::Testing::Arrays::MatOpsTest {
 		testEye();
 		testMeshgrid();
 		testDiag();
+		testDiagFlat();
 		testTri();
 	}
 
 	void testEmptyLike() {
 		auto a = new Matrix<int>(5, 5);
 		auto b = emptyLike<int>(a);
+		
+		string cmd = "res = [5, 5]\n";
 
-		check("MatrixOps::emptyLike<int>", b->toString());
+		check("MatrixOps::emptyLike<int>", cmd, b->getShape()->toString());
 	}
 
 	void testArange() {
+		string cmd;
+
 		auto a = arange(6, 2, 3);
 
-		check("MatrixOps::arange<int>(int)", a->toString());
+		cmd = Numpy::arange("0", "6", "1", "int", "res");
+		cmd += Numpy::reshape("res", "(3, 2)", "res");
+
+		check("MatrixOps::arange<int>(int)", cmd, a->toString());
 
 		auto e = arange(0, 5, 2, 3, 1);
 
-		check("MatrixOps::arange<int>(int, int)", e->toString());
+		cmd = Numpy::arange("0", "5", "2", "int", "res");
+		cmd += Numpy::reshape("res", "(1, 3)", "res");
+
+		check("MatrixOps::arange<int>(int, int)", cmd, e->toString());
 
 		auto f = arange(3, 7, 1, 2, 2);
 
-		check("MatrixOps::arange<int>(int, int)", f->toString());
+		cmd = Numpy::arange("3", "7", "1", "int", "res");
+		cmd += Numpy::reshape("res", "(2, 2)", "res");
+
+		check("MatrixOps::arange<int>(int, int)", cmd, f->toString());
 	}
 
 	void testFull() {
 		auto mat = full(5, 5, 5);
 
-		check("MatrixOps::full<int>(int, int)", mat->toString());
+		string cmd = Numpy::full("(5, 5)", "5", "res");
+
+		check("MatrixOps::full<int>(int, int)", cmd, mat->toString());
 	}
 
 	void testFullLike() {
 		auto a = full(5, 5, 5);
 		auto b = fullLike(a, 5);
 
-		check("MatrixOps::fullLike(int, int)", b->toString());
+		string cmd = Numpy::full("(5, 5)", "5", "res");
+
+		check("MatrixOps::fullLike(int, int)", cmd, b->toString());
 	}
 
 	void testLinspace() {
+		string cmd;
+
 		auto a = linspace(5.f, 10.f, 5, 10);
 
-		check("MatrixOps::linspace(float, float)", a->toString());
+		cmd = Numpy::linspace("5", "10", "50", "True", "float", "res");
+		cmd += Numpy::reshape("res", "(5, 10)", "res");
+
+		check("MatrixOps::linspace(float, float)", cmd, a->toString());
 
 		auto b = linspace(7.f, 12.f, 2.f, 2, 1);
+
+		cmd = Numpy::linspace("7", "12", "2", "True", "float", "res");
+		cmd += Numpy::reshape("res", "(2, 1)", "res");
 		
-		check("MatrixOps::linspace(float, float, float)", b->toString());
+		check("MatrixOps::linspace(float, float, float)", cmd, b->toString());
 
 		auto c = linspace(5.f, 10.f, 10.f, false, 5, 2);
 
-		check("MatrixOps::linspace(float, float, float, bool)", c->toString());
+		cmd = Numpy::linspace("5", "10", "10", "False", "float", "res");
+		cmd += Numpy::reshape("res", "(5, 2)", "res");
+
+		check("MatrixOps::linspace(float, float, float, bool)", cmd, c->toString());
 	}
 
 	void testOnes() {
 		auto mat = ones<int>(5, 5);
 
-		check("MatrixOps::ones<int>", mat->toString());
+		string cmd = Numpy::full("(5, 5)", "1", "res");
+
+		check("MatrixOps::ones<int>", cmd, mat->toString());
 	}
 
 	void testOnesLike() {
 		auto a = ones<int>(5, 5);
 		auto b = onesLike(a);
 
-		check("MatrixOps::onesLike<int>", b->toString());
+		string cmd = Numpy::full("(5, 5)", "1", "res");
+
+		check("MatrixOps::onesLike<int>", cmd, b->toString());
 	}
 
 	void testZeros() {
 		auto mat = zeros<int>(5, 5);
 
-		check("MatrixOps::zeros<int>", mat->toString());
+		string cmd = Numpy::full("(5, 5)", "0", "res");
+
+		check("MatrixOps::zeros<int>", cmd, mat->toString());
 	}
 
 	void testZerosLike() {
 		auto a = zeros<int>(5, 5);
 		auto b = zerosLike(a);
 
-		check("MatrixOps::zerosLike<int>", b->toString());
+		string cmd = Numpy::full("(5, 5)", "0", "res");
+
+		check("MatrixOps::zerosLike<int>", cmd, b->toString());
 	}
 
 	void testLogspace() {
+		string cmd;
 		auto a = logspace(5.f, 10.f, 5, 10);
+		
+		cmd = Numpy::logspace("5", "10", "50", "True", "10", "float", "res");
+		cmd += Numpy::reshape("res", "(5, 10)", "res");
 
-		check("MatrixOps::logspace(float, float, int, int)", a->toString());
+		check("MatrixOps::logspace(float, float, int, int)", cmd, a->toString());
 
 		auto b = logspace(7.f, 12.f, 2.f, 1, 2);
 
-		check("MatrixOps::logspace(float, float, float, int, int)", b->toString());
+		cmd = Numpy::logspace("7", "12", "2", "True", "10", "float", "res");
+		cmd += Numpy::reshape("res", "(1, 2)", "res");
+
+		check("MatrixOps::logspace(float, float, float, int, int)", cmd, b->toString());
 
 		auto c = logspace(5.f, 10.f, 10.f, false, 5, 2);
 
-		check("MatrixOps::logspace(float, float, float, bool, int, int)", c->toString());
+		cmd = Numpy::logspace("5", "10", "10", "False", "10", "float", "res");
+		cmd += Numpy::reshape("res", "(5, 2)", "res");
+
+		check("MatrixOps::logspace(float, float, float, bool, int, int)", cmd, c->toString());
 
 		auto d = logspace(5.f, 10.f, 10.f, false, 2.f, 5, 2);
 
-		check("MatrixOps::logspace(float, float, float, bool, float, int, int)", d->toString());
+		cmd = Numpy::logspace("5", "10", "10", "False", "2", "float", "res");
+		cmd += Numpy::reshape("res", "(5, 2)", "res");
+
+		check("MatrixOps::logspace(float, float, float, bool, float, int, int)", cmd, d->toString());
 	}
 
 	void testGeomspace() {
+		string cmd;
 		auto a = geomspace(5.f, 10.f, 25, 2);
 
-		check("MatrixOps::geomspace(float, float, int, int)", a->toString());
+		cmd = Numpy::geomspace("5", "10", "50", "True", "float", "res");
+		cmd += Numpy::reshape("res", "(25, 2)", "res");
+
+		check("MatrixOps::geomspace(float, float, int, int)", cmd, a->toString());
 
 		auto b = geomspace(7.f, 12.f, 2.f, 2, 1);
 
-		check("MatrixOps::geomspace(float, float, float, int, int)", b->toString());
+		cmd = Numpy::geomspace("7", "12", "2", "True", "float", "res");
+		cmd += Numpy::reshape("res", "(2, 1)", "res");
+
+		check("MatrixOps::geomspace(float, float, float, int, int)", cmd, b->toString());
 
 		auto c = geomspace(5.f, 10.f, 10.f, false, 2, 5);
 
-		check("MatrixOps::geomspace(float, float, float, bool, int, int)", c->toString());
+		cmd = Numpy::geomspace("5", "10", "10", "False", "float", "res");
+		cmd += Numpy::reshape("res", "(2, 5)", "res");
+
+		check("MatrixOps::geomspace(float, float, float, bool, int, int)", cmd, c->toString());
 	}
 
 	void testEye() {
+		string cmd;
 		auto a = eye<int>(7, 6, 2);
 
-		check("MatrixOps::eye(int, int, int)", a->toString());
+		cmd = Numpy::eye("7", "6", "2", "int", "res");
+
+		check("MatrixOps::eye(int, int, int)", cmd, a->toString());
 
 		auto b = eye<int>(7, 2);
 
-		check("MatrixOps::eye(int, int)", b->toString());
+		cmd = Numpy::eye("7", "7", "2", "int", "res");
+
+		check("MatrixOps::eye(int, int)", cmd, b->toString());
 
 		auto c = eye<int>(4);
 
-		check("MatrixOps::eye(int)", c->toString());
+		cmd = Numpy::eye("4", "4", "0", "int", "res");
+
+		check("MatrixOps::eye(int)", cmd, c->toString());
 	}
 
 	void testMeshgrid() {
+		string cmd;
 		auto base = arange(10, 5, 2);
 		auto va = (Vector<int>*)base->flatten();
 		auto vb = (Vector<int>*)base->flatten();
 
 		auto mats = meshgrid<double>(va, vb);
 
-		auto ma = mats->get(0);
-		auto mb = mats->get(1);
+		cmd =  Numpy::arange("0", "10", "1", "int", "a");
+		cmd += Numpy::arange("0", "10", "1", "int", "b");
+		cmd += Numpy::meshgrid("a", "b", "res");
+		cmd += "comp = np.array([" + mats[0]->toString() + ", " + mats[1]->toString() + "])";
 
-		check("MatrixOps::meshgrid(Vector<int>, Vector<int>)", ma->toString());
-		check("MatrixOps::meshgrid(Vector<int>, Vector<int>)", mb->toString());
+		check("MatrixOps::meshgrid(Vector<int>, Vector<int>)", cmd, "comp");
 
 		auto matss = meshgrid<int>(base, base);
 
-		check("MatrixOps::meshgrid(Matrix<int>, Matrix<int>)", matss->get(0)->toString());
-		check("MatrixOps::meshgrid(Matrix<int>, Matrix<int>)", matss->get(1)->toString());
+		cmd =  Numpy::arange("0", "10", "1", "int", "a");
+		cmd += Numpy::arange("0", "10", "1", "int", "b");
+		cmd += Numpy::reshape("a", "(5, 2)", "a");
+		cmd += Numpy::reshape("b", "(5, 2)", "b");
+		cmd += Numpy::meshgrid("a", "b", "res");
+		cmd += "comp = np.array([" + matss[0]->toString() + ", " + matss[1]->toString() + "])";
+
+		check("MatrixOps::meshgrid(Matrix<int>, Matrix<int>)", cmd, "comp");
 	}
 
 	void testDiag() {
 		auto mat = arange(9, 3, 3);
+		string cmd = Numpy::arange("0", "9", "1", "int", "mat");
+		cmd += Numpy::reshape("mat", "(3, 3)", "mat");
+		string add;
+
 		auto a = diag(mat, 1);
 
-		check("MatrixOps::diag(Matrix<int>, int)", a->toString());
+		add = Numpy::diag("mat", "1", "res");
+
+		check("MatrixOps::diag(Matrix<int>, int)", cmd + add, a->toString());
 
 		auto b = diag(mat);
 
-		check("MatrixOps::diag(Matrix<int>)", b->toString());
+		add = Numpy::diag("mat", "0", "res");
 
-		auto c = diagflat(mat->flatten(), 1);
+		check("MatrixOps::diag(Matrix<int>)", cmd + add, b->toString());
+	}
 
-		check("MatrixOps::diag(Vector<int>, int)", c->toString());
+	void testDiagFlat() {
+		auto mat = arange(9, 3, 3);
 
-		auto d = diagflat(mat->flatten());
+		string cmd = Numpy::arange("0", "9", "1", "int", "mat");
+		cmd += Numpy::reshape("mat", "(3, 3)", "mat");
+		string add;
 
-		check("MatrixOps::diagflat(Matrix<int>)", d->toString());
+		auto a = diagflat(mat->flatten(), 1);
+
+		add = Numpy::diagflat("mat", "1", "res");
+
+		check("MatrixOps::diagflat(Vector<int>, int)", cmd + add, a->toString());
+
+		auto b = diagflat(mat->flatten());
+
+		add = Numpy::diagflat("mat", "0", "res");
+
+		check("MatrixOps::diagflat(Vector<int>)", cmd + add, b->toString());
 	}
 
 	void testTri() {
-		auto a = tri<int>(2, 2, 1);
-		a->print();
+		/*auto a = tri<int>(2, 2, 1);
+		a->print();*/
 	}
 }

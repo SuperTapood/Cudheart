@@ -40,21 +40,20 @@ void check(string name, string cmd, string output) {
 	output = procOutput(output);
 
 	// why
-	ofstream file("file.py");
+	ofstream file("Testing\\python\\main.py");
 	ostringstream os;
-	os << "import numpy as np\n";
+	os << "from util import *\n\n";
 	os << cmd << "\n";
 	// os << "shap = res.shape if type(res) == np.ndarray else None\n";
 	// os << "res = [round(i, 18) for i in res.flatten().tolist()] if type(res) == np.ndarray else res\n";
 	// os << "res = np.array(res).reshape(shap).tolist() if shap is not None else res\n";
-	os << "close = np.allclose(res, np.array(" << output << "))\n";
-	os << "print(str((res.tolist() if type(res) == np.ndarray else res)) + ('T' if close else 'F'), end = '')\n";
+	os << "check(res, np.array(" << output << "))\n";
 	file << os.str();
 	file.close();
 
 	/*cout << "test: " << name << endl;
 	cout << exec("python file.py") << "END";*/
-	string res = exec("python file.py");
+	string res = exec("python Testing\\python\\main.py");
 	bool pass = false;
 
 
@@ -74,6 +73,8 @@ void check(string name, string cmd, string output) {
 		// cout << "\nPython Code:\n\n" << os.str();
 		exit(69);
 	}
+
+	// cout << "Test " << name << " passed!\n";
 }
 
 void check(string name, string output) {

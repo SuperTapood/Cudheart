@@ -32,5 +32,7 @@ namespace Cudheart::Testing::Arrays::MatOpsTest {
 
 	void testDiag();
 
+	void testDiagFlat();
+
 	void testTri();
 }

@@ -323,12 +323,12 @@ namespace Cudheart {
 					}
 					os << ((ComplexType*)(get(-1)))->toString() << "]";
 				}
-				else if constexpr (is_same_v<T, NDArray<T>*>) {
+				/*else if constexpr (is_same_v<T, NDArray<T>*>) {
 					for (int i = 0; i < getSize() - 1; i++) {
 						os << ((NDArray<T>*)(m_data[i]))->toString() << ", ";
 					}
 					os << ((NDArray<T>*)(get(-1)))->toString() << "]";
-				}
+				}*/
 				else {
 					for (int i = 0; i < getSize() - 1; i++) {
 						T res = m_data[i];

@@ -49,4 +49,28 @@ namespace Numpy {
 	string logspace(string start, string stop, string num, string endpoint, string base, string dtype, string oName);
 
 	string geomspace(string start, string stop, string num, string endpoint, string dtype, string oName);
+
+	string eye(string N, string M, string k, string dtype, string oName);
+
+	string meshgrid(string a, string b, string oName);
+
+	string append(string a, string b, string axis, string oName);
+
+	string concatenate(string a, string b, string oName);
+
+	string diag(string v, string k, string oName);
+
+	string diagflat(string v, string k, string oName);
+
+	string split(string ary, string nums, string oName);
+
+	string tile(string a, string reps, string oName);
+
+	string remove(string a, string index, string oName);
+
+	string remove(string a, string index, string axis, string oName);
+
+	string trim_zeros(string filt, string trim, string oName);
+
+	string unique(string ar, string oName);
 }

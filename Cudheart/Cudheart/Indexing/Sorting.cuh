@@ -46,12 +46,17 @@ namespace Cudheart {
 
 			template <typename T>
 			void quicksort(NDArray<T>* arr, int low, int high) {
-				if (low > high) {
+				if (low < high) {
 					int pi = partition(arr, low, high);
 
 					quicksort(arr, low, pi - 1);
 					quicksort(arr, pi + 1, high);
 				}
+			}
+
+			template <typename T>
+			void quicksort(NDArray<T>* arr) {
+				return quicksort<T>(arr, 0, arr->getSize());
 			}
 
 			template <typename T>
@@ -190,7 +195,7 @@ namespace Cudheart {
 
 			template <typename T>
 			void quicksort(NDArray<T>* arr, NDArray<T>* indices, int low, int high) {
-				if (low > high) {
+				if (low < high) {
 					int pi = partition(arr, indices, low, high);
 
 					quicksort(arr, indices, low, pi - 1);

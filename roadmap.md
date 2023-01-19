@@ -79,6 +79,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] sort functions alphabetically
 - [ ] implement cuda samples and their helpers
 - [ ] move string ops to where its counterparts are after the template overhaul
+- [ ] consider minimizing duped functions (like vec ops and mat ops)
 - [ ] add magic methods and redo functions where they can be used
 - [ ] convert cuda and cpp pointers to shared memory
 - [ ] add axis to everything
