@@ -73,4 +73,12 @@ namespace Numpy {
 	string trim_zeros(string filt, string trim, string oName);
 
 	string unique(string ar, string oName);
+
+	string tri(string N, string M, string k, string dtype, string oName);
+
+	string tril(string M, string k, string oName);
+
+	string triu(string M, string k, string oName);
+
+	string vander(string x, string N, string increasing, string oName);
 }

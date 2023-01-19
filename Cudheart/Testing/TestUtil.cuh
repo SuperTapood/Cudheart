@@ -34,7 +34,7 @@ namespace Cudheart::Testing {
 
 		static string procOutput(string output);
 
-		static void check(string name, string cmd, string output);
+		static void submit(string name, string cmd, string output);
 
 		static void testAll();
 	};

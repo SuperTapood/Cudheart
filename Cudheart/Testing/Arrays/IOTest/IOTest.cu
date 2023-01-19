@@ -22,19 +22,19 @@ namespace Cudheart::Testing::Arrays::IO {
 
 		cmd = Numpy::createArray(res, "res");
 
-		Testing::check("IO::fromString<int>(string, char, int)", cmd, a->toString());
+		Testing::submit("IO::fromString<int>(string, char, int)", cmd, a->toString());
 
 		auto b = fromString<int>(str);
 
 		cmd = Numpy::createArray(res, "res");
 
-		Testing::check("IO::fromString<int>(string)", cmd, b->toString());
+		Testing::submit("IO::fromString<int>(string)", cmd, b->toString());
 
 		auto c = fromString<int>(str, 3);
 
 		cmd = Numpy::createArray("[1, 2, 3]", "res");
 
-		Testing::check("IO::fromString<int>(string, int)", cmd, c->toString());
+		Testing::submit("IO::fromString<int>(string, int)", cmd, c->toString());
 	}
 
 	void testSave() {
@@ -56,7 +56,7 @@ namespace Cudheart::Testing::Arrays::IO {
 
 		cmd = Numpy::fromFile("savedArray.txt", 'x', "int", "res");
 
-		Testing::check("IO::save<int>(string, Vector<StringType*>*, char)", cmd, a->toString());
+		Testing::submit("IO::save<int>(string, Vector<StringType*>*, char)", cmd, a->toString());
 
 		file.close();
 
@@ -73,7 +73,7 @@ namespace Cudheart::Testing::Arrays::IO {
 
 		cmd = Numpy::fromFile("savedArray.txt", ' ', "int", "res");
 
-		Testing::check("IO::save<int>(string, Vector<StringType*>*)", cmd, a->toString());
+		Testing::submit("IO::save<int>(string, Vector<StringType*>*)", cmd, a->toString());
 
 		file.close();
 
@@ -91,20 +91,20 @@ namespace Cudheart::Testing::Arrays::IO {
 		cmd =  Numpy::fromFile("file.txt", ' ', "int", "res");
 		cmd += "res = res[0:3]";
 
-		Testing::check("IO::fromFile<int>(string, char, int)", cmd, fromFile<int>("file.txt", ' ', 3)->toString());
+		Testing::submit("IO::fromFile<int>(string, char, int)", cmd, fromFile<int>("file.txt", ' ', 3)->toString());
 
 		cmd = Numpy::fromFile("file.txt", ' ', "int", "res");
 
-		Testing::check("IO::fromFile<int>(string, char)", cmd, fromFile<int>("file.txt", ' ')->toString());
+		Testing::submit("IO::fromFile<int>(string, char)", cmd, fromFile<int>("file.txt", ' ')->toString());
 
 		cmd = Numpy::fromFile("file.txt", ' ', "int", "res");
 		cmd += "res = res[0:3]";
 
-		Testing::check("IO::fromFile<int>(string, int)", cmd, fromFile<int>("file.txt", 3)->toString());
+		Testing::submit("IO::fromFile<int>(string, int)", cmd, fromFile<int>("file.txt", 3)->toString());
 
 		cmd = Numpy::fromFile("file.txt", ' ', "int", "res");
 
-		Testing::check("IO::fromFile<int>(string)", cmd, fromFile<int>("file.txt")->toString());
+		Testing::submit("IO::fromFile<int>(string)", cmd, fromFile<int>("file.txt")->toString());
 
 		//remove("file.txt");
 	}
@@ -126,6 +126,6 @@ namespace Cudheart::Testing::Arrays::IO {
 		cmd =  "func = lambda x: 10 * x\n";
 		cmd += Numpy::fromFunction("func", "(17,)", "int", "res");
 
-		Testing::check("IO::fromFunction(int func(int), int)", cmd, vec->toString());
+		Testing::submit("IO::fromFunction(int func(int), int)", cmd, vec->toString());
 	}
 }

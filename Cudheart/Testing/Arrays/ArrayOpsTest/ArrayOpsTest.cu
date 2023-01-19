@@ -27,7 +27,7 @@ namespace Cudheart::Testing::Arrays::ArrayOps {
 
 		auto a = append(vec, 4);
 
-		Testing::check("ArrayOps::append(Vector<int>*, int)", cmd, a->toString());
+		Testing::submit("ArrayOps::append(Vector<int>*, int)", cmd, a->toString());
 
 		auto mat = arange(9, 3, 3);
 
@@ -38,7 +38,7 @@ namespace Cudheart::Testing::Arrays::ArrayOps {
 		cmd += Numpy::append("mat", "vec", "None", "res");
 		cmd += Numpy::reshape("res", "(4, 3)", "res");
 
-		Testing::check("ArrayOps::append(Matrix<int>*, Vector<int>*)", cmd, b->toString());
+		Testing::submit("ArrayOps::append(Matrix<int>*, Vector<int>*)", cmd, b->toString());
 	}
 
 	void testConcatenate() {
@@ -56,7 +56,7 @@ namespace Cudheart::Testing::Arrays::ArrayOps {
 		cmd += Numpy::arange("1", "4", "1", "int", "b");
 		cmd += Numpy::concatenate("a", "b", "res");
 
-		Testing::check("ArrayOps::concatenate(Vector<float>, Vector<float>)", cmd, concatenate(a, b)->toString());
+		Testing::submit("ArrayOps::concatenate(Vector<float>, Vector<float>)", cmd, concatenate(a, b)->toString());
 
 		string matres = "[\n [0, 1],\n [2, 3],\n [0, 1],\n [2, 3]\n]";
 
@@ -69,7 +69,7 @@ namespace Cudheart::Testing::Arrays::ArrayOps {
 		cmd += Numpy::reshape("b", "(2, 2)", "b");
 		cmd += Numpy::concatenate("a", "b", "res");
 
-		Testing::check("ArrayOps::concatenate(Matrix<int>, Matrix<int>)", cmd, concatenate(c, d)->toString());
+		Testing::submit("ArrayOps::concatenate(Matrix<int>, Matrix<int>)", cmd, concatenate(c, d)->toString());
 	}
 
 	void testSplit() {
@@ -91,12 +91,12 @@ namespace Cudheart::Testing::Arrays::ArrayOps {
 		}
 		cmd += arr[vecs - 1]->toString() + "])";
 
-		Testing::check("ArrayOps::split(Vector<int>, int)", cmd, "comp");
+		Testing::submit("ArrayOps::split(Vector<int>, int)", cmd, "comp");
 
 		auto b = (Matrix<int>*)a->reshape<int>(new Shape((int)(size / vecs), vecs));
 		auto brr = split(b, vecs);
 
-		Testing::check("ArrayOps::split(Matrix<int>, int)", cmd, "comp");
+		Testing::submit("ArrayOps::split(Matrix<int>, int)", cmd, "comp");
 	}
 
 	void testTile() {
@@ -117,14 +117,14 @@ namespace Cudheart::Testing::Arrays::ArrayOps {
 		cmd =  Numpy::arange("0", to_string(size), "1", "int", "a");
 		cmd += Numpy::tile("a", to_string(reps), "res");
 
-		Testing::check("ArrayOps::tile(Vector<int>, int)", cmd, arr->toString());
+		Testing::submit("ArrayOps::tile(Vector<int>, int)", cmd, arr->toString());
 
 		auto brr = tile(a, hReps, wReps);
 
 		cmd = Numpy::arange("0", to_string(size), "1", "int", "a");
 		cmd += Numpy::tile("a", "(" + to_string(hReps) + ", " + to_string(wReps) + ")", "res");
 
-		Testing::check("ArrayOps::tile(Vector<int>, int, int)", cmd, brr->toString());
+		Testing::submit("ArrayOps::tile(Vector<int>, int, int)", cmd, brr->toString());
 
 		auto c = (Matrix<int>*)(a->reshape<int>(new Shape(h, w)));
 		auto crr = tile(c, reps);
@@ -133,7 +133,7 @@ namespace Cudheart::Testing::Arrays::ArrayOps {
 		cmd += Numpy::reshape("a", "(" + to_string(h) + ", " + to_string(w) + ")", "a");
 		cmd += Numpy::tile("a", to_string(reps), "res");
 
-		Testing::check("ArrayOps::tile(Matrix<int>, int)", cmd, crr->toString());
+		Testing::submit("ArrayOps::tile(Matrix<int>, int)", cmd, crr->toString());
 
 		auto drr = tile(c, wReps, hReps);
 
@@ -141,7 +141,7 @@ namespace Cudheart::Testing::Arrays::ArrayOps {
 		cmd += Numpy::reshape("a", "(" + to_string(h) + ", " + to_string(w) + ")", "a");
 		cmd += Numpy::tile("a", "(" + to_string(hReps) + ", " + to_string(wReps) + ")", "res");
 
-		Testing::check("ArrayOps::tile(Matrix<int>, int, int)", cmd, drr->toString());
+		Testing::submit("ArrayOps::tile(Matrix<int>, int, int)", cmd, drr->toString());
 	}
 
 	void testRemove() {
@@ -159,7 +159,7 @@ namespace Cudheart::Testing::Arrays::ArrayOps {
 		cmd = Numpy::arange("0", to_string(size), "1", "int", "a");
 		cmd += Numpy::remove("a", to_string(rem), "res");
 
-		Testing::check("ArrayOps::remove(Vector<int>, int)", cmd, arr->toString());
+		Testing::submit("ArrayOps::remove(Vector<int>, int)", cmd, arr->toString());
 
 		auto b = (Matrix<int>*)a->reshape<int>(new Shape(4, 5));
 		auto brr = remove(b, rem);
@@ -167,7 +167,7 @@ namespace Cudheart::Testing::Arrays::ArrayOps {
 		cmd = Numpy::arange("0", to_string(size), "1", "int", "a");
 		cmd += Numpy::remove("a", to_string(rem), "res");
 
-		Testing::check("ArrayOps::remove(Matrix<int>, int, axis=-1)", cmd, brr->toString());
+		Testing::submit("ArrayOps::remove(Matrix<int>, int, axis=-1)", cmd, brr->toString());
 
 		auto crr = (Matrix<int>*)(remove<int>(b, rem, 0));
 
@@ -175,7 +175,7 @@ namespace Cudheart::Testing::Arrays::ArrayOps {
 		cmd += Numpy::reshape("a", "(4, 5)", "a");
 		cmd += Numpy::remove("a", to_string(rem), "0", "res");
 
-		Testing::check("ArrayOps::remove(Matrix<int>, int, axis=0)", cmd, crr->toString());
+		Testing::submit("ArrayOps::remove(Matrix<int>, int, axis=0)", cmd, crr->toString());
 
 		auto drr = (Matrix<int>*)(remove<int>(b, rem, 1));
 
@@ -183,7 +183,7 @@ namespace Cudheart::Testing::Arrays::ArrayOps {
 		cmd += Numpy::reshape("a", "(4, 5)", "a");
 		cmd += Numpy::remove("a", to_string(rem), "1", "res");
 
-		Testing::check("ArrayOps::remove(Matrix<int>, int, axis=1)", cmd, drr->toString());
+		Testing::submit("ArrayOps::remove(Matrix<int>, int, axis=1)", cmd, drr->toString());
 	}
 
 	void testTrimZeros() {
@@ -196,17 +196,17 @@ namespace Cudheart::Testing::Arrays::ArrayOps {
 		string cmd = Numpy::createArray("[0, 0, 0, 1, 2, 3, 0, 2, 1, 0]", "a");
 		cmd += Numpy::trim_zeros("a", "'fb'", "res");
 
-		Testing::check("ArrayOps::trimZeros(Vector<int>, 'fb')", cmd, trimZeros(a)->toString());
+		Testing::submit("ArrayOps::trimZeros(Vector<int>, 'fb')", cmd, trimZeros(a)->toString());
 
 		cmd = Numpy::createArray("[0, 0, 0, 1, 2, 3, 0, 2, 1, 0]", "a");
 		cmd += Numpy::trim_zeros("a", "'f'", "res");
 
-		Testing::check("ArrayOps::trimZeros(Vector<int>, 'f')", cmd, trimZeros(a, "f")->toString());
+		Testing::submit("ArrayOps::trimZeros(Vector<int>, 'f')", cmd, trimZeros(a, "f")->toString());
 
 		cmd = Numpy::createArray("[0, 0, 0, 1, 2, 3, 0, 2, 1, 0]", "a");
 		cmd += Numpy::trim_zeros("a", "'b'", "res");
 
-		Testing::check("ArrayOps::trimZeros(Vector<int>, 'b')", cmd, trimZeros(a, "b")->toString());
+		Testing::submit("ArrayOps::trimZeros(Vector<int>, 'b')", cmd, trimZeros(a, "b")->toString());
 	}
 
 	void testUnique() {
@@ -234,18 +234,18 @@ namespace Cudheart::Testing::Arrays::ArrayOps {
 
 		add = "res = res[0]";
 
-		Testing::check("ArrayOps::unique(a, false, false, false)", cmd + add, "comp[0]");
+		Testing::submit("ArrayOps::unique(a, false, false, false)", cmd + add, "comp[0]");
 
 		add = "res = res[1]";
 
-		Testing::check("ArrayOps::unique(a, true, false, false)", cmd + add, "comp[1]");
+		Testing::submit("ArrayOps::unique(a, true, false, false)", cmd + add, "comp[1]");
 
 		add = "res = res[2]";
 
-		Testing::check("ArrayOps::unique(a, false, true, false)", cmd + add, "comp[2]");
+		Testing::submit("ArrayOps::unique(a, false, true, false)", cmd + add, "comp[2]");
 
 		add = "res = res[3]";
 
-		Testing::check("ArrayOps::unique(a, false, false, true)", cmd + add, "comp[3]");
+		Testing::submit("ArrayOps::unique(a, false, false, true)", cmd + add, "comp[3]");
 	}
 }

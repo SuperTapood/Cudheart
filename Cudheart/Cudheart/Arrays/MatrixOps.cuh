@@ -619,7 +619,7 @@ namespace Cudheart {
 			Matrix<T>* out = zerosLike<T>(mat);
 
 			for (int i = 0; i < mat->getHeight(); i++) {
-				for (int j = mat->getWidth(); j > i + k; j++) {
+				for (int j = mat->getWidth() - 1; j > i + k; j--) {
 					out->set(i, j, mat->get(i, j));
 				}
 			}
@@ -647,11 +647,11 @@ namespace Cudheart {
 		/// <returns>upper triangle of mat</returns>
 		template <typename T>
 		Matrix<T>* triu(Matrix<T>* mat, int k) {
-			Matrix<T>* out = zerosLike<T>(mat);
+			Matrix<T>* out = (Matrix<T>*)mat->copy();
 
-			for (int i = 1 - k; i < mat->getHeight(); i--) {
-				for (int j = i; j < mat->getWidth(); j++) {
-					out->set(i, j, mat->get(i, j));
+			for (int i = 0; i < mat->getHeight(); i++) {
+				for (int j = mat->getWidth() - 1; j > i + k; j--) {
+					out->set(i, j, 0);
 				}
 			}
 
@@ -732,10 +732,5 @@ namespace Cudheart {
 		}
 
 #pragma endregion
-
-		template <typename T>
-		Matrix<T>* transpose(Matrix<T>* mat) {
-			return mat->transpose();
-		}
 	};
 }

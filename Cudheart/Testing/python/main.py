@@ -661,6 +661,70 @@ add2queue(test_name, res, out)
 
 
 
+test_name = "MatrixOps::tri(int, int, int)"
+res = np.tri(2, 2, 1, dtype=int)
+
+out = [[1, 1], [1, 1]]
+add2queue(test_name, res, out)
+
+
+
+test_name = "MatrixOps::tri(int, int)"
+res = np.tri(5, 5, 2, dtype=int)
+
+out = [[1, 1, 1, 0, 0], [1, 1, 1, 1, 0], [1, 1, 1, 1, 1], [1, 1, 1, 1, 1], [1, 1, 1, 1, 1]]
+add2queue(test_name, res, out)
+
+
+
+test_name = "MatrixOps::tri(int)"
+res = np.tri(7, 7, 0, dtype=int)
+
+out = [[1, 0, 0, 0, 0, 0, 0], [1, 1, 0, 0, 0, 0, 0], [1, 1, 1, 0, 0, 0, 0], [1, 1, 1, 1, 0, 0, 0], [1, 1, 1, 1, 1, 0, 0], [1, 1, 1, 1, 1, 1, 0], [1, 1, 1, 1, 1, 1, 1]]
+add2queue(test_name, res, out)
+
+
+
+test_name = "MatrixOps::tril(Matrix<int>, int)"
+mat = np.arange(0, 9, 1, dtype=int)
+mat = mat.reshape((3, 3))
+res = np.tril(mat, 1)
+
+out = [[0, 0, 2], [0, 0, 0], [0, 0, 0]]
+add2queue(test_name, res, out)
+
+
+
+test_name = "MatrixOps::tril(Matrix<int>)"
+mat = np.arange(0, 9, 1, dtype=int)
+mat = mat.reshape((3, 3))
+res = np.tril(mat, 0)
+
+out = [[0, 1, 2], [0, 0, 5], [0, 0, 0]]
+add2queue(test_name, res, out)
+
+
+
+test_name = "MatrixOps::triu(Matrix<int>, int)"
+mat = np.arange(0, 9, 1, dtype=int)
+mat = mat.reshape((3, 3))
+res = np.triu(mat, 1)
+
+out = [[0, 1, 0], [3, 4, 5], [6, 7, 8]]
+add2queue(test_name, res, out)
+
+
+
+test_name = "MatrixOps::triu(Matrix<int>)"
+mat = np.arange(0, 9, 1, dtype=int)
+mat = mat.reshape((3, 3))
+res = np.triu(mat, 0)
+
+out = [[0, 0, 0], [3, 4, 0], [6, 7, 8]]
+add2queue(test_name, res, out)
+
+
+
 test_name = "ArrayOps::append(Vector<int>*, int)"
 vec = np.arange(1, 4, 1, dtype=int)
 res = np.append(vec, 4, axis = None)

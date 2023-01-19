@@ -16,11 +16,11 @@ namespace Cudheart::Testing::Arrays::VecTest {
 
 		string cmd = Numpy::createArray(sarr, "res");
 
-		Testing::check("Vector<int>(int[], int)", cmd, vec->toString());
+		Testing::submit("Vector<int>(int[], int)", cmd, vec->toString());
 
 		vec = new Vector<int>({5, 7, 451, 14, 25, 250, 52205, 255, 897});
 
-		Testing::check("Vector<int>(int{})", cmd, vec->toString());
+		Testing::submit("Vector<int>(int{})", cmd, vec->toString());
 	}
 
 	void testCastTo() {
@@ -59,6 +59,6 @@ namespace Cudheart::Testing::Arrays::VecTest {
 		string cmd = Numpy::createArray("[5, 7, 451, 14, 25, 250]", "a");
 		cmd += Numpy::reshape("a", "(2, 3)", "res");
 
-		Testing::check("Vector<int>->reshape((2, 3))", cmd, b->toString());
+		Testing::submit("Vector<int>->reshape((2, 3))", cmd, b->toString());
 	}
 }

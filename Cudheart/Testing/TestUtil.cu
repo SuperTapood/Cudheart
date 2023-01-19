@@ -59,20 +59,8 @@ namespace Cudheart::Testing {
 		return res;
 	}
 
-	void Testing::check(string name, string cmd, string output) {
+	void Testing::submit(string name, string cmd, string output) {
 		output = procOutput(output);
-
-		// why
-		//ofstream file("Testing\\python\\main.py");
-		//ostringstream os;
-		//os << "from util import *\n\n";
-		//os << cmd << "\n";
-		//// os << "shap = res.shape if type(res) == np.ndarray else None\n";
-		//// os << "res = [round(i, 18) for i in res.flatten().tolist()] if type(res) == np.ndarray else res\n";
-		//// os << "res = np.array(res).reshape(shap).tolist() if shap is not None else res\n";
-		//os << "check(res, np.array(" << output << "))\n";
-		//file << os.str();
-		//file.close();
 
 		Testing* self = get();
 		self->m_code += "test_name = \"" + name + "\"\n";
@@ -81,30 +69,7 @@ namespace Cudheart::Testing {
 		self->m_code += "add2queue(test_name, res, out)\n\n\n\n";
 		self->tests = self->tests + 1;
 
-		///*cout << "test: " << name << endl;
-		//cout << exec("python file.py") << "END";*/
-		//string res = exec("python Testing\\python\\main.py");
-		//bool pass = false;
-
-
-		//if (res.size() != 0) {
-		//	pass = res[res.size() - 1] == 'T';
-		//	res.pop_back();
-		//}
-
-		///*cout << "output: " << output << "END" << endl;
-		//cout << "res: " << res << "END" << endl;*/
-
-		//if (!pass) {
-		//	cout << "Test " << name << " failed!\n";
-		//	cout << "Cudheart generated: " << output;
-		//	cout << "\nNumpy generated:    " << res;
-		//	// cout << "\nCode Provided:\n\n" << cmd;
-		//	// cout << "\nPython Code:\n\n" << os.str();
-		//	exit(69);
-		//}
-
-		// cout << "Test " << name << " passed!\n";
+		// cout << "Test " + name + " submitted!\n";
 	}
 
 	void Testing::testAll() {
@@ -119,12 +84,10 @@ namespace Cudheart::Testing {
 
 		string res = exec("python Testing\\python\\main.py");
 
-		// cout << "python output:\n" << res << endl;
 
 		int tests = get()->tests;
 		std::vector<string> names, np, cud, results;
 
-		//std::string s = "scott>=tiger>=mushroom";
 		std::string delimiter = "|";
 
 		size_t pos = 0;
@@ -133,7 +96,6 @@ namespace Cudheart::Testing {
 		int indices[] = { 0, 0, 0, 0 };
 		while ((pos = res.find(delimiter)) != std::string::npos) {
 			token = res.substr(0, pos);
-			// std::cout << token << std::endl;
 			switch (index % 4) {
 			case 0:
 				names.push_back(token);
@@ -151,14 +113,7 @@ namespace Cudheart::Testing {
 			index++;
 			res.erase(0, pos + delimiter.length());
 		}
-		//std::cout << res << std::endl;
-		//results.push_back(res);
 
-		//cout << to_string(tests) << endl;
-
-		/*for (int i = 0; i < tests; i++) {
-			cout << names[i] << " " << np[i] << " " << cud[i] << "" << results[i] << endl;
-		}*/
 
 		for (int i = 0; i < tests; i++) {
 			if (results[i] != "T") {
@@ -169,6 +124,9 @@ namespace Cudheart::Testing {
 				// cout << "\nPython Code:\n\n" << os.str();
 				exit(69);
 			}
+
+			// cout << "Test " + results[i] + "passed!\n";
 		}
+
 	}
 }

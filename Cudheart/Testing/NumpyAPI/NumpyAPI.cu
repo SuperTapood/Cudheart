@@ -118,4 +118,20 @@ namespace Numpy {
 	string unique(string ar, string oName) {
 		return oName + " = np.unique(" + ar + ", True, True, True)\n";
 	}
+
+	string tri(string N, string M, string k, string dtype, string oName) {
+		return oName + " = np.tri(" + N + ", " + M + ", " + k + ", dtype=" + dtype + ")\n";
+	}
+
+	string tril(string M, string k, string oName) {
+		return oName + " = np.tril(" + M + ", " + k + ")\n";
+	}
+
+	string triu(string M, string k, string oName) {
+		return oName + " = np.triu(" + M + ", " + k + ")\n";
+	}
+
+	string vander(string x, string N, string increasing, string oName) {
+		return oName + " = np.vander(" + x + ", " + N + ", " + increasing + ")\n";
+	}
 }

@@ -23,14 +23,14 @@ namespace Cudheart::Testing::Arrays::MatTest {
 		cmd = Numpy::createArray("[25, 25, 45, 588, 655555, 55, 568, 58]", "vec");
 		cmd += Numpy::reshape("vec", "(4, 2)", "res");
 
-		Testing::check("Matrix(int, int)", cmd, b->toString());
+		Testing::submit("Matrix(int, int)", cmd, b->toString());
 
 		auto c = new Matrix({ 25, 25, 45, 588, 655555, 55, 568, 58, 999 }, 3, 3);
 
 		cmd = Numpy::createArray("[25, 25, 45, 588, 655555, 55, 568, 58, 999]", "vec");
 		cmd += Numpy::reshape("vec", "(3, 3)", "res");
 
-		Testing::check("Matrix(int{}, int)", cmd, c->toString());
+		Testing::submit("Matrix(int{}, int)", cmd, c->toString());
 	}
 
 	void testCastTo() {
@@ -70,7 +70,7 @@ namespace Cudheart::Testing::Arrays::MatTest {
 
 		cmd = Numpy::createArray("[5, 7, 451, 14, 25, 250]", "res");
 
-		Testing::check("Matrix<int>->reshape((6))", cmd, b->toString());
+		Testing::submit("Matrix<int>->reshape((6))", cmd, b->toString());
 	}
 
 	void testReverseRows() {
@@ -84,7 +84,7 @@ namespace Cudheart::Testing::Arrays::MatTest {
 		cmd = Numpy::createArray("[5, 7, 451, 14, 25, 250, 52205, 255, 897]", "(3, 3)", "mat");
 		cmd += "res = np.flip(mat, 1)";
 
-		Testing::check("Matrix<int>->reverseRows()", cmd, b->toString());
+		Testing::submit("Matrix<int>->reverseRows()", cmd, b->toString());
 	}
 
 	void testReverseCols() {
@@ -98,7 +98,7 @@ namespace Cudheart::Testing::Arrays::MatTest {
 		cmd = Numpy::createArray("[5, 7, 451, 14, 25, 250, 52205, 255, 897]", "(3, 3)", "mat");
 		cmd += "res = np.flip(mat, 0)";
 
-		Testing::check("Matrix<int>->reverseCols()", cmd, b->toString());
+		Testing::submit("Matrix<int>->reverseCols()", cmd, b->toString());
 	}
 
 	void testTranspose() {
@@ -112,7 +112,7 @@ namespace Cudheart::Testing::Arrays::MatTest {
 		cmd = Numpy::createArray("[5, 7, 451, 14, 25, 250, 52205, 255, 897]", "(3, 3)", "mat");
 		cmd += Numpy::T("mat", "res");
 
-		Testing::check("Matrix<int>->transpose()", cmd, b->toString());
+		Testing::submit("Matrix<int>->transpose()", cmd, b->toString());
 	}
 
 	void testRot90() {
@@ -126,23 +126,23 @@ namespace Cudheart::Testing::Arrays::MatTest {
 
 		add = Numpy::rot90("mat", 1, "res");
 
-		Testing::check("Matrix<int>->rot90(k=1)", cmd + add, b->toString());
+		Testing::submit("Matrix<int>->rot90(k=1)", cmd + add, b->toString());
 
 		b = a->rot90(2);
 
 		add = Numpy::rot90("mat", 2, "res");
 
-		Testing::check("Matrix<int>->rot90(k=2)", cmd + add, b->toString());
+		Testing::submit("Matrix<int>->rot90(k=2)", cmd + add, b->toString());
 
 		b = a->rot90(3);
 
 		add = Numpy::rot90("mat", 3, "res");
 
-		Testing::check("Matrix<int>->rot90(k=3)", cmd + add, b->toString());
+		Testing::submit("Matrix<int>->rot90(k=3)", cmd + add, b->toString());
 
 		add = Numpy::rot90("mat", 4, "res");
 
-		Testing::check("Matrix<int>->rot90(k=4)", cmd + add, a->rot90(4)->toString());
+		Testing::submit("Matrix<int>->rot90(k=4)", cmd + add, a->rot90(4)->toString());
 	}
 
 	void testAugment() {
@@ -166,6 +166,6 @@ namespace Cudheart::Testing::Arrays::MatTest {
 		cmd += Numpy::createArray("[5, 7, 451, 14, 25, 250, 52205, 255, 897]", "(9, 1)", "mat2");
 		cmd += Numpy::augment("mat", "mat2", 1, "res");
 
-		Testing::check("Matrix<int>->augment(Vector<int>)", cmd, mat2->toString());
+		Testing::submit("Matrix<int>->augment(Vector<int>)", cmd, mat2->toString());
 	}
 }
