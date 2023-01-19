@@ -1,0 +1,94 @@
+Vector<int>(int[], int): <class 'list'>, <class 'list'>
+Vector<int>(int{}): <class 'list'>, <class 'list'>
+Vector<int>->reshape((2, 3)): <class 'list'>, <class 'list'>
+Matrix(int, int): <class 'list'>, <class 'list'>
+Matrix(int{}, int): <class 'list'>, <class 'list'>
+Matrix<int>->reshape((6)): <class 'list'>, <class 'list'>
+Matrix<int>->reverseRows(): <class 'list'>, <class 'list'>
+Matrix<int>->reverseCols(): <class 'list'>, <class 'list'>
+Matrix<int>->transpose(): <class 'list'>, <class 'list'>
+Matrix<int>->rot90(k=1): <class 'list'>, <class 'list'>
+Matrix<int>->rot90(k=2): <class 'list'>, <class 'list'>
+Matrix<int>->rot90(k=3): <class 'list'>, <class 'list'>
+Matrix<int>->rot90(k=4): <class 'list'>, <class 'list'>
+Matrix<int>->augment(Vector<int>): <class 'list'>, <class 'list'>
+IO::fromString<int>(string, char, int): <class 'list'>, <class 'list'>
+IO::fromString<int>(string): <class 'list'>, <class 'list'>
+IO::fromString<int>(string, int): <class 'list'>, <class 'list'>
+IO::save<int>(string, Vector<StringType*>*, char): <class 'list'>, <class 'list'>
+IO::save<int>(string, Vector<StringType*>*): <class 'list'>, <class 'list'>
+IO::fromFile<int>(string, char, int): <class 'list'>, <class 'list'>
+IO::fromFile<int>(string, char): <class 'list'>, <class 'list'>
+IO::fromFile<int>(string, int): <class 'list'>, <class 'list'>
+IO::fromFile<int>(string): <class 'list'>, <class 'list'>
+IO::fromFunction(int func(int), int): <class 'list'>, <class 'list'>
+VectorOps::emptyLike<int>: <class 'tuple'>, <class 'tuple'>
+VectorOps::arange<int>(int): <class 'list'>, <class 'list'>
+VectorOps::arange<int>(int, int): <class 'list'>, <class 'list'>
+VectorOps::arange<int>(int, int, int): <class 'list'>, <class 'list'>
+VectorOps::full<int>(int, int): <class 'list'>, <class 'list'>
+VectorOps::fullLike(int, int): <class 'list'>, <class 'list'>
+VectorOps::linspace(float, float): <class 'list'>, <class 'list'>
+VectorOps::linspace(float, float, float): <class 'list'>, <class 'list'>
+VectorOps::linspace(float, float, float, bool): <class 'list'>, <class 'list'>
+VectorOps::ones<int>: <class 'list'>, <class 'list'>
+VectorOps::onesLike<int>: <class 'list'>, <class 'list'>
+VectorOps::zeros<int>: <class 'list'>, <class 'list'>
+VectorOps::zerosLike<int>: <class 'list'>, <class 'list'>
+VectorOps::logspace(float, float): <class 'list'>, <class 'list'>
+VectorOps::logspace(float, float, int): <class 'list'>, <class 'list'>
+VectorOps::logspace(float, float, int, bool): <class 'list'>, <class 'list'>
+VectorOps::logspace(float, float, int, bool, float): <class 'list'>, <class 'list'>
+VectorOps::geomspace(float, float): <class 'list'>, <class 'list'>
+VectorOps::geomspace(float, float, int): <class 'list'>, <class 'list'>
+VectorOps::geomspace(float, float, int, bool): <class 'list'>, <class 'list'>
+MatrixOps::emptyLike<int>: <class 'list'>, <class 'tuple'>
+MatrixOps::arange<int>(int): <class 'list'>, <class 'list'>
+MatrixOps::arange<int>(int, int): <class 'list'>, <class 'list'>
+MatrixOps::arange<int>(int, int): <class 'list'>, <class 'list'>
+MatrixOps::full<int>(int, int): <class 'list'>, <class 'list'>
+MatrixOps::fullLike(int, int): <class 'list'>, <class 'list'>
+MatrixOps::linspace(float, float): <class 'list'>, <class 'list'>
+MatrixOps::linspace(float, float, float): <class 'list'>, <class 'list'>
+MatrixOps::linspace(float, float, float, bool): <class 'list'>, <class 'list'>
+MatrixOps::ones<int>: <class 'list'>, <class 'list'>
+MatrixOps::onesLike<int>: <class 'list'>, <class 'list'>
+MatrixOps::zeros<int>: <class 'list'>, <class 'list'>
+MatrixOps::zerosLike<int>: <class 'list'>, <class 'list'>
+MatrixOps::logspace(float, float, int, int): <class 'list'>, <class 'list'>
+MatrixOps::logspace(float, float, float, int, int): <class 'list'>, <class 'list'>
+MatrixOps::logspace(float, float, float, bool, int, int): <class 'list'>, <class 'list'>
+MatrixOps::logspace(float, float, float, bool, float, int, int): <class 'list'>, <class 'list'>
+MatrixOps::geomspace(float, float, int, int): <class 'list'>, <class 'list'>
+MatrixOps::geomspace(float, float, float, int, int): <class 'list'>, <class 'list'>
+MatrixOps::geomspace(float, float, float, bool, int, int): <class 'list'>, <class 'list'>
+MatrixOps::eye(int, int, int): <class 'list'>, <class 'list'>
+MatrixOps::eye(int, int): <class 'list'>, <class 'list'>
+MatrixOps::eye(int): <class 'list'>, <class 'list'>
+MatrixOps::meshgrid(Vector<int>, Vector<int>): <class 'list'>, <class 'list'>
+MatrixOps::meshgrid(Matrix<int>, Matrix<int>): <class 'list'>, <class 'list'>
+MatrixOps::diag(Matrix<int>, int): <class 'list'>, <class 'list'>
+MatrixOps::diag(Matrix<int>): <class 'list'>, <class 'list'>
+MatrixOps::diagflat(Vector<int>, int): <class 'list'>, <class 'list'>
+MatrixOps::diagflat(Vector<int>): <class 'list'>, <class 'list'>
+ArrayOps::append(Vector<int>*, int): <class 'list'>, <class 'list'>
+ArrayOps::append(Matrix<int>*, Vector<int>*): <class 'list'>, <class 'list'>
+ArrayOps::concatenate(Vector<float>, Vector<float>): <class 'list'>, <class 'list'>
+ArrayOps::concatenate(Matrix<int>, Matrix<int>): <class 'list'>, <class 'list'>
+ArrayOps::split(Vector<int>, int): <class 'list'>, <class 'list'>
+ArrayOps::split(Matrix<int>, int): <class 'list'>, <class 'list'>
+ArrayOps::tile(Vector<int>, int): <class 'list'>, <class 'list'>
+ArrayOps::tile(Vector<int>, int, int): <class 'list'>, <class 'list'>
+ArrayOps::tile(Matrix<int>, int): <class 'list'>, <class 'list'>
+ArrayOps::tile(Matrix<int>, int, int): <class 'list'>, <class 'list'>
+ArrayOps::remove(Vector<int>, int): <class 'list'>, <class 'list'>
+ArrayOps::remove(Matrix<int>, int, axis=-1): <class 'list'>, <class 'list'>
+ArrayOps::remove(Matrix<int>, int, axis=0): <class 'list'>, <class 'list'>
+ArrayOps::remove(Matrix<int>, int, axis=1): <class 'list'>, <class 'list'>
+ArrayOps::trimZeros(Vector<int>, 'fb'): <class 'list'>, <class 'list'>
+ArrayOps::trimZeros(Vector<int>, 'f'): <class 'list'>, <class 'list'>
+ArrayOps::trimZeros(Vector<int>, 'b'): <class 'list'>, <class 'list'>
+ArrayOps::unique(a, false, false, false): <class 'list'>, <class 'list'>
+ArrayOps::unique(a, true, false, false): <class 'list'>, <class 'list'>
+ArrayOps::unique(a, false, true, false): <class 'list'>, <class 'list'>
+ArrayOps::unique(a, false, false, true): <class 'list'>, <class 'list'>

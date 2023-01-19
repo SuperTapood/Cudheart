@@ -15,9 +15,28 @@
 
 using namespace std;
 
-std::string exec(const char* cmd);
+namespace Cudheart::Testing {
+	class Testing {
+	protected:
+		string m_code;
 
-void check(string cmd, string output);
+		static Testing* self;
 
-void check(string name, string cmd, string output);
+		static int tests;
+
+		Testing();
+
+	public:
+
+		static Testing* get();
+
+		static std::string exec(const char* cmd);
+
+		static string procOutput(string output);
+
+		static void check(string name, string cmd, string output);
+
+		static void testAll();
+	};
+}
 

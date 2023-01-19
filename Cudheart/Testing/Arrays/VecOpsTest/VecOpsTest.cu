@@ -25,7 +25,7 @@ namespace Cudheart::Testing::Arrays::VecOpsTest {
 		cmd =  Numpy::empty("(5,)", "res");
 		cmd += "res = res.shape";
 
-		check("VectorOps::emptyLike<int>", cmd, b->getShape()->toString());
+		Testing::check("VectorOps::emptyLike<int>", cmd, b->getShape()->toString());
 	}
 
 	void testArange() {
@@ -35,19 +35,19 @@ namespace Cudheart::Testing::Arrays::VecOpsTest {
 
 		cmd = Numpy::arange("0", "5", "1", "int", "res");
 
-		check("VectorOps::arange<int>(int)", cmd, a->toString());
+		Testing::check("VectorOps::arange<int>(int)", cmd, a->toString());
 
 		auto b = arange(5, 2);
 
 		cmd = Numpy::arange("0", "5", "2", "int", "res");
 
-		check("VectorOps::arange<int>(int, int)", cmd, b->toString());
+		Testing::check("VectorOps::arange<int>(int, int)", cmd, b->toString());
 
 		auto c = arange(3, 7, 1);
 
 		cmd = Numpy::arange("3", "7", "1", "int", "res");
 
-		check("VectorOps::arange<int>(int, int, int)", cmd, c->toString());
+		Testing::check("VectorOps::arange<int>(int, int, int)", cmd, c->toString());
 	}
 
 	void testFull() {
@@ -55,7 +55,7 @@ namespace Cudheart::Testing::Arrays::VecOpsTest {
 
 		string cmd = Numpy::full("(5,)", "5", "res");
 
-		check("VectorOps::full<int>(int, int)", cmd, vec->toString());
+		Testing::check("VectorOps::full<int>(int, int)", cmd, vec->toString());
 	}
 
 	void testFullLike() {
@@ -64,7 +64,7 @@ namespace Cudheart::Testing::Arrays::VecOpsTest {
 
 		string cmd = Numpy::full("(5,)", "5", "res");
 
-		check("VectorOps::fullLike(int, int)", cmd, b->toString());
+		Testing::check("VectorOps::fullLike(int, int)", cmd, b->toString());
 	}
 
 	void testLinspace() {
@@ -74,19 +74,19 @@ namespace Cudheart::Testing::Arrays::VecOpsTest {
 
 		cmd = Numpy::linspace("5", "10", "50", "True", "float", "res");
 
-		check("VectorOps::linspace(float, float)", cmd, a->toString());
+		Testing::check("VectorOps::linspace(float, float)", cmd, a->toString());
 
 		auto b = linspace(7.0, 12.0, 2.0);
 
 		cmd = Numpy::linspace("7", "12", "2", "True", "float", "res");
 
-		check("VectorOps::linspace(float, float, float)", cmd, b->toString());
+		Testing::check("VectorOps::linspace(float, float, float)", cmd, b->toString());
 
 		auto c = linspace(5.0, 10.0, 10.0, false);
 
 		cmd = Numpy::linspace("5", "10", "10", "False", "float", "res");
 
-		check("VectorOps::linspace(float, float, float, bool)", cmd, c->toString());
+		Testing::check("VectorOps::linspace(float, float, float, bool)", cmd, c->toString());
 	}
 
 	void testOnes() {
@@ -94,7 +94,7 @@ namespace Cudheart::Testing::Arrays::VecOpsTest {
 
 		string cmd = Numpy::full("(5,)", "1", "res");
 
-		check("VectorOps::ones<int>", cmd, vec->toString());
+		Testing::check("VectorOps::ones<int>", cmd, vec->toString());
 	}
 
 	void testOnesLike() {
@@ -103,7 +103,7 @@ namespace Cudheart::Testing::Arrays::VecOpsTest {
 
 		string cmd = Numpy::full("(5,)", "1", "res");
 
-		check("VectorOps::onesLike<int>", cmd, b->toString());
+		Testing::check("VectorOps::onesLike<int>", cmd, b->toString());
 	}
 
 	void testZeros() {
@@ -111,7 +111,7 @@ namespace Cudheart::Testing::Arrays::VecOpsTest {
 
 		string cmd = Numpy::full("(5,)", "0", "res");
 
-		check("VectorOps::zeros<int>", cmd, vec->toString());
+		Testing::check("VectorOps::zeros<int>", cmd, vec->toString());
 	}
 
 	void testZerosLike() {
@@ -120,7 +120,7 @@ namespace Cudheart::Testing::Arrays::VecOpsTest {
 
 		string cmd = Numpy::full("(5,)", "0", "res");
 
-		check("VectorOps::zerosLike<int>", cmd, b->toString());
+		Testing::check("VectorOps::zerosLike<int>", cmd, b->toString());
 	}
 
 	void testLogspace() {
@@ -130,25 +130,25 @@ namespace Cudheart::Testing::Arrays::VecOpsTest {
 
 		cmd = Numpy::logspace("5", "10", "50", "True", "10", "float", "res");
 
-		check("VectorOps::logspace(float, float)", cmd, a->toString());
+		Testing::check("VectorOps::logspace(float, float)", cmd, a->toString());
 
 		auto b = logspace(7.f, 12.f, 2);
 
 		cmd = Numpy::logspace("7", "12", "2", "True", "10", "float", "res");
 
-		check("VectorOps::logspace(float, float, int)", cmd, b->toString());
+		Testing::check("VectorOps::logspace(float, float, int)", cmd, b->toString());
 
 		auto c = logspace(5.f, 10.f, 10, false);
 
 		cmd = Numpy::logspace("5", "10", "10", "False", "10", "float", "res");
 
-		check("VectorOps::logspace(float, float, int, bool)", cmd, c->toString());
+		Testing::check("VectorOps::logspace(float, float, int, bool)", cmd, c->toString());
 
 		auto d = logspace(5.f, 10.f, 10, false, 2.f);
 
 		cmd = Numpy::logspace("5", "10", "10", "False", "2", "float", "res");
 
-		check("VectorOps::logspace(float, float, int, bool, float)", cmd, d->toString());
+		Testing::check("VectorOps::logspace(float, float, int, bool, float)", cmd, d->toString());
 	}
 
 	void testGeomspace() {
@@ -158,18 +158,18 @@ namespace Cudheart::Testing::Arrays::VecOpsTest {
 
 		cmd = Numpy::geomspace("5", "10", "50", "True", "float", "res");
 
-		check("VectorOps::geomspace(float, float)", cmd, a->toString());
+		Testing::check("VectorOps::geomspace(float, float)", cmd, a->toString());
 
 		auto b = geomspace(7.f, 12.f, 2);
 
 		cmd = Numpy::geomspace("7", "12", "2", "True", "float", "res");
 
-		check("VectorOps::geomspace(float, float, int)", cmd, b->toString());
+		Testing::check("VectorOps::geomspace(float, float, int)", cmd, b->toString());
 
 		auto c = geomspace(5.f, 10.f, 10, false);
 
 		cmd = Numpy::geomspace("5", "10", "10", "False", "float", "res");
 
-		check("VectorOps::geomspace(float, float, int, bool)", cmd, c->toString());
+		Testing::check("VectorOps::geomspace(float, float, int, bool)", cmd, c->toString());
 	}
 }
