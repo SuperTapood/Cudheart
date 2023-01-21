@@ -44,6 +44,7 @@
 - fixed vander
 - fixed nonzero
 - fixed argmin and argmax
+- fixed argwhere
 
 ## notes:
 - 

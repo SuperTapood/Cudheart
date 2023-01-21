@@ -255,17 +255,16 @@ namespace Cudheart {
 				return new Vector<T>(m_size);
 			}
 
-			template <typename U>
-			NDArray<U>* reshape(Shape* shape) {
+			NDArray<T>* reshape(Shape* shape) {
 				if (shape->getDims() == 2) {
-					return asMatrix<U>(shape->getX(), shape->getY());
+					return asMatrix<T>(shape->getX(), shape->getY());
 				}
 
 				if (shape->getX() != m_size) {
 					throw ShapeMismatchException(to_string(m_size), to_string(shape->getX()));
 				}
 
-				return castTo<U>();
+				return copy();
 			}
 
 			template <typename U>

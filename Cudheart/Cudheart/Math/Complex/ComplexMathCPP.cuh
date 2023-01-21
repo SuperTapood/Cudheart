@@ -17,7 +17,7 @@ using Cudheart::Constants::pi;
 
 namespace Cudheart::CPP::Math::Complex {
 	inline NDArray<double>* angle(NDArray<ComplexType*>* z, bool deg) {
-		NDArray<double>* arr = (new Vector<double>(z->getSize()))->reshape<double>(z->getShape());
+		NDArray<double>* arr = (new Vector<double>(z->getSize()))->reshape(z->getShape());
 
 		if (!deg) {
 			for (int i = 0; i < z->getSize(); i++) {
@@ -36,7 +36,7 @@ namespace Cudheart::CPP::Math::Complex {
 	}
 
 	inline NDArray<double>* real(NDArray<ComplexType*>* val) {
-		NDArray<double>* arr = (new Vector<double>(val->getSize()))->reshape<double>(val->getShape());
+		NDArray<double>* arr = (new Vector<double>(val->getSize()))->reshape(val->getShape());
 
 		for (int i = 0; i < val->getSize(); i++) {
 			ComplexType* current = val->get(i);
@@ -47,7 +47,7 @@ namespace Cudheart::CPP::Math::Complex {
 	}
 
 	inline NDArray<double>* imag(NDArray<ComplexType*>* val) {
-		NDArray<double>* arr = (new Vector<double>(val->getSize()))->reshape<double>(val->getShape());
+		NDArray<double>* arr = (new Vector<double>(val->getSize()))->reshape(val->getShape());
 
 		for (int i = 0; i < val->getSize(); i++) {
 			ComplexType* current = val->get(i);
@@ -73,7 +73,7 @@ namespace Cudheart::CPP::Math::Complex {
 	}
 
 	inline NDArray<double*>* complexAbs(NDArray<ComplexType*>* x) {
-		NDArray<double>* out = (new Vector<double>(x->getSize()))->reshape<double>(x->getShape());
+		NDArray<double>* out = (new Vector<double>(x->getSize()))->reshape(x->getShape());
 
 		for (int i = 0; i < x->getSize(); i++) {
 			ComplexType* current = x->get(i);

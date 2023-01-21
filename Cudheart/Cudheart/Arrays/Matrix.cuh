@@ -501,19 +501,25 @@ namespace Cudheart {
 			/// <param name="inplace"> - whether or not to transpose this matrix, or a copy of it</param>
 			/// <returns>this matrix transposed if inplace is true, else a transposed copy</returns>
 			NDArray<T>* transpose(bool inplace = false) {
-				Matrix<T>* mat;
+				Matrix<T>* mat = new Matrix<T>(m_width, m_height);
+
+				for (int i = 0; i < m_height; i++) {
+					for (int j = 0; j < m_width; j++) {
+						mat->set(j, i, get(i, j));
+					}
+				}
 
 				if (inplace) {
-					mat = this;
-				}
-				else {
-					mat = new Matrix<T>(m_width, m_height);
-				}
-
-				for (int i = 0; i < m_width; i++) {
-					for (int j = 0; j < m_height; j++) {
-						mat->set(i, j, get(j, i));
+					m_height = mat->getHeight();
+					m_width = mat->getWidth();
+					
+					for (int i = 0; i < m_size; i++) {
+						m_data[i] = mat->m_data[i];
 					}
+
+					delete mat;
+
+					return this;
 				}
 
 				return mat;

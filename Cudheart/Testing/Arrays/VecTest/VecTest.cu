@@ -54,7 +54,7 @@ namespace Cudheart::Testing::Arrays::VecTest {
 		int arr[] = { 5, 7, 451, 14, 25, 250 };
 		Vector<int>* a = new Vector<int>(arr, 6);
 
-		auto b = a->reshape<int>(new Shape(2, 3));
+		auto b = a->reshape(new Shape(2, 3));
 
 		string cmd = Numpy::createArray("[5, 7, 451, 14, 25, 250]", "a");
 		cmd += Numpy::reshape("a", "(2, 3)", "res");

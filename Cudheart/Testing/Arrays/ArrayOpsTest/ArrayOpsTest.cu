@@ -93,7 +93,7 @@ namespace Cudheart::Testing::Arrays::ArrayOps {
 
 		Testing::submit("ArrayOps::split(Vector<int>, int)", cmd, "comp");
 
-		auto b = (Matrix<int>*)a->reshape<int>(new Shape((int)(size / vecs), vecs));
+		auto b = (Matrix<int>*)a->reshape(new Shape((int)(size / vecs), vecs));
 		auto brr = split(b, vecs);
 
 		Testing::submit("ArrayOps::split(Matrix<int>, int)", cmd, "comp");
@@ -126,7 +126,7 @@ namespace Cudheart::Testing::Arrays::ArrayOps {
 
 		Testing::submit("ArrayOps::tile(Vector<int>, int, int)", cmd, brr->toString());
 
-		auto c = (Matrix<int>*)(a->reshape<int>(new Shape(h, w)));
+		auto c = (Matrix<int>*)(a->reshape(new Shape(h, w)));
 		auto crr = tile(c, reps);
 
 		cmd =  Numpy::arange("0", to_string(size), "1", "int", "a");
@@ -161,7 +161,7 @@ namespace Cudheart::Testing::Arrays::ArrayOps {
 
 		Testing::submit("ArrayOps::remove(Vector<int>, int)", cmd, arr->toString());
 
-		auto b = (Matrix<int>*)a->reshape<int>(new Shape(4, 5));
+		auto b = (Matrix<int>*)a->reshape(new Shape(4, 5));
 		auto brr = remove(b, rem);
 
 		cmd = Numpy::arange("0", to_string(size), "1", "int", "a");
@@ -169,7 +169,7 @@ namespace Cudheart::Testing::Arrays::ArrayOps {
 
 		Testing::submit("ArrayOps::remove(Matrix<int>, int, axis=-1)", cmd, brr->toString());
 
-		auto crr = (Matrix<int>*)(remove<int>(b, rem, 0));
+		auto crr = (Matrix<int>*)(remove(b, rem, 0));
 
 		cmd = Numpy::arange("0", to_string(size), "1", "int", "a");
 		cmd += Numpy::reshape("a", "(4, 5)", "a");

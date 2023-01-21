@@ -374,18 +374,18 @@ add2queue(test_name, res, out)
 
 test_name = "MatrixOps::arange<int>(int)"
 res = np.arange(0, 6, 1, dtype=int)
-res = res.reshape((3, 2))
+res = res.reshape((2, 3))
 
-out = [[0, 1], [2, 3], [4, 5]]
+out = [[0, 1, 2], [3, 4, 5]]
 add2queue(test_name, res, out)
 
 
 
 test_name = "MatrixOps::arange<int>(int, int)"
 res = np.arange(0, 5, 2, dtype=int)
-res = res.reshape((1, 3))
+res = res.reshape((3, 1))
 
-out = [[0, 2, 4]]
+out = [[0], [2], [4]]
 add2queue(test_name, res, out)
 
 
@@ -996,7 +996,36 @@ test_name = "Searching::argwhere(Vector<int>)"
 vec = np.arange(0, 6, 1, dtype=int)
 res = np.argwhere(vec)
 
-out = [1, 2, 3, 4, 5]
+out = [[1], [2], [3], [4], [5]]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Searching::argwhere(Matrix<int>)"
+vec = np.arange(0, 6, 1, dtype=int)
+mat = vec.reshape((2, 3))
+res = np.argwhere(mat)
+
+out = [[0, 1], [0, 2], [1, 0], [1, 1], [1, 2]]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Searching::flatnonzero(Vector<int>)"
+vec = np.array([5, 0, 25, 0, 22, 0, 4, 0, 11])
+res = np.flatnonzero(vec)
+
+out = [0, 2, 4, 6, 8]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Searching::flatnonzero(Matrix<int>)"
+vec = np.array([5, 0, 25, 0, 22, 0, 4, 0, 11])
+mat = vec.reshape((3, 3))
+res = np.flatnonzero(mat)
+
+out = [0, 2, 4, 6, 8]
 add2queue(test_name, res, out)
 
 

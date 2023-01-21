@@ -103,7 +103,7 @@ namespace Cudheart {
 		/// <returns>the resulting matrix</returns>
 		template <typename T>
 		Matrix<T>* arange(T start, T end, T jump, int height, int width) {
-			return fromVector(VectorOps::arange<T>(start, end, jump), width, height, true);
+			return fromVector(VectorOps::arange<T>(start, end, jump), height, width, true);
 		}
 
 		/// <summary>

@@ -40,14 +40,14 @@ namespace Cudheart::Testing::Arrays::MatOpsTest {
 		auto a = arange(6, 2, 3);
 
 		cmd = Numpy::arange("0", "6", "1", "int", "res");
-		cmd += Numpy::reshape("res", "(3, 2)", "res");
+		cmd += Numpy::reshape("res", "(2, 3)", "res");
 
 		Testing::submit("MatrixOps::arange<int>(int)", cmd, a->toString());
 
 		auto e = arange(0, 5, 2, 3, 1);
 
 		cmd = Numpy::arange("0", "5", "2", "int", "res");
-		cmd += Numpy::reshape("res", "(1, 3)", "res");
+		cmd += Numpy::reshape("res", "(3, 1)", "res");
 
 		Testing::submit("MatrixOps::arange<int>(int, int)", cmd, e->toString());
 

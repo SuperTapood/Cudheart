@@ -56,7 +56,7 @@ namespace Cudheart::Testing::Indexing::Searching {
 
 		Testing::submit("Searching::nonzero(Vector<int>)", cmd, a->toString());
 
-		auto mat = (Matrix<int>*)vec->reshape<int>(new Shape(3, 3));
+		auto mat = (Matrix<int>*)vec->reshape(new Shape(3, 3));
 		auto b = nonzero(mat);
 
 		cmd = Numpy::createArray("[5, 0, 25, 0, 22, 0, 4, 0, 11]", "vec");
@@ -76,13 +76,43 @@ namespace Cudheart::Testing::Indexing::Searching {
 		cmd += Numpy::argwhere("vec", "res");
 
 		Testing::submit("Searching::argwhere(Vector<int>)", cmd, a->toString());
+
+		auto mat = arange(6, 2, 3);
+		auto b = argwhere(mat);
+
+		cmd = Numpy::arange("0", "6", "1", "int", "vec");
+		cmd += Numpy::reshape("vec", "(2, 3)", "mat");
+		cmd += Numpy::argwhere("mat", "res");
+
+		Testing::submit("Searching::argwhere(Matrix<int>)", cmd, b->toString());
 	}
 
 	void testFlatnonzero() {
+		string cmd;
 
+		int arr[] = { 5, 0, 25, 0, 22, 0, 4, 0, 11 };
+
+		auto vec = new Vector(arr, 9);
+		auto a = flatnonzero(vec);
+
+		cmd = Numpy::createArray("[5, 0, 25, 0, 22, 0, 4, 0, 11]", "vec");
+		cmd += Numpy::flatnonzero("vec", "res");
+
+		Testing::submit("Searching::flatnonzero(Vector<int>)", cmd, a->toString());
+
+		auto mat = (Matrix<int>*)vec->reshape(new Shape(3, 3));
+		auto b = flatnonzero(mat);
+
+		cmd = Numpy::createArray("[5, 0, 25, 0, 22, 0, 4, 0, 11]", "vec");
+		cmd += Numpy::reshape("vec", "(3, 3)", "mat");
+		cmd += Numpy::flatnonzero("mat", "res");
+
+		Testing::submit("Searching::flatnonzero(Matrix<int>)", cmd, b->toString());
 	}
 
 	void testWhere() {
+		string cmd;
+
 
 	}
 

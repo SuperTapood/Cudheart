@@ -87,17 +87,14 @@ namespace Cudheart::Searching {
 
 		template <typename T>
 		Matrix<T>* argwhere(Vector<T>* a) {
-			int size = a->getSize();
-			auto shape = new Shape(size, 1);
-			auto mat = (Matrix<T>*)a->reshape<T>(shape);
-			auto n = nonzero<T>(mat);
-			return n;
+			Vector<T>* vec = nonzero(a);
+			return (Matrix<T>*)(vec->reshape(new Shape(vec->getSize(), 1)));
 		}
 
 		template <typename T>
 		Matrix<T>* argwhere(Matrix<T>* a) {
 			Matrix<T>* n = nonzero(a);
-			return n->transpose(true);
+			return (Matrix<T>*)n->transpose(true);
 		}
 
 		template <typename T>
