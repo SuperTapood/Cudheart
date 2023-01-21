@@ -6,16 +6,16 @@ build unit tests for everything to iron out any major bugs
 
 the modules that still need testing:
 
-- [ ] Arrays
+- [X] Arrays
     - [X] ArrOps
     - [X] IO
     - [X] Matrix
-    - [ ] MatrixOps
+    - [X] MatrixOps
     - [X] Vector
     - [X] VectorOps
 - [ ] Indexing
-- [ ] Searching
-- [ ] Sorting
+    - [ ] Searching
+    - [ ] Sorting
 - [ ] Logic
 - [ ] Math
     - [ ] BaseMath
@@ -80,6 +80,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] implement cuda samples and their helpers
 - [ ] move string ops to where its counterparts are after the template overhaul
 - [ ] consider minimizing duped functions (like vec ops and mat ops)
+- [ ] inline overloads
 - [ ] add magic methods and redo functions where they can be used
 - [ ] convert cuda and cpp pointers to shared memory
 - [ ] add axis to everything
@@ -89,6 +90,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] add specific "testing" mode to allow exceptions and stuff
 - [ ] extract testing from cudheart
 - [ ] add functions that return boolean arrays in equal in logic (seperate by equal and equal all)
+- [ ] template overloads
 - [ ] check if a string can be used without string type
 - [ ] maybe change to using custom datatypes (maybe could then make into lib?)
 - [ ] add a bunch of non array functions (maybe to use in array functions?)

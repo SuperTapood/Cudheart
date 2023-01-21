@@ -134,4 +134,40 @@ namespace Numpy {
 	string vander(string x, string N, string increasing, string oName) {
 		return oName + " = np.vander(" + x + ", " + N + ", " + increasing + ")\n";
 	}
+
+	string argmax(string a, string oName) {
+		return oName + " = np.argmax(" + a + ")\n";
+	}
+
+	string argmin(string a, string oName) {
+		return oName + " = np.argmin(" + a + ")\n";
+	}
+
+	string nonzero(string a, string oName) {
+		return oName + " = np.nonzero(" + a + ")\n";
+	}
+
+	string argwhere(string a, string oName) {
+		return oName + " = np.argwhere(" + a + ")\n";
+	}
+
+	string flatnonzero(string a, string oName) {
+		return oName + " = np.flatnonzero(" + a + ")\n";
+	}
+
+	string where(string condition, string x, string y, string oName) {
+		return oName + " = np.where(" + condition + ", " + x + ", " + y + ")\n";
+	}
+
+	string searchsorted(string a, string v, string side, string sorter, string oName) {
+		return oName + " = np.searchsorted(" + a + ", " + v + ", " + side + ", " + sorter + ")\n";
+	}
+
+	string extract(string condition, string arr, string oName) {
+		return oName + " = np.extract(" + condition + ", " + arr + ")\n";
+	}
+
+	string count_nonzero(string a, string oName) {
+		return oName + " = np.count_nonzero(" + a + ")\n";
+	}
 }

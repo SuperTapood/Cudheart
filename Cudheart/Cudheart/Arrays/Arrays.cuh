@@ -7,5 +7,6 @@
 #include "Matrix.cuh"
 #include "MatrixOps.cuh"
 #include "NDArray.cuh"
+#include "Shape.cuh"
 #include "Vector.cuh"
 #include "VectorOps.cuh"

@@ -145,6 +145,8 @@
     <ClInclude Include="Testing\Arrays\MatTest\MatTest.cuh" />
     <ClInclude Include="Testing\Arrays\VecTest\VecTest.cuh" />
     <ClInclude Include="Testing\Arrays\VecOpsTest\VecOpsTest.cuh" />
+    <ClInclude Include="Testing\Indexing\Searching\Searching.cuh" />
+    <ClInclude Include="Testing\Indexing\TestIndexing.cuh" />
     <ClInclude Include="Testing\NumpyAPI\NumpyAPI.cuh" />
     <ClInclude Include="Testing\Test.cuh" />
     <ClInclude Include="Testing\TestUtil.cuh" />
@@ -173,6 +175,8 @@
     <CudaCompile Include="Testing\Arrays\TestArray.cu" />
     <CudaCompile Include="Testing\Arrays\VecOpsTest\VecOpsTest.cu" />
     <CudaCompile Include="Testing\Arrays\VecTest\VecTest.cu" />
+    <CudaCompile Include="Testing\Indexing\Searching\Searching.cu" />
+    <CudaCompile Include="Testing\Indexing\TestIndexing.cu" />
     <CudaCompile Include="Testing\NumpyAPI\NumpyAPI.cu" />
     <CudaCompile Include="Testing\Test.cu" />
     <CudaCompile Include="Testing\TestUtil.cu" />

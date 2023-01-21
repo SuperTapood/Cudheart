@@ -1,14 +1,18 @@
 #pragma once
 
-namespace Cudheart {
-	namespace Exceptions {
+#include "../Arrays/Shape.cuh"
+#include "../Arrays/Arrays.cuh"
+
+using namespace Cudheart::NDArrays;
+
+namespace Cudheart::Searching {
 		template <typename T>
 		int argmax(NDArray<T>* a) {
 			int index = 0;
 			T value = a->get(0);
 
-			for (int i = 1; i < a->size(); i++) {
-				if (a->get(i) < value) {
+			for (int i = 1; i < a->getSize(); i++) {
+				if (a->get(i) > value) {
 					value = a->get(i);
 					index = i;
 				}
@@ -22,8 +26,8 @@ namespace Cudheart {
 			int index = 0;
 			T value = a->get(0);
 
-			for (int i = 1; i < a->size(); i++) {
-				if (a->get(i) > value) {
+			for (int i = 1; i < a->getSize(); i++) {
+				if (a->get(i) < value) {
 					value = a->get(i);
 					index = i;
 				}
@@ -68,7 +72,7 @@ namespace Cudheart {
 			Matrix<T>* result = new Matrix<T>(2, count);
 
 			int index = 0;
-			for (int i = 0; mat->getHeight(); i++) {
+			for (int i = 0; i < mat->getHeight(); i++) {
 				for (int j = 0; j < mat->getWidth(); j++) {
 					if (mat->get(i, j) != 0) {
 						result->set(0, index, i);
@@ -82,8 +86,17 @@ namespace Cudheart {
 		}
 
 		template <typename T>
-		NDArray<T>* argwhere(NDArray<T>* a) {
-			NDArray<T>* n = nonzero(a);
+		Matrix<T>* argwhere(Vector<T>* a) {
+			int size = a->getSize();
+			auto shape = new Shape(size, 1);
+			auto mat = (Matrix<T>*)a->reshape<T>(shape);
+			auto n = nonzero<T>(mat);
+			return n;
+		}
+
+		template <typename T>
+		Matrix<T>* argwhere(Matrix<T>* a) {
+			Matrix<T>* n = nonzero(a);
 			return n->transpose(true);
 		}
 
@@ -235,4 +248,3 @@ namespace Cudheart {
 			return count;
 		}
 	}
-}

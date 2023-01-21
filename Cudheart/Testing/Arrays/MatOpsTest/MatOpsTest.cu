@@ -342,6 +342,29 @@ namespace Cudheart::Testing::Arrays::MatOpsTest {
 	}
 
 	void testVander() {
+		string cmd;
 
+		auto vec = arange(6, 2, 3)->flatten();
+
+		auto a = vander(vec, 4, true);
+
+		cmd =  Numpy::arange("0", "6", "1", "int", "vec");
+		cmd += Numpy::vander("vec", "4", "True", "res");
+
+		Testing::submit("MatrixOps::vander(Vector<int>, int, bool)", cmd, a->toString());
+
+		auto b = vander(vec, 7);
+		
+		cmd = Numpy::arange("0", "6", "1", "int", "vec");
+		cmd += Numpy::vander("vec", "7", "False", "res");
+
+		Testing::submit("MatrixOps::vander(Vector<int>, int)", cmd, b->toString());
+
+		auto c = vander(vec);
+
+		cmd = Numpy::arange("0", "6", "1", "int", "vec");
+		cmd += Numpy::vander("vec", "None", "False", "res");
+
+		Testing::submit("MatrixOps::vander(Vector<int>)", cmd, c->toString());
 	}
 }

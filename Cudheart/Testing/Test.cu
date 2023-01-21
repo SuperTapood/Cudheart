@@ -6,6 +6,7 @@
 void testAll() {
 	auto start = std::chrono::system_clock::now();
 	Cudheart::Testing::testArrays();
+	Cudheart::Testing::testIndexing();
 	auto end = std::chrono::system_clock::now();
 	std::chrono::duration<double> elapsed = end - start;
 	Cudheart::Testing::Testing::get()->testAll();

@@ -690,7 +690,7 @@ mat = np.arange(0, 9, 1, dtype=int)
 mat = mat.reshape((3, 3))
 res = np.tril(mat, 1)
 
-out = [[0, 0, 2], [0, 0, 0], [0, 0, 0]]
+out = [[0, 1, 0], [3, 4, 5], [6, 7, 8]]
 add2queue(test_name, res, out)
 
 
@@ -700,7 +700,7 @@ mat = np.arange(0, 9, 1, dtype=int)
 mat = mat.reshape((3, 3))
 res = np.tril(mat, 0)
 
-out = [[0, 1, 2], [0, 0, 5], [0, 0, 0]]
+out = [[0, 0, 0], [3, 4, 0], [6, 7, 8]]
 add2queue(test_name, res, out)
 
 
@@ -710,7 +710,7 @@ mat = np.arange(0, 9, 1, dtype=int)
 mat = mat.reshape((3, 3))
 res = np.triu(mat, 1)
 
-out = [[0, 1, 0], [3, 4, 5], [6, 7, 8]]
+out = [[0, 1, 2], [0, 0, 5], [0, 0, 0]]
 add2queue(test_name, res, out)
 
 
@@ -720,7 +720,34 @@ mat = np.arange(0, 9, 1, dtype=int)
 mat = mat.reshape((3, 3))
 res = np.triu(mat, 0)
 
-out = [[0, 0, 0], [3, 4, 0], [6, 7, 8]]
+out = [[0, 1, 2], [0, 4, 5], [0, 0, 8]]
+add2queue(test_name, res, out)
+
+
+
+test_name = "MatrixOps::vander(Vector<int>, int, bool)"
+vec = np.arange(0, 6, 1, dtype=int)
+res = np.vander(vec, 4, True)
+
+out = [[1, 0, 0, 0], [1, 1, 1, 1], [1, 2, 4, 8], [1, 3, 9, 27], [1, 4, 16, 64], [1, 5, 25, 125]]
+add2queue(test_name, res, out)
+
+
+
+test_name = "MatrixOps::vander(Vector<int>, int)"
+vec = np.arange(0, 6, 1, dtype=int)
+res = np.vander(vec, 7, False)
+
+out = [[0, 0, 0, 0, 0, 0, 1], [1, 1, 1, 1, 1, 1, 1], [64, 32, 16, 8, 4, 2, 1], [729, 243, 81, 27, 9, 3, 1], [4096, 1024, 256, 64, 16, 4, 1], [15625, 3125, 625, 125, 25, 5, 1]]
+add2queue(test_name, res, out)
+
+
+
+test_name = "MatrixOps::vander(Vector<int>)"
+vec = np.arange(0, 6, 1, dtype=int)
+res = np.vander(vec, None, False)
+
+out = [[0, 0, 0, 0, 0, 1], [1, 1, 1, 1, 1, 1], [32, 16, 8, 4, 2, 1], [243, 81, 27, 9, 3, 1], [1024, 256, 64, 16, 4, 1], [3125, 625, 125, 25, 5, 1]]
 add2queue(test_name, res, out)
 
 
@@ -924,6 +951,52 @@ res = np.unique(a, True, True, True)
 comp = [[0, 1, 2, 3], [0, 3, 5, 4], [0, 0, 0, 1, 3, 2, 0, 2, 1, 0], [5, 2, 2, 1]]
 res = res[3]
 out = comp[3]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Searching::argmax(Vector<int>)"
+vec = np.array([5, 2, 25, 25, 22, 21, 4, 7, 11])
+res = np.argmax(vec)
+
+out = 2
+add2queue(test_name, res, out)
+
+
+
+test_name = "Searching::argmin(Vector<int>)"
+vec = np.array([5, 2, 25, 25, 22, 21, 4, 7, 11])
+res = np.argmin(vec)
+
+out = 1
+add2queue(test_name, res, out)
+
+
+
+test_name = "Searching::nonzero(Vector<int>)"
+vec = np.array([5, 0, 25, 0, 22, 0, 4, 0, 11])
+res = np.nonzero(vec)
+
+out = [0, 2, 4, 6, 8]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Searching::nonzero(Matrix<int>)"
+vec = np.array([5, 0, 25, 0, 22, 0, 4, 0, 11])
+mat = vec.reshape((3, 3))
+res = np.nonzero(mat)
+
+out = [[0, 0, 1, 2, 2], [0, 2, 1, 0, 2]]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Searching::argwhere(Vector<int>)"
+vec = np.arange(0, 6, 1, dtype=int)
+res = np.argwhere(vec)
+
+out = [1, 2, 3, 4, 5]
 add2queue(test_name, res, out)
 
 

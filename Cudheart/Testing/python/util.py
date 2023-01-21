@@ -36,7 +36,7 @@ def check(name, res, output):
         output = output.tolist()
     
     if type(output) == list:
-        res = [i.tolist() if type(i) == np.ndarray else i for i in output]
+        output = [i.tolist() if type(i) == np.ndarray else i for i in output]
 
     # with open("types.txt", "a") as file:
     #     file.write(f"{name}: {type(res)}, {type(output)}\n")

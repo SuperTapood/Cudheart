@@ -616,11 +616,11 @@ namespace Cudheart {
 		/// <returns>lower triangle of mat</returns>
 		template <typename T>
 		Matrix<T>* tril(Matrix<T>* mat, int k) {
-			Matrix<T>* out = zerosLike<T>(mat);
+			Matrix<T>* out = (Matrix<T>*)mat->copy();
 
 			for (int i = 0; i < mat->getHeight(); i++) {
-				for (int j = mat->getWidth() - 1; j > i + k; j--) {
-					out->set(i, j, mat->get(i, j));
+				for (int j = k + i + 1; j < mat->getWidth(); j++) {
+					out->set(i, j, 0);
 				}
 			}
 
@@ -647,11 +647,11 @@ namespace Cudheart {
 		/// <returns>upper triangle of mat</returns>
 		template <typename T>
 		Matrix<T>* triu(Matrix<T>* mat, int k) {
-			Matrix<T>* out = (Matrix<T>*)mat->copy();
+			Matrix<T>* out = zerosLike<T>(mat);
 
 			for (int i = 0; i < mat->getHeight(); i++) {
-				for (int j = mat->getWidth() - 1; j > i + k; j--) {
-					out->set(i, j, 0);
+				for (int j = k + i; j < mat->getWidth(); j++) {
+					out->set(i, j, mat->get(i, j));
 				}
 			}
 
@@ -679,19 +679,30 @@ namespace Cudheart {
 		/// <returns>output vandermonde matrix</returns>
 		template <typename T>
 		Matrix<T>* vander(Vector<T>* vec, int N, bool increasing) {
-			Matrix<T>* out = empty(vec->getSize(), N);
+			Matrix<T>* out = new Matrix<T>(vec->getSize(), N);
 
 			for (int i = 0; i < out->getHeight(); i++) {
 				for (int j = 0; j < out->getWidth(); j++) {
-					out->set(i, j, pow(vec->get(j), i));
+					out->set(i, j, pow(vec->get(i), j));
 				}
 			}
 
-			out = out->rotate(-90, true);
 
-			if (increasing) {
-				return out->flip(true);
+			if (!increasing) {
+				out->reverseRows(true);
+
+				// out->reverseRows(true);
 			}
+
+			
+
+			
+
+			// out = out->rot90(3, true);
+
+			/*if (increasing) {
+				return out->flip(true);
+			}*/
 
 			return out;
 		}

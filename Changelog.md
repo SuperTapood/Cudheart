@@ -40,6 +40,10 @@
 - fixed geomspace
 - removed identity
 - meshgrid will no longer dereference null pointer :D
+- fixed triu and tril
+- fixed vander
+- fixed nonzero
+- fixed argmin and argmax
 
 ## notes:
 - 

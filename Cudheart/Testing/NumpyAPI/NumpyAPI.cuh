@@ -81,4 +81,22 @@ namespace Numpy {
 	string triu(string M, string k, string oName);
 
 	string vander(string x, string N, string increasing, string oName);
+
+	string argmax(string a, string oName);
+
+	string argmin(string a, string oName);
+
+	string nonzero(string a, string oName);
+
+	string argwhere(string a, string oName);
+
+	string flatnonzero(string a, string oName);
+
+	string where(string condition, string x, string y, string oName);
+
+	string searchsorted(string a, string v, string side, string sorter, string oName);
+
+	string extract(string condition, string arr, string oName);
+
+	string count_nonzero(string a, string oName);
 }
