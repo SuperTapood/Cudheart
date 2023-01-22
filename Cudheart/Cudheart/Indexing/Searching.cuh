@@ -103,9 +103,9 @@ namespace Cudheart::Searching {
 		}
 
 		template <typename T>
-		inline NDArray<T>* where(NDArray<T>* condition, NDArray<T>* x, NDArray<T>* y) {
-			x->assertMatchShape(condition);
-			x->assertMatchShape(y);
+		inline NDArray<T>* where(NDArray<bool>* condition, NDArray<T>* x, NDArray<T>* y) {
+			x->assertMatchShape(condition->getShape());
+			x->assertMatchShape(y->getShape());
 
 			NDArray<T>* out = x->emptyLike();
 

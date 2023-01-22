@@ -1,17 +1,20 @@
 import numpy as np
 
+true = True
+false = False
+
 
 class Data:
     __instance = None
 
     @staticmethod
     def get():
-        if Data.__instance == None:
+        if Data.__instance is None:
             Data()
         return Data.__instance
 
     def __init__(self):
-        if Data.__instance != None:
+        if Data.__instance is not None:
             raise Exception("This class is a singleton :)")
         else:
             Data.__instance = self
@@ -28,13 +31,13 @@ def check(name, res, output):
 
     if type(res) == np.ndarray:
         res = res.tolist()
-    
+
     if type(res) == list:
         res = [i.tolist() if type(i) == np.ndarray else i for i in res]
-    
+
     if type(output) == np.ndarray:
         output = output.tolist()
-    
+
     if type(output) == list:
         output = [i.tolist() if type(i) == np.ndarray else i for i in output]
 

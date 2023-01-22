@@ -113,7 +113,18 @@ namespace Cudheart::Testing::Indexing::Searching {
 	void testWhere() {
 		string cmd;
 
+		auto condVec = new Vector({ true, false, true, true, false, false, true, false});
+		auto a = arange(8, 4, 2)->flatten();
+		auto b = arange(14, 22, 1, 8, 1)->flatten();
 
+		auto c = where(condVec, a, b);
+
+		cmd = Numpy::createArray("[true, false, true, true, false, false, true, false]", "cond");
+		cmd += Numpy::arange("0", "8", "1", "int", "a");
+		cmd += Numpy::arange("14", "22", "1", "int", "b");
+		cmd += Numpy::where("cond", "a", "b", "res");
+
+		Testing::submit("Searching::where(Vector<bool>, Vector<int>, Vector<int>)", cmd, c->toString());
 	}
 
 	void testSearchsorted() {

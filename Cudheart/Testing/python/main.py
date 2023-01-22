@@ -1030,4 +1030,15 @@ add2queue(test_name, res, out)
 
 
 
+test_name = "Searching::where(Vector<bool>, Vector<int>, Vector<int>)"
+cond = np.array([true, false, true, true, false, false, true, false])
+a = np.arange(0, 8, 1, dtype=int)
+b = np.arange(14, 22, 1, dtype=int)
+res = np.where(cond, a, b)
+
+out = [0, 15, 2, 3, 18, 19, 6, 21]
+add2queue(test_name, res, out)
+
+
+
 print_res()
