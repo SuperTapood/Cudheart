@@ -45,6 +45,7 @@
 - fixed nonzero
 - fixed argmin and argmax
 - fixed argwhere
+- fixed searchsorted
 
 ## notes:
 - 

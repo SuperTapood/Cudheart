@@ -14,7 +14,7 @@ the modules that still need testing:
     - [X] Vector
     - [X] VectorOps
 - [ ] Indexing
-    - [ ] Searching
+    - [X] Searching
     - [ ] Sorting
 - [ ] Logic
 - [ ] Math

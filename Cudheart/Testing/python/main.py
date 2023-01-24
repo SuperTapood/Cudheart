@@ -1,3 +1,5 @@
+# this file is generated automatically to simplify unit testing :)
+
 from util import *
 
 import warnings
@@ -1037,6 +1039,157 @@ b = np.arange(14, 22, 1, dtype=int)
 res = np.where(cond, a, b)
 
 out = [0, 15, 2, 3, 18, 19, 6, 21]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Searching::searchsorted(Vector<int>, int, 'left', Vector<int>)"
+vec = np.arange(1, 6, 1, dtype=int)
+v = np.array([-10, 10, 2, 3])
+sorter = np.arange(0, 5, 1, dtype=int)
+res = np.searchsorted(vec, v[0], 'left', sorter)
+
+out = 0
+add2queue(test_name, res, out)
+
+
+
+test_name = "Searching::searchsorted(Vector<int>, int, 'right', Vector<int>)"
+vec = np.arange(1, 6, 1, dtype=int)
+v = np.array([-10, 10, 2, 3])
+sorter = np.arange(0, 5, 1, dtype=int)
+res = np.searchsorted(vec, v[0], 'right', sorter)
+
+out = 0
+add2queue(test_name, res, out)
+
+
+
+test_name = "Searching::searchsorted(Vector<int>, int, 'left')"
+vec = np.arange(1, 6, 1, dtype=int)
+v = np.array([-10, 10, 2, 3])
+sorter = np.arange(0, 5, 1, dtype=int)
+res = np.searchsorted(vec, v[0], 'left', None)
+
+out = 0
+add2queue(test_name, res, out)
+
+
+
+test_name = "Searching::searchsorted(Vector<int>, int, 'left')"
+vec = np.arange(1, 6, 1, dtype=int)
+v = np.array([-10, 10, 2, 3])
+sorter = np.arange(0, 5, 1, dtype=int)
+res = np.searchsorted(vec, v[0], 'left', None)
+
+out = 0
+add2queue(test_name, res, out)
+
+
+
+test_name = "Searching::searchsorted(Vector<int>, int, Vector<int>)"
+vec = np.arange(1, 6, 1, dtype=int)
+v = np.array([-10, 10, 2, 3])
+sorter = np.arange(0, 5, 1, dtype=int)
+res = np.searchsorted(vec, v[0], 'left', sorter)
+
+out = 0
+add2queue(test_name, res, out)
+
+
+
+test_name = "Searching::searchsorted(Vector<int>, int)"
+vec = np.arange(1, 6, 1, dtype=int)
+v = np.array([-10, 10, 2, 3])
+sorter = np.arange(0, 5, 1, dtype=int)
+res = np.searchsorted(vec, v[0], 'left', None)
+
+out = 0
+add2queue(test_name, res, out)
+
+
+
+test_name = "Searching::searchsorted(Vector<int>, Vector<int>, 'left', Vector<int>)"
+vec = np.arange(1, 6, 1, dtype=int)
+v = np.array([-10, 10, 2, 3])
+sorter = np.arange(0, 5, 1, dtype=int)
+res = np.searchsorted(vec, v, 'left', sorter)
+
+out = [0, 5, 1, 2]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Searching::searchsorted(Vector<int>, Vector<int>, 'right', Vector<int>)"
+vec = np.arange(1, 6, 1, dtype=int)
+v = np.array([-10, 10, 2, 3])
+sorter = np.arange(0, 5, 1, dtype=int)
+res = np.searchsorted(vec, v, 'right', sorter)
+
+out = [0, 5, 2, 3]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Searching::searchsorted(Vector<int>, Vector<int>, 'left')"
+vec = np.arange(1, 6, 1, dtype=int)
+v = np.array([-10, 10, 2, 3])
+sorter = np.arange(0, 5, 1, dtype=int)
+res = np.searchsorted(vec, v, 'left', None)
+
+out = [0, 5, 1, 2]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Searching::searchsorted(Vector<int>, Vector<int>, 'right')"
+vec = np.arange(1, 6, 1, dtype=int)
+v = np.array([-10, 10, 2, 3])
+sorter = np.arange(0, 5, 1, dtype=int)
+res = np.searchsorted(vec, v, 'right', None)
+
+out = [0, 5, 2, 3]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Searching::searchsorted(Vector<int>, Vector<int>, Vector<int>)"
+vec = np.arange(1, 6, 1, dtype=int)
+v = np.array([-10, 10, 2, 3])
+sorter = np.arange(0, 5, 1, dtype=int)
+res = np.searchsorted(vec, v, 'left', sorter)
+
+out = [0, 5, 1, 2]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Searching::searchsorted(Vector<int>, Vector<int>)"
+vec = np.arange(1, 6, 1, dtype=int)
+v = np.array([-10, 10, 2, 3])
+sorter = np.arange(0, 5, 1, dtype=int)
+res = np.searchsorted(vec, v, 'left', None)
+
+out = [0, 5, 1, 2]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Searching::extract(Vector<int>, Vector<int>)"
+cond = np.array([true, false, false, true, false, true, true, false, true])
+vec = np.arange(0, 9, 1, dtype=int)
+res = np.extract(cond, vec)
+
+out = [0, 3, 5, 6, 8]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Searching::count_nonzero(Vector<int>)"
+v = np.array([0, 1, 7, 0, 3, 0, 2, 19])
+res = np.count_nonzero(v)
+
+out = 5
 add2queue(test_name, res, out)
 
 

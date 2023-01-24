@@ -123,8 +123,7 @@ namespace Cudheart::Searching {
 
 		template <typename T>
 		inline int searchsorted(Vector<T>* a, T v, string side, Vector<int>* sorter) {
-			int out = 0;
-			a->assertMatchShape(sorter);
+			a->assertMatchShape(sorter->getShape());
 			if (side == "left") {
 				for (int i = 1; i < a->getSize(); i++) {
 					if (a->get(sorter->get(i - 1)) < v && v <= a->get(sorter->get(i))) {
@@ -133,20 +132,22 @@ namespace Cudheart::Searching {
 				}
 			}
 			else if (side == "right") {
-				out = a->getSize();
-				for (int i = i < a->getSize() - 1; i > 0; i++) {
+				for (int i = 1; i < a->getSize(); i++) {
 					if (a->get(sorter->get(i - 1)) <= v && v < a->get(sorter->get(i))) {
 						return i;
 					}
 				}
 			}
 
-			return out;
+			if (v > a->get(0)) {
+				return a->getSize();
+			}
+
+			return 0;
 		}
 
 		template <typename T>
 		int searchsorted(Vector<T>* a, T v, string side) {
-			int out = 0;
 			if (side == "left") {
 				for (int i = 1; i < a->getSize(); i++) {
 					if (a->get(i - 1) < v && v <= a->get(i)) {
@@ -155,15 +156,18 @@ namespace Cudheart::Searching {
 				}
 			}
 			else if (side == "right") {
-				out = a->getSize();
-				for (int i = i < a->getSize() - 1; i > 0; i++) {
+				for (int i = a->getSize() - 1; i >= 0; i--) {
 					if (a->get(i - 1) <= v && v < a->get(i)) {
 						return i;
 					}
 				}
 			}
 
-			return out;
+			if (v > a->get(0)) {
+				return a->getSize();
+			}
+
+			return 0;
 		}
 
 		template <typename T>
@@ -178,10 +182,10 @@ namespace Cudheart::Searching {
 
 		template <typename T>
 		inline Vector<int>* searchsorted(Vector<T>* a, Vector<T>* v, string side, Vector<int>* sorter) {
-			Vector<int>* out = new Vector<int>(a->getSize());
+			Vector<int>* out = new Vector<int>(v->getSize());
 
 			for (int i = 0; i < out->getSize(); i++) {
-				out->set(i, searchsorted(a, v, side, sorter));
+				out->set(i, searchsorted(a, v->get(i), side, sorter));
 			}
 
 			return out;
@@ -189,10 +193,10 @@ namespace Cudheart::Searching {
 
 		template <typename T>
 		Vector<int>* searchsorted(Vector<T>* a, Vector<T>* v, string side) {
-			Vector<int>* out = new Vector<int>(a->getSize());
+			Vector<int>* out = new Vector<int>(v->getSize());
 
 			for (int i = 0; i < out->getSize(); i++) {
-				out->set(i, searchsorted(a, v, side));
+				out->set(i, searchsorted(a, v->get(i), side));
 			}
 
 			return out;
@@ -210,7 +214,7 @@ namespace Cudheart::Searching {
 
 		template <typename T>
 		inline Vector<T>* extract(Vector<bool>* condition, Vector<T>* arr) {
-			condition->assertMatchShape(arr);
+			condition->assertMatchShape(arr->getShape());
 			int size = 0;
 
 			for (int i = 0; i < condition->getSize(); i++) {
@@ -230,6 +234,11 @@ namespace Cudheart::Searching {
 			}
 
 			return vec;
+		}
+
+		template <typename T>
+		inline Vector<T>* extract(Matrix<bool>* condition, Matrix<T>* arr) {
+			return extract(condition->flatten(), arr->flatten());
 		}
 
 		template <typename T>
