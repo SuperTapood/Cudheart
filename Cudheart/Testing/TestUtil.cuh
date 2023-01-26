@@ -39,4 +39,3 @@ namespace Cudheart::Testing {
 		static void testAll();
 	};
 }
-

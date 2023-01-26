@@ -20,12 +20,11 @@
 
 using namespace std;
 
-
 namespace Numpy {
 	string createArray(string arr, string oName);
 
 	string createArray(string arr, string shape, string oName);
-	
+
 	string reshape(string name, string newShape, string oName);
 
 	string empty(string shape, string oName);
@@ -99,4 +98,12 @@ namespace Numpy {
 	string extract(string condition, string arr, string oName);
 
 	string count_nonzero(string a, string oName);
+
+	string sort(string a, string kind, string oName);
+
+	string argsort(string a, string kind, string oName);
+
+	string partition(string a, string kth, string oName);
+
+	string argpartition(string a, string kth, string oName);
 }

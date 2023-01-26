@@ -170,4 +170,21 @@ namespace Numpy {
 	string count_nonzero(string a, string oName) {
 		return oName + " = np.count_nonzero(" + a + ")\n";
 	}
+
+	string sort(string a, string kind, string oName) {
+		return oName + " = np.sort(" + a + ", kind=" + kind + ")\n";
+	}
+
+	string argsort(string a, string kind, string oName) {
+		return oName + " = np.argsort(" + a + ", kind=" + kind + ")\n";
+	}
+
+	string partition(string a, string kth, string oName) {
+		return oName + " = np.partition(" + a + ", kth=" + kth + ")\n";
+	}
+
+	string argpartition(string a, string kth, string oName) {
+		return oName + " = np.argpartition(" + a + ", kth=" + kth + ")\n";
+	}
+
 }

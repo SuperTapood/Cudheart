@@ -88,7 +88,7 @@ namespace Cudheart::Testing::Arrays::IO {
 
 		save("Testing\\python\\file.txt", fromString<int>(str));
 
-		cmd =  Numpy::fromFile("file.txt", ' ', "int", "res");
+		cmd = Numpy::fromFile("file.txt", ' ', "int", "res");
 		cmd += "res = res[0:3]";
 
 		Testing::submit("IO::fromFile<int>(string, char, int)", cmd, fromFile<int>("file.txt", ' ', 3)->toString());
@@ -123,7 +123,7 @@ namespace Cudheart::Testing::Arrays::IO {
 			pass = vec->get(i) == i * 10;
 		}
 
-		cmd =  "func = lambda x: 10 * x\n";
+		cmd = "func = lambda x: 10 * x\n";
 		cmd += Numpy::fromFunction("func", "(17,)", "int", "res");
 
 		Testing::submit("IO::fromFunction(int func(int), int)", cmd, vec->toString());

@@ -46,6 +46,7 @@
 - fixed argmin and argmax
 - fixed argwhere
 - fixed searchsorted
+- fixed some sorting mishaps
 
 ## notes:
 - 

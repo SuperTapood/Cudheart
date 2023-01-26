@@ -28,7 +28,7 @@ namespace Cudheart::Testing::Arrays::MatOpsTest {
 	void testEmptyLike() {
 		auto a = new Matrix<int>(5, 5);
 		auto b = emptyLike<int>(a);
-		
+
 		string cmd = "res = [5, 5]\n";
 
 		Testing::submit("MatrixOps::emptyLike<int>", cmd, b->getShape()->toString());
@@ -90,7 +90,7 @@ namespace Cudheart::Testing::Arrays::MatOpsTest {
 
 		cmd = Numpy::linspace("7", "12", "2", "True", "float", "res");
 		cmd += Numpy::reshape("res", "(2, 1)", "res");
-		
+
 		Testing::submit("MatrixOps::linspace(float, float, float)", cmd, b->toString());
 
 		auto c = linspace(5.f, 10.f, 10.f, false, 5, 2);
@@ -138,7 +138,7 @@ namespace Cudheart::Testing::Arrays::MatOpsTest {
 	void testLogspace() {
 		string cmd;
 		auto a = logspace(5.f, 10.f, 5, 10);
-		
+
 		cmd = Numpy::logspace("5", "10", "50", "True", "10", "float", "res");
 		cmd += Numpy::reshape("res", "(5, 10)", "res");
 
@@ -219,7 +219,7 @@ namespace Cudheart::Testing::Arrays::MatOpsTest {
 
 		auto mats = meshgrid<double>(va, vb);
 
-		cmd =  Numpy::arange("0", "10", "1", "int", "a");
+		cmd = Numpy::arange("0", "10", "1", "int", "a");
 		cmd += Numpy::arange("0", "10", "1", "int", "b");
 		cmd += Numpy::meshgrid("a", "b", "res");
 		cmd += "comp = np.array([" + mats[0]->toString() + ", " + mats[1]->toString() + "])";
@@ -228,7 +228,7 @@ namespace Cudheart::Testing::Arrays::MatOpsTest {
 
 		auto matss = meshgrid<int>(base, base);
 
-		cmd =  Numpy::arange("0", "10", "1", "int", "a");
+		cmd = Numpy::arange("0", "10", "1", "int", "a");
 		cmd += Numpy::arange("0", "10", "1", "int", "b");
 		cmd += Numpy::reshape("a", "(5, 2)", "a");
 		cmd += Numpy::reshape("b", "(5, 2)", "b");
@@ -281,7 +281,7 @@ namespace Cudheart::Testing::Arrays::MatOpsTest {
 		string cmd;
 
 		auto a = tri<int>(2, 2, 1);
-		
+
 		cmd = Numpy::tri("2", "2", "1", "int", "res");
 
 		Testing::submit("MatrixOps::tri(int, int, int)", cmd, a->toString());
@@ -302,7 +302,7 @@ namespace Cudheart::Testing::Arrays::MatOpsTest {
 	void testTril() {
 		string cmd;
 		auto mat = arange(9, 3, 3);
-		
+
 		auto a = tril(mat, 1);
 
 		cmd = Numpy::arange("0", "9", "1", "int", "mat");
@@ -348,13 +348,13 @@ namespace Cudheart::Testing::Arrays::MatOpsTest {
 
 		auto a = vander(vec, 4, true);
 
-		cmd =  Numpy::arange("0", "6", "1", "int", "vec");
+		cmd = Numpy::arange("0", "6", "1", "int", "vec");
 		cmd += Numpy::vander("vec", "4", "True", "res");
 
 		Testing::submit("MatrixOps::vander(Vector<int>, int, bool)", cmd, a->toString());
 
 		auto b = vander(vec, 7);
-		
+
 		cmd = Numpy::arange("0", "6", "1", "int", "vec");
 		cmd += Numpy::vander("vec", "7", "False", "res");
 

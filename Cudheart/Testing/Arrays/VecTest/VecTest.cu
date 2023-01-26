@@ -8,7 +8,7 @@ namespace Cudheart::Testing::Arrays::VecTest {
 	}
 
 	void testConstructors() {
-		int arr[] = {5, 7, 451, 14, 25, 250, 52205, 255, 897};
+		int arr[] = { 5, 7, 451, 14, 25, 250, 52205, 255, 897 };
 
 		string sarr = "[5, 7, 451, 14, 25, 250, 52205, 255, 897]";
 
@@ -18,7 +18,7 @@ namespace Cudheart::Testing::Arrays::VecTest {
 
 		Testing::submit("Vector<int>(int[], int)", cmd, vec->toString());
 
-		vec = new Vector<int>({5, 7, 451, 14, 25, 250, 52205, 255, 897});
+		vec = new Vector<int>({ 5, 7, 451, 14, 25, 250, 52205, 255, 897 });
 
 		Testing::submit("Vector<int>(int{})", cmd, vec->toString());
 	}

@@ -21,8 +21,8 @@ namespace Cudheart::Testing::Arrays::ArrayOps {
 		string cmd;
 
 		auto vec = fromString<int>(str);
-		
-		cmd =  Numpy::arange("1", "4", "1", "int", "vec");
+
+		cmd = Numpy::arange("1", "4", "1", "int", "vec");
 		cmd += Numpy::append("vec", "4", "None", "res");
 
 		auto a = append(vec, 4);
@@ -52,7 +52,7 @@ namespace Cudheart::Testing::Arrays::ArrayOps {
 		auto a = fromString<float>(str);
 		auto b = fromString<float>(str);
 
-		cmd =  Numpy::arange("1", "4", "1", "int", "a");
+		cmd = Numpy::arange("1", "4", "1", "int", "a");
 		cmd += Numpy::arange("1", "4", "1", "int", "b");
 		cmd += Numpy::concatenate("a", "b", "res");
 
@@ -63,7 +63,7 @@ namespace Cudheart::Testing::Arrays::ArrayOps {
 		auto c = arange(4, 2, 2);
 		auto d = arange(4, 2, 2);
 
-		cmd =  Numpy::arange("0", "4", "1", "int", "a");
+		cmd = Numpy::arange("0", "4", "1", "int", "a");
 		cmd += Numpy::reshape("a", "(2, 2)", "a");
 		cmd += Numpy::arange("0", "4", "1", "int", "b");
 		cmd += Numpy::reshape("b", "(2, 2)", "b");
@@ -83,7 +83,7 @@ namespace Cudheart::Testing::Arrays::ArrayOps {
 		auto a = arange(size);
 		auto arr = split(a, vecs);
 
-		cmd =  Numpy::arange("0", to_string(size), "1", "int", "a");
+		cmd = Numpy::arange("0", to_string(size), "1", "int", "a");
 		cmd += Numpy::split("a", to_string(vecs), "res");
 		cmd += "comp = np.array([";
 		for (int i = 0; i < vecs - 1; i++) {
@@ -114,7 +114,7 @@ namespace Cudheart::Testing::Arrays::ArrayOps {
 		auto a = arange(size);
 		auto arr = tile(a, reps);
 
-		cmd =  Numpy::arange("0", to_string(size), "1", "int", "a");
+		cmd = Numpy::arange("0", to_string(size), "1", "int", "a");
 		cmd += Numpy::tile("a", to_string(reps), "res");
 
 		Testing::submit("ArrayOps::tile(Vector<int>, int)", cmd, arr->toString());
@@ -129,7 +129,7 @@ namespace Cudheart::Testing::Arrays::ArrayOps {
 		auto c = (Matrix<int>*)(a->reshape(new Shape(h, w)));
 		auto crr = tile(c, reps);
 
-		cmd =  Numpy::arange("0", to_string(size), "1", "int", "a");
+		cmd = Numpy::arange("0", to_string(size), "1", "int", "a");
 		cmd += Numpy::reshape("a", "(" + to_string(h) + ", " + to_string(w) + ")", "a");
 		cmd += Numpy::tile("a", to_string(reps), "res");
 

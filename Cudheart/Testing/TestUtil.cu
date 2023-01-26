@@ -52,8 +52,6 @@ namespace Cudheart::Testing {
 			res += arr[i];
 		}
 
-
-
 		/*cout << "input: " << output << endl;
 		cout << "res: " << res << endl;*/
 		return res;
@@ -84,7 +82,6 @@ namespace Cudheart::Testing {
 
 		string res = exec("python Testing\\python\\main.py");
 
-
 		int tests = get()->tests;
 		std::vector<string> names, np, cud, results;
 
@@ -114,7 +111,6 @@ namespace Cudheart::Testing {
 			res.erase(0, pos + delimiter.length());
 		}
 
-
 		for (int i = 0; i < tests; i++) {
 			if (results[i] != "T") {
 				cout << "Test " << names[i] << " failed!\n";
@@ -127,6 +123,5 @@ namespace Cudheart::Testing {
 
 			// cout << "Test " + results[i] + "passed!\n";
 		}
-
 	}
 }

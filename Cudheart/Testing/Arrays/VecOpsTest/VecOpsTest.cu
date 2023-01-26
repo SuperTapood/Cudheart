@@ -22,7 +22,7 @@ namespace Cudheart::Testing::Arrays::VecOpsTest {
 		auto b = emptyLike<int>(a);
 		string cmd;
 
-		cmd =  Numpy::empty("(5,)", "res");
+		cmd = Numpy::empty("(5,)", "res");
 		cmd += "res = res.shape";
 
 		Testing::submit("VectorOps::emptyLike<int>", cmd, b->getShape()->toString());

@@ -5,9 +5,9 @@ namespace Cudheart::Testing::Indexing::Searching {
 	void test();
 
 	void testArgmax();
-	
+
 	void testArgmin();
-	
+
 	void testNonzero();
 
 	void testArgwhere();
@@ -17,8 +17,8 @@ namespace Cudheart::Testing::Indexing::Searching {
 	void testWhere();
 
 	void testSearchsorted();
-	
+
 	void testExtract();
-	
+
 	void testCount_nonzero();
 }

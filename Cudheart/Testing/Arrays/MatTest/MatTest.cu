@@ -161,7 +161,7 @@ namespace Cudheart::Testing::Arrays::MatTest {
 
 		Matrix<int>* mat2 = mat->augment(vec);
 
-		cmd =  Numpy::createArray("[5, 7, 451, 14, 25, 250, 52205, 255, 897]", "vec");
+		cmd = Numpy::createArray("[5, 7, 451, 14, 25, 250, 52205, 255, 897]", "vec");
 		cmd += Numpy::createArray(mat->toString(), "mat");
 		cmd += Numpy::createArray("[5, 7, 451, 14, 25, 250, 52205, 255, 897]", "(9, 1)", "mat2");
 		cmd += Numpy::augment("mat", "mat2", 1, "res");

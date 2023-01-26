@@ -13,9 +13,9 @@ the modules that still need testing:
     - [X] MatrixOps
     - [X] Vector
     - [X] VectorOps
-- [ ] Indexing
+- [X] Indexing
     - [X] Searching
-    - [ ] Sorting
+    - [X] Sorting
 - [ ] Logic
 - [ ] Math
     - [ ] BaseMath
@@ -123,8 +123,12 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] fix the new object creation in complex math cpp
 - [ ] make sure complex numbers won't be placed where they shouldn't (wherever std is involved)
 - [ ] fix shape mismatch exception
+- [ ] maybe remove Kind enum class
 - [ ] add map function to ndarray
+- [ ] add timsort function :)
 - [ ] make all overrides inlines maybe?
+- [ ] maybe move stuff to ndarray
+- [ ] make sense of sorting lel
 - [ ] add overloads to simple random
 - [ ] add support for massive vectors and matrices
 - [ ] add shape argument to functions instead of using return types (+ initializer list overload?)
@@ -134,6 +138,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] add so many checks bro
 - [ ] change overloads to defaults
 - [ ] add more overloads for expscpp
+- [ ] make matrix use vector internally
 - [ ] add more overloads for basemathcpp
 - [ ] remove all the useless overloads
 - [ ] handle stupid exceptions (things like axis > 1 or axis < 0 things like that)
@@ -203,6 +208,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] add more creation functions to ndarray, vector and matrix
 - [ ] add swap function to ndarray family
 - [ ] test the complex type compatibility with the rest of the functions
+- [ ] fix partition stuff
 - [ ] make most of the functions applicable to the classes themselves (i.e. a.add(b) instead of add(a,b))
 - [ ] make matrix ops not dependent on vector ops
 - [ ] add more overloads to histogram2d

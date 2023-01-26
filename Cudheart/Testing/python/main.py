@@ -1194,4 +1194,103 @@ add2queue(test_name, res, out)
 
 
 
+test_name = "Sorting::quicksort(Vector<int>)"
+vec = np.array([1, 25, 5820, 5, 58, 22, 48, 14, 32, 22, 99, 90900, 15, 11])
+res = np.sort(vec, kind='quicksort')
+
+out = [1, 5, 11, 14, 15, 22, 22, 25, 32, 48, 58, 99, 5820, 90900]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Sorting::mergesort(Vector<int>)"
+vec = np.array([1, 25, 5820, 5, 58, 22, 48, 14, 32, 22, 99, 90900, 15, 11])
+res = np.sort(vec, kind='mergesort')
+
+out = [1, 5, 11, 14, 15, 22, 22, 25, 32, 48, 58, 99, 5820, 90900]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Sorting::heapsort(Vector<int>)"
+vec = np.array([1, 25, 5820, 5, 58, 22, 48, 14, 32, 22, 99, 90900, 15, 11])
+res = np.sort(vec, kind='heapsort')
+
+out = [1, 5, 11, 14, 15, 22, 22, 25, 32, 48, 58, 99, 5820, 90900]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Sorting::sort(Vector<int>, Kind::Quicksort)"
+vec = np.array([1, 25, 5820, 5, 58, 22, 48, 14, 32, 22, 99, 90900, 15, 11])
+res = np.sort(vec, kind='quicksort')
+
+out = [1, 5, 11, 14, 15, 22, 22, 25, 32, 48, 58, 99, 5820, 90900]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Sorting::sort(Vector<int>, Kind::Mergesort)"
+vec = np.array([1, 25, 5820, 5, 58, 22, 48, 14, 32, 22, 99, 90900, 15, 11])
+res = np.sort(vec, kind='mergesort')
+
+out = [1, 5, 11, 14, 15, 22, 22, 25, 32, 48, 58, 99, 5820, 90900]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Sorting::sort(Vector<int>, Kind::Heapsort)"
+vec = np.array([1, 25, 5820, 5, 58, 22, 48, 14, 32, 22, 99, 90900, 15, 11])
+res = np.sort(vec, kind='heapsort')
+
+out = [1, 5, 11, 14, 15, 22, 22, 25, 32, 48, 58, 99, 5820, 90900]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Sorting::sort(Vector<int>)"
+vec = np.array([1, 25, 5820, 5, 58, 22, 48, 14, 32, 22, 99, 90900, 15, 11])
+res = np.sort(vec, kind='quicksort')
+
+out = [1, 5, 11, 14, 15, 22, 22, 25, 32, 48, 58, 99, 5820, 90900]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Sorting::argsort(Vector<int>, Kind::Quicksort)"
+vec = np.array([1, 25, 5820, 5, 58, 22, 48, 14, 32, 22, 99, 90900, 15, 11])
+res = np.argsort(vec, kind='quicksort')
+
+out = [0, 3, 13, 7, 12, 5, 9, 1, 8, 6, 4, 10, 2, 11]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Sorting::argsort(Vector<int>, Kind::Mergesort)"
+vec = np.array([1, 25, 5820, 5, 58, 22, 48, 14, 32, 22, 99, 90900, 15, 11])
+res = np.argsort(vec, kind='mergesort')
+
+out = [0, 3, 13, 7, 12, 5, 9, 1, 8, 6, 4, 10, 2, 11]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Sorting::argsort(Vector<int>, Kind::Heapsort)"
+vec = np.array([1, 25, 5820, 5, 58, 22, 48, 14, 32, 22, 99, 90900, 15, 11])
+res = np.argsort(vec, kind='heapsort')
+
+out = [0, 3, 13, 7, 12, 5, 9, 1, 8, 6, 4, 10, 2, 11]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Sorting::argsort(Vector<int>)"
+vec = np.array([1, 25, 5820, 5, 58, 22, 48, 14, 32, 22, 99, 90900, 15, 11])
+res = np.argsort(vec, kind='quicksort')
+
+out = [0, 3, 13, 7, 12, 5, 9, 1, 8, 6, 4, 10, 2, 11]
+add2queue(test_name, res, out)
+
+
+
 print_res()

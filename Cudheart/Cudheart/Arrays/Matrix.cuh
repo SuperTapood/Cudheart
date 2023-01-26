@@ -512,7 +512,7 @@ namespace Cudheart {
 				if (inplace) {
 					m_height = mat->getHeight();
 					m_width = mat->getWidth();
-					
+
 					for (int i = 0; i < m_size; i++) {
 						m_data[i] = mat->m_data[i];
 					}

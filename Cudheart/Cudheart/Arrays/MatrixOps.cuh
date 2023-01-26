@@ -687,16 +687,11 @@ namespace Cudheart {
 				}
 			}
 
-
 			if (!increasing) {
 				out->reverseRows(true);
 
 				// out->reverseRows(true);
 			}
-
-			
-
-			
 
 			// out = out->rot90(3, true);
 

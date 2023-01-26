@@ -17,7 +17,7 @@ namespace Cudheart::Testing::Indexing::Searching {
 	void testArgmax() {
 		string cmd;
 
-		int arr[] = {5, 2, 25, 25, 22, 21, 4, 7, 11};
+		int arr[] = { 5, 2, 25, 25, 22, 21, 4, 7, 11 };
 
 		auto vec = new Vector(arr, 9);
 		auto out = argmax(vec);
@@ -26,7 +26,6 @@ namespace Cudheart::Testing::Indexing::Searching {
 		cmd += Numpy::argmax("vec", "res");
 
 		Testing::submit("Searching::argmax(Vector<int>)", cmd, to_string(out));
-
 	}
 
 	void testArgmin() {
@@ -68,7 +67,7 @@ namespace Cudheart::Testing::Indexing::Searching {
 
 	void testArgwhere() {
 		string cmd;
-		
+
 		auto vec = arange(6, 2, 3)->flatten();
 		auto a = argwhere(vec);
 
@@ -113,7 +112,7 @@ namespace Cudheart::Testing::Indexing::Searching {
 	void testWhere() {
 		string cmd;
 
-		auto condVec = new Vector({ true, false, true, true, false, false, true, false});
+		auto condVec = new Vector({ true, false, true, true, false, false, true, false });
 		auto a = arange(8, 4, 2)->flatten();
 		auto b = arange(14, 22, 1, 8, 1)->flatten();
 
@@ -137,7 +136,7 @@ namespace Cudheart::Testing::Indexing::Searching {
 		cmd = Numpy::arange("1", "6", "1", "int", "vec");
 		cmd += Numpy::createArray("[-10, 10, 2, 3]", "v");
 		cmd += Numpy::arange("0", "5", "1", "int", "sorter");
-		
+
 		auto a = searchsorted(vec, v->get(0), "left", sorter);
 		add = Numpy::searchsorted("vec", "v[0]", "'left'", "sorter", "res");
 		Testing::submit("Searching::searchsorted(Vector<int>, int, 'left', Vector<int>)", cmd + add, to_string(a));
@@ -149,39 +148,39 @@ namespace Cudheart::Testing::Indexing::Searching {
 		auto b = searchsorted(vec, v->get(0), "left");
 		add = Numpy::searchsorted("vec", "v[0]", "'left'", "None", "res");
 		Testing::submit("Searching::searchsorted(Vector<int>, int, 'left')", cmd + add, to_string(b));
-		
+
 		auto br = searchsorted(vec, v->get(0), "right");
 		add = Numpy::searchsorted("vec", "v[0]", "'left'", "None", "res");
 		Testing::submit("Searching::searchsorted(Vector<int>, int, 'left')", cmd + add, to_string(br));
-		
+
 		auto c = searchsorted(vec, v->get(0), sorter);
 		add = Numpy::searchsorted("vec", "v[0]", "'left'", "sorter", "res");
 		Testing::submit("Searching::searchsorted(Vector<int>, int, Vector<int>)", cmd + add, to_string(c));
-		
+
 		auto d = searchsorted(vec, v->get(0));
 		add = Numpy::searchsorted("vec", "v[0]", "'left'", "None", "res");
 		Testing::submit("Searching::searchsorted(Vector<int>, int)", cmd + add, to_string(d));
-		
+
 		auto e = searchsorted(vec, v, "left", sorter);
 		add = Numpy::searchsorted("vec", "v", "'left'", "sorter", "res");
 		Testing::submit("Searching::searchsorted(Vector<int>, Vector<int>, 'left', Vector<int>)", cmd + add, e->toString());
-		
+
 		auto er = searchsorted(vec, v, "right", sorter);
 		add = Numpy::searchsorted("vec", "v", "'right'", "sorter", "res");
 		Testing::submit("Searching::searchsorted(Vector<int>, Vector<int>, 'right', Vector<int>)", cmd + add, er->toString());
-		
+
 		auto f = searchsorted(vec, v, "left");
 		add = Numpy::searchsorted("vec", "v", "'left'", "None", "res");
 		Testing::submit("Searching::searchsorted(Vector<int>, Vector<int>, 'left')", cmd + add, f->toString());
-		
+
 		auto fr = searchsorted(vec, v, "right");
 		add = Numpy::searchsorted("vec", "v", "'right'", "None", "res");
 		Testing::submit("Searching::searchsorted(Vector<int>, Vector<int>, 'right')", cmd + add, fr->toString());
-		
+
 		auto g = searchsorted(vec, v, sorter);
 		add = Numpy::searchsorted("vec", "v", "'left'", "sorter", "res");
 		Testing::submit("Searching::searchsorted(Vector<int>, Vector<int>, Vector<int>)", cmd + add, g->toString());
-		
+
 		auto h = searchsorted(vec, v);
 		add = Numpy::searchsorted("vec", "v", "'left'", "None", "res");
 		Testing::submit("Searching::searchsorted(Vector<int>, Vector<int>)", cmd + add, h->toString());
