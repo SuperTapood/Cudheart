@@ -63,6 +63,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] integrate std functions for optimization
 - [ ] allow functions to accept ndarray and take it from there
 - [ ] rename shapelike to reshape
+- [ ] add empty to arrayops which accepts shape and remove emptylike from ndarray
 - [ ] dummy proof the constructors and stuff
 - [ ] test and optimize the inplace argument
 - [ ] further integrate more exceptions
@@ -84,6 +85,8 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] add magic methods and redo functions where they can be used
 - [ ] convert cuda and cpp pointers to shared memory
 - [ ] add axis to everything
+- [ ] more template variety
+- [ ] make logic module use operator overloads (maybe it will even be redundent)
 - [ ] differentiate between vector and matrix ops (name wise) (maybe?)
 - [ ] maybe start returning vectors of vectors?
 - [ ] properly name variables

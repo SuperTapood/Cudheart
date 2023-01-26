@@ -1,9 +1,159 @@
-﻿  Compiling CUDA source file Testing\Indexing\Sorting\Sorting.cu...
+﻿  Compiling CUDA source file Main.cu...
+  Compiling CUDA source file Testing\Arrays\ArrayOpsTest\ArrayOpsTest.cu...
+  Compiling CUDA source file Testing\Test.cu...
+  Compiling CUDA source file Testing\Indexing\TestIndexing.cu...
+  Compiling CUDA source file Testing\Arrays\MatOpsTest\MatOpsTest.cu...
+  Compiling CUDA source file Testing\Arrays\IOTest\IOTest.cu...
+  Compiling CUDA source file Testing\Arrays\TestArray.cu...
+  Compiling CUDA source file Testing\TestUtil.cu...
+  Compiling CUDA source file Testing\Arrays\MatTest\MatTest.cu...
+  Compiling CUDA source file Testing\Arrays\VecOpsTest\VecOpsTest.cu...
+  Compiling CUDA source file Testing\Arrays\VecTest\VecTest.cu...
+  Compiling CUDA source file Testing\Indexing\Sorting\Sorting.cu...
+  Compiling CUDA source file Testing\Indexing\Searching\Searching.cu...
+  
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static --std c++17 -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc143.pdb /FS /Zi /RTC1 /MDd " -o C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\TestUtil.cu.obj "C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\TestUtil.cu" 
+  
+  
+  
+  
   
   C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static --std c++17 -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc143.pdb /FS /Zi /RTC1 /MDd " -o C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\Sorting.cu.obj "C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Indexing\Sorting\Sorting.cu" 
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static --std c++17 -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc143.pdb /FS /Zi /RTC1 /MDd " -o C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\TestIndexing.cu.obj "C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Indexing\TestIndexing.cu" 
+  
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static --std c++17 -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc143.pdb /FS /Zi /RTC1 /MDd " -o C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\VecOpsTest.cu.obj "C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\VecOpsTest\VecOpsTest.cu" 
+  
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static --std c++17 -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc143.pdb /FS /Zi /RTC1 /MDd " -o C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\MatTest.cu.obj "C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\MatTest\MatTest.cu" 
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static --std c++17 -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc143.pdb /FS /Zi /RTC1 /MDd " -o C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\MatOpsTest.cu.obj "C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\MatOpsTest\MatOpsTest.cu" 
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static --std c++17 -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc143.pdb /FS /Zi /RTC1 /MDd " -o C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\Test.cu.obj "C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Test.cu" 
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static --std c++17 -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc143.pdb /FS /Zi /RTC1 /MDd " -o C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\VecTest.cu.obj "C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\VecTest\VecTest.cu" 
+  
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static --std c++17 -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc143.pdb /FS /Zi /RTC1 /MDd " -o C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\IOTest.cu.obj "C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\IOTest\IOTest.cu" 
+  
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static --std c++17 -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc143.pdb /FS /Zi /RTC1 /MDd " -o C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\TestArray.cu.obj "C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\TestArray.cu" 
+  
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static --std c++17 -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc143.pdb /FS /Zi /RTC1 /MDd " -o C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\Main.cu.obj "C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Main.cu" 
+  
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static --std c++17 -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc143.pdb /FS /Zi /RTC1 /MDd " -o C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\ArrayOpsTest.cu.obj "C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\ArrayOpsTest\ArrayOpsTest.cu" 
+  
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static --std c++17 -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc143.pdb /FS /Zi /RTC1 /MDd " -o C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\Searching.cu.obj "C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Indexing\Searching\Searching.cu" 
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(137): warning #780-D: reference is to variable "i"
   (121): here -- under old for-init scoping rules it would have been variable "i"
   (126): here
+  
+  Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(137): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (126): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(137): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (126): here
+  
+  Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(167): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (141): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(137): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (126): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(167): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (141): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(167): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (141): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(167): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (141): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(159): warning #780-D: reference is to variable "i"
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(137): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (148): here
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  
+  (126): here
+  
+  Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(159): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (148): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(137): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (126): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(159): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (148): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(137): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (126): here
+  
+  Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(159): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (148): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(137): warning #780-D: reference is to variable "i"
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(167): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(189): warning #780-D: reference is to variable "i"
+  (126): here
+  (141): here
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  
+  
+  (163): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(167): warning #780-D: reference is to variable "i"
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(189): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(137): warning #780-D: reference is to variable "i"
+  (163): here
+  
+  (141): here
+  
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (126): here
+  
+  Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(167): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(189): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (141): here
+  (163): here
+  
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(167): warning #780-D: reference is to variable "i"
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(137): warning #780-D: reference is to variable "i"
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(189): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (163): here
+  
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (126): here
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(137): warning #780-D: reference is to variable "i"
+  
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (141): here
+  (126): here
+  
   
   Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
   
@@ -18,6 +168,166 @@ C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(167
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(167): warning #780-D: reference is to variable "i"
   (121): here -- under old for-init scoping rules it would have been variable "i"
   (141): here
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(167): warning #780-D: reference is to variable "i"
+  
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (141): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(159): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(167): warning #780-D: reference is to variable "i"
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(137): warning #780-D: reference is to variable "i"
+  (148): here
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  
+  (141): here
+  (126): here
+  
+  
+  Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(137): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (126): here
+  
+  Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(159): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (148): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(159): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (148): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(137): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(137): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (126): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(137): warning #780-D: reference is to variable "i"
+  (126): here
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  
+  (126): here
+  
+  Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(159): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (148): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(189): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (163): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(137): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (126): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(167): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (141): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(167): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (141): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(137): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (126): here
+  
+  Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(189): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (163): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(189): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (163): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(167): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(167): warning #780-D: reference is to variable "i"
+  (141): here
+  
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (141): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(167): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(137): warning #780-D: reference is to variable "i"
+  (141): here
+  
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (126): here
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(189): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  
+  (163): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(159): warning #780-D: reference is to variable "i"
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(159): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(167): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (148): here
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  
+  (141): here
+  (148): here
+  
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(167): warning #780-D: reference is to variable "i"
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(159): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(159): warning #780-D: reference is to variable "i"
+  (141): here
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  
+  (148): here
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  
+  (148): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(167): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (141): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(189): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(189): warning #780-D: reference is to variable "i"
+  (163): here
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  
+  (163): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(159): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (148): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(159): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(189): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (148): here
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(189): warning #780-D: reference is to variable "i"
+  
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (163): here
+  (163): here
+  
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(159): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (148): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(159): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (148): here
   
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(159): warning #780-D: reference is to variable "i"
   (143): here -- under old for-init scoping rules it would have been variable "i"
@@ -31,11 +341,389 @@ C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(189
   (143): here -- under old for-init scoping rules it would have been variable "i"
   (163): here
   
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(159): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (148): here
+  
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(189): warning #780-D: reference is to variable "i"
   (143): here -- under old for-init scoping rules it would have been variable "i"
   (163): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(189): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(189): warning #780-D: reference is to variable "i"
+  (163): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(159): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (163): here
+  (148): here
+  
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(189): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (163): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(189): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (163): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(189): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (163): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(189): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (163): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(137): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (126): here
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(137): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (126): here
+  
+  
+  Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+  
+  Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(137): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (126): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(137): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (126): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(167): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (141): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(167): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (141): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(167): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (141): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(167): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (141): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(159): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (148): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(159): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (148): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(159): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (148): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(159): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (148): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(189): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(137): warning #780-D: reference is to variable "i"
+  (163): here
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  
+  (126): here
+  
+  Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(189): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (163): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(137): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (126): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(189): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (163): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(189): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (163): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(167): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (141): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(167): warning #780-D: reference is to variable "i"
+  (121): here -- under old for-init scoping rules it would have been variable "i"
+  (141): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(159): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (148): here
   
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(227): warning #186-D: pointless comparison of unsigned integer with zero
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(159): warning #780-D: reference is to variable "i"
+  
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (148): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(355): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(360): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(395): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(189): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+  (163): here
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(189): warning #780-D: reference is to variable "i"
+  (143): here -- under old for-init scoping rules it would have been variable "i"
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(227): warning #186-D: pointless comparison of unsigned integer with zero
+  
+  (163): here
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(355): warning #68-D: integer conversion resulted in a change of sign
+  
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(360): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(395): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(227): warning #186-D: pointless comparison of unsigned integer with zero
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(355): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(360): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(395): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(227): warning #186-D: pointless comparison of unsigned integer with zero
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(355): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(227): warning #186-D: pointless comparison of unsigned integer with zero
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(227): warning #186-D: pointless comparison of unsigned integer with zero
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(360): warning #68-D: integer conversion resulted in a change of sign
+  
+  
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(395): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning #68-D: integer conversion resulted in a change of sign
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(355): warning #68-D: integer conversion resulted in a change of sign
+  
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(360): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(227): warning #186-D: pointless comparison of unsigned integer with zero
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(355): warning #68-D: integer conversion resulted in a change of sign
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(395): warning #68-D: integer conversion resulted in a change of sign
+  
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning #68-D: integer conversion resulted in a change of sign
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(360): warning #68-D: integer conversion resulted in a change of sign
+  
+  
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(395): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(355): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(360): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(395): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(227): warning #186-D: pointless comparison of unsigned integer with zero
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(355): warning #68-D: integer conversion resulted in a change of sign
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(227): warning #186-D: pointless comparison of unsigned integer with zero
+  
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(360): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(395): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(355): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(360): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(395): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(227): warning #186-D: pointless comparison of unsigned integer with zero
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(355): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(360): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(395): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(227): warning #186-D: pointless comparison of unsigned integer with zero
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(355): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(360): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(395): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(227): warning #186-D: pointless comparison of unsigned integer with zero
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(355): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(360): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(395): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(227): warning #186-D: pointless comparison of unsigned integer with zero
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(355): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(360): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(395): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(227): warning #186-D: pointless comparison of unsigned integer with zero
+  
+  Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(227): warning #186-D: pointless comparison of unsigned integer with zero
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(355): warning #68-D: integer conversion resulted in a change of sign
+  Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+  
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(360): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(395): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(227): warning #186-D: pointless comparison of unsigned integer with zero
+  
+  Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(355): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(360): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(395): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(355): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(360): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(395): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(227): warning #186-D: pointless comparison of unsigned integer with zero
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning #68-D: integer conversion resulted in a change of sign
+  
+  Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(355): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(360): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(395): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(227): warning #186-D: pointless comparison of unsigned integer with zero
+  
+  Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(355): warning #68-D: integer conversion resulted in a change of sign
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(227): warning #186-D: pointless comparison of unsigned integer with zero
+  
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(360): warning #68-D: integer conversion resulted in a change of sign
+  
+  Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(395): warning #68-D: integer conversion resulted in a change of sign
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\IOTest\IOTest.cu(121): warning #550-D: variable "pass" was set but never used
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning #68-D: integer conversion resulted in a change of sign
+  
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(355): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(360): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(395): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(227): warning #186-D: pointless comparison of unsigned integer with zero
+  
+  Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(227): warning #186-D: pointless comparison of unsigned integer with zero
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(355): warning #68-D: integer conversion resulted in a change of sign
+  Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+  
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(360): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(395): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(355): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(360): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(395): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\TestUtil.cu(93): warning #177-D: variable "indices" was declared but never referenced
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(227): warning #186-D: pointless comparison of unsigned integer with zero
+  
+  Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(355): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(360): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(227): warning #186-D: pointless comparison of unsigned integer with zero
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(395): warning #68-D: integer conversion resulted in a change of sign
+  
+  
+  Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning #68-D: integer conversion resulted in a change of sign
   
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(355): warning #68-D: integer conversion resulted in a change of sign
   
@@ -57,8 +745,92 @@ C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps
   
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning #68-D: integer conversion resulted in a change of sign
   
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(227): warning #186-D: pointless comparison of unsigned integer with zero
+  
+  Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(355): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(360): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(395): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning #68-D: integer conversion resulted in a change of sign
+  
+  device_functions.h is an internal header file and must not be used directly.  This file will be removed in a future CUDA release.  Please use cuda_runtime_api.h or cuda_runtime.h instead.
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(227): warning #186-D: pointless comparison of unsigned integer with zero
+  
+  Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(355): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(360): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(395): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning #68-D: integer conversion resulted in a change of sign
+  
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\ArrayOpsTest\ArrayOpsTest.cu(157): warning #177-D: variable "idx" was declared but never referenced
+  
+  MatTest.cu
   Sorting.cu
-  tmpxft_00005348_00000000-7_Sorting.cudafe1.cpp
+  Test.cu
+  VecTest.cu
+  TestIndexing.cu
+  TestArray.cu
+  IOTest.cu
+  TestUtil.cu
+  VecOpsTest.cu
+  MatOpsTest.cu
+  Searching.cu
+  Main.cu
+  ArrayOpsTest.cu
+  tmpxft_00003f38_00000000-7_VecOpsTest.cudafe1.cpp
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(21): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(104): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(146): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(223): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(244): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(381): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(418): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\VecOpsTest\VecOpsTest.cu(79): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\VecOpsTest\VecOpsTest.cu(85): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\VectorOps.cuh(188): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\VecOpsTest\VecOpsTest.cu(157): note: see reference to function template instantiation 'Cudheart::NDArrays::Vector<float> *Cudheart::VectorOps::geomspace<float>(T,T)' being compiled
+          with
+          [
+              T=float
+          ]
+  tmpxft_00006fd4_00000000-7_TestIndexing.cudafe1.cpp
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(21): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(104): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(146): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(223): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(244): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(381): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(418): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  tmpxft_000073b4_00000000-7_Test.cudafe1.cpp
+  tmpxft_00007108_00000000-7_Main.cudafe1.cpp
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(21): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(104): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(146): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(223): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(244): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(381): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(418): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  device_functions.h is an internal header file and must not be used directly.  This file will be removed in a future CUDA release.  Please use cuda_runtime_api.h or cuda_runtime.h instead.
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(21): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+  tmpxft_00006cdc_00000000-7_Sorting.cudafe1.cpp
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(104): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(146): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(223): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(244): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(381): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(418): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(21): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(104): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(146): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
@@ -78,4 +850,138 @@ C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(70)
               T=int
           ]
   C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(23): note: see reference to class template instantiation 'Cudheart::NDArrays::Vector<int>' being compiled
+  tmpxft_00007ae4_00000000-7_TestArray.cudafe1.cpp
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(21): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(104): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(146): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(223): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(244): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  tmpxft_00005868_00000000-7_VecTest.cudafe1.cpp
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(381): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(21): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(104): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(418): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(146): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(223): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(244): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(381): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(418): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(70): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(69): note: while compiling class template member function 'Cudheart::NDArrays::Vector<int>::Vector(std::initializer_list<T>)'
+          with
+          [
+              T=int
+          ]
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\VecTest\VecTest.cu(21): note: see reference to function template instantiation 'Cudheart::NDArrays::Vector<int>::Vector(std::initializer_list<T>)' being compiled
+          with
+          [
+              T=int
+          ]
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(23): note: see reference to class template instantiation 'Cudheart::NDArrays::Vector<int>' being compiled
+  tmpxft_00007198_00000000-7_MatTest.cudafe1.cpp
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(21): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(104): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(146): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(223): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(244): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(381): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(418): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(73): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Matrix.cuh(72): note: while compiling class template member function 'Cudheart::NDArrays::Matrix<int>::Matrix(std::initializer_list<T>,int,int)'
+          with
+          [
+              T=int
+          ]
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\MatTest\MatTest.cu(28): note: see reference to function template instantiation 'Cudheart::NDArrays::Matrix<int>::Matrix(std::initializer_list<T>,int,int)' being compiled
+          with
+          [
+              T=int
+          ]
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(51): note: see reference to class template instantiation 'Cudheart::NDArrays::Matrix<int>' being compiled
+  tmpxft_00006f20_00000000-7_TestUtil.cudafe1.cpp
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(21): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(104): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(146): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(223): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(244): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(381): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(418): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\TestUtil.cu(35): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  tmpxft_00006d74_00000000-7_ArrayOpsTest.cudafe1.cpp
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(21): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(104): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(146): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(223): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(244): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(381): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(418): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  tmpxft_0000333c_00000000-7_IOTest.cudafe1.cpp
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(21): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(104): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(146): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(223): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(244): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(381): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(418): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  tmpxft_00006680_00000000-7_Searching.cudafe1.cpp
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(21): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(104): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(146): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(223): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(244): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(381): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(418): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(70): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(69): note: while compiling class template member function 'Cudheart::NDArrays::Vector<bool>::Vector(std::initializer_list<bool>)'
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Indexing\Searching\Searching.cu(115): note: see reference to function template instantiation 'Cudheart::NDArrays::Vector<bool>::Vector(std::initializer_list<bool>)' being compiled
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(313): note: see reference to class template instantiation 'Cudheart::NDArrays::Vector<bool>' being compiled
+  tmpxft_00007a9c_00000000-7_MatOpsTest.cudafe1.cpp
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(21): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(104): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(146): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(223): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(244): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(381): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(418): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\MatrixOps.cuh(235): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\MatOpsTest\MatOpsTest.cu(96): note: see reference to function template instantiation 'Cudheart::NDArrays::Matrix<float> *Cudheart::MatrixOps::linspace<float>(T,T,T,bool,int,int)' being compiled
+          with
+          [
+              T=float
+          ]
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\MatrixOps.cuh(284): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\MatOpsTest\MatOpsTest.cu(161): note: see reference to function template instantiation 'Cudheart::NDArrays::Matrix<float> *Cudheart::MatrixOps::logspace<float>(T,T,T,bool,double,int,int)' being compiled
+          with
+          [
+              T=float
+          ]
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\MatrixOps.cuh(284): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\MatrixOps.cuh(378): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\MatOpsTest\MatOpsTest.cu(185): note: see reference to function template instantiation 'Cudheart::NDArrays::Matrix<float> *Cudheart::MatrixOps::geomspace<float>(T,T,T,bool,int,int)' being compiled
+          with
+          [
+              T=float
+          ]
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\MatrixOps.cuh(686): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=int
+          ]
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Arrays\MatOpsTest\MatOpsTest.cu(349): note: see reference to function template instantiation 'Cudheart::NDArrays::Matrix<int> *Cudheart::MatrixOps::vander<int>(Cudheart::NDArrays::Vector<int> *,int,bool)' being compiled
   Cudheart.vcxproj -> C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\Cudheart.exe
