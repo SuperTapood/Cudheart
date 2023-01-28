@@ -5,10 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dafe1284-e2de-4d6f-a56c-656c639b6355" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.vs/Cudheart/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../../.vs/Cudheart/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.vs/Cudheart/v17/Browse.VC.db" beforeDir="false" afterPath="$PROJECT_DIR$/../../.vs/Cudheart/v17/Browse.VC.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.vs/Cudheart/v17/ipch/AutoPCH/2a991bc446e74757/MAIN.ipch" beforeDir="false" afterPath="$PROJECT_DIR$/../../.vs/Cudheart/v17/ipch/AutoPCH/2a991bc446e74757/MAIN.ipch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Cudheart.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../Cudheart.vcxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Cudheart/Logic/LogicCPP.cuh" beforeDir="false" afterPath="$PROJECT_DIR$/../../Cudheart/Logic/LogicCPP.cuh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Test.cu" beforeDir="false" afterPath="$PROJECT_DIR$/../Test.cu" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Test.cuh" beforeDir="false" afterPath="$PROJECT_DIR$/../Test.cuh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../x64/Debug/ArrayOpsTest.cu.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../x64/Debug/ArrayOpsTest.cu.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../x64/Debug/Cudheart.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../x64/Debug/Cudheart.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../x64/Debug/Cudheart.ilk" beforeDir="false" afterPath="$PROJECT_DIR$/../../x64/Debug/Cudheart.ilk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../x64/Debug/Cudheart.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../x64/Debug/Cudheart.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../x64/Debug/Cudheart.tlog/CudaCompile.read.1u.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../../x64/Debug/Cudheart.tlog/CudaCompile.read.1u.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../x64/Debug/Cudheart.tlog/CudaCompile.write.1u.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../../x64/Debug/Cudheart.tlog/CudaCompile.write.1u.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../x64/Debug/Cudheart.tlog/link.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../../x64/Debug/Cudheart.tlog/link.command.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../x64/Debug/Cudheart.tlog/link.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../../x64/Debug/Cudheart.tlog/link.read.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../x64/Debug/Cudheart.tlog/link.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../../x64/Debug/Cudheart.tlog/link.write.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../x64/Debug/IOTest.cu.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../x64/Debug/IOTest.cu.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../x64/Debug/Main.cu-1064356109.deps" beforeDir="false" afterPath="$PROJECT_DIR$/../../x64/Debug/Main.cu-1064356109.deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../x64/Debug/Main.cu.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../x64/Debug/Main.cu.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../x64/Debug/MatOpsTest.cu.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../x64/Debug/MatOpsTest.cu.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../x64/Debug/MatTest.cu.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../x64/Debug/MatTest.cu.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../x64/Debug/Searching.cu.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../x64/Debug/Searching.cu.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../x64/Debug/Sorting.cu.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../x64/Debug/Sorting.cu.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../x64/Debug/Test.cu.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../x64/Debug/Test.cu.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../x64/Debug/Test.cu886042086.deps" beforeDir="false" afterPath="$PROJECT_DIR$/../../x64/Debug/Test.cu886042086.deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../x64/Debug/TestArray.cu.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../x64/Debug/TestArray.cu.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../x64/Debug/TestIndexing.cu.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../x64/Debug/TestIndexing.cu.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../x64/Debug/TestUtil.cu.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../x64/Debug/TestUtil.cu.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../x64/Debug/VecOpsTest.cu.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../x64/Debug/VecOpsTest.cu.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../x64/Debug/VecTest.cu.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../../x64/Debug/VecTest.cu.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../x64/Debug/vc143.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../../x64/Debug/vc143.pdb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

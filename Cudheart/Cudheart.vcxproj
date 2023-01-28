@@ -148,6 +148,8 @@
     <ClInclude Include="Testing\Indexing\Searching\Searching.cuh" />
     <ClInclude Include="Testing\Indexing\Sorting\Sorting.cuh" />
     <ClInclude Include="Testing\Indexing\TestIndexing.cuh" />
+    <ClInclude Include="Testing\Logic\TestLogic.cuh" />
+    <ClInclude Include="Testing\Logic\LogicCPP\LogicCPP.cuh" />
     <ClInclude Include="Testing\NumpyAPI\NumpyAPI.cuh" />
     <ClInclude Include="Testing\Test.cuh" />
     <ClInclude Include="Testing\TestUtil.cuh" />
@@ -179,6 +181,8 @@
     <CudaCompile Include="Testing\Indexing\Searching\Searching.cu" />
     <CudaCompile Include="Testing\Indexing\Sorting\Sorting.cu" />
     <CudaCompile Include="Testing\Indexing\TestIndexing.cu" />
+    <CudaCompile Include="Testing\Logic\TestLogic.cu" />
+    <CudaCompile Include="Testing\Logic\LogicCPP\LogicCPP.cu" />
     <CudaCompile Include="Testing\NumpyAPI\NumpyAPI.cu" />
     <CudaCompile Include="Testing\Test.cu" />
     <CudaCompile Include="Testing\TestUtil.cu" />
