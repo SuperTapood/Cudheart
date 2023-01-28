@@ -16,7 +16,7 @@ the modules that still need testing:
 - [X] Indexing
     - [X] Searching
     - [X] Sorting
-- [ ] Logic
+- [X] Logic
 - [ ] Math
     - [ ] BaseMath
     - [ ] Bitwise
@@ -121,6 +121,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] allow IO functions to cast vectors and matrices and test
 - [ ] edge test empty vectors and matrices of all types
 - [ ] fix a bunch of stupid matrix building and indexing bugs that are sure to be found
+- [ ] add overloads for mixing ndarrays and regular vars
 - [ ] differentiate matrix and vector ops (maybe by removing duplicates and just reshaping?)
 - [ ] implement ndarray comparisons and use that in the unit tests
 - [ ] fix the new object creation in complex math cpp

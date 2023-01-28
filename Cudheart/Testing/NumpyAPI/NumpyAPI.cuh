@@ -106,4 +106,38 @@ namespace Numpy {
 	string partition(string a, string kth, string oName);
 
 	string argpartition(string a, string kth, string oName);
+
+	string all(string arr, string oName);
+
+	string any(string arr, string oName);
+
+	string logicalAnd(string a, string b, string oName);
+
+	string logicalOr(string a, string b, string oName);
+
+	string logicalNot(string arr, string oName);
+
+	string logicalXor(string a, string b, string oName);
+
+	string isclose(string a, string b, string rtol, string atol, string oName);
+
+	string allclose(string a, string b, string rtol, string atol, string oName);
+
+	string equals(string a, string b, string oName);
+
+	string greater(string a, string b, string oName);
+
+	string greaterEquals(string a, string b, string oName);
+
+	string less(string a, string b, string oName);
+
+	string lessEqual(string a, string b, string oName);
+
+	string maximum(string a, string b, string oName);
+
+	string amax(string x, string oName);
+
+	string minimum(string a, string b, string oName);
+
+	string amin(string x, string oName);
 }

@@ -51,6 +51,13 @@ namespace Cudheart::NDArrays {
 
 		virtual NDArray<T>* emptyLike() = 0;
 
+		template <typename U>
+		NDArray<U>* emptyLike() {
+			auto vec = new Vector<U>(getSize());
+
+			return vec->reshape(getShape());
+		}
+
 		virtual NDArray<T>* transpose(bool inplace = false) = 0;
 
 		template <typename U>

@@ -187,4 +187,71 @@ namespace Numpy {
 		return oName + " = np.argpartition(" + a + ", kth=" + kth + ")\n";
 	}
 
+	string all(string arr, string oName) {
+		return oName + " = np.all(" + arr + ")\n";
+	}
+
+	string any(string arr, string oName) {
+		return oName + " = np.any(" + arr + ")\n";
+	}
+
+	string logicalAnd(string a, string b, string oName) {
+		return oName + " = np.logical_and(" + a + ", " + b + ")\n";
+	}
+
+	string logicalOr(string a, string b, string oName) {
+		return oName + " = np.logical_or(" + a + ", " + b + ")\n";
+	}
+
+	string logicalNot(string arr, string oName) {
+		return oName + " = np.logical_not(" + arr + ")\n";
+	}
+
+	string logicalXor(string a, string b, string oName) {
+		return oName + " = np.logical_xor(" + a + ", " + b + ")\n";
+	}
+
+	string isclose(string a, string b, string rtol, string atol, string oName) {
+		return oName + " = np.isclose(" + a + ", " + b + ")\n";
+	}
+
+	string allclose(string a, string b, string rtol, string atol, string oName) {
+		return oName + " = np.allclose(" + a + ", " + b + ")\n";
+	}
+
+	string equals(string a, string b, string oName) {
+		return oName + " = np.equal(" + a + ", " + b + ")\n";
+	}
+
+	string greater(string a, string b, string oName) {
+		return oName + " = np.greater(" + a + ", " + b + ")\n";
+	}
+
+	string greaterEquals(string a, string b, string oName) {
+		return oName + " = np.greater_equal(" + a + ", " + b + ")\n";
+	}
+
+	string less(string a, string b, string oName) {
+		return oName + " = np.less(" + a + ", " + b + ")\n";
+	}
+
+	string lessEqual(string a, string b, string oName) {
+		return oName + " = np.less_equal(" + a + ", " + b + ")\n";
+	}
+
+	string maximum(string a, string b, string oName) {
+		return oName + " = np.maximum(" + a + ", " + b + ")\n";
+	}
+
+	string amax(string x, string oName) {
+		return oName + " = np.amax(" + x + ")\n";
+	}
+
+	string minimum(string a, string b, string oName) {
+		return oName + " = np.minimum(" + a + ", " + b + ")\n";
+	}
+
+	string amin(string x, string oName) {
+		return oName + " = np.amin(" + x + ")\n";
+	}
 }

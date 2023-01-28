@@ -6,6 +6,10 @@ import warnings
 
 warnings.filterwarnings('ignore', category = DeprecationWarning)
 
+# anti future headache tech
+true = True
+false = False
+
 test_name = "Vector<int>(int[], int)"
 res = np.array([5, 7, 451, 14, 25, 250, 52205, 255, 897])
 
@@ -1289,6 +1293,201 @@ vec = np.array([1, 25, 5820, 5, 58, 22, 48, 14, 32, 22, 99, 90900, 15, 11])
 res = np.argsort(vec, kind='quicksort')
 
 out = [0, 3, 13, 7, 12, 5, 9, 1, 8, 6, 4, 10, 2, 11]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Logic::all(Vector<bool>)"
+vec = np.array([true, true, false, true, true])
+res = np.all(vec)
+
+out = 0
+add2queue(test_name, res, out)
+
+
+
+test_name = "Logic::any(Vector<bool>)"
+vec = np.array([true, true, false, true, true])
+res = np.any(vec)
+
+out = 1
+add2queue(test_name, res, out)
+
+
+
+test_name = "Logic::logicalAnd(Vector<bool>)"
+a = np.array([true, true, false, true, true])
+b = np.array([false, true, true, false, true])
+res = np.logical_and(a, b)
+
+out = [0, 1, 0, 0, 1]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Logic::logicalOr(Vector<bool>)"
+a = np.array([true, true, false, true, true])
+b = np.array([false, true, true, false, true])
+res = np.logical_or(a, b)
+
+out = [1, 1, 1, 1, 1]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Logic::logicalNot(Vector<bool>)"
+a = np.array([true, true, false, true, true])
+res = np.logical_not(a)
+
+out = [0, 0, 1, 0, 0]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Logic::logicalXor(Vector<bool>)"
+a = np.array([true, true, false, true, true])
+b = np.array([false, true, true, false, true])
+res = np.logical_xor(a, b)
+
+out = [1, 0, 1, 1, 0]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Logic::allclose(Vector<int>)"
+a = np.array([255, 278, 27872, 2, 278])
+b = np.array([2782, 278278, 2222, 2, 278])
+res = np.allclose(a, b)
+
+out = 0
+add2queue(test_name, res, out)
+
+
+
+test_name = "Logic::equals(Vector<bool>)"
+a = np.array([true, true, false, true, true])
+b = np.array([false, true, true, false, true])
+res = np.equal(a, b)
+
+out = [0, 1, 0, 0, 1]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Logic::greater(Vector<int>, Vector<int>)"
+a = np.array([255, 278, 27872, 2, 278])
+b = np.array([2782, 278278, 2222, 2, 278])
+res = np.greater(a, b)
+
+out = [0, 0, 1, 0, 0]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Logic::greater(Vector<int>, int)"
+a = np.array([255, 278, 27872, 2, 278])
+b = np.array([2782, 278278, 2222, 2, 278])
+res = np.greater(a, b[2])
+
+out = [0, 0, 1, 0, 0]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Logic::greaterEquals(Vector<int>, Vector<int>)"
+a = np.array([255, 278, 27872, 2, 278])
+b = np.array([2782, 278278, 2222, 2, 278])
+res = np.greater_equal(a, b)
+
+out = [0, 0, 1, 1, 1]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Logic::greaterEquals(Vector<int>, int)"
+a = np.array([255, 278, 27872, 2, 278])
+b = np.array([2782, 278278, 2222, 2, 278])
+res = np.greater_equal(a, b[2])
+
+out = [0, 0, 1, 0, 0]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Logic::less(Vector<int>, Vector<int>)"
+a = np.array([255, 278, 27872, 2, 278])
+b = np.array([2782, 278278, 2222, 2, 278])
+res = np.less(a, b)
+
+out = [1, 1, 0, 0, 0]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Logic::less(Vector<int>, int)"
+a = np.array([255, 278, 27872, 2, 278])
+b = np.array([2782, 278278, 2222, 2, 278])
+res = np.less(a, b[2])
+
+out = [1, 1, 0, 1, 1]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Logic::equals(Vector<int>, Vector<int>)"
+a = np.array([255, 278, 27872, 2, 278])
+b = np.array([2782, 278278, 2222, 2, 278])
+res = np.less_equal(a, b)
+
+out = [1, 1, 0, 1, 1]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Logic::equals(Vector<int>, int)"
+a = np.array([255, 278, 27872, 2, 278])
+b = np.array([2782, 278278, 2222, 2, 278])
+res = np.less_equal(a, b[2])
+
+out = [1, 1, 0, 1, 1]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Logic::maximum(Vector<int>, Vector<int>)"
+a = np.array([255, 278, 27872, 2, 278])
+b = np.array([2782, 278278, 2222, 2, 278])
+res = np.maximum(a, b)
+
+out = [2782, 278278, 27872, 2, 278]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Logic::amax(Vector<int>, Vector<int>)"
+a = np.array([255, 278, 27872, 2, 278])
+res = np.amax(a)
+
+out = 27872
+add2queue(test_name, res, out)
+
+
+
+test_name = "Logic::minimum(Vector<int>, Vector<int>)"
+a = np.array([255, 278, 27872, 2, 278])
+b = np.array([2782, 278278, 2222, 2, 278])
+res = np.minimum(a, b)
+
+out = [255, 278, 2222, 2, 278]
+add2queue(test_name, res, out)
+
+
+
+test_name = "Logic::amin(Vector<int>, Vector<int>)"
+a = np.array([255, 278, 27872, 2, 278])
+res = np.amin(a)
+
+out = 2
 add2queue(test_name, res, out)
 
 

@@ -247,7 +247,7 @@ namespace Cudheart {
 
 			// why tf are these functions needed
 			template <typename U>
-			NDArray<T>* emptyLike() {
+			NDArray<U>* emptyLike() {
 				return new Vector<U>(m_size);
 			}
 
@@ -400,10 +400,10 @@ namespace Cudheart {
 			}
 
 			Vector<T>* flatten() {
-				Vector<T>* out = new Vector<T>(m_size);
+				Vector<T>* out = new Vector<T>(getSize());
 
-				for (int i = 0; i < m_size; i++) {
-					out->set(i, m_data[i]);
+				for (int i = 0; i < getSize(); i++) {
+					out->set(i, get(i));
 				}
 
 				return out;

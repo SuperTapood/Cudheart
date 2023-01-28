@@ -16,6 +16,8 @@ namespace Cudheart::Testing::Logic::CPP {
 
 	void testLogicalXor();
 
+	void testIsClose();
+
 	void testAllclose();
 
 	void testEquals();
