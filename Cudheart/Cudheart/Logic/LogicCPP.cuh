@@ -102,7 +102,6 @@ namespace Cudheart::Logic {
 		return isclose(a, b, 1e-05, 1e-08);
 	}
 
-
 	template <typename T>
 	NDArray<bool>* isclose(NDArray<T>* a, T b, double rtol, double atol) {
 		auto out = new Vector<bool>(a->getSize());
@@ -145,7 +144,6 @@ namespace Cudheart::Logic {
 	bool allclose(NDArray<T>* a, NDArray<T>* b) {
 		return allclose(a, b, 1e-05, 1e-08);
 	}
-
 
 	template <typename T>
 	bool allclose(NDArray<T>* a, T b, double rtol, double atol) {
@@ -217,7 +215,6 @@ namespace Cudheart::Logic {
 
 	template<typename T>
 	NDArray<bool>* greaterEquals(NDArray<T>* a, T b) {
-
 		NDArray<bool>* out = a->emptyLike<bool>();
 
 		for (int i = 0; i < a->getSize(); i++) {
@@ -244,7 +241,6 @@ namespace Cudheart::Logic {
 
 	template<typename T>
 	NDArray<bool>* less(NDArray<T>* a, T b) {
-
 		NDArray<bool>* out = a->emptyLike<bool>();
 
 		for (int i = 0; i < a->getSize(); i++) {

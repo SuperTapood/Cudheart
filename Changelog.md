@@ -50,6 +50,7 @@
 - added some overloads for allclose
 - added isclose
 - changed some logic function's output
+- removed trueDivide
 
 ## notes:
 - 

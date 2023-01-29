@@ -173,6 +173,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] divide functions into pragma regions
 - [ ] fix non numeric vectors and matrices
 - [ ] add reshape function
+- [ ] sort functions alphabetically
 - [ ] match docs with numpy with the first matrix ops funcs
 - [ ] fix index error for getting info from flat matrix to say matrix
 - [ ] don't flatten matrices unless its needed (or ur lazy or cuda is involved)

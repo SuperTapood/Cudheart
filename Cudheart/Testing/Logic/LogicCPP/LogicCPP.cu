@@ -1,6 +1,5 @@
 #include "LogicCPP.cuh"
 
-
 namespace Cudheart::Testing::Logic::CPP {
 	using namespace Cudheart::Logic;
 	void test() {
@@ -114,7 +113,6 @@ namespace Cudheart::Testing::Logic::CPP {
 		Testing::submit("Logic::allclose(Vector<int>)", cmd, to_string(res));
 	}
 
-
 	void testIsClose() {
 		string cmd;
 
@@ -128,7 +126,6 @@ namespace Cudheart::Testing::Logic::CPP {
 
 		Testing::submit("Logic::isclose(Vector<int>)", cmd, res->toString());
 	}
-
 
 	void testEquals() {
 		string cmd;

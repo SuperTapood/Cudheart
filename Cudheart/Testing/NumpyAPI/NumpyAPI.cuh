@@ -140,4 +140,66 @@ namespace Numpy {
 	string minimum(string a, string b, string oName);
 
 	string amin(string x, string oName);
+
+	string cubeRoot(string arr, string oName);
+
+	string square(string base, string oName);
+
+	string squareRoot(string arr, string oName);
+	
+	string power(string base, string po, string oName);
+
+	string around(string arr, string decimals, string oName);
+
+	string rint(string arr, string oName);
+
+	string fix(string x, string oName);
+
+	string floor(string x, string oName);
+
+	string trunc(string x, string oName);
+
+	string ceil(string x, string oName);
+
+	string prod(string x, string oName);
+
+	string sum(string x, string oName);
+
+	string cumProd(string x, string oName);
+
+	string cumSum(string x, string oName);
+
+	string signBit(string x, string oName);
+
+	string copySign(string a, string b, string oName);
+
+	string abs(string x, string oName);
+
+	string lcm(string a, string b, string oName);
+
+	string gcd(string a, string b, string oName);
+
+	string add(string a, string b, string oName);
+
+	string subtract(string a, string b, string oName);
+
+	string multiply(string a, string b, string oName);
+
+	string divide(string a, string b, string oName);
+
+	string floorDivide(string a, string b, string oName);
+
+	string mod(string a, string b, string oName);
+
+	string divMod(string a, string b, string oName);
+
+	string reciprocal(string x, string oName);
+
+	string positive(string x, string oName);
+
+	string negative(string x, string oName);
+
+	string sign(string x, string oName);
+
+	string heaviside(string a, string b, string oName);
 }

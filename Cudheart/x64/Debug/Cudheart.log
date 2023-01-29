@@ -1,6 +1,6 @@
-﻿  Compiling CUDA source file Testing\Logic\LogicCPP\LogicCPP.cu...
+﻿  Compiling CUDA source file Testing\Math\BaseMath\BaseMathCPP\BaseMathCPP.cu...
   
-  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static --std c++17 -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc143.pdb /FS /Zi /RTC1 /MDd " -o C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\LogicCPP.cu.obj "C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Logic\LogicCPP\LogicCPP.cu" 
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.0\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static --std c++17 -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc143.pdb /FS /Zi /RTC1 /MDd " -o C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\BaseMathCPP.cu.obj "C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Math\BaseMath\BaseMathCPP\BaseMathCPP.cu" 
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(137): warning #780-D: reference is to variable "i"
   (121): here -- under old for-init scoping rules it would have been variable "i"
   (126): here
@@ -57,8 +57,8 @@ C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps
   
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning #68-D: integer conversion resulted in a change of sign
   
-  LogicCPP.cu
-  tmpxft_00002680_00000000-7_LogicCPP.cudafe1.cpp
+  BaseMathCPP.cu
+  tmpxft_000067b0_00000000-7_BaseMathCPP.cudafe1.cpp
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(21): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(104): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(146): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
@@ -66,8 +66,6 @@ C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(244): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(381): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(418): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(70): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Arrays\Vector.cuh(69): note: while compiling class template member function 'Cudheart::NDArrays::Vector<bool>::Vector(std::initializer_list<bool>)'
-  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Logic\LogicCPP\LogicCPP.cu(28): note: see reference to function template instantiation 'Cudheart::NDArrays::Vector<bool>::Vector(std::initializer_list<bool>)' being compiled
-  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(313): note: see reference to class template instantiation 'Cudheart::NDArrays::Vector<bool>' being compiled
+     Creating library C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\Cudheart.lib and object C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\Cudheart.exp
+LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
   Cudheart.vcxproj -> C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\x64\Debug\Cudheart.exe

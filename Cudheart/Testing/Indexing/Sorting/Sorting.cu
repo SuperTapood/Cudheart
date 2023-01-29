@@ -19,7 +19,7 @@ namespace Cudheart::Testing::Indexing::Sorting {
 
 		Vector<int>* vec = new Vector({ 1, 25, 5820, 5, 58, 22, 48, 14, 32, 22, 99, 90900, 15, 11 });
 		NDArray<int>* a = quicksort(vec);
-		
+
 		cmd = Numpy::createArray("[1, 25, 5820, 5, 58, 22, 48, 14, 32, 22, 99, 90900, 15, 11]", "vec");
 		cmd += Numpy::sort("vec", "'quicksort'", "res");
 
