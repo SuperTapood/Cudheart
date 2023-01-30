@@ -18,8 +18,8 @@ the modules that still need testing:
     - [X] Sorting
 - [X] Logic
 - [ ] Math
-    - [ ] BaseMath
-    - [ ] Bitwise
+    - [X] BaseMath
+    - [X] Bitwise
     - [ ] Complex
         - [ ] ComplexType
         - [ ] ComplexOps
