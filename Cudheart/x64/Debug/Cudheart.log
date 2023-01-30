@@ -58,7 +58,7 @@ C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(397): warning #68-D: integer conversion resulted in a change of sign
   
   BaseMathCPP.cu
-  tmpxft_00004c28_00000000-7_BaseMathCPP.cudafe1.cpp
+  tmpxft_00003be4_00000000-7_BaseMathCPP.cudafe1.cpp
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(21): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Random\RandomCPP.cuh(104): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\StringTypes\StringOps.cuh(146): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
@@ -86,6 +86,12 @@ C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\BaseMath\BaseMat
   C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Math\BaseMath\BaseMathCPP\BaseMathCPP.cu(44): note: see reference to function template instantiation 'Cudheart::NDArrays::NDArray<int> *Cudheart::CPP::BaseMath::cubeRoot<int>(Cudheart::NDArrays::NDArray<int> *)' being compiled
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\BaseMath\BaseMathCPP.cuh(100): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Math\BaseMath\BaseMathCPP\BaseMathCPP.cu(94): note: see reference to function template instantiation 'Cudheart::NDArrays::NDArray<double> *Cudheart::CPP::BaseMath::around<double>(Cudheart::NDArrays::NDArray<double> *,int)' being compiled
+C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\BaseMath\BaseMathCPP.cuh(347): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=int
+          ]
+  C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Testing\Math\BaseMath\BaseMathCPP\BaseMathCPP.cu(344): note: see reference to function template instantiation 'Cudheart::NDArrays::NDArray<int> *Cudheart::CPP::BaseMath::floorDivide<double>(Cudheart::NDArrays::NDArray<double> *,Cudheart::NDArrays::NDArray<double> *)' being compiled
 C:\Users\yoavo\Documents\GitHub\Cudheart\Cudheart\Cudheart\Math\BaseMath\BaseMathCPP.cuh(51): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [

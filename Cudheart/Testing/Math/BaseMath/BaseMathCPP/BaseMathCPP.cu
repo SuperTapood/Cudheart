@@ -253,43 +253,142 @@ namespace Cudheart::Testing::Math {
 	}
 
 	void testLcm() {
+		string cmd;
 
+		auto a = new Vector({ 14, 102, 55 });
+		auto b = new Vector({ 10, 51, 11 });
+		auto res = lcm(a, b);
+
+		cmd = Numpy::createArray(a->toString(), "a");
+		cmd += Numpy::createArray(b->toString(), "b");
+		cmd += Numpy::lcm("a", "b", "res");
+
+		Testing::submit("BaseMath::lcm(Vector<int>, Vector<int>)", cmd, res->toString());
 	}
 
 	void testGcd() {
+		string cmd;
 
+		auto a = new Vector({ 14, 102, 55 });
+		auto b = new Vector({ 10, 51, 11 });
+		auto res = gcd(a, b);
+
+		cmd = Numpy::createArray(a->toString(), "a");
+		cmd += Numpy::createArray(b->toString(), "b");
+		cmd += Numpy::gcd("a", "b", "res");
+
+		Testing::submit("BaseMath::gcd(Vector<int>, Vector<int>)", cmd, res->toString());
 	}
 
 	void testAdd() {
+		string cmd;
 
+		auto a = new Vector({ 1.584, 8.45475, 27.5, -54.9, -2.2 });
+		auto b = new Vector<double>({ -1, -1, 1, -1, 1 });
+		auto res = add(a, b);
+
+		cmd = Numpy::createArray("[1.584, 8.45475, 27.5, -54.9, -2.2]", "a");
+		cmd += Numpy::createArray("[-1, -1, 1, -1, 1]", "b");
+		cmd += Numpy::add("a", "b", "res");
+
+		Testing::submit("BaseMath::add(Vector<double>, Vector<double>)", cmd, res->toString());
 	}
 
 	void testSubtract() {
+		string cmd;
 
+		auto a = new Vector({ 1.584, 8.45475, 27.5, -54.9, -2.2 });
+		auto b = new Vector<double>({ -1, -1, 1, -1, 1 });
+		auto res = subtract(a, b);
+
+		cmd = Numpy::createArray("[1.584, 8.45475, 27.5, -54.9, -2.2]", "a");
+		cmd += Numpy::createArray("[-1, -1, 1, -1, 1]", "b");
+		cmd += Numpy::subtract("a", "b", "res");
+
+		Testing::submit("BaseMath::subtract(Vector<double>, Vector<double>)", cmd, res->toString());
 	}
 
 	void testMultiply() {
+		string cmd;
 
+		auto a = new Vector({ 1.584, 8.45475, 27.5, -54.9, -2.2 });
+		auto b = new Vector<double>({ -1, -1, 1, -1, 1 });
+		auto res = multiply(a, b);
+
+		cmd = Numpy::createArray("[1.584, 8.45475, 27.5, -54.9, -2.2]", "a");
+		cmd += Numpy::createArray("[-1, -1, 1, -1, 1]", "b");
+		cmd += Numpy::multiply("a", "b", "res");
+
+		Testing::submit("BaseMath::multiply(Vector<double>, Vector<double>)", cmd, res->toString());
 	}
 
 	void testDivide() {
+		string cmd;
 
+		auto a = new Vector({ 1.584, 8.45475, 27.5, -54.9, -2.2 });
+		auto b = new Vector<double>({ -1, -1, 1, -1, 1 });
+		auto res = divide(b, a);
+
+		cmd = Numpy::createArray("[1.584, 8.45475, 27.5, -54.9, -2.2]", "a");
+		cmd += Numpy::createArray("[-1, -1, 1, -1, 1]", "b");
+		cmd += Numpy::divide("b", "a", "res");
+
+		Testing::submit("BaseMath::divide(Vector<double>, Vector<double>)", cmd, res->toString());
 	}
 
 	void testFloorDivide() {
+		string cmd;
 
+		auto a = new Vector({ 1.584, 8.45475, 27.5, -54.9, -2.2 });
+		auto b = new Vector<double>({ -1, -1, 1, -1, 1 });
+		auto res = floorDivide(b, a);
+
+		cmd = Numpy::createArray("[1.584, 8.45475, 27.5, -54.9, -2.2]", "a");
+		cmd += Numpy::createArray("[-1, -1, 1, -1, 1]", "b");
+		cmd += Numpy::floorDivide("b", "a", "res");
+
+		Testing::submit("BaseMath::floorDivide(Vector<double>, Vector<double>)", cmd, res->toString());
 	}
 
 	void testMod() {
+		string cmd;
 
+		auto a = new Vector({ 14, 102, 55 });
+		auto b = new Vector({ 10, 51, 11 });
+		auto res = mod(a, b);
+
+		cmd = Numpy::createArray(a->toString(), "a");
+		cmd += Numpy::createArray(b->toString(), "b");
+		cmd += Numpy::mod("a", "b", "res");
+
+		Testing::submit("BaseMath::mod(Vector<int>, Vector<int>)", cmd, res->toString());
 	}
 
 	void testDivMod() {
+		string cmd;
 
+		auto a = new Vector({ 14, 102, 55 });
+		auto b = new Vector({ 10, 51, 11 });
+		auto res = divMod(a, b);
+
+		cmd = Numpy::createArray(a->toString(), "a");
+		cmd += Numpy::createArray(b->toString(), "b");
+		cmd += Numpy::divMod("a", "b", "res");
+		cmd += "res = np.array([" + res[0]->toString() + ", " + res[1]->toString() + "]\n)";
+
+		Testing::submit("BaseMath::divMod(Vector<int>, Vector<int>)", cmd, "res");
 	}
 
 	void testReciprocal() {
+		string cmd;
 
+		auto a = new Vector({ 14, 102, 55 });
+		auto res = reciprocal(a);
+
+		cmd = Numpy::createArray(a->toString(), "a");
+		cmd += Numpy::reciprocal("a", "res");
+
+		Testing::submit("BaseMath::reciprocal(Vector<int>,)", cmd, res->toString());
 	}
 
 	void testPositive() {
@@ -317,10 +416,28 @@ namespace Cudheart::Testing::Math {
 	}
 
 	void testSign() {
+		string cmd;
 
+		auto vec = new Vector({ 1.584, 8.45475, 27.5, -54.9, -2.2 });
+		auto res = sign(vec);
+
+		cmd = Numpy::createArray("[1.584, 8.45475, 27.5, -54.9, -2.2]", "vec");
+		cmd += Numpy::sign("vec", "res");
+
+		Testing::submit("BaseMath::sign(Vector<double>)", cmd, res->toString());
 	}
 
 	void testHeaviside() {
+		string cmd;
 
+		auto a = new Vector({ 1.584, 8.45475, 27.5, -54.9, -2.2 });
+		auto b = new Vector<double>({ -1, 0, 1, -1, 0 });
+		auto res = heaviside(b, a);
+
+		cmd = Numpy::createArray("[1.584, 8.45475, 27.5, -54.9, -2.2]", "a");
+		cmd += Numpy::createArray("[-1, 0, 1, -1, 0]", "b");
+		cmd += Numpy::heaviside("b", "a", "res");
+
+		Testing::submit("BaseMath::heaviside(Vector<double>, Vector<double>)", cmd, res->toString());
 	}
 }

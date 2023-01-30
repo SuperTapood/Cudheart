@@ -341,7 +341,7 @@ namespace Cudheart::CPP::BaseMath {
 	template <typename T>
 	NDArray<int>* floorDivide(NDArray<T>* a, NDArray<T>* b) {
 		a->assertMatchShape(b->getShape());
-		NDArray<int>* out = a->emptyLike();
+		NDArray<int>* out = a->emptyLike<int>();
 
 		for (int i = 0; i < a->getSize(); i++) {
 			out->set(i, std::floor(a->get(i) / b->get(i)));
@@ -374,7 +374,7 @@ namespace Cudheart::CPP::BaseMath {
 			mod->set(i, a->get(i) - (d * b->get(i)));
 		}
 
-		Matrix<T>** out = (Matrix<T>**)malloc(sizeof(Matrix<T>) * 2);
+		NDArray<T>** out = (NDArray<T>**)malloc(sizeof(NDArray<T>) * 2);
 		out[0] = div;
 		out[1] = mod;
 
@@ -419,7 +419,12 @@ namespace Cudheart::CPP::BaseMath {
 		NDArray<T>* out = x->emptyLike();
 
 		for (int i = 0; i < x->getSize(); i++) {
-			out->set(i, (T)std::signbit(x->get(i)));
+			if (std::signbit(x->get(i))) {
+				out->set(i, -1);
+			}
+			else {
+				out->set(i, 1);
+			}
 		}
 
 		return out;

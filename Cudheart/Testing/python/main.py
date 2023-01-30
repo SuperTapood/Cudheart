@@ -1333,6 +1333,87 @@ out = [1.5840000000000001, 8.4547500000000007, 27.5, 54.899999999999999, 2.20000
 add2queue(test_name, res, out)
 
 
+test_name = "BaseMath::lcm(Vector<int>, Vector<int>)"
+a = np.array([14, 102, 55])
+b = np.array([10, 51, 11])
+res = np.lcm(a, b)
+out = [70, 102, 55]
+add2queue(test_name, res, out)
+
+
+test_name = "BaseMath::gcd(Vector<int>, Vector<int>)"
+a = np.array([14, 102, 55])
+b = np.array([10, 51, 11])
+res = np.gcd(a, b)
+out = [2, 51, 11]
+add2queue(test_name, res, out)
+
+
+test_name = "BaseMath::add(Vector<double>, Vector<double>)"
+a = np.array([1.584, 8.45475, 27.5, -54.9, -2.2])
+b = np.array([-1, -1, 1, -1, 1])
+res = np.add(a, b)
+out = [0.58400000000000007, 7.4547500000000007, 28.5, -55.899999999999999, -1.2000000000000002]
+add2queue(test_name, res, out)
+
+
+test_name = "BaseMath::subtract(Vector<double>, Vector<double>)"
+a = np.array([1.584, 8.45475, 27.5, -54.9, -2.2])
+b = np.array([-1, -1, 1, -1, 1])
+res = np.subtract(a, b)
+out = [2.5840000000000001, 9.4547500000000007, 26.5, -53.899999999999999, -3.2000000000000002]
+add2queue(test_name, res, out)
+
+
+test_name = "BaseMath::multiply(Vector<double>, Vector<double>)"
+a = np.array([1.584, 8.45475, 27.5, -54.9, -2.2])
+b = np.array([-1, -1, 1, -1, 1])
+res = np.multiply(a, b)
+out = [-1.5840000000000001, -8.4547500000000007, 27.5, 54.899999999999999, -2.2000000000000002]
+add2queue(test_name, res, out)
+
+
+test_name = "BaseMath::divide(Vector<double>, Vector<double>)"
+a = np.array([1.584, 8.45475, 27.5, -54.9, -2.2])
+b = np.array([-1, -1, 1, -1, 1])
+res = np.divide(b, a)
+out = [-0.63131313131313127, -0.11827670835920635, 0.036363636363636362, 0.018214936247723135, -0.45454545454545453]
+add2queue(test_name, res, out)
+
+
+test_name = "BaseMath::floorDivide(Vector<double>, Vector<double>)"
+a = np.array([1.584, 8.45475, 27.5, -54.9, -2.2])
+b = np.array([-1, -1, 1, -1, 1])
+res = np.floor_divide(b, a)
+out = [-1, -1, 0, 0, -1]
+add2queue(test_name, res, out)
+
+
+test_name = "BaseMath::mod(Vector<int>, Vector<int>)"
+a = np.array([14, 102, 55])
+b = np.array([10, 51, 11])
+res = np.mod(a, b)
+out = [4, 0, 0]
+add2queue(test_name, res, out)
+
+
+test_name = "BaseMath::divMod(Vector<int>, Vector<int>)"
+a = np.array([14, 102, 55])
+b = np.array([10, 51, 11])
+res = np.divmod(a, b)
+res = np.array([[1, 2, 5], [4, 0, 0]]
+)
+out = res
+add2queue(test_name, res, out)
+
+
+test_name = "BaseMath::reciprocal(Vector<int>,)"
+a = np.array([14, 102, 55])
+res = np.reciprocal(a)
+out = [0, 0, 0]
+add2queue(test_name, res, out)
+
+
 test_name = "BaseMath::positive(Vector<double>)"
 vec = np.array([1.584, 8.45475, 27.5, -54.9, -2.2])
 res = np.positive(vec)
@@ -1344,6 +1425,21 @@ test_name = "BaseMath::negative(Vector<double>)"
 vec = np.array([1.584, 8.45475, 27.5, -54.9, -2.2])
 res = np.negative(vec)
 out = [-1.5840000000000001, -8.4547500000000007, -27.5, 54.899999999999999, 2.2000000000000002]
+add2queue(test_name, res, out)
+
+
+test_name = "BaseMath::sign(Vector<double>)"
+vec = np.array([1.584, 8.45475, 27.5, -54.9, -2.2])
+res = np.sign(vec)
+out = [1.0, 1.0, 1.0, -1.0, -1.0]
+add2queue(test_name, res, out)
+
+
+test_name = "BaseMath::heaviside(Vector<double>, Vector<double>)"
+a = np.array([1.584, 8.45475, 27.5, -54.9, -2.2])
+b = np.array([-1, 0, 1, -1, 0])
+res = np.heaviside(b, a)
+out = [0.0, 8.4547500000000007, 1.0, 0.0, -2.2000000000000002]
 add2queue(test_name, res, out)
 
 
