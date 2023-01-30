@@ -408,7 +408,7 @@ namespace Cudheart::CPP::BaseMath {
 		NDArray<T>* out = x->emptyLike();
 
 		for (int i = 0; i < x->getSize(); i++) {
-			out->set(i, -std::abs(x->get(i)));
+			out->set(i, -x->get(i));
 		}
 
 		return out;

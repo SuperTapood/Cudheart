@@ -51,6 +51,7 @@
 - added isclose
 - changed some logic function's output
 - removed trueDivide
+- fixed negative
 
 ## notes:
 - 

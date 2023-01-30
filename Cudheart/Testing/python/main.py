@@ -1333,4 +1333,18 @@ out = [1.5840000000000001, 8.4547500000000007, 27.5, 54.899999999999999, 2.20000
 add2queue(test_name, res, out)
 
 
+test_name = "BaseMath::positive(Vector<double>)"
+vec = np.array([1.584, 8.45475, 27.5, -54.9, -2.2])
+res = np.positive(vec)
+out = [1.5840000000000001, 8.4547500000000007, 27.5, -54.899999999999999, -2.2000000000000002]
+add2queue(test_name, res, out)
+
+
+test_name = "BaseMath::negative(Vector<double>)"
+vec = np.array([1.584, 8.45475, 27.5, -54.9, -2.2])
+res = np.negative(vec)
+out = [-1.5840000000000001, -8.4547500000000007, -27.5, 54.899999999999999, 2.2000000000000002]
+add2queue(test_name, res, out)
+
+
 print_res()

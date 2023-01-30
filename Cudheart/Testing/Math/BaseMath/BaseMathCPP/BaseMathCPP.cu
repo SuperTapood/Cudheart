@@ -293,11 +293,27 @@ namespace Cudheart::Testing::Math {
 	}
 
 	void testPositive() {
+		string cmd;
 
+		auto vec = new Vector({ 1.584, 8.45475, 27.5, -54.9, -2.2 });
+		auto res = positive(vec);
+
+		cmd = Numpy::createArray("[1.584, 8.45475, 27.5, -54.9, -2.2]", "vec");
+		cmd += Numpy::positive("vec", "res");
+
+		Testing::submit("BaseMath::positive(Vector<double>)", cmd, res->toString());
 	}
 
 	void testNegative() {
+		string cmd;
 
+		auto vec = new Vector({ 1.584, 8.45475, 27.5, -54.9, -2.2 });
+		auto res = negative(vec);
+
+		cmd = Numpy::createArray("[1.584, 8.45475, 27.5, -54.9, -2.2]", "vec");
+		cmd += Numpy::negative("vec", "res");
+
+		Testing::submit("BaseMath::negative(Vector<double>)", cmd, res->toString());
 	}
 
 	void testSign() {
