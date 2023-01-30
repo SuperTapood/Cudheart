@@ -1,7 +1,6 @@
 #include "BitwiseCPP.cuh"
 
 namespace Cudheart::Testing::Math::CPP {
-
 	using namespace Cudheart::CPP::Math::Bitwise;
 
 	void testBitwise() {

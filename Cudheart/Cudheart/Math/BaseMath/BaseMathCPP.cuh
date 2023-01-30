@@ -21,7 +21,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 
 		return output;
 	}
-	
+
 	template <typename T>
 	NDArray<T>* cube(NDArray<T>* base) {
 		return power(base, 3);
@@ -41,10 +41,10 @@ namespace Cudheart::CPP::Math::BaseMath {
 		}
 
 		return output;
-	}	
-	
+	}
+
 	template <typename T>
-		NDArray<T>* power(NDArray<T>* base, T po) {
+	NDArray<T>* power(NDArray<T>* base, T po) {
 		NDArray<T>* output = base->emptyLike();
 
 		for (int i = 0; i < base->getSize(); i++) {

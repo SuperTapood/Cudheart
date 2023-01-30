@@ -121,7 +121,7 @@ namespace Cudheart::Testing::Math::CPP {
 	void testFix() {
 		string cmd;
 
-		auto vec = new Vector({1.584, 8.45475, 27.5, -54.9, -2.2});
+		auto vec = new Vector({ 1.584, 8.45475, 27.5, -54.9, -2.2 });
 		auto res = fix(vec);
 
 		cmd = Numpy::createArray("[1.584, 8.45475, 27.5, -54.9, -2.2]", "vec");

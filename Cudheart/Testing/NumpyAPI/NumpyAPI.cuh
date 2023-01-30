@@ -146,7 +146,7 @@ namespace Numpy {
 	string square(string base, string oName);
 
 	string squareRoot(string arr, string oName);
-	
+
 	string power(string base, string po, string oName);
 
 	string around(string arr, string decimals, string oName);
