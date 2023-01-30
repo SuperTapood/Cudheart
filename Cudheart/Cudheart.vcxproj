@@ -152,6 +152,8 @@
     <ClInclude Include="Testing\Logic\LogicCPP\LogicCPP.cuh" />
     <ClInclude Include="Testing\Math\BaseMath\BaseMathCPP\BaseMathCPP.cuh" />
     <ClInclude Include="Testing\Math\BaseMath\TestBaseMath.cuh" />
+    <ClInclude Include="Testing\Math\Bitwise\BitwiseCPP\BitwiseCPP.cuh" />
+    <ClInclude Include="Testing\Math\Bitwise\TestBitwiseMath.cuh" />
     <ClInclude Include="Testing\Math\TestMath.cuh" />
     <ClInclude Include="Testing\NumpyAPI\NumpyAPI.cuh" />
     <ClInclude Include="Testing\Test.cuh" />
@@ -188,6 +190,8 @@
     <CudaCompile Include="Testing\Logic\LogicCPP\LogicCPP.cu" />
     <CudaCompile Include="Testing\Math\BaseMath\BaseMathCPP\BaseMathCPP.cu" />
     <CudaCompile Include="Testing\Math\BaseMath\TestBaseMath.cu" />
+    <CudaCompile Include="Testing\Math\Bitwise\BitwiseCPP\BitwiseCPP.cu" />
+    <CudaCompile Include="Testing\Math\Bitwise\TestBitwiseMath.cu" />
     <CudaCompile Include="Testing\Math\TestMath.cu" />
     <CudaCompile Include="Testing\NumpyAPI\NumpyAPI.cu" />
     <CudaCompile Include="Testing\Test.cu" />

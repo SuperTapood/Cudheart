@@ -378,4 +378,28 @@ namespace Numpy {
 	string heaviside(string a, string b, string oName) {
 		return oName + " = np.heaviside(" + a + ", " + b + ")\n";
 	}
+
+	string bitwiseAnd(string a, string b, string oName) {
+		return oName + " = np.bitwise_and(" + a + ", " + b + ")\n";
+	}
+
+	string bitwiseOr(string a, string b, string oName) {
+		return oName + " = np.bitwise_or(" + a + ", " + b + ")\n";
+	}
+
+	string bitwiseXor(string a, string b, string oName) {
+		return oName + " = np.bitwise_xor(" + a + ", " + b + ")\n";
+	}
+
+	string bitwiseLeftShift(string a, string b, string oName) {
+		return oName + " = np.left_shift(" + a + ", " + b + ")\n";
+	}
+
+	string bitwiseRightShift(string a, string b, string oName) {
+		return oName + " = np.right_shift(" + a + ", " + b + ")\n";
+	}
+
+	string bitwiseNot(string x, string oName) {
+		return oName + " = np.bitwise_not(" + x + ")\n";
+	}
 }

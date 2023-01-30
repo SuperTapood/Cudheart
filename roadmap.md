@@ -130,6 +130,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] fix the new object creation in complex math cpp
 - [ ] make sure complex numbers won't be placed where they shouldn't (wherever std is involved)
 - [ ] fix shape mismatch exception
+- [ ] memory manage the testing thing
 - [ ] maybe remove Kind enum class
 - [ ] add map function to ndarray
 - [ ] add timsort function :)

@@ -2,8 +2,8 @@
 
 #include "../../../TestUtil.cuh"
 
-namespace Cudheart::Testing::Math {
-	void testBaseMathCPP();
+namespace Cudheart::Testing::Math::CPP {
+	void testBaseMath();
 
 	void testCubeRoot();
 

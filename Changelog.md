@@ -52,6 +52,7 @@
 - changed some logic function's output
 - removed trueDivide
 - fixed negative
+- base math is now a memeber of the math module lol
 
 ## notes:
 - 

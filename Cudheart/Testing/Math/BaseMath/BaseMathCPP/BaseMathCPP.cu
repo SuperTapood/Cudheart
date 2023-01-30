@@ -1,9 +1,9 @@
 #include "BaseMathCPP.cuh"
 
-namespace Cudheart::Testing::Math {
-	using namespace Cudheart::CPP::BaseMath;
+namespace Cudheart::Testing::Math::CPP {
+	using namespace Cudheart::CPP::Math::BaseMath;
 
-	void testBaseMathCPP() {
+	void testBaseMath() {
 		testCubeRoot();
 		testSquare();
 		testSquareRoot();

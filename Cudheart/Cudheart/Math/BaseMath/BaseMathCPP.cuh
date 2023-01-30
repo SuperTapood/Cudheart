@@ -10,7 +10,7 @@ using namespace Cudheart::Exceptions;
 using Cudheart::VectorOps::emptyLike;
 using Cudheart::MatrixOps::fromVector;
 
-namespace Cudheart::CPP::BaseMath {
+namespace Cudheart::CPP::Math::BaseMath {
 	template <typename T>
 	NDArray<T>* cubeRoot(NDArray<T>* arr) {
 		NDArray<T>* output = arr->emptyLike();

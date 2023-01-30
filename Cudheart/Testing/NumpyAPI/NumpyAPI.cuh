@@ -202,4 +202,16 @@ namespace Numpy {
 	string sign(string x, string oName);
 
 	string heaviside(string a, string b, string oName);
+
+	string bitwiseAnd(string a, string b, string oName);
+
+	string bitwiseOr(string a, string b, string oName);
+
+	string bitwiseXor(string a, string b, string oName);
+
+	string bitwiseLeftShift(string a, string b, string oName);
+
+	string bitwiseRightShift(string a, string b, string oName);
+
+	string bitwiseNot(string x, string oName);
 }

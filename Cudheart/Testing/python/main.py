@@ -1443,4 +1443,51 @@ out = [0.0, 8.4547500000000007, 1.0, 0.0, -2.2000000000000002]
 add2queue(test_name, res, out)
 
 
+test_name = "Bitwise::BitwiseAnd(Vector<int>, Vector<int>)"
+a = np.array([15, 45, 22, 91, 37])
+b = np.array([31, 69, 420, 11, 13])
+res = np.bitwise_and(a, b)
+out = [15, 5, 4, 11, 5]
+add2queue(test_name, res, out)
+
+
+test_name = "Bitwise::bitwiseOr(Vector<int>, Vector<int>)"
+a = np.array([15, 45, 22, 91, 37])
+b = np.array([31, 69, 420, 11, 13])
+res = np.bitwise_or(a, b)
+out = [31, 109, 438, 91, 45]
+add2queue(test_name, res, out)
+
+
+test_name = "Bitwise::bitwiseXor(Vector<int>, Vector<int>)"
+a = np.array([15, 45, 22, 91, 37])
+b = np.array([31, 69, 420, 11, 13])
+res = np.bitwise_xor(a, b)
+out = [16, 104, 434, 80, 40]
+add2queue(test_name, res, out)
+
+
+test_name = "Bitwise::bitwiseLeftShift(Vector<int>, Vector<int>)"
+a = np.array([15, 45, 22, 91, 37])
+b = np.array([2, 3, 5, 4, 3])
+res = np.left_shift(a, b)
+out = [60, 360, 704, 1456, 296]
+add2queue(test_name, res, out)
+
+
+test_name = "Bitwise::bitwiseRightShift(Vector<int>, Vector<int>)"
+a = np.array([15, 45, 22, 91, 37])
+b = np.array([2, 3, 5, 4, 3])
+res = np.right_shift(a, b)
+out = [3, 5, 0, 5, 4]
+add2queue(test_name, res, out)
+
+
+test_name = "Bitwise::BitwiseAnd(Vector<int>, Vector<int>)"
+a = np.array([15, 45, 22, 91, 37])
+res = np.bitwise_not(a)
+out = [-16, -46, -23, -92, -38]
+add2queue(test_name, res, out)
+
+
 print_res()
