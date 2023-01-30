@@ -44,8 +44,6 @@ def check(name, res, output):
     # with open("types.txt", "a") as file:
     #     file.write(f"{name}: {type(res)}, {type(output)}\n")
 
-    print(close)
-
     mark = "T" if close else "F"
 
     out = name + "|" + str(res) + "|" + str(output) + "|" + mark + "|"

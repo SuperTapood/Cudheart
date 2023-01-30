@@ -21,15 +21,15 @@ namespace Cudheart::CPP::BaseMath {
 
 		return output;
 	}
+	
+	template <typename T>
+	NDArray<T>* cube(NDArray<T>* base) {
+		return power(base, 3);
+	}
+
 	template <typename T>
 	NDArray<T>* square(NDArray<T>* base) {
-		NDArray<T>* output = base->emptyLike();
-
-		for (int i = 0; i < base->getSize(); i++) {
-			output->set(i, pow(base->get(i), 2));
-		}
-
-		return output;
+		return power(base, 2);
 	}
 
 	template <typename T>
@@ -41,7 +41,9 @@ namespace Cudheart::CPP::BaseMath {
 		}
 
 		return output;
-	}	template <typename T>
+	}	
+	
+	template <typename T>
 		NDArray<T>* power(NDArray<T>* base, T po) {
 		NDArray<T>* output = base->emptyLike();
 
@@ -65,7 +67,7 @@ namespace Cudheart::CPP::BaseMath {
 
 	template <typename T>
 	NDArray<T>* power(NDArray<T>* base, NDArray<T>* po) {
-		base->assertMatchShape(po);
+		base->assertMatchShape(po->getShape());
 
 		NDArray<T>* output = base->emptyLike();
 
@@ -78,9 +80,8 @@ namespace Cudheart::CPP::BaseMath {
 
 	template <typename T>
 	Matrix<T>* power(Matrix<T>* base, Vector<T>* po) {
-		if (base->getHeight() != po->getSize()) {
-			Cudheart::Exceptions::ShapeMismatchException(base->getHeight(), po->getSize()).raise();
-		}
+		base->assertMatchShape(po->getShape(), 1);
+
 		Matrix<T>* out = emptyLike<T>(base);
 
 		for (int i = 0; i < base->getHeight(); i++) {
@@ -114,7 +115,7 @@ namespace Cudheart::CPP::BaseMath {
 
 	template <typename T>
 	NDArray<T>* rint(NDArray<T>* arr) {
-		NDArray<T>* out = emptyLike(arr);
+		NDArray<T>* out = arr->emptyLike();
 
 		for (int i = 0; i < out->getSize(); i++) {
 			out->set(i, std::rint(arr->get(i)));
@@ -236,17 +237,16 @@ namespace Cudheart::CPP::BaseMath {
 
 	template <typename T>
 	NDArray<T>* copySign(NDArray<T>* a, NDArray<T>* b) {
-		a->assertMatchShape(b);
+		a->assertMatchShape(b->getShape());
 
 		NDArray<T>* out = a->emptyLike();
 
 		for (int i = 0; i < a->getSize(); i++) {
 			T va = a->get(i);
 			T vb = b->get(i);
-			if (vb < 0 && va > 0) {
-				va = -va;
-			}
-			else if (vb > 0 && va < 0) {
+
+			// what tf is wrong with me
+			if ((vb < 0) != (va < 0)) {
 				va = -va;
 			}
 			out->set(i, va);
@@ -268,7 +268,7 @@ namespace Cudheart::CPP::BaseMath {
 
 	template <typename T>
 	NDArray<T>* lcm(NDArray<T>* a, NDArray<T>* b) {
-		a->assertMatchShape(b);
+		a->assertMatchShape(b->getShape());
 		NDArray<T>* out = a->emptyLike();
 
 		for (int i = 0; i < a->getSize(); i++) {
@@ -280,7 +280,7 @@ namespace Cudheart::CPP::BaseMath {
 
 	template <typename T>
 	NDArray<T>* gcd(NDArray<T>* a, NDArray<T>* b) {
-		a->assertMatchShape(b);
+		a->assertMatchShape(b->getShape());
 		NDArray<T>* out = a->emptyLike();
 
 		for (int i = 0; i < a->getSize(); i++) {
@@ -292,7 +292,7 @@ namespace Cudheart::CPP::BaseMath {
 
 	template <typename T>
 	NDArray<T>* add(NDArray<T>* a, NDArray<T>* b) {
-		a->assertMatchShape(b);
+		a->assertMatchShape(b->getShape());
 		NDArray<T>* out = a->emptyLike();
 
 		for (int i = 0; i < a->getSize(); i++) {
@@ -304,7 +304,7 @@ namespace Cudheart::CPP::BaseMath {
 
 	template <typename T>
 	NDArray<T>* subtract(NDArray<T>* a, NDArray<T>* b) {
-		a->assertMatchShape(b);
+		a->assertMatchShape(b->getShape());
 		NDArray<T>* out = a->emptyLike();
 
 		for (int i = 0; i < a->getSize(); i++) {
@@ -316,7 +316,7 @@ namespace Cudheart::CPP::BaseMath {
 
 	template <typename T>
 	NDArray<T>* multiply(NDArray<T>* a, NDArray<T>* b) {
-		a->assertMatchShape(b);
+		a->assertMatchShape(b->getShape());
 		NDArray<T>* out = a->emptyLike();
 
 		for (int i = 0; i < a->getSize(); i++) {
@@ -328,7 +328,7 @@ namespace Cudheart::CPP::BaseMath {
 
 	template <typename T>
 	NDArray<T>* divide(NDArray<T>* a, NDArray<T>* b) {
-		a->assertMatchShape(b);
+		a->assertMatchShape(b->getShape());
 		NDArray<T>* out = a->emptyLike();
 
 		for (int i = 0; i < a->getSize(); i++) {
@@ -340,7 +340,7 @@ namespace Cudheart::CPP::BaseMath {
 
 	template <typename T>
 	NDArray<int>* floorDivide(NDArray<T>* a, NDArray<T>* b) {
-		a->assertMatchShape(b);
+		a->assertMatchShape(b->getShape());
 		NDArray<int>* out = a->emptyLike();
 
 		for (int i = 0; i < a->getSize(); i++) {
@@ -352,7 +352,7 @@ namespace Cudheart::CPP::BaseMath {
 
 	template <typename T>
 	NDArray<T>* mod(NDArray<T>* a, NDArray<T>* b) {
-		a->assertMatchShape(b);
+		a->assertMatchShape(b->getShape());
 		NDArray<T>* out = a->emptyLike();
 
 		for (int i = 0; i < a->getSize(); i++) {
@@ -364,7 +364,7 @@ namespace Cudheart::CPP::BaseMath {
 
 	template <typename T>
 	NDArray<T>** divMod(NDArray<T>* a, NDArray<T>* b) {
-		a->assertMatchShape(b);
+		a->assertMatchShape(b->getShape());
 		NDArray<T>* div = a->emptyLike();
 		NDArray<T>* mod = a->emptyLike();
 
@@ -427,7 +427,7 @@ namespace Cudheart::CPP::BaseMath {
 
 	template <typename T>
 	NDArray<T>* heaviside(NDArray<T>* a, NDArray<T>* b) {
-		a->assertMatchShape(b);
+		a->assertMatchShape(b->getShape());
 		NDArray<T>* out = a->emptyLike();
 
 		for (int i = 0; i < a->getSize(); i++) {

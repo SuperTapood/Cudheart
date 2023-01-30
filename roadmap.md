@@ -110,6 +110,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] add inline to all namespace functions (or maybe sort them into classes)
 - [ ] change namespaces into classes
 - [ ] add value guards to functions
+- [ ] improve the structure of all modules
 - [ ] use std tuple instead of using malloc and returning an array
 - [ ] more overrides in random
 - [ ] maybe add appendable vectors
@@ -118,6 +119,8 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] make seed part of constants
 - [ ] make random_bytes_engine part of constants
 - [ ] move pi and euler into struct?
+- [ ] numpy makes mistakes in high powers? (27 ^ 7 for example) (maybe bc its an int not a long?)
+- [ ] add ndarray parameter overload to assert match shape
 - [ ] allow IO functions to cast vectors and matrices and test
 - [ ] edge test empty vectors and matrices of all types
 - [ ] fix a bunch of stupid matrix building and indexing bugs that are sure to be found

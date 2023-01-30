@@ -82,7 +82,7 @@ namespace Cudheart::Testing::Arrays::MatTest {
 		auto b = a->reverseRows();
 
 		cmd = Numpy::createArray("[5, 7, 451, 14, 25, 250, 52205, 255, 897]", "(3, 3)", "mat");
-		cmd += "res = np.flip(mat, 1)";
+		cmd += "res = np.flip(mat, 1)\n";
 
 		Testing::submit("Matrix<int>->reverseRows()", cmd, b->toString());
 	}
@@ -96,7 +96,7 @@ namespace Cudheart::Testing::Arrays::MatTest {
 		auto b = a->reverseCols();
 
 		cmd = Numpy::createArray("[5, 7, 451, 14, 25, 250, 52205, 255, 897]", "(3, 3)", "mat");
-		cmd += "res = np.flip(mat, 0)";
+		cmd += "res = np.flip(mat, 0)\n";
 
 		Testing::submit("Matrix<int>->reverseCols()", cmd, b->toString());
 	}

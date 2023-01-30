@@ -63,9 +63,12 @@ namespace Cudheart::Testing {
 
 		Testing* self = get();
 		self->m_code += "test_name = \"" + name + "\"\n";
-		self->m_code += cmd + "\n";
+		self->m_code += cmd;
+		if (cmd[cmd.size() - 1] != '\n') {
+			self->m_code += "\n";
+		}
 		self->m_code += "out = " + output + "\n";
-		self->m_code += "add2queue(test_name, res, out)\n\n\n\n";
+		self->m_code += "add2queue(test_name, res, out)\n\n\n";
 		self->tests = self->tests + 1;
 
 		// cout << "Test " + name + " submitted!\n";

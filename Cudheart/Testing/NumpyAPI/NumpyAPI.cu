@@ -255,65 +255,127 @@ namespace Numpy {
 		return oName + " = np.amin(" + x + ")\n";
 	}
 
-	string cubeRoot(string arr, string oName);
+	string cubeRoot(string arr, string oName) {
+		return oName + " = np.cbrt(" + arr + ")\n";
+	}
 
-	string square(string base, string oName);
+	string square(string base, string oName) {
+		return oName + " = np.square(" + base + ")\n";
+	}
 
-	string squareRoot(string arr, string oName);
+	string squareRoot(string arr, string oName) {
+		return oName + " = np.sqrt(" + arr + ")\n";
+	}
 
-	string power(string base, string po, string oName);
+	string power(string base, string po, string oName) {
+		return oName + " = np.power(" + base + ", " + po + ")\n";
+	}
 
-	string around(string arr, string decimals, string oName);
+	string around(string arr, string decimals, string oName) {
+		return oName + " = np.around(" + arr + ", decimals=" + decimals + ")\n";
+	}
 
-	string rint(string arr, string oName);
+	string rint(string arr, string oName) {
+		return oName + " = np.rint(" + arr + ")\n";
+	}
 
-	string fix(string x, string oName);
+	string fix(string x, string oName) {
+		return oName + " = np.fix(" + x + ")\n";
+	}
 
-	string floor(string x, string oName);
+	string floor(string x, string oName) {
+		return oName + " = np.floor(" + x + ")\n";
+	}
 
-	string trunc(string x, string oName);
+	string trunc(string x, string oName) {
+		return oName + " = np.trunc(" + x + ")\n";
+	}
 
-	string ceil(string x, string oName);
+	string ceil(string x, string oName) {
+		return oName + " = np.ceil(" + x + ")\n";
+	}
 
-	string prod(string x, string oName);
+	string prod(string x, string oName) {
+		return oName + " = np.prod(" + x + ")\n";
+	}
 
-	string sum(string x, string oName);
+	string sum(string x, string oName) {
+		return oName + " = np.sum(" + x + ")\n";
+	}
 
-	string cumProd(string x, string oName);
+	string cumProd(string x, string oName) {
+		return oName + " = np.cumprod(" + x + ")\n";
+	}
 
-	string cumSum(string x, string oName);
+	string cumSum(string x, string oName) {
+		return oName + " = np.cumsum(" + x + ")\n";
+	}
 
-	string signBit(string x, string oName);
+	string signBit(string x, string oName) {
+		return oName + " = np.signbit(" + x + ")\n";
+	}
 
-	string copySign(string a, string b, string oName);
+	string copySign(string a, string b, string oName) {
+		return oName + " = np.copysign(" + a + ", " + b + ")\n";
+	}
 
-	string abs(string x, string oName);
+	string abs(string x, string oName) {
+		return oName + " = np.absolute(" + x + ")\n";
+	}
 
-	string lcm(string a, string b, string oName);
+	string lcm(string a, string b, string oName) {
+		return oName + " = np.lcm(" + a + ", " + b + ")\n";
+	}
 
-	string gcd(string a, string b, string oName);
+	string gcd(string a, string b, string oName) {
+		return oName + " = np.gcd(" + a + ", " + b + ")\n";
+	}
 
-	string add(string a, string b, string oName);
+	string add(string a, string b, string oName) {
+		return oName + " = np.add(" + a + ", " + b + ")\n";
+	}
 
-	string subtract(string a, string b, string oName);
+	string subtract(string a, string b, string oName) {
+		return oName + " = np.subtract(" + a + ", " + b + ")\n";
+	}
 
-	string multiply(string a, string b, string oName);
+	string multiply(string a, string b, string oName) {
+		return oName + " = np.multiply(" + a + ", " + b + ")\n";
+	}
 
-	string divide(string a, string b, string oName);
+	string divide(string a, string b, string oName) {
+		return oName + " = np.divide(" + a + ", " + b + ")\n";
+	}
 
-	string floorDivide(string a, string b, string oName);
+	string floorDivide(string a, string b, string oName) {
+		return oName + " = np.floor_divide(" + a + ", " + b + ")\n";
+	}
 
-	string mod(string a, string b, string oName);
+	string mod(string a, string b, string oName) {
+		return oName + " = np.mod(" + a + ", " + b + ")\n";
+	}
 
-	string divMod(string a, string b, string oName);
+	string divMod(string a, string b, string oName) {
+		return oName + " = np.divmod(" + a + ", " + b + ")\n";
+	}
 
-	string reciprocal(string x, string oName);
+	string reciprocal(string x, string oName) {
+		return oName + " = np.reciprocal(" + x + ")\n";
+	}
 
-	string positive(string x, string oName);
+	string positive(string x, string oName) {
+		return oName + " = np.positive(" + x + ")\n";
+	}
 
-	string negative(string x, string oName);
+	string negative(string x, string oName) {
+		return oName + " = np.negative(" + x + ")\n";
+	}
 
-	string sign(string x, string oName);
+	string sign(string x, string oName) {
+		return oName + " = np.sign(" + x + ")\n";
+	}
 
-	string heaviside(string a, string b, string oName);
+	string heaviside(string a, string b, string oName) {
+		return oName + " = np.heaviside(" + a + ", " + b + ")\n";
+	}
 }
