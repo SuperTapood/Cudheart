@@ -622,14 +622,14 @@ namespace Cudheart {
 				else if (shape->getDims() == 1) {
 					if (axis == 0) {
 						if (m_width != shape->getSize()) {
-							Cudheart::Exceptions::ShapeMismatchException(m_width,
-								shape->getSize()).raise();
+							Cudheart::Exceptions::ShapeMismatchException(getShape()->toString(),
+								shape->toString()).raise();
 						}
 					}
 					else if (axis == 1) {
 						if (m_height != shape->getSize()) {
-							Cudheart::Exceptions::ShapeMismatchException(m_height,
-								shape->getSize()).raise();
+							Cudheart::Exceptions::ShapeMismatchException(getShape()->toString(),
+								shape->toString()).raise();
 						}
 					}
 				}

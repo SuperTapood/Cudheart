@@ -1612,4 +1612,41 @@ out = [1.5849625007211561, 3.1011252138344139, 15.000176099486442, 50.0000000000
 add2queue(test_name, res, out)
 
 
+test_name = "Linalg::dot(Matrix<int>, Vector<int>)"
+a = np.array([
+ [0, 1, 2],
+ [3, 4, 5]
+])
+b = np.array([0, 1, 2])
+res = np.dot(a, b)
+out = [5, 14]
+add2queue(test_name, res, out)
+
+
+test_name = "Linalg::dot(Vector<int>, Matrix<int>)"
+a = np.array([
+ [0, 1],
+ [2, 3],
+ [4, 5]
+])
+b = np.array([0, 1, 2])
+res = np.dot(b, a)
+out = [10, 13]
+add2queue(test_name, res, out)
+
+
+test_name = "Linalg::dot(Vector<int>, Matrix<int>)"
+a = np.array([
+ [0, 1],
+ [2, 3],
+ [4, 5]
+])
+b = np.array([0, 1, 2])
+res = np.dot(b, a)
+b = np.array([0, 1, 2])
+res = np.dot(b, b)
+out = 5
+add2queue(test_name, res, out)
+
+
 print_res()

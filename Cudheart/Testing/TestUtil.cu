@@ -93,38 +93,25 @@ namespace Cudheart::Testing {
 		size_t pos = 0;
 		std::string token;
 		int index = 0;
-		int indices[] = { 0, 0, 0, 0 };
-		while ((pos = res.find(delimiter)) != std::string::npos) {
+		string values[] = { "TEST_NAME", "CUDHEART RESULT", "NUMPY RESULT", "TEST RESULT" };
+
+		while ((pos = res.find(delimiter)) != string::npos) {
 			token = res.substr(0, pos);
-			switch (index % 4) {
-			case 0:
-				names.push_back(token);
-				break;
-			case 1:
-				np.push_back(token);
-				break;
-			case 2:
-				cud.push_back(token);
-				break;
-			case 3:
-				results.push_back(token);
-				break;
+			values[index++] = token;
+
+			if (index == 4) {
+				if (values[3] != "T") {
+					cout << "Test " << values[0] << " failed!\n";
+					cout << "Cudheart generated: " << values[1] << endl;
+					cout << "Numpy generated:    " << values[2];
+					// cout << "\nCode Provided:\n\n" << cmd;
+					// cout << "\nPython Code:\n\n" << os.str();
+					exit(69);
+				}
+				index = 0;
 			}
-			index++;
+
 			res.erase(0, pos + delimiter.length());
-		}
-
-		for (int i = 0; i < tests; i++) {
-			if (results[i] != "T") {
-				cout << "Test " << names[i] << " failed!\n";
-				cout << "Cudheart generated: " << cud[i] << endl;
-				cout << "Numpy generated:    " << np[i];
-				// cout << "\nCode Provided:\n\n" << cmd;
-				// cout << "\nPython Code:\n\n" << os.str();
-				exit(69);
-			}
-
-			// cout << "Test " + results[i] + "passed!\n";
 		}
 	}
 }

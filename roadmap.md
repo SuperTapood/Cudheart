@@ -96,6 +96,8 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] template overloads
 - [ ] rename complex type
 - [ ] add macro for ndarrays who are automatically memory managed (make unique maybe?)
+- [ ] change assert match shape to is broadcastable
+- [ ] store shape inside a vector / matrix
 - [ ] check if a string can be used without string type
 - [ ] maybe change to using custom datatypes (maybe could then make into lib?)
 - [ ] add a bunch of non array functions (maybe to use in array functions?)
@@ -104,6 +106,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] find a way to package this as a lib file
 - [ ] add more bitwise function variation
 - [ ] sort includes and methods
+- [ ] make assert match shape uniform for both vector and matrix
 - [ ] mass test and time
 - [ ] maybe add matrix and vector ops ndarray compatibility?
 - [ ] add operator overloads to both complex and string type

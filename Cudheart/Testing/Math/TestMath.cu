@@ -6,5 +6,6 @@ namespace Cudheart::Testing {
 		Math::testBitwise();
 		Math::testComplex();
 		Math::testExps();
+		Math::testLinalg();
 	}
 }

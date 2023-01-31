@@ -14,7 +14,7 @@ namespace Cudheart::CPP::Math::Linalg {
 	T dot(Vector<T>* a, Vector<T>* b) {
 		a->assertMatchShape(b->getShape());
 
-		T result = 0;
+		T result = (T)0;
 
 		for (int i = 0; i < a->getSize(); i++) {
 			result += a->get(i) * b->get(i);
@@ -24,52 +24,32 @@ namespace Cudheart::CPP::Math::Linalg {
 	}
 
 	template <typename T>
-	Vector<T>* dot(Vector<T>* a, Matrix<T>* b) {
-		if (b->getHeight() != a->getSize()) {
-			ShapeMismatchException(b->getHeight(), a->getSize()).raise();
-		}
+	Vector<T>* dot(Matrix<T>* a, Vector<T>* b) {
+		a->assertMatchShape(b->getShape(), 0);
 
-		Matrix<T>* t = emptyLike<T>(b);
+		Vector<T>* out = new Vector<T>(a->getHeight());
 
-		for (int i = 0; i < b->getHeight(); i++) {
-			for (int j = 0; j < b->getWidth(); j++) {
-				t->set(i, j, b->get(i, j) * a->get(i));
-			}
-		}
-
-		Vector<T>* out = emptyLike<T>(a);
-
-		for (int i = 0; i < b->getWidth(); i++) {
-			int sum = 0;
-			for (int j = 0; j < b->getHeight(); j++) {
-				sum += t->get(j, i);
+		for (int i = 0; i < a->getHeight(); i++) {
+			T sum = (T)0;
+			for (int j = 0; j < a->getWidth(); j++) {
+				sum += (a->get(i, j) * b->get(j));
 			}
 			out->set(i, sum);
 		}
-
-		delete t;
 
 		return out;
 	}
 
 	template <typename T>
-	Vector<T>* dot(Matrix<T>* a, Vector<T>* b) {
-		a->assertMatchShape(b->getShape(), 1);
+	Vector<T>* dot(Vector<T>* a, Matrix<T>* b) {
+		b->assertMatchShape(a->getShape(), 1);
 
-		Matrix<T>* t = emptyLike<T>(a);
+		auto out = new Vector<T>(b->getWidth());
 
-		for (int i = 0; i < a->getHeight(); i++) {
-			for (int j = 0; j < a->getWidth(); j++) {
-				t->set(i, j, a->get(i, j) * b->get(j));
-			}
-		}
-
-		Vector<T>* out = empty<T>(a->getHeight());
-
-		for (int i = 0; i < a->getHeight(); i++) {
-			int sum = 0;
-			for (int j = 0; j < a->getWidth(); j++) {
-				sum += t->get(i, j);
+		for (int i = 0; i < b->getWidth(); i++) {
+			T sum = (T)0;
+			for (int j = 0; j < b->getHeight(); j++) {
+				sum += (a->get(j) * b->get(j, i));
 			}
 			out->set(i, sum);
 		}

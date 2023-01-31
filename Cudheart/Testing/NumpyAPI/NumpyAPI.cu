@@ -455,4 +455,41 @@ namespace Numpy {
 	string logaddexp2(string a, string b, string oName) {
 		return oName + " = np.logaddexp2(" + a + ", " + b + ")\n";
 	}
+
+	string dot(string a, string b, string oName) {
+		return oName + " = np.dot(" + a + ", " + b + ")\n";
+	}
+
+	string inner(string a, string b, string oName) {
+		return oName + " = np.inner(" + a + ", " + b + ")\n";
+	}
+
+	string outer(string a, string b, string oName) {
+		return oName + " = np.outer(" + a + ", " + b + ")\n";
+	}
+
+	string det(string a, string oName) {
+		return oName + " = np.det(" + a + ")\n";
+	}
+
+	string trace(string a, string offset, string oName) {
+		return oName + " = np.trace(" + a + ", " + offset + ")\n";
+	}
+
+	string solve(string a, string b, string oName) {
+		return oName + " = np.solve(" + a + ", " + b + ")\n";
+	}
+
+	string inv(string a, string oName) {
+		return oName + " = np.inv(" + a + ")\n";
+	}
+
+	string convolve(string a, string b, string oName) {
+		return oName + " = np.convolve(" + a + ", " + b + ")\n";
+	}
+
+	string clip(string arr, string min, string max, string oName) {
+		return oName + " = np.clip(" + arr + ", " + min + ", " + max + ")\n";
+	}
+
 }
