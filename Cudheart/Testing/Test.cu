@@ -12,5 +12,5 @@ void testAll() {
 	auto end = std::chrono::system_clock::now();
 	std::chrono::duration<double> elapsed = end - start;
 	Cudheart::Testing::Testing::get()->testAll();
-	// cout << "all tests passed in " << elapsed.count() << "s\n";
+	cout << "all tests passed in " << elapsed.count() << "s\n";
 }

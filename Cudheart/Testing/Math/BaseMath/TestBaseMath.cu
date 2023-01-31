@@ -2,6 +2,6 @@
 
 namespace Cudheart::Testing::Math {
 	void testBaseMath() {
-		CPP::testBaseMath();
+		CPP::BaseMath::testBaseMath();
 	}
 }

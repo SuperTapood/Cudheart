@@ -2,7 +2,7 @@
 
 #include "../../../TestUtil.cuh"
 
-namespace Cudheart::Testing::Math::CPP {
+namespace Cudheart::Testing::Math::CPP::Bitwise {
 	void testBitwise();
 
 	void testBitwiseAnd();

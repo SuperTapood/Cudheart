@@ -5,7 +5,6 @@
 #include <numeric>
 #include "ComplexType.cuh"
 #include "../../Constants.cuh"
-#include "../../Constants.cuh"
 
 using Cudheart::NDArrays::NDArray;
 using Cudheart::NDArrays::Vector;
@@ -17,22 +16,23 @@ using Cudheart::Constants::pi;
 
 namespace Cudheart::CPP::Math::Complex {
 	inline NDArray<double>* angle(NDArray<ComplexType*>* z, bool deg) {
-		NDArray<double>* arr = (new Vector<double>(z->getSize()))->reshape(z->getShape());
+		auto arr = (new Vector<double>(z->getSize()))->reshape(z->getShape());
+		double multiplier = 1.0;
 
-		if (!deg) {
-			for (int i = 0; i < z->getSize(); i++) {
-				ComplexType* current = z->get(i);
-				arr->set(i, std::atan(current->real / current->real));
-			}
+		if (deg) {
+			multiplier = 180 / pi;
 		}
-		else {
-			for (int i = 0; i < z->getSize(); i++) {
-				ComplexType* current = z->get(i);
-				arr->set(i, std::atan(current->real / current->real) * (180 / pi));
-			}
+
+		for (int i = 0; i < z->getSize(); i++) {
+			auto current = z->get(i);
+			arr->set(i, std::atan(current->real / current->real) * multiplier);
 		}
 
 		return arr;
+	}
+
+	inline NDArray<double>* angle(NDArray<ComplexType*>* z) {
+		return angle(z, false);
 	}
 
 	inline NDArray<double>* real(NDArray<ComplexType*>* val) {
@@ -68,11 +68,7 @@ namespace Cudheart::CPP::Math::Complex {
 		return arr;
 	}
 
-	inline NDArray<ComplexType*>* conjugate(NDArray<ComplexType*>* x) {
-		return conj(x);
-	}
-
-	inline NDArray<double*>* complexAbs(NDArray<ComplexType*>* x) {
+	inline NDArray<double>* complexAbs(NDArray<ComplexType*>* x) {
 		NDArray<double>* out = (new Vector<double>(x->getSize()))->reshape(x->getShape());
 
 		for (int i = 0; i < x->getSize(); i++) {
@@ -81,6 +77,8 @@ namespace Cudheart::CPP::Math::Complex {
 			double y2 = std::pow(current->imag, 2);
 			out->set(i, std::sqrt(x2 + y2));
 		}
+
+		return out;
 	}
 
 	inline NDArray<ComplexType*>* complexSign(NDArray<ComplexType*>* x) {
@@ -88,8 +86,12 @@ namespace Cudheart::CPP::Math::Complex {
 
 		for (int i = 0; i < x->getSize(); i++) {
 			double real = x->get(i)->real;
-			double newReal = (real / std::sqrt(std::pow(real, 2)));
-			out->set(i, new ComplexType(real, 0));
+			if (std::signbit(real)) {
+				out->set(i, new ComplexType(-1, 0));
+			}
+			else {
+				out->set(i, new ComplexType(1, 0));
+			}
 		}
 
 		return out;

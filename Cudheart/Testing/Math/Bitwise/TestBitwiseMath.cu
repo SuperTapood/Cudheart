@@ -2,6 +2,6 @@
 
 namespace Cudheart::Testing::Math {
 	void testBitwise() {
-		CPP::testBitwise();
+		CPP::Bitwise::testBitwise();
 	}
 }

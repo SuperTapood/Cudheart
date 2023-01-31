@@ -1490,4 +1490,65 @@ out = [-16, -46, -23, -92, -38]
 add2queue(test_name, res, out)
 
 
+test_name = "ComplexType(int, int)"
+res = 5+5j
+out = 5+5j
+add2queue(test_name, res, out)
+
+
+test_name = "ComplexType(int)"
+res = 5
+out = 5+0j
+add2queue(test_name, res, out)
+
+
+test_name = "Complex::angle(Vector<ComplexType*>, bool)"
+a = np.array([1+1j, 2+2j, 3+3j, 4+4j, 5+5j])
+res = np.angle(a, true)
+out = [45.0, 45.0, 45.0, 45.0, 45.0]
+add2queue(test_name, res, out)
+
+
+test_name = "Complex::angle(Vector<ComplexType*>)"
+a = np.array([1+1j, 2+2j, 3+3j, 4+4j, 5+5j])
+res = np.angle(a, false)
+out = [0.78539816339744828, 0.78539816339744828, 0.78539816339744828, 0.78539816339744828, 0.78539816339744828]
+add2queue(test_name, res, out)
+
+
+test_name = "Complex::real(Vector<ComplexType*>)"
+a = np.array([1+1j, 2+2j, 3+3j, 4+4j, 5+5j])
+res = np.real(a)
+out = [1.0, 2.0, 3.0, 4.0, 5.0]
+add2queue(test_name, res, out)
+
+
+test_name = "Complex::imag(Vector<ComplexType*>)"
+a = np.array([1+1j, 2+2j, 3+3j, 4+4j, 5+5j])
+res = np.imag(a)
+out = [1.0, 2.0, 3.0, 4.0, 5.0]
+add2queue(test_name, res, out)
+
+
+test_name = "Complex::conj(Vector<ComplexType*>)"
+a = np.array([1+1j, 2+2j, 3+3j, 4+4j, 5+5j])
+res = np.conj(a)
+out = [1+-1j, 2+-2j, 3+-3j, 4+-4j, 5+-5j]
+add2queue(test_name, res, out)
+
+
+test_name = "Complex::complexAbs(Vector<ComplexType*>)"
+a = np.array([1+1j, 2+2j, 3+3j, 4+4j, 5+5j])
+res = np.absolute(a)
+out = [1.4142135623730951, 2.8284271247461903, 4.2426406871192848, 5.6568542494923806, 7.0710678118654755]
+add2queue(test_name, res, out)
+
+
+test_name = "Complex::complexSign(Vector<ComplexType*>)"
+a = np.array([1+1j, 2+2j, 3+3j, 4+4j, 5+5j])
+res = np.sign(a)
+out = [1+0j, 1+0j, 1+0j, 1+0j, 1+0j]
+add2queue(test_name, res, out)
+
+
 print_res()

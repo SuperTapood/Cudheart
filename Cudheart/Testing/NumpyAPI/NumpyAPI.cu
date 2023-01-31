@@ -402,4 +402,20 @@ namespace Numpy {
 	string bitwiseNot(string x, string oName) {
 		return oName + " = np.bitwise_not(" + x + ")\n";
 	}
+
+	string angle(string z, string deg, string oName) {
+		return oName + " = np.angle(" + z + ", " + deg + ")\n";
+	}
+
+	string real(string val, string oName) {
+		return oName + " = np.real(" + val + ")\n";
+	}
+
+	string imag(string val, string oName) {
+		return oName + " = np.imag(" + val + ")\n";
+	}
+
+	string conj(string x, string oName) {
+		return oName + " = np.conj(" + x + ")\n";
+	}
 }

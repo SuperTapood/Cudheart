@@ -214,4 +214,12 @@ namespace Numpy {
 	string bitwiseRightShift(string a, string b, string oName);
 
 	string bitwiseNot(string x, string oName);
+
+	string angle(string z, string deg, string oName);
+
+	string real(string val, string oName);
+
+	string imag(string val, string oName);
+
+	string conj(string x, string oName);
 }

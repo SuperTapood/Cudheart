@@ -3,3 +3,4 @@ Cudheart/x64/*
 Cudheart/*.sln
 Cudheart/*.vcxproj
 Cudheart/*.vcxproj.user
+*.pyc

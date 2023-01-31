@@ -20,9 +20,9 @@ the modules that still need testing:
 - [ ] Math
     - [X] BaseMath
     - [X] Bitwise
-    - [ ] Complex
-        - [ ] ComplexType
-        - [ ] ComplexOps
+    - [X] Complex
+        - [X] ComplexType
+        - [X] ComplexOps
     - [ ] Exps
     - [ ] Linalg
     - [ ] Statistics
@@ -94,6 +94,8 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] extract testing from cudheart
 - [ ] add functions that return boolean arrays in equal in logic (seperate by equal and equal all)
 - [ ] template overloads
+- [ ] rename complex type
+- [ ] add macro for ndarrays who are automatically memory managed (make unique maybe?)
 - [ ] check if a string can be used without string type
 - [ ] maybe change to using custom datatypes (maybe could then make into lib?)
 - [ ] add a bunch of non array functions (maybe to use in array functions?)

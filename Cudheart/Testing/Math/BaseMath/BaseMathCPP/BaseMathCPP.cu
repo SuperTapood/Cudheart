@@ -1,6 +1,6 @@
 #include "BaseMathCPP.cuh"
 
-namespace Cudheart::Testing::Math::CPP {
+namespace Cudheart::Testing::Math::CPP::BaseMath {
 	using namespace Cudheart::CPP::Math::BaseMath;
 
 	void testBaseMath() {

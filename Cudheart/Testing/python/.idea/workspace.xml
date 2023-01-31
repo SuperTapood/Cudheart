@@ -5,9 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dafe1284-e2de-4d6f-a56c-656c639b6355" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Math/BaseMath/BaseMathCPP/BaseMathCPP.cu" beforeDir="false" afterPath="$PROJECT_DIR$/../Math/BaseMath/BaseMathCPP/BaseMathCPP.cu" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Math/BaseMath/BaseMathCPP/BaseMathCPP.cuh" beforeDir="false" afterPath="$PROJECT_DIR$/../Math/BaseMath/BaseMathCPP/BaseMathCPP.cuh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Math/BaseMath/TestBaseMath.cu" beforeDir="false" afterPath="$PROJECT_DIR$/../Math/BaseMath/TestBaseMath.cu" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Math/Bitwise/BitwiseCPP/BitwiseCPP.cu" beforeDir="false" afterPath="$PROJECT_DIR$/../Math/Bitwise/BitwiseCPP/BitwiseCPP.cu" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Math/Bitwise/BitwiseCPP/BitwiseCPP.cuh" beforeDir="false" afterPath="$PROJECT_DIR$/../Math/Bitwise/BitwiseCPP/BitwiseCPP.cuh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Math/Bitwise/TestBitwiseMath.cu" beforeDir="false" afterPath="$PROJECT_DIR$/../Math/Bitwise/TestBitwiseMath.cu" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Math/TestMath.cu" beforeDir="false" afterPath="$PROJECT_DIR$/../Math/TestMath.cu" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Math/TestMath.cuh" beforeDir="false" afterPath="$PROJECT_DIR$/../Math/TestMath.cuh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +50,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.test">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="python" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -92,8 +100,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
   </component>
