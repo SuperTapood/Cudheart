@@ -55,6 +55,8 @@
 - base math is now a memeber of the math module lol
 - removed conjugate
 - added angle overload
+- renamed loga to ln
+- fixed logaddexp and logaddexp2
 
 ## notes:
 - 

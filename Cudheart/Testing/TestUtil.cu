@@ -14,7 +14,7 @@ namespace Cudheart::Testing {
 	int Testing::tests = 0;
 
 	Testing::Testing() {
-		m_code = "# this file is generated automatically to simplify unit testing :)\n\nfrom util import *\n\nimport warnings\n\nwarnings.filterwarnings('ignore', category = DeprecationWarning)\n\n";
+		m_code = "# this file is generated automatically to simplify unit testing :)\n\nfrom util import *\n\nimport warnings\n\nwarnings.filterwarnings('ignore')\n\n";
 		m_code += "# anti future headache tech\ntrue = True\nfalse = False\n\n";
 	}
 

@@ -4,7 +4,7 @@ from util import *
 
 import warnings
 
-warnings.filterwarnings('ignore', category = DeprecationWarning)
+warnings.filterwarnings('ignore')
 
 # anti future headache tech
 true = True
@@ -1548,6 +1548,76 @@ test_name = "Complex::complexSign(Vector<ComplexType*>)"
 a = np.array([1+1j, 2+2j, 3+3j, 4+4j, 5+5j])
 res = np.sign(a)
 out = [1+0j, 1+0j, 1+0j, 1+0j, 1+0j]
+add2queue(test_name, res, out)
+
+
+test_name = "Exps::ln(Vector<double>)"
+a = np.array([1, 2.71828, 15, 50, 666, 69, 420])
+res = np.log(a)
+out = [0.0, 0.99999932734728203, 2.7080502011022101, 3.912023005428146, 6.5012896705403893, 4.2341065045972597, 6.0402547112774139]
+add2queue(test_name, res, out)
+
+
+test_name = "Exps::loga2(Vector<double>)"
+a = np.array([1, 2.71828, 15, 50, 666, 69, 420])
+res = np.log2(a)
+out = [0.0, 1.442694070456223, 3.9068905956085187, 5.6438561897747244, 9.3793783670712614, 6.1085244567781691, 8.7142455176661233]
+add2queue(test_name, res, out)
+
+
+test_name = "Exps::ln(Vector<double>, Vector<double>)"
+b = np.array([0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0])
+res = np.log(a) / np.log(b)
+out = [-0.0, inf, 3.9068905956085187, 3.5608767950073115, 4.6896891835356316, 2.630798287952365, 3.3711303414401605]
+add2queue(test_name, res, out)
+
+
+test_name = "Exps::ln(Vector<double>, double)"
+a = np.array([1, 2.71828, 15, 50, 666, 69, 420])
+res = np.log(a) / np.log(4)
+out = [0.0, 0.7213470352281115, 1.9534452978042594, 2.8219280948873622, 4.6896891835356316, 3.054262228389085, 4.3571227588330617]
+add2queue(test_name, res, out)
+
+
+test_name = "Exps::loga10(Vector<double>)"
+a = np.array([1, 2.71828, 15, 50, 666, 69, 420])
+res = np.log10(a)
+out = [0.0, 0.43429418977388817, 1.1760912590556813, 1.6989700043360187, 2.823474229170301, 1.8388490907372552, 2.6232492903979003]
+add2queue(test_name, res, out)
+
+
+test_name = "Exps::expo(Vector<double>)"
+a = np.array([1, 2.71828, 15, 50, 666, 69, 420])
+res = np.exp(a)
+out = [2.7182818284590451, 15.154234532556728, 3269017.3724721107, 5.184705528587072e+21, 1.7383008701505047e+289, 9.2537817255877872e+29, 2.5332753623607178e+182]
+add2queue(test_name, res, out)
+
+
+test_name = "Exps::expom1(Vector<double>)"
+a = np.array([1, 2.71828, 15, 50, 666, 69, 420])
+res = np.expm1(a)
+out = [1.7182818284590451, 14.154234532556728, 3269016.3724721107, 5.184705528587072e+21, 1.7383008701505047e+289, 9.2537817255877872e+29, 2.5332753623607178e+182]
+add2queue(test_name, res, out)
+
+
+test_name = "Exps::expo2(Vector<double>)"
+a = np.array([1, 2.71828, 15, 50, 666, 69, 420])
+res = np.exp2(a)
+out = [2.0, 6.5808776504660029, 32768.0, 1125899906842624, 3.061802069160839e+200, 5.9029581035870565e+20, 2.7076852481648583e+126]
+add2queue(test_name, res, out)
+
+
+test_name = "Exps::logaddexp(Vector<double>, Vector<double>)"
+b = np.array([0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0])
+res = np.logaddexp(a, b)
+out = [1.3132616875182228, 2.8832641340880647, 15.000002260326852, 50.0, 666.0, 69.0, 420.0]
+add2queue(test_name, res, out)
+
+
+test_name = "Exps::logaddexp2(Vector<double>, Vector<double>)"
+b = np.array([0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0])
+res = np.logaddexp2(a, b)
+out = [1.5849625007211561, 3.1011252138344139, 15.000176099486442, 50.000000000000007, 666.0, 69.0, 420.0]
 add2queue(test_name, res, out)
 
 

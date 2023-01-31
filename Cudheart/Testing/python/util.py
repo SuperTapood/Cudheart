@@ -2,6 +2,7 @@ import numpy as np
 
 true = True
 false = False
+inf = np.inf
 
 
 class Data:

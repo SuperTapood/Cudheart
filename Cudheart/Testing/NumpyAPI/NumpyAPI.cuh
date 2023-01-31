@@ -222,4 +222,22 @@ namespace Numpy {
 	string imag(string val, string oName);
 
 	string conj(string x, string oName);
+
+	string ln(string x, string oName);
+
+	string loga2(string x, string oName);
+
+	string logan(string x, string n, string oName);
+
+	string loga10(string x, string oName);
+
+	string expo(string x, string oName);
+
+	string expom1(string x, string oName);
+
+	string expo2(string x, string oName);
+
+	string logaddexp(string a, string b, string oName);
+
+	string logaddexp2(string a, string b, string oName);
 }

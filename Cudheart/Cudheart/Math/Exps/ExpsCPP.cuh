@@ -11,7 +11,7 @@ using Cudheart::MatrixOps::fromVector;
 
 namespace Cudheart::CPP::Math::Exp {
 	template <typename T>
-	NDArray<T>* loga(NDArray<T>* x) {
+	NDArray<T>* ln(NDArray<T>* x) {
 		NDArray<T>* output = x->emptyLike();
 
 		for (int i = 0; i < x->getSize(); i++) {
@@ -40,6 +40,20 @@ namespace Cudheart::CPP::Math::Exp {
 			// using the change of bases rule:
 			// log n of x[i] = log(x[i]) / log(n)
 			output->set(i, (log(x->get(i)) / log(n)));
+		}
+
+		return output;
+	}
+
+	template <typename T>
+	NDArray<T>* logan(NDArray<T>* x, NDArray<T>* n) {
+		x->assertMatchShape(n->getShape());
+		NDArray<T>* output = x->emptyLike();
+
+		for (int i = 0; i < x->getSize(); i++) {
+			// using the change of bases rule:
+			// log n of x[i] = log(x[i]) / log(n)
+			output->set(i, (log(x->get(i)) / log(n->get(i))));
 		}
 
 		return output;
@@ -91,7 +105,7 @@ namespace Cudheart::CPP::Math::Exp {
 
 	template <typename T>
 	NDArray<T>* logaddexp(NDArray<T>* a, NDArray<T>* b) {
-		a->assertMatchShape(b);
+		a->assertMatchShape(b->getShape());
 		NDArray<T>* output = a->emptyLike();
 
 		for (int i = 0; i < a->getSize(); i++) {
@@ -103,11 +117,11 @@ namespace Cudheart::CPP::Math::Exp {
 
 	template <typename T>
 	NDArray<T>* logaddexp2(NDArray<T>* a, NDArray<T>* b) {
-		a->assertMatchShape(b);
+		a->assertMatchShape(b->getShape());
 		NDArray<T>* output = a->emptyLike();
 
 		for (int i = 0; i < a->getSize(); i++) {
-			output->set(i, std::log(std::exp2(a->get(i)) + std::exp2(b->get(i))));
+			output->set(i, std::log2(std::exp2(a->get(i)) + std::exp2(b->get(i))));
 		}
 
 		return output;

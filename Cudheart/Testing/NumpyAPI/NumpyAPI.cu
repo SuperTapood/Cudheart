@@ -418,4 +418,41 @@ namespace Numpy {
 	string conj(string x, string oName) {
 		return oName + " = np.conj(" + x + ")\n";
 	}
+
+	string ln(string x, string oName) {
+		return oName + " = np.log(" + x + ")\n";
+	}
+
+	string loga2(string x, string oName) {
+		return oName + " = np.log2(" + x + ")\n";
+	}
+
+	string logan(string x, string n, string oName) {
+		// why
+		return oName + " = np.log(" + x + ") / np.log(" + n + ")\n";
+	}
+
+	string loga10(string x, string oName) {
+		return oName + " = np.log10(" + x + ")\n";
+	}
+
+	string expo(string x, string oName) {
+		return oName + " = np.exp(" + x + ")\n";
+	}
+
+	string expom1(string x, string oName) {
+		return oName + " = np.expm1(" + x + ")\n";
+	}
+
+	string expo2(string x, string oName) {
+		return oName + " = np.exp2(" + x + ")\n";
+	}
+
+	string logaddexp(string a, string b, string oName) {
+		return oName + " = np.logaddexp(" + a + ", " + b +")\n";
+	}
+
+	string logaddexp2(string a, string b, string oName) {
+		return oName + " = np.logaddexp2(" + a + ", " + b + ")\n";
+	}
 }

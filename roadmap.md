@@ -23,7 +23,7 @@ the modules that still need testing:
     - [X] Complex
         - [X] ComplexType
         - [X] ComplexOps
-    - [ ] Exps
+    - [X] Exps
     - [ ] Linalg
     - [ ] Statistics
     - [ ] Trigo

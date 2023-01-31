@@ -5,5 +5,6 @@ namespace Cudheart::Testing {
 		Math::testBaseMath();
 		Math::testBitwise();
 		Math::testComplex();
+		Math::testExps();
 	}
 }
