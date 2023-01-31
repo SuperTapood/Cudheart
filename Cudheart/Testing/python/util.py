@@ -1,5 +1,9 @@
 import numpy as np
 
+import warnings
+
+warnings.filterwarnings('ignore')
+
 true = True
 false = False
 inf = np.inf

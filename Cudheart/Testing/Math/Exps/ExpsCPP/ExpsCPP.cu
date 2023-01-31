@@ -52,14 +52,14 @@ namespace Cudheart::Testing::Math::CPP::Exps {
 		cmd = Numpy::createArray(b->toString(), "b");
 		cmd += Numpy::logan("a", "b", "res");
 
-		Testing::submit("Exps::ln(Vector<double>, Vector<double>)", cmd, res->toString());
+		Testing::submit("Exps::logan(Vector<double>, Vector<double>)", cmd, res->toString());
 
 		res = logan(a, 4.0);
 
 		cmd = Numpy::createArray("[1, 2.71828, 15, 50, 666, 69, 420]", "a");
 		cmd += Numpy::logan("a", "4", "res");
 
-		Testing::submit("Exps::ln(Vector<double>, double)", cmd, res->toString());
+		Testing::submit("Exps::logan(Vector<double>, double)", cmd, res->toString());
 	}
 
 	void testLoga10() {

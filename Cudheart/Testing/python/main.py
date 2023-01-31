@@ -1,14 +1,5 @@
 # this file is generated automatically to simplify unit testing :)
-
 from util import *
-
-import warnings
-
-warnings.filterwarnings('ignore')
-
-# anti future headache tech
-true = True
-false = False
 
 test_name = "Vector<int>(int[], int)"
 res = np.array([5, 7, 451, 14, 25, 250, 52205, 255, 897])
@@ -1565,14 +1556,14 @@ out = [0.0, 1.442694070456223, 3.9068905956085187, 5.6438561897747244, 9.3793783
 add2queue(test_name, res, out)
 
 
-test_name = "Exps::ln(Vector<double>, Vector<double>)"
+test_name = "Exps::logan(Vector<double>, Vector<double>)"
 b = np.array([0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0])
 res = np.log(a) / np.log(b)
 out = [-0.0, inf, 3.9068905956085187, 3.5608767950073115, 4.6896891835356316, 2.630798287952365, 3.3711303414401605]
 add2queue(test_name, res, out)
 
 
-test_name = "Exps::ln(Vector<double>, double)"
+test_name = "Exps::logan(Vector<double>, double)"
 a = np.array([1, 2.71828, 15, 50, 666, 69, 420])
 res = np.log(a) / np.log(4)
 out = [0.0, 0.7213470352281115, 1.9534452978042594, 2.8219280948873622, 4.6896891835356316, 3.054262228389085, 4.3571227588330617]
