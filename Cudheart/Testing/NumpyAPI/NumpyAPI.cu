@@ -469,7 +469,7 @@ namespace Numpy {
 	}
 
 	string det(string a, string oName) {
-		return oName + " = np.det(" + a + ")\n";
+		return oName + " = np.linalg.det(" + a + ")\n";
 	}
 
 	string trace(string a, string offset, string oName) {
@@ -477,7 +477,7 @@ namespace Numpy {
 	}
 
 	string solve(string a, string b, string oName) {
-		return oName + " = np.solve(" + a + ", " + b + ")\n";
+		return oName + " = np.linalg.solve(" + a + ", " + b + ")\n";
 	}
 
 	string inv(string a, string oName) {

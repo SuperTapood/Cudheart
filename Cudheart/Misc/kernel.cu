@@ -1,5 +1,6 @@
 #include "kernel.cuh"
 #include "UtilKernel.cuh"
+#include "UtilKernel.cu"
 
 using namespace std;
 

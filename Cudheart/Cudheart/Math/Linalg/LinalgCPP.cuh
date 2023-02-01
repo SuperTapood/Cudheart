@@ -7,6 +7,7 @@ using Cudheart::NDArrays::Matrix;
 using namespace Cudheart::Exceptions;
 using Cudheart::VectorOps::emptyLike;
 using Cudheart::MatrixOps::emptyLike;
+using Cudheart::ArrayOps::append;
 using Cudheart::MatrixOps::fromVectorArray;
 
 namespace Cudheart::CPP::Math::Linalg {
@@ -58,8 +59,37 @@ namespace Cudheart::CPP::Math::Linalg {
 	}
 
 	template <typename T>
-	Vector<T>* inner(Matrix<T>* mat, Vector<T>* vec) {
-		return dot(mat, vec);
+	Matrix<T>* dot(Matrix<T>* a, Matrix<T>* b) {
+		if (a->getWidth() != b->getHeight()) {
+			if (a->getHeight() != b->getWidth()) {
+				Cudheart::Exceptions::ShapeMismatchException(a->getShape()->toString(),
+					b->getShape()->toString()).raise();
+			}
+			else {
+				return dot(b, a);
+			}
+		}
+		
+		Matrix<T>* out = new Matrix<T>(a->getHeight(), b->getWidth());
+
+		int idx;
+
+		for (int i = 0; i < out->getHeight(); i++) {
+			for (int j = 0; j < out->getWidth(); j++) {
+				T sum = (T)0;
+				for (int k = 0; k < a->getWidth(); k++) {
+					sum += a->get(i, k) * b->get(k, j);
+				}
+				out->set(i, j, sum);
+			}
+		}
+
+		return out;
+	}
+
+	template <typename T>
+	T inner(Vector<T>* a, Vector<T>* b) {
+		return dot(a, b);
 	}
 
 	template <typename T>
@@ -68,24 +98,19 @@ namespace Cudheart::CPP::Math::Linalg {
 	}
 
 	template <typename T>
-	Matrix<T>* inner(Matrix<T>* a, Matrix<T>* b) {
-		a->assertMatchShape(b->getShape());
-
-		Matrix<T>* out = emptyLike<T>(a);
-
-		for (int i = 0; i < a->getHeight(); i++) {
-			Vector<T>* v = dot<T>(b, a->getRow(i));
-			for (int j = 0; j < v->getSize(); j++) {
-				out->set(i, j, v->get(j));
-			}
-		}
-
-		return out;
+	Vector<T>* inner(Matrix<T>* mat, Vector<T>* vec) {
+		return dot(mat, vec);
 	}
 
 	template <typename T>
+	Matrix<T>* inner(Matrix<T>* a, Matrix<T>* b) {
+		return dot(a, (Matrix<T>*)b->transpose());
+	}
+
+
+	template <typename T>
 	Matrix<T>* outer(Vector<T>* a, Vector<T>* b) {
-		Matrix<T>* out = empty<T>(a->getSize(), b->getSize());
+		Matrix<T>* out = new Matrix<T>(a->getSize(), b->getSize());
 
 		for (int i = 0; i < a->getSize(); i++) {
 			for (int j = 0; j < b->getSize(); j++) {
@@ -101,7 +126,7 @@ namespace Cudheart::CPP::Math::Linalg {
 		Vector<T>* va = (Vector<T>*)a->flatten();
 		Vector<T>* vb = (Vector<T>*)b->flatten();
 
-		Matrix<T>* out = empty<T>(a->getSize(), b->getSize());
+		Matrix<T>* out = new Matrix<T>(a->getSize(), b->getSize());
 
 		for (int i = 0; i < va->getSize(); i++) {
 			for (int j = 0; j < vb->getSize(); j++) {
@@ -116,7 +141,7 @@ namespace Cudheart::CPP::Math::Linalg {
 
 	template <typename T>
 	Matrix<T>* outer(Matrix<T>* mat, Vector<T>* vec) {
-		Matrix<T>* out = empty<T>(mat->getSize(), vec->getSize());
+		Matrix<T>* out = new Matrix<T>(mat->getSize(), vec->getSize());
 
 		for (int i = 0; i < mat->getSize(); i++) {
 			for (int j = 0; j < vec->getSize(); j++) {
@@ -129,7 +154,7 @@ namespace Cudheart::CPP::Math::Linalg {
 
 	template <typename T>
 	Matrix<T>* outer(Vector<T>* vec, Matrix<T>* mat) {
-		Matrix<T>* out = empty<T>(vec->getSize(), mat->getSize());
+		Matrix<T>* out = new Matrix<T>(vec->getSize(), mat->getSize());
 
 		for (int i = 0; i < vec->getSize(); i++) {
 			for (int j = 0; j < mat->getSize(); j++) {
@@ -145,7 +170,7 @@ namespace Cudheart::CPP::Math::Linalg {
 		// idfk how numpy implemented their determinant algorithm
 		// this is a mirror of the algorithm implemented in a plethera of websites
 		if (mat->getHeight() != mat->getWidth()) {
-			NotImplementedException("det needs custom exception").raise();
+			BaseException("Exception: Matrix has to be square").raise();
 		}
 
 		if (mat->getHeight() == 1) {
@@ -162,7 +187,7 @@ namespace Cudheart::CPP::Math::Linalg {
 		for (int i = 0; i < mat->getWidth(); i++) {
 			//mat->print();
 			//cout << "value: " << mat->get(0, i) << " of index " << i << endl;
-			Matrix<T>* sub = empty<T>(mat->getHeight() - 1, mat->getWidth() - 1);
+			Matrix<T>* sub = new Matrix<T>(mat->getHeight() - 1, mat->getWidth() - 1);
 			int idx = 0;
 			int jdx = 0;
 			for (int k = 1; k < mat->getHeight(); k++) {
@@ -188,10 +213,10 @@ namespace Cudheart::CPP::Math::Linalg {
 
 	template <typename T>
 	T trace(Matrix<T>* mat, int offset) {
-		T value = mat->get(offset, offset);
+		T value = (T)0;
 
-		for (int i = offset + 1; i < mat->getHeight(); i++) {
-			value += mat->get(i, i);
+		for (int i = 0; i < mat->getHeight() && i + offset < mat->getWidth(); i++) {
+			value += mat->get(i, i + offset);
 		}
 
 		return value;
@@ -204,64 +229,64 @@ namespace Cudheart::CPP::Math::Linalg {
 
 	template <typename T>
 	Vector<T>* solve(Matrix<T>* a, Vector<T>* b) {
-		// a is the coefficients matrix
-		// b is the dependent variable (the ordinate) vector
 		a->assertMatchShape(b->getShape(), 1);
-		// assert a->getShape()->getX() == a->getShape()->getY();
-
 		// relentlessly ripped from https://martin-thoma.com/solving-linear-equations-with-gaussian-elimination/
 
-		int n = b->getSize();
+		Matrix<T>* A = new Matrix<T>(a->getHeight(), a->getWidth() + 1);
 
-		Matrix<T>* A = a->augment(b);
+		for (int i = 0; i < a->getHeight(); i++) {
+			for (int j = 0; j < a->getWidth(); j++) {
+				A->set(i, j, a->get(i, j));
+			}
+		}
 
-		Vector<T>* x = new Vector<T>(n);
+		for (int i = 0; i < b->getSize(); i++) {
+			A->set(i, -1, b->get(i));
+		}
 
-		for (int i = 1; i < n; i++) {
-			// search for maximum in this column
+		int n = a->getHeight();
 
-			T maxEl = A->get(i, i);
+		for (int i = 0; i < n; i++) {
+			// Search for maximum in this column
+			double maxEl = abs(A->get(i, i));
 			int maxRow = i;
-
-			for (int k = i + 1; k <= n; k++) {
-				if (A->get(k, i) > maxEl) {
-					maxEl = A->get(k, i);
+			for (int k = i + 1; k < n; k++) {
+				if (abs(A->get(k, i)) > maxEl) {
+					maxEl = abs(A->get(k, i));
 					maxRow = k;
 				}
 			}
 
-			// swap maximum row with current row
-			for (int k = i; k <= n; k++) {
-				T tmp = A->get(maxRow, k);
+			// Swap maximum row with current row (column by column)
+			for (int k = i; k < n + 1; k++) {
+				double tmp = A->get(maxRow, k);
 				A->set(maxRow, k, A->get(i, k));
 				A->set(i, k, tmp);
 			}
 
-			// make all rows below this one 0 in current column
-			for (int k = i + 1; k <= n; k++) {
-				T c = -(A->get(k, i) / A->get(i, i));
-
-				for (int j = i; j <= n; j++) {
+			// Make all rows below this one 0 in current column
+			for (int k = i + 1; k < n; k++) {
+				double c = -A->get(k, i) / A->get(i, i);
+				for (int j = i; j < n + 1; j++) {
 					if (i == j) {
 						A->set(k, j, 0);
 					}
 					else {
-						A->set(k, j, A->get(k, j) + c * A->get(i, j));
+						A->set(k, j, A->get(k, j) + (c * A->get(i, j)));
 					}
 				}
 			}
 		}
 
-		// solve equation for an upper triangular matrix
+		// Solve equation Ax=b for an upper triangular matrix A
+		// vector<double> x(n);
+		Vector<T>* x = new Vector<T>(n);
 		for (int i = n - 1; i >= 0; i--) {
-			T v = A->get(i, n) / A->get(i, i);
-			x->set(i, v);
+			x->set(i, A->get(i, n) / A->get(i, i));
 			for (int k = i - 1; k >= 0; k--) {
-				T value = A->get(k, n) - (A->get(k, i) * v);
-				A->set(k, n, value);
+				A->set(k, n, A->get(k, n) - (A->get(k, i) * x->get(i)));
 			}
 		}
-
 		return x;
 	}
 

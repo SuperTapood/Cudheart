@@ -1635,7 +1635,7 @@ out = [10, 13]
 add2queue(test_name, res, out)
 
 
-test_name = "Linalg::dot(Vector<int>, Matrix<int>)"
+test_name = "Linalg::dot(Vector<int>, Vector<int>)"
 a = np.array([
  [0, 1],
  [2, 3],
@@ -1646,6 +1646,157 @@ res = np.dot(b, a)
 b = np.array([0, 1, 2])
 res = np.dot(b, b)
 out = 5
+add2queue(test_name, res, out)
+
+
+test_name = "Linalg::dot(Matrix<int>, Vector<int>)"
+a = np.array([
+ [0, 1, 2],
+ [3, 4, 5]
+])
+b = np.array([
+ [0, 1],
+ [2, 3],
+ [4, 5]
+])
+res = np.dot(b, a)
+out = [[3, 4, 5], [9, 14, 19], [15, 24, 33]]
+add2queue(test_name, res, out)
+
+
+test_name = "Linalg::inner(Vector<int>, Vector<int>)"
+a = np.array([0, 1, 2, 3, 4, 5])
+b = np.array([0, 1, 2, 3, 4, 5])
+res = np.inner(a, b)
+out = 55
+add2queue(test_name, res, out)
+
+
+test_name = "Linalg::inner(Vector<int>, Matrix<int>)"
+a = np.array([
+ [0, 1, 2],
+ [3, 4, 5]
+])
+b = np.array([0, 1, 2])
+res = np.inner(a, b)
+out = [5, 14]
+add2queue(test_name, res, out)
+
+
+test_name = "Linalg::inner(Matrix<int>, Vector<int>)"
+a = np.array([
+ [0, 1, 2],
+ [3, 4, 5]
+])
+b = np.array([0, 1, 2])
+res = np.inner(b, a)
+out = [5, 14]
+add2queue(test_name, res, out)
+
+
+test_name = "Linalg::inner(Matrix<int>, Vector<int>)"
+a = np.array([
+ [0, 1, 2],
+ [3, 4, 5]
+])
+b = np.array([
+ [0, 1, 2],
+ [3, 4, 5]
+])
+res = np.inner(a, b)
+out = [[5, 14], [14, 50]]
+add2queue(test_name, res, out)
+
+
+test_name = "Linalg::outer(Vector<int>, Vector<int>)"
+a = np.array([0, 1, 2, 3, 4, 5])
+b = np.array([0, 1, 2, 3, 4, 5])
+res = np.outer(a, b)
+out = [[0, 0, 0, 0, 0, 0], [0, 1, 2, 3, 4, 5], [0, 2, 4, 6, 8, 10], [0, 3, 6, 9, 12, 15], [0, 4, 8, 12, 16, 20], [0, 5, 10, 15, 20, 25]]
+add2queue(test_name, res, out)
+
+
+test_name = "Linalg::outer(Vector<int>, Matrix<int>)"
+a = np.array([
+ [0, 1, 2],
+ [3, 4, 5]
+])
+b = np.array([0, 1, 2])
+res = np.outer(a, b)
+out = [[0, 0, 0], [0, 1, 2], [0, 2, 4], [0, 3, 6], [0, 4, 8], [0, 5, 10]]
+add2queue(test_name, res, out)
+
+
+test_name = "Linalg::outer(Matrix<int>, Vector<int>)"
+a = np.array([
+ [0, 1, 2],
+ [3, 4, 5]
+])
+b = np.array([0, 1, 2])
+res = np.outer(b, a)
+out = [[0, 0, 0, 0, 0, 0], [0, 1, 2, 3, 4, 5], [0, 2, 4, 6, 8, 10]]
+add2queue(test_name, res, out)
+
+
+test_name = "Linalg::outer(Matrix<int>, Vector<int>)"
+a = np.array([
+ [0, 1, 2],
+ [3, 4, 5]
+])
+b = np.array([
+ [0, 1, 2],
+ [3, 4, 5]
+])
+res = np.outer(a, b)
+out = [[0, 0, 0, 0, 0, 0], [0, 1, 2, 3, 4, 5], [0, 2, 4, 6, 8, 10], [0, 3, 6, 9, 12, 15], [0, 4, 8, 12, 16, 20], [0, 5, 10, 15, 20, 25]]
+add2queue(test_name, res, out)
+
+
+test_name = "Linalg::det(Matrix<int>)"
+mat = np.array([
+ [0, 1, 2, 3],
+ [4, 5, 6, 7],
+ [8, 9, 10, 11],
+ [12, 13, 14, 15]
+])
+res = np.linalg.det(mat)
+out = 0
+add2queue(test_name, res, out)
+
+
+test_name = "Linalg::trace(Matrix<int>, int)"
+mat = np.array([
+ [0, 1, 2, 3],
+ [4, 5, 6, 7],
+ [8, 9, 10, 11],
+ [12, 13, 14, 15]
+])
+res = np.trace(mat, 2)
+out = 9
+add2queue(test_name, res, out)
+
+
+test_name = "Linalg::trace(Matrix<int>)"
+mat = np.array([
+ [0, 1, 2],
+ [3, 4, 5],
+ [6, 7, 8],
+ [9, 10, 11],
+ [12, 13, 14]
+])
+res = np.trace(mat, 0)
+out = 12
+add2queue(test_name, res, out)
+
+
+test_name = "Linalg::solve(Matrix<int>, Vector<int>)"
+mat = np.array([
+ [1.0, 2.0],
+ [3.0, 5.0]
+])
+vec = np.array([1.0, 2.0])
+res = np.linalg.solve(mat, vec)
+out = [-0.99999999999999944, 0.99999999999999967]
 add2queue(test_name, res, out)
 
 

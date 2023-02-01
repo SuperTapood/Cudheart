@@ -57,6 +57,10 @@
 - added angle overload
 - renamed loga to ln
 - fixed logaddexp and logaddexp2
+- fixed dot
+- fixed inner
+- fixed trace
+- fixed solve
 
 ## notes:
 - 

@@ -1,12 +1,17 @@
 from util import *
 
-# test_name = "ComplexType(int, int)"
-# res = 5+5j
-# out = 5+5j
-#
-#
-# print(res)
-# print(out)
-# print(check(test_name, res, out))
+test_name = "Linalg::solve(Matrix<int>, Vector<int>)"
+mat = np.array([
+ [1, 2, 3, 4],
+ [5, 6, 7, 8],
+ [9, 10, 11, 12],
+ [13, 14, 15, 16]
+])
+vec = np.array([1, 2, 3, 4])
+res = np.linalg.solve(mat, vec)
+out = [1, 0, 0, 0]
 
-print(1 / np.log(0))
+
+print(res)
+print(out)
+print(check(test_name, res, out))
