@@ -1,11 +1,13 @@
 #pragma once
 
 #include "../../Arrays/Arrays.cuh"
+#include "../../Random/Random.cuh"
 
 using Cudheart::NDArrays::Vector;
 using Cudheart::NDArrays::Matrix;
 using namespace Cudheart::Exceptions;
 using Cudheart::VectorOps::emptyLike;
+using Cudheart::VectorOps::ones;
 using Cudheart::MatrixOps::emptyLike;
 using Cudheart::ArrayOps::append;
 using Cudheart::MatrixOps::fromVectorArray;
@@ -69,7 +71,7 @@ namespace Cudheart::CPP::Math::Linalg {
 				return dot(b, a);
 			}
 		}
-		
+
 		Matrix<T>* out = new Matrix<T>(a->getHeight(), b->getWidth());
 
 		int idx;
@@ -106,7 +108,6 @@ namespace Cudheart::CPP::Math::Linalg {
 	Matrix<T>* inner(Matrix<T>* a, Matrix<T>* b) {
 		return dot(a, (Matrix<T>*)b->transpose());
 	}
-
 
 	template <typename T>
 	Matrix<T>* outer(Vector<T>* a, Vector<T>* b) {
@@ -291,26 +292,197 @@ namespace Cudheart::CPP::Math::Linalg {
 	}
 
 	template <typename T>
-	Matrix<T>* inv(Matrix<T>* mat) {
-		// find x where
-		// dot(mat, x) = eye(a.shape[0])
-		// or rather
-		// mat * x = eye(a.shape[0])
-		// and solved for x as such:
-		// (eye(a.shape[0])) / mat = x
+	T norm(NDArray<T>* x) {
+		T sum = (T)0;
 
-		Matrix<T>* eye = Cudheart::MatrixOps::eye(mat->getHeight());
-
-		for (int i = 0; i < mat->getSize(); i++) {
-			eye->set(i, (eye->get(i) / mat->get(i)));
+		for (int i = 0; i < x->getSize(); i++) {
+			sum += std::pow(x->get(i), 2);
 		}
 
-		return eye;
+		return std::sqrt(sum);
+	}
+
+	namespace {
+		template <typename T>
+		Vector<T>* full_norm(NDArray<T>* x, int n) {
+			return full(1, n, norm<T>(x))->flatten();
+		}
+
+		template <typename T>
+		std::pair<T, Vector<T>*> power_method(Matrix<T>* A, double epsilon, int maxIter) {
+			int n = A->getHeight();
+			std::pair<T, Vector<T>*> out;
+			Vector<T>* x = Cudheart::CPP::Random::random<T>(n);
+			Vector<T>* full = full_norm(x, n);
+			x = (Vector<T>*)BaseMath::divide(x, full);
+			T newLambda = 0;
+
+			for (int i = 0; i < maxIter; i++) {
+				Vector<T>* newX = dot(A, x);
+				newLambda = dot(newX, x);
+				newX = (Vector<T>*)BaseMath::divide(newX, full_norm(newX, n));
+				if (norm(BaseMath::subtract(newX, x)) < epsilon) {
+					x = newX;
+					break;
+				}
+				x = newX;
+			}
+
+			out.first = newLambda;
+			out.second = x;
+
+			return out;
+		}
+	}
+
+	template <typename T>
+	std::pair<Vector<T>*, Vector<T>**> eig(Matrix<T>* A) {
+		int n = A->getHeight();
+		Vector<T>* eigenvalues = new Vector<T>(n);
+		Vector<T>** eigenvectors = new Vector<T>*[n];
+		std::pair<Vector<T>*, Vector<T>**> out;
+
+		for (int i = 0; i < n; i++) {
+			std::pair<T, Vector<T>*> pair = power_method(A, 1e-8, 1000);
+			Vector<T>* se = pair.second;
+			eigenvalues->set(i, pair.first);
+			eigenvectors[i] = pair.second;
+			Matrix<T>* o = outer(pair.second, pair.second);
+			Matrix<T>* lm = full(o->getHeight(), o->getWidth(), pair.first);
+			Matrix<T>* mult = (Matrix<T>*)BaseMath::multiply(lm, o);
+			A = (Matrix<T>*)BaseMath::subtract(A, mult);
+		}
+
+		out.first = eigenvalues;
+		out.second = eigenvectors;
+
+		return out;
+	}
+
+	template <typename T>
+	Vector<T>* eigvals(Matrix<T>* A) {
+		std::pair<Vector<T>*, Vector<T>**> pair = eig(A);
+		return pair.first;
+	}
+
+	template <typename T>
+	Vector<T>* roots(NDArray<T>* p) {
+		int N = p->getSize();
+
+		int start = 0;
+		int end = p->getSize();
+		int trailing = 0;
+
+		for (int i = 0; i < p->getSize(); i++) {
+			if (p->get(i) != 0) {
+				break;
+			}
+			start++;
+		}
+
+		for (int i = p->getSize() - 1; i >= 0; i--) {
+			if (p->get(i) != 0) {
+				break;
+			}
+			end--;
+			trailing++;
+		}
+
+		Vector<T>* newP = new Vector<T>(end - start);
+		int index = 0;
+
+		for (int i = start; i < end; i++) {
+			newP->set(index++, p->get(i));
+		}
+
+		p = newP;
+
+		Vector<T>* a = ones<T>(N - 2);
+
+		Matrix<T>* A = diagflat<T>(a, -1);
+
+		for (int i = 0; i < A->getWidth(); i++) {
+			A->set(0, i, -(p->get(i + 1) / p->get(0)));
+		}
+
+		return eigvals(A);
+	}
+
+	template <typename T>
+	Matrix<T>* inv(Matrix<T>* A) {
+		Matrix<T>* mat = (Matrix<T>*)A->copy();
+		if (mat->getHeight() != mat->getWidth()) {
+			BaseException("Exception: Matrix has to be square").raise();
+		}
+		int n = mat->getHeight();
+
+		Matrix<T>* result = zeros<T>(n, n);
+
+		// Create the identity matrix
+		for (int i = 0; i < n; i++) {
+			result->set(i, i, 1);
+		}
+
+		// Gauss-Jordan elimination to transform A into the identity matrix
+		for (int i = 0; i < n; i++) {
+			// Find the pivot row
+			int pivot = i;
+			for (int j = i + 1; j < n; j++) {
+				if (fabs(mat->get(j, i)) > fabs(mat->get(pivot, i))) {
+					pivot = j;
+				}
+			}
+
+			// Swap the pivot row with the current row
+			Vector<T>* temp = new Vector<T>(n);
+
+			for (int j = 0; j < n; j++) {
+				temp->set(j, mat->get(pivot, j));
+			}
+			for (int j = 0; j < n; j++) {
+				mat->set(pivot, j, mat->get(i, j));
+			}
+			for (int j = 0; j < n; j++) {
+				mat->set(i, j, temp->get(j));
+			}
+
+			for (int j = 0; j < n; j++) {
+				temp->set(j, result->get(pivot, j));
+			}
+			for (int j = 0; j < n; j++) {
+				result->set(pivot, j, result->get(i, j));
+			}
+			for (int j = 0; j < n; j++) {
+				result->set(i, j, temp->get(j));
+			}
+
+			// Normalize the pivot row
+			T pivotValue = mat->get(i, i);
+			for (int j = 0; j < n; j++) {
+				mat->set(i, j, mat->get(i, j) / pivotValue);
+				result->set(i, j, result->get(i, j) / pivotValue);
+			}
+
+			// Eliminate the current column
+			for (int j = 0; j < n; j++) {
+				if (j == i) continue;
+
+				T ratio = mat->get(j, i);
+				for (int k = 0; k < n; k++) {
+					mat->set(j, k, mat->get(j, k) - (ratio * mat->get(i, k)));
+					result->set(j, k, result->get(j, k) - (ratio * result->get(i, k)));
+				}
+			}
+		}
+
+		delete mat;
+
+		return result;
 	}
 
 	template <typename T>
 	Vector<T>* convolve(Vector<T>* a, Vector<T>* b) {
-		Vector<T>* out = Cudheart::VectorOps::zeros(a->getSize() + b->getSize() - 1);
+		Vector<T>* out = Cudheart::VectorOps::zeros<T>(a->getSize() + b->getSize() - 1);
 
 		for (int i = 0; i < a->getSize(); i++) {
 			for (int j = 0; j < b->getSize(); j++) {

@@ -261,7 +261,6 @@ namespace Cudheart::Testing::Arrays::MatOpsTest {
 		auto mat = arange(9, 3, 3);
 
 		string cmd = Numpy::arange("0", "9", "1", "int", "mat");
-		cmd += Numpy::reshape("mat", "(3, 3)", "mat");
 		string add;
 
 		auto a = diagflat(mat->flatten(), 1);

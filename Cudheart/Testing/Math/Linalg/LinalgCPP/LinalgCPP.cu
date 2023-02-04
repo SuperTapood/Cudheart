@@ -1,7 +1,6 @@
 #include "LinalgCPP.cuh"
 
 namespace Cudheart::Testing::Math::CPP::Linalg {
-	
 	using namespace Cudheart::CPP::Math::Linalg;
 
 	void testLinalg() {
@@ -11,6 +10,7 @@ namespace Cudheart::Testing::Math::CPP::Linalg {
 		testDet();
 		testTrace();
 		testSolve();
+		testRoots();
 		testInv();
 		testConvolve();
 		testClip();
@@ -170,7 +170,7 @@ namespace Cudheart::Testing::Math::CPP::Linalg {
 		string cmd;
 
 		auto a = new Matrix<double>({ 1, 2, 3, 5 }, 2, 2);
-		auto b = new Vector<double>({1, 2});
+		auto b = new Vector<double>({ 1, 2 });
 		auto res = solve(a, b);
 
 		cmd = Numpy::createArray(a->toString(), "mat");
@@ -180,15 +180,101 @@ namespace Cudheart::Testing::Math::CPP::Linalg {
 		Testing::submit("Linalg::solve(Matrix<int>, Vector<int>)", cmd, res->toString());
 	}
 
-	void testInv() {
+	void testNorm() {
+		string cmd;
 
+		auto p = arange<double>(9, 3, 3);
+		auto res = norm(p);
+
+		cmd = Numpy::createArray(p->toString(), "p");
+		cmd += Numpy::roots("p", "res");
+
+		Testing::submit("Linalg.roots(Vector<double>)", cmd, to_string(res));
+	}
+
+	void testEig() {
+		string cmd;
+
+		auto p = arange<double>(9, 3, 3);
+		std::pair<Vector<double>*, Vector<double>**> res = eig(p);
+
+		cmd = Numpy::createArray(p->toString(), "p");
+		cmd += Numpy::eig("p", "res");
+		cmd += "out = [" + res.first->toString() + ", [";
+		for (int i = 0; i < 3; i++) {
+			cmd += res.second[i]->toString();
+		}
+		cmd += "]\n";
+
+		Testing::submit("Linalg.eig(Matrix<double>)", cmd, "out");
+	}
+
+	void testEigvals() {
+		string cmd;
+
+		auto p = arange<double>(9, 3, 3);
+		Vector<double>* res = eigvals(p);
+
+		cmd = Numpy::createArray(p->toString(), "p");
+		cmd += Numpy::eigvals("p", "res");
+
+		Testing::submit("Linalg.eigvals(Matrix<double>)", cmd, res->toString());
+	}
+
+	void testRoots() {
+		string cmd;
+
+		auto p = new Vector<double>({ 1, 1, -1 });
+		auto res = roots(p);
+
+		cmd = Numpy::createArray("[1, 1, -1]", "p");
+		cmd += Numpy::roots("p", "res");
+
+		Testing::submit("Linalg.roots(Vector<double>)", cmd, res->toString());
+	}
+
+	void testInv() {
+		string cmd;
+
+		auto p = new Matrix<double>({ 1, 2, 3, 4 }, 2, 2);
+		auto res = inv(p);
+
+		cmd = Numpy::createArray(p->toString(), "p");
+		cmd += Numpy::inv("p", "res");
+
+		Testing::submit("Linalg.inv(Matrix<double>)", cmd, res->toString());
 	}
 
 	void testConvolve() {
+		string cmd;
 
+		auto a = arange<double>(9, 3, 3)->flatten();
+		auto b = arange<double>(16, 4, 4)->flatten();
+		auto res = convolve(a, b);
+
+		cmd = Numpy::createArray(a->toString(), "a");
+		cmd += Numpy::createArray(b->toString(), "b");
+		cmd += Numpy::convolve("a", "b", "res");
+
+		Testing::submit("Linalg.convolve(Vector<int>, Vector<int>)", cmd, res->toString());
 	}
 
 	void testClip() {
+		string cmd;
 
+		auto vec = arange(50, 5, 10)->flatten();
+		auto res = clip(vec, 5, 40);
+
+		cmd = Numpy::createArray(vec->toString(), "vec");
+		cmd += Numpy::clip("vec", "5", "40", "res");
+
+		Testing::submit("Linalg.clip(Vector<int>, int, int)", cmd, res->toString());
+
+		res = clip(vec, 20);
+
+		cmd = Numpy::createArray(vec->toString(), "vec");
+		cmd += Numpy::clip("vec", "-50", "20", "res");
+
+		Testing::submit("Linalg.clip(Vector<int>, int)", cmd, res->toString());
 	}
 }

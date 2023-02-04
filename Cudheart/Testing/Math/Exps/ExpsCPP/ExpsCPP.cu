@@ -1,8 +1,6 @@
 #include "ExpsCPP.cuh"
 
-
 namespace Cudheart::Testing::Math::CPP::Exps {
-
 	using namespace Cudheart::CPP::Math::Exp;
 
 	void testExps() {

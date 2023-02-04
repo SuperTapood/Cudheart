@@ -1,7 +1,6 @@
 #include "ComplexType.cuh"
 
 namespace Cudheart::Testing::Math::ComplexType {
-
 	using Cudheart::ComplexType;
 
 	void testComplexType() {

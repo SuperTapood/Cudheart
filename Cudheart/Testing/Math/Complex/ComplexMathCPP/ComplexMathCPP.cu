@@ -24,7 +24,7 @@ namespace Cudheart::Testing::Math::CPP::ComplexMath {
 
 		auto res = angle(a, true);
 
-		cmd  = Numpy::createArray(a->toString(), "a");
+		cmd = Numpy::createArray(a->toString(), "a");
 		cmd += Numpy::angle("a", "true", "res");
 
 		Testing::submit("Complex::angle(Vector<ComplexType*>, bool)", cmd, res->toString());

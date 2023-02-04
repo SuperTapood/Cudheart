@@ -17,6 +17,14 @@ namespace Cudheart::Testing::Math::CPP::Linalg {
 
 	void testSolve();
 
+	void testNorm();
+
+	void testEig();
+
+	void testEigvals();
+
+	void testRoots();
+
 	void testInv();
 
 	void testConvolve();

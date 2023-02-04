@@ -102,8 +102,8 @@ namespace Cudheart::Testing {
 			if (index == 4) {
 				if (values[3] != "T") {
 					cout << "Test " << values[0] << " failed!\n";
-					cout << "Cudheart generated: " << values[1] << endl;
-					cout << "Numpy generated:    " << values[2];
+					cout << "Cudheart generated: " << values[2] << endl;
+					cout << "Numpy generated:    " << values[1];
 					// cout << "\nCode Provided:\n\n" << cmd;
 					// cout << "\nPython Code:\n\n" << os.str();
 					exit(69);

@@ -24,7 +24,7 @@ the modules that still need testing:
         - [X] ComplexType
         - [X] ComplexOps
     - [X] Exps
-    - [ ] Linalg
+    - [X] Linalg
     - [ ] Statistics
     - [ ] Trigo
 - [ ] Random
@@ -42,6 +42,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] get rid of shape object for good (maybe?)
 - [ ] resolve all of the warnings
 - [ ] make sure the library matches numpy
+- [ ] math with real numbers not arrays :)
 - [ ] try to directly compare program output with numpy lol
 - [ ] compile entire thing into lib or dll file by predefining templates
 - [ ] replace StringType* and ComplexType* with StringPtr and ComplexPtr respectivly
@@ -52,6 +53,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] remove pragma region
 - [ ] simplify the way functions are used
 - [ ] refactor code according to the linter
+- [ ] use std pairs and stuff when returning multiple stuff
 - [ ] allow functions to support more than 1 type template thing
 - [ ] add equal operation to shape objects and use in testing and stuff
 - [ ] fix exceptions not throwing correctly
@@ -68,6 +70,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] test and optimize the inplace argument
 - [ ] further integrate more exceptions
 - [ ] differentiate between release and debug mode maybe :)
+- [ ] optimize inv
 - [ ] revamp namespaces and make sure each one is self contained (does not contain stuff from other namespaces)
 - [ ] add and test operator overloads for all types (vectors, matrices, stringtypes and complextypes)
 - [ ] convert m_str to private

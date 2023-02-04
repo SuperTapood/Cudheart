@@ -540,10 +540,14 @@ namespace Cudheart {
 		/// <returns>the output matrix</returns>
 		template <typename T>
 		Matrix<T>* diagflat(Vector<T>* vec, int k) {
-			Matrix<T>* mat = zeros<T>(vec->getSize() + k, vec->getSize() + k);
+			Matrix<T>* mat = zeros<T>(vec->getSize() + std::abs(k), vec->getSize() + std::abs(k));
 
-			for (int i = 0, j = k; i < mat->getHeight() && j < mat->getWidth(); i++, j++) {
-				mat->set(i, j, vec->get(i));
+			for (int i = 0; i < vec->getSize(); i++) {
+				mat->set(i, i + std::abs(k), vec->get(i));
+			}
+
+			if (k < 0) {
+				return mat->rot90(3)->reverseRows();
 			}
 
 			return mat;

@@ -248,14 +248,22 @@ namespace Numpy {
 	string outer(string a, string b, string oName);
 
 	string det(string a, string oName);
-	
+
 	string trace(string a, string offset, string oName);
-	
+
 	string solve(string a, string b, string oName);
-	
+
+	string norm(string a, string oName);
+
+	string eig(string a, string oName);
+
+	string eigvals(string a, string oName);
+
+	string roots(string p, string oName);
+
 	string inv(string a, string oName);
-	
+
 	string convolve(string a, string b, string oName);
-	
+
 	string clip(string arr, string min, string max, string oName);
 }

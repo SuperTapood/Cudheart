@@ -6,6 +6,7 @@
 void testAll() {
 	auto start = std::chrono::system_clock::now();
 	Cudheart::Testing::testArrays();
+	// test random here :)
 	Cudheart::Testing::testIndexing();
 	Cudheart::Testing::testLogic();
 	Cudheart::Testing::testMath();

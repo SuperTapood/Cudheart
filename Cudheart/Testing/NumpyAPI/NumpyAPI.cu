@@ -449,7 +449,7 @@ namespace Numpy {
 	}
 
 	string logaddexp(string a, string b, string oName) {
-		return oName + " = np.logaddexp(" + a + ", " + b +")\n";
+		return oName + " = np.logaddexp(" + a + ", " + b + ")\n";
 	}
 
 	string logaddexp2(string a, string b, string oName) {
@@ -480,8 +480,24 @@ namespace Numpy {
 		return oName + " = np.linalg.solve(" + a + ", " + b + ")\n";
 	}
 
+	string norm(string a, string oName) {
+		return oName + " = np.norm(" + a + ")\n";
+	}
+
+	string eig(string a, string oName) {
+		return oName + " = np.linalg.eig(" + a + ")\n";
+	}
+
+	string eigvals(string a, string oName) {
+		return oName + " = np.linalg.eigvals(" + a + ")\n";
+	}
+
+	string roots(string p, string oName) {
+		return oName + " = np.roots(" + p + ")\n";
+	}
+
 	string inv(string a, string oName) {
-		return oName + " = np.inv(" + a + ")\n";
+		return oName + " = np.linalg.inv(" + a + ")\n";
 	}
 
 	string convolve(string a, string b, string oName) {
@@ -491,5 +507,4 @@ namespace Numpy {
 	string clip(string arr, string min, string max, string oName) {
 		return oName + " = np.clip(" + arr + ", " + min + ", " + max + ")\n";
 	}
-
 }
