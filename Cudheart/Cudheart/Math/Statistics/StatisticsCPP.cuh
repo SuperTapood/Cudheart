@@ -10,7 +10,6 @@ using Cudheart::NDArrays::Vector;
 using Cudheart::NDArrays::Matrix;
 using Cudheart::NDArrays::NDArray;
 using namespace Cudheart::Exceptions;
-using Cudheart::VectorOps::empty;
 using Cudheart::VectorOps::emptyLike;
 using Cudheart::MatrixOps::fromVector;
 
@@ -308,9 +307,30 @@ namespace Cudheart::CPP::Math::Statistics {
 	}
 
 	template <typename T>
-	inline int digitize(T x, Vector<T>* bins, bool right = false, bool BinIncreasing = true) {
+	inline int digitize(T x, Vector<T>* bins, bool right = false) {
+		bool binIncreasing = true;
+
+		T value = bins->get(0);
+		for (int i = 1; i < bins->getSize(); i++) {
+			if (bins->get(i) < value) {
+				binIncreasing = false;
+				break;
+			}
+			value = bins->get(i);
+		}
+
+		if (!binIncreasing) {
+			T value = bins->get(0);
+			for (int i = 1; i < bins->getSize(); i++) {
+				if (bins->get(i) > value) {
+					Exceptions::BaseException("ValueError: bins have to be sorted").raise();
+				}
+				value = bins->get(i);
+			}
+		}
+
 		if (right) {
-			if (BinIncreasing) {
+			if (binIncreasing) {
 				for (int i = 1; i < bins->getSize(); i++) {
 					if (bins->get(i - 1) < x && x <= bins[i]) {
 						return i;
@@ -326,7 +346,7 @@ namespace Cudheart::CPP::Math::Statistics {
 			}
 		}
 		else {
-			if (BinIncreasing) {
+			if (binIncreasing) {
 				for (int i = 1; i < bins->getSize(); i++) {
 					if (bins->get(i - 1) <= x && x < bins[i]) {
 						return i;
@@ -346,7 +366,7 @@ namespace Cudheart::CPP::Math::Statistics {
 	}
 
 	template <typename T>
-	inline Vector<int> digitize(Vector<T>* x, Vector<T>* bins, bool right = false, bool BinIncreasing = true) {
+	inline Vector<int> digitize(Vector<T>* x, Vector<T>* bins, bool right = false) {
 		Vector<int>* out = (x->emptyLike)->castTo<int>();
 
 		for (int i = 0; i < x->getSize(); i++) {

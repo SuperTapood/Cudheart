@@ -266,4 +266,32 @@ namespace Numpy {
 	string convolve(string a, string b, string oName);
 
 	string clip(string arr, string min, string max, string oName);
+
+	string ptp(string a, string oName);
+
+	string percentile(string a, string q, string oName);
+
+	string quantile(string a, string q, string oName);
+
+	string median(string a, string oName);
+
+	string average(string a, string weights, string oName);
+
+	string mean(string a, string oName);
+
+	string std(string a, string oName);
+
+	string var(string a, string oName);
+
+	string cov(string m, string rowvar, string oName);
+
+	string corrcoef(string x, string rowvar, string oName);
+
+	string histogram(string a, string bins, string low, string high, string oName);
+
+	string histogram2d(string x, string y, string binX, string binY, string lowX, string highX, string lowY, string highY, string oName);
+
+	string bincount(string x, string oName);
+
+	string digitize(string x, string bins, string right, string BinIncreasing, string oName);
 }

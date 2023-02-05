@@ -1801,7 +1801,7 @@ add2queue(test_name, res, out)
 test_name = "Linalg.roots(Vector<double>)"
 p = np.array([1, 1, -1])
 res = np.roots(p)
-out = [-1.6180339887498945, 0.6180339887498949]
+out = [-1.6180339887498945, 0.61803398874989479]
 add2queue(test_name, res, out)
 
 

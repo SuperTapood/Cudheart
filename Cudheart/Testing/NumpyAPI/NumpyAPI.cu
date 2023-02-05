@@ -507,4 +507,60 @@ namespace Numpy {
 	string clip(string arr, string min, string max, string oName) {
 		return oName + " = np.clip(" + arr + ", " + min + ", " + max + ")\n";
 	}
+
+	string ptp(string a, string oName) {
+		return oName + " = np.ptp(" + a + ")\n";
+	}
+
+	string percentile(string a, string q, string oName) {
+		return oName + " = np.ptp(" + a + ", " + q + ")\n";
+	}
+
+	string quantile(string a, string q, string oName) {
+		return oName + " = np.quantile(" + a + ", " + q + ")\n";
+	}
+
+	string median(string a, string oName) {
+		return oName + " = np.median(" + a + ")\n";
+	}
+
+	string average(string a, string weights, string oName) {
+		return oName + " = np.average(" + a + ", " + weights + ")\n";
+	}
+
+	string mean(string a, string oName) {
+		return oName + " = np.ptp(" + a + ")\n";
+	}
+
+	string std(string a, string oName) {
+		return oName + " = np.std(" + a + ")\n";
+	}
+
+	string var(string a, string oName) {
+		return oName + " = np.var(" + a + ")\n";
+	}
+
+	string cov(string m, string rowvar, string oName) {
+		return oName + " = np.ptp(" + m + ", rowvar=" + rowvar + ")\n";
+	}
+
+	string corrcoef(string x, string rowvar, string oName) {
+		return oName + " = np.corrcoef(" + x + ", rowvar=" + rowvar + ")\n";
+	}
+
+	string histogram(string a, string bins, string low, string high, string oName) {
+		return oName + " = np.histogram(" + a + ", " + bins + ", (" + low + ", " + high + ")\n";
+	}
+
+	string histogram2d(string x, string y, string binX, string binY, string lowX, string highX, string lowY, string highY, string oName) {
+		return oName + " = np.histogram2d(" + x + ", " + y + ", bins=(" + binX + ", " + binY + "), " + ", range=([" + lowX + ", " + highX + "], [" + lowY + ", " + highY + "])\n";
+	}
+
+	string bincount(string x, string oName) {
+		return oName + " = np.bincount(" + x + ")\n";
+	}
+
+	string digitize(string x, string bins, string right, string BinIncreasing, string oName) {
+		return oName + " = np.digitize(" + x + ", " + bins + ", " + right + ")\n";
+	}
 }

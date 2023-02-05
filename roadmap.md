@@ -47,6 +47,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] compile entire thing into lib or dll file by predefining templates
 - [ ] replace StringType* and ComplexType* with StringPtr and ComplexPtr respectivly
 - [ ] use ifndef and undefine and ifdef and stuff
+- [ ] use std complex and std string instead of complex type and string type
 - [ ] enforce member naming conventions lol
 - [ ] replace the regular array creation with a cuda unified memory allocation (check kernel.cu)
 - [ ] maybe convert all namespaces to classes for easier cuda and c++ swapping?
@@ -70,7 +71,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] test and optimize the inplace argument
 - [ ] further integrate more exceptions
 - [ ] differentiate between release and debug mode maybe :)
-- [ ] optimize inv
+- [ ] improve inv
 - [ ] revamp namespaces and make sure each one is self contained (does not contain stuff from other namespaces)
 - [ ] add and test operator overloads for all types (vectors, matrices, stringtypes and complextypes)
 - [ ] convert m_str to private
@@ -87,7 +88,7 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] inline overloads
 - [ ] add magic methods and redo functions where they can be used
 - [ ] convert cuda and cpp pointers to shared memory
-- [ ] add axis to everything
+- [ ] add axis to everything (and to numpy api)
 - [ ] more template variety
 - [ ] make logic module use operator overloads (maybe it will even be redundent)
 - [ ] differentiate between vector and matrix ops (name wise) (maybe?)

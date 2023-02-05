@@ -61,6 +61,7 @@
 - fixed inner
 - fixed trace
 - fixed solve
+- fixed inv
 
 ## notes:
 - 

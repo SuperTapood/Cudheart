@@ -7,5 +7,6 @@ namespace Cudheart::Testing {
 		Math::testComplex();
 		Math::testExps();
 		Math::testLinalg();
+		Math::testStatistics();
 	}
 }
