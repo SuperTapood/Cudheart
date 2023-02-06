@@ -23,7 +23,7 @@ namespace Cudheart::CPP::Math::Statistics {
 	inline T percentile(NDArray<T>* a, float q) {
 		// 0 <= q <= 100
 
-		NDArray<T>* sorted = Cudheart::Logic::sort(a);
+		NDArray<T>* sorted = Cudheart::Sorting::sort(a);
 
 		double temp = (q / 100) * sorted->getSize();
 		int index;
@@ -44,7 +44,7 @@ namespace Cudheart::CPP::Math::Statistics {
 			T i = sorted->get(index - 1);
 			T j = sorted->get(index);
 
-			return (i + j) / 2;
+			return (double)(i + j) / 2;
 		}
 
 		return NULL;
@@ -138,7 +138,7 @@ namespace Cudheart::CPP::Math::Statistics {
 
 	template <typename T>
 	inline Matrix<T>* cov(Matrix<T>* m) {
-		T v = Cudheart::CPP::Math::sum(m);
+		T v = Cudheart::CPP::Math::BaseMath::sum(m);
 
 		Matrix<T>* nm = (Matrix<T>*)m->emptyLike();
 
@@ -150,7 +150,7 @@ namespace Cudheart::CPP::Math::Statistics {
 		T v2 = v / (std::pow(v, 2) - v);
 		Matrix<T>* mat = Cudheart::MatrixOps::fullLike(dotProduct, v2);
 
-		Matrix<T>* res = Cudheart::CPP::Math::multiply(mat, dotProduct);
+		Matrix<T>* res = Cudheart::CPP::Math::BaseMath::multiply(mat, dotProduct);
 
 		delete dotProduct, nm, mat, v2, v;
 
@@ -229,8 +229,8 @@ namespace Cudheart::CPP::Math::Statistics {
 
 	template <typename T>
 	Vector<T>* histogram(NDArray<T>* a, int bins) {
-		Vector<T>* bins = Cudheart::Math::linspace<T>(low, high, bins);
-		return histogram(a, bins, Cudheart::Logic::minimum(a), Cudheart::Logic::maximum(a));
+		Vector<T>* binnes = Cudheart::VectorOps::linspace<T>(low, high, bins);
+		return histogram(a, binnes, Cudheart::Logic::minimum(a), Cudheart::Logic::maximum(a));
 	}
 
 	template <typename T>
@@ -366,11 +366,11 @@ namespace Cudheart::CPP::Math::Statistics {
 	}
 
 	template <typename T>
-	inline Vector<int> digitize(Vector<T>* x, Vector<T>* bins, bool right = false) {
-		Vector<int>* out = (x->emptyLike)->castTo<int>();
+	inline Vector<int>* digitize(Vector<T>* x, Vector<T>* bins, bool right = false) {
+		Vector<int>* out = new Vector(x->getSize());
 
 		for (int i = 0; i < x->getSize(); i++) {
-			out->set(i, digitize(x->get(i), bins, right, BinIncreasing));
+			out->set(i, digitize(x->get(i), bins, right));
 		}
 
 		return out;

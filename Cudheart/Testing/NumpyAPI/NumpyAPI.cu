@@ -513,7 +513,7 @@ namespace Numpy {
 	}
 
 	string percentile(string a, string q, string oName) {
-		return oName + " = np.ptp(" + a + ", " + q + ")\n";
+		return oName + " = np.percentile(" + a + ", " + q + ")\n";
 	}
 
 	string quantile(string a, string q, string oName) {
