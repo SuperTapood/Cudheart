@@ -364,7 +364,7 @@ use the code above with (https://www.boost.org/doc/libs/1_74_0/libs/math/doc/htm
 
 use unified memory instead of regular cuda memory to save time. (see refrences)
 
-it takes a lot longer to invoke a kernel than it does to actually execute it, so its better to make kernels bigger than to invoke multiple of them. this is proven by how little difference there is between cuda and cpp implementations during an increase in complexity
+it takes a lot longer to invoke a kernel than it does to actually execute it, so its better to make kernels bigger than to invoke multiple of them.
 
 references:
 - https://programs.wiki/wiki/unified-virtual-addressing-unified-memory-addressing-for-memory-management.html

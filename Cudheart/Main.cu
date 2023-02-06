@@ -3,6 +3,7 @@
 #include "Misc/Test.cuh"
 #include "Misc/unified.cuh"
 #include "Misc/Custom.cuh"
+#include "Misc/promotion.cuh"
 
 #include <iostream>
 #include <iomanip>
@@ -19,8 +20,9 @@ int main() {
 	// test inheritance with the ndarrays (do we even need that?)
 	// testThing();
 	// test everything
-	testAll();
+	// testAll();
 	// test templating with cuda
 	// testCustom();
+	stupidTemplates();
 	return 0;
 }
