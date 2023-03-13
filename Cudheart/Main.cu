@@ -20,9 +20,9 @@ int main() {
 	// test inheritance with the ndarrays (do we even need that?)
 	// testThing();
 	// test everything
-	//testAll();
+	testAll();
 	// test templating with cuda
 	// testCustom();
-	stupidTemplates();
+	// sillyTemplates();
 	return 0;
 }

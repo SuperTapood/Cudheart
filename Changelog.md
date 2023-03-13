@@ -62,6 +62,9 @@
 - fixed trace
 - fixed solve
 - fixed inv
+- fixed percentile
+- fixed quantile
+- fixed cov
 
 ## notes:
 - 

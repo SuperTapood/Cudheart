@@ -30,7 +30,7 @@ namespace Cudheart::VectorOps {
 	/// <returns>the resulting vector</returns>
 	template <typename T>
 	Vector<T>* arange(T start, T end, T jump) {
-		if (end - start < jump) {
+		if (signbit((double)(end - start)) != signbit((double)jump)) {
 			ostringstream os;
 			os << "cannot define range from " << start << " to " << end;
 			BadValueException(os.str());

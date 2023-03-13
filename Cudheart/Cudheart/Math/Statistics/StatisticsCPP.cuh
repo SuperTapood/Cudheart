@@ -25,34 +25,20 @@ namespace Cudheart::CPP::Math::Statistics {
 
 		NDArray<T>* sorted = Cudheart::Sorting::sort(a);
 
-		double temp = (q / 100) * sorted->getSize();
-		int index;
+		int size = a->getSize();
+		// linear method
+		double virt = ((q / 100) * (size - 1));
 
-		if (temp != (int)temp) {
-			if ((temp - (int)temp) >= 0.5) {
-				index = ceil(temp);
-			}
-			else {
-				index = floor(temp);
-			}
+		T i = sorted->get(floor(virt));
+		T j = sorted->get(ceil(virt));
+		T dist = j - i;
 
-			return sorted->get(index);
-		}
-		else {
-			index = (int)temp;
-
-			T i = sorted->get(index - 1);
-			T j = sorted->get(index);
-
-			return (double)(i + j) / 2;
-		}
-
-		return NULL;
+		return i + dist * (virt - (int)virt);
 	}
 
 	template <typename T>
 	inline NDArray<T>* percentile(NDArray<T>* a, NDArray<float>* q) {
-		NDArray<T>* out = q->emptyLike();
+		NDArray<T>* out = q->emptyLike<T>();
 
 		for (int i = 0; i < q->getSize(); i++) {
 			out->set(i, percentile(a, q->get(i)));
@@ -68,7 +54,7 @@ namespace Cudheart::CPP::Math::Statistics {
 
 	template <typename T>
 	inline NDArray<T>* quantile(NDArray<T>* a, NDArray<float>* q) {
-		NDArray<T>* out = q->emptyLike();
+		NDArray<T>* out = q->emptyLike<T>();
 
 		for (int i = 0; i < q->getSize(); i++) {
 			out->set(i, quantile(a, q->get(i)));
@@ -85,8 +71,8 @@ namespace Cudheart::CPP::Math::Statistics {
 	template <typename T>
 	inline T average(NDArray<T>* a, NDArray<T>* weights) {
 		a->assertMatchShape(weights->getShape());
-		T sumWeights;
-		T sumA;
+		T sumWeights = 0;
+		T sumA = 0;
 
 		for (int i = 0; i < a->getSize(); i++) {
 			sumWeights += weights->get(i);
@@ -97,25 +83,25 @@ namespace Cudheart::CPP::Math::Statistics {
 	}
 
 	template <typename T>
-	inline T average(NDArray<T>* a) {
-		T sum;
+	inline double average(NDArray<T>* a) {
+		T sum = 0;
 
 		for (int i = 0; i < a->getSize(); i++) {
 			sum += a->get(i);
 		}
 
-		return sum / a->getSize();
+		return (double)sum / (double)a->getSize();
 	}
 
 	template <typename T>
-	inline T mean(NDArray<T>* a) {
-		return average<T>(a);
+	inline double mean(NDArray<T>* a) {
+		return (double)average<T>(a);
 	}
 
 	template <typename T>
-	inline T std(NDArray<T>* a) {
-		T sum = 0;
-		T m = mean<T>(a);
+	inline double std(NDArray<T>* a) {
+		double sum = 0;
+		double m = mean<T>(a);
 
 		for (int i = 0; i < a->getSize(); i++) {
 			sum += std::pow(a->get(i) - m, 2);
@@ -125,8 +111,8 @@ namespace Cudheart::CPP::Math::Statistics {
 	}
 
 	template <typename T>
-	inline T var(NDArray<T>* a) {
-		NDArray<T>* x = a->emptyLike();
+	inline double var(NDArray<T>* a) {
+		NDArray<double>* x = a->emptyLike<double>();
 		T meanA = mean(a);
 
 		for (int i = 0; i < a->getSize(); i++) {
@@ -138,31 +124,32 @@ namespace Cudheart::CPP::Math::Statistics {
 
 	template <typename T>
 	inline Matrix<T>* cov(Matrix<T>* m) {
-		T v = Cudheart::CPP::Math::BaseMath::sum(m);
-
-		Matrix<T>* nm = (Matrix<T>*)m->emptyLike();
-
-		for (int i = 0; i < nm->getSize(); i++) {
-			nm->set(i, m->get(i) - 1);
+		T fact = m->getShape()->getY() - 1;
+		Vector<T>* avg = new Vector<T>(m->getWidth());
+		Matrix<T>* trans = (Matrix<T>*)m->transpose();
+		for (int i = 0; i < avg->getSize(); i++) {
+			avg->set(i, average(m->getRow(i)));
 		}
-
-		Matrix<T>* dotProduct = Cudheart::CPP::Math::Linalg::dot(mn, m->transpose());
-		T v2 = v / (std::pow(v, 2) - v);
-		Matrix<T>* mat = Cudheart::MatrixOps::fullLike(dotProduct, v2);
-
-		Matrix<T>* res = Cudheart::CPP::Math::BaseMath::multiply(mat, dotProduct);
-
-		delete dotProduct, nm, mat, v2, v;
-
+		Matrix<T>* av = new Matrix<T>(avg->getSize(), avg->getSize());
+		for (int i = 0; i < avg->getSize(); i++) {
+			for (int j = 0; j < avg->getSize(); j++) {
+				av->set(i, j, avg->get(i));
+			}
+		}
+		Matrix<T>* X = (Matrix<T>*)BaseMath::subtract(m, av);
+		Matrix<T>* X_T = (Matrix<T>*)X->transpose();
+		Matrix<T>* c = (Matrix<T>*)Linalg::dot(X, X_T);
+		Matrix<T>* res = (Matrix<T>*)BaseMath::multiply(c, fullLike(c, (T)(1 / fact)));
 		return res;
 	}
 
 	template <typename T>
 	inline Matrix<T>* cov(Matrix<T>* m, bool rowvar) {
 		if (!rowvar) {
-			m = m->transpose();
-			auto temp = cov(m);
+			auto mat = m->transpose();
+			auto temp = cov((Matrix<T>*)mat);
 			delete m;
+			delete mat;
 			return temp;
 		}
 

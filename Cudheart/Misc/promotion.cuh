@@ -15,7 +15,6 @@ std::false_type is_tt_impl(...);
 template <template <class...> class TT, class T>
 using is_tt = decltype(is_tt_impl<TT>(std::declval<typename std::decay_t<T>>()));
 
-
 // why
 #define conditional(a, b, c) std::conditional_t<a, b, c>
 #define is_same(a, b) std::is_same_v<a, b>
@@ -32,37 +31,45 @@ using is_tt = decltype(is_tt_impl<TT>(std::declval<typename std::decay_t<T>>()))
 
 template <typename A, typename B>
 struct promote_args {
-    // assert we actually can go forward with this promotion :)
-    static_assert(is_compatible(A), "the given type is not compatible with type promotion :)");
-    static_assert(is_compatible(B), "the given type is not compatible with type promotion :)");
+	// assert we actually can go forward with this promotion :)
+	// this will raise compilation error when failed
+	static_assert(is_compatible(A), "the given type is not compatible with type promotion :(");
+	static_assert(is_compatible(B), "the given type is not compatible with type promotion :(");
 
-    // what the hell is wrong with this language
-    // why am i allowed to do this
-    // send help
-    using type = typename ifEitherSigned(
-        // signed
-        ifBothInt(
-            // both are ints, so we can use integer types
-            ifEitherSet(long long, ifEitherSet(long, ifEitherSet(int, short))),
-            // one of them is a float, we can't use integer types :(
-            ifEitherSet(long double, ifEitherSet(double, float)))
-        ,
-        // unsigned, we know fo sho it's an int b.c. there are no unsigned floats
-        ifEitherSet(unsigned long long, ifEitherSet(unsigned long, ifEitherSet(unsigned int, unsigned short)))
-    );
+	// what the hell is wrong with this language
+	// why am i allowed to do this
+	// send help
+	using type = typename ifEitherSigned(
+		// signed
+		ifBothInt(
+			// both are ints, so we can use integer types
+			ifEitherSet(long long, ifEitherSet(long, ifEitherSet(int, short))),
+			// one of them is a float, we can't use integer types :(
+			ifEitherSet(long double, ifEitherSet(double, float)))
+		,
+		// unsigned, we know fo sho it's an int b.c. there are no unsigned floats
+		ifEitherSet(unsigned long long, ifEitherSet(unsigned long, ifEitherSet(unsigned int, unsigned short)))
+	);
 };
 
-template <typename T> struct promote_args<T, T> {using type = T; };
-template <typename A, typename B> struct promote_args<std::complex<A>, std::complex<B>> { using type = std::complex<promote_args<A, B>::type>; };
-template <typename A, typename B> struct promote_args<A, std::complex<B>> { using type = std::complex<promote_args<A, B>::type>; };
-template <typename A, typename B> struct promote_args<std::complex<A>, B> { using type = std::complex<promote_args<A, B>::type>; };
+template <typename T> struct promote_args<T, T> { using type = T; };
+template <typename A, typename B> struct promote_args<std::complex<A>, std::complex<B>> {
+	using type = std::complex<promote_args<A, B>::type>;
+};
+template <typename A, typename B> struct promote_args<A, std::complex<B>> {
+	using type = std::complex<promote_args<A, B>::type>;
+};
+template <typename A, typename B> struct promote_args<std::complex<A>, B> {
+	using type = std::complex<promote_args<A, B>::type>;
+};
 
-#define promote(a, b) promote_args<a, b>::type
-#define promote3(a, b, c) promote(promote(a, b), c)
+// why tf are you like this
+// why can't we just have normal macro overloads like in rust
+#define promote2(a, b) promote_args<a, b>::type
+#define promote3(a, b, c) promote2(a, promote2(b, c))
+#define promote4(a, b, c, d) promote2(a, promote3(b, c, d))
 
-
-
-void stupidTemplates() {
-    promote(long, char) v;
-    cout << "v is " << typeid(v).name() << endl;
+void sillyTemplates() {
+	promote4(long, int, int, char) v;
+	cout << "v is " << typeid(v).name() << endl;
 }

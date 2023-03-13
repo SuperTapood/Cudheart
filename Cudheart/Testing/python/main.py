@@ -1847,7 +1847,84 @@ add2queue(test_name, res, out)
 test_name = "Statistics::percentile(Vector<double>, double)"
 vec = np.array([4.0, 9.0, 2.0, 10.0, 6.0, 9.0, 7.0, 12.0])
 res = np.percentile(vec, 5)
-out = 2.000000
+out = 2.700000
+add2queue(test_name, res, out)
+
+
+test_name = "Statistics::percentile(Vector<double>, Vector<float>)"
+vec = np.array([10.0, 7.0, 4.0, 3.0, 2.0, 1.0])
+qs = np.array([5.0, 44.0, 99.0, 100.0, 0.0, 50.0, 69.419998168945312])
+res = np.percentile(vec, qs)
+out = [1.25, 3.2000000476837158, 9.8499994277954102, 10.0, 1.0, 3.5, 5.4129998683929443]
+add2queue(test_name, res, out)
+
+
+test_name = "Statistics::quantile(Vector<double>, double)"
+vec = np.array([4.0, 9.0, 2.0, 10.0, 6.0, 9.0, 7.0, 12.0])
+res = np.quantile(vec, 0.05)
+out = 2.700000
+add2queue(test_name, res, out)
+
+
+test_name = "Statistics::quantile(Vector<double>, Vector<float>)"
+vec = np.array([10.0, 7.0, 4.0, 3.0, 2.0, 1.0])
+qs = np.array([0.05000000074505806, 0.43999999761581421, 0.99000000953674316, 0.10000000149011612, 0.0, 0.5, 0.69419997930526733])
+res = np.quantile(vec, qs)
+out = [1.25, 3.2000000476837158, 9.8499994277954102, 1.5, 1.0, 3.5, 5.4129998683929443]
+add2queue(test_name, res, out)
+
+
+test_name = "Statistics::median(Vector<double>)"
+vec = np.array([4.0, 9.0, 2.0, 10.0, 6.0, 9.0, 7.0, 12.0])
+res = np.median(vec)
+out = 8.000000
+add2queue(test_name, res, out)
+
+
+test_name = "Statistics::average(Vector<int>, Vector<int>)"
+a = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+b = np.array([10, 9, 8, 7, 6, 5, 4, 3, 2, 1])
+res = np.average(a, weights=b)
+out = 4
+add2queue(test_name, res, out)
+
+
+test_name = "Statistics::average(Vector<int>)"
+a = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+res = np.average(a, weights=None)
+out = 5.500000
+add2queue(test_name, res, out)
+
+
+test_name = "Statistics::mean(Vector<int>)"
+a = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+res = np.mean(a)
+out = 5.500000
+add2queue(test_name, res, out)
+
+
+test_name = "Statistics::std(Vector<int>)"
+a = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+res = np.std(a)
+out = 2.872281
+add2queue(test_name, res, out)
+
+
+test_name = "Statistics::var(Vector<int>)"
+a = np.array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0])
+res = np.var(a)
+out = 8.250000
+add2queue(test_name, res, out)
+
+
+test_name = "Statistics::cov(Matrix<int>, true)"
+a = np.array([
+ [0.0, 1.0, 2.0],
+ [3.0, 4.0, 5.0],
+ [6.0, 7.0, 8.0]
+])
+res = np.cov(a, rowvar=True)
+out = [[1.0, 1.0, 1.0], [1.0, 1.0, 1.0], [1.0, 1.0, 1.0]]
 add2queue(test_name, res, out)
 
 

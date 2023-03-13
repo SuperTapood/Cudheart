@@ -525,11 +525,11 @@ namespace Numpy {
 	}
 
 	string average(string a, string weights, string oName) {
-		return oName + " = np.average(" + a + ", " + weights + ")\n";
+		return oName + " = np.average(" + a + ", weights=" + weights + ")\n";
 	}
 
 	string mean(string a, string oName) {
-		return oName + " = np.ptp(" + a + ")\n";
+		return oName + " = np.mean(" + a + ")\n";
 	}
 
 	string std(string a, string oName) {
@@ -541,7 +541,7 @@ namespace Numpy {
 	}
 
 	string cov(string m, string rowvar, string oName) {
-		return oName + " = np.ptp(" + m + ", rowvar=" + rowvar + ")\n";
+		return oName + " = np.cov(" + m + ", rowvar=" + rowvar + ")\n";
 	}
 
 	string corrcoef(string x, string rowvar, string oName) {
