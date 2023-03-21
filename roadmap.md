@@ -43,9 +43,9 @@ add and improve the library using the ideas i dumped onto the following list:
 - [ ] resolve all of the warnings
 - [ ] make sure the library matches numpy
 - [ ] math with real numbers not arrays :)
-- [ ] try to directly compare program output with numpy lol
 - [ ] compile entire thing into lib or dll file by predefining templates
-- [ ] replace StringType* and ComplexType* with StringPtr and ComplexPtr respectivly
+- [ ] replace StringType* and ComplexType* with StringPtr and ComplexPtr respectivly (maybe use std?)
+- [ ] use promotion bro
 - [ ] use ifndef and undefine and ifdef and stuff
 - [ ] use std complex and std string instead of complex type and string type
 - [ ] enforce member naming conventions lol

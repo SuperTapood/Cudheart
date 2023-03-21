@@ -200,6 +200,7 @@ namespace Cudheart::Sorting {
 			return quicksort(a);
 		}
 
+		// should never be returned :)
 		return nullptr;
 	}
 

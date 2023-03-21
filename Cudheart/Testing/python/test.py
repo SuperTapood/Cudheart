@@ -1,13 +1,10 @@
 from util import *
 
 
-test_name = "Statistics::cov(Matrix<int>, true)"
-a = np.array([
- [0, 1, 2],
- [3, 4, 5],
- [6, 7, 8]
-])
-res = np.cov(a, None, True)
-out = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+test_name = "Statistics::corrcoef(Matrix<int>)"
+a = np.array([1, 2, 1])
+res, _ = np.histogram(a)
+out = [0, 2, 1]
 
 print(res)
+print(_)

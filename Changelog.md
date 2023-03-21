@@ -65,6 +65,7 @@
 - fixed percentile
 - fixed quantile
 - fixed cov
+- fixed histogram
 
 ## notes:
 - 

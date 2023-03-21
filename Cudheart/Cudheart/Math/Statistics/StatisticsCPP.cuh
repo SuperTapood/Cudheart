@@ -123,7 +123,13 @@ namespace Cudheart::CPP::Math::Statistics {
 	}
 
 	template <typename T>
-	inline Matrix<T>* cov(Matrix<T>* m) {
+	inline Matrix<T>* cov(Matrix<T>* m, bool rowvar = true) {
+		if (!rowvar) {
+			auto mat = m->transpose();
+			auto temp = cov((Matrix<T>*)mat);
+			delete mat;
+			return temp;
+		}
 		T fact = m->getShape()->getY() - 1;
 		Vector<T>* avg = new Vector<T>(m->getWidth());
 		Matrix<T>* trans = (Matrix<T>*)m->transpose();
@@ -141,19 +147,6 @@ namespace Cudheart::CPP::Math::Statistics {
 		Matrix<T>* c = (Matrix<T>*)Linalg::dot(X, X_T);
 		Matrix<T>* res = (Matrix<T>*)BaseMath::multiply(c, fullLike(c, (T)(1 / fact)));
 		return res;
-	}
-
-	template <typename T>
-	inline Matrix<T>* cov(Matrix<T>* m, bool rowvar) {
-		if (!rowvar) {
-			auto mat = m->transpose();
-			auto temp = cov((Matrix<T>*)mat);
-			delete m;
-			delete mat;
-			return temp;
-		}
-
-		return cov(m);
 	}
 
 	template <typename T>
@@ -175,70 +168,42 @@ namespace Cudheart::CPP::Math::Statistics {
 	}
 
 	template <typename T>
-	Vector<T>* histogram(NDArray<T>* a, Vector<T>* bins, T low, T high) {
-		Vector<T>* out = bins->emptyLike();
-		T* arr = new T[bins->getSize() + 2];
+	Vector<T>* histogram(NDArray<T>* a, Vector<T>* bins) {
+		bins = (Vector<T>*)Sorting::sort(bins);
 
-		arr[0] = low;
-		arr[bins->getSize() + 1] = high;
+		Vector<T>* out = new Vector<T>(bins->getSize() - 1);
 
-		for (int i = 0; i < bins->getSize(); i++) {
-			out->set(i, 0);
-			arr[i] = bins->get(i + 1);
+		for (int i = 0; i < out->getSize(); i++) {
+			out->set(i, (T)0);
 		}
 
 		for (int i = 0; i < a->getSize(); i++) {
-			T elem = a->get(i);
-			for (int j = 1; j < bins->getSize() + 2; j++) {
-				if (elem >= arr[j - 1] && elem < arr[j]) {
+			T v = a->get(i);
+			for (int j = 1; j < bins->getSize(); j++) {
+				if (v < bins->get(j)) {
 					out->set(j - 1, out->get(j - 1) + 1);
 					break;
 				}
 			}
-		}
-
-		for (int i = 0; i < bins->getSize() + 2; i++) {
-			delete arr[i];
-		}
-
-		delete[] arr;
-	}
-
-	template <typename T>
-	Vector<T>* histogram(NDArray<T>* a, Vector<T>* bins) {
-		return histogram(a, bins, Cudheart::Logic::minimum(a), Cudheart::Logic::maximum(a));
-	}
-
-	template <typename T>
-	Vector<T>* histogram(NDArray<T>* a, T low, T high) {
-		return histogram(a, bins, 10, low, high);
-	}
-
-	template <typename T>
-	Vector<T>* histogram(NDArray<T>* a, int bins) {
-		Vector<T>* binnes = Cudheart::VectorOps::linspace<T>(low, high, bins);
-		return histogram(a, binnes, Cudheart::Logic::minimum(a), Cudheart::Logic::maximum(a));
-	}
-
-	template <typename T>
-	Vector<T>* histogram(NDArray<T>* a) {
-		return histogram(a, 10, Cudheart::Logic::minimum(a), Cudheart::Logic::maximum(a));
-	}
-
-	template <typename T>
-	Matrix<T>* histogram2d(Vector<T>* x, Vector<T>* y, Vector<T>* binX, Vector<T>* binY, T lowX, T highX, T lowY, T highY) {
-		Vector<T>* xHist = histogram(x, binX, lowX, highX);
-		Vector<T>* yHist = histogram(y, binY, lowY, highY);
-
-		Matrix<T>* out = new Matrix<T>(x->getSize(), y->getSize());
-
-		for (int i = 0; i < x->getSize(); i++) {
-			for (int j = 0; j < y->getSize(); j++) {
-				out->set(i, j, xHist->get(i) * yHist->get(j));
+			if (bins->get(-1) == v) {
+				out->set(-1, out->get(-1) + 1);
 			}
 		}
 
 		return out;
+	}
+
+	template <typename T>
+	Vector<T>* histogram(NDArray<T>* a, int bins) {
+		T low = Logic::amin(a);
+		T high = Logic::amax(a);
+		Vector<T>* binnes = Cudheart::VectorOps::linspace<T>(low, high, bins);
+		return histogram(a, binnes);
+	}
+
+	template <typename T>
+	Vector<T>* histogram(NDArray<T>* a) {
+		return histogram(a, 11);
 	}
 
 	template <typename T>
@@ -246,10 +211,10 @@ namespace Cudheart::CPP::Math::Statistics {
 		Vector<T>* xHist = histogram(x, binX);
 		Vector<T>* yHist = histogram(y, binY);
 
-		Matrix<T>* out = new Matrix<T>(x->getSize(), y->getSize());
+		Matrix<T>* out = new Matrix<T>(xHist->getSize(), yHist->getSize());
 
-		for (int i = 0; i < x->getSize(); i++) {
-			for (int j = 0; j < y->getSize(); j++) {
+		for (int i = 0; i < xHist->getSize(); i++) {
+			for (int j = 0; j < yHist->getSize(); j++) {
 				out->set(i, j, xHist->get(i) * yHist->get(j));
 			}
 		}
@@ -258,14 +223,14 @@ namespace Cudheart::CPP::Math::Statistics {
 	}
 
 	template <typename T>
-	Matrix<T>* histogram2d(Vector<T>* x, Vector<T>* y, T lowX, T highX, T lowY, T highY) {
-		Vector<T>* xHist = histogram(x, lowX, highX);
-		Vector<T>* yHist = histogram(y, lowY, highY);
+	Matrix<T>* histogram2d(Vector<T>* x, Vector<T>* y) {
+		Vector<T>* xHist = histogram(x);
+		Vector<T>* yHist = histogram(y);
 
-		Matrix<T>* out = new Matrix<T>(x->getSize(), y->getSize());
+		Matrix<T>* out = new Matrix<T>(xHist->getSize(), yHist->getSize());
 
-		for (int i = 0; i < x->getSize(); i++) {
-			for (int j = 0; j < y->getSize(); j++) {
+		for (int i = 0; i < xHist->getSize(); i++) {
+			for (int j = 0; j < yHist->getSize(); j++) {
 				out->set(i, j, xHist->get(i) * yHist->get(j));
 			}
 		}

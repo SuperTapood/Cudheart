@@ -1928,4 +1928,89 @@ out = [[1.0, 1.0, 1.0], [1.0, 1.0, 1.0], [1.0, 1.0, 1.0]]
 add2queue(test_name, res, out)
 
 
+test_name = "Statistics::cov(Matrix<int>, false)"
+a = np.array([
+ [0.0, 1.0, 2.0],
+ [3.0, 4.0, 5.0],
+ [6.0, 7.0, 8.0]
+])
+res = np.cov(a, rowvar=False)
+out = [[9.0, 9.0, 9.0], [9.0, 9.0, 9.0], [9.0, 9.0, 9.0]]
+add2queue(test_name, res, out)
+
+
+test_name = "Statistics::cov(Matrix<int>)"
+a = np.array([
+ [0.0, 1.0, 2.0],
+ [3.0, 4.0, 5.0],
+ [6.0, 7.0, 8.0]
+])
+res = np.cov(a, rowvar=True)
+out = [[1.0, 1.0, 1.0], [1.0, 1.0, 1.0], [1.0, 1.0, 1.0]]
+add2queue(test_name, res, out)
+
+
+test_name = "Statistics::corrcoef(Matrix<int>, true)"
+a = np.array([
+ [0.0, 1.0, 2.0],
+ [3.0, 4.0, 5.0],
+ [6.0, 7.0, 8.0]
+])
+res = np.corrcoef(a, rowvar=True)
+out = [[1.0, 1.0, 1.0], [1.0, 1.0, 1.0], [1.0, 1.0, 1.0]]
+add2queue(test_name, res, out)
+
+
+test_name = "Statistics::corrcoef(Matrix<int>, false)"
+a = np.array([
+ [0.0, 1.0, 2.0],
+ [3.0, 4.0, 5.0],
+ [6.0, 7.0, 8.0]
+])
+res = np.corrcoef(a, rowvar=False)
+out = [[1.0, 1.0, 1.0], [1.0, 1.0, 1.0], [1.0, 1.0, 1.0]]
+add2queue(test_name, res, out)
+
+
+test_name = "Statistics::corrcoef(Matrix<int>)"
+a = np.array([
+ [0.0, 1.0, 2.0],
+ [3.0, 4.0, 5.0],
+ [6.0, 7.0, 8.0]
+])
+res = np.corrcoef(a, rowvar=True)
+out = [[1.0, 1.0, 1.0], [1.0, 1.0, 1.0], [1.0, 1.0, 1.0]]
+add2queue(test_name, res, out)
+
+
+test_name = "Statistics::histogram(Vector<int>, Vector<int>)"
+a = np.array([1.0, 2.0, 1.0])
+b = np.array([0.0, 1.0, 2.0, 3.0])
+res, _ = np.histogram(a, bins = b)
+out = [0.0, 2.0, 1.0]
+add2queue(test_name, res, out)
+
+
+test_name = "Statistics::histogram(Vector<int>)"
+a = np.array([1.0, 2.0, 1.0])
+res, _ = np.histogram(a)
+out = [2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]
+add2queue(test_name, res, out)
+
+
+test_name = "Statistics::histogram2d(Vector<int>, Vector<int>, Vector<int>, Vector<int>)"
+aa = np.array([5.0, 7.0, 3.0])
+bb = np.array([3.0, 6.0, 9.0, 10.0])
+res, _, _ = np.histogram2d(a, aa, bins=(b, bb))
+out = [[0.0, 0.0, 0.0], [4.0, 2.0, 0.0], [2.0, 1.0, 0.0]]
+add2queue(test_name, res, out)
+
+
+test_name = "Statistics::histogram2d(Vector<int>, Vector<int>)"
+aa = np.array([5.0, 7.0, 3.0])
+res, _, _ = np.histogram2d(a, aa)
+out = [[2.0, 0.0, 0.0, 0.0, 0.0, 2.0, 0.0, 0.0, 0.0, 2.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]]
+add2queue(test_name, res, out)
+
+
 print_res()
