@@ -27,8 +27,6 @@ namespace Cudheart::Testing::Math::CPP::Statistics {
 
 	void testHistogram();
 
-	void testHistogram2d();
-
 	void testBincount();
 
 	void testDigitize();

@@ -25,7 +25,7 @@ the modules that still need testing:
         - [X] ComplexOps
     - [X] Exps
     - [X] Linalg
-    - [ ] Statistics
+    - [X] Statistics
     - [ ] Trigo
 - [ ] Random
 - [ ] StringTypes

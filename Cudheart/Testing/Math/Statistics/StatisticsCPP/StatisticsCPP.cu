@@ -15,7 +15,6 @@ namespace Cudheart::Testing::Math::CPP::Statistics {
 		testCov();
 		testCorrcoef();
 		testHistogram();
-		testHistogram2d();
 		testBincount();
 		testDigitize();
 	}
@@ -191,11 +190,11 @@ namespace Cudheart::Testing::Math::CPP::Statistics {
 	void testHistogram() {
 		string cmd;
 
-		auto a = new Vector({1.0, 2.0, 1.0 });
-		auto b = new Vector({ 0.0, 1.0, 2.0, 3.0});
+		auto a = new Vector({ 1.0, 2.0, 1.0 });
+		auto b = new Vector({ 0.0, 1.0, 2.0, 3.0 });
 
 		auto c = histogram(a, b);
-		
+
 		cmd = Numpy::createArray(a->toString(), "a");
 		cmd += Numpy::createArray(b->toString(), "b");
 		cmd += "res, _ = np.histogram(a, bins = b)";
@@ -208,34 +207,40 @@ namespace Cudheart::Testing::Math::CPP::Statistics {
 		Testing::submit("Statistics::histogram(Vector<int>)", cmd, c->toString());
 	}
 
-	void testHistogram2d() {
+	void testBincount() {
 		string cmd;
 
-		auto a = new Vector({ 1.0, 2.0, 1.0 });
-		auto aa = new Vector({ 5.0, 7.0, 3.0 });
-		auto b = new Vector({ 0.0, 1.0, 2.0, 3.0 });
-		auto bb = new Vector({ 3.0, 6.0, 9.0, 10.0 });
+		auto a = arange(19, 19, 1)->flatten();
 
-		auto c = histogram2d(a, aa, b, bb);
+		auto res = bincount(a);
 
 		cmd = Numpy::createArray(a->toString(), "a");
-		cmd += Numpy::createArray(b->toString(), "b");
-		cmd = Numpy::createArray(aa->toString(), "aa");
-		cmd += Numpy::createArray(bb->toString(), "bb");
-		cmd += "res, _, _ = np.histogram2d(a, aa, bins=(b, bb))";
-		Testing::submit("Statistics::histogram2d(Vector<int>, Vector<int>, Vector<int>, Vector<int>)", cmd, c->toString());
+		cmd += Numpy::bincount("a", "res");
 
-		c = histogram2d(a, aa);
-
-		cmd = Numpy::createArray(a->toString(), "a");
-		cmd = Numpy::createArray(aa->toString(), "aa");
-		cmd += "res, _, _ = np.histogram2d(a, aa)";
-		Testing::submit("Statistics::histogram2d(Vector<int>, Vector<int>)", cmd, c->toString());
-	}
-
-	void testBincount() {
+		Testing::submit("Statistics::bincount(Vector<int>)", cmd, res->toString());
 	}
 
 	void testDigitize() {
+		string cmd;
+
+		auto x = new Vector({ 0.2, 6.4, 3.0, 1.6 });
+		auto bins = new Vector({ 0.0, 1.0, 2.5, 4.0, 10.0 });
+		auto res = digitize(x, bins);
+
+		cmd = Numpy::createArray(x->toString(), "x");
+		cmd += Numpy::createArray(bins->toString(), "bins");
+		cmd += Numpy::digitize("x", "bins", "false", "res");
+
+		Testing::submit("Statistics::digitize(Vector<int>, Vector<int>, false)", cmd, res->toString());
+
+		x = new Vector({ 0.2, 6.4, 3.0, 1.6 });
+		bins = new Vector({ 0.0, 1.0, 2.5, 4.0, 10.0 });
+		res = digitize(x, bins, true);
+
+		cmd = Numpy::createArray(x->toString(), "x");
+		cmd += Numpy::createArray(bins->toString(), "bins");
+		cmd += Numpy::digitize("x", "bins", "true", "res");
+
+		Testing::submit("Statistics::digitize(Vector<int>, Vector<int>, true)", cmd, res->toString());
 	}
 }

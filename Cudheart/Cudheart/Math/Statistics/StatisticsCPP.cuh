@@ -207,43 +207,11 @@ namespace Cudheart::CPP::Math::Statistics {
 	}
 
 	template <typename T>
-	Matrix<T>* histogram2d(Vector<T>* x, Vector<T>* y, Vector<T>* binX, Vector<T>* binY) {
-		Vector<T>* xHist = histogram(x, binX);
-		Vector<T>* yHist = histogram(y, binY);
-
-		Matrix<T>* out = new Matrix<T>(xHist->getSize(), yHist->getSize());
-
-		for (int i = 0; i < xHist->getSize(); i++) {
-			for (int j = 0; j < yHist->getSize(); j++) {
-				out->set(i, j, xHist->get(i) * yHist->get(j));
-			}
-		}
-
-		return out;
-	}
-
-	template <typename T>
-	Matrix<T>* histogram2d(Vector<T>* x, Vector<T>* y) {
-		Vector<T>* xHist = histogram(x);
-		Vector<T>* yHist = histogram(y);
-
-		Matrix<T>* out = new Matrix<T>(xHist->getSize(), yHist->getSize());
-
-		for (int i = 0; i < xHist->getSize(); i++) {
-			for (int j = 0; j < yHist->getSize(); j++) {
-				out->set(i, j, xHist->get(i) * yHist->get(j));
-			}
-		}
-
-		return out;
-	}
-
-	template <typename T>
 	inline Vector<int>* bincount(NDArray<T>* x) {
 		// assert bins > 0
 		// assert T is whole and maybe cast it
 		// maybe this helps?
-		Vector<int>* bins = new Vector<T>(Cudheart::Logic::maximum(x) + 1);
+		Vector<int>* bins = new Vector<T>(Cudheart::Logic::amax(x) + 1);
 
 		for (int i = 0; i < bins->getSize(); i++) {
 			int count = 0;
@@ -284,14 +252,14 @@ namespace Cudheart::CPP::Math::Statistics {
 		if (right) {
 			if (binIncreasing) {
 				for (int i = 1; i < bins->getSize(); i++) {
-					if (bins->get(i - 1) < x && x <= bins[i]) {
+					if (bins->get(i - 1) < x && x <= bins->get(i)) {
 						return i;
 					}
 				}
 			}
 			else {
 				for (int i = 1; i < bins->getSize(); i++) {
-					if (bins->get(i - 1) >= x && x > bins[i]) {
+					if (bins->get(i - 1) >= x && x > bins->get(i)) {
 						return i;
 					}
 				}
@@ -300,14 +268,14 @@ namespace Cudheart::CPP::Math::Statistics {
 		else {
 			if (binIncreasing) {
 				for (int i = 1; i < bins->getSize(); i++) {
-					if (bins->get(i - 1) <= x && x < bins[i]) {
+					if (bins->get(i - 1) <= x && x < bins->get(i)) {
 						return i;
 					}
 				}
 			}
 			else {
 				for (int i = 1; i < bins->getSize(); i++) {
-					if (bins->get(i - 1) > x && x >= bins[i]) {
+					if (bins->get(i - 1) > x && x >= bins->get(i)) {
 						return i;
 					}
 				}
@@ -319,7 +287,7 @@ namespace Cudheart::CPP::Math::Statistics {
 
 	template <typename T>
 	inline Vector<int>* digitize(Vector<T>* x, Vector<T>* bins, bool right = false) {
-		Vector<int>* out = new Vector(x->getSize());
+		Vector<int>* out = new Vector<int>(x->getSize());
 
 		for (int i = 0; i < x->getSize(); i++) {
 			out->set(i, digitize(x->get(i), bins, right));

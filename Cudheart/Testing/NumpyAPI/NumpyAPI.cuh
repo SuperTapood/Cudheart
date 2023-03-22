@@ -293,5 +293,5 @@ namespace Numpy {
 
 	string bincount(string x, string oName);
 
-	string digitize(string x, string bins, string right, string BinIncreasing, string oName);
+	string digitize(string x, string bins, string right, string oName);
 }

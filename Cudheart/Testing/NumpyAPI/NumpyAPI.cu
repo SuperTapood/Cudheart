@@ -560,7 +560,7 @@ namespace Numpy {
 		return oName + " = np.bincount(" + x + ")\n";
 	}
 
-	string digitize(string x, string bins, string right, string BinIncreasing, string oName) {
+	string digitize(string x, string bins, string right, string oName) {
 		return oName + " = np.digitize(" + x + ", " + bins + ", " + right + ")\n";
 	}
 }

@@ -1998,18 +1998,26 @@ out = [2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]
 add2queue(test_name, res, out)
 
 
-test_name = "Statistics::histogram2d(Vector<int>, Vector<int>, Vector<int>, Vector<int>)"
-aa = np.array([5.0, 7.0, 3.0])
-bb = np.array([3.0, 6.0, 9.0, 10.0])
-res, _, _ = np.histogram2d(a, aa, bins=(b, bb))
-out = [[0.0, 0.0, 0.0], [4.0, 2.0, 0.0], [2.0, 1.0, 0.0]]
+test_name = "Statistics::bincount(Vector<int>)"
+a = np.array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18])
+res = np.bincount(a)
+out = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 add2queue(test_name, res, out)
 
 
-test_name = "Statistics::histogram2d(Vector<int>, Vector<int>)"
-aa = np.array([5.0, 7.0, 3.0])
-res, _, _ = np.histogram2d(a, aa)
-out = [[2.0, 0.0, 0.0, 0.0, 0.0, 2.0, 0.0, 0.0, 0.0, 2.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]]
+test_name = "Statistics::digitize(Vector<int>, Vector<int>, false)"
+x = np.array([0.20000000000000001, 6.4000000000000004, 3.0, 1.6000000000000001])
+bins = np.array([0.0, 1.0, 2.5, 4.0, 10.0])
+res = np.digitize(x, bins, false)
+out = [1, 4, 3, 2]
+add2queue(test_name, res, out)
+
+
+test_name = "Statistics::digitize(Vector<int>, Vector<int>, true)"
+x = np.array([0.20000000000000001, 6.4000000000000004, 3.0, 1.6000000000000001])
+bins = np.array([0.0, 1.0, 2.5, 4.0, 10.0])
+res = np.digitize(x, bins, true)
+out = [1, 4, 3, 2]
 add2queue(test_name, res, out)
 
 

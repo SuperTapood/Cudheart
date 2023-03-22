@@ -66,6 +66,7 @@
 - fixed quantile
 - fixed cov
 - fixed histogram
+- fixed digitize
 
 ## notes:
 - 
