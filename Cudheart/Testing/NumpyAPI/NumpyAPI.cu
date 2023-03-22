@@ -563,4 +563,76 @@ namespace Numpy {
 	string digitize(string x, string bins, string right, string oName) {
 		return oName + " = np.digitize(" + x + ", " + bins + ", " + right + ")\n";
 	}
+
+	string sin(string rads, string oName) {
+		return oName + " = np.sin(" + rads + ")\n";
+	}
+
+	string cos(string rads, string oName) {
+		return oName + " = np.cos(" + rads + ")\n";
+	}
+
+	string tan(string rads, string oName) {
+		return oName + " = np.tan(" + rads + ")\n";
+	}
+
+	string cot(string rads, string oName) {
+		return oName + " = np.cos(" + rads + ") / np.sin(" + rads + ")\n";
+	}
+
+	string arcsin(string x, string oName) {
+		return oName + " = np.arcsin(" + x + ")\n";
+	}
+
+	string arccos(string x, string oName) {
+		return oName + " = np.arccos(" + x + ")\n";
+	}
+
+	string arctan(string x, string oName) {
+		return oName + " = np.arctan(" + x + ")\n";
+	}
+
+	string arccot(string x, string oName) {
+		return oName + " = np.arctan(1 / " + x + ")\n";
+	}
+
+	string hypot(string a, string b, string oName) {
+		return oName + " = np.hypot(" + a + ", " + b + ")\n";
+	}
+
+	string deg2rad(string degs, string oName) {
+		return oName + " = np.deg2rad(" + degs + ")\n";
+	}
+
+	string rad2deg(string rads, string oName) {
+		return oName + " = np.rad2deg(" + rads + ")\n";
+	}
+
+	string sinc(string rads, string oName) {
+		return oName + " = np.sinc(" + rads + ")\n";
+	}
+
+	string sinh(string x, string oName) {
+		return oName + " = np.sinh(" + x + ")\n";
+	}
+
+	string cosh(string x, string oName) {
+		return oName + " = np.cosh(" + x + ")\n";
+	}
+
+	string tanh(string x, string oName) {
+		return oName + " = np.tanh(" + x + ")\n";
+	}
+
+	string arcsinh(string x, string oName) {
+		return oName + " = np.arcsinh(" + x + ")\n";
+	}
+
+	string arccosh(string x, string oName) {
+		return oName + " = np.arccosh(" + x + ")\n";
+	}
+
+	string arctanh(string x, string oName) {
+		return oName + " = np.arctanh(" + x + ")\n";
+	}
 }

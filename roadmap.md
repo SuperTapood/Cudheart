@@ -17,7 +17,7 @@ the modules that still need testing:
     - [X] Searching
     - [X] Sorting
 - [X] Logic
-- [ ] Math
+- [X] Math
     - [X] BaseMath
     - [X] Bitwise
     - [X] Complex
@@ -26,7 +26,7 @@ the modules that still need testing:
     - [X] Exps
     - [X] Linalg
     - [X] Statistics
-    - [ ] Trigo
+    - [X] Trigo
 - [ ] Random
 - [ ] StringTypes
     - [ ] StringType
@@ -41,6 +41,7 @@ add and improve the library using the ideas i dumped onto the following list:
 
 - [ ] get rid of shape object for good (maybe?)
 - [ ] resolve all of the warnings
+- [ ] add all code directly to the string thing
 - [ ] make sure the library matches numpy
 - [ ] math with real numbers not arrays :)
 - [ ] compile entire thing into lib or dll file by predefining templates

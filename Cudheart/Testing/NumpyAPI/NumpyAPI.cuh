@@ -294,4 +294,40 @@ namespace Numpy {
 	string bincount(string x, string oName);
 
 	string digitize(string x, string bins, string right, string oName);
+
+	string sin(string rads, string oName);
+
+	string cos(string rads, string oName);
+
+	string tan(string rads, string oName);
+
+	string cot(string rads, string oName);
+
+	string arcsin(string x, string oName);
+
+	string arccos(string x, string oName);
+
+	string arctan(string x, string oName);
+
+	string arccot(string x, string oName);
+
+	string hypot(string a, string b, string oName);
+
+	string deg2rad(string degs, string oName);
+
+	string rad2deg(string degs, string oName);
+
+	string sinc(string rads, string oName);
+
+	string sinh(string x, string oName);
+
+	string cosh(string x, string oName);
+
+	string tanh(string x, string oName);
+
+	string arcsinh(string x, string oName);
+
+	string arccosh(string x, string oName);
+
+	string arctanh(string x, string oName);
 }

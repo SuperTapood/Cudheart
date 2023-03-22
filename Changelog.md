@@ -67,6 +67,8 @@
 - fixed cov
 - fixed histogram
 - fixed digitize
+- fixed hypot
+- fixed deg2rad
 
 ## notes:
 - 

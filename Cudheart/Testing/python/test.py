@@ -3,17 +3,10 @@ import numpy as np
 from util import *
 
 
-test_name = "Statistics::histogram2d(Vector<int>, Vector<int>, Vector<int>, Vector<int>)"
-a = np.array([1.0, 0.0, 1.0])
-b = np.array([0.0, 1.0, 2.0, 3.0])
-aa = np.array([2.0, 7, 3.0])
-bb = np.array([3.0, 6.0, 9.0, 10.0])
-res, a, b = np.histogram2d(a, aa, bins=(b, bb))
-out = [[0.0, 0.0, 0.0], [4.0, 2.0, 0.0], [2.0, 1.0, 0.0]]
-
-print(np.histogram(a, b))
-print(np.histogram(aa, bb))
+test_name = "Trigo::sinc(Vector<double>)"
+x = np.array([0.5, 0.33000000000000002, 0.68999999999999995, 0.41999999999999998, 0.502, 0.80000000000000004, 0.87, 0.29999999999999999])
+# res = np.sinc(x)
+res = np.sin(x) / x
+out = [0.95885107720840601, 0.98194857089354048, 0.92251765539415642, 0.97085822157040513, 0.95852538587074965, 0.89669511362440346, 0.87853900807529317, 0.98506735553779856]
 
 print(res)
-print(a)
-print(b)

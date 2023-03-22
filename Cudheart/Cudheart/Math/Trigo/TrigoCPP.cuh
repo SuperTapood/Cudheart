@@ -10,7 +10,6 @@ using namespace Cudheart::Exceptions;
 using Cudheart::VectorOps::emptyLike;
 using Cudheart::MatrixOps::fromVector;
 using namespace std;
-using Cudheart::Constants::euler;
 using Cudheart::Constants::pi;
 
 namespace Cudheart::CPP::Math::Trigo {
@@ -95,7 +94,7 @@ namespace Cudheart::CPP::Math::Trigo {
 
 	template <typename T>
 	NDArray<T>* hypot(NDArray<T>* a, NDArray<T>* b) {
-		a->assertMatchShape(b);
+		a->assertMatchShape(b->getShape());
 
 		NDArray<T>* out = a->emptyLike();
 
@@ -115,6 +114,8 @@ namespace Cudheart::CPP::Math::Trigo {
 		for (int i = 0; i < out->getSize(); i++) {
 			out->set(i, degs->get(i) * (pi / 180));
 		}
+
+		return out;
 	}
 
 	template <typename T>
@@ -124,6 +125,8 @@ namespace Cudheart::CPP::Math::Trigo {
 		for (int i = 0; i < out->getSize(); i++) {
 			out->set(i, rads->get(i) / (pi / 180));
 		}
+		
+		return out;
 	}
 
 	template <typename T>
@@ -133,7 +136,7 @@ namespace Cudheart::CPP::Math::Trigo {
 			if (rads->get(i) == 0) {
 				ZeroDivisionException("sinc");
 			}
-			out->set(i, std::sin(rads->get(i)) / rads->get(i));
+			out->set(i, std::sin(rads->get(i) * pi) / (rads->get(i) * pi));
 		}
 
 		return out;

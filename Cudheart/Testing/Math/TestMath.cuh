@@ -6,6 +6,7 @@
 #include "Exps/TestExps.cuh"
 #include "Linalg/TestLinalg.cuh"
 #include "Statistics/TestStatistics.cuh"
+#include "Trigo/TestTrigo.cuh"
 
 namespace Cudheart::Testing {
 	void testMath();

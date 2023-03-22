@@ -8,5 +8,6 @@ namespace Cudheart::Testing {
 		Math::testExps();
 		Math::testLinalg();
 		Math::testStatistics();
+		Math::testTrigo();
 	}
 }

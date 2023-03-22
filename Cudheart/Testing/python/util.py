@@ -7,6 +7,7 @@ warnings.filterwarnings('ignore')
 true = True
 false = False
 inf = np.inf
+nan = np.nan
 
 
 class Data:
