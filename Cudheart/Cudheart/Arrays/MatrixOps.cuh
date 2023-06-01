@@ -26,13 +26,13 @@ namespace Cudheart {
 		/// <returns>the resulting matrix</returns>
 		template <typename T>
 		Matrix<T>* fromVector(Vector<T>* vec, int height, int width, bool destroy) {
-			if (width * height != vec->getSize()) {
+			if (width * height != vec->size()) {
 				BadValueException("fromVector",
-					"width * height = " + std::to_string(width * height), "width * height = " + std::to_string(vec->getSize()));
+					"width * height = " + std::to_string(width * height), "width * height = " + std::to_string(vec->size()));
 			}
 			Matrix<T>* res = new Matrix<T>(height, width);
 
-			for (int i = 0; i < res->getSize(); i++) {
+			for (int i = 0; i < res->size(); i++) {
 				res->set(i, vec->get(i));
 			}
 
@@ -52,12 +52,12 @@ namespace Cudheart {
 		/// <returns>a matrix with the same values as the vector</returns>
 		template <typename T>
 		Matrix<T>* fromVector(Vector<T>* vec, int height, int width) {
-			if (width * height != vec->getSize()) {
-				Exceptions::MatrixConversionException(width, height, vec->getSize()).raise();
+			if (width * height != vec->size()) {
+				Exceptions::MatrixConversionException(width, height, vec->size()).raise();
 			}
 			Matrix<T>* out = empty<T>(height, width);
 
-			for (int i = 0; i < out->getSize(); i++) {
+			for (int i = 0; i < out->size(); i++) {
 				out->set(i, vec->get(i));
 			}
 
@@ -76,11 +76,11 @@ namespace Cudheart {
 		template <typename T>
 		Matrix<T>* fromVectorArray(Vector<T>* vecs, int len) {
 			Vector<T> a = vecs[0];
-			Matrix<T>* out = new Matrix<T>(len, a.getSize());
+			Matrix<T>* out = new Matrix<T>(len, a.size());
 
 			for (int i = 0; i < len; i++) {
-				for (int j = 0; j < a.getSize(); j++) {
-					a->assertMatchSize(vecs[i].getSize());
+				for (int j = 0; j < a.size(); j++) {
+					a->assertMatchSize(vecs[i].size());
 					Vector<T> vec = vecs[i];
 					out->set(i, j, vec.get(j));
 				}
@@ -465,20 +465,20 @@ namespace Cudheart {
 		template <typename T, typename U, typename K>
 		Matrix<T>** meshgrid(Vector<U>* a, Vector<K>* b) {
 			Matrix<T>** out = new Matrix<T>*[2];
-			Matrix<T>* first = new Matrix<T>(b->getSize(), a->getSize());
-			Matrix<T>* second = new Matrix<T>(b->getSize(), a->getSize());
+			Matrix<T>* first = new Matrix<T>(b->size(), a->size());
+			Matrix<T>* second = new Matrix<T>(b->size(), a->size());
 
 			out[0] = first;
 			out[1] = second;
 
-			for (int i = 0; i < b->getSize(); i++) {
-				for (int j = 0; j < a->getSize(); j++) {
+			for (int i = 0; i < b->size(); i++) {
+				for (int j = 0; j < a->size(); j++) {
 					first->set(i, j, a->get(j));
 				}
 			}
 
-			for (int i = 0; i < b->getSize(); i++) {
-				for (int j = 0; j < a->getSize(); j++) {
+			for (int i = 0; i < b->size(); i++) {
+				for (int j = 0; j < a->size(); j++) {
 					second->set(i, j, b->get(i));
 				}
 			}
@@ -540,9 +540,9 @@ namespace Cudheart {
 		/// <returns>the output matrix</returns>
 		template <typename T>
 		Matrix<T>* diagflat(Vector<T>* vec, int k) {
-			Matrix<T>* mat = zeros<T>(vec->getSize() + std::abs(k), vec->getSize() + std::abs(k));
+			Matrix<T>* mat = zeros<T>(vec->size() + std::abs(k), vec->size() + std::abs(k));
 
-			for (int i = 0; i < vec->getSize(); i++) {
+			for (int i = 0; i < vec->size(); i++) {
 				mat->set(i, i + std::abs(k), vec->get(i));
 			}
 
@@ -683,7 +683,7 @@ namespace Cudheart {
 		/// <returns>output vandermonde matrix</returns>
 		template <typename T>
 		Matrix<T>* vander(Vector<T>* vec, int N, bool increasing) {
-			Matrix<T>* out = new Matrix<T>(vec->getSize(), N);
+			Matrix<T>* out = new Matrix<T>(vec->size(), N);
 
 			for (int i = 0; i < out->getHeight(); i++) {
 				for (int j = 0; j < out->getWidth(); j++) {
@@ -727,7 +727,7 @@ namespace Cudheart {
 		/// <returns>output vandermonde matrix</returns>
 		template <typename T>
 		Matrix<T>* vander(Vector<T>* vec, bool increasing) {
-			return vander(vec, vec->getSize(), increasing);
+			return vander(vec, vec->size(), increasing);
 		}
 
 		/// <summary>
@@ -738,7 +738,7 @@ namespace Cudheart {
 		/// <returns>output vandermonde matrix</returns>
 		template <typename T>
 		Matrix<T>* vander(Vector<T>* vec) {
-			return vander(vec, vec->getSize(), false);
+			return vander(vec, vec->size(), false);
 		}
 
 #pragma endregion

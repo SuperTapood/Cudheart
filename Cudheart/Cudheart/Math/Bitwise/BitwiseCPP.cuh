@@ -13,7 +13,7 @@ namespace Cudheart::CPP::Math::Bitwise {
 
 		NDArray<T>* out = a->emptyLike();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			out->set(i, a->get(i) & b->get(i));
 		}
 
@@ -26,7 +26,7 @@ namespace Cudheart::CPP::Math::Bitwise {
 
 		NDArray<T>* out = a->emptyLike();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			out->set(i, a->get(i) | b->get(i));
 		}
 
@@ -39,7 +39,7 @@ namespace Cudheart::CPP::Math::Bitwise {
 
 		NDArray<T>* out = a->emptyLike();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			out->set(i, a->get(i) ^ b->get(i));
 		}
 
@@ -52,7 +52,7 @@ namespace Cudheart::CPP::Math::Bitwise {
 
 		NDArray<T>* out = a->emptyLike();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			out->set(i, a->get(i) << b->get(i));
 		}
 
@@ -65,7 +65,7 @@ namespace Cudheart::CPP::Math::Bitwise {
 
 		NDArray<T>* out = a->emptyLike();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			out->set(i, a->get(i) >> b->get(i));
 		}
 
@@ -74,7 +74,7 @@ namespace Cudheart::CPP::Math::Bitwise {
 
 	template <typename T>
 	NDArray<T>* bitwiseNot(NDArray<T>* x) {
-		int len = x->getSize();
+		int len = x->size();
 		NDArray<T>* out = x->emptyLike();
 
 		for (int i = 0; i < len; i++) {

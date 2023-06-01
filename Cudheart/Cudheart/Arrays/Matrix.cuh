@@ -119,7 +119,7 @@ namespace Cudheart {
 					// For example, if T is a numeric type, then each element of the vector
 					// will be converted to a string representation.
 					Matrix<StringType*>* out = new Matrix<StringType*>(getHeight(), getWidth());
-					for (int i = 0; i < getSize(); i++) {
+					for (int i = 0; i < size(); i++) {
 						out->set(i, new StringType(getString(i)));
 					}
 					return (Matrix<U>*)out;
@@ -130,7 +130,7 @@ namespace Cudheart {
 						// For example, if T is a numeric type, then each element of the vector
 						// will be wrapped in a ComplexType object.
 						Matrix<ComplexType*>* out = new Matrix<ComplexType*>(getHeight(), getWidth());
-						for (int i = 0; i < getSize(); i++) {
+						for (int i = 0; i < size(); i++) {
 							out->set(i, new ComplexType(get(i)));
 						}
 						return (Matrix<U>*)out;
@@ -140,7 +140,7 @@ namespace Cudheart {
 						// For example, if T is a numeric type, then each element of the vector
 						// will be wrapped in a ComplexType object.
 						Matrix<ComplexType*>* out = new Matrix<ComplexType*>(getHeight(), getWidth());
-						for (int i = 0; i < getSize(); i++) {
+						for (int i = 0; i < size(); i++) {
 							string current = getString(i);
 							int pos = current.find("+");
 							if (current.find("j") == string::npos || pos == string::npos) {
@@ -198,7 +198,7 @@ namespace Cudheart {
 						// For example, if U is a numeric type, then each element of the vector
 						// will be converted from a string representation to a numeric value.
 						Matrix<U>* out = new Matrix<U>(getHeight(), getWidth());
-						for (int i = 0; i < getSize(); i++) {
+						for (int i = 0; i < size(); i++) {
 							auto str = (StringType*)get(i);
 							out->set(i, (U)(str->toFloating()));
 						}
@@ -209,7 +209,7 @@ namespace Cudheart {
 						// For example, if T and U are both numeric types, then each element of the vector
 						// will be converted from one type to the other.
 						Matrix<U>* out = new Matrix<U>(getHeight(), getWidth());
-						for (int i = 0; i < getSize(); i++) {
+						for (int i = 0; i < size(); i++) {
 							out->set(i, static_cast<U>(get(i)));
 						}
 						return out;
@@ -371,7 +371,7 @@ namespace Cudheart {
 			/// get the element size of the matrix
 			/// </summary>
 			/// <returns>the element size</returns>
-			int getSize() const {
+			int size() const {
 				return m_size;
 			}
 
@@ -621,13 +621,13 @@ namespace Cudheart {
 				}
 				else if (shape->getDims() == 1) {
 					if (axis == 0) {
-						if (m_width != shape->getSize()) {
+						if (m_width != shape->size()) {
 							Cudheart::Exceptions::ShapeMismatchException(getShape()->toString(),
 								shape->toString()).raise();
 						}
 					}
 					else if (axis == 1) {
-						if (m_height != shape->getSize()) {
+						if (m_height != shape->size()) {
 							Cudheart::Exceptions::ShapeMismatchException(getShape()->toString(),
 								shape->toString()).raise();
 						}
@@ -640,9 +640,9 @@ namespace Cudheart {
 			/// </summary>
 			/// <returns>the output vector</returns>
 			Vector<T>* flatten() {
-				Vector<T>* out = new Vector<T>(getSize());
+				Vector<T>* out = new Vector<T>(size());
 
-				for (int i = 0; i < getSize(); i++) {
+				for (int i = 0; i < size(); i++) {
 					out->set(i, get(i));
 				}
 

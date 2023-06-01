@@ -8,19 +8,19 @@ namespace Cudheart {
 		class Shape {
 		private:
 			int x, y;
-			int dims;
+			int ndims;
 
 		public:
 			Shape(int x, int y) {
 				this->x = x;
 				this->y = y;
-				this->dims = 2;
+				this->ndims = 2;
 			}
 
 			Shape(int x) {
 				this->x = x;
 				this->y = 1;
-				this->dims = 1;
+				this->ndims = 1;
 			}
 
 			int getX() {
@@ -32,10 +32,10 @@ namespace Cudheart {
 			}
 
 			int getDims() {
-				return dims;
+				return ndims;
 			}
 
-			int getSize() {
+			int size() {
 				return x * y;
 			}
 

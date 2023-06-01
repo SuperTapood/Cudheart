@@ -17,7 +17,7 @@ namespace Cudheart::VectorOps {
 	/// <returns>the resulting vector</returns>
 	template <typename T>
 	Vector<T>* emptyLike(Vector<T>* arr) {
-		return new Vector<T>(arr->getSize());
+		return new Vector<T>(arr->size());
 	}
 
 	/// <summary>
@@ -80,7 +80,7 @@ namespace Cudheart::VectorOps {
 
 	template <typename T>
 	Vector<T>* fullLike(Vector<T>* arr, T value) {
-		return full<T>(arr->getSize(), value);
+		return full<T>(arr->size(), value);
 	}
 
 	template <typename T>
@@ -120,7 +120,7 @@ namespace Cudheart::VectorOps {
 
 	template <typename T>
 	Vector<T>* onesLike(Vector<T>* arr) {
-		return ones<T>(arr->getSize());
+		return ones<T>(arr->size());
 	}
 
 	template <typename T>
@@ -130,7 +130,7 @@ namespace Cudheart::VectorOps {
 
 	template <typename T>
 	Vector<T>* zerosLike(Vector<T>* arr) {
-		return zeros<T>(arr->getSize());
+		return zeros<T>(arr->size());
 	}
 
 	template <typename T>

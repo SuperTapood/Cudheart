@@ -25,7 +25,7 @@ namespace Cudheart::CPP::Math::Statistics {
 
 		NDArray<T>* sorted = Cudheart::Sorting::sort(a);
 
-		int size = a->getSize();
+		int size = a->size();
 		// linear method
 		double virt = ((q / 100) * (size - 1));
 
@@ -40,7 +40,7 @@ namespace Cudheart::CPP::Math::Statistics {
 	inline NDArray<T>* percentile(NDArray<T>* a, NDArray<float>* q) {
 		NDArray<T>* out = q->emptyLike<T>();
 
-		for (int i = 0; i < q->getSize(); i++) {
+		for (int i = 0; i < q->size(); i++) {
 			out->set(i, percentile(a, q->get(i)));
 		}
 
@@ -56,7 +56,7 @@ namespace Cudheart::CPP::Math::Statistics {
 	inline NDArray<T>* quantile(NDArray<T>* a, NDArray<float>* q) {
 		NDArray<T>* out = q->emptyLike<T>();
 
-		for (int i = 0; i < q->getSize(); i++) {
+		for (int i = 0; i < q->size(); i++) {
 			out->set(i, quantile(a, q->get(i)));
 		}
 
@@ -74,7 +74,7 @@ namespace Cudheart::CPP::Math::Statistics {
 		T sumWeights = 0;
 		T sumA = 0;
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			sumWeights += weights->get(i);
 			sumA += (a->get(i) * weights->get(i));
 		}
@@ -86,11 +86,11 @@ namespace Cudheart::CPP::Math::Statistics {
 	inline double average(NDArray<T>* a) {
 		T sum = 0;
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			sum += a->get(i);
 		}
 
-		return (double)sum / (double)a->getSize();
+		return (double)sum / (double)a->size();
 	}
 
 	template <typename T>
@@ -103,11 +103,11 @@ namespace Cudheart::CPP::Math::Statistics {
 		double sum = 0;
 		double m = mean<T>(a);
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			sum += std::pow(a->get(i) - m, 2);
 		}
 
-		return std::sqrt(sum / a->getSize());
+		return std::sqrt(sum / a->size());
 	}
 
 	template <typename T>
@@ -115,7 +115,7 @@ namespace Cudheart::CPP::Math::Statistics {
 		NDArray<double>* x = a->emptyLike<double>();
 		T meanA = mean(a);
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			x->set(i, std::pow(std::abs(a->get(i) - meanA), 2));
 		}
 
@@ -133,12 +133,12 @@ namespace Cudheart::CPP::Math::Statistics {
 		T fact = m->getShape()->getY() - 1;
 		Vector<T>* avg = new Vector<T>(m->getWidth());
 		Matrix<T>* trans = (Matrix<T>*)m->transpose();
-		for (int i = 0; i < avg->getSize(); i++) {
+		for (int i = 0; i < avg->size(); i++) {
 			avg->set(i, average(m->getRow(i)));
 		}
-		Matrix<T>* av = new Matrix<T>(avg->getSize(), avg->getSize());
-		for (int i = 0; i < avg->getSize(); i++) {
-			for (int j = 0; j < avg->getSize(); j++) {
+		Matrix<T>* av = new Matrix<T>(avg->size(), avg->size());
+		for (int i = 0; i < avg->size(); i++) {
+			for (int j = 0; j < avg->size(); j++) {
 				av->set(i, j, avg->get(i));
 			}
 		}
@@ -171,15 +171,15 @@ namespace Cudheart::CPP::Math::Statistics {
 	Vector<T>* histogram(NDArray<T>* a, Vector<T>* bins) {
 		bins = (Vector<T>*)Sorting::sort(bins);
 
-		Vector<T>* out = new Vector<T>(bins->getSize() - 1);
+		Vector<T>* out = new Vector<T>(bins->size() - 1);
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			out->set(i, (T)0);
 		}
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			T v = a->get(i);
-			for (int j = 1; j < bins->getSize(); j++) {
+			for (int j = 1; j < bins->size(); j++) {
 				if (v < bins->get(j)) {
 					out->set(j - 1, out->get(j - 1) + 1);
 					break;
@@ -213,9 +213,9 @@ namespace Cudheart::CPP::Math::Statistics {
 		// maybe this helps?
 		Vector<int>* bins = new Vector<T>(Cudheart::Logic::amax(x) + 1);
 
-		for (int i = 0; i < bins->getSize(); i++) {
+		for (int i = 0; i < bins->size(); i++) {
 			int count = 0;
-			for (int j = 0; j < x->getSize(); j++) {
+			for (int j = 0; j < x->size(); j++) {
 				if (x->get(j) == i) {
 					count++;
 				}
@@ -231,7 +231,7 @@ namespace Cudheart::CPP::Math::Statistics {
 		bool binIncreasing = true;
 
 		T value = bins->get(0);
-		for (int i = 1; i < bins->getSize(); i++) {
+		for (int i = 1; i < bins->size(); i++) {
 			if (bins->get(i) < value) {
 				binIncreasing = false;
 				break;
@@ -241,7 +241,7 @@ namespace Cudheart::CPP::Math::Statistics {
 
 		if (!binIncreasing) {
 			T value = bins->get(0);
-			for (int i = 1; i < bins->getSize(); i++) {
+			for (int i = 1; i < bins->size(); i++) {
 				if (bins->get(i) > value) {
 					Exceptions::BaseException("ValueError: bins have to be sorted").raise();
 				}
@@ -251,14 +251,14 @@ namespace Cudheart::CPP::Math::Statistics {
 
 		if (right) {
 			if (binIncreasing) {
-				for (int i = 1; i < bins->getSize(); i++) {
+				for (int i = 1; i < bins->size(); i++) {
 					if (bins->get(i - 1) < x && x <= bins->get(i)) {
 						return i;
 					}
 				}
 			}
 			else {
-				for (int i = 1; i < bins->getSize(); i++) {
+				for (int i = 1; i < bins->size(); i++) {
 					if (bins->get(i - 1) >= x && x > bins->get(i)) {
 						return i;
 					}
@@ -267,14 +267,14 @@ namespace Cudheart::CPP::Math::Statistics {
 		}
 		else {
 			if (binIncreasing) {
-				for (int i = 1; i < bins->getSize(); i++) {
+				for (int i = 1; i < bins->size(); i++) {
 					if (bins->get(i - 1) <= x && x < bins->get(i)) {
 						return i;
 					}
 				}
 			}
 			else {
-				for (int i = 1; i < bins->getSize(); i++) {
+				for (int i = 1; i < bins->size(); i++) {
 					if (bins->get(i - 1) > x && x >= bins->get(i)) {
 						return i;
 					}
@@ -287,9 +287,9 @@ namespace Cudheart::CPP::Math::Statistics {
 
 	template <typename T>
 	inline Vector<int>* digitize(Vector<T>* x, Vector<T>* bins, bool right = false) {
-		Vector<int>* out = new Vector<int>(x->getSize());
+		Vector<int>* out = new Vector<int>(x->size());
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			out->set(i, digitize(x->get(i), bins, right));
 		}
 

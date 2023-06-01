@@ -169,21 +169,21 @@ namespace Cudheart::Sorting {
 	template <typename T>
 	NDArray<T>* quicksort(NDArray<T>* a) {
 		NDArray<T>* arr = a->copy();
-		_quicksort(arr, 0, a->getSize() - 1);
+		_quicksort(arr, 0, a->size() - 1);
 		return arr;
 	}
 
 	template <typename T>
 	NDArray<T>* mergesort(NDArray<T>* a) {
 		NDArray<T>* arr = a->copy();
-		_mergesort(arr, 0, a->getSize() - 1);
+		_mergesort(arr, 0, a->size() - 1);
 		return arr;
 	}
 
 	template <typename T>
 	NDArray<T>* heapsort(NDArray<T>* a) {
 		NDArray<T>* arr = a->copy();
-		_heapsort(arr, a->getSize());
+		_heapsort(arr, a->size());
 		return arr;
 	}
 
@@ -208,11 +208,11 @@ namespace Cudheart::Sorting {
 	Vector<T>* argsort(Vector<T>* arr, Kind kind = Kind::Quicksort) {
 		Vector<T>* sorted = (Vector<T>*)sort(arr, kind);
 
-		Vector<T>* indices = new Vector<T>(arr->getSize());
+		Vector<T>* indices = new Vector<T>(arr->size());
 		T temp = sorted->get(0) - 1;
 
-		for (int i = 0; i < indices->getSize(); i++) {
-			for (int j = 0; j < sorted->getSize(); j++) {
+		for (int i = 0; i < indices->size(); i++) {
+			for (int j = 0; j < sorted->size(); j++) {
 				if (arr->get(i) == sorted->get(j)) {
 					indices->set(j, i);
 					sorted->set(j, temp);
@@ -228,7 +228,7 @@ namespace Cudheart::Sorting {
 
 	template <typename T>
 	Matrix<T>* argsort(Matrix<T>* arr, Kind kind = Kind::Quicksort) {
-		Matrix<T>* indices = Cudheart::MatrixOps::arange(arr->getSize(), arr->getHeight(), arr->getWidth());
+		Matrix<T>* indices = Cudheart::MatrixOps::arange(arr->size(), arr->getHeight(), arr->getWidth());
 
 		switch (kind) {
 		case Kind::Quicksort:

@@ -14,7 +14,7 @@ namespace Cudheart::CPP::Math::Exp {
 	NDArray<T>* ln(NDArray<T>* x) {
 		NDArray<T>* output = x->emptyLike();
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			output->set(i, log(x->get(i)));
 		}
 
@@ -25,7 +25,7 @@ namespace Cudheart::CPP::Math::Exp {
 	NDArray<T>* loga2(NDArray<T>* x) {
 		NDArray<T>* output = x->emptyLike();
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			output->set(i, log2(x->get(i)));
 		}
 
@@ -36,7 +36,7 @@ namespace Cudheart::CPP::Math::Exp {
 	NDArray<T>* logan(NDArray<T>* x, T n) {
 		NDArray<T>* output = x->emptyLike();
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			// using the change of bases rule:
 			// log n of x[i] = log(x[i]) / log(n)
 			output->set(i, (log(x->get(i)) / log(n)));
@@ -50,7 +50,7 @@ namespace Cudheart::CPP::Math::Exp {
 		x->assertMatchShape(n->getShape());
 		NDArray<T>* output = x->emptyLike();
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			// using the change of bases rule:
 			// log n of x[i] = log(x[i]) / log(n)
 			output->set(i, (log(x->get(i)) / log(n->get(i))));
@@ -63,7 +63,7 @@ namespace Cudheart::CPP::Math::Exp {
 	NDArray<T>* loga10(NDArray<T>* x) {
 		NDArray<T>* output = x->emptyLike();
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			output->set(i, log10(x->get(i)));
 		}
 
@@ -74,7 +74,7 @@ namespace Cudheart::CPP::Math::Exp {
 	NDArray<T>* expo(NDArray<T>* x) {
 		NDArray<T>* output = x->emptyLike();
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			output->set(i, std::exp(x->get(i)));
 		}
 
@@ -85,7 +85,7 @@ namespace Cudheart::CPP::Math::Exp {
 	NDArray<T>* expom1(NDArray<T>* x) {
 		NDArray<T>* output = x->emptyLike();
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			output->set(i, std::expm1(x->get(i)));
 		}
 
@@ -96,7 +96,7 @@ namespace Cudheart::CPP::Math::Exp {
 	NDArray<T>* expo2(NDArray<T>* x) {
 		NDArray<T>* output = x->emptyLike();
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			output->set(i, std::exp2(x->get(i)));
 		}
 
@@ -108,7 +108,7 @@ namespace Cudheart::CPP::Math::Exp {
 		a->assertMatchShape(b->getShape());
 		NDArray<T>* output = a->emptyLike();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			output->set(i, std::log(std::exp(a->get(i)) + std::exp(b->get(i))));
 		}
 
@@ -120,7 +120,7 @@ namespace Cudheart::CPP::Math::Exp {
 		a->assertMatchShape(b->getShape());
 		NDArray<T>* output = a->emptyLike();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			output->set(i, std::log2(std::exp2(a->get(i)) + std::exp2(b->get(i))));
 		}
 

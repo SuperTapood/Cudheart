@@ -1,12 +1,11 @@
 import numpy as np
-
 from util import *
 
 
-test_name = "Trigo::sinc(Vector<double>)"
-x = np.array([0.5, 0.33000000000000002, 0.68999999999999995, 0.41999999999999998, 0.502, 0.80000000000000004, 0.87, 0.29999999999999999])
-# res = np.sinc(x)
-res = np.sin(x) / x
-out = [0.95885107720840601, 0.98194857089354048, 0.92251765539415642, 0.97085822157040513, 0.95852538587074965, 0.89669511362440346, 0.87853900807529317, 0.98506735553779856]
+a = np.arange(25).reshape((5, 5))
+b = np.arange(75).reshape((3, 5, 5))
+c = np.repeat(a, repeats=3, axis=0)
 
-print(res)
+print(np.sum(b, axis=0))
+print(b[0, :, :])
+print(np.add.reduce(b, 0))

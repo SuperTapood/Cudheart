@@ -7,7 +7,7 @@ using namespace Cudheart::NDArrays;
 namespace Cudheart::Logic {
 	template <typename T>
 	bool all(NDArray<T>* arr) {
-		for (int i = 0; i < arr->getSize(); i++) {
+		for (int i = 0; i < arr->size(); i++) {
 			if (!(bool)arr->get(i)) {
 				return false;
 			}
@@ -18,7 +18,7 @@ namespace Cudheart::Logic {
 
 	template <typename T>
 	bool any(NDArray<T>* arr) {
-		for (int i = 0; i < arr->getSize(); i++) {
+		for (int i = 0; i < arr->size(); i++) {
 			if ((bool)arr->get(i)) {
 				return true;
 			}
@@ -33,7 +33,7 @@ namespace Cudheart::Logic {
 
 		NDArray<bool>* out = a->emptyLike();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			out->set(i, a->get(i) && b->get(i));
 		}
 
@@ -46,7 +46,7 @@ namespace Cudheart::Logic {
 
 		NDArray<bool>* out = a->emptyLike();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			out->set(i, a->get(i) || b->get(i));
 		}
 
@@ -57,7 +57,7 @@ namespace Cudheart::Logic {
 	NDArray<bool>* logicalNot(NDArray<T>* arr) {
 		NDArray<bool>* out = arr->emptyLike();
 
-		for (int i = 0; i < arr->getSize(); i++) {
+		for (int i = 0; i < arr->size(); i++) {
 			out->set(i, !arr->get(i));
 		}
 
@@ -70,7 +70,7 @@ namespace Cudheart::Logic {
 
 		NDArray<bool>* out = a->emptyLike();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			out->set(i, a->get(i) ^ b->get(i));
 		}
 
@@ -81,9 +81,9 @@ namespace Cudheart::Logic {
 	NDArray<bool>* isclose(NDArray<T>* a, NDArray<T>* b, double rtol, double atol) {
 		a->assertMatchShape(b->getShape());
 
-		auto out = new Vector<bool>(a->getSize());
+		auto out = new Vector<bool>(a->size());
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			T va = a->get(i);
 			T vb = b->get(i);
 
@@ -104,9 +104,9 @@ namespace Cudheart::Logic {
 
 	template <typename T>
 	NDArray<bool>* isclose(NDArray<T>* a, T b, double rtol, double atol) {
-		auto out = new Vector<bool>(a->getSize());
+		auto out = new Vector<bool>(a->size());
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			T va = a->get(i);
 
 			if (abs(va - b) > (atol + rtol * abs(b))) {
@@ -129,7 +129,7 @@ namespace Cudheart::Logic {
 	bool allclose(NDArray<T>* a, NDArray<T>* b, double rtol, double atol) {
 		a->assertMatchShape(b->getShape());
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			T va = a->get(i);
 			T vb = b->get(i);
 
@@ -147,7 +147,7 @@ namespace Cudheart::Logic {
 
 	template <typename T>
 	bool allclose(NDArray<T>* a, T b, double rtol, double atol) {
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			T va = a->get(i);
 
 			if (abs(va - b) > (atol + rtol * abs(b))) {
@@ -180,7 +180,7 @@ namespace Cudheart::Logic {
 
 		NDArray<bool>* out = a->emptyLike<bool>();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			out->set(i, a->get(i) > b->get(i));
 		}
 
@@ -191,7 +191,7 @@ namespace Cudheart::Logic {
 	NDArray<bool>* greater(NDArray<T>* a, T b) {
 		NDArray<bool>* out = a->emptyLike<bool>();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			out->set(i, a->get(i) > b);
 		}
 
@@ -206,7 +206,7 @@ namespace Cudheart::Logic {
 
 		NDArray<bool>* out = a->emptyLike<bool>();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			out->set(i, a->get(i) >= b->get(i));
 		}
 
@@ -217,7 +217,7 @@ namespace Cudheart::Logic {
 	NDArray<bool>* greaterEquals(NDArray<T>* a, T b) {
 		NDArray<bool>* out = a->emptyLike<bool>();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			out->set(i, a->get(i) >= b);
 		}
 
@@ -232,7 +232,7 @@ namespace Cudheart::Logic {
 
 		NDArray<bool>* out = a->emptyLike<bool>();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			out->set(i, a->get(i) < b->get(i));
 		}
 
@@ -243,7 +243,7 @@ namespace Cudheart::Logic {
 	NDArray<bool>* less(NDArray<T>* a, T b) {
 		NDArray<bool>* out = a->emptyLike<bool>();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			out->set(i, a->get(i) < b);
 		}
 
@@ -258,7 +258,7 @@ namespace Cudheart::Logic {
 
 		NDArray<bool>* out = a->emptyLike<bool>();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			out->set(i, a->get(i) <= b->get(i));
 		}
 
@@ -269,7 +269,7 @@ namespace Cudheart::Logic {
 	NDArray<bool>* lessEqual(NDArray<T>* a, T b) {
 		NDArray<bool>* out = a->emptyLike<bool>();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			out->set(i, a->get(i) <= b);
 		}
 
@@ -282,7 +282,7 @@ namespace Cudheart::Logic {
 
 		NDArray<T>* out = a->emptyLike();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			out->set(i, std::max(a->get(i), b->get(i)));
 		}
 
@@ -293,7 +293,7 @@ namespace Cudheart::Logic {
 	T amax(NDArray<T>* x) {
 		T max = x->get(0);
 
-		for (int i = 1; i < x->getSize(); i++) {
+		for (int i = 1; i < x->size(); i++) {
 			max = std::max(max, x->get(i));
 		}
 
@@ -306,7 +306,7 @@ namespace Cudheart::Logic {
 
 		NDArray<T>* out = a->emptyLike();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			out->set(i, std::min(a->get(i), b->get(i)));
 		}
 
@@ -317,7 +317,7 @@ namespace Cudheart::Logic {
 	T amin(NDArray<T>* x) {
 		T min = x->get(0);
 
-		for (int i = 1; i < x->getSize(); i++) {
+		for (int i = 1; i < x->size(); i++) {
 			min = std::min(min, x->get(i));
 		}
 

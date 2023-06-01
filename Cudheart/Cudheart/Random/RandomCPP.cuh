@@ -93,7 +93,7 @@ namespace Cudheart::CPP::Random {
 
 		Matrix<T>* out = new Matrix<T>(height, width);
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			out->set(i, (T)rand() / (T)RAND_MAX);
 		}
 
@@ -131,10 +131,10 @@ namespace Cudheart::CPP::Random {
 	template <typename T>
 	inline Vector<T>* choice(NDArray<T>* a, int size) {
 		srand(Constants::getSeed());
-		Vector<double>* p = new Vector(a->getSize());
+		Vector<double>* p = new Vector(a->size());
 
-		for (int i = 0; i < p->getSize(); i++) {
-			p->set(i, 1 / p->getSize());
+		for (int i = 0; i < p->size(); i++) {
+			p->set(i, 1 / p->size());
 		}
 
 		return choice<T>(a, size, p);
@@ -167,7 +167,7 @@ namespace Cudheart::CPP::Random {
 
 		Matrix<T>* mat = new Matrix<T>(height, width);
 
-		for (int i = 0; i < mat->getSize(); i++) {
+		for (int i = 0; i < mat->size(); i++) {
 			mat->set(i, data.at(i));
 		}
 
@@ -178,7 +178,7 @@ namespace Cudheart::CPP::Random {
 	inline void shuffle(NDArray<T>* a) {
 		srand(Constants::getSeed());
 		NDArray<T>* copy = a->copy();
-		int size = a->getSize();
+		int size = a->size();
 		int* indices = new int[size];
 		for (int i = 0; i < size; i++) {
 			indices[i] = i;
@@ -212,7 +212,7 @@ namespace Cudheart::CPP::Random {
 		a->assertMatchShape(b);
 		NDArray<T>* out = a->copy();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			out->set(i, std::beta(a->get(i), b->get(i)));
 		}
 
@@ -227,7 +227,7 @@ namespace Cudheart::CPP::Random {
 		default_random_engine generator(getSeed());
 		std::binomial_distribution<T> dist;
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			out->set(i, dist(generator));
 		}
 
@@ -241,7 +241,7 @@ namespace Cudheart::CPP::Random {
 		default_random_engine generator(getSeed());
 		std::chi_squared_distribution<T> dist;
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			out->set(i, dist(generator));
 		}
 
@@ -255,14 +255,14 @@ namespace Cudheart::CPP::Random {
 		default_random_engine generator(getSeed());
 		T sum = 0;
 
-		for (int i = 0; i < alpha->getSize(); i++) {
+		for (int i = 0; i < alpha->size(); i++) {
 			std::gamma_distribution<> temp(alpha->get(i), 1);
 			T x = temp(generator);
 			out->set(i, x);
 			sum += x;
 		}
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			out->set(i, out->get(i) / sum);
 		}
 
@@ -275,7 +275,7 @@ namespace Cudheart::CPP::Random {
 		NDArray<T>* out = x->emptyLike();
 		default_random_engine generator(getSeed());
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			std::exponential_distribution<T> dist(x->get(i));
 			out->set(i, dist(generator));
 		}
@@ -290,7 +290,7 @@ namespace Cudheart::CPP::Random {
 		NDArray<T>* out = dfnum->emptyLike();
 		default_random_engine generator(getSeed());
 
-		for (int i = 0; i < dfnum->getSize(); i++) {
+		for (int i = 0; i < dfnum->size(); i++) {
 			std::fisher_f_distribution dist(dfnum->get(i), dfden->get(i));
 			out->set(i, dist(generator));
 		}
@@ -305,7 +305,7 @@ namespace Cudheart::CPP::Random {
 		NDArray<T>* out = shape->emptyLike();
 		default_random_engine generator(getSeed());
 
-		for (int i = 0; i < shape->getSize(); i++) {
+		for (int i = 0; i < shape->size(); i++) {
 			std::gamma_distribution<> dist(shape->get(i), scale->get(i));
 			out->set(i, dist(generator));
 		}
@@ -340,7 +340,7 @@ namespace Cudheart::CPP::Random {
 
 	template <typename T>
 	inline Vector<T>* geometric(Vector<T>* p) {
-		return geometric<T>(p, p->getSize());
+		return geometric<T>(p, p->size());
 	}
 
 	template <typename T>
@@ -350,7 +350,7 @@ namespace Cudheart::CPP::Random {
 		Matrix<T>* out = new Matrix<T>(height, width);
 		default_random_engine generator(getSeed());
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			std::geometric_distribution<> dist(p->get(i));
 			out->set(i, dist(generator));
 		}
@@ -368,7 +368,7 @@ namespace Cudheart::CPP::Random {
 		default_random_engine generator(getSeed());
 		NDArray<T>* out = loc->emptyLike();
 
-		for (int i = 0; i < loc->getSize(); i++) {
+		for (int i = 0; i < loc->size(); i++) {
 			std::extreme_value_distribution<> dist(loc->get(i), scale->get(i));
 			out->set(i, dist(generator));
 		}
@@ -401,7 +401,7 @@ namespace Cudheart::CPP::Random {
 		ngood->assertMatchShape(nsample);
 		NDArray<T>* out = ngood->emptyLike();
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			T N = ngood->get(i) + nbad->get(i);
 			T k = ngood->get(i);
 			T n = nsample->get(i);
@@ -422,7 +422,7 @@ namespace Cudheart::CPP::Random {
 		srand(getSeed());
 		NDArray<T>* out = loc->emptyLike();
 
-		for (int i = 0; i < loc->getSize(); i++) {
+		for (int i = 0; i < loc->size(); i++) {
 			T mew = loc->get(i);
 			T lambda = scale->get(i);
 			T x = (T)rand() / (T)RAND_MAX;
@@ -440,7 +440,7 @@ namespace Cudheart::CPP::Random {
 		srand(getSeed());
 		NDArray<T>* out = loc->emptyLike();
 
-		for (int i = 0; i < loc->getSize(); i++) {
+		for (int i = 0; i < loc->size(); i++) {
 			T mew = loc->get(i);
 			T s = scale->get(i);
 			T x = (T)rand() / (T)RAND_MAX;
@@ -458,7 +458,7 @@ namespace Cudheart::CPP::Random {
 		srand(getSeed());
 		NDArray<T>* out = mean->emptyLike();
 
-		for (int i = 0; i < mean->getSize(); i++) {
+		for (int i = 0; i < mean->size(); i++) {
 			T mew = mean->get(i);
 			T o = sigma->get(i);
 			T x = (T)rand() / (T)RAND_MAX;
@@ -473,7 +473,7 @@ namespace Cudheart::CPP::Random {
 		srand(getSeed());
 		NDArray<T>* out = p->emptyLike();
 
-		for (int i = 0; i < p->getSize(); i++) {
+		for (int i = 0; i < p->size(); i++) {
 			T k = (T)rand() / (T)RAND_MAX;
 			T prob = p->get(i);
 			T high = -std::pow(prob, k);
@@ -490,14 +490,14 @@ namespace Cudheart::CPP::Random {
 		srand(getSeed());
 		NDArray<T>* out = pvals->emptyLike();
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			out->set(i, 0);
 		}
 
 		for (int i = 0; i < n; i++) {
 			T k = (T)rand() / (T)RAND_MAX;
 			T prob = 0;
-			for (int j = 0; j < pvals->getSize(); j++) {
+			for (int j = 0; j < pvals->size(); j++) {
 				prob += pvals->get(j);
 				if (k <= prob) {
 					out->set(j, out->get(j) + 1);
@@ -516,7 +516,7 @@ namespace Cudheart::CPP::Random {
 		NDArray<T>* out = n->emptyLike();
 		std::default_random_engine rng(getSeed());
 
-		for (int i = 0; i < n->getSize(); i++) {
+		for (int i = 0; i < n->size(); i++) {
 			T nv = n->get(i);
 			T pv = p->get(i);
 			T N = rand();
@@ -535,7 +535,7 @@ namespace Cudheart::CPP::Random {
 		srand(getSeed());
 		NDArray<T>* out = loc->emptyLike();
 
-		for (int i = 0; i < loc->getSize(); i++) {
+		for (int i = 0; i < loc->size(); i++) {
 			T u = loc->get(i);
 			T o = scale->get(i);
 			T x = rand() / RAND_MAX;
@@ -554,7 +554,7 @@ namespace Cudheart::CPP::Random {
 		NDArray<T>* out = a->emptyLike();
 		srand(getSeed());
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			T x = rand() / RAND_MAX;
 			T av = a->get(i);
 			out->set(i, av / (std::pow(x, av + 1)));
@@ -568,7 +568,7 @@ namespace Cudheart::CPP::Random {
 		NDArray<T>* out = lam->emptyLike();
 		srand(getSeed());
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			T k = rand() / RAND_MAX;
 			T lambda = lam->get(i);
 			T high = std::pow(lambda, k) * std::exp(-lambda);
@@ -585,7 +585,7 @@ namespace Cudheart::CPP::Random {
 		NDArray<T>* out = a->emptyLike();
 		srand(getSeed());
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			T x = rand() / RAND_MAX;
 			T av = a->get(i);
 			out->set(i, av * std::pow(x, av - 1));
@@ -600,7 +600,7 @@ namespace Cudheart::CPP::Random {
 		NDArray<T>* out = scale->emptyLike();
 		srand(getSeed());
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			T x = rand() / RAND_MAX;
 			T s = scale->get(i);
 			T left = x / std::pow(scale, 2);
@@ -617,7 +617,7 @@ namespace Cudheart::CPP::Random {
 		NDArray<T>* out = x0->emptyLike();
 		srand(getSeed());
 
-		for (int i = 0; i < x0->getSize(); i++) {
+		for (int i = 0; i < x0->size(); i++) {
 			T x = rand() / RAND_MAX;
 			T xv = x0->get(i);
 			T gv = g->get(i);
@@ -659,7 +659,7 @@ namespace Cudheart::CPP::Random {
 		// df > 0
 		NDArray<T>* out = df->emptyLike();
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			T x = rand() / RAND_MAX;
 			T d = df->get(i);
 			T high = std::gamma_distribution<>()((d + 1) / 2);
@@ -679,7 +679,7 @@ namespace Cudheart::CPP::Random {
 		srand(getSeed());
 		Vector<T>* out = new Vector<T>(size);
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			T x = rand() / RAND_MAX;
 			out->set(i, low + (x * (high - low)));
 		}
@@ -704,7 +704,7 @@ namespace Cudheart::CPP::Random {
 		NDArray<T>* out = mu->emptyLike();
 		srand(getSeed());
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			T x = rand() / RAND_MAX;
 			T u = mu->get(i);
 			T k = kappa->get(i);
@@ -722,7 +722,7 @@ namespace Cudheart::CPP::Random {
 		NDArray<T>* out = mean->emptyLike();
 		srand(getSeed());
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			T x = rand() / RAND_MAX;
 			T m = mean->get(i);
 			T s = scale->get(i);
@@ -739,7 +739,7 @@ namespace Cudheart::CPP::Random {
 		NDArray<T>* out = a->emptyLike();
 		srand(getSeed());
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			T k = rand() / RAND_MAX;
 			T av = a->get(i);
 			T high = std::pow(k, -av);

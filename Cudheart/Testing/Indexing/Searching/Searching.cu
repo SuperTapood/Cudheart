@@ -190,11 +190,11 @@ namespace Cudheart::Testing::Indexing::Searching {
 		string cmd;
 
 		auto cond = new Vector({ true, false, false, true, false, true, true, false, true });
-		auto vec = arange(cond->getSize(), cond->getSize(), 1)->flatten();
+		auto vec = arange(cond->size(), cond->size(), 1)->flatten();
 		auto res = extract(cond, vec);
 
 		cmd = Numpy::createArray("[true, false, false, true, false, true, true, false, true]", "cond");
-		cmd += Numpy::arange("0", to_string(cond->getSize()), "1", "int", "vec");
+		cmd += Numpy::arange("0", to_string(cond->size()), "1", "int", "vec");
 		cmd += Numpy::extract("cond", "vec", "res");
 
 		Testing::submit("Searching::extract(Vector<int>, Vector<int>)", cmd, res->toString());

@@ -19,7 +19,7 @@ namespace Cudheart::CPP::Math::Linalg {
 
 		T result = (T)0;
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			result += a->get(i) * b->get(i);
 		}
 
@@ -111,10 +111,10 @@ namespace Cudheart::CPP::Math::Linalg {
 
 	template <typename T>
 	Matrix<T>* outer(Vector<T>* a, Vector<T>* b) {
-		Matrix<T>* out = new Matrix<T>(a->getSize(), b->getSize());
+		Matrix<T>* out = new Matrix<T>(a->size(), b->size());
 
-		for (int i = 0; i < a->getSize(); i++) {
-			for (int j = 0; j < b->getSize(); j++) {
+		for (int i = 0; i < a->size(); i++) {
+			for (int j = 0; j < b->size(); j++) {
 				out->set(i, j, a->get(i) * b->get(j));
 			}
 		}
@@ -127,10 +127,10 @@ namespace Cudheart::CPP::Math::Linalg {
 		Vector<T>* va = (Vector<T>*)a->flatten();
 		Vector<T>* vb = (Vector<T>*)b->flatten();
 
-		Matrix<T>* out = new Matrix<T>(a->getSize(), b->getSize());
+		Matrix<T>* out = new Matrix<T>(a->size(), b->size());
 
-		for (int i = 0; i < va->getSize(); i++) {
-			for (int j = 0; j < vb->getSize(); j++) {
+		for (int i = 0; i < va->size(); i++) {
+			for (int j = 0; j < vb->size(); j++) {
 				out->set(i, j, va->get(i) * vb->get(j));
 			}
 		}
@@ -142,10 +142,10 @@ namespace Cudheart::CPP::Math::Linalg {
 
 	template <typename T>
 	Matrix<T>* outer(Matrix<T>* mat, Vector<T>* vec) {
-		Matrix<T>* out = new Matrix<T>(mat->getSize(), vec->getSize());
+		Matrix<T>* out = new Matrix<T>(mat->size(), vec->size());
 
-		for (int i = 0; i < mat->getSize(); i++) {
-			for (int j = 0; j < vec->getSize(); j++) {
+		for (int i = 0; i < mat->size(); i++) {
+			for (int j = 0; j < vec->size(); j++) {
 				out->set(i, j, mat->get(i) * vec->get(j));
 			}
 		}
@@ -155,10 +155,10 @@ namespace Cudheart::CPP::Math::Linalg {
 
 	template <typename T>
 	Matrix<T>* outer(Vector<T>* vec, Matrix<T>* mat) {
-		Matrix<T>* out = new Matrix<T>(vec->getSize(), mat->getSize());
+		Matrix<T>* out = new Matrix<T>(vec->size(), mat->size());
 
-		for (int i = 0; i < vec->getSize(); i++) {
-			for (int j = 0; j < mat->getSize(); j++) {
+		for (int i = 0; i < vec->size(); i++) {
+			for (int j = 0; j < mat->size(); j++) {
 				out->set(i, j, vec->get(i) * mat->get(j));
 			}
 		}
@@ -241,7 +241,7 @@ namespace Cudheart::CPP::Math::Linalg {
 			}
 		}
 
-		for (int i = 0; i < b->getSize(); i++) {
+		for (int i = 0; i < b->size(); i++) {
 			A->set(i, -1, b->get(i));
 		}
 
@@ -295,7 +295,7 @@ namespace Cudheart::CPP::Math::Linalg {
 	T norm(NDArray<T>* x) {
 		T sum = (T)0;
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			sum += std::pow(x->get(i), 2);
 		}
 
@@ -367,20 +367,20 @@ namespace Cudheart::CPP::Math::Linalg {
 
 	template <typename T>
 	Vector<T>* roots(NDArray<T>* p) {
-		int N = p->getSize();
+		int N = p->size();
 
 		int start = 0;
-		int end = p->getSize();
+		int end = p->size();
 		int trailing = 0;
 
-		for (int i = 0; i < p->getSize(); i++) {
+		for (int i = 0; i < p->size(); i++) {
 			if (p->get(i) != 0) {
 				break;
 			}
 			start++;
 		}
 
-		for (int i = p->getSize() - 1; i >= 0; i--) {
+		for (int i = p->size() - 1; i >= 0; i--) {
 			if (p->get(i) != 0) {
 				break;
 			}
@@ -482,10 +482,10 @@ namespace Cudheart::CPP::Math::Linalg {
 
 	template <typename T>
 	Vector<T>* convolve(Vector<T>* a, Vector<T>* b) {
-		Vector<T>* out = Cudheart::VectorOps::zeros<T>(a->getSize() + b->getSize() - 1);
+		Vector<T>* out = Cudheart::VectorOps::zeros<T>(a->size() + b->size() - 1);
 
-		for (int i = 0; i < a->getSize(); i++) {
-			for (int j = 0; j < b->getSize(); j++) {
+		for (int i = 0; i < a->size(); i++) {
+			for (int j = 0; j < b->size(); j++) {
 				T last = out->get(i + j);
 				out->set(i + j, last + (a->get(i) * b->get(j)));
 			}
@@ -498,7 +498,7 @@ namespace Cudheart::CPP::Math::Linalg {
 	NDArray<T>* clip(NDArray<T>* arr, T min, T max) {
 		NDArray<T>* out = arr->copy();
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			if (out->get(i) < min) {
 				out->set(i, min);
 			}
@@ -514,7 +514,7 @@ namespace Cudheart::CPP::Math::Linalg {
 	NDArray<T>* clip(NDArray<T>* arr, T max) {
 		NDArray<T>* out = arr->copy();
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			if (out->get(i) > max) {
 				out->set(i, max);
 			}

@@ -19,7 +19,7 @@ namespace Cudheart::StringOps {
 
 		NDArray<StringType*>* out = x1->emptyLike();
 
-		for (int i = 0; i < x1->getSize(); i++) {
+		for (int i = 0; i < x1->size(); i++) {
 			out->set(i, new StringType(x1->get(i)->str() + x2->get(i)->str()));
 		}
 
@@ -31,7 +31,7 @@ namespace Cudheart::StringOps {
 
 		NDArray<StringType*>* arr = x->emptyLike();
 
-		for (int i = 0; arr->getSize(); i++) {
+		for (int i = 0; arr->size(); i++) {
 			string s = "";
 			for (int j = 0; j < l->get(i); j++) {
 				s += x->get(i)->str();
@@ -45,7 +45,7 @@ namespace Cudheart::StringOps {
 	inline NDArray<StringType*>* capitalize(NDArray<StringType*>* x) {
 		NDArray<StringType*>* out = x->emptyLike();
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			const char* st = x->get(i)->c_str();
 			int code = toupper(st[0]);
 			std::string str = "" + code;
@@ -63,7 +63,7 @@ namespace Cudheart::StringOps {
 	inline NDArray<StringType*>* replace(NDArray<StringType*>* a, char oldChar, std::string newChar) {
 		NDArray<StringType*>* out = a->emptyLike();
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			std::string str = "";
 			std::string old = a->get(i)->str();
 
@@ -96,7 +96,7 @@ namespace Cudheart::StringOps {
 		sep->assertMatchShape(seq->getShape());
 		NDArray<StringType*>* out = sep->emptyLike();
 
-		for (int i = 0; i < sep->getSize(); i++) {
+		for (int i = 0; i < sep->size(); i++) {
 			std::string str = sep->get(i)->str() + seq->get(i)->str();
 
 			out->set(i, new StringType(str));
@@ -108,7 +108,7 @@ namespace Cudheart::StringOps {
 	inline NDArray<StringType*>* lower(NDArray<StringType*>* x) {
 		NDArray<StringType*>* out = x->emptyLike();
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			std::string str = "";
 
 			for (int j = 0; j < x->get(j)->str().size(); j++) {
@@ -124,7 +124,7 @@ namespace Cudheart::StringOps {
 	inline NDArray<StringType*>* lJust(NDArray<StringType*>* a, int width, char fillChar = ' ') {
 		NDArray<StringType*>* out = a->emptyLike();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			std::string str = a->get(i)->str();
 			size_t size = a->get(i)->str().size();
 
@@ -141,7 +141,7 @@ namespace Cudheart::StringOps {
 	inline NDArray<StringType*>* rJust(NDArray<StringType*>* a, int width, char fillChar = ' ') {
 		NDArray<StringType*>* out = a->emptyLike();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			std::string str = "";
 			int size = a->get(i)->str().size();
 
@@ -160,7 +160,7 @@ namespace Cudheart::StringOps {
 	inline NDArray<StringType*>* strip(NDArray<StringType*>* a, std::string chars) {
 		NDArray<StringType*>* out = a->emptyLike();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			std::string str = "";
 			std::string pre = a->get(i)->str();
 
@@ -188,7 +188,7 @@ namespace Cudheart::StringOps {
 	inline NDArray<StringType*>* lStrip(NDArray<StringType*>* a, std::string chars) {
 		NDArray<StringType*>* out = a->emptyLike();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			std::string pre = a->get(i)->str();
 
 			int j = 0;
@@ -219,7 +219,7 @@ namespace Cudheart::StringOps {
 	inline NDArray<StringType*>* rStrip(NDArray<StringType*>* a, std::string chars) {
 		NDArray<StringType*>* out = a->emptyLike();
 
-		for (size_t i = 0; i < a->getSize(); i++) {
+		for (size_t i = 0; i < a->size(); i++) {
 			std::string pre = a->get(i)->str();
 
 			size_t j = pre.size();
@@ -250,7 +250,7 @@ namespace Cudheart::StringOps {
 	inline NDArray<StringType*>* upper(NDArray<StringType*>* x) {
 		NDArray<StringType*>* out = x->emptyLike();
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			std::string str = "";
 
 			for (int j = 0; j < x->get(j)->str().size(); j++) {
@@ -264,12 +264,12 @@ namespace Cudheart::StringOps {
 	}
 
 	inline NDArray<StringType*>** partition(NDArray<StringType*>* a, std::string sep) {
-		NDArray<StringType*>** out = (NDArray<StringType*>**)malloc(sizeof(NDArray<StringType*>*) * a->getSize() * 2);
+		NDArray<StringType*>** out = (NDArray<StringType*>**)malloc(sizeof(NDArray<StringType*>*) * a->size() * 2);
 
 		NDArray<StringType*>* before = a->emptyLike();
 		NDArray<StringType*>* after = a->emptyLike();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			bool passed = false;
 			std::string str = a->get(i)->str();
 			std::string bef = "";
@@ -310,9 +310,9 @@ namespace Cudheart::StringOps {
 
 	inline Vector<bool>* equal(Vector<StringType*>* a, Vector<StringType*>* b) {
 		a->assertMatchShape(b->getShape());
-		Vector<bool>* out = new Vector<bool>(a->getSize());
+		Vector<bool>* out = new Vector<bool>(a->size());
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			out->set(i, a->get(i)->str() == b->get(i)->str());
 		}
 
@@ -323,7 +323,7 @@ namespace Cudheart::StringOps {
 		a->assertMatchShape(b->getShape());
 		Matrix<bool>* out = new Matrix<bool>(a->getHeight(), a->getWidth());
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			out->set(i, a->get(i)->str() == b->get(i)->str());
 		}
 
@@ -332,9 +332,9 @@ namespace Cudheart::StringOps {
 
 	inline Vector<bool>* notEqual(Vector<StringType*>* a, Vector<StringType*>* b) {
 		a->assertMatchShape(b->getShape());
-		Vector<bool>* out = new Vector<bool>(a->getSize());
+		Vector<bool>* out = new Vector<bool>(a->size());
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			out->set(i, a->get(i)->str() != b->get(i)->str());
 		}
 
@@ -345,7 +345,7 @@ namespace Cudheart::StringOps {
 		a->assertMatchShape(b->getShape());
 		Matrix<bool>* out = new Matrix<bool>(a->getHeight(), a->getWidth());
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			out->set(i, a->get(i)->str() != b->get(i)->str());
 		}
 
@@ -353,9 +353,9 @@ namespace Cudheart::StringOps {
 	}
 
 	inline NDArray<int>* count(NDArray<StringType*>* a, string sub, int start = 0, size_t end = -1) {
-		NDArray<int>* out = (new Vector<int>(a->getSize()))->reshape(a->getShape());
+		NDArray<int>* out = (new Vector<int>(a->size()))->reshape(a->getShape());
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			string str = a->get(i)->str();
 			if (end == -1) {
 				end = str.length();
@@ -377,10 +377,10 @@ namespace Cudheart::StringOps {
 	}
 
 	inline NDArray<bool>* startsWith(NDArray<StringType*>* a, string prefix, int start = 0, int end = -1) {
-		NDArray<bool>* out = (new Vector<bool>(a->getSize()))->reshape(a->getShape());
+		NDArray<bool>* out = (new Vector<bool>(a->size()))->reshape(a->getShape());
 		end = end == -1 ? prefix.length() : end;
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			string str = a->get(i)->str();
 			if (str.length() >= prefix.length()) {
 				if (str.substr(start, end) == prefix) {
@@ -393,10 +393,10 @@ namespace Cudheart::StringOps {
 	}
 
 	inline NDArray<bool>* endsWith(NDArray<StringType*>* a, string suffix, int start = -1, size_t end = -1) {
-		NDArray<bool>* out = (new Vector<bool>(a->getSize()))->reshape(a->getShape());
+		NDArray<bool>* out = (new Vector<bool>(a->size()))->reshape(a->getShape());
 		end = end == -1 ? suffix.length() : end;
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			string str = a->get(i)->str();
 			size_t st = start == -1 ? str.length() - suffix.length() : start;
 			if (str.length() >= suffix.length()) {
@@ -410,9 +410,9 @@ namespace Cudheart::StringOps {
 	}
 
 	inline NDArray<int>* find(NDArray<StringType*>* a, string sub, int start = 0, int end = -1) {
-		NDArray<int>* out = (new Vector<int>(a->getSize()))->reshape(a->getShape());
+		NDArray<int>* out = (new Vector<int>(a->size()))->reshape(a->getShape());
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			string str = a->get(i)->str();
 			if (end == -1) {
 				end = str.length();
@@ -434,9 +434,9 @@ namespace Cudheart::StringOps {
 	}
 
 	inline NDArray<bool>* isNumeric(NDArray<StringType*>* a) {
-		NDArray<bool>* out = (new Vector<bool>(a->getSize()))->reshape(a->getShape());
+		NDArray<bool>* out = (new Vector<bool>(a->size()))->reshape(a->getShape());
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			string str = a->get(i)->str();
 			out->set(i, true);
 			for (char c : str) {
@@ -451,9 +451,9 @@ namespace Cudheart::StringOps {
 	}
 
 	inline NDArray<bool>* isUpper(NDArray<StringType*>* a) {
-		NDArray<bool>* out = (new Vector<bool>(a->getSize()))->reshape(a->getShape());
+		NDArray<bool>* out = (new Vector<bool>(a->size()))->reshape(a->getShape());
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			string str = a->get(i)->str();
 			out->set(i, true);
 			for (char c : str) {
@@ -468,9 +468,9 @@ namespace Cudheart::StringOps {
 	}
 
 	inline NDArray<bool>* isLower(NDArray<StringType*>* a) {
-		NDArray<bool>* out = (new Vector<bool>(a->getSize()))->reshape(a->getShape());
+		NDArray<bool>* out = (new Vector<bool>(a->size()))->reshape(a->getShape());
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			string str = a->get(i)->str();
 			out->set(i, true);
 			for (char c : str) {

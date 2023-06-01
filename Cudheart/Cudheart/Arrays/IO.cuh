@@ -223,7 +223,7 @@ namespace Cudheart {
 		template <typename T>
 		void save(std::string name, NDArray<T>* arr, char sep) {
 			std::ofstream file(name);
-			for (int i = 0; i < arr->getSize() - 1; i++) {
+			for (int i = 0; i < arr->size() - 1; i++) {
 				file << arr->getString(i) << sep;
 			}
 			file << arr->getString(-1);

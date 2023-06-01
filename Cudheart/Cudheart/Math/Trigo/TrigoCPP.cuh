@@ -16,7 +16,7 @@ namespace Cudheart::CPP::Math::Trigo {
 	template <typename T>
 	NDArray<T>* sin(NDArray<T>* rads) {
 		NDArray<T>* out = rads->emptyLike();
-		for (int i = 0; i < rads->getSize(); i++) {
+		for (int i = 0; i < rads->size(); i++) {
 			out->set(i, std::sin(rads->get(i)));
 		}
 
@@ -27,7 +27,7 @@ namespace Cudheart::CPP::Math::Trigo {
 	NDArray<T>* cos(NDArray<T>* rads) {
 		NDArray<T>* out = rads->emptyLike();
 
-		for (int i = 0; i < rads->getSize(); i++) {
+		for (int i = 0; i < rads->size(); i++) {
 			out->set(i, std::cos(rads->get(i)));
 		}
 
@@ -38,7 +38,7 @@ namespace Cudheart::CPP::Math::Trigo {
 	NDArray<T>* tan(NDArray<T>* rads) {
 		NDArray<T>* out = rads->emptyLike();
 
-		for (int i = 0; i < rads->getSize(); i++) {
+		for (int i = 0; i < rads->size(); i++) {
 			out->set(i, std::tan(rads->get(i)));
 		}
 
@@ -49,7 +49,7 @@ namespace Cudheart::CPP::Math::Trigo {
 	NDArray<T>* cot(NDArray<T>* rads) {
 		NDArray<T>* out = rads->emptyLike();
 
-		for (int i = 0; i < rads->getSize(); i++) {
+		for (int i = 0; i < rads->size(); i++) {
 			out->set(i, 1 / std::tan(rads->get(i)));
 		}
 
@@ -59,7 +59,7 @@ namespace Cudheart::CPP::Math::Trigo {
 	template <typename T>
 	NDArray<T>* arcsin(NDArray<T>* x) {
 		NDArray<T>* out = x->emptyLike();
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			out->set(i, asin(x->get(i)));
 		}
 		return out;
@@ -68,7 +68,7 @@ namespace Cudheart::CPP::Math::Trigo {
 	template <typename T>
 	NDArray<T>* arccos(NDArray<T>* x) {
 		NDArray<T>* out = x->emptyLike();
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			out->set(i, acos(x->get(i)));
 		}
 		return out;
@@ -77,7 +77,7 @@ namespace Cudheart::CPP::Math::Trigo {
 	template <typename T>
 	NDArray<T>* arctan(NDArray<T>* x) {
 		NDArray<T>* out = x->emptyLike();
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			out->set(i, atan(x->get(i)));
 		}
 		return out;
@@ -86,7 +86,7 @@ namespace Cudheart::CPP::Math::Trigo {
 	template <typename T>
 	NDArray<T>* arccot(NDArray<T>* x) {
 		NDArray<T>* out = x->emptyLike();
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			out->set(i, (pi / 2) - atan(x->get(i)));
 		}
 		return out;
@@ -98,7 +98,7 @@ namespace Cudheart::CPP::Math::Trigo {
 
 		NDArray<T>* out = a->emptyLike();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			T va = a->get(i);
 			T vb = b->get(i);
 			out->set(i, sqrt((va * va) + (vb * vb)));
@@ -111,7 +111,7 @@ namespace Cudheart::CPP::Math::Trigo {
 	NDArray<T>* deg2rad(NDArray<T>* degs) {
 		NDArray<T>* out = degs->emptyLike();
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			out->set(i, degs->get(i) * (pi / 180));
 		}
 
@@ -122,7 +122,7 @@ namespace Cudheart::CPP::Math::Trigo {
 	NDArray<T>* rad2deg(NDArray<T>* rads) {
 		NDArray<T>* out = rads->emptyLike();
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			out->set(i, rads->get(i) / (pi / 180));
 		}
 		
@@ -132,7 +132,7 @@ namespace Cudheart::CPP::Math::Trigo {
 	template <typename T>
 	NDArray<T>* sinc(NDArray<T>* rads) {
 		NDArray<T>* out = rads->emptyLike();
-		for (int i = 0; i < rads->getSize(); i++) {
+		for (int i = 0; i < rads->size(); i++) {
 			if (rads->get(i) == 0) {
 				ZeroDivisionException("sinc");
 			}
@@ -146,7 +146,7 @@ namespace Cudheart::CPP::Math::Trigo {
 	NDArray<T>* sinh(NDArray<T>* x) {
 		NDArray<T>* out = x->emptyLike();
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			out->set(i, std::sinh(x->get(i)));
 		}
 
@@ -157,7 +157,7 @@ namespace Cudheart::CPP::Math::Trigo {
 	NDArray<T>* cosh(NDArray<T>* x) {
 		NDArray<T>* out = x->emptyLike();
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			out->set(i, std::cosh(x->get(i)));
 		}
 
@@ -168,7 +168,7 @@ namespace Cudheart::CPP::Math::Trigo {
 	NDArray<T>* tanh(NDArray<T>* x) {
 		NDArray<T>* out = x->emptyLike();
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			out->set(i, std::tanh(x->get(i)));
 		}
 
@@ -179,7 +179,7 @@ namespace Cudheart::CPP::Math::Trigo {
 	NDArray<T>* arcsinh(NDArray<T>* x) {
 		NDArray<T>* out = x->emptyLike();
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			out->set(i, std::asinh(x->get(i)));
 		}
 
@@ -190,7 +190,7 @@ namespace Cudheart::CPP::Math::Trigo {
 	NDArray<T>* arccosh(NDArray<T>* x) {
 		NDArray<T>* out = x->emptyLike();
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			out->set(i, std::acosh(x->get(i)));
 		}
 
@@ -201,7 +201,7 @@ namespace Cudheart::CPP::Math::Trigo {
 	NDArray<T>* arctanh(NDArray<T>* x) {
 		NDArray<T>* out = x->emptyLike();
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			out->set(i, std::atanh(x->get(i)));
 		}
 

@@ -18,13 +18,13 @@ namespace Cudheart {
 	namespace ArrayOps {
 		template <typename T>
 		Vector<T>* append(Vector<T>* a, T b) {
-			Vector<T>* vec = new Vector<T>(a->getSize() + 1);
+			Vector<T>* vec = new Vector<T>(a->size() + 1);
 
-			for (int i = 0; i < a->getSize(); i++) {
+			for (int i = 0; i < a->size(); i++) {
 				vec->set(i, a->get(i));
 			}
 
-			vec->set(a->getSize(), b);
+			vec->set(a->size(), b);
 
 			return vec;
 		}
@@ -41,7 +41,7 @@ namespace Cudheart {
 				}
 			}
 
-			for (int i = 0; i < b->getSize(); i++) {
+			for (int i = 0; i < b->size(); i++) {
 				mat->set(a->getHeight(), i, b->get(i));
 			}
 
@@ -50,15 +50,15 @@ namespace Cudheart {
 
 		template <typename T>
 		Vector<T>* concatenate(Vector<T>* a, Vector<T>* b) {
-			int newSize = a->getSize() + b->getSize();
+			int newSize = a->size() + b->size();
 			Vector<T>* vec = new Vector<T>(newSize);
 
-			for (int i = 0; i < a->getSize(); i++) {
+			for (int i = 0; i < a->size(); i++) {
 				vec->set(i, a->get(i));
 			}
 
-			for (int i = 0; i < b->getSize(); i++) {
-				vec->set(i + a->getSize(), b->get(i));
+			for (int i = 0; i < b->size(); i++) {
+				vec->set(i + a->size(), b->get(i));
 			}
 
 			return vec;
@@ -69,12 +69,12 @@ namespace Cudheart {
 			a->assertMatchShape(b->getShape());
 			Matrix<T>* mat = new Matrix<T>(a->getHeight() * 2, a->getWidth());
 
-			for (int i = 0; i < a->getSize(); i++) {
+			for (int i = 0; i < a->size(); i++) {
 				mat->set(i, a->get(i));
 			}
 
-			for (int i = 0; i < b->getSize(); i++) {
-				mat->set(i + a->getSize(), b->get(i));
+			for (int i = 0; i < b->size(); i++) {
+				mat->set(i + a->size(), b->get(i));
 			}
 
 			return mat;
@@ -82,18 +82,18 @@ namespace Cudheart {
 
 		template <typename T>
 		Vector<T>** split(Vector<T>* vec, int sizes) {
-			if (vec->getSize() % sizes != 0) {
+			if (vec->size() % sizes != 0) {
 				BadValueException("vector split does not result in an equal division");
 				return nullptr;
 			}
 
-			int vecs = vec->getSize() / sizes;
+			int vecs = vec->size() / sizes;
 			Vector<T>** out = new Vector<T>*[sizes];
 
 			int index = 0;
 			int jdex = 0;
 			out[0] = new Vector<T>(vecs);
-			for (int i = 0; i < vec->getSize(); i++, index++) {
+			for (int i = 0; i < vec->size(); i++, index++) {
 				if (index == vecs) {
 					index = 0;
 					jdex++;
@@ -120,10 +120,10 @@ namespace Cudheart {
 
 		template <typename T>
 		Vector<T>* tile(Vector<T>* a, int reps) {
-			Vector<T>* out = new Vector<T>(a->getSize() * reps);
+			Vector<T>* out = new Vector<T>(a->size() * reps);
 
-			for (int i = 0; i < a->getSize() * reps; i++) {
-				out->set(i, a->get(i % a->getSize()));
+			for (int i = 0; i < a->size() * reps; i++) {
+				out->set(i, a->get(i % a->size()));
 			}
 
 			return out;
@@ -131,11 +131,11 @@ namespace Cudheart {
 
 		template <typename T>
 		Matrix<T>* tile(Vector<T>* a, int hReps, int wReps) {
-			Matrix<T>* out = new Matrix<T>(hReps, a->getSize() * wReps);
+			Matrix<T>* out = new Matrix<T>(hReps, a->size() * wReps);
 
 			for (int i = 0; i < hReps; i++) {
-				for (int j = 0; j < a->getSize() * wReps; j++) {
-					out->set(i, j, a->get(j % a->getSize()));
+				for (int j = 0; j < a->size() * wReps; j++) {
+					out->set(i, j, a->get(j % a->size()));
 				}
 			}
 
@@ -174,10 +174,10 @@ namespace Cudheart {
 
 		template <typename T>
 		Vector<T>* remove(Vector<T>* arr, int index) {
-			Vector<T>* vec = new Vector<T>(arr->getSize() - 1);
+			Vector<T>* vec = new Vector<T>(arr->size() - 1);
 
 			int idx = 0;
-			for (int i = 0; i < arr->getSize(); i++) {
+			for (int i = 0; i < arr->size(); i++) {
 				if (i == index) {
 					continue;
 				}
@@ -228,10 +228,10 @@ namespace Cudheart {
 		template <typename T>
 		Vector<T>* trimZeros(NDArray<T>* filt, string trim = "fb") {
 			int start = 0;
-			int end = filt->getSize();
+			int end = filt->size();
 
 			if (trim.find("f") != std::string::npos) {
-				for (int i = 0; i < filt->getSize(); i++) {
+				for (int i = 0; i < filt->size(); i++) {
 					if (filt->get(i) != 0) {
 						start = i;
 						break;
@@ -240,7 +240,7 @@ namespace Cudheart {
 			}
 
 			if (trim.find("b") != std::string::npos) {
-				for (int i = filt->getSize() - 1; i > start; i--) {
+				for (int i = filt->size() - 1; i > start; i--) {
 					if (filt->get(i) != 0) {
 						end = i + 1;
 						break;
@@ -300,7 +300,7 @@ namespace Cudheart {
 
 			int uniques = 0;
 
-			for (int i = 0; i < ar->getSize(); i++) {
+			for (int i = 0; i < ar->size(); i++) {
 				bool isUnique = true;
 				for (int j = 0; j < i; j++) {
 					if (ar->get(i) == ar->get(j)) {
@@ -315,12 +315,12 @@ namespace Cudheart {
 
 			auto uniqueArr = new Vector<T>(uniques);
 			auto indexArr = new Vector<T>(uniques);
-			auto inverseArr = new Vector<T>(ar->getSize());
+			auto inverseArr = new Vector<T>(ar->size());
 			auto countsArr = zeros<T>(uniques);
 
 			int index = 0;
 
-			for (int i = 0; i < ar->getSize(); i++) {
+			for (int i = 0; i < ar->size(); i++) {
 				bool unique = true;
 				for (int j = 0; j < index; j++) {
 					if (uniqueArr->get(j) == ar->get(i)) {
@@ -341,8 +341,8 @@ namespace Cudheart {
 			quicksort(uniqueArr, 0, uniques - 1);
 
 			if (returnIndex) {
-				for (int i = 0; i < uniqueArr->getSize(); i++) {
-					for (int j = 0; j < ar->getSize(); j++) {
+				for (int i = 0; i < uniqueArr->size(); i++) {
+					for (int j = 0; j < ar->size(); j++) {
 						if (ar->get(j) == uniqueArr->get(i)) {
 							indexArr->set(i, j);
 							break;
@@ -352,8 +352,8 @@ namespace Cudheart {
 			}
 
 			if (returnInverse) {
-				for (int i = 0; i < ar->getSize(); i++) {
-					for (int j = 0; j < uniqueArr->getSize(); j++) {
+				for (int i = 0; i < ar->size(); i++) {
+					for (int j = 0; j < uniqueArr->size(); j++) {
 						if (ar->get(i) == uniqueArr->get(j)) {
 							inverseArr->set(i, j);
 						}
@@ -362,8 +362,8 @@ namespace Cudheart {
 			}
 
 			if (returnCounts) {
-				for (int i = 0; i < ar->getSize(); i++) {
-					for (int j = 0; j < uniqueArr->getSize(); j++) {
+				for (int i = 0; i < ar->size(); i++) {
+					for (int j = 0; j < uniqueArr->size(); j++) {
 						if (ar->get(i) == uniqueArr->get(j)) {
 							countsArr->set(j, countsArr->get(j) + 1);
 						}

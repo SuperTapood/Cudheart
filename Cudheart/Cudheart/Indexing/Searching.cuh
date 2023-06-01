@@ -11,7 +11,7 @@ namespace Cudheart::Searching {
 		int index = 0;
 		T value = a->get(0);
 
-		for (int i = 1; i < a->getSize(); i++) {
+		for (int i = 1; i < a->size(); i++) {
 			if (a->get(i) > value) {
 				value = a->get(i);
 				index = i;
@@ -26,7 +26,7 @@ namespace Cudheart::Searching {
 		int index = 0;
 		T value = a->get(0);
 
-		for (int i = 1; i < a->getSize(); i++) {
+		for (int i = 1; i < a->size(); i++) {
 			if (a->get(i) < value) {
 				value = a->get(i);
 				index = i;
@@ -40,7 +40,7 @@ namespace Cudheart::Searching {
 	Vector<T>* nonzero(Vector<T>* vec) {
 		int count = 0;
 
-		for (int i = 0; i < vec->getSize(); i++) {
+		for (int i = 0; i < vec->size(); i++) {
 			if (vec->get(i) != 0) {
 				count++;
 			}
@@ -49,7 +49,7 @@ namespace Cudheart::Searching {
 		Vector<T>* result = new Vector<T>(count);
 
 		int index = 0;
-		for (int i = 0; i < vec->getSize(); i++) {
+		for (int i = 0; i < vec->size(); i++) {
 			if (vec->get(i) != 0) {
 				result->set(index, i);
 				index++;
@@ -63,7 +63,7 @@ namespace Cudheart::Searching {
 	Matrix<T>* nonzero(Matrix<T>* mat) {
 		int count = 0;
 
-		for (int i = 0; i < mat->getSize(); i++) {
+		for (int i = 0; i < mat->size(); i++) {
 			if (mat->get(i) != 0) {
 				count++;
 			}
@@ -88,7 +88,7 @@ namespace Cudheart::Searching {
 	template <typename T>
 	Matrix<T>* argwhere(Vector<T>* a) {
 		Vector<T>* vec = nonzero(a);
-		return (Matrix<T>*)(vec->reshape(new Shape(vec->getSize(), 1)));
+		return (Matrix<T>*)(vec->reshape(new Shape(vec->size(), 1)));
 	}
 
 	template <typename T>
@@ -109,7 +109,7 @@ namespace Cudheart::Searching {
 
 		NDArray<T>* out = x->emptyLike();
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			if (condition->get(i)) {
 				out->set(i, x->get(i));
 			}
@@ -125,14 +125,14 @@ namespace Cudheart::Searching {
 	inline int searchsorted(Vector<T>* a, T v, string side, Vector<int>* sorter) {
 		a->assertMatchShape(sorter->getShape());
 		if (side == "left") {
-			for (int i = 1; i < a->getSize(); i++) {
+			for (int i = 1; i < a->size(); i++) {
 				if (a->get(sorter->get(i - 1)) < v && v <= a->get(sorter->get(i))) {
 					return i;
 				}
 			}
 		}
 		else if (side == "right") {
-			for (int i = 1; i < a->getSize(); i++) {
+			for (int i = 1; i < a->size(); i++) {
 				if (a->get(sorter->get(i - 1)) <= v && v < a->get(sorter->get(i))) {
 					return i;
 				}
@@ -140,7 +140,7 @@ namespace Cudheart::Searching {
 		}
 
 		if (v > a->get(0)) {
-			return a->getSize();
+			return a->size();
 		}
 
 		return 0;
@@ -149,14 +149,14 @@ namespace Cudheart::Searching {
 	template <typename T>
 	int searchsorted(Vector<T>* a, T v, string side) {
 		if (side == "left") {
-			for (int i = 1; i < a->getSize(); i++) {
+			for (int i = 1; i < a->size(); i++) {
 				if (a->get(i - 1) < v && v <= a->get(i)) {
 					return i;
 				}
 			}
 		}
 		else if (side == "right") {
-			for (int i = a->getSize() - 1; i >= 0; i--) {
+			for (int i = a->size() - 1; i >= 0; i--) {
 				if (a->get(i - 1) <= v && v < a->get(i)) {
 					return i;
 				}
@@ -164,7 +164,7 @@ namespace Cudheart::Searching {
 		}
 
 		if (v > a->get(0)) {
-			return a->getSize();
+			return a->size();
 		}
 
 		return 0;
@@ -182,9 +182,9 @@ namespace Cudheart::Searching {
 
 	template <typename T>
 	inline Vector<int>* searchsorted(Vector<T>* a, Vector<T>* v, string side, Vector<int>* sorter) {
-		Vector<int>* out = new Vector<int>(v->getSize());
+		Vector<int>* out = new Vector<int>(v->size());
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			out->set(i, searchsorted(a, v->get(i), side, sorter));
 		}
 
@@ -193,9 +193,9 @@ namespace Cudheart::Searching {
 
 	template <typename T>
 	Vector<int>* searchsorted(Vector<T>* a, Vector<T>* v, string side) {
-		Vector<int>* out = new Vector<int>(v->getSize());
+		Vector<int>* out = new Vector<int>(v->size());
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			out->set(i, searchsorted(a, v->get(i), side));
 		}
 
@@ -217,7 +217,7 @@ namespace Cudheart::Searching {
 		condition->assertMatchShape(arr->getShape());
 		int size = 0;
 
-		for (int i = 0; i < condition->getSize(); i++) {
+		for (int i = 0; i < condition->size(); i++) {
 			if (condition->get(i)) {
 				size++;
 			}
@@ -226,7 +226,7 @@ namespace Cudheart::Searching {
 		Vector<T>* vec = new Vector<T>(size);
 
 		int index = 0;
-		for (int i = 0; i < arr->getSize(); i++) {
+		for (int i = 0; i < arr->size(); i++) {
 			if (condition->get(i)) {
 				vec->set(index, arr->get(i));
 				index++;
@@ -245,7 +245,7 @@ namespace Cudheart::Searching {
 	int count_nonzero(NDArray<T>* a) {
 		int count = 0;
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			if (a->get(i) != 0) {
 				count++;
 			}

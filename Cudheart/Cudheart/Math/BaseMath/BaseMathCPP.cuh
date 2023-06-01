@@ -15,7 +15,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 	NDArray<T>* cubeRoot(NDArray<T>* arr) {
 		NDArray<T>* output = arr->emptyLike();
 
-		for (int i = 0; i < arr->getSize(); i++) {
+		for (int i = 0; i < arr->size(); i++) {
 			output->set(i, cbrt(arr->get(i)));
 		}
 
@@ -36,7 +36,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 	NDArray<T>* squareRoot(NDArray<T>* arr) {
 		NDArray<T>* output = arr->emptyLike();
 
-		for (int i = 0; i < arr->getSize(); i++) {
+		for (int i = 0; i < arr->size(); i++) {
 			output->set(i, sqrt(arr->get(i)));
 		}
 
@@ -47,7 +47,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 	NDArray<T>* power(NDArray<T>* base, T po) {
 		NDArray<T>* output = base->emptyLike();
 
-		for (int i = 0; i < base->getSize(); i++) {
+		for (int i = 0; i < base->size(); i++) {
 			output->set(i, pow(base->get(i), po));
 		}
 
@@ -58,7 +58,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 	NDArray<T>* power(T base, NDArray<T>* po) {
 		NDArray<T>* output = po->emptyLike();
 
-		for (int i = 0; i < po->getSize(); i++) {
+		for (int i = 0; i < po->size(); i++) {
 			output->set(i, pow(base, po->get(i)));
 		}
 
@@ -71,7 +71,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 
 		NDArray<T>* output = base->emptyLike();
 
-		for (int i = 0; i < base->getSize(); i++) {
+		for (int i = 0; i < base->size(); i++) {
 			output->set(i, pow(base->get(i), po->get(i)));
 		}
 
@@ -99,7 +99,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 		NDArray<T>* out = arr->emptyLike();
 		int v = std::pow(10, decimals);
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			T value = arr->get(i) * v;
 			value = std::round(value);
 			out->set(i, value / v);
@@ -117,7 +117,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 	NDArray<T>* rint(NDArray<T>* arr) {
 		NDArray<T>* out = arr->emptyLike();
 
-		for (int i = 0; i < out->getSize(); i++) {
+		for (int i = 0; i < out->size(); i++) {
 			out->set(i, std::rint(arr->get(i)));
 		}
 
@@ -128,7 +128,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 	NDArray<T>* fix(NDArray<T>* x) {
 		NDArray<T>* out = x->emptyLike();
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			T v = x->get(i);
 			if (v > 0) {
 				out->set(i, std::floor(v));
@@ -145,7 +145,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 	NDArray<T>* floor(NDArray<T>* x) {
 		NDArray<T>* out = x->emptyLike();
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			out->set(i, std::floor(x->get(i)));
 		}
 
@@ -156,7 +156,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 	NDArray<T>* trunc(NDArray<T>* x) {
 		NDArray<T>* out = x->emptyLike();
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			out->set(i, std::trunc(x->get(i)));
 		}
 
@@ -167,7 +167,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 	NDArray<T>* ceil(NDArray<T>* x) {
 		NDArray<T>* out = x->emptyLike();
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			out->set(i, std::ceil(x->get(i)));
 		}
 
@@ -177,7 +177,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 	T prod(NDArray<T>* x) {
 		T out = (T)1;
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			out *= x->get(i);
 		}
 
@@ -188,7 +188,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 	T sum(NDArray<T>* x) {
 		T out = (T)0;
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			out += x->get(i);
 		}
 
@@ -201,7 +201,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 
 		T prod = (T)1;
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			prod *= x->get(i);
 			out->set(i, prod);
 		}
@@ -215,7 +215,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 
 		T prod = (T)0;
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			prod += x->get(i);
 			out->set(i, prod);
 		}
@@ -227,7 +227,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 	NDArray<bool>* signBit(NDArray<T>* x) {
 		NDArray<bool>* out = x->emptyLike<bool>();
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			T v = x->get(i);
 			out->set(i, v < 0);
 		}
@@ -241,7 +241,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 
 		NDArray<T>* out = a->emptyLike();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			T va = a->get(i);
 			T vb = b->get(i);
 
@@ -259,7 +259,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 	NDArray<T>* abs(NDArray<T>* x) {
 		NDArray<T>* out = x->emptyLike();
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			out->set(i, std::abs(x->get(i)));
 		}
 
@@ -271,7 +271,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 		a->assertMatchShape(b->getShape());
 		NDArray<T>* out = a->emptyLike();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			out->set(i, std::lcm(a->get(i), b->get(i)));
 		}
 
@@ -283,7 +283,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 		a->assertMatchShape(b->getShape());
 		NDArray<T>* out = a->emptyLike();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			out->set(i, std::gcd(a->get(i), b->get(i)));
 		}
 
@@ -295,7 +295,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 		a->assertMatchShape(b->getShape());
 		NDArray<T>* out = a->emptyLike();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			out->set(i, a->get(i) + b->get(i));
 		}
 
@@ -307,7 +307,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 		a->assertMatchShape(b->getShape());
 		NDArray<T>* out = a->emptyLike();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			out->set(i, a->get(i) - b->get(i));
 		}
 
@@ -319,7 +319,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 		a->assertMatchShape(b->getShape());
 		NDArray<T>* out = a->emptyLike();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			out->set(i, a->get(i) * b->get(i));
 		}
 
@@ -331,7 +331,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 		a->assertMatchShape(b->getShape());
 		NDArray<T>* out = a->emptyLike();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			out->set(i, a->get(i) / b->get(i));
 		}
 
@@ -343,7 +343,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 		a->assertMatchShape(b->getShape());
 		NDArray<int>* out = a->emptyLike<int>();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			out->set(i, std::floor(a->get(i) / b->get(i)));
 		}
 
@@ -355,7 +355,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 		a->assertMatchShape(b->getShape());
 		NDArray<T>* out = a->emptyLike();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			out->set(i, a->get(i) % b->get(i));
 		}
 
@@ -368,7 +368,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 		NDArray<T>* div = a->emptyLike();
 		NDArray<T>* mod = a->emptyLike();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			int d = a->get(i) / b->get(i);
 			div->set(i, d);
 			mod->set(i, a->get(i) - (d * b->get(i)));
@@ -385,7 +385,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 	NDArray<T>* reciprocal(NDArray<T>* x) {
 		NDArray<T>* out = x->emptyLike();
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			out->set(i, (T)1 / x->get(i));
 		}
 
@@ -396,7 +396,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 	NDArray<T>* positive(NDArray<T>* x) {
 		NDArray<T>* out = x->emptyLike();
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			out->set(i, +x->get(i));
 		}
 
@@ -407,7 +407,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 	NDArray<T>* negative(NDArray<T>* x) {
 		NDArray<T>* out = x->emptyLike();
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			out->set(i, -x->get(i));
 		}
 
@@ -418,7 +418,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 	NDArray<T>* sign(NDArray<T>* x) {
 		NDArray<T>* out = x->emptyLike();
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			if (std::signbit(x->get(i))) {
 				out->set(i, -1);
 			}
@@ -435,7 +435,7 @@ namespace Cudheart::CPP::Math::BaseMath {
 		a->assertMatchShape(b->getShape());
 		NDArray<T>* out = a->emptyLike();
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			T x1 = a->get(i);
 			if (x1 < 0) {
 				out->set(i, 0);

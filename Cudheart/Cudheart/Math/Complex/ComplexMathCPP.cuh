@@ -16,14 +16,14 @@ using Cudheart::Constants::pi;
 
 namespace Cudheart::CPP::Math::Complex {
 	inline NDArray<double>* angle(NDArray<ComplexType*>* z, bool deg) {
-		auto arr = (new Vector<double>(z->getSize()))->reshape(z->getShape());
+		auto arr = (new Vector<double>(z->size()))->reshape(z->getShape());
 		double multiplier = 1.0;
 
 		if (deg) {
 			multiplier = 180 / pi;
 		}
 
-		for (int i = 0; i < z->getSize(); i++) {
+		for (int i = 0; i < z->size(); i++) {
 			auto current = z->get(i);
 			arr->set(i, std::atan(current->real / current->real) * multiplier);
 		}
@@ -36,9 +36,9 @@ namespace Cudheart::CPP::Math::Complex {
 	}
 
 	inline NDArray<double>* real(NDArray<ComplexType*>* val) {
-		NDArray<double>* arr = (new Vector<double>(val->getSize()))->reshape(val->getShape());
+		NDArray<double>* arr = (new Vector<double>(val->size()))->reshape(val->getShape());
 
-		for (int i = 0; i < val->getSize(); i++) {
+		for (int i = 0; i < val->size(); i++) {
 			ComplexType* current = val->get(i);
 			arr->set(i, current->real);
 		}
@@ -47,9 +47,9 @@ namespace Cudheart::CPP::Math::Complex {
 	}
 
 	inline NDArray<double>* imag(NDArray<ComplexType*>* val) {
-		NDArray<double>* arr = (new Vector<double>(val->getSize()))->reshape(val->getShape());
+		NDArray<double>* arr = (new Vector<double>(val->size()))->reshape(val->getShape());
 
-		for (int i = 0; i < val->getSize(); i++) {
+		for (int i = 0; i < val->size(); i++) {
 			ComplexType* current = val->get(i);
 			arr->set(i, current->real);
 		}
@@ -60,7 +60,7 @@ namespace Cudheart::CPP::Math::Complex {
 	inline NDArray<ComplexType*>* conj(NDArray<ComplexType*>* x) {
 		NDArray<ComplexType*>* arr = x->emptyLike();
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			ComplexType* current = x->get(i);
 			arr->set(i, new ComplexType(current->real, -current->imag));
 		}
@@ -69,9 +69,9 @@ namespace Cudheart::CPP::Math::Complex {
 	}
 
 	inline NDArray<double>* complexAbs(NDArray<ComplexType*>* x) {
-		NDArray<double>* out = (new Vector<double>(x->getSize()))->reshape(x->getShape());
+		NDArray<double>* out = (new Vector<double>(x->size()))->reshape(x->getShape());
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			ComplexType* current = x->get(i);
 			double x2 = std::pow(current->real, 2);
 			double y2 = std::pow(current->imag, 2);
@@ -84,7 +84,7 @@ namespace Cudheart::CPP::Math::Complex {
 	inline NDArray<ComplexType*>* complexSign(NDArray<ComplexType*>* x) {
 		NDArray<ComplexType*>* out = x->emptyLike();
 
-		for (int i = 0; i < x->getSize(); i++) {
+		for (int i = 0; i < x->size(); i++) {
 			double real = x->get(i)->real;
 			if (std::signbit(real)) {
 				out->set(i, new ComplexType(-1, 0));

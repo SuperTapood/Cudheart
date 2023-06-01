@@ -119,7 +119,7 @@ namespace Cudheart::Testing::Arrays::IO {
 		string cmd;
 
 		bool pass = true;
-		for (int i = 0; i < vec->getSize(); i++) {
+		for (int i = 0; i < vec->size(); i++) {
 			pass = vec->get(i) == i * 10;
 		}
 

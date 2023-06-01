@@ -18,7 +18,7 @@ namespace Cudheart::Testing::Math::CPP::ComplexMath {
 
 		auto a = new Vector<ComplexType*>(5);
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			a->set(i, new ComplexType(i + 1, i + 1));
 		}
 
@@ -42,7 +42,7 @@ namespace Cudheart::Testing::Math::CPP::ComplexMath {
 
 		auto a = new Vector<ComplexType*>(5);
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			a->set(i, new ComplexType(i + 1, i + 1));
 		}
 
@@ -59,7 +59,7 @@ namespace Cudheart::Testing::Math::CPP::ComplexMath {
 
 		auto a = new Vector<ComplexType*>(5);
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			a->set(i, new ComplexType(i + 1, i + 1));
 		}
 
@@ -76,7 +76,7 @@ namespace Cudheart::Testing::Math::CPP::ComplexMath {
 
 		auto a = new Vector<ComplexType*>(5);
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			a->set(i, new ComplexType(i + 1, i + 1));
 		}
 
@@ -93,7 +93,7 @@ namespace Cudheart::Testing::Math::CPP::ComplexMath {
 
 		auto a = new Vector<ComplexType*>(5);
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			a->set(i, new ComplexType(i + 1, i + 1));
 		}
 
@@ -110,7 +110,7 @@ namespace Cudheart::Testing::Math::CPP::ComplexMath {
 
 		auto a = new Vector<ComplexType*>(5);
 
-		for (int i = 0; i < a->getSize(); i++) {
+		for (int i = 0; i < a->size(); i++) {
 			a->set(i, new ComplexType(i + 1, i + 1));
 		}
 

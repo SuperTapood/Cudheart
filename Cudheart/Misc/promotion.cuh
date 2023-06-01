@@ -7,6 +7,7 @@
 #include <iostream>
 
 // how does this even work
+
 template <template <class...> class TT, class... Args>
 std::true_type is_tt_impl(TT<Args...>);
 template <template <class...> class TT>
@@ -16,6 +17,7 @@ template <template <class...> class TT, class T>
 using is_tt = decltype(is_tt_impl<TT>(std::declval<typename std::decay_t<T>>()));
 
 // why
+
 #define conditional(a, b, c) std::conditional_t<a, b, c>
 #define is_same(a, b) std::is_same_v<a, b>
 #define is_integral(a) std::is_integral_v<a>
@@ -70,6 +72,7 @@ template <typename A, typename B> struct promote_args<std::complex<A>, B> {
 #define promote4(a, b, c, d) promote2(a, promote3(b, c, d))
 
 void sillyTemplates() {
+	using namespace std;
 	promote4(long, int, int, char) v;
 	cout << "v is " << typeid(v).name() << endl;
 }

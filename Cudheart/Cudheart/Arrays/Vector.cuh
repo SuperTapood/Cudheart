@@ -96,8 +96,8 @@ namespace Cudheart {
 					// Convert the vector of T to a vector of StringType*.
 					// For example, if T is a numeric type, then each element of the vector
 					// will be converted to a string representation.
-					Vector<StringType*>* out = new Vector<StringType*>(getSize());
-					for (int i = 0; i < getSize(); i++) {
+					Vector<StringType*>* out = new Vector<StringType*>(size());
+					for (int i = 0; i < size(); i++) {
 						out->set(i, new StringType(getString(i)));
 					}
 					return (Vector<U>*)out;
@@ -107,8 +107,8 @@ namespace Cudheart {
 						// Convert the vector of T to a vector of ComplexType*.
 						// For example, if T is a numeric type, then each element of the vector
 						// will be wrapped in a ComplexType object.
-						Vector<ComplexType*>* out = new Vector<ComplexType*>(getSize());
-						for (int i = 0; i < getSize(); i++) {
+						Vector<ComplexType*>* out = new Vector<ComplexType*>(size());
+						for (int i = 0; i < size(); i++) {
 							out->set(i, new ComplexType(get(i)));
 						}
 						return (Vector<U>*)out;
@@ -117,8 +117,8 @@ namespace Cudheart {
 						// Convert the vector of T to a vector of ComplexType*.
 						// For example, if T is a numeric type, then each element of the vector
 						// will be wrapped in a ComplexType object.
-						Vector<ComplexType*>* out = new Vector<ComplexType*>(getSize());
-						for (int i = 0; i < getSize(); i++) {
+						Vector<ComplexType*>* out = new Vector<ComplexType*>(size());
+						for (int i = 0; i < size(); i++) {
 							string current = getString(i);
 							int pos = current.find("+");
 							if (current.find("j") == string::npos || pos == string::npos) {
@@ -175,8 +175,8 @@ namespace Cudheart {
 						// Convert the vector of StringType* to a vector of U.
 						// For example, if U is a numeric type, then each element of the vector
 						// will be converted from a string representation to a numeric value.
-						Vector<U>* out = new Vector<U>(getSize());
-						for (int i = 0; i < getSize(); i++) {
+						Vector<U>* out = new Vector<U>(size());
+						for (int i = 0; i < size(); i++) {
 							auto str = (StringType*)get(i);
 							out->set(i, (U)(str->toFloating()));
 						}
@@ -186,8 +186,8 @@ namespace Cudheart {
 						// Convert the vector of T to a vector of U.
 						// For example, if T and U are both numeric types, then each element of the vector
 						// will be converted from one type to the other.
-						Vector<U>* out = new Vector<U>(getSize());
-						for (int i = 0; i < getSize(); i++) {
+						Vector<U>* out = new Vector<U>(size());
+						for (int i = 0; i < size(); i++) {
 							out->set(i, static_cast<U>(get(i)));
 						}
 						return out;
@@ -296,7 +296,7 @@ namespace Cudheart {
 			/// get the size of the vector
 			/// </summary>
 			/// <returns>the size of the vector</returns>
-			int getSize() const {
+			int size() const {
 				return m_size;
 			}
 
@@ -305,19 +305,19 @@ namespace Cudheart {
 			/// </summary>
 			/// <returns>a string representation of this vector</returns>
 			string toString() {
-				if (getSize() == 0) {
+				if (size() == 0) {
 					return "[]";
 				}
 				ostringstream os;
 				os << "[";
 				if constexpr (is_same_v<T, StringType*>) {
-					for (int i = 0; i < getSize() - 1; i++) {
+					for (int i = 0; i < size() - 1; i++) {
 						os << ((StringType*)(m_data[i]))->toString() << ", ";
 					}
 					os << ((StringType*)(get(-1)))->toString() << "]";
 				}
 				else if constexpr (is_same_v<T, ComplexType*>) {
-					for (int i = 0; i < getSize() - 1; i++) {
+					for (int i = 0; i < size() - 1; i++) {
 						os << ((ComplexType*)(m_data[i]))->toString() << ", ";
 					}
 					os << ((ComplexType*)(get(-1)))->toString() << "]";
@@ -329,7 +329,7 @@ namespace Cudheart {
 					os << ((NDArray<T>*)(get(-1)))->toString() << "]";
 				}*/
 				else {
-					for (int i = 0; i < getSize() - 1; i++) {
+					for (int i = 0; i < size() - 1; i++) {
 						T res = m_data[i];
 						os << std::setprecision(17) << res;
 						if constexpr (std::is_floating_point_v<T>) {
@@ -366,10 +366,10 @@ namespace Cudheart {
 			}
 
 			void assertMatchShape(Shape* shape, int axis = 0) {
-				if (shape->getSize() != getSize()) {
+				if (shape->size() != size()) {
 					ostringstream os;
 					os << "(";
-					os << getSize();
+					os << size();
 					os << ",)";
 					ShapeMismatchException(os.str(), shape->toString());
 				}
@@ -400,9 +400,9 @@ namespace Cudheart {
 			}
 
 			Vector<T>* flatten() {
-				Vector<T>* out = new Vector<T>(getSize());
+				Vector<T>* out = new Vector<T>(size());
 
-				for (int i = 0; i < getSize(); i++) {
+				for (int i = 0; i < size(); i++) {
 					out->set(i, get(i));
 				}
 
