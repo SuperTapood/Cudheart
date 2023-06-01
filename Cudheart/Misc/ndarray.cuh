@@ -122,9 +122,11 @@ void test() {
 		b->at(i) = (float)i;
 	}
 
-	b->println();
+	/*b->println();
 
-	add(a, b);
+	add(a, b);*/
+
+	b->transpose()->println();
 
 	//b->println();
 	//fmt::println("{}", b->getAxis(0, 0));

@@ -11,3 +11,4 @@ c = np.repeat(a, repeats=3, axis=0)
 # print(np.add.reduce(b, 0))
 
 print(b)
+print(np.rot90(b))

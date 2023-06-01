@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <sstream>
+#include <algorithm>
 
 #define FMT_HEADER_ONLY
 #include "fmt/format.h"
@@ -278,6 +279,26 @@ public:
 		for (int i = 0; i < out->size(); i++) {
 			out->at(i) = at(i);
 		}
+
+		return out;
+	}
+
+	NDArray<T>* transpose() {
+		auto temp = m_shape;
+		std::reverse(temp.begin(), temp.end());
+		auto out = new NDArray<T>(temp);
+
+		std::vector<int> indices(ndims(), 0);
+
+		int index = 0;
+
+		do {
+			// because of the way index flattening works, this actually just transposes the array lol
+			// no need to reverse, since flattenIndex assumes z->y->x order :)
+			// i cannot keep getting away with this
+			out->at(index++) = m_data[flattenIndex(indices)];
+			increment(indices, m_shape);
+		} while (index < size());
 
 		return out;
 	}
