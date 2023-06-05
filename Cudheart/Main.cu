@@ -13,6 +13,7 @@
 // using Cudheart::Exceptions::CudaException;
 
 #include "Misc/ndarray.cuh"
+//#include "Testing/Test.cuh"
 
 int main() {
 	// verify unified memory?
@@ -26,6 +27,6 @@ int main() {
 	// test templating with cuda
 	// testCustom();
 	// sillyTemplates();
-	test();
+	CudheartNew::test();
 	return 0;
 }
