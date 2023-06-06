@@ -1,46 +1,36 @@
 #pragma once
 
+#include "../Arrays/NDArray.cuh"
 #include <time.h>
 #include <stdlib.h>
-#include <random>
-
-#include "../Arrays/Arrays.cuh"
-
-using Cudheart::NDArrays::Vector;
-using Cudheart::NDArrays::Matrix;
-using Cudheart::NDArrays::NDArray;
-
-// most of the code was ""taken"" (more like shamelessly ripped) from https://www.geeksforgeeks.org/
-
 // note! some algorithms have a parallel implementation. take a look at that pls.
 
-namespace Cudheart::Sorting {
+namespace CudheartNew::Sorting {
 	enum class Kind {
 		Quicksort, Mergesort, Heapsort
 	};
 
 	namespace {
-#pragma region regular_sort
 		template <typename T>
 		int _partition(NDArray<T>* arr, int low, int high) {
-			T pivot = arr->get(high);
+			T pivot = arr->at(high);
 			int i = (low - 1);
 
 			for (int j = low; j <= high - 1; j++)
 			{
 				// If current element is smaller than the pivot
-				if (arr->get(j) < pivot)
+				if (arr->at(j) < pivot)
 				{
 					i++; // increment index of smaller element
-					T temp = arr->get(i);
-					arr->set(i, arr->get(j));
-					arr->set(j, temp);
+					T temp = arr->at(i);
+					arr->at(i) = arr->at(j);
+					arr->at(j) = temp;
 				}
 			}
-			T temp = arr->get(i + 1);
-			arr->set(i + 1, arr->get(high));
-			arr->set(high, temp);
-			return (i + 1);
+			T temp = arr->at(i + 1);
+			arr->at(i + 1) = arr->at(high);
+			arr->at(high) = temp;
+			return i + 1;
 		}
 
 		template <typename T>
@@ -64,9 +54,9 @@ namespace Cudheart::Sorting {
 
 			// Copy data to temp arrays leftArray[] and rightArray[]
 			for (auto i = 0; i < subArrayOne; i++)
-				leftArray[i] = arr->get(left + i);
+				leftArray[i] = arr->at(left + i);
 			for (auto j = 0; j < subArrayTwo; j++)
-				rightArray[j] = arr->get(mid + 1 + j);
+				rightArray[j] = arr->at(mid + 1 + j);
 
 			auto indexOfSubArrayOne = 0, // Initial index of first sub-array
 				indexOfSubArrayTwo = 0; // Initial index of second sub-array
@@ -75,11 +65,11 @@ namespace Cudheart::Sorting {
 			// Merge the temp arrays back into array[left..right]
 			while (indexOfSubArrayOne < subArrayOne && indexOfSubArrayTwo < subArrayTwo) {
 				if (leftArray[indexOfSubArrayOne] <= rightArray[indexOfSubArrayTwo]) {
-					arr->set(indexOfMergedArray, leftArray[indexOfSubArrayOne]);
+					arr->at(indexOfMergedArray) = leftArray[indexOfSubArrayOne];
 					indexOfSubArrayOne++;
 				}
 				else {
-					arr->set(indexOfMergedArray, rightArray[indexOfSubArrayTwo]);
+					arr->at(indexOfMergedArray) = rightArray[indexOfSubArrayTwo];
 					indexOfSubArrayTwo++;
 				}
 				indexOfMergedArray++;
@@ -87,14 +77,14 @@ namespace Cudheart::Sorting {
 			// Copy the remaining elements of
 			// left[], if there are any
 			while (indexOfSubArrayOne < subArrayOne) {
-				arr->set(indexOfMergedArray, leftArray[indexOfSubArrayOne]);
+				arr->at(indexOfMergedArray) = leftArray[indexOfSubArrayOne];
 				indexOfSubArrayOne++;
 				indexOfMergedArray++;
 			}
 			// Copy the remaining elements of
 			// right[], if there are any
 			while (indexOfSubArrayTwo < subArrayTwo) {
-				arr->set(indexOfMergedArray, rightArray[indexOfSubArrayTwo]);
+				arr->at(indexOfMergedArray) = rightArray[indexOfSubArrayTwo];
 				indexOfSubArrayTwo++;
 				indexOfMergedArray++;
 			}
@@ -124,19 +114,19 @@ namespace Cudheart::Sorting {
 			int r = 2 * i + 2;
 
 			// If left child is larger than root
-			if (l < n && arr->get(l) > arr->get(largest))
+			if (l < n && arr->at(l) > arr->at(largest))
 				largest = l;
 
 			// If right child is larger than largest
 			// so far
-			if (r < n && arr->get(r) > arr->get(largest))
+			if (r < n && arr->at(r) > arr->at(largest))
 				largest = r;
 
 			// If largest is not root
 			if (largest != i) {
-				T temp = arr->get(i);
-				arr->set(i, arr->get(largest));
-				arr->set(largest, temp);
+				T temp = arr->at(i);
+				arr->at(i) = arr->at(largest);
+				arr->at(largest) = temp;
 
 				// Recursively heapify the affected
 				// sub-tree
@@ -154,16 +144,14 @@ namespace Cudheart::Sorting {
 			// from heap
 			for (int i = n - 1; i > 0; i--) {
 				// Move current root to end
-				T temp = arr->get(0);
-				arr->set(0, arr->get(i));
-				arr->set(i, temp);
+				T temp = arr->at(0);
+				arr->at(0) = arr->at(i);
+				arr->at(i) = temp;
 
 				// call max heapify on the reduced heap
 				_heapify(arr, i, 0);
 			}
 		}
-
-#pragma endregion
 	}
 
 	template <typename T>
@@ -205,17 +193,17 @@ namespace Cudheart::Sorting {
 	}
 
 	template <typename T>
-	Vector<T>* argsort(Vector<T>* arr, Kind kind = Kind::Quicksort) {
-		Vector<T>* sorted = (Vector<T>*)sort(arr, kind);
+	NDArray<T>* argsort(NDArray<T>* arr, Kind kind = Kind::Quicksort) {
+		NDArray<T>* sorted = sort(arr, kind);
 
-		Vector<T>* indices = new Vector<T>(arr->size());
-		T temp = sorted->get(0) - 1;
+		NDArray<T>* indices = new NDArray<T>(arr->shape());
+		T temp = sorted->at(0) - 1;
 
 		for (int i = 0; i < indices->size(); i++) {
 			for (int j = 0; j < sorted->size(); j++) {
-				if (arr->get(i) == sorted->get(j)) {
-					indices->set(j, i);
-					sorted->set(j, temp);
+				if (arr->at(i) == sorted->at(j)) {
+					indices->at(j) = i;
+					sorted->at(j) = temp;
 					break;
 				}
 			}
@@ -227,39 +215,22 @@ namespace Cudheart::Sorting {
 	}
 
 	template <typename T>
-	Matrix<T>* argsort(Matrix<T>* arr, Kind kind = Kind::Quicksort) {
-		Matrix<T>* indices = Cudheart::MatrixOps::arange(arr->size(), arr->getHeight(), arr->getWidth());
-
-		switch (kind) {
-		case Kind::Quicksort:
-			_quicksort(arr, indices);
-		case Kind::Heapsort:
-			_heapsort(arr, indices);
-		default:
-			_quicksort(arr, indices);
-		}
-
-		return indices;
-	}
-
-	template <typename T>
 	NDArray<T>* partition(NDArray<T>* a, int kth) {
-		NDArray<T>* out = a->emptyLike();
+		NDArray<T>* out = new NDArray<T>(a->shape());
 
 		auto sorted = sort(a);
-		sorted->print();
-		T element = sorted->get(kth);
+		T element = sorted->at(kth);
 		int right = 0;
 		int left = kth;
 
 		out->set(kth, element);
 
-		for (int i = 0; i < out->getSize(); i++) {
-			if (sorted->get(i) <= element) {
-				out->set(right++, sorted->get(i));
+		for (int i = 0; i < out->size(); i++) {
+			if (sorted->at(i) <= element) {
+				out->at(right++) = sorted->at(i);
 			}
 			else {
-				out->set(left++, sorted->get(i));
+				out->at(left++) = sorted->at(i);
 			}
 		}
 
@@ -267,59 +238,30 @@ namespace Cudheart::Sorting {
 	}
 
 	template <typename T>
-	Vector<T>* argpartition(Vector<T>* a, int kth) {
-		Vector<T>* indices = Cudheart::VectorOps::arange(a->getSize());
+	NDArray<T>* argpartition(NDArray<T>* a, int kth) {
+		NDArray<T>* indices = ArrayOps::arange(a->shape());
 
-		T element = a->get(kth);
+		T element = a->at(kth);
 		int start = 0;
-		int end = a->getSize() - 1;
-		for (int i = 0; i < a->getSize(); i++) {
+		int end = a->size() - 1;
+		for (int i = 0; i < a->size(); i++) {
 			if (i == kth) {
 				continue;
 			}
-			T v = a->get(i);
+			T v = a->at(i);
 
 			if (v < element) {
-				indices->set(start, i);
+				indices->at(start) = i;
 				start++;
 			}
 			else {
-				indices->set(end, i);
+				indices->at(end) = i;
 				end--;
 			}
 		}
 
 		// start + 1 == end
-		indices->set(start + 1, kth);
-
-		return indices;
-	}
-
-	template <typename T>
-	Matrix<T>* argpartition(Matrix<T>* a, int kth) {
-		Matrix<T>* indices = Cudheart::VectorOps::arange(a->getSize());
-
-		T element = a->get(kth);
-		int start = 0;
-		int end = a->getSize() - 1;
-		for (int i = 0; i < a->getSize(); i++) {
-			if (i == kth) {
-				continue;
-			}
-			T v = a->get(i);
-
-			if (v < element) {
-				indices->set(start, i);
-				start++;
-			}
-			else {
-				indices->set(end, i);
-				end--;
-			}
-		}
-
-		// start + 1 == end
-		indices->set(start + 1, kth);
+		indices->at(start + 1) = kth;
 
 		return indices;
 	}

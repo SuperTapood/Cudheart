@@ -9,68 +9,12 @@
 #include <memory>
 
 #include <new>
+#include <tuple>
 
-#include "../CudheartNew/Arrays/NDArray.cuh"
-#include "../CudheartNew/Arrays/ArrayOps.cuh"
+#include "../CudheartNew/Cudheart.cuh"
+#include "../CudheartNew/Internal/Broadcasting.cuh"
 
 namespace CudheartNew {
-	template <typename A, typename B>
-	std::pair<NDArray<A>*, NDArray<B>*> broadcast(NDArray<A>* a, NDArray<B>* b) {
-		a = a->copy();
-		b = b->copy();
-
-		int diff = a->ndims() - b->ndims();
-		std::vector<int> newShape;
-
-		for (int i = 0; i < std::abs(diff); i++) {
-			newShape.push_back(1);
-		}
-
-		if (a->ndims() > b->ndims()) {
-			for (int i = 0; i < b->ndims(); i++) {
-				newShape.push_back(b->shape().at(i));
-			}
-			b->reshape(newShape, true);
-		}
-		else if (b->ndims() > a->ndims()) {
-			for (int i = 0; i < a->ndims(); i++) {
-				newShape.push_back(a->shape().at(i));
-			}
-			a->reshape(newShape, true);
-		}
-
-		newShape.clear();
-
-		for (int i = 0; i < a->ndims(); i++) {
-			auto sa = a->shape().at(i);
-			auto sb = b->shape().at(i);
-
-			if (sa == sb) {
-				newShape.push_back(sa);
-				continue;
-			}
-
-			if (sa == 1) {
-				newShape.push_back(sb);
-				continue;
-			}
-			else if (sb == 1) {
-				newShape.push_back(sa);
-				continue;
-			}
-
-			fmt::println("shapes {} and {} cannot be broadcasted", a->shapeString(), b->shapeString());
-			exit(-1);
-		}
-
-		//fmt::println("final shape: ({})", fmt::join(newShape, ","));
-
-		a = a->stretch(newShape);
-		b = b->stretch(newShape);
-
-		return { a, b };
-	}
-
 	template <typename A, typename B, typename T = promote(A, B)>
 	NDArray<T>* add(NDArray<A>* x, NDArray<B>* y) {
 		auto [a, b] = broadcast(x, y);
@@ -110,11 +54,10 @@ namespace CudheartNew {
 		return result;
 	}
 
-
 	void test() {
 		using namespace CudheartNew::ArrayOps;
-		auto a = new NDArray<int>({ 1, 5, 5 });
-		auto b = new NDArray<int>({ 3, 5, 5 });
+		auto a = new NDArray<int>({ 5, 5 });
+		auto b = new NDArray<int>({ 1, 1, 5 });
 
 		for (int i = 0; i < a->size(); i++) {
 			a->at(i) = i;
@@ -138,7 +81,12 @@ namespace CudheartNew {
 
 		auto out = CudheartNew::ArrayOps::unique(a);
 
-		out.at(0)->println();
+		// out.at(0)->println();
+
+		auto res = broadcast(a, b);
+
+		std::get<0>(res)->println();
+		std::get<1>(res)->println();
 
 		//b->println();
 		//fmt::println("{}", b->getAxis(0, 0));

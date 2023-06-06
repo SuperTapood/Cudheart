@@ -216,7 +216,7 @@ namespace CudheartNew {
 			return at(flattenIndex(indices));
 		}
 
-		NDArray<T>* stretch(std::vector<int> newShape) {
+		NDArray<T>* stretch(std::vector<int>& newShape) {
 			if (newShape.size() != ndims()) {
 				fmt::println("cannot stretch shape {} to shape {}", shapeString(), fmt::join(newShape, ","));
 				exit(-1);
@@ -241,7 +241,49 @@ namespace CudheartNew {
 				}
 			}
 
-			return hasStretched ? result : this;
+			return hasStretched ? result : copy();
+		}
+
+		template <typename U>
+		NDArray<T>* broadcastTo(NDArray<U>* other) {
+			auto diff = other->ndims() - ndims();
+
+			std::vector<int> newShape(diff, 1);
+
+			for (int i = 0; i < ndims(); i++) {
+				newShape.push_back(m_shape.at(i));
+			}
+
+			auto temp = reshape(newShape);
+
+			//newShape = std::vector<int>(diff, 1);
+
+			newShape.clear();
+
+			for (int i = 0; i < temp->ndims(); i++) {
+				auto odim = other->shape().at(i);
+				auto sdim = temp->shape().at(i);
+
+				if (odim == 1) {
+					newShape.push_back(sdim);
+				}
+				else if (sdim == 1) {
+					newShape.push_back(odim);
+				}
+				else if (odim != sdim) {
+					fmt::println("cannot shape array of shape {} to shape {}", shapeString(), other->shapeString());
+					exit(-1);
+				}
+				else {
+					newShape.push_back(sdim);
+				}
+			}
+
+			auto out = temp->stretch(newShape);
+
+			delete temp;
+
+			return out;
 		}
 
 		NDArray<T>* copy() {

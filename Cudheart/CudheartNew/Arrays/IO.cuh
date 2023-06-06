@@ -39,17 +39,17 @@ namespace CudheartNew::IO {
 				count++;
 			}
 		}
-		return fromString(str, sep, count);
+		return fromString<T>(str, sep, count);
 	}
 
 	template <typename T>
 	NDArray<T>* fromString(std::string& str, int count) {
-		return fromString(str, ' ', count);
+		return fromString<T>(str, ' ', count);
 	}
 
 	template <typename T>
 	NDArray<T>* fromString(std::string& str) {
-		return fromString(str, ' ');
+		return fromString<T>(str, ' ');
 	}
 
 	template <typename T>
@@ -62,7 +62,7 @@ namespace CudheartNew::IO {
 			all += temp;
 		}
 
-		NDArray<T>* out = fromString(all, sep, count);
+		NDArray<T>* out = fromString<T>(all, sep, count);
 
 		file.close();
 
@@ -79,7 +79,7 @@ namespace CudheartNew::IO {
 			all += temp;
 		}
 
-		NDArray<T>* out = fromString(all, sep);
+		NDArray<T>* out = fromString<T>(all, sep);
 
 		file.close();
 
@@ -88,12 +88,12 @@ namespace CudheartNew::IO {
 
 	template <typename T>
 	NDArray<T>* fromFile(std::string name, int count) {
-		return fromFile(name, ' ', count);
+		return fromFile<T>(name, ' ', count);
 	}
 
 	template <typename T>
 	NDArray<T>* fromFile(std::string name) {
-		return fromFile(name, ' ');
+		return fromFile<T>(name, ' ');
 	}
 
 	template <typename T>
