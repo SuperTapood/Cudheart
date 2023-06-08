@@ -72,11 +72,11 @@ namespace CudheartNew::Searching {
 
 	template <typename A, typename B, typename T = promote(A, B)>
 	inline NDArray<T>* where(NDArray<bool>* condition, NDArray<A>* x, NDArray<B>* y) {
-		auto tup = broadcast(std::make_tuple(condition, x, y));
+		auto casted = broadcast({ condition, x, y });
 
-		condition = std::get<0>(tup);
-		x = std::get<1>(tup);
-		y = std::get<2>(tup);
+		condition = (NDArray<bool>*)casted.at(0);
+		x = (NDArray<A>*)casted.at(1);
+		y = (NDArray<B>*)casted.at(2);
 
 		auto out = new NDArray<T>(x->shape());
 
@@ -92,124 +92,139 @@ namespace CudheartNew::Searching {
 		return out;
 	}
 
-	/*template <typename T>
-	inline int searchsorted(Vector<T>* a, T v, string side, Vector<int>* sorter) {
-		a->assertMatchShape(sorter->getShape());
+	template <typename T>
+
+	int searchsorted(NDArray<T>* a, T v, std::string& side, NDArray<int>* sorter) {
+		auto casted = broadcast({ a, sorter });
+
+		a = (NDArray<T>*)casted.at(0);
+		sorter = (NDArray<int>*)casted.at(1);
+
 		if (side == "left") {
 			for (int i = 1; i < a->size(); i++) {
-				if (a->get(sorter->get(i - 1)) < v && v <= a->get(sorter->get(i))) {
+				if (a->at(sorter->at(i - 1)) < v && v <= a->at(sorter->at(i))) {
 					return i;
 				}
 			}
 		}
 		else if (side == "right") {
 			for (int i = 1; i < a->size(); i++) {
-				if (a->get(sorter->get(i - 1)) <= v && v < a->get(sorter->get(i))) {
+				if (a->at(sorter->at(i - 1)) <= v && v < a->at(sorter->at(i))) {
 					return i;
 				}
 			}
 		}
 
-		if (v > a->get(0)) {
+		if (v > a->at(0)) {
 			return a->size();
 		}
 
-		return 0;
+		return -1;
 	}
 
 	template <typename T>
-	int searchsorted(Vector<T>* a, T v, string side) {
+	int searchsorted(NDArray<T>* a, T v, std::string& side) {
 		if (side == "left") {
 			for (int i = 1; i < a->size(); i++) {
-				if (a->get(i - 1) < v && v <= a->get(i)) {
+				if (a->at(i - 1) < v && v <= a->at(i)) {
 					return i;
 				}
 			}
 		}
 		else if (side == "right") {
 			for (int i = a->size() - 1; i >= 0; i--) {
-				if (a->get(i - 1) <= v && v < a->get(i)) {
+				if (a->at(i - 1) <= v && v < a->at(i)) {
 					return i;
 				}
 			}
 		}
 
-		if (v > a->get(0)) {
+		if (v > a->at(0)) {
 			return a->size();
 		}
 
-		return 0;
+		return -1;
 	}
 
 	template <typename T>
-	inline int searchsorted(Vector<T>* a, T v, Vector<int>* sorter) {
+	inline int searchsorted(NDArray<T>* a, T v, NDArray<int>* sorter) {
 		return searchsorted(a, v, "left", sorter);
 	}
 
 	template <typename T>
-	int searchsorted(Vector<T>* a, T v) {
+	int searchsorted(NDArray<T>* a, T v) {
 		return searchsorted(a, v, "left");
 	}
 
 	template <typename T>
-	inline Vector<int>* searchsorted(Vector<T>* a, Vector<T>* v, string side, Vector<int>* sorter) {
-		Vector<int>* out = new Vector<int>(v->size());
+	inline NDArray<int>* searchsorted(NDArray<T>* a, NDArray<T>* v, std::string& side, NDArray<int>* sorter) {
+		auto casted = broadcast({ a, v, sorter });
+
+		a = (NDArray<T>*)casted.at(0);
+		v = (NDArray<T>*)casted.at(1);
+		sorter = (NDArray<int>*)casted.at(2);
+
+		NDArray<int>* out = new NDArray<int>({ a->shape() });
 
 		for (int i = 0; i < out->size(); i++) {
-			out->set(i, searchsorted(a, v->get(i), side, sorter));
+			out->at(i) = searchsorted(a, v->at(i), side, sorter);
 		}
 
 		return out;
 	}
 
 	template <typename T>
-	Vector<int>* searchsorted(Vector<T>* a, Vector<T>* v, string side) {
-		Vector<int>* out = new Vector<int>(v->size());
+	NDArray<int>* searchsorted(NDArray<T>* a, NDArray<T>* v, std::string& side) {
+		auto casted = broadcast({ a, v });
+
+		a = (NDArray<T>*)casted.at(0);
+		v = (NDArray<T>*)casted.at(1);
+
+		NDArray<int>* out = new NDArray<int>({ v->size() });
 
 		for (int i = 0; i < out->size(); i++) {
-			out->set(i, searchsorted(a, v->get(i), side));
+			out->at(i) = searchsorted(a, v->at(i), side);
 		}
 
 		return out;
 	}
 
 	template <typename T>
-	inline Vector<int>* searchsorted(Vector<T>* a, Vector<T>* v, Vector<int>* sorter) {
+	inline NDArray<int>* searchsorted(NDArray<T>* a, NDArray<T>* v, NDArray<int>* sorter) {
 		return searchsorted(a, v, "left", sorter);
 	}
 
 	template <typename T>
-	Vector<int>* searchsorted(Vector<T>* a, Vector<T>* v) {
+	NDArray<int>* searchsorted(NDArray<T>* a, NDArray<T>* v) {
 		return searchsorted(a, v, "left");
 	}
 
 	template <typename T>
-	inline Vector<T>* extract(Vector<bool>* condition, Vector<T>* arr) {
-		condition->assertMatchShape(arr->getShape());
+	inline NDArray<T>* extract(NDArray<bool>* condition, NDArray<T>* arr) {
+		auto casted = broadcast({ condition, arr });
+
+		condition = (NDArray<bool>*)casted.at(0);
+		arr = (NDArray<T>*)casted.at(1);
+
 		int size = 0;
 
 		for (int i = 0; i < condition->size(); i++) {
-			if (condition->get(i)) {
+			if (condition->at(i)) {
 				size++;
 			}
 		}
 
-		Vector<T>* vec = new Vector<T>(size);
+		NDArray<T>* res = new NDArray<T>({ size });
 
 		int index = 0;
 		for (int i = 0; i < arr->size(); i++) {
-			if (condition->get(i)) {
-				vec->set(index, arr->get(i));
+			if (condition->at(i)) {
+				res->at(index) = arr->at(i);
 				index++;
 			}
 		}
 
-		return vec;
-	}
-
-	template <typename T>
-	inline Vector<T>* extract(Matrix<bool>* condition, Matrix<T>* arr) {
-		return extract(condition->flatten(), arr->flatten());
+		return res;
 	}
 
 	template <typename T>
@@ -217,11 +232,11 @@ namespace CudheartNew::Searching {
 		int count = 0;
 
 		for (int i = 0; i < a->size(); i++) {
-			if (a->get(i) != 0) {
+			if (a->at(i) != 0) {
 				count++;
 			}
 		}
 
 		return count;
-	}*/
+	}
 }

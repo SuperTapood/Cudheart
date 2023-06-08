@@ -10,7 +10,7 @@ namespace CudheartNew {
 	std::vector<NDArrayBase*> broadcast(std::vector<NDArrayBase*> const& arrays) {
 		auto minIndex = std::distance(arrays.begin(), std::min_element(arrays.begin(), arrays.end(), [](NDArrayBase* a, NDArrayBase* b)
 			{
-			return a->ndims() < b->ndims();
+				return a->ndims() < b->ndims();
 			}));
 
 		auto min = arrays.at(minIndex);

@@ -45,7 +45,7 @@ namespace CudheartNew {
 			return fmt::format("({})", fmt::join(m_shape, ","));
 		}
 
-		virtual std::string printRecursive(int* s, int len, int start, int offset) = 0; 
+		virtual std::string printRecursive(int* s, int len, int start, int offset) = 0;
 
 		std::string toString() {
 			std::vector<int> arr = m_shape;

@@ -137,7 +137,7 @@ namespace CudheartNew::ArrayOps {
 	NDArray<T>* logspace(T start, T stop, int num, bool endpoint, T base) {
 		double diff = (double)stop - (double)start;
 
-		NDArray<T>* out = new NDArray<T>({num});
+		NDArray<T>* out = new NDArray<T>({ num });
 
 		if (endpoint) {
 			num--;
@@ -194,7 +194,7 @@ namespace CudheartNew::ArrayOps {
 
 		for (int i = 0, j = k; i < N && j < M; i++, j++) {
 			j %= M;
-			out->at({ i, j }) =  (T)1;
+			out->at({ i, j }) = (T)1;
 		}
 
 		return out;
@@ -245,7 +245,7 @@ namespace CudheartNew::ArrayOps {
 		NDArray<T>* out;
 		if (v->ndims() == 2) {
 			auto size = std::min(v->shape()[0], v->shape()[1]);
-			out = new NDArray<T>({size});
+			out = new NDArray<T>({ size });
 
 			for (int i = 0; i < size; i++) {
 				out->at(i) = v->at(i + k);
@@ -255,7 +255,7 @@ namespace CudheartNew::ArrayOps {
 			out = new NDArray<T>({ v->size(), v->size() });
 
 			for (int i = 0; i < v->size(); i++) {
-				out->at({i, i + k}) = v->at(i);
+				out->at({ i, i + k }) = v->at(i);
 			}
 		}
 
@@ -273,7 +273,7 @@ namespace CudheartNew::ArrayOps {
 
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j <= k + i && j < M; j++) {
-				out->at({i, j}) = 1;
+				out->at({ i, j }) = 1;
 			}
 		}
 
@@ -300,7 +300,7 @@ namespace CudheartNew::ArrayOps {
 
 		for (int i = 0; i < mat->shape()[0]; i++) {
 			for (int j = k + i + 1; j < mat->shape()[1]; j++) {
-				out->at({i, j}) = 0;
+				out->at({ i, j }) = 0;
 			}
 		}
 
@@ -390,7 +390,7 @@ namespace CudheartNew::ArrayOps {
 
 			return out;
 		}
-		
+
 		std::vector<int> Ni;
 
 		for (int i = 0; i < axis; i++) {
@@ -462,7 +462,7 @@ namespace CudheartNew::ArrayOps {
 		int index = 0;
 		for (NDArray<T>* arr : seq) {
 			auto size = arr->shape().at(axis);
-			
+
 			for (int i = 0; i < size; i++) {
 				auto indices = ndindex(shape);
 				auto taken = take<T>(arr, i, axis);

@@ -125,7 +125,7 @@ namespace Cudheart::CPP::Math::Trigo {
 		for (int i = 0; i < out->size(); i++) {
 			out->set(i, rads->get(i) / (pi / 180));
 		}
-		
+
 		return out;
 	}
 
