@@ -8,14 +8,13 @@
 #include "fmt/format.h"
 
 #include "NDArrayIters.cuh"
+#include "NDArrayBase.cuh"
 
 namespace CudheartNew {
 	template <typename T>
-	class NDArray {
+	class NDArray : public NDArrayBase{
 	private:
 		T* m_data;
-		std::vector<int> m_shape;
-		long m_size = 1;
 
 	public:
 		explicit NDArray(std::vector<int> shape) {
@@ -30,42 +29,7 @@ namespace CudheartNew {
 			delete[] m_data;
 		}
 
-		long size() const {
-			return m_size;
-		}
-
-		long subsize(int axis) {
-			long out = 1;
-
-			for (int i = axis + 1; i < ndims(); i++) {
-				out *= m_shape.at(i);
-			}
-
-			return out;
-		}
-
-		std::vector<int> subshape(int axis) {
-			std::vector<int> out;
-
-			for (int i = 0; i < ndims(); i++) {
-				if (i == axis) {
-					continue;
-				}
-				out.push_back(m_shape.at(i));
-			}
-
-			return out;
-		}
-
-		int ndims() const {
-			return m_shape.size();
-		}
-
-		std::string shapeString() const {
-			return fmt::format("({})", fmt::join(m_shape, ","));
-		}
-
-		std::string printRecursive(int* s, int len, int start, int offset)
+		std::string printRecursive(int* s, int len, int start, int offset) final
 		{
 			std::ostringstream os;
 			os << "[";
@@ -99,22 +63,13 @@ namespace CudheartNew {
 			return os.str();
 		}
 
-		std::string toString() {
-			std::vector<int> arr = m_shape;
-			std::string out = printRecursive(arr.data(), ndims(), 0, 0);
-			return fmt::format("{}, shape={}", out, shapeString());
-		}
-
-		void println() {
-			fmt::println(toString());
-		}
-
 		NDArray<T>* reshape(std::vector<int> newShape, bool self = false) {
 			int newsize = 1;
 			for (auto val : newShape) {
 				newsize *= val;
 			}
 			if (newsize != size()) {
+				println();
 				fmt::println("shape of size {} ({}) does not match shape of size {} ({})", newsize, fmt::join(newShape, ","), size(), shapeString());
 				exit(-1);
 			}
@@ -244,9 +199,8 @@ namespace CudheartNew {
 			return hasStretched ? result : copy();
 		}
 
-		template <typename U>
-		NDArray<T>* broadcastTo(NDArray<U>* other) {
-			auto diff = other->ndims() - ndims();
+		NDArrayBase* broadcastTo(std::vector<int> other) {
+			int diff = other.size() - ndims();
 
 			std::vector<int> newShape(diff, 1);
 
@@ -256,12 +210,10 @@ namespace CudheartNew {
 
 			auto temp = reshape(newShape);
 
-			//newShape = std::vector<int>(diff, 1);
-
 			newShape.clear();
 
 			for (int i = 0; i < temp->ndims(); i++) {
-				auto odim = other->shape().at(i);
+				auto odim = other.at(i);
 				auto sdim = temp->shape().at(i);
 
 				if (odim == 1) {
@@ -271,7 +223,7 @@ namespace CudheartNew {
 					newShape.push_back(odim);
 				}
 				else if (odim != sdim) {
-					fmt::println("cannot shape array of shape {} to shape {}", shapeString(), other->shapeString());
+					fmt::println("cannot shape array of shape {} to shape {}", shapeString(), fmt::join(other, ","));
 					exit(-1);
 				}
 				else {
@@ -300,10 +252,6 @@ namespace CudheartNew {
 			}
 
 			return out;
-		}
-
-		std::vector<int> shape() {
-			return m_shape;
 		}
 
 		bool operator==(const NDArray& other) const {

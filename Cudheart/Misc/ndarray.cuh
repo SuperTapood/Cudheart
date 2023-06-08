@@ -77,16 +77,16 @@ namespace CudheartNew {
 			fmt::println("{}", fmt::join(s, ","));
 		}*/
 
-		std::vector<NDArray<int>*> vec = { a, b };
+		/*std::vector<NDArray<int>*> vec = { a, b };
 
-		auto out = CudheartNew::ArrayOps::unique(a);
+		auto out = CudheartNew::ArrayOps::unique(a);*/
 
 		// out.at(0)->println();
 
-		auto res = broadcast(a, b);
+		auto res = broadcast({ b, a });
 
-		std::get<0>(res)->println();
-		std::get<1>(res)->println();
+		res.at(0)->println();
+		res.at(1)->println();
 
 		//b->println();
 		//fmt::println("{}", b->getAxis(0, 0));
