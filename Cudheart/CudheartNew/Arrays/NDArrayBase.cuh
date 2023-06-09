@@ -3,7 +3,7 @@
 namespace CudheartNew {
 	class NDArrayBase {
 	protected:
-		std::vector<int> m_shape;
+		std::vector<long> m_shape;
 		long m_size = 1;
 
 	public:
@@ -21,8 +21,8 @@ namespace CudheartNew {
 			return out;
 		}
 
-		std::vector<int> subshape(int axis) {
-			std::vector<int> out;
+		std::vector<long> subshape(int axis) {
+			std::vector<long> out;
 
 			for (int i = 0; i < ndims(); i++) {
 				if (i == axis) {
@@ -45,19 +45,19 @@ namespace CudheartNew {
 			return fmt::format("({})", fmt::join(m_shape, ","));
 		}
 
-		virtual std::string printRecursive(int* s, int len, int start, int offset) = 0;
+		virtual std::string printRecursive(long* s, int len, int start, int offset) = 0;
 
-		std::string toString() {
-			std::vector<int> arr = m_shape;
+		std::string toString(bool verbose = false) {
+			std::vector<long> arr = m_shape;
 			std::string out = printRecursive(arr.data(), ndims(), 0, 0);
-			return fmt::format("{}, shape={}", out, shapeString());
+			return verbose ? fmt::format("{}, shape={}", out, shapeString()) : out;
 		}
 
-		void println() {
-			fmt::println(toString());
+		void println(bool verbose = false) {
+			fmt::println(toString(verbose));
 		}
 
-		std::vector<int> shape() {
+		std::vector<long> shape() {
 			return m_shape;
 		}
 
@@ -65,6 +65,6 @@ namespace CudheartNew {
 			return broadcastTo(other->shape());
 		}
 
-		virtual NDArrayBase* broadcastTo(std::vector<int> other) = 0;
+		virtual NDArrayBase* broadcastTo(std::vector<long> const& other) = 0;
 	};
 }

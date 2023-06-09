@@ -349,12 +349,12 @@ namespace CudheartNew::ArrayOps {
 		return vander(vec, vec->size(), false);
 	}
 
-	std::vector<std::vector<int>> ndindex(std::vector<int> shape) {
-		std::vector<std::vector<int>> out;
+	std::vector<std::vector<long>> ndindex(std::vector<long> shape) {
+		std::vector<std::vector<long>> out;
 
-		std::vector<int> s(shape.size(), 0);
+		std::vector<long> s(shape.size(), 0);
 
-		int size = 1;
+		long size = 1;
 
 		for (auto val : shape) {
 			size *= val;
@@ -381,7 +381,7 @@ namespace CudheartNew::ArrayOps {
 	}
 
 	template <typename T>
-	NDArray<T>* take(NDArray<T>* a, NDArray<int>* indices, int axis = -1) {
+	NDArray<T>* take(NDArray<T>* a, NDArray<long>* indices, int axis = -1) {
 		if (axis == -1) {
 			auto out = new NDArray<T>(indices->shape());
 			for (int i = 0; i < indices->size(); i++) {
@@ -391,13 +391,13 @@ namespace CudheartNew::ArrayOps {
 			return out;
 		}
 
-		std::vector<int> Ni;
+		std::vector<long> Ni;
 
 		for (int i = 0; i < axis; i++) {
 			Ni.push_back(a->shape().at(i));
 		}
 
-		std::vector<int> Nk;
+		std::vector<long> Nk;
 
 		for (int i = axis + 1; i < a->ndims(); i++) {
 			Nk.push_back(a->shape().at(i));
@@ -405,7 +405,7 @@ namespace CudheartNew::ArrayOps {
 
 		auto Nj = indices->shape();
 
-		std::vector<int> outShape;
+		std::vector<long> outShape;
 
 		outShape.insert(outShape.begin(), Ni.begin(), Ni.end());
 		outShape.insert(outShape.end(), Nj.begin(), Nj.end());

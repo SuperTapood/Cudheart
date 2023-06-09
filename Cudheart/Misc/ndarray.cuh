@@ -17,13 +17,15 @@
 namespace CudheartNew {
 	template <typename A, typename B, typename T = promote(A, B)>
 	NDArray<T>* add(NDArray<A>* x, NDArray<B>* y) {
-		auto [a, b] = broadcast(x, y);
+		auto casted = broadcast({ x, y });
 
-		auto result = new NDArray<T>(a->shape());
+		x = (NDArray<A>*)casted[0];
+		y = (NDArray<A>*)casted[1];
 
-#pragma omp parallel for
+		auto result = new NDArray<T>(x->shape());
+
 		for (int i = 0; i < result->size(); i++) {
-			result->at(i) = (T)a->at(i) + (T)b->at(i);
+			result->at(i) = (T)x->at(i) + (T)y->at(i);
 		}
 
 		return result;
@@ -42,13 +44,13 @@ namespace CudheartNew {
 
 	template <typename A>
 	NDArray<A>* sum(NDArray<A>* x, int axis) {
-		auto result = new NDArray<A>(x->m_shape->subshape(axis));
+		auto result = new NDArray<A>(x->subshape(axis));
 
 		int index = 0;
 
-		for (int idx = 0; idx < x->m_shape->subsize(axis); idx++) {
+		for (int idx = 0; idx < x->subsize(axis); idx++) {
 			auto indices = x->getAxis(axis, idx);
-			result->m_data[index++] = sum(x->subarray(indices));
+			result->at(index++) = sum(x->subarray(indices));
 		}
 
 		return result;
@@ -85,8 +87,12 @@ namespace CudheartNew {
 
 		auto res = broadcast({ b, a });
 
-		res.at(0)->println();
-		res.at(1)->println();
+		res.at(0)->println(true);
+		res.at(1)->println(true);
+
+		/*a->println();
+		auto g = a->getAxis(0, 0);
+		a->println();*/
 
 		//b->println();
 		//fmt::println("{}", b->getAxis(0, 0));
@@ -100,6 +106,8 @@ namespace CudheartNew {
 		fmt::println("a - {}\nb - {}", a->m_shape->toString(), b->m_shape->toString());*/
 
 		/*auto r = add(a, b);
+
+		r->println();
 
 		fmt::println("{}", sum(a));
 

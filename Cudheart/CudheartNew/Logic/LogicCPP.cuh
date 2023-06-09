@@ -270,7 +270,7 @@ namespace CudheartNew::Logic::CPP {
 
 		return out;
 	}
-	
+
 	template <typename A, typename B>
 	NDArray<bool>* lessEqual(NDArray<A>* a, NDArray<B>* b) {
 		auto casted = broadcast({ a, b });
@@ -327,7 +327,7 @@ namespace CudheartNew::Logic::CPP {
 
 	template <typename A, typename B, typename C = promote(A, B)>
 	NDArray<C>* minimum(NDArray<A>* a, NDArray<B>* b) {
-		auto casted = broadcast({a, b});
+		auto casted = broadcast({ a, b });
 
 		a = (NDArray<A>*)a;
 		b = (NDArray<B>*)b;

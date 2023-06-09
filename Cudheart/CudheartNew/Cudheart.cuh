@@ -7,4 +7,6 @@
 #include "Indexing/Searching.cuh"
 #include "Indexing/Sorting.cuh"
 
-#include "Logic/LogicCPP.cuh"
+#include "Logic/Logic.cuh"
+
+#include "Math/Math.cuh"

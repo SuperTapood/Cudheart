@@ -12,12 +12,12 @@
 
 namespace CudheartNew {
 	template <typename T>
-	class NDArray : public NDArrayBase{
+	class NDArray : public NDArrayBase {
 	private:
 		T* m_data;
 
 	public:
-		explicit NDArray(std::vector<int> shape) {
+		explicit NDArray(std::vector<long> shape) {
 			m_shape = shape;
 			for (auto dim : shape) {
 				m_size *= dim;
@@ -25,11 +25,13 @@ namespace CudheartNew {
 			m_data = new T[size()];
 		}
 
+		explicit NDArray(long size) : NDArray({ size }) {}
+
 		~NDArray() {
 			delete[] m_data;
 		}
 
-		std::string printRecursive(int* s, int len, int start, int offset) final
+		std::string printRecursive(long* s, int len, int start, int offset) final
 		{
 			std::ostringstream os;
 			os << "[";
@@ -63,7 +65,7 @@ namespace CudheartNew {
 			return os.str();
 		}
 
-		NDArray<T>* reshape(std::vector<int> newShape, bool self = false) {
+		NDArray<T>* reshape(std::vector<long> newShape, bool self = false) {
 			int newsize = 1;
 			for (auto val : newShape) {
 				newsize *= val;
@@ -83,7 +85,7 @@ namespace CudheartNew {
 			}
 		}
 
-		long flattenIndex(std::vector<int> index) {
+		long flattenIndex(std::vector<long> const& index) {
 			if (index.size() != ndims()) {
 				fmt::println("multi dimensional index of length {} does not match shape of {} dims", index.size(), ndims());
 				exit(-1);
@@ -99,7 +101,7 @@ namespace CudheartNew {
 			return flatIndex;
 		}
 
-		void increment(std::vector<int>& indices, std::vector<int>& limits) const {
+		void increment(std::vector<long>& indices, std::vector<long>& limits) const {
 			for (int i = 0; i < indices.size(); i++) {
 				indices.at(i)++;
 
@@ -112,15 +114,19 @@ namespace CudheartNew {
 			}
 		}
 
-		std::vector<int> getAxis(int axis, int index) {
-			std::vector<int> indices;
+		std::vector<long> getAxis(int axis, int index) {
+			if (axis < 0) {
+				fmt::println("axis cannot be less than 0");
+				exit(-1);
+			}
+			std::vector<long> indices;
 			indices.reserve(ndims() - 1);
 
 			for (int i = 0; i < ndims() - 1; i++) {
 				indices.push_back(0);
 			}
 
-			std::vector<int> limits;
+			std::vector<long> limits;
 			limits.reserve(ndims() - 1);
 
 			for (int i = 0; i < ndims(); i++) {
@@ -130,7 +136,7 @@ namespace CudheartNew {
 				limits.push_back(m_shape.at(i));
 			}
 
-			std::vector<int> axisIndices;
+			std::vector<long> axisIndices;
 
 			long flat = index;
 
@@ -163,15 +169,15 @@ namespace CudheartNew {
 			return m_data[index];
 		}
 
-		T& at(std::vector<int>& indices) {
+		T& at(std::vector<long>& indices) {
 			return at(flattenIndex(indices));
 		}
 
-		const T& at(std::vector<int>& indices) const {
+		const T& at(std::vector<long>& indices) const {
 			return at(flattenIndex(indices));
 		}
 
-		NDArray<T>* stretch(std::vector<int>& newShape) {
+		NDArray<T>* stretch(std::vector<long>& newShape) {
 			if (newShape.size() != ndims()) {
 				fmt::println("cannot stretch shape {} to shape {}", shapeString(), fmt::join(newShape, ","));
 				exit(-1);
@@ -199,10 +205,10 @@ namespace CudheartNew {
 			return hasStretched ? result : copy();
 		}
 
-		NDArrayBase* broadcastTo(std::vector<int> other) {
+		NDArrayBase* broadcastTo(std::vector<long> const& other) final {
 			int diff = other.size() - ndims();
 
-			std::vector<int> newShape(diff, 1);
+			std::vector<long> newShape(diff, 1);
 
 			for (int i = 0; i < ndims(); i++) {
 				newShape.push_back(m_shape.at(i));
@@ -244,11 +250,11 @@ namespace CudheartNew {
 			return out;
 		}
 
-		NDArray<T>* subarray(std::vector<int> const& indices) {
+		NDArray<T>* subarray(std::vector<long> const& indices) {
 			auto out = new NDArray<T>({ (int)indices.size() });
 
 			for (int i = 0; i < indices.size(); i++) {
-				out[i] = m_data[indices.at(i)];
+				out->at(i) = m_data[indices.at(i)];
 			}
 
 			return out;
@@ -291,7 +297,7 @@ namespace CudheartNew {
 			std::reverse(temp.begin(), temp.end());
 			auto out = new NDArray<T>(temp);
 
-			std::vector<int> indices(ndims(), 0);
+			std::vector<long> indices(ndims(), 0);
 
 			int index = 0;
 
@@ -306,16 +312,16 @@ namespace CudheartNew {
 			return out;
 		}
 
-		std::vector<int> rotate_position(const std::vector<int>& current_position, const std::vector<int>& dimensions, int axis1, int axis2) {
-			std::vector<int> new_position = current_position;
+		std::vector<long> rotate_position(const std::vector<long>& current_position, const std::vector<long>& dimensions, int axis1, int axis2) {
+			std::vector<long> new_position = current_position;
 			new_position[axis1] = current_position[axis2];
 			new_position[axis2] = dimensions[axis1] - current_position[axis1] - 1;
 			return new_position;
 		}
 
 		NDArray<T>* rot90_(int axis1, int axis2) {
-			std::vector<int> pos(ndims(), 0);
-			std::vector<int> newDims = m_shape;
+			std::vector<long> pos(ndims(), 0);
+			std::vector<long> newDims = m_shape;
 			std::swap(newDims[axis1], newDims[axis2]);
 			NDArray<T>* out = new NDArray<T>(newDims);
 
@@ -361,20 +367,31 @@ namespace CudheartNew {
 			return reshape({ size() });
 		}
 
-		iterator begin() { 
+		iterator begin() {
 			return iterator(m_data);
 		}
 
-		iterator end() { 
+		iterator end() {
 			return iterator(m_data + m_size);
 		}
 
-		const_iterator cbegin() const { 
+		const_iterator cbegin() const {
 			return const_iterator(m_data);
 		}
 
-		const_iterator cend() const { 
+		const_iterator cend() const {
 			return const_iterator(m_data + m_size);
+		}
+
+		NDArray<T>* subarray(int axis, int index) {
+			auto indices = getAxis(axis, index);
+			auto out = new NDArray<T>(indices.size());
+
+			for (int i = 0; i < indices.size(); i++) {
+				out->at(i) = m_data[indices.at(i)];
+			}
+
+			return out;
 		}
 	};
 }
