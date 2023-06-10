@@ -1,9 +1,13 @@
 #pragma once
 
+#include <vector>
+
+using Shape = std::vector<long>;
+
 namespace CudheartNew {
 	class NDArrayBase {
 	protected:
-		std::vector<long> m_shape;
+		Shape m_shape;
 		long m_size = 1;
 
 	public:
@@ -21,8 +25,8 @@ namespace CudheartNew {
 			return out;
 		}
 
-		std::vector<long> subshape(int axis) {
-			std::vector<long> out;
+		Shape subshape(int axis) {
+			Shape out;
 
 			for (int i = 0; i < ndims(); i++) {
 				if (i == axis) {
@@ -57,7 +61,7 @@ namespace CudheartNew {
 			fmt::println(toString(verbose));
 		}
 
-		std::vector<long> shape() {
+		Shape shape() {
 			return m_shape;
 		}
 
@@ -65,6 +69,6 @@ namespace CudheartNew {
 			return broadcastTo(other->shape());
 		}
 
-		virtual NDArrayBase* broadcastTo(std::vector<long> const& other) = 0;
+		virtual NDArrayBase* broadcastTo(Shape const& other) = 0;
 	};
 }

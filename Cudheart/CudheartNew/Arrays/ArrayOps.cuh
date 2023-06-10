@@ -7,7 +7,7 @@
 #define FMT_HEADER_ONLY
 #include "fmt/core.h"
 
-#include "../Internal/Promotion.cuh"
+#include "../Internal/Internal.cuh"
 
 namespace CudheartNew::ArrayOps {
 	template <typename T>
@@ -347,37 +347,6 @@ namespace CudheartNew::ArrayOps {
 	template <typename T>
 	NDArray<T>* vander(NDArray<T>* vec) {
 		return vander(vec, vec->size(), false);
-	}
-
-	std::vector<std::vector<long>> ndindex(std::vector<long> shape) {
-		std::vector<std::vector<long>> out;
-
-		std::vector<long> s(shape.size(), 0);
-
-		long size = 1;
-
-		for (auto val : shape) {
-			size *= val;
-		}
-
-		out.reserve(size);
-
-		for (int i = 0; i < size; i++) {
-			out.push_back(s);
-
-			for (int j = s.size() - 1; j >= 0; j--) {
-				s.at(j)++;
-
-				if (s.at(j) == shape.at(j)) {
-					s.at(j) = 0;
-				}
-				else {
-					break;
-				}
-			}
-		}
-
-		return out;
 	}
 
 	template <typename T>

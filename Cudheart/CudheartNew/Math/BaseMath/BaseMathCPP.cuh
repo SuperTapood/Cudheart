@@ -379,7 +379,18 @@ namespace CudheartNew::CPP::Math::BaseMath {
 		auto result = new NDArray<T>(x->shape());
 
 		for (int i = 0; i < result->size(); i++) {
-			result->at(i) = (T)x->at(i) + (T)y->at(i);
+			result->at(i) = (T)x->at(i) * (T)y->at(i);
+		}
+
+		return result;
+	}
+
+	template <typename A, typename B, typename T = promote(A, B)>
+	NDArray<T>* multiply(NDArray<A>* x, B y) {
+		auto result = new NDArray<T>(x->shape());
+
+		for (int i = 0; i < result->size(); i++) {
+			result->at(i) = (T)x->at(i) * (T)y;
 		}
 
 		return result;
@@ -395,7 +406,7 @@ namespace CudheartNew::CPP::Math::BaseMath {
 		auto result = new NDArray<T>(x->shape());
 
 		for (int i = 0; i < result->size(); i++) {
-			result->at(i) = (T)x->at(i) + (T)y->at(i);
+			result->at(i) = (T)x->at(i) / (T)y->at(i);
 		}
 
 		return result;

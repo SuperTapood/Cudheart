@@ -17,15 +17,21 @@ namespace CudheartNew {
 		T* m_data;
 
 	public:
-		explicit NDArray(std::vector<long> shape) {
+		explicit NDArray(Shape shape) {
 			m_shape = shape;
 			for (auto dim : shape) {
 				m_size *= dim;
 			}
-			m_data = new T[size()];
+			m_data = new T[m_size];
 		}
 
-		explicit NDArray(long size) : NDArray({ size }) {}
+		explicit NDArray(long size) {
+			m_shape = { size };
+
+			m_size = size;
+
+			m_data = new T[m_size];
+		}
 
 		~NDArray() {
 			delete[] m_data;
@@ -65,7 +71,7 @@ namespace CudheartNew {
 			return os.str();
 		}
 
-		NDArray<T>* reshape(std::vector<long> newShape, bool self = false) {
+		NDArray<T>* reshape(Shape newShape, bool self = false) {
 			int newsize = 1;
 			for (auto val : newShape) {
 				newsize *= val;
@@ -101,7 +107,7 @@ namespace CudheartNew {
 			return flatIndex;
 		}
 
-		void increment(std::vector<long>& indices, std::vector<long>& limits) const {
+		void increment(Shape& indices, std::vector<long>& limits) const {
 			for (int i = 0; i < indices.size(); i++) {
 				indices.at(i)++;
 
@@ -177,7 +183,7 @@ namespace CudheartNew {
 			return at(flattenIndex(indices));
 		}
 
-		NDArray<T>* stretch(std::vector<long>& newShape) {
+		NDArray<T>* stretch(Shape const& newShape) {
 			if (newShape.size() != ndims()) {
 				fmt::println("cannot stretch shape {} to shape {}", shapeString(), fmt::join(newShape, ","));
 				exit(-1);
@@ -205,10 +211,10 @@ namespace CudheartNew {
 			return hasStretched ? result : copy();
 		}
 
-		NDArrayBase* broadcastTo(std::vector<long> const& other) final {
+		NDArrayBase* broadcastTo(Shape const& other) final {
 			int diff = other.size() - ndims();
 
-			std::vector<long> newShape(diff, 1);
+			Shape newShape(diff, 1);
 
 			for (int i = 0; i < ndims(); i++) {
 				newShape.push_back(m_shape.at(i));
@@ -312,6 +318,32 @@ namespace CudheartNew {
 			return out;
 		}
 
+		NDArray<T>* transpose(Shape const& axes) {
+			if (axes.size() != ndims()) {
+				fmt::println("axes don't match array");
+				exit(-1);
+			}
+
+			Shape outShape;
+
+			for (auto axis : axes) {
+				outShape.push_back(m_shape[axis]);
+			}
+
+			auto result = new NDArray<T>(outShape);
+
+			int i = 0;
+			for (auto index : ndindex(outShape)) {
+				Shape pos;
+				for (auto axis : axes) {
+					pos.push_back(index[axis]);
+				}
+				result->at(i++) = at(pos);
+			}
+
+			return result;
+		}
+
 		std::vector<long> rotate_position(const std::vector<long>& current_position, const std::vector<long>& dimensions, int axis1, int axis2) {
 			std::vector<long> new_position = current_position;
 			new_position[axis1] = current_position[axis2];
@@ -392,6 +424,55 @@ namespace CudheartNew {
 			}
 
 			return out;
+		}
+
+		// fuck me sideways
+		std::vector<Shape> fetchIndices(std::vector<long> const& indices) {
+			auto diff = indices.size() - ndims();
+			if (diff < 0) {
+				fmt::println("please don't");
+				exit(-1);
+			}
+
+			Shape limits;
+			long size = 1;
+
+			for (int i = indices.size(); i < ndims(); i++) {
+				limits.push_back(m_shape[i]);
+				size *= m_shape[i];
+			}
+
+			Shape idx(diff, 0);
+
+			std::vector<Shape> out;
+			
+			for (int i = 0; i < size; i++) {
+				auto temp = indices;
+				temp.insert(temp.end(), idx.begin(), idx.end());
+				out.push_back(temp);
+				increment(idx, limits);
+			}
+
+			return out;
+		}
+
+		NDArray<T>* byFetchIndices(std::vector<long> const& indices) {
+			auto idxes = fetchIndices(indices);
+
+			Shape outShape;
+
+			for (int i = indices.size(); i < ndims(); i++) {
+				outShape.insert(outShape.begin(), m_shape[i]);
+			}
+
+			auto result = new NDArray<T>(outShape);
+
+			int index = 0;
+			for (auto idx : idxes) {
+				result->at(index++) = at(idx);
+			}
+
+			return result;
 		}
 	};
 }

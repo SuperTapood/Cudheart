@@ -3,9 +3,13 @@
 #include "../../Arrays/NDArray.cuh"
 #include "../../Internal/Internal.cuh"
 
+#include "../BaseMath/BaseMath.cuh"
+
+#include <fmt/core.h>
+
 namespace CudheartNew::CPP::Math::Linalg {
 	template <typename A, typename B, typename T = promote(A, B)>
-	T dot(NDArray<A>* a, NDArray<B>* b) {
+	T cumDot(NDArray<A>* a, NDArray<B>* b) {
 		auto casted = broadcast({ a, b });
 
 		a = (NDArray<A>*)casted[0];
@@ -21,141 +25,154 @@ namespace CudheartNew::CPP::Math::Linalg {
 	}
 
 	template <typename A, typename B, typename T = promote(A, B)>
-	NDArray<T>* dot(NDArray<A>* a, NDArray<B>* b, int axis) {
-		auto casted = broadcast({ a, b });
+	NDArray<T>* dot(NDArray<A>* a, NDArray<B>* b) {
+		Shape resShape;
 
-		a = (NDArray<A>*)casted[0];
-		b = (NDArray<B>*)casted[1];
+		resShape.push_back(a->shape()[0]);
 
-		auto out = new NDArray<T>(a->subshape(axis));
-
-		long index = 0;
-
-		for (int i = 0; i < a->subsize(axis); i++) {
-			auto arr = a->subarray(axis, i);
-			auto brr = b->subarray(axis, i);
-
-			out->at(index++) = dot(arr, brr);
+		for (int i = 1; i < b->ndims(); i++) {
+			resShape.push_back(b->shape()[i]);
 		}
 
-		return out;
+		auto result = new NDArray<T>(resShape);
+
+		for (auto index : ndindex(resShape)) {
+			int sum = 0;
+			for (int k = 0; k < a->shape()[1]; k++) {
+				std::vector<long> i = { index[0], k };
+				std::vector<long> j;
+
+				j.push_back(k);
+
+				for (int m = 1; m < index.size(); m++) {
+					j.push_back(index[m]);
+				}
+
+				T res;
+				
+				if (a->ndims() == i.size() && b->ndims() == j.size()) {
+					res = a->at(i) * b->at(j);
+				}
+				else if (a->ndims() == i.size()) {
+					auto mult = CudheartNew::CPP::Math::BaseMath::multiply(a->byFetchIndices(i), b->byFetchIndices(j));
+					res = CudheartNew::CPP::Math::BaseMath::sum(mult);
+				}
+				sum += res;
+			}
+
+			result->at(index) = sum;
+		}
+
+		return result;
 	}
 
 	template <typename A, typename B, typename T = promote(A, B)>
-	T tensordot(NDArray<A>* a, NDArray<B>* b) {
-		/*auto casted = broadcast({ a, b });
+	NDArray<T>* tensordot(NDArray<A>* a, NDArray<B>* b, Shape a_axes, Shape b_axes) {
+		Shape aShape, bShape;
 
-		a = (NDArray<A>*)casted[0];
-		b = (NDArray<B>*)casted[1];
-
-		T result = (T)0;
-
-		for (int i = 0; i < a->size(); i++) {
-			result += a->at(i) * b->at(i);
+		for (auto axis : a_axes) {
+			aShape.push_back(a->shape()[axis]);
 		}
 
-		return result;*/
+		for (auto axis : b_axes) {
+			bShape.push_back(b->shape()[axis]);
+		}
+
+		if (aShape != bShape) {
+			fmt::println("shape-mismatch for sum");
+			exit(-1);
+		}
+
+		Shape oldA, oldB;
+
+		for (int i = 0; i < a->ndims(); i++) {
+			if (std::find(a_axes.begin(), a_axes.end(), i) != a_axes.end()) {
+				continue;
+			}
+
+			oldA.push_back(i);
+		}
+
+		for (int i = 0; i < b->ndims(); i++) {
+			if (std::find(b_axes.begin(), b_axes.end(), i) != b_axes.end()) {
+				continue;
+			}
+
+			oldB.push_back(i);
+		}
+
+		auto newAxesA = oldA;
+		newAxesA.insert(newAxesA.end(), a_axes.begin(), a_axes.end());
+
+		auto newAxesB = b_axes;
+		newAxesB.insert(newAxesB.end(), oldB.begin(), oldB.end());
+
+		auto N2 = 1;
+
+		for (auto dim : aShape) {
+			N2 *= dim;
+		}
+
+		auto N1 = 1;
+
+		for (auto i : oldA) {
+			N1 *= a->shape()[i];
+		}
+
+		auto N3 = 1;
+
+		for (auto i : oldB) {
+			N3 *= b->shape()[i];
+		}
+
+		auto at = a->transpose(newAxesA)->reshape({ N1, N2 }, true);
+		auto bt = b->transpose(newAxesB)->reshape({ N2, N3 }, true);
+		auto res = dot(at, bt);
+
+		Shape finalShape;
+
+		for (auto i : oldA) {
+			finalShape.push_back(a->shape()[i]);
+		}
+
+		for (auto i : oldB) {
+			finalShape.push_back(b->shape()[i]);
+		}
+
+		return res->reshape(finalShape, true);
 	}
 
-	/*template <typename A, typename B, typename T = promote(A, B)>
-	NDArray<T>* tensordot(NDArray<A>* a, NDArray<B>* b, int axis) {
-		auto casted = broadcast({ a, b });
+	template <typename A, typename B, typename T = promote(A, B)>
+	NDArray<T>* tensordot(NDArray<A>* a, NDArray<B>* b, int axes = 2) {
+		auto na = a->ndims();
 
-		a = (NDArray<A>*)casted[0];
-		b = (NDArray<B>*)casted[1];
+		Shape a_axes, b_axes;
 
-		auto out = new NDArray<T>(a->subshape(axis));
-
-		long index = 0;
-
-		for (int i = 0; i < a->subsize(axis); i++) {
-			auto arr = a->subarray(axis, i);
-			auto brr = b->subarray(axis, i);
-
-			out->at(index++) = dot(arr, brr);
+		for (int i = na - axes; i < na; i++) {
+			a_axes.push_back(i);
 		}
 
-		return out;
-	}*/
+		for (int i = 0; i < axes; i++) {
+			b_axes.push_back(i);
+		}
 
+		return tensordot(a, b, a_axes, b_axes);
+	}
 
+	template <typename A, typename B, typename T = promote(A, B)>
+	NDArray<T>* inner(NDArray<A>* a, NDArray<B>* b) {
+		return tensordot(a, b, { a->ndims() - 1}, { b->ndims() -1});
+	}
 
-	//template <typename T>
-	//T inner(Vector<T>* a, Vector<T>* b) {
-	//	return dot(a, b);
-	//}
+	template <typename A, typename B, typename T = promote(A, B)>
+	NDArray<T>* outer(NDArray<A>* a, NDArray<B>* b) {
+		return tensordot(a, b, 0);
+	}
 
-	//template <typename T>
-	//Vector<T>* inner(Vector<T>* vec, Matrix<T>* mat) {
-	//	return dot(mat, vec);
-	//}
-
-	//template <typename T>
-	//Vector<T>* inner(Matrix<T>* mat, Vector<T>* vec) {
-	//	return dot(mat, vec);
-	//}
-
-	//template <typename T>
-	//Matrix<T>* inner(Matrix<T>* a, Matrix<T>* b) {
-	//	return dot(a, (Matrix<T>*)b->transpose());
-	//}
-
-	//template <typename T>
-	//Matrix<T>* outer(Vector<T>* a, Vector<T>* b) {
-	//	Matrix<T>* out = new Matrix<T>(a->size(), b->size());
-
-	//	for (int i = 0; i < a->size(); i++) {
-	//		for (int j = 0; j < b->size(); j++) {
-	//			out->set(i, j, a->get(i) * b->get(j));
-	//		}
-	//	}
-
-	//	return out;
-	//}
-
-	//template <typename T>
-	//Matrix<T>* outer(Matrix<T>* a, Matrix<T>* b) {
-	//	Vector<T>* va = (Vector<T>*)a->flatten();
-	//	Vector<T>* vb = (Vector<T>*)b->flatten();
-
-	//	Matrix<T>* out = new Matrix<T>(a->size(), b->size());
-
-	//	for (int i = 0; i < va->size(); i++) {
-	//		for (int j = 0; j < vb->size(); j++) {
-	//			out->set(i, j, va->get(i) * vb->get(j));
-	//		}
-	//	}
-
-	//	delete va, vb;
-
-	//	return out;
-	//}
-
-	//template <typename T>
-	//Matrix<T>* outer(Matrix<T>* mat, Vector<T>* vec) {
-	//	Matrix<T>* out = new Matrix<T>(mat->size(), vec->size());
-
-	//	for (int i = 0; i < mat->size(); i++) {
-	//		for (int j = 0; j < vec->size(); j++) {
-	//			out->set(i, j, mat->get(i) * vec->get(j));
-	//		}
-	//	}
-
-	//	return out;
-	//}
-
-	//template <typename T>
-	//Matrix<T>* outer(Vector<T>* vec, Matrix<T>* mat) {
-	//	Matrix<T>* out = new Matrix<T>(vec->size(), mat->size());
-
-	//	for (int i = 0; i < vec->size(); i++) {
-	//		for (int j = 0; j < mat->size(); j++) {
-	//			out->set(i, j, vec->get(i) * mat->get(j));
-	//		}
-	//	}
-
-	//	return out;
-	//}
+	template <typename A, typename B, typename T = promote(A, B)>
+	NDArray<T>* matmul(NDArray<A>* a, NDArray<B>* b) {
+		return tensordot(a, b, { a->ndims() - 1 }, { std::max(b->ndims() - 2, 0)});
+	}
 
 	//template <typename T>
 	//T det(Matrix<T>* mat) {

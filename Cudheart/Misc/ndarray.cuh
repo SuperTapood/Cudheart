@@ -58,8 +58,8 @@ namespace CudheartNew {
 
 	void test() {
 		using namespace CudheartNew::ArrayOps;
-		auto a = new NDArray<int>({ 5, 5 });
-		auto b = new NDArray<int>({ 1, 1, 5 });
+		auto a = new NDArray<int>({ 2, 2, 2 });
+		auto b = new NDArray<int>({ 2, 2 });
 
 		for (int i = 0; i < a->size(); i++) {
 			a->at(i) = i;
@@ -85,10 +85,12 @@ namespace CudheartNew {
 
 		// out.at(0)->println();
 
-		auto res = broadcast({ b, a });
+		/*auto res = broadcast({ b, a });
 
 		res.at(0)->println(true);
-		res.at(1)->println(true);
+		res.at(1)->println(true);*/
+
+		CPP::Math::Linalg::inner(a, b)->println();
 
 		/*a->println();
 		auto g = a->getAxis(0, 0);

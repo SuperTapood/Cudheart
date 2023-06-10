@@ -6,6 +6,8 @@
 #include <type_traits>
 #include <iostream>
 
+#include <fmt/format.h>
+
 // how does this even work
 
 template <template <class...> class TT, class... Args>
@@ -35,8 +37,8 @@ template <typename A, typename B>
 struct promote_args {
 	// assert we actually can go forward with this promotion :)
 	// this will raise compilation error when failed
-	static_assert(is_compatible(A), "the given type is not compatible with type promotion :(");
-	static_assert(is_compatible(B), "the given type is not compatible with type promotion :(");
+	//static_assert(is_compatible(A), fmt::format("the given type ({}) is not compatible with type promotion :(", typeid(A).name()));
+	//static_assert(is_compatible(B), fmt::format("the given type ({}) is not compatible with type promotion :(", typeid(B).name()));
 
 	// what the hell is wrong with this language
 	// why am i allowed to do this
