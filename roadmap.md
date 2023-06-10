@@ -1,5 +1,11 @@
 # Roadmap for upcoming builds
 
+
+- finish migration to n dimensional arrays
+- implement self where applicable
+- private methods that should be private
+- fully replace the old cudheart in tests
+
 ## the tested build
 
 build unit tests for everything to iron out any major bugs
