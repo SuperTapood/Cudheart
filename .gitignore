@@ -1,8 +1,1 @@
-Cudheart/.vs/*
-Cudheart/x64/*
-Cudheart/*.sln
-Cudheart/*.vcxproj
-Cudheart/*.vcxproj.user
-Cudheart/Testing/python/.idea/*
-Cudheart/Cudheart/Testing/python/__pycache_/*_
-*.pyc
+
